@@ -220,6 +220,7 @@ update_sysdata(
 # Check if release exists
 
 release_fredi <- piggyback::pb_releases(repo = "USEPA/FrEDI")
+
 release_fredi_Data <- piggyback::pb_releases(repo = "USEPA/FrEDI_data")
 # if not create a release
 
