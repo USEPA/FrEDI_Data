@@ -159,7 +159,7 @@ test_reshapeData   <- list_reshapeData %>% dataInfo_test(
 
 test_systemData0 <- list_systemData0 %>% dataInfo_test(
   csvName = "configuredData_testResults",
-  save    = save_test,
+  save    = save_test,i
   return  = return_test
 )
 
@@ -210,7 +210,8 @@ update_sysdata(
   save    = TRUE,
   sv      = TRUE,
   # sv      = FALSE, 
-  impacts = FALSE
+  impacts = FALSE,
+  outPath = dataOutPath
 )
 
 
@@ -236,5 +237,4 @@ pb_download(repo = "USEPA/FrEDI_data",
             tag = "FrEDI_2300",
             dest = tempdir())
 
-list.files(tempdir())
-load(tempdir())
+
