@@ -128,17 +128,17 @@ createSystemData <- function(
   
   ### Calculate national population and add to data list
   df_national <- pop_default %>% 
-    group_by_at(.vars=c(all_of(group0))) %>% 
-    summarize_at(.vars=c(all_of(sum0)), sum, na.rm=T) %>% ungroup
-  df_national <- df_national %>% rename_at(.vars=c(all_of(sum0)), ~c("national_pop"))
+    group_by_at(.vars=c(group0)) %>% 
+    summarize_at(.vars=c(sum0), sum, na.rm=T) %>% ungroup
+  df_national <- df_national %>% rename_at(.vars=c(sum0), ~c("national_pop"))
   rDataList[["national_pop_default"]] <- df_national
   # df_national %>% names %>% print
  
   ### Default scenario: Join national GDP with national population by year
   ### Default scenario: Join national values with regional population by year
   ### Calculate GDP per capita and add to list
-  df_national <- gdp_default %>% left_join(df_national, by=c(all_of(group0)))
-  df_national <- df_national %>% left_join(pop_default, by=c(all_of(group0)))
+  df_national <- gdp_default %>% left_join(df_national, by=c(group0))
+  df_national <- df_national %>% left_join(pop_default, by=c(group0))
   df_national <- df_national %>% mutate(gdp_percap = gdp_usd / national_pop)
   rDataList[["df_defaultScenario"]] <- df_national
   # df_defaultScenario %>% names %>% print
@@ -152,11 +152,11 @@ createSystemData <- function(
   mutate0     <- c("model_type")
   string0     <- c("slr")
   ### Replace NA values
-  slr_cm      <- slr_cm     %>% mutate_at(.vars = c(all_of(mutate0)), replace_na, string0)
-  slrImpacts  <- slrImpacts %>% mutate_at(.vars = c(all_of(mutate0)), replace_na, string0)
+  slr_cm      <- slr_cm     %>% mutate_at(.vars = c(mutate0), replace_na, string0)
+  slrImpacts  <- slrImpacts %>% mutate_at(.vars = c(mutate0), replace_na, string0)
   ### Convert to character
-  slr_cm      <- slr_cm     %>% mutate_at(.vars = c(all_of(mutate0)), as.character)
-  slrImpacts  <- slrImpacts %>% mutate_at(.vars = c(all_of(mutate0)), as.character)
+  slr_cm      <- slr_cm     %>% mutate_at(.vars = c(mutate0), as.character)
+  slrImpacts  <- slrImpacts %>% mutate_at(.vars = c(mutate0), as.character)
   ### Create data for extreme values above 250cm
   slrExtremes <- fun_slrConfigExtremes(
     slr_x = slr_cm,    ### rDataList$slr_cm
@@ -195,7 +195,7 @@ createSystemData <- function(
   join0          <- c("joinCol")
   df_sectorsInfo <- df_sectorsInfo %>% mutate(joinCol=1)
   df_national    <- df_national    %>% mutate(joinCol=1)
-  df_results0    <- df_sectorsInfo %>% left_join(df_national, by=c(all_of(join0)))
+  df_results0    <- df_sectorsInfo %>% left_join(df_national, by=c(join0), relationship = "many-to-many")
   df_results0    <- df_results0    %>% select(-c(all_of(join0)))
   rm("join0"); rm("df_sectorsInfo", "df_national")
   

@@ -1,4 +1,4 @@
-
+require(tidyverse)
 ###### Dimension Tests ######
 #' test_loadData
 #'
@@ -129,7 +129,7 @@ general_config_test <- function(
     configuredData = NULL, ### List of configured data
     # reshapedFile   = "." %>% file.path("data_tests", "reshapedData_testResults.csv"), ### File name of reshaped data test
     outPath   = ".",
-    xlsxName  = "testResults_general_config.xlsx",
+    xlsxName  = "generalConfig_testResults.xlsx",
     save      = TRUE,
     return    = TRUE,
     overwrite = TRUE, ### Whether to overwrite an existing file,
@@ -363,11 +363,11 @@ general_config_test <- function(
 #'
 #' @examples
 newSectors_config_test <- function(
-    newData = NULL,
+    newData   = NULL,
     refDataFile = "." %>% file.path("data", "sysdata.rda"),
     # sector_id = "",
     outPath   = ".",
-    xslxName  = "testResults_newSectors_config.xlsx",
+    xslxName  = "newSectorsConfig_testResults.xlsx",
     save      = T,
     return    = T,
     overwrite = T
