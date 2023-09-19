@@ -1,7 +1,6 @@
-name: Render documents and upload
+name: Create System Data
 
-on: [push]
-
+on: [workflow_dispatch]
 jobs:
   render_document:
     runs-on: ubuntu-latest
