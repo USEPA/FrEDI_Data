@@ -1,4 +1,4 @@
-name: Create System Data
+name: Create SystemData
 
 on: [workflow_dispatch]
 jobs:
