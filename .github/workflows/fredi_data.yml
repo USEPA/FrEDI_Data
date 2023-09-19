@@ -1,7 +1,6 @@
 name: Render documents and upload
 
-on:
-  push:
+on: push
 
 jobs:
   render_document:
