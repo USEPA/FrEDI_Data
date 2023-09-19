@@ -96,7 +96,8 @@ if(doNewTest){
 }
 
 ###### 7. Update Saved Data ######
-# list_systemData <- list_reshapeData %>% createSystemData(save=T, silent=T)
+list_systemData <- list_reshapeData %>% createSystemData(outPath= dataOutDir %>% file.path("tmp_sysdata.rda"),
+save=T, silent=T)
 
 
 
