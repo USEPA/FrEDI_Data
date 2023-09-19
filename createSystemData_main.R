@@ -5,7 +5,6 @@
 require(tidyverse)
 require(openxlsx)
 require(devtools)
-require(piggyback)
 
 
 mostRecentDate <- "20230503"# Sys.Date()
@@ -159,7 +158,7 @@ test_reshapeData   <- list_reshapeData %>% dataInfo_test(
 
 test_systemData0 <- list_systemData0 %>% dataInfo_test(
   csvName = "configuredData_testResults",
-  save    = save_test,i
+  save    = save_test,
   return  = return_test
 )
 
@@ -203,13 +202,50 @@ list_systemData <- list_reshapeData %>% createSystemData(save=T, silent=T)
 #list_systemData <- list_reshapeData %>% createSystemData(save=T, silent=T)
 
 
+
+
+
+
+####################### CREATE SV DATA ############################################
+
+c_sv_sectors     <- try(get_sv_sectorInfo())
+if("try-error" %in% class(c_sv_sectors)){c_sv_sectors <- NULL}
+
+
+### Screening
+
+
+list_screening <- list(
+  save     = TRUE,  ### Save SV
+  sv       = TRUE,  ### Update SV demographic data
+  pop      = TRUE,  ### Update SV population data
+  format   = TRUE,  ### Update formats
+  impacts  = FALSE, ### Update impact lists
+  sectors  = c_sv_sectors
+)
+
+
+
+## Uncomment following six lines to create and save data and check the outputs
+for(name_i in codeNames){ source(paste(codePath, name_i, sep="/")) }
+time1       <- Sys.time()
+test_svData <- createSVData(
+  save    = list_screening$save, 
+  sv      = list_screening$sv, 
+  pop     = list_screening$pop,
+  format  = list_screening$format, 
+  impacts = list_screening$impacts, 
+  sectors = list_screening$sectors,
+  return  = TRUE
+)
+
+
 # Use the following code to update the FrEDI system data with the SV configuration data.
 for(name_i in codeNames){ source(paste(codePath, name_i, sep="/")) }; codeNames
 time3 <- Sys.time()
 update_sysdata(
   save    = TRUE,
   sv      = TRUE,
-  # sv      = FALSE, 
   impacts = FALSE,
   outPath = dataOutPath
 )
@@ -217,24 +253,5 @@ update_sysdata(
 
 
 
-## PIGGYBACK
-# Check if release exists
-
-release_fredi <- piggyback::pb_releases(repo = "USEPA/FrEDI")
-
-release_fredi_Data <- piggyback::pb_releases(repo = "USEPA/FrEDI_data")
-# if not create a release
-
-
-pb_new_release("USEPA/FrEDI_data", "FrEDI_2300")
-
-pb_upload(sysUseName, 
-          repo = "USEPA/FrEDI_data", 
-          tag = "FrEDI_2300")
-
-
-pb_download(repo = "USEPA/FrEDI_data",
-            tag = "FrEDI_2300",
-            dest = tempdir())
 
 
