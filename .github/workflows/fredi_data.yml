@@ -13,7 +13,8 @@ jobs:
           Rscript -e 'install.packages("openxlsx")'
           Rscript -e 'install.packages("devtools")'
       - name: Run createsystemData
-        run: source("createsystemData_main.R")
+        run: |
+             source("createsystemData_main.R")
              source("createsystemData_sv.R")
       - name: Commit results
         run: |
