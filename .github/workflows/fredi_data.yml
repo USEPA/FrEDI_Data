@@ -1,6 +1,6 @@
 name: Create SystemData
 
-on: [workflow_dispatch]
+on: [push]
 jobs:
   render_document:
     runs-on: ubuntu-latest
