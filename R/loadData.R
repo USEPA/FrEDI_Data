@@ -28,7 +28,7 @@ loadData <- function(
   ### Filter to those for importing and replace NA values in some columns
   mutate0 <- c("excludeCol_ids", "Notes")
   df_tableNames <- df_tableNames %>% filter(Import == 1)
-  df_tableNames <- df_tableNames %>% mutate_at(.vars = c(all_of(mutate0)), replace_na, "")
+  df_tableNames <- df_tableNames %>% mutate_at(.vars = c(mutate0), replace_na, "")
   rm("mutate0")
   
   ### Number of data tables

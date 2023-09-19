@@ -55,7 +55,7 @@ reshapeData <- function(
   co_impactYears <- co_impactYears %>% gather(key = "impactYear_label", value = "impactYear2", -c(all_of(drop0)))
   co_impactYears <- co_impactYears %>% filter(!is.na(impactYear2))
   co_impactYears <- co_impactYears %>% select(-c(all_of(drop1)))
-  co_impactYears <- co_impactYears %>% left_join(co_impactYearLevels, by = c(all_of(join0)))
+  co_impactYears <- co_impactYears %>% left_join(co_impactYearLevels, by = c(join0))
   # co_impactYears %>% glimpse
   ### Update/add tables in list
   dataList[["co_impactYears"     ]] <- co_impactYears
@@ -78,7 +78,7 @@ reshapeData <- function(
   ### Remove intermediate variables
   join0          <- c("modelType")
   co_modelTypes2 <- co_modelTypes %>% rename(modelType = modelType_id)
-  co_models      <- co_models     %>% left_join(co_modelTypes2, by = c(all_of(join0))) # ; co_models %>% glimpse
+  co_models      <- co_models     %>% left_join(co_modelTypes2, by = c(join0)) # ; co_models %>% glimpse
   dataList[["co_models"]] <- co_models
   rm("join0", "co_modelTypes2")
   
@@ -96,13 +96,13 @@ reshapeData <- function(
   drop2   <- c("impactType_id_excel", "impactType_label", "impactType_description")
   join0   <- c("sector_id")
   rename0 <- c("sector", "variant", "impactYear", "impactType") %>% paste("id", sep = "_")
-  rename1 <- gsub("_id", "", c(all_of(rename0)))
+  rename1 <- gsub("_id", "", c(rename0))
   ### Join with co_impactYears, co_impactTypes
-  df_sectorsInfo <- co_sectors     %>% left_join(co_variants    %>% select(-c(all_of(drop0))), by = c(all_of(join0)))
-  df_sectorsInfo <- df_sectorsInfo %>% left_join(co_impactYears %>% select(-c(all_of(drop1))), by = c(all_of(join0)))
-  df_sectorsInfo <- df_sectorsInfo %>% left_join(co_impactTypes %>% select(-c(all_of(drop2))), by = c(all_of(join0)))
+  df_sectorsInfo <- co_sectors     %>% left_join(co_variants    %>% select(-c(all_of(drop0))), by = c(join0))
+  df_sectorsInfo <- df_sectorsInfo %>% left_join(co_impactYears %>% select(-c(all_of(drop1))), by = c(join0), relationship = "many-to-many")
+  df_sectorsInfo <- df_sectorsInfo %>% left_join(co_impactTypes %>% select(-c(all_of(drop2))), by = c(join0), relationship = "many-to-many")
   ### Rename
-  df_sectorsInfo <- df_sectorsInfo %>% rename_at(.vars = c(all_of(rename0)), ~ all_of(rename1)) # ; df_sectorsInfo %>% glimpse
+  df_sectorsInfo <- df_sectorsInfo %>% rename_at(.vars = c(rename0), ~ rename1) # ; df_sectorsInfo %>% glimpse
   ### Update in list
   dataList[["df_sectorsInfo"]] <- df_sectorsInfo
   ### Remove intermediate variables
@@ -177,7 +177,7 @@ reshapeData <- function(
   ### Check impacts
   "nrow(c_regSlr) == nrow(slrImpacts)" %>% paste0(": ", nrow(c_regSlr) == nrow(slrImpacts)) %>% print()
   ### Join and drop join columns
-  slrImpacts <- slrImpacts %>% left_join(c_regSlr, by = c(all_of(join0)))
+  slrImpacts <- slrImpacts %>% left_join(c_regSlr, by = c(join0))
   slrImpacts <- slrImpacts %>% select(-c(all_of(join0), all_of(select0)))
   ### Drop intermediate values (update in list further down)
   rm("idCols0", "select0", "names0", "join0", "c_regSlr")
@@ -233,7 +233,7 @@ reshapeData <- function(
       df_i <- df_i %>% mutate(model_type = model_dot %>% factor(levels1, labels1))
       ### Convert to character
       mutate0 <- c("variant", "impactYear", "impactType", "model_dot")
-      df_i    <- df_i %>% mutate_at(.vars = c(all_of(mutate0)), as.character)
+      df_i    <- df_i %>% mutate_at(.vars = c(mutate0), as.character)
       # rm("levels0", "labels0", "doDot0", "mutate0")
       return(df_i)
     }) %>%
