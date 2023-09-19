@@ -2,8 +2,6 @@ name: Render documents and upload
 
 on:
   push:
-    paths:
-      - 'inst/extdata/**'
 
 jobs:
   render_document:
