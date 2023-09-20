@@ -2,7 +2,7 @@
 ###### Load Packages ######
 require(tidyverse)
 require(openxlsx)
-require(devtools)
+# require(devtools)
 
 ###### Set Arguments ######
 ###### Parameters for saving tests
