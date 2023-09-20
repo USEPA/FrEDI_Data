@@ -51,7 +51,7 @@ update_sysdata <- function(
 
   ###### Update file paths
   ### Check file exists
-  new_ext       <- ifelse(tolower(rDataExt) == "rds", "rda", "rds")
+  new_ext       <- ifelse(tolower(rDataExt) == "rds", "rda", rDataExt)
   nChar_ext     <- rDataExt %>% nchar
   checkFile     <- sysDataPath %>% file.exists()
   if(!checkFile){
