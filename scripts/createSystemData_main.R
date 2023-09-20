@@ -80,10 +80,13 @@ rm("newEnv_ref")
 
 ###### 6. Run New Sector Tests on Data ######
 ###### Determine if tests need to be run
-c_sectors_new <- list_systemData0[["co_sectors"]][["sector_id"]] |> as.matrix |> as.vector |> unique
-c_sectors_ref <- refDataList[["co_sectors"]][["sector_id"]]  |> as.matrix |> as.vector |> unique
-hasNewSectors <- (c_sectors_new %in% c_sectors_ref) |> all 
-doNewTest     <- !hasNewSectors
+df_sectors_new <- list_systemData0[["co_sectors"]][["sector_id"]]
+df_sectors_ref <- refDataList[["co_sectors"]][["sector_id"]]
+df_sectors_new |> glimpse; df_sectors_ref |> glimpse
+c_sectors_new  <- df_sectors_new |> unique
+c_sectors_ref  <- df_sectors_ref |> unique
+hasNewSectors  <- (c_sectors_new %in% c_sectors_ref) |> all 
+doNewTest      <- !hasNewSectors
 ###### Run test if there are new sectors
 if(doNewTest){
   test_newSectors_config <- newSectors_config_test(
