@@ -34,11 +34,11 @@ jobs:
       - name: Setup R package dependencies
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          cache-version: 1
-          packages: tidyverse, openxlsx
-#          packages: |
-#            any::tidyverse
-#            any::openxlsx
+          cache-version: 2
+#          packages: tidyverse, openxlsx
+          packages: |
+            any::tidyverse
+            any::openxlsx
           
       - name: Run createsystemData
         run: |
