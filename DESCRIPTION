@@ -1,4 +1,4 @@
-Package: FrEDI Data
+Package: FrEDIData
 Title: Data for the Framework for Evaluating Damages and Impacts (FrEDI)
 Version: 3.4
 Authors@R: c(person("Corinne", "Hartin",
