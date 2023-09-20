@@ -1,4 +1,5 @@
 Package: FrEDIData
+Type: Data
 Title: Data for the Framework for Evaluating Damages and Impacts (FrEDI)
 Version: 3.4
 Authors@R: c(person("Corinne", "Hartin",
@@ -27,7 +28,7 @@ This package includes functions used in processing underlying data and
 scripts for compiling and testing the compiled data.
 License: file LICENSE
 Encoding: UTF-8
-Depends: R (>= 3.5.0),
+Depends: 
     tidyverse,
     openxlsx
 Roxygen: list(markdown = TRUE)
