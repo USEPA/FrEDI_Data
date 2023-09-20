@@ -25,7 +25,8 @@ jobs:
           Rscript -e 'install.packages("devtools")'
           
       - name: Run createsystemData
-        run: source("createsystemData_main.R")
+        run: |
+          Rscript -e 'source("./scripts/createsystemData_main.R")'
         
       - name: Upload Tests
         uses: actions/upload-artifact@v3
