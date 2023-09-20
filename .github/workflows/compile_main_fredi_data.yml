@@ -34,14 +34,16 @@ jobs:
       - name: Setup R package dependencies
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          cache-version: 2
-#          packages: tidyverse, openxlsx
+          cache-version: 1
           packages: |
             any::tidyverse
             any::openxlsx
           
       - name: Run createsystemData
         run: |
+          Rscript -e 'require(tidyverse)'
+          Rscript -e 'getwd() %>% print()'
+          Rscript -e '"." %>% list.files()'
           Rscript -e 'source("./scripts/createsystemData_main.R")'
         
       - name: Upload Tests
