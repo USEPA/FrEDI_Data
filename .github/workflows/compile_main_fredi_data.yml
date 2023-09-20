@@ -4,7 +4,6 @@
 ###     "path:" is the output path where Pandoc will write the compiled PDF. 
 ###      Note, this should be the same directory as the input paper.md
 name: Compile main FrEDI Data
-description: Compile and test main FrEDI data
 
 on: [push]
 
