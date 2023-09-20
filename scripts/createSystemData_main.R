@@ -70,13 +70,16 @@ test_general_config <- general_config_test(
 )
 
 ###### 6. Load Reference Data ######
-### Load ref data
-newEnv_ref  <- new.env()
-dataOutPath |> load(verbose = F, envir=newEnv_ref)
-# ls(envir=newEnv_ref) |> print
-refDataList <- "rDataList" |> get(envir=newEnv_ref, inherits = F)
-# ls() |> print; refDataList |> names |> print
-rm("newEnv_ref")
+# ### Load ref data
+# newEnv_ref  <- new.env()
+# dataOutPath |> load(verbose = F, envir=newEnv_ref)
+# # ls(envir=newEnv_ref) |> print
+# refDataList <- "rDataList" |> get(envir=newEnv_ref, inherits = F)
+# # ls() |> print; refDataList |> names |> print
+# rm("newEnv_ref")
+dataOutPath |> source()
+rDataList |> names() %>% print()
+refDataList <- rDataList
 
 ###### 6. Run New Sector Tests on Data ######
 ###### Determine if tests need to be run
