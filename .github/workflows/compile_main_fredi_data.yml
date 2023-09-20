@@ -46,9 +46,6 @@ jobs:
           Rscript -e 'getwd() |> print()'
           Rscript -e '"." |> list.files()'
           Rscript -e '"./scripts" |> list.files()'
-#          Rscript -e 'codePath  <- "./R"'
-#          Rscript -e 'codeFiles <- codePath |> list.files(full.names=T)'
-#          Rscript -e 'for(i in codeFiles){ source(i) }'
           Rscript -e 'source("./scripts/createSystemData_main.R")'
         
       - name: Upload Tests
