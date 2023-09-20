@@ -1,11 +1,24 @@
 ### https://github.com/actions/upload-artifact
 ### https://github.blog/changelog/2021-11-10-github-actions-input-types-for-manual-workflows/
+### https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows
+### https://github.com/r-lib/actions/tree/v2/setup-r-dependencies
+### https://docs.github.com/en/actions/using-jobs/using-conditions-to-control-job-execution
 ### For uploading artifacts:
 ###     "path:" is the output path where Pandoc will write the compiled PDF. 
 ###      Note, this should be the same directory as the input paper.md
 name: Compile main FrEDI Data
 
 on: [push]
+# on:
+#  push:
+#    inputs:
+#      update:
+#        type: choice
+#        description: Update sysdata.rda
+#        options: 
+#        - no
+#        - yes
+
 
 jobs:
   compile_data:
@@ -22,7 +35,7 @@ jobs:
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
           cache-version: 1
-          extra-packages: |
+          packages: |
             any::tidyverse
             any::openxlsx
           
@@ -37,7 +50,13 @@ jobs:
           path: |
             ./data_tests/
             ./data/tmp_sysdata.rda
-          
+      
+#      - name: Update Data
+#        if: github.event.inputs.update == 'yes'
+#        run:  |
+#          Rscript -e 'file.copy(from="./data/tmp_sysdata.rda", to="./data/sysdata.rda")'
+#          Rscript -e 'file.remove("./data/tmp_sysdata.rda")'
+
 #      - name: Commit results
 #        run: |
 #          git config --local core.autocrlf false
