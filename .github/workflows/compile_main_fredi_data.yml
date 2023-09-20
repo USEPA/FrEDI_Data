@@ -42,8 +42,11 @@ jobs:
       - name: Run createsystemData
         run: |
           Rscript -e 'require(tidyverse)'
-          Rscript -e 'getwd() %>% print()'
-          Rscript -e '"." %>% list.files()'
+          Rscript -e 'getwd() |> print()'
+          Rscript -e '"." |> list.files()'
+          Rscript -e 'codePath  <- "./R"'
+          Rscript -e 'codeFiles <- codePath |> list.files(full.names=T)'
+          Rscript -e 'for(i in codeFiles){ source(i) }'
           Rscript -e 'source("./scripts/createsystemData_main.R")'
         
       - name: Upload Tests
