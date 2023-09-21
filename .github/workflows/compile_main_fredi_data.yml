@@ -9,20 +9,6 @@
 name: Compile FrEDI Data
 
 on: [push]
-# on:
-#   push:
-#     inputs:
-#       repo_url:
-#         description: FrEDI repo URL
-#         required: true
-#         default: 
-#      update:
-#        type: choice
-#        description: Update sysdata.rda
-#        options: 
-#        - no
-#        - yes
-
 
 jobs:
   compile_data:
@@ -42,7 +28,7 @@ jobs:
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
           cache: true
-          cache-version: 2
+          cache-version: 1
           packages: |
             any::tidyverse
             any::openxlsx
@@ -62,16 +48,16 @@ jobs:
               type    = "source" 
             )'
           
-#      - name: Run createsystemData
-#        run: |
-#          Rscript -e 'source("./scripts/createSystemData_main.R")'
-#        
-#      - name: Upload Tests
-#        uses: actions/upload-artifact@v3
-#        with:
-#          name: Data
-#          path: |
-#            ./data_tests/
-#            ./data/tmp_sysdata.rda
+      - name: Run createsystemData
+        run: |
+          Rscript -e 'source("./scripts/createSystemData_main.R")'
+
+      - name: Upload Tests
+        uses: actions/upload-artifact@v3
+        with:
+          name: Data
+          path: |
+            ./data_tests/
+            ./data/tmp_sysdata.rda
       
 
