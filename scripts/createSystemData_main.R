@@ -65,6 +65,7 @@ list_systemData0 <- list_reshapeData |> createSystemData(save=F, silent=T)
 test_general_config <- general_config_test(
   reshapedData   = list_reshapeData,
   configuredData = list_systemData0,
+  save           = TRUE,
   overwrite      = TRUE,
   xlsxName       = "generalConfig_testResults.xlsx",
   fredi_config   = fredi_config
