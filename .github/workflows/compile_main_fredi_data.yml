@@ -62,16 +62,16 @@ jobs:
               type    = "source" 
             )'
           
-      - name: Run createsystemData
-        run: |
-          Rscript -e 'source("./scripts/createSystemData_main.R")'
-        
-      - name: Upload Tests
-        uses: actions/upload-artifact@v3
-        with:
-          name: Data
-          path: |
-            ./data_tests/
-            ./data/tmp_sysdata.rda
+#      - name: Run createsystemData
+#        run: |
+#          Rscript -e 'source("./scripts/createSystemData_main.R")'
+#        
+#      - name: Upload Tests
+#        uses: actions/upload-artifact@v3
+#        with:
+#          name: Data
+#          path: |
+#            ./data_tests/
+#            ./data/tmp_sysdata.rda
       
 
