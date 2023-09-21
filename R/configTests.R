@@ -303,7 +303,7 @@ general_config_test <- function(
   listPlots[["gdp_plot" ]] <- gdp_plot
   listPlots[["pop_plot" ]] <- pop_plot
   ### Add plot list to saveList
-  saveList[[defPlots0]] <- listPlots
+  saveList[[defPlots0]]    <- listPlots
   
   
   ###### Add Plots to Excel Workbook
@@ -332,7 +332,7 @@ general_config_test <- function(
     ### Population
     listPlots[["pop_plot"]] %>% print()
     wbook0 %>% insertPlot(sheet0, xy = c(12, 25), width = 8, height = 4.5, fileType = fType0, units = units0)
-    "got here2" %>% print
+    "got here3" %>% print
   }
   rm("sheet0", "fType0", "units0")
   
