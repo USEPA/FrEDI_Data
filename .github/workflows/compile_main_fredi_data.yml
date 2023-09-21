@@ -51,17 +51,18 @@ jobs:
       
       - name: Install FrEDI
         run: |
-          require(remotes)
-          require(devtools)
-          Rscript -e 'install_github( 
-            repo    = "https://github.com/USEPA/FrEDI", 
-            subdir  = "FrEDI", 
-            ref     = "main", 
-            type    = "source", 
-            repos   = getOption("repos"), 
-            upgrade = "never", 
-            force   = TRUE 
-          )'
+          Rscript -e '
+            require(remotes)
+            require(devtools)
+            install_github( 
+              repo    = "https://github.com/USEPA/FrEDI", 
+              subdir  = "FrEDI", 
+              ref     = "main", 
+              type    = "source", 
+              repos   = getOption("repos"), 
+              upgrade = "never", 
+              force   = TRUE 
+            )'
           
       - name: Run createsystemData
         run: |
