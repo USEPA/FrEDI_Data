@@ -318,20 +318,34 @@ general_config_test <- function(
     ### Temperature
     "got here1" %>% print()
     getwd() %>% print()
+    outDir %>% print()
     listPlots[["temp_plot"]] %>% print()
+    # ### Save the workbook
+    # # wbook0  %>% saveWorkbook(file=outFile, overwrite=overwrite)
+    # wbook0 %>% insertImage(sheet0, xy = c(1 , 2 ), width = 6, height = 4.5, fileType = fType0, units = units0)
+    # "got here2" %>% print
+    # ### SLR
+    # listPlots[["slr_plot"]] %>% print()
+    # wbook0 %>% insertImage(sheet0, xy = c(12, 2 ), width = 6, height = 4.5, fileType = fType0, units = units0)
+    # ### GDP
+    # listPlots[["gdp_plot"]] %>% print()
+    # wbook0 %>% insertImage(sheet0, xy = c(1 , 25), width = 6, height = 4.5, fileType = fType0, units = units0)
+    # ### Population
+    # listPlots[["pop_plot"]] %>% print()
+    # wbook0 %>% insertImage(sheet0, xy = c(12, 25), width = 8, height = 4.5, fileType = fType0, units = units0)
     ### Save the workbook
     # wbook0  %>% saveWorkbook(file=outFile, overwrite=overwrite)
-    wbook0 %>% insertPlot(sheet0, xy = c(1 , 2 ), width = 6, height = 4.5, fileType = fType0, units = units0)
-    "got here2" %>% print
-    ### SLR
-    listPlots[["slr_plot"]] %>% print()
-    wbook0 %>% insertPlot(sheet0, xy = c(12, 2 ), width = 6, height = 4.5, fileType = fType0, units = units0)
-    ### GDP
-    listPlots[["gdp_plot"]] %>% print()
-    wbook0 %>% insertPlot(sheet0, xy = c(1 , 25), width = 6, height = 4.5, fileType = fType0, units = units0)
-    ### Population
-    listPlots[["pop_plot"]] %>% print()
-    wbook0 %>% insertPlot(sheet0, xy = c(12, 25), width = 8, height = 4.5, fileType = fType0, units = units0)
+    # wbook0 %>% insertImage(sheet0, xy = c(1 , 2 ), width = 6, height = 4.5, fileType = fType0, units = units0)
+    # "got here2" %>% print
+    # ### SLR
+    # listPlots[["slr_plot"]] %>% print()
+    # wbook0 %>% insertImage(sheet0, xy = c(12, 2 ), width = 6, height = 4.5, fileType = fType0, units = units0)
+    # ### GDP
+    # listPlots[["insertImage"]] %>% print()
+    # wbook0 %>% insertImage(sheet0, xy = c(1 , 25), width = 6, height = 4.5, fileType = fType0, units = units0)
+    # ### Population
+    # listPlots[["pop_plot"]] %>% print()
+    # wbook0 %>% insertImage(sheet0, xy = c(12, 25), width = 8, height = 4.5, fileType = fType0, units = units0)
     "got here3" %>% print
   }
   rm("sheet0", "fType0", "units0")
@@ -752,16 +766,16 @@ newSectors_config_test <- function(
           # regPlot_j <- regPlot_j + facet_wrap(facets=c("impactType", "model_dot"), scales = "free", nrow=nVar_i)
           rowReg_j  <- htReg_i * (j - 1) + htNat_i * (j - 1) + 2
           xyReg_j   <- col_j %>% c(rowReg_j)
-          regPlot_j %>% print
-          wbook0 %>% insertPlot(sheet = sheet_i, xy = xyReg_j, width = widthR_i, height = heightR_i, fileType = ftype_i, units = units_i)
+          # regPlot_j %>% print
+          # wbook0 %>% insertPlot(sheet = sheet_i, xy = xyReg_j, width = widthR_i, height = heightR_i, fileType = ftype_i, units = units_i)
 
           ### National plots
           natPlot_j <- plots_j[["national"]]
           # natPlot_j <- natPlot_j + facet_wrap(facets=c("impactType", "model_dot"), scales = "free", nrow=nVar_i)
           rowNat_j  <- rowReg_j + htReg_i + htNat_i + cUnit
           xyNat_j   <- c(col_j, rowNat_j)
-          natPlot_j %>% print
-          wbook0 %>% insertPlot(sheet = sheet_i, xy = xyNat_j, width = widthN_i, height = heightN_i, fileType = ftype_i, units = units_i)
+          # natPlot_j %>% print
+          # wbook0 %>% insertPlot(sheet = sheet_i, xy = xyNat_j, width = widthN_i, height = heightN_i, fileType = ftype_i, units = units_i)
           rm("natPlot_j", "rowNat_j", "xyNat_j")
           rm("regPlot_j", "rowReg_j", "xyReg_j")
 
