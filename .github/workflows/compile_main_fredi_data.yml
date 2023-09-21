@@ -47,19 +47,15 @@ jobs:
             any::tidyverse
             any::remotes
             any::openxlsx
-            any::devtools
-      
+
       - name: Install FrEDI
         run: |
           Rscript -e '
-            require(remotes)
-            require(devtools)
-            install_github( 
+            remotes::install_github( 
               repo    = "https://github.com/USEPA/FrEDI", 
               subdir  = "FrEDI", 
               ref     = "main", 
               type    = "source", 
-              repos   = getOption("repos"), 
               upgrade = "never", 
               force   = TRUE 
             )'
