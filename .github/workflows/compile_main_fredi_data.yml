@@ -28,6 +28,9 @@ on:
 jobs:
   compile_data:
     runs-on: ubuntu-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    
     name: Process Data
     steps:
       - name: Checkout
@@ -49,12 +52,13 @@ jobs:
       - name: Install FrEDI
         run: |
           Rscript -e 'remotes::install_github( 
-            repo="https://github.com/USEPA/FrEDI", 
-            subdir = "FrEDI", 
-            ref    = "main", 
-            type   = "source", 
-            repos  = getOption("repos"), 
-            force  = TRUE 
+            repo    = "https://github.com/USEPA/FrEDI", 
+            subdir  = "FrEDI", 
+            ref     = "main", 
+            type    = "source", 
+            repos   = getOption("repos"), 
+            upgrade = "never", 
+            force   = TRUE 
           )'
           
       - name: Run createsystemData
