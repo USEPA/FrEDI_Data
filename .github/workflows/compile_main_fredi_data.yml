@@ -8,10 +8,15 @@
 ###      Note, this should be the same directory as the input paper.md
 name: Compile main FrEDI Data
 
-on: [push]
-# on:
-#  push:
-#    inputs:
+# on: [push]
+on:
+  push:
+    inputs:
+      repo_url:
+        description: FrEDI repo URL
+        required: true
+        default: 
+
 #      update:
 #        type: choice
 #        description: Update sysdata.rda
@@ -38,14 +43,22 @@ jobs:
           cache-version: 1
           packages: |
             any::tidyverse
+            any::remotes
             any::openxlsx
+      
+      - name: Install FrEDI
+        run: |
+          Rscript -e 'remotes::install_github( \
+            repo="https://github.com/USEPA/FrEDI", \
+            subdir = "FrEDI", \
+            ref    = "main", \ 
+            type   = "source", \
+            repos  = getOption("repos"), \
+            force  = TRUE \
+          )'
           
       - name: Run createsystemData
         run: |
-          Rscript -e 'require(tidyverse)'
-          Rscript -e 'getwd() |> print()'
-          Rscript -e '"." |> list.files()'
-          Rscript -e '"./scripts" |> list.files()'
           Rscript -e 'source("./scripts/createSystemData_main.R")'
         
       - name: Upload Tests

@@ -2,6 +2,7 @@
 ###### Load Packages ######
 require(tidyverse)
 require(openxlsx)
+require(FrEDI)
 # require(devtools)
 
 ###### Set Arguments ######
