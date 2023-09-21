@@ -45,7 +45,8 @@ jobs:
       run: echo "Compiling main FrEDI data..."
       
     - name: Check main data
-      if: ${{github.event.inputs.compile_region & github.event.inputs.update_region}} 
+      if: |
+        github.event.inputs.compile_region && github.event.inputs.update_region
       run: echo "Updating main FrEDI data..."
 
 
