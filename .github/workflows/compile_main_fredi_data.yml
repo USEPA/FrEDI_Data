@@ -8,15 +8,14 @@
 ###      Note, this should be the same directory as the input paper.md
 name: Compile FrEDI Data
 
-# on: [push]
-on:
-  push:
-    inputs:
-      repo_url:
-        description: FrEDI repo URL
-        required: true
-        default: 
-
+on: [push]
+# on:
+#   push:
+#     inputs:
+#       repo_url:
+#         description: FrEDI repo URL
+#         required: true
+#         default: 
 #      update:
 #        type: choice
 #        description: Update sysdata.rda
