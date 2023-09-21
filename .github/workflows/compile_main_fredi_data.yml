@@ -6,7 +6,7 @@
 ### For uploading artifacts:
 ###     "path:" is the output path where Pandoc will write the compiled PDF. 
 ###      Note, this should be the same directory as the input paper.md
-name: Compile main FrEDI Data
+name: Compile FrEDI Data
 
 # on: [push]
 on:
@@ -48,13 +48,13 @@ jobs:
       
       - name: Install FrEDI
         run: |
-          Rscript -e 'remotes::install_github( \
-            repo="https://github.com/USEPA/FrEDI", \
-            subdir = "FrEDI", \
-            ref    = "main", \ 
-            type   = "source", \
-            repos  = getOption("repos"), \
-            force  = TRUE \
+          Rscript -e 'remotes::install_github( 
+            repo="https://github.com/USEPA/FrEDI", 
+            subdir = "FrEDI", 
+            ref    = "main", 
+            type   = "source", 
+            repos  = getOption("repos"), 
+            force  = TRUE 
           )'
           
       - name: Run createsystemData
@@ -69,19 +69,4 @@ jobs:
             ./data_tests/
             ./data/tmp_sysdata.rda
       
-#      - name: Update Data
-#        if: github.event.inputs.update == 'yes'
-#        run:  |
-#          Rscript -e 'file.copy(from="./data/tmp_sysdata.rda", to="./data/sysdata.rda")'
-#          Rscript -e 'file.remove("./data/tmp_sysdata.rda")'
-
-#      - name: Commit results
-#        run: |
-#          git config --local core.autocrlf false
-#          git config --local user.email "${{ github.actor }}@users.noreply.github.com"
-#          git config --local user.name "${{ github.actor }}"
-#          git add data/sysdata**
-#          git pull origin ${{ github.head_ref }} --autostash --rebase -X ours
-#          git commit -a -m "Compiled main FrEDI data"
-#          git push 
 
