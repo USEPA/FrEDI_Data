@@ -81,7 +81,7 @@ dataInfo_test <- function(
   df_info   <- df_info %>% mutate(passed   = case_when((itemClass == "list") ~ T, (has_dups == T | na_flag == T) ~ F, (has_dups == F & na_flag == F) ~ T))
   ### Mutate logicals to numeric
   mutate0   <- c("has_dups", "passed")
-  df_info   <- df_info %>% mutate_at(.vars=c(all_of(mutate0)), as.numeric)
+  df_info   <- df_info %>% mutate_at(.vars=c(mutate0), as.numeric)
   ### Remove intermediates
   rm("except0", "mutate0")
   
@@ -135,6 +135,16 @@ general_config_test <- function(
     overwrite = TRUE, ### Whether to overwrite an existing file,
     fredi_config = NULL ### fredi_config list object
 ){
+  ###### File Paths ######
+  if(save){
+    outDir    <- outPath %>% file.path("data_tests")
+    outFile   <- outDir  %>% file.path(xlsxName)
+    ### Check if outDir exists and, if not, create one
+    odExists  <- outDir  %>% dir.exists()
+    if(!odExists){outDir %>% dir.create(showWarnings = F)}
+    rm("odExists")
+  } ### End if(save)
+  
   ###### Initialize List ######
   ### Initialize list for saving values
   ### Initialize list for default plots
@@ -306,8 +316,13 @@ general_config_test <- function(
     units0  <- "in"   
     ### Add plots
     ### Temperature
+    "got here1" %>% print()
+    getwd() %>% print()
     listPlots[["temp_plot"]] %>% print()
+    ### Save the workbook
+    # wbook0  %>% saveWorkbook(file=outFile, overwrite=overwrite)
     wbook0 %>% insertPlot(sheet0, xy = c(1 , 2 ), width = 6, height = 4.5, fileType = fType0, units = units0)
+    "got here2" %>% print
     ### SLR
     listPlots[["slr_plot"]] %>% print()
     wbook0 %>% insertPlot(sheet0, xy = c(12, 2 ), width = 6, height = 4.5, fileType = fType0, units = units0)
@@ -317,6 +332,7 @@ general_config_test <- function(
     ### Population
     listPlots[["pop_plot"]] %>% print()
     wbook0 %>% insertPlot(sheet0, xy = c(12, 25), width = 8, height = 4.5, fileType = fType0, units = units0)
+    "got here2" %>% print
   }
   rm("sheet0", "fType0", "units0")
   
@@ -404,7 +420,7 @@ newSectors_config_test <- function(
   mutate0   <- c("changes_expected")
   df_status <- newData[["testDev"]]
   df_status <- df_status %>% rename_at(.vars=c("Changes.if.new.sector.added"), ~mutate0)
-  df_status <- df_status %>% mutate_at(.vars=c(all_of(mutate0)), factor, levels=levels0)
+  df_status <- df_status %>% mutate_at(.vars=c(mutate0), factor, levels=levels0)
   rm("mutate0", "levels0")
   
   ###### Compare New & Ref Data ######
@@ -423,10 +439,10 @@ newSectors_config_test <- function(
   newTests  <- newTests %>% select(c(all_of(select0)))
   refTests  <- refTests %>% select(c(all_of(select1)))
   ### Rename columns
-  newTests  <- newTests %>% rename_at(.vars=c(all_of(sum0)), ~rename0)
-  refTests  <- refTests %>% rename_at(.vars=c(all_of(sum0)), ~rename0)
+  newTests  <- newTests %>% rename_at(.vars=c(sum0), ~rename0)
+  refTests  <- refTests %>% rename_at(.vars=c(sum0), ~rename0)
   ### Join old and new 
-  df_tests  <- newTests %>% left_join(refTests, by=c(all_of(join0)), suffix=suffix0)
+  df_tests  <- newTests %>% left_join(refTests, by=c(join0), suffix=suffix0)
   rm("join0", "sum0", "select0", "select1", "rename0"); rm("newTests", "refTests")
   
   ###### ** Join Tests and Test Info ######
@@ -436,8 +452,8 @@ newSectors_config_test <- function(
   ### Check number of rows before
   dim0      <- c(nrow(df_status), nrow(df_tests))
   ### Rename columns and join columns
-  df_tests  <- df_tests  %>% rename_at(.vars=c(all_of(rename0)), ~join0)
-  df_status <- df_status %>% left_join(df_tests, by=c(all_of(join0)))
+  df_tests  <- df_tests  %>% rename_at(.vars=c(rename0), ~join0)
+  df_status <- df_status %>% left_join(df_tests, by=c(join0))
   ### Check number of rows before
   dim1      <- c(nrow(df_status), nrow(df_tests))
   all0      <- (dim1 == dim0) %>% all
@@ -476,7 +492,7 @@ newSectors_config_test <- function(
   ###### ** Arrange Test Results ######
   ### Arrange values and add to save list
   arrange0  <- c("changes_expected", "hasDiffs", "sameDims", "sameVals", "Table.Name")
-  df_status <- df_status %>% arrange_at(.vars=c(all_of(arrange0)))
+  df_status <- df_status %>% arrange_at(.vars=c(arrange0))
   saveList[[c_config0]] <- df_status 
   rm("arrange0")
   
@@ -511,7 +527,7 @@ newSectors_config_test <- function(
     
     ### Get difference
     join0  <- new0   %>% names %>% (function(y, z=ref0){y[(y %in% names(z))]})
-    diff0  <- new0   %>% anti_join(ref0, by=c(all_of(join0)))
+    diff0  <- new0   %>% anti_join(ref0, by=c(join0))
     rm("join0")
     
     ### Add table to list
@@ -561,7 +577,7 @@ newSectors_config_test <- function(
 
     ### Arrange and add scaled impacts to list of items to save
     arrange0    <- c("sector", "variant", "impactYear", "impactType", "model_type", "model_dot", "region_dot")
-    df_vals     <- df_vals %>% arrange_at(.vars=c(all_of(arrange0)))
+    df_vals     <- df_vals %>% arrange_at(.vars=c(arrange0))
     saveList[[c_impact0]] <- df_vals
     rm("arrange0")
 
@@ -611,7 +627,7 @@ newSectors_config_test <- function(
         )})
 
         ###### Adjust data
-        data_j = data_j %>% mutate_at(.vars=c(all_of(yCol_j)), function(x){x / scale_y})
+        data_j = data_j %>% mutate_at(.vars=c(yCol_j), function(x){x / scale_y})
 
         ###### Plot values
         ### X label, breaks
@@ -630,7 +646,7 @@ newSectors_config_test <- function(
         ### Groups
         groups_j <- c("sector", "variant", "impactYear", "impactType", "model_dot", "region_dot","temp_C")
         reg_j    <- data_j %>%
-          group_by_at(.vars=c(all_of(groups_j))) %>%
+          group_by_at(.vars=c(groups_j)) %>%
           ggplot() +
           geom_line(aes(x=temp_C, y=scaled_impact, color=region_dot), alpha = 0.7)
         # ### Add facets
@@ -653,7 +669,7 @@ newSectors_config_test <- function(
         ### Groups
         groups_j <- c("sector", "variant", "impactYear", "impactType", "model_dot","temp_C")
         nat_j    <- data_j %>%
-          group_by_at(.vars=c(all_of(groups_j))) %>%
+          group_by_at(.vars=c(groups_j)) %>%
           summarize_at(.vars=c("scaled_impact"),.funs = sum) %>%
           ggplot() +
           geom_line(aes(x = temp_C, y = scaled_impact, color = model_dot), alpha = 0.7)
