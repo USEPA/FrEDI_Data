@@ -124,6 +124,89 @@ dataInfo_test <- function(
 }
 
 ###### General Configuration Tests ######
+### Function to initialize plots list
+initialize_gen_plotsList <- function(x=1){
+  list0 <- list()
+  # list0[["temp"]] <- list(plotName="Temp Plot", xy=c(1 , 2 ))
+  # list0[["slr" ]] <- list(plotName="SLR Plot" , xy=c(12, 2 ))
+  # list0[["gdp" ]] <- list(plotName="GDP Plot" , xy=c(1 , 25))
+  # list0[["pop" ]] <- list(plotName="Pop Plot" , xy=c(12, 25))
+  list0[["temp"]] <- list(plotName="Temp Plot", xy=c(1, 2))
+  list0[["slr" ]] <- list(plotName="SLR Plot" , xy=c(1, 2))
+  list0[["gdp" ]] <- list(plotName="GDP Plot" , xy=c(1, 2))
+  list0[["pop" ]] <- list(plotName="Pop Plot" , xy=c(1, 2))
+  return(list0)
+}
+### Configuration plots function
+
+### Add general configuration plot to workbook
+add_gen_plot <- function(
+  wbook, 
+  # sheet     = 1,
+  # wbook     = openxlsx::createWorkbook(),
+  outPath   = ".",
+  plotName  = "temp",
+  plotsList = initialize_gen_plotsList()
+){
+  ###### Info
+  plotNames <- c("temp", "slr", "gdp", "pop")
+  # plotNames <- plotsList %>% names()
+  
+  ### Plot info
+  path0   <- outPath
+  fType0  <- "png"
+  units0  <- "in"  
+  dpi0    <- 200
+  width0  <- 6.0
+  height0 <- 4.5
+  
+  list0  <- plotsList[[plotName]]
+  plot0  <- list0[["plot"]]
+  xy0    <- list0[["xy"]]
+  # plotsList %>% names %>% print; 
+  # list0 %>% names %>% print; 
+  # xy0 %>% print 
+  # c(sheet0, fType0, units0, sheet0, xy0[1], xy0[2], width0, height0, units0)  %>% print
+  file0  <- "tmp_" %>% paste0(plotName, ".png")
+  fpath0 <- path0  %>% file.path(file0)
+  # fpath0 %>% print(); plot0 %>% print()
+  
+  ### Add worksheet
+  # sheet0  <- sheet; rm("sheet")
+  sheet0 <- list0[["plotName"]]
+  wbook %>% addWorksheet(sheetName = sheet0)
+  # sheet0 %>% print
+  
+  ### Temporarily Save Plots
+  ggsave(
+    filename = file0, 
+    path     = path0, 
+    plot     = plot0, 
+    device   = fType0, 
+    dpi      = dpi0,
+    width    = width0, 
+    height   = height0, 
+    units    = units0
+  )
+  ### Add plots to workbook
+  insertImage(
+    wb       = wbook,
+    sheet    = sheet0,
+    file     = fpath0,
+    startCol = xy0[1],
+    startRow = xy0[2],
+    width    = width0,
+    height   = height0,
+    units    = units0
+  )
+  # ### Delete temporary file
+  # fpath0 %>% file.remove()
+  # rm("plotName", "plot0", "xy0", "file0", "path0", "fpath0")
+  ### Return
+  return(wbook)
+} ### End: for plotName
+
+### Configuration Test
 general_config_test <- function(
     reshapedData   = NULL, ### List of reshaped data
     configuredData = NULL, ### List of configured data
@@ -135,7 +218,7 @@ general_config_test <- function(
     overwrite = TRUE, ### Whether to overwrite an existing file,
     fredi_config = NULL ### fredi_config list object
 ){
-  ###### File Paths ######
+  ###### Create Workbook ######
   if(save){
     outDir    <- outPath %>% file.path("data_tests")
     outFile   <- outDir  %>% file.path(xlsxName)
@@ -143,13 +226,16 @@ general_config_test <- function(
     odExists  <- outDir  %>% dir.exists()
     if(!odExists){outDir %>% dir.create(showWarnings = F)}
     rm("odExists")
+    
+    ### Create Excel workbook
+    wbook0    <- createWorkbook()
   } ### End if(save)
   
   ###### Initialize List ######
   ### Initialize list for saving values
   ### Initialize list for default plots
   saveList   <- list()
-  listPlots  <- list()
+  listPlots  <- initialize_gen_plotsList()
   
   ###### Data Names ######
   ### Data Names
@@ -246,11 +332,9 @@ general_config_test <- function(
   ### Add table to list
   saveList[[defParam0]] <- defaultsList
   
-  ###### Create Excel Workbook ######
-  ### Create Excel workbook if save
+  ###### Add Data to Excel Workbook ######
+  ### Add Data to Excel workbook if save
   if(save) {
-    ### Open workbook
-    wbook0  <- createWorkbook()
     ### Sheet Names
     names0  <- saveList %>% names
     for(name_i in names0) {
@@ -265,108 +349,84 @@ general_config_test <- function(
   ### Plot values
   lab_tmp0  <- expression("CONUS Degrees of Warming ("~degree*C*")")
   lab_yrs0  <- "Year"
-  brk_yrs0  <- seq(2010, 2300, by=20)
+  lim_yrs0  <- c(2000, 2300)
+  brk_yrs0  <- seq(lim_yrs0[1], lim_yrs0[2], by=20)
+  
   ### Temp plot
   temp_plot <- configuredData[["temp_default"]] %>% 
     ggplot() +
     geom_line(aes(x = year, y = temp_C_conus)) +
-    scale_x_continuous(lab_yrs0, breaks=brk_yrs0) +
+    scale_x_continuous(lab_yrs0, breaks=brk_yrs0, limits = lim_yrs0) +
     scale_y_continuous(lab_tmp0) + 
-    ggtitle("Default SLR Scenario")
+    ggtitle("Default Temperature Scenario")
   ### SLR plot
   slr_plot  <- configuredData[["slr_default"]] %>% 
     ggplot() +
     geom_line(aes(x = year, y = slr_cm)) +
-    scale_x_continuous(lab_yrs0, breaks=brk_yrs0) +
+    scale_x_continuous(lab_yrs0, breaks=brk_yrs0, limits = lim_yrs0) +
     scale_y_continuous("SLR (cm)") + 
     ggtitle("Default SLR Scenario")
   ### GDP Plot: Convert to Billions
   gdp_plot <- configuredData[["gdp_default"]] %>% 
-    mutate(gdp_usd = gdp_usd / 1e9) %>% 
+    mutate(gdp_usd = gdp_usd / 1e12) %>% 
     ggplot() +
     geom_line(aes(x = year, y = gdp_usd)) + 
-    scale_x_continuous(lab_yrs0, breaks=brk_yrs0) + 
-    scale_y_continuous("U.S. National GDP (2015$, billions)") + 
+    scale_x_continuous(lab_yrs0, breaks=brk_yrs0, limits = lim_yrs0) + 
+    scale_y_continuous("U.S. National GDP (2015$, trillions)") + 
     ggtitle("Default GDP Scenario")
   ### Pop plot
   pop_plot <- configuredData[["pop_default"]] %>% 
     mutate(reg_pop = reg_pop / 1e6) %>% 
     ggplot() +
     geom_line(aes(x = year, y = reg_pop, color = region), alpha = 0.75) +
-    scale_x_continuous(lab_yrs0, breaks=brk_yrs0) + 
+    scale_x_continuous(lab_yrs0, breaks=brk_yrs0, limits = lim_yrs0) + 
     scale_y_continuous("Regional Population (millions)") + 
+    # theme(axis.text.x = element_text(angle=90)) +
+    theme(legend.position = "bottom") +
     scale_color_discrete("Region") +
     ggtitle("Default Population Scenario")
+  
   ### Add plots to list
-  listPlots[["temp_plot"]] <- temp_plot
-  listPlots[["slr_plot" ]] <- slr_plot
-  listPlots[["gdp_plot" ]] <- gdp_plot
-  listPlots[["pop_plot" ]] <- pop_plot
+  listPlots[["temp"]] <- list(plot=temp_plot) %>% c(listPlots[["temp"]])
+  listPlots[["slr" ]] <- list(plot=slr_plot ) %>% c(listPlots[["slr" ]])
+  listPlots[["gdp" ]] <- list(plot=gdp_plot ) %>% c(listPlots[["gdp" ]])
+  listPlots[["pop" ]] <- list(plot=pop_plot ) %>% c(listPlots[["pop" ]])
   ### Add plot list to saveList
-  saveList[[defPlots0]]    <- listPlots
+  saveList[[defPlots0]] <- listPlots
   
   
-  ###### Add Plots to Excel Workbook
+  ###### Add Plots to Excel Workbook ######
   if(save) {
     ### Add worksheet
-    sheet0  <- defPlots0
-    wbook0 %>% addWorksheet(sheetName = sheet0)
-    ### Plot info
-    fType0  <- "png"
-    units0  <- "in"   
-    ### Add plots
-    ### Temperature
-    "got here1" %>% print()
-    getwd() %>% print()
-    outDir %>% print()
-    listPlots[["temp_plot"]] %>% print()
-    # ### Save the workbook
-    # # wbook0  %>% saveWorkbook(file=outFile, overwrite=overwrite)
-    # wbook0 %>% insertImage(sheet0, xy = c(1 , 2 ), width = 6, height = 4.5, fileType = fType0, units = units0)
-    # "got here2" %>% print
-    # ### SLR
-    # listPlots[["slr_plot"]] %>% print()
-    # wbook0 %>% insertImage(sheet0, xy = c(12, 2 ), width = 6, height = 4.5, fileType = fType0, units = units0)
-    # ### GDP
-    # listPlots[["gdp_plot"]] %>% print()
-    # wbook0 %>% insertImage(sheet0, xy = c(1 , 25), width = 6, height = 4.5, fileType = fType0, units = units0)
-    # ### Population
-    # listPlots[["pop_plot"]] %>% print()
-    # wbook0 %>% insertImage(sheet0, xy = c(12, 25), width = 8, height = 4.5, fileType = fType0, units = units0)
-    ### Save the workbook
-    # wbook0  %>% saveWorkbook(file=outFile, overwrite=overwrite)
-    # wbook0 %>% insertImage(sheet0, xy = c(1 , 2 ), width = 6, height = 4.5, fileType = fType0, units = units0)
-    # "got here2" %>% print
-    # ### SLR
-    # listPlots[["slr_plot"]] %>% print()
-    # wbook0 %>% insertImage(sheet0, xy = c(12, 2 ), width = 6, height = 4.5, fileType = fType0, units = units0)
-    # ### GDP
-    # listPlots[["insertImage"]] %>% print()
-    # wbook0 %>% insertImage(sheet0, xy = c(1 , 25), width = 6, height = 4.5, fileType = fType0, units = units0)
-    # ### Population
-    # listPlots[["pop_plot"]] %>% print()
-    # wbook0 %>% insertImage(sheet0, xy = c(12, 25), width = 8, height = 4.5, fileType = fType0, units = units0)
-    "got here3" %>% print
-  }
-  rm("sheet0", "fType0", "units0")
+    names0  <- listPlots %>% names
+    # sheet0  <- defPlots0
+    # wbook0 %>% addWorksheet(sheetName = sheet0)
+    
+    ### Add Plots
+    for(name_i in names0){
+      # wbook0 <- 
+      add_gen_plot(
+        plotsList = listPlots,
+        plotName  = name_i,
+        wbook     = wbook0,
+        # sheet     = sheet0,
+        outPath   = outDir
+      )
+    } ### End: for name_i
+  } ### End if(save)
   
   
   ###### Save Option Outputs ######
+  ### Save the workbook
+  ### Remove workbook
   if(save){
-    "Saving data checks" %>% paste0("...") %>% message
-    outDir    <- outPath %>% file.path("data_tests")
-    # outExt    <- "." %>% paste0("xlsx")
-    # xlsxName  <- xlsxName %>% paste0(outExt)
-    outFile   <- outDir %>% file.path(xlsxName)
-    rm("xlsxName")
-    ### Check if outDir exists and, if not, create one
-    odExists  <- outDir %>% dir.exists()
-    if(!odExists){outDir %>% dir.create(showWarnings = F)}
-    rm("odExists")
-    ### Save the workbook
+    ### Save workbook
+    "Saving data tests" %>% paste0("...") %>% message
     wbook0  %>% saveWorkbook(file=outFile, overwrite=overwrite)
-    ### Remove workbook
     rm("wbook0")
+    ### Remove temporary image files
+    files0 <- outDir %>% list.files(pattern="tmp_", full.names = T)
+    files0 %>% file.remove()
   } ### End if(save)
   
   ###### Return ######
@@ -376,6 +436,177 @@ general_config_test <- function(
   
 } ### End general_config_test
 
+###### New Sector Plot Function ######
+### Make regional or national variant plot
+make_variant_plot  <- function(
+    variant0,
+    sector0,
+    df0
+){
+  ### Scales
+  # lab_x0 <- xScale[["lab"]]; brk_x0 <- xScale[["brk"]]; lim_x0 <- xScale[["lim"]]
+  # lab_y0 <- yScale[["lab"]]; brk_y0 <- yScale[["brk"]]; lim_y0 <- yScale[["lim"]]
+  ### Filter data
+  df0      <- df0 %>% filter(sector  == sector0)
+  df0      <- df0 %>% filter(variant == variant0)
+  nImp0    <- df0[["impactType"]] %>% unique() %>% length()
+  
+  ### Get unique models & impact types
+  models0  <- df0[["model_dot" ]] %>% unique
+  impacts0 <- df0[["impactType"]] %>% unique
+  ### Number of models & impacts
+  nModels0 <- models_i %>% length
+  nImp0    <- impacts_i %>% length
+  # nVariants  <- variants_i %>% length
+  
+  ### Plot info
+  title0   <- sector0 %>% paste0(" -- ","Regional")
+  yCol0    <- "scaled_impact"
+  groups0  <- c("sector", "variant", "impactYear", "impactType", "model_dot", "region_dot","temp_C")
+  
+  ### Initialize scalar labels
+  lvl_y0   <- 10**c(0, 3, 6, 9)
+  lbl_y0   <- c("") %>% c(paste0(", ", c("Thousands", "Millions", "Billions")))
+  ### Get maximum y value, get scalar, label for y
+  max_y0   <- df0[[yCol0]] %>% abs %>% max(na.rm=T)
+  scale_y  <- max_y0 %>% (function(x){case_when(
+    x > lvl_y0[4] ~ lvl_y0[4],
+    x > lvl_y0[3] ~ lvl_y0[3],
+    x > lvl_y0[2] ~ lvl_y0[2],
+    TRUE ~ 1
+  )})
+  
+  ###### Adjust data
+  df0      <- df0 %>% mutate_at(.vars=c(yCol0), function(x){x / scale_y})
+  
+  ###### Plot values
+  ### X label, breaks
+  lab_x0   <- expression("CONUS Degrees of Warming ("*~degree*C*")")
+  brk_x0   <- (-1:6)*2
+  ### Y label, breaks
+  unit_y0  <- scale_y %>% factor(lvl_y0, lbl_y0) %>% as.character
+  lab_y0   <- yCol0 %>% str_split(pattern="_") %>% unlist %>% paste(collapse=" ") %>% str_to_title
+  lab_y0   <- paste0("(", lab_y0, unit_y0, ")")
+  # brk_yrs0  <- seq(2010, 2300, by=20)
+  
+  ### Plot
+  plot0    <- df0 %>%
+    group_by_at(.vars=c(groups0)) %>%
+    ggplot() +
+    geom_line(aes(x=temp_C, y=scaled_impact, color=region_dot), alpha = 0.7)
+  # ### Add facets
+  # plot0    <- plot0 + facet_wrap(facets=c("model_dot", "impactType"),scales = "free")
+  plot0    <- plot0 + facet_wrap(facets=c("impactType", "model_dot"), scales = "free", nrow=nImp0)
+  ### Add scales
+  plot0    <- plot0 + scale_x_continuous(lab_x0, breaks=brk_x0, limits=NULL)
+  plot0    <- plot0 + scale_y_continuous(lab_y0)
+  plot0    <- plot0 + scale_color_discrete("Region")
+  plot0    <- plot0 + theme(legend.position = "bottom")
+  ### Add title
+  plot0    <- plot0 + ggtitle(title0)
+  
+  ### Return
+  return(plot0)
+}
+### Make list of plots for a sector
+make_sector_plots <- function(
+    sector0,
+    df0
+){
+  paste0("Plotting scaled impacts for sector \'", sector_i, "\'", "...") %>% message
+  ### Regional plots
+  variants0   <- (df0 %>% filter(sector=sector0))[["variant"]] %>% unique
+  plots0      <- variants0 %>% lapply(make_variant_plot(x, sector0=sector0, df0=df0))
+  ### Add names
+  names(plots0) <- variants0
+  ### Return
+  return(plots0)
+}
+
+#### Save sector plots
+add_sector_plot <- function(
+    wbook, 
+    # sheet     = 1,
+    # wbook     = openxlsx::createWorkbook(),
+    sector0,
+    variant0,
+    outPath   = ".",
+    df0, ### Data
+    plotsList = list()
+){
+  ### Plot info
+  fType0  <- "png"
+  units0  <- "cm"   
+  cUnit0  <- 6 ### Columns per unit
+  col0    <- 1
+  path0   <- outPath
+  
+  ### Sector values
+  df0       <- df0    %>% filter(sector==sector_i)
+  ### Unique models & impacts
+  models0   <- df0[["model_dot"]] %>% unique
+  impacts0  <- df0[["impactType"]] %>% unique
+  ### Numbers of unique models & impacts
+  nModels0  <- models0   %>% length
+  nImp0     <- impacts0  %>% length
+  ### Get variants
+  variants_i <- plots_i    %>% names
+  nVar_i     <- variants_i %>% length
+  
+  ### Heights & Widths
+  ### Regional
+  width0  <- cUnit0 * 3 * nModels0 + cUnit0
+  height0 <- cUnit0 * 2 * nImp0    + cUnit0
+  # c(widthR_i, heightR_i) %>% print
+  
+  ### Plot multipliers by columns
+  # height0  <- 12 * nImp0
+
+  ### Plot
+  plot0    <- plotsList[["sector0"]][["variant0"]]
+  
+  ### Add worksheet
+  sheet0   <- "plots" %>% paste(sector0, variant0, sep="_")
+  wbook %>% addWorksheet(sheetName = sheet0)
+  
+  ### File names
+  file0  <- "tmp_" %>% paste0(sector0, "_", variant0, ".png")
+  fpath0 <- path0 %>% file.path(file_0)
+  ### Temporarily Save Plots
+  file_j %>% ggsave(plot=plot0, device=fType0, path=path0, width=width0, height=height0, units=units0)
+  ### Add plots to workbook
+  wbook %>% insertImage(sheet=sheet0, file=fpath0, startCol=2, startRow=1, width= width0, height=height0, units=units0)
+  
+  ### Iterate over each sector and add worksheet for each sector
+  if(save){
+   
+    
+    
+    ### Iterate over sectors
+    sectors0 %>% walk(function(sector_i, plots_i = plots0[[sector_i]]){
+      ### Add worksheet
+      sheet_i <- 
+      #wbook0 %>% writeDataTable(sheet = sheet_i,diff)
+      
+      
+      
+      ### Add Plots
+      for(j in 1:nVar_i){
+        variant_j <- variants_i[j]
+        ### Plots
+        plot_j   <- plots_i[[j]]
+        
+        
+        ### Delete temporary files
+        pathReg_j %>% file.remove()
+        ### Delete intermediate values
+        rm("j", "variant_j", "plots_j")
+        rm("regPlot_j", "rowReg_j", "fileReg_j", "pathReg_j")
+        rm("natPlot_j", "rowNat_j", "fileNat_j", "pathNat_j")
+      } ### End for(j in 1:nVar_i)
+    }) ### End function(sector_i), end walk
+  } ### End if(save)
+} ### End if(funLength)
 
 ###### New Sector Configuration Tests ######
 #' configTest_newSectors
@@ -402,6 +633,19 @@ newSectors_config_test <- function(
     return    = T,
     overwrite = T
 ){
+  ###### Create Workbook ######
+  if(save){
+    outDir    <- outPath %>% file.path("data_tests")
+    outFile   <- outDir  %>% file.path(xlsxName)
+    ### Check if outDir exists and, if not, create one
+    odExists  <- outDir  %>% dir.exists()
+    if(!odExists){outDir %>% dir.create(showWarnings = F)}
+    rm("odExists")
+    
+    ### Create Excel workbook
+    wbook0    <- createWorkbook()
+  } ### End if(save)
+  
   ###### Initialize Save List ######
   saveList  <- list()
   
@@ -567,7 +811,7 @@ newSectors_config_test <- function(
   funLength   <- funList %>% length
   ### Remove intermediate values
   rm("newFunList", "newFunNames", "refFunList", "refFunNames")
-
+  
   ###### ** Scaled Impacts: Values ######
   if(funLength){
     ### Create temperature scenario
@@ -581,20 +825,20 @@ newSectors_config_test <- function(
     df_vals     <- df_vals  %>% gather(key="scenario_id",value="scaled_impact", -c(all_of(idCols0)))
     # %>% mutate( temp_C = rep(-1:11,length(scaled_impact)/length(df_temps$temp_C)))
     rm("df_temps")
-
+    
     ### Separate scenario_id into components
     into0       <- c("sector", "variant", "impactYear", "impactType", "model_type", "model_dot", "region_dot")
     df_vals     <- df_vals %>% separate(col = scenario_id , into = c(all_of(into0)), sep = "_")
     ### Filter to new sector_id
     # df_vals0    <- df_vals0 %>% filter(sector==sector_id)
     # df_vals0    <- df_vals0 %>% rename_at(.vars=c("sector"), ~sector_id)
-
+    
     ### Arrange and add scaled impacts to list of items to save
     arrange0    <- c("sector", "variant", "impactYear", "impactType", "model_type", "model_dot", "region_dot")
     df_vals     <- df_vals %>% arrange_at(.vars=c(arrange0))
     saveList[[c_impact0]] <- df_vals
     rm("arrange0")
-
+    
     ### Add worksheet and write data table if(save)
     if(save) {
       sheet0 <- c_impact0
@@ -602,201 +846,40 @@ newSectors_config_test <- function(
       wbook0 %>% writeDataTable(sheet = sheet0, df_vals)
     } ### End if(save)
   }
-
+  
   ###### ** Scaled Impacts: Plots ######
   if(funLength){
     ### Get unique sectors
-    sectors0    <- df_vals$sector %>% unique
+    sectors0    <- df_vals[["sector"]] %>% unique
     ### Regional plots
-    plots0      <- sectors0 %>% lapply(function(
-    sector_i,
-    data_i = df_vals %>% filter(sector==sector_i)
-    ){
-      paste0("Plotting scaled impacts for sector \'", sector_i, "\'", "...") %>% message
-      ### Get unique variants
-      variants_i <- data_i$variant %>% unique
-      ### Get unique models
-      models_i   <- data_i$model_dot %>% unique
-      nModels_i  <- models_i %>% length
-      ### Get unique impact types
-      impTypes_i <- data_i$impactType %>% unique
-      nImp_i     <- impTypes_i %>% length
-      # nVariants  <- variants_i %>% length
-      plots_i    <- variants_i %>% lapply(function(
-    variant_j,
-    data_j = data_i %>% filter(variant==variant_j)
-      ){
-        ### yColumn
-        yCol_j   <- "scaled_impact"
-        ### Initialize scalar labels
-        lvl_y0   <- 10**c(0, 3, 6, 9)
-        lbl_y0   <- c("") %>% c(paste0(", ", c("Thousands", "Millions", "Billions")))
-        ### Get maximum y value, get scalar, label for y
-        max_y0   <- data_j[[yCol_j]] %>% abs %>% max(na.rm=T)
-        scale_y  <- max_y0 %>% (function(x){case_when(
-          x > lvl_y0[4] ~ lvl_y0[4],
-          x > lvl_y0[3] ~ lvl_y0[3],
-          x > lvl_y0[2] ~ lvl_y0[2],
-          TRUE ~ 1
-        )})
-
-        ###### Adjust data
-        data_j = data_j %>% mutate_at(.vars=c(yCol_j), function(x){x / scale_y})
-
-        ###### Plot values
-        ### X label, breaks
-        lab_x0   <- expression("CONUS Degrees of Warming ("*~degree*C*")")
-        brk_x0   <- (-1:6)*2
-        ### Y label, breaks
-        unit_y0  <- scale_y %>% factor(lvl_y0, lbl_y0) %>% as.character
-        lab_y0   <- yCol_j %>% str_split(pattern="_") %>% unlist %>% paste(collapse=" ") %>% str_to_title
-        lab_y0   <- paste0("(", lab_y0, unit_y0, ")")
-        # brk_yrs0  <- seq(2010, 2300, by=20)
-
-        ### Initialize plot list
-        plots_j  <- list()
-
-        ### Regional plots
-        ### Groups
-        groups_j <- c("sector", "variant", "impactYear", "impactType", "model_dot", "region_dot","temp_C")
-        reg_j    <- data_j %>%
-          group_by_at(.vars=c(groups_j)) %>%
-          ggplot() +
-          geom_line(aes(x=temp_C, y=scaled_impact, color=region_dot), alpha = 0.7)
-        # ### Add facets
-        # reg_j    <- reg_j + facet_wrap(facets=c("model_dot", "impactType"),scales = "free")
-        reg_j    <- reg_j + facet_wrap(facets=c("impactType", "model_dot"), scales = "free", nrow=nImp_i)
-        ### Add scales
-        reg_j    <- reg_j + scale_x_continuous(lab_x0, breaks=brk_x0)
-        reg_j    <- reg_j + scale_y_continuous(lab_y0)
-        reg_j    <- reg_j + scale_color_discrete("Region")
-        reg_j    <- reg_j + theme(legend.position = "bottom")
-        ### Add title
-        reg_j    <- reg_j + ggtitle(paste0(reg_j$data$sector %>% unique, " -- ","Regional"))
-        ### Add regional plot
-        plots_j[["regional"]] <- reg_j
-        rm("reg_j", "groups_j")
-
-        ### National plots
-        # plots_j[["national"]]
-        ### Regional plots
-        ### Groups
-        groups_j <- c("sector", "variant", "impactYear", "impactType", "model_dot","temp_C")
-        nat_j    <- data_j %>%
-          group_by_at(.vars=c(groups_j)) %>%
-          summarize_at(.vars=c("scaled_impact"),.funs = sum) %>%
-          ggplot() +
-          geom_line(aes(x = temp_C, y = scaled_impact, color = model_dot), alpha = 0.7)
-
-        ### Add facets
-        nat_j    <- nat_j + facet_wrap(facets=c("impactType"),scales = "free", ncol=nImp_i)
-        ### Add scales
-        nat_j    <- nat_j + scale_x_continuous(lab_x0, breaks=brk_x0)
-        nat_j    <- nat_j + scale_y_continuous(lab_y0)
-        nat_j    <- nat_j + scale_color_discrete("Model/GCM")
-        nat_j    <- nat_j + theme(legend.position = "bottom")
-        ### Add title
-        nat_j    <- nat_j + ggtitle(paste0(nat_j$data$sector %>% unique," -- ",nat_j$data$impactType %>% unique, " (Region Sums)"))
-        ### Add regional plot
-        plots_j[["national"]] <- nat_j
-        rm("nat_j", "groups_j")
-
-        ### Return plot
-        return(plots_j)
-      })
-      ### Add names
-      names(plots_i) <- variants_i
-      ### Return
-      return(plots_i)
-    }) %>%
-      ### Add names
-      (function(i, sectors_i=sectors0){names(i) <- sectors_i; return(i)})
-
+    listPlots0  <- sectors0 %>% lapply(make_sector_plots(x, df0 = df_vals))
+    names(listPlots0) <- sectors0
+    
     ### Add plots to list of items to save
-    saveList[[c_plots0]] <- plots0
-
+    saveList[[c_plots0]] <- listPlots0
+    
     ### Iterate over each sector and add worksheet for each sector
     if(save){
-      sectors0 %>% walk(function(sector_i, plots_i = plots0[[sector_i]]){
-        ### Add worksheet
-        sheet_i <- "plots" %>% paste0("_", sector_i)
-        wbook0 %>% addWorksheet(sheetName = sheet_i)
-        #wbook0 %>% writeDataTable(sheet = sheet_i,diff)
-
-        ### Sector values
-        models_i   <- df_vals    %>% filter(sector==sector_i) %>% select(c("model_dot" )) %>% unique %>% as.vector
-        nModels_i  <- models_i   %>% length
-        ### Impact type values
-        impType_i  <- df_vals    %>% filter(sector==sector_i) %>% select(c("impactType")) %>% unique %>% as.vector
-        nImp_i     <- impType_i  %>% length
-        ### Get variants
-        variants_i <- plots_i    %>% names
-        nVar_i     <- variants_i %>% length
-
-        ### Plot strings
-        ftype_i  <- "png"
-        units_i  <- "cm"
-        ### Plot dimensions by unit
-        cUnit     <- 6
-        ### Regional
-        widthR_i  <- cUnit * 3 * nModels_i + cUnit
-        heightR_i <- cUnit * 2 * nImp_i    + cUnit
-        # c(widthR_i, heightR_i) %>% print
-        ### National
-        widthN_i  <- widthR_i
-        heightN_i <- cUnit * 2
-        # c(widthN_i, heightN_i) %>% print
-
-        ### Plot multipliers by columns
-        htReg_i  <- 12 * nImp_i
-        htNat_i  <- 20
-        # c(htReg_i, htNat_i) %>% print
-
-        ### Add regional plots
-        for(j in 1:nVar_i){
-          variant_j <- variants_i[j]
-          plots_j   <- plots_i[[j]]
-
-          ### Columns
-          col_j   <- 1
-
-          ### Regional plot
-          # regPlot_j <- plots_j[[j]][["regional"]]
-          regPlot_j <- plots_j[["regional"]]
-          # regPlot_j <- regPlot_j + facet_wrap(facets=c("impactType", "model_dot"), scales = "free", nrow=nVar_i)
-          rowReg_j  <- htReg_i * (j - 1) + htNat_i * (j - 1) + 2
-          xyReg_j   <- col_j %>% c(rowReg_j)
-          # regPlot_j %>% print
-          # wbook0 %>% insertPlot(sheet = sheet_i, xy = xyReg_j, width = widthR_i, height = heightR_i, fileType = ftype_i, units = units_i)
-
-          ### National plots
-          natPlot_j <- plots_j[["national"]]
-          # natPlot_j <- natPlot_j + facet_wrap(facets=c("impactType", "model_dot"), scales = "free", nrow=nVar_i)
-          rowNat_j  <- rowReg_j + htReg_i + htNat_i + cUnit
-          xyNat_j   <- c(col_j, rowNat_j)
-          # natPlot_j %>% print
-          # wbook0 %>% insertPlot(sheet = sheet_i, xy = xyNat_j, width = widthN_i, height = heightN_i, fileType = ftype_i, units = units_i)
-          rm("natPlot_j", "rowNat_j", "xyNat_j")
-          rm("regPlot_j", "rowReg_j", "xyReg_j")
-
-          ### Delete intermediate values
-        } ### End for(j in 1:nVar_i)
-      }) ### End function, end walk
+      for(sector_i in sectors0){
+        variants0 <-  (df_vals %>% filter(sector==sector_i))[["variant"]] %>% unique
+        for(variant_j in variants0){
+          add_sector_plot(
+            wbook     = wbook0, 
+            sector0   = sector_i,
+            variant0  = variant_j,
+            outPath   = ".",
+            df0       = df_vals, ### Data
+            plotsList = listPlots0
+          )
+        } ### End for variant_j
+      } ### End for sector_i
     } ### End if(save)
   } ### End if(funLength)
-
+  
   ###### Save Workbook ######
   if(save){
     "Saving new sector results" %>% paste0("...") %>% message
-    outDir    <- outPath %>% file.path("data_tests")
-    outFile   <- outDir  %>% file.path(xslxName)
-    ### Check if outDir exists and, if not, create one
-    odExists  <- outDir  %>% dir.exists()
-    if(!odExists){outDir %>% dir.create(showWarnings = F)}
-    rm("odExists")
-    ### Save the workbook
     wbook0  %>% saveWorkbook(file=outFile, overwrite=overwrite)
-    ### Remove workbook
     rm("wbook0")
   } ### End if(save)
   
