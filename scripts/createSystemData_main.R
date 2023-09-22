@@ -43,7 +43,7 @@ list_loadData <- loadData(
 list_reshapeData <- list_loadData |> reshapeData(silent=T)
 
 ###### 3. Configure Data ######
-list_systemData0 <- list_reshapeData |> createSystemData(save=F, silent=T)
+list_systemData0 <- list_reshapeData |> createSystemData(save=T, silent=T, outPath= dataOutDir |> file.path("tmp_sysdata.rda"))
 
 ###### 4. Run Individual Tests on Data ######
 # ###### Test the reshaped data:
@@ -60,8 +60,9 @@ list_systemData0 <- list_reshapeData |> createSystemData(save=F, silent=T)
 #   return  = return_test
 # )
 
-
 ###### 5. Run General Tests on Data ######
+# for(i in codePaths){ i |> source() }
+
 test_general_config <- general_config_test(
   reshapedData   = list_reshapeData,
   configuredData = list_systemData0,
@@ -104,9 +105,7 @@ if(doNewTest){
   )
 }
 
-###### 7. Update Saved Data ######
-list_systemData <- list_reshapeData |> createSystemData(outPath= dataOutDir |> file.path("tmp_sysdata.rda"),
-save=T, silent=T)
+### End script
 
 
 
