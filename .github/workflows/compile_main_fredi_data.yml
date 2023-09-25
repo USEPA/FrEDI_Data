@@ -61,3 +61,18 @@ jobs:
             ./data/tmp_sysdata.rda
       
 
+      - name: Commit results
+        if: |
+          github.event.inputs.update_svProps == 'yes' ||
+          github.event.inputs.update_svFormats == 'yes' ||
+          github.event.inputs.update_svPop == 'yes' ||
+        run: |
+          git config --local core.autocrlf false
+          git config --local user.email "${{ github.actor }}@users.noreply.github.com"
+          git config --local user.name "${{ github.actor }}"
+          git add data/tmp_sysdata.rda
+          git add data_tests/**.csv
+          git pull origin ${{ github.head_ref }} --autostash --rebase -X ours
+          git commit -a -m "Updated temporary system data and tests"
+          git push
+
