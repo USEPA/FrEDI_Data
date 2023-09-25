@@ -1,16 +1,14 @@
 ### Created 2022.02.25
 ### The purpose of this function is to assist in adding SV objects to FrEDI sysdata.rda
 update_sysdata <- function(
-  projectPath = getwd(), ### Path to project
-  outPath     = file.path(".", "..", "FrEDI", "R"),
-  # outPath       = NULL,
+  projectPath   = getwd(), ### Path to project
+  # outPath       = file.path(".", "..", "FrEDI", "R"),
+  outPath       = file.path(".", "data"),
   sv            = T, ### Whether to update SV, population, formatting info
-  impacts       = F, ### Whether to update impact info
-  # impactSectors = NULL,
-  # rDataExt      = "rda", ### r Object Extension
-  rDataExt      = "rds", ### r Object Extension
+  # impacts       = F, ### Whether to update impact info
+  rDataExt      = "rda", ### r Object Extension
   silent        = F,  ### Whether to message the user
-  save          = F, ### Whether to save
+  save          = T, ### Whether to save
   return        = T  ### Whether to return
 ){
   require(tidyverse)
@@ -23,9 +21,9 @@ update_sysdata <- function(
   projectPath <- ifelse(is.null(projectPath), ".", projectPath)
   outPath     <- ifelse(is.null(outPath), system.file(package="FrEDI"), outPath); 
   inPath_sv   <- projectPath %>% file.path("data", "sv")
-  inPath_imp  <- inPath_sv   %>% file.path("impactsLists")
+  # inPath_imp  <- inPath_sv   %>% file.path("impactsLists")
   # outPath_imp <- outPath     %>% file.path("..", "data")
-  outPath_imp <- outPath     %>% file.path("..", "inst", "extdata", "sv", "impactLists")
+  # outPath_imp <- outPath     %>% file.path("..", "inst", "extdata", "sv", "impactLists")
   # inPath_imp %>% list.files %>% print; outPath_imp %>% list.files %>% print
 
   ###### File Names ######
@@ -51,7 +49,7 @@ update_sysdata <- function(
 
   ###### Update file paths
   ### Check file exists
-  new_ext       <- ifelse(tolower(rDataExt) == "rds", "rda", "rds")
+  new_ext       <- ifelse(tolower(rDataExt) == "rds", "rda", rDataExt)
   nChar_ext     <- rDataExt %>% nchar
   checkFile     <- sysDataPath %>% file.exists()
   if(!checkFile){
@@ -95,22 +93,22 @@ update_sysdata <- function(
 
 
   ###### Update sysdata: impacts ######
-  # impacts %>% print
-  if(impacts){
-    impactFileNames <- inPath_imp %>% list.files
-    # impactFileNames %>% print
-    for(i in 1:length(impactFileNames)){
-      fileName_i <- impactFileNames[i]
-      inPath_i   <- inPath_imp  %>% file.path(fileName_i)
-      outPath_i  <- outPath_imp %>% file.path(fileName_i)
-      file.copy(
-        from      = inPath_i,
-        to        = outPath_i,
-        overwrite = ifelse(save, T, F),
-        copy.date = T
-      )
-    }
-  }
+  # # impacts %>% print
+  # if(impacts){
+  #   impactFileNames <- inPath_imp %>% list.files
+  #   # impactFileNames %>% print
+  #   for(i in 1:length(impactFileNames)){
+  #     fileName_i <- impactFileNames[i]
+  #     inPath_i   <- inPath_imp  %>% file.path(fileName_i)
+  #     outPath_i  <- outPath_imp %>% file.path(fileName_i)
+  #     file.copy(
+  #       from      = inPath_i,
+  #       to        = outPath_i,
+  #       overwrite = ifelse(save, T, F),
+  #       copy.date = T
+  #     )
+  #   }
+  # }
 
   ###### Return object ######
   message("\n", "Finished", ".")

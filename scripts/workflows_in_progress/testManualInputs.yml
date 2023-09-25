@@ -1,0 +1,52 @@
+name: Test manual inputs
+on:
+  push:
+    inputs:
+      compile_region:
+        type: boolean
+        description: Update main data
+      update_region:
+        type: boolean
+        description: Update sysdata.rda
+      update_sv:
+        type: boolean
+        description: Update SV data
+      update_svProps:
+        type: boolean
+        description: Update SV proportions
+      update_svFormats:
+        type: boolean
+        description: Update SV formatting table
+      update_svPop:
+        type: boolean
+        description: Update SV population projections
+      update_svImpacts:
+        type: boolean
+        description: Update SV impact list
+      svSectors:
+        type: choice
+        description: Which SV impact sectors to update
+        options:
+          - Air Quality - Childhood Asthma
+          - Air Quality - Premature Mortality
+          - Labor
+          - Extreme Temperature
+          - Roads
+          - High Tide Flooding and Traffic
+          - Coastal Properties
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check main data
+      if: github.event.inputs.compile_region
+      run: echo "Compiling main FrEDI data..."
+      
+    - name: Check main data
+      if: |
+        github.event.inputs.compile_region && github.event.inputs.update_region
+      run: echo "Updating main FrEDI data..."
+
+
