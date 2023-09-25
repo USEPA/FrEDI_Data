@@ -29,7 +29,7 @@ jobs:
         uses: r-lib/actions/setup-r@v2
       
       - name: Send test status
-        run: echo "Passed test results: ${{ github.event.inputs.passed_tests }}"
+        run: echo "${{ github.event.inputs.passed_tests }}"
         
       - name: Update Data
         if: ${{ github.event.inputs.passed_tests == 'yes' }}
