@@ -1,11 +1,11 @@
 ### Overwrite FrEDI data with past data
-# on: 
-#   workflow_run:
-#     workflows: ["Compile FrEDI Data"]
 name: Update FrEDI Data
 
-on: 
-  workflow_dispatch:
+# on: 
+#   workflow_dispatch:
+on:
+  workflow_run:
+    workflows: ["Compile FrEDI Data"]
     inputs:
       passed_tests:
         type: choice
@@ -32,26 +32,30 @@ jobs:
         run: echo "${{ github.event.inputs.passed_tests }}"
         
       - name: Update Data
-        if: ${{ github.event.inputs.passed_tests == 'yes' }}
+        if: |
+          github.event.inputs.passed_tests == 'yes'
         run:  |
           Rscript -e '
             "./data" |> list.files() |> print()
             file0   <- "./data/tmp_sysdata.rda"
             file1   <- "./data/sysdata.rda"
             exists0 <- file0 |> file.exists()
+            exists0 %>% print
             if(exists0){
               file.copy(from=file0, to=file1)
               file.remove(file0)
             }'
 
       - name: Add SV Data to sysdata
-        if: ${{ github.event.inputs.passed_tests == 'yes' }}
+        if: |
+          github.event.inputs.passed_tests == 'yes'
         run:  |
           Rscript -e 'source("./scripts/add_svData_to_sysdata.R")'
           
           
       - name: Commit results
-        if: ${{ github.event.inputs.passed_tests == 'yes' }}
+        if: |
+          github.event.inputs.passed_tests == 'yes'
         run: |
           git config --local core.autocrlf false
           git config --local user.email "${{ github.actor }}@users.noreply.github.com"
