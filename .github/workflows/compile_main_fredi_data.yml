@@ -50,7 +50,14 @@ jobs:
           
       - name: Run createsystemData
         run: |
-          Rscript -e 'source("./scripts/createSystemData_main.R")'
+          Rscript -e '
+          "./data_tests/" |> list.files() |> print()
+          "./data/" |> list.files() |> print()
+          source("./scripts/createSystemData_main.R")
+          getwd() |> print()
+          "./data_tests/" |> list.files() |> print()
+          "./data/" |> list.files() |> print()
+          '
 
       - name: Upload Tests
         uses: actions/upload-artifact@v3
@@ -67,7 +74,7 @@ jobs:
           git config --local user.email "${{ github.actor }}@users.noreply.github.com"
           git config --local user.name "${{ github.actor }}"
           git add data/tmp_sysdata.rda
-          git add data_tests/**.csv
+          git add data_tests/**.xlsx
           git pull origin ${{ github.head_ref }} --autostash --rebase -X ours
           git commit -a -m "Updated temporary system data and tests"
           git push
