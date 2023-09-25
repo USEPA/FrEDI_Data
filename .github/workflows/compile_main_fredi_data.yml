@@ -62,10 +62,6 @@ jobs:
       
 
       - name: Commit results
-        if: |
-          github.event.inputs.update_svProps == 'yes' ||
-          github.event.inputs.update_svFormats == 'yes' ||
-          github.event.inputs.update_svPop == 'yes' ||
         run: |
           git config --local core.autocrlf false
           git config --local user.email "${{ github.actor }}@users.noreply.github.com"
