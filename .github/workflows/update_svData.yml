@@ -8,17 +8,17 @@ on:
         type: choice
         description: Update SV proportions
         required: true
-        options: yes, no
+        options: no, yes
       update_svFormats:
         type: choice
         description: Update SV formatting table
         required: true
-        options: yes, no
+        options: no, yes
       update_svPop:
         type: choice
         description: Update SV population projections
         required: true
-        options: yes, no
+        options: no, yes
 
 jobs:
   compile_data:
@@ -41,25 +41,33 @@ jobs:
           cache-version: 1
           packages: |
             any::tidyverse
-            any::remotes
             any::openxlsx
             any::devtools
       
       - name: Install FrEDI
         run: |
-          require(remotes)
-          require(devtools)
-          Rscript -e 'install_github( 
-            repo    = "https://github.com/USEPA/FrEDI", 
-            subdir  = "FrEDI", 
-            ref     = "main", 
-            type    = "source", 
-            repos   = getOption("repos"), 
-            upgrade = "never", 
-            force   = TRUE 
-          )'
+          Rscript -e 'devtools::install_github( 
+              repo    = "https://github.com/USEPA/FrEDI", 
+              ref     = "main", 
+              subdir  = "FrEDI", 
+              dependencies = FALSE,
+              upgrade = "never", 
+              force   = TRUE,
+              type    = "source" 
+            )'
+      
+      - name: Send test status
+        run: |
+          echo "${{ github.event.inputs.update_svProps }}"
+          echo "${{ github.event.inputs.update_svFormats }}"
+          echo "${{ github.event.inputs.update_svPop }}"
+          
           
       - name: Configure SV data
+        if: |
+          github.event.inputs.update_svProps == 'yes' ||
+          github.event.inputs.update_svFormats == 'yes' ||
+          github.event.inputs.update_svPop == 'yes' ||
         run: |
           Rscript -e '
             source("./scripts/setPaths.R")
@@ -71,12 +79,17 @@ jobs:
               return  = FALSE
             )'
 
-      - name: Commit results
-        run: |
-          git config --local core.autocrlf false
-          git config --local user.email "${{ github.actor }}@users.noreply.github.com"
-          git config --local user.name "${{ github.actor }}"
-          git add data/sv/**
-          git pull origin ${{ github.head_ref }} --autostash --rebase -X ours
-          git commit -a -m "Updated SV FrEDI data"
-          git push
+# x
+#       - name: Commit results
+#         if: |
+#           github.event.inputs.update_svProps == 'yes' ||
+#           github.event.inputs.update_svFormats == 'yes' ||
+#           github.event.inputs.update_svPop == 'yes' ||
+#         run: |
+#           git config --local core.autocrlf false
+#           git config --local user.email "${{ github.actor }}@users.noreply.github.com"
+#           git config --local user.name "${{ github.actor }}"
+#           git add data/sv/*.rda
+#           git pull origin ${{ github.head_ref }} --autostash --rebase -X ours
+#           git commit -a -m "Updated SV FrEDI data objects"
+#           git push

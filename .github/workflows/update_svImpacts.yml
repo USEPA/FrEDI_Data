@@ -37,44 +37,42 @@ jobs:
           cache-version: 1
           packages: |
             any::tidyverse
-            any::remotes
             any::openxlsx
             any::devtools
       
       - name: Install FrEDI
         run: |
-          require(remotes)
-          require(devtools)
-          Rscript -e 'install_github( 
-            repo    = "https://github.com/USEPA/FrEDI", 
-            subdir  = "FrEDI", 
-            ref     = "main", 
-            type    = "source", 
-            repos   = getOption("repos"), 
-            upgrade = "never", 
-            force   = TRUE 
-          )'
+          Rscript -e 'devtools::install_github( 
+              repo    = "https://github.com/USEPA/FrEDI", 
+              ref     = "main", 
+              subdir  = "FrEDI", 
+              dependencies = FALSE,
+              upgrade = "never", 
+              force   = TRUE,
+              type    = "source" 
+            )'
           
       - name: Configure SV data
         run: |
           Rscript -e '
             source("./scripts/setPaths.R")
             test_svData <- createSVData(
-              sv      = FALSE, 
-              pop     = FALSE,
-              format  = FALSE, 
-              impacts = TRUE, 
-              sectors = ${{ github.event.inputs.svSectors }},
+              sv      = F, 
+              pop     = F,
+              format  = F, 
+              impacts = T, 
+              sectors = c(${{ github.event.inputs.svSectors }},
               save    = T, 
-              return  = FALSE
+              return  = F
             )'
 
-      - name: Commit results
-        run: |
-          git config --local core.autocrlf false
-          git config --local user.email "${{ github.actor }}@users.noreply.github.com"
-          git config --local user.name "${{ github.actor }}"
-          git add data/sv/**
-          git pull origin ${{ github.head_ref }} --autostash --rebase -X ours
-          git commit -a -m "Updated SV FrEDI data"
-          git push
+# x
+#       - name: Commit results
+#         run: |
+#           git config --local core.autocrlf false
+#           git config --local user.email "${{ github.actor }}@users.noreply.github.com"
+#           git config --local user.name "${{ github.actor }}"
+#           git add data/sv/**
+#           git pull origin ${{ github.head_ref }} --autostash --rebase -X ours
+#           git commit -a -m "Updated SV FrEDI data"
+#           git push
