@@ -8,7 +8,7 @@
 ###      Note, this should be the same directory as the input paper.md
 name: Compile FrEDI Data
 
-on: [push]
+on: [workflow_dispatch]
 
 jobs:
   compile_data:
