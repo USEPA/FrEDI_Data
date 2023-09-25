@@ -1,5 +1,5 @@
 ### Overwrite FrEDI data with past data
-name: Compile SV Data
+name: Compile SV Impacts
 
 on: 
   workflow_dispatch:
@@ -51,6 +51,10 @@ jobs:
               force   = TRUE,
               type    = "source" 
             )'
+      
+      - name: Send sector selection
+        run: |
+          echo "${{ github.event.inputs.svSectors }}"
           
       - name: Configure SV data
         run: |
@@ -61,7 +65,7 @@ jobs:
               pop     = F,
               format  = F, 
               impacts = T, 
-              sectors = c(${{ github.event.inputs.svSectors }},
+              sectors = c(${{ github.event.inputs.svSectors }}),
               save    = T, 
               return  = F
             )'

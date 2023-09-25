@@ -1,8 +1,8 @@
 ### Overwrite FrEDI data with past data
-name: Update FrEDI Data
-
 # on: 
 #   workflow_dispatch:
+name: Update FrEDI Data
+
 on:
   workflow_run:
     workflows: ["Compile FrEDI Data"]
@@ -60,7 +60,7 @@ jobs:
           git config --local core.autocrlf false
           git config --local user.email "${{ github.actor }}@users.noreply.github.com"
           git config --local user.name "${{ github.actor }}"
-          git add data/sysdata**
+          git add data/**sysdata.rda
           git pull origin ${{ github.head_ref }} --autostash --rebase -X ours
           git commit -a -m "Compiled main FrEDI data"
           git push
