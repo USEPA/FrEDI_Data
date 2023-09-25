@@ -1,11 +1,11 @@
 ### Overwrite FrEDI data with past data
-# on: 
-#   workflow_dispatch:
+# on:
+#   workflow_run:
+#     workflows: ["Compile FrEDI Data"]
 name: Update FrEDI Data
 
 on:
-  workflow_run:
-    workflows: ["Compile FrEDI Data"]
+  workflow_dispatch:
     inputs:
       passed_tests:
         type: choice
