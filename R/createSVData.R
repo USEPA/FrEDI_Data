@@ -1,19 +1,15 @@
 ### Created 2022.02.14
 ### The purpose of this function is to convert Excel and CSV data for the FrEDI SV module into R objects
 createSVData <- function(
-  projectPath = getwd(), ### Path to project
-  # excelName   = NULL, ### name of excel file with config information
-  # outPath     = file.path(getwd(), "..", "FrEDI", "R"),
-  outPath     = file.path(getwd(), "data", "sv"),
+  projectPath   = getwd(), ### Path to project
+  outPath       = projectPath |> file.path("data", "sv"),
   sv            = T, ### Whether to run demographic info
   pop           = F, ### Whether to run population functions,
-  impacts       = F,
-  sectors = NULL,
   format        = T, ### Whether to update formatting styles
-  # drivers     = F, ### Whether to run driver info
-  # rDataExt      = "rda", ### r Object Extension
-  rDataExt      = "rds", ### r Object Extension
-  silent        = NULL,  ### Whether to message the user
+  rDataExt      = "rda", ### r Object Extension
+  impacts       = F,
+  sectors       = NULL,
+  silent        = F,  ### Whether to message the user
   save          = F, ### Whether to save
   return        = T  ### Whether to return
 ){
