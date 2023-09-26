@@ -59,12 +59,12 @@ jobs:
       - name: Configure SV data
         run: |
           Rscript -e '
-            source("./scripts/update_svDataObjects.R")
+            source("./scripts/update_svImpactLists.R")
             fpath1      <- getwd()
-            list1       <- update_svDataObjects(
+            list1       <- update_svImpactLists(
               fpath0  = ".",
               impacts = T, 
-              sectors = c(${{ github.event.inputs.svSectors }}),
+              sectors = c("${{ github.event.inputs.svSectors }}"),
               save    = T,
               return  = F
             )
