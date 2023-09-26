@@ -71,7 +71,6 @@ jobs:
           inputs.run_sv      == 'yes' ||
           inputs.run_pop     == 'yes' ||
           inputs.run_formats == 'yes'
-
         run: |
           Rscript -e '
             source("./scripts/update_svDataObjects.R")
@@ -88,18 +87,16 @@ jobs:
               return  = TRUE
             )
             '
-
-# x
-#       - name: Commit results
-#         if: |
-#           github.event.inputs.run_sv == 'yes' ||
-#           github.event.inputs.run_formats == 'yes' ||
-#           github.event.inputs.run_pop == 'yes'
-#         run: |
-#           git config --local core.autocrlf false
-#           git config --local user.email "${{ github.actor }}@users.noreply.github.com"
-#           git config --local user.name "${{ github.actor }}"
-#           git add data/sv/impactsLists/**.rda
-#           git pull origin ${{ github.head_ref }} --autostash --rebase -X ours
-#           git commit -a -m "Updated SV FrEDI data objects"
-#           git push
+      - name: Commit results
+        if: |
+          inputs.run_sv      == 'yes' ||
+          inputs.run_pop     == 'yes' ||
+          inputs.run_formats == 'yes'
+        run: |
+          git config --local core.autocrlf false
+          git config --local user.email "${{ github.actor }}@users.noreply.github.com"
+          git config --local user.name "${{ github.actor }}"
+          git add data/sv/**.rda
+          git pull origin ${{ github.head_ref }} --autostash --rebase -X ours
+          git commit -a -m "Updated SV FrEDI data objects"
+          git push
