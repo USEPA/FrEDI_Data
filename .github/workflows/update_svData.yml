@@ -4,21 +4,27 @@ name: Compile SV Data
 on: 
   workflow_dispatch:
     inputs:
-      update_svProps:
+      run_sv:
         type: choice
         description: Update SV proportions
         required: true
-        options: no, yes
-      update_svFormats:
+        options: 
+        - no
+        - yes
+      run_formats:
         type: choice
         description: Update SV formatting table
         required: true
-        options: no, yes
-      update_svPop:
+        options: 
+        - no
+        - yes
+      run_pop:
         type: choice
         description: Update SV population projections
         required: true
-        options: no, yes
+        options: 
+        - no
+        - yes
 
 jobs:
   compile_data:
@@ -33,9 +39,7 @@ jobs:
       
       - name: Send input status
         run: |
-          echo "${{ github.event.inputs.update_svProps }} \
-            ${{ github.event.inputs.update_svFormats }} \
-            ${{ github.event.inputs.update_svPop }}"
+          echo "${{ inputs.run_sv }} ${{ inputs.run_formats }} ${{ inputs.run_pop }}"
         
       - name: Setup R
         uses: r-lib/actions/setup-r@v2
@@ -64,19 +68,22 @@ jobs:
           
       - name: Configure SV data
         if: |
-          github.event.inputs.update_svProps == 'yes' ||
-          github.event.inputs.update_svFormats == 'yes' ||
-          github.event.inputs.update_svPop == 'yes'
+          inputs.run_sv      == 'yes' ||
+          inputs.run_pop     == 'yes' ||
+          inputs.run_formats == 'yes'
+
         run: |
           Rscript -e '
             source("./scripts/update_svDataObjects.R")
             fpath1      <- getwd()
-            outPath1    <- fpath1 %>% file.path("data", "sv")
+            sv0         <- "${{ inputs.run_sv      }}" == "yes"
+            pop0        <- "${{ inputs.run_pop     }}" == "yes"
+            format0     <- "${{ inputs.run_formats }}" == "yes"
             list1       <- update_svDataObjects(
-              fpath0  = ".",
-              sv      = ${{ github.event.inputs.update_svProps }},
-              pop     = ${{ github.event.inputs.update_svPop }},
-              format  = ${{ github.event.inputs.update_svFormats }},
+              fpath0  = fpath1,
+              sv      = sv0,
+              pop     = pop0,
+              format  = format0,
               save    = TRUE,
               return  = TRUE
             )
@@ -85,9 +92,9 @@ jobs:
 # x
 #       - name: Commit results
 #         if: |
-#           github.event.inputs.update_svProps == 'yes' ||
-#           github.event.inputs.update_svFormats == 'yes' ||
-#           github.event.inputs.update_svPop == 'yes'
+#           github.event.inputs.run_sv == 'yes' ||
+#           github.event.inputs.run_formats == 'yes' ||
+#           github.event.inputs.run_pop == 'yes'
 #         run: |
 #           git config --local core.autocrlf false
 #           git config --local user.email "${{ github.actor }}@users.noreply.github.com"
