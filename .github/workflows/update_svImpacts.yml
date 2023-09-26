@@ -64,7 +64,7 @@ jobs:
             list1       <- update_svDataObjects(
               fpath0  = ".",
               impacts = T, 
-              sectors = c(${{ github.event.inputs.svSectors }}),
+              sectors = c("${{ github.event.inputs.svSectors }}"),
               save    = T,
               return  = F
             )
