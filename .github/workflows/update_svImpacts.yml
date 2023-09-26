@@ -47,28 +47,28 @@ jobs:
       - name: Install FrEDI
         run: |
           Rscript -e 'devtools::install_github( 
-              repo    = "https://github.com/USEPA/FrEDI", 
-              ref     = "main", 
-              subdir  = "FrEDI", 
+              repo         = "https://github.com/USEPA/FrEDI", 
+              ref          = "main", 
+              subdir       = "FrEDI", 
               dependencies = FALSE,
-              upgrade = "never", 
-              force   = TRUE,
-              type    = "source" 
+              upgrade      = "never", 
+              force        = TRUE,
+              type         = "source" 
             )'
           
       - name: Configure SV data
         run: |
           Rscript -e '
-            source("./scripts/setPaths.R")
-            test_svData <- createSVData(
-              sv      = F, 
-              pop     = F,
-              format  = F, 
+            source("./scripts/update_svDataObjects.R")
+            fpath1      <- getwd()
+            list1       <- update_svDataObjects(
+              fpath0  = ".",
               impacts = T, 
               sectors = c(${{ github.event.inputs.svSectors }}),
-              save    = T, 
+              save    = T,
               return  = F
-            )'
+            )
+            '
 
 # x
 #       - name: Commit results

@@ -31,11 +31,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       
-      - name: Send test status
+      - name: Send input status
         run: |
-          echo "${{ github.event.inputs.update_svProps }}"
-          echo "${{ github.event.inputs.update_svFormats }}"
-          echo "${{ github.event.inputs.update_svPop }}"
+          echo "${{ github.event.inputs.update_svProps }} \
+            ${{ github.event.inputs.update_svFormats }} \
+            ${{ github.event.inputs.update_svPop }}"
         
       - name: Setup R
         uses: r-lib/actions/setup-r@v2
@@ -53,13 +53,13 @@ jobs:
       - name: Install FrEDI
         run: |
           Rscript -e 'devtools::install_github( 
-              repo    = "https://github.com/USEPA/FrEDI", 
-              ref     = "main", 
-              subdir  = "FrEDI", 
+              repo         = "https://github.com/USEPA/FrEDI", 
+              ref          = "main", 
+              subdir       = "FrEDI", 
               dependencies = FALSE,
-              upgrade = "never", 
-              force   = TRUE,
-              type    = "source" 
+              upgrade      = "never", 
+              force        = TRUE,
+              type         = "source" 
             )'
           
       - name: Configure SV data
@@ -69,14 +69,18 @@ jobs:
           github.event.inputs.update_svPop == 'yes'
         run: |
           Rscript -e '
-            source("./scripts/setPaths.R")
-            test_svData <- createSVData(
-              sv      = ${{ github.event.inputs.update_svProps }}, 
-              pop     = ${{ github.event.inputs.update_svFormats }},
-              format  = ${{ github.event.inputs.update_svPop }}, 
-              save    = T, 
-              return  = FALSE
-            )'
+            source("./scripts/update_svDataObjects.R")
+            fpath1      <- getwd()
+            outPath1    <- fpath1 %>% file.path("data", "sv")
+            list1       <- update_svDataObjects(
+              fpath0  = ".",
+              sv      = ${{ github.event.inputs.update_svProps }},
+              pop     = ${{ github.event.inputs.update_svPop }},
+              format  = ${{ github.event.inputs.update_svFormats }},
+              save    = TRUE,
+              return  = TRUE
+            )
+            '
 
 # x
 #       - name: Commit results
@@ -88,7 +92,7 @@ jobs:
 #           git config --local core.autocrlf false
 #           git config --local user.email "${{ github.actor }}@users.noreply.github.com"
 #           git config --local user.name "${{ github.actor }}"
-#           git add data/sv/impactsLists/**
+#           git add data/sv/impactsLists/**.rda
 #           git pull origin ${{ github.head_ref }} --autostash --rebase -X ours
 #           git commit -a -m "Updated SV FrEDI data objects"
 #           git push
