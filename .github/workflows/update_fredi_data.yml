@@ -35,16 +35,8 @@ jobs:
         if: |
           github.event.inputs.passed_tests == 'yes'
         run:  |
-          Rscript -e '
-            "./data" |> list.files() |> print()
-            file0   <- "./data/tmp_sysdata.rda"
-            file1   <- "./data/sysdata.rda"
-            exists0 <- file0 |> file.exists()
-            exists0 %>% print
-            if(exists0){
-              file.copy(from=file0, to=file1)
-              file.remove(file0)
-            }'
+          git rm data/sysdata.rda
+          git mv data/tmp_sysdata.rda data/sysdata.rda
 
       - name: Add SV Data to sysdata
         if: |
@@ -60,8 +52,7 @@ jobs:
           git config --local core.autocrlf false
           git config --local user.email "${{ github.actor }}@users.noreply.github.com"
           git config --local user.name "${{ github.actor }}"
-          git add data/sysdata.rda
-          git add data/tmp_sysdata.rda
+          git add data/**.rda
           git pull origin ${{ github.head_ref }} --autostash --rebase -X ours
-          git commit -a -m "Added SV data to sysdata and updated sysdata"
+          git commit -a -m "Updated sysdata and added SV data to sysdata"
           git push

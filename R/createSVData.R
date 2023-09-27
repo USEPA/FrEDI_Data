@@ -156,6 +156,7 @@ createSVData <- function(
         svInfo     = svInfo, 
         createList = T, 
         sector     = sector_i,
+        rDataExt   = "rds", 
         save       = save, 
         return     = return, 
         outPath    = outPath_imp, 
