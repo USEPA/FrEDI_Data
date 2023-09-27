@@ -61,22 +61,21 @@ jobs:
           Rscript -e '
             source("./scripts/update_svImpactLists.R")
             fpath1      <- getwd()
+            sectors1    <- c("${{ github.event.inputs.svSectors }}")
             list1       <- update_svImpactLists(
-              fpath0  = ".",
-              impacts = T, 
-              sectors = c("${{ github.event.inputs.svSectors }}"),
+              fpath0  = fpath1,
+              sectors = sectors1,
               save    = T,
               return  = F
             )
             '
 
-# x
-#       - name: Commit results
-#         run: |
-#           git config --local core.autocrlf false
-#           git config --local user.email "${{ github.actor }}@users.noreply.github.com"
-#           git config --local user.name "${{ github.actor }}"
-#           git add data/sv/**
-#           git pull origin ${{ github.head_ref }} --autostash --rebase -X ours
-#           git commit -a -m "Updated SV FrEDI data"
-#           git push
+      - name: Commit results
+        run: |
+          git config --local core.autocrlf false
+          git config --local user.email "${{ github.actor }}@users.noreply.github.com"
+          git config --local user.name  "${{ github.actor }}"
+          git add data/sv/impactsLists/**.rds
+          git pull origin ${{ github.head_ref }} --autostash --rebase -X ours
+          git commit -a -m "Updated SV FrEDI impact lists for ${{ github.event.inputs.svSectors }}"
+          git push
