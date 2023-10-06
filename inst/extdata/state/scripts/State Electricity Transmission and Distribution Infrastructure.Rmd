@@ -1,0 +1,208 @@
+---
+title: "FrEDI State Electricity Transmission and Distribution Infrastructure"
+author: "Industrial Economics, Inc."
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output:
+  rmarkdown::html_document:
+    theme: spacelab
+    toc: true
+    toc_float: true
+    code_folding: hide
+---
+
+```{=html}
+<style>
+/* Simplified version of Bootstrap's responsive table CSS */
+.table-responsive {
+display: block;
+width: 100%;
+overflow-x: auto;
+}
+
+.table-responsive > table {
+width: 100%;
+}
+</style>
+```
+
+```{r knitr setup, include=FALSE}
+### The following parameters declare the options for compiling the Markdown document.
+knitr::opts_chunk$set(
+  include = T,     ### Evaluate and depict outputs of code chunks in the compiled document
+  echo    = T,     ### Echo the commands of the code chunks in the compiled document
+  message = FALSE, ### Don't include command-line messages output from evaluating code chunks
+  cache   = FALSE, ### Don't cache the evaluation of code chunks
+  warning = FALSE, ### Don't include warnings from evaluating code chunks
+  table.format = "html" 
+)
+```
+
+```{r load packages, echo = F}
+library(tidyverse)
+library(readxl)
+```
+
+## Set up workspace
+
+### Set Paths
+
+```{r set paths}
+# set relative file paths and create lists of input files
+projPath      <- getwd()
+dataPath      <- projPath %>% file.path("extdata")
+codePath      <- projPath %>% file.path("code")
+outPath       <- projPath %>% file.path("outputs")
+today         <- format(Sys.Date(), "%Y%m%d")
+files         <- list.files(dataPath)
+growth_files  <- files %>% grep("Total Costs - Infrastructure Growth", ., value = T)
+static_files  <- files %>% grep("Total Costs - Static Infrastructure", ., value = T)
+scalar_file   <- files %>% grep("ConstantTempDemandVals", ., value = T)
+clim_file     <- files %>% grep("growthRatios", ., value = T)
+```
+
+### Code & custom functions
+
+```{r load code}
+for(code_i in list.files(codePath, pattern=".R", full.names = T)){source(code_i)}
+```
+
+### Set constants
+
+```{r set constants}
+# toggle whether to save final files
+saveFiles <- TRUE
+
+gcms <- c("CanESM2_rcp85", "CCSM4_rcp85", "GFDL-CM3_rcp85", "GISS-E2-R_rcp85", "HadGEM2-ES_rcp85", "MIROC5_rcp85")
+years <- as.character(2006:2099)
+```
+
+### Read in data
+
+The study authors provided annual time series data under RCP 8.5 by state for each of three adaptation scenarios with and without infrastructure growth to meet future increased demand. Provided data was in 2017$ and was already summed across infrastructure types.
+
+```{r read in data}
+# loop through static files and GCMs and read data into a single df
+static_df <- data.frame()
+for (file in static_files){
+  for (gcm in gcms){
+    df_file <- dataPath %>% file.path(file) %>%
+          read_xlsx(sheet = gcm,
+                    range = "A2:CQ51") %>%
+      mutate(model   = substr(gcm, 1, nchar(gcm)-6),
+             variant = substr(file, 49, nchar(file)-5)) %>%
+      rename(ST_fips = "State FIPS")
+    static_df <- bind_rows(static_df, df_file)
+  }
+}
+
+# repeat for growth files
+# growth_df <- data.frame()
+# for (file in growth_files){
+#   for (gcm in gcms){
+#     df_file <- dataPath %>% file.path(file) %>%
+#           read_xlsx(sheet = gcm,
+#                     range = "A2:CQ51") %>%
+#       mutate(model   = substr(gcm, 1, nchar(gcm)-6),
+#              variant = substr(file, 49, nchar(file)-5)) %>%
+#       rename(ST_fips = "State FIPS")
+#     growth_df <- bind_rows(growth_df, df_file)
+#   }
+# }
+
+# read in state naming crosswalk
+state_crosswalk <- file.path(dataPath, "State Crosswalk.xlsx") %>% read_xlsx(sheet = "States")
+```
+
+## Process data
+
+### Calculate FrEDI impact inputs
+
+We use the static scenario for impact calculation and apply scaling factors to account for demand-driven infrastructure growth due to climate change. This set of scaling factors is incorporated directly into the impact calculation and is not included as a standalone scalar input to FrEDI. Further below, we calculate an additional set of scalar inputs for FrEDI that account for demand-driven infrastructure growth due to population growth.
+
+The provided data is at the state level, so no spatial transformation is required. The provided data is expressed in terms of a change from baseline, so no removal of baseline values is needed. Values for this sector are expressed in dollars, so we do not separate any physical impacts.
+
+First, we calculate the climate-driven demand growth factors using results from McFarland et al (2015). These are growth ratios relative to 2015 and are held constant at 1 for the 2006-2015 period.
+
+```{r climate-driven demand growth}
+clim_growth <- data.frame()
+for (gcm in gcms){
+  df_i <- dataPath %>%
+    file.path(clim_file) %>%
+    read_xlsx(sheet = gcm,
+              range = "A2:CQ51") %>%
+    mutate(model = substr(gcm, 1, nchar(gcm)-6))
+  clim_growth <- bind_rows(clim_growth, df_i)
+}
+
+impact_df <- static_df %>%
+  left_join(clim_growth, by = c("model" = "model", "ST_fips" = "State FIPS"))
+
+for (yr in years){
+  impact_df <- impact_df %>%
+    mutate(!!yr := !!sym(paste0(yr, ".x")) * !!sym(paste0(yr, ".y")))
+}
+
+impact_df <- impact_df %>%
+  select(ST_fips, model, variant, all_of(years))
+
+```
+
+Next, we degree-bin these impacts and format them for use in FrEDI.
+
+```{r FrEDI impacts}
+impact_df <- impact_df %>%
+  degree_bin_annual(variant = TRUE) %>%
+  left_join(state_crosswalk, by = c("ST_fips" = "ST_fips_alt")) %>%
+  mutate(sector = "ElecTD",
+         impactType = NA) %>%
+  rename(impactYear = Arrival_yr,
+         model = gcm,
+         modelUnitValue = degree,
+         state = ST_full,
+         postal = ST_postal) %>%
+  select(state, postal, sector, variant, impactType, model, modelUnitValue, impactYear, value)
+```
+
+```{r adjust dollar year}
+# these values are in 2017$, so we adjust to 2015$ using the BEA GDP Deflator
+dollar_yr_adj <- 0.971619226164512
+impact_df <- impact_df %>% mutate(value = value * dollar_yr_adj)
+
+if (saveFiles){
+  impact_df %>% write.csv(file.path(outPath, "ElecTD_scaledimpacts.csv"), row.names = F)
+}
+```
+
+```{r impacts qc check}
+all(impact_df$state %in% state_crosswalk$ST_full) && all(state_crosswalk$ST_full %in% impact_df$state)
+```
+
+### Calculate scalars
+
+To isolate damages associated with warming, damages associated with static demand are scaled by growth of demand attributable to warming. Demand attributable to warming is calculated based on the percentage increase in demand across the century for each GCM from a baseline demand across the century with a constant climate.
+
+#### Demand Growth Scalar
+
+The ratios were provided directly, so only reformatting and renaming needed.
+
+```{r elecTD_growthFactor scalar}
+scalar_df <- dataPath %>%
+  file.path(scalar_file) %>%
+  read_xlsx(sheet = "data", 
+            range = "B2:CS51") %>%
+  pivot_longer(cols = all_of(years), names_to = "year", values_to = "value") %>%
+  left_join(state_crosswalk, by = c("State" = "ST_full")) %>%
+  select(State, ST_postal, year, value) %>%
+  mutate(scalarName = "elecTD_growthFactor") %>%
+  rename(postal = ST_postal,
+         state = State)
+
+if (saveFiles){
+  scalar_df %>% write.csv(file.path(outPath, "Scalar_damageAdj_elecTD_growthFactor.csv"), row.names = F)
+}
+```
+
+```{r elecTD_growthFactor qc check}
+all(scalar_df$state %in% state_crosswalk$ST_full) && all(state_crosswalk$ST_full %in% scalar_df$state)
+sum(scalar_df$value < 1) == 0
+```
