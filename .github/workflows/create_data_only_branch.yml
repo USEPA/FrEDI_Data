@@ -19,7 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with: 
-          token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Commit new branch
         run: |
           git config --global user.email "actions@github.com"
@@ -31,5 +31,7 @@ jobs:
           git checkout main ./data
           git add ./data/*
           git commit -am "creating data only branch on data_only_branch_${{ github.event.inputs.branch_name }}"
+          git fetch origin
+          git branch -a
           git push
           
