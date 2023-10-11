@@ -30,5 +30,5 @@ jobs:
           git checkout main ./data
           git add ./data/*
           git commit -am "creating data only branch on data_only_branch_${{ github.event.inputs.branch_name }}"
-          git push -u origin data_only_branch_${{ github.event.inputs.branch_name }}
+          git push
           
