@@ -84,20 +84,20 @@ for (i in htf_files){
   df_i <- dataPath %>% file.path(i) %>%
           read.csv(header = T, check.names = F) %>%
           mutate(variant = str_extract(i, "(?<=-)(.*?)(?=-)"),
-                 slr = case_when(
-                   str_extract(i, "([^\\-]+)(?=\\.csv$)") == "low" ~ "30",
-                   str_extract(i, "([^\\-]+)(?=\\.csv$)") == "intlow" ~ "50",
-                   str_extract(i, "([^\\-]+)(?=\\.csv$)") == "int" ~ "100",
-                   str_extract(i, "([^\\-]+)(?=\\.csv$)") == "inthigh" ~ "150",
-                   str_extract(i, "([^\\-]+)(?=\\.csv$)") == "high" ~ "200",
-                   str_extract(i, "([^\\-]+)(?=\\.csv$)") == "extreme" ~ "250"
+                 model = case_when(
+                   str_extract(i, "([^\\-]+)(?=\\.csv$)") == "low" ~ "0p3",
+                   str_extract(i, "([^\\-]+)(?=\\.csv$)") == "intlow" ~ "0p5",
+                   str_extract(i, "([^\\-]+)(?=\\.csv$)") == "int" ~ "1p0",
+                   str_extract(i, "([^\\-]+)(?=\\.csv$)") == "inthigh" ~ "1p5",
+                   str_extract(i, "([^\\-]+)(?=\\.csv$)") == "high" ~ "2p0",
+                   str_extract(i, "([^\\-]+)(?=\\.csv$)") == "extreme" ~ "2p5"
                  ))
   htf_df <- bind_rows(htf_df, df_i)
 }
 htf_df <- htf_df %>%
   rename(county = "NaN") %>%
   mutate(ST_fips = as.character(county) %>% substr(1, nchar(county)-3)) %>%
-  select(county, ST_fips, variant, slr, all_of(years))
+  select(county, ST_fips, variant, model, all_of(years))
 
 # read in state naming crosswalk
 state_crosswalk <- file.path(dataPath, "State Crosswalk.xlsx") %>% read_xlsx(sheet = "States")
@@ -114,17 +114,17 @@ We aggregate from counties to states. Damages are calculated relative to the yea
 ```{r FrEDI impacts}
 htf_df_state <- htf_df %>%
   select(-county) %>%
-  group_by(ST_fips, variant, slr) %>%
+  group_by(ST_fips, variant, model) %>%
   summarize_all(sum, na.rm = TRUE)
 
 htf_smooth <- htf_df_state %>%
   pivot_longer(
-    cols = -c(ST_fips, variant, slr),
+    cols = -c(ST_fips, variant, model),
     names_to = 'year',
     values_to = 'value1'
   ) %>%
-  arrange(ST_fips, variant, slr, year) %>%
-  group_by(ST_fips, variant, slr) %>%
+  arrange(ST_fips, variant, model, year) %>%
+  group_by(ST_fips, variant, model) %>%
   mutate(value11 = rollmean(value1, k = 11, align = "center", fill = NA),
          value9  = rollmean(value1, k = 9, align = "center", fill = NA),
          value7  = rollmean(value1, k = 7, align = "center", fill = NA),
@@ -142,7 +142,7 @@ htf_smooth <- htf_df_state %>%
          impactType = NA) %>%
   left_join(state_crosswalk, by = c("ST_fips" = "ST_fips_alt")) %>%
   ungroup %>%
-  select(ST_full, ST_postal, variant, impactType, year, slr, value) %>%
+  select(ST_full, ST_postal, sector, variant, impactType, year, model, value) %>%
   rename(state = ST_full,
          postal = ST_postal)
 

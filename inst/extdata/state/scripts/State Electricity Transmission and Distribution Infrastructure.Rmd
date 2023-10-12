@@ -154,9 +154,10 @@ impact_df <- impact_df %>%
   degree_bin_annual(variant = TRUE) %>%
   left_join(state_crosswalk, by = c("ST_fips" = "ST_fips_alt")) %>%
   mutate(sector = "ElecTD",
-         impactType = NA) %>%
-  rename(impactYear = Arrival_yr,
-         model = gcm,
+         impactType = NA,
+         impactYear = NA,
+         gcm = gsub("-", "_", gcm)) %>%
+  rename(model = gcm,
          modelUnitValue = degree,
          state = ST_full,
          postal = ST_postal) %>%
