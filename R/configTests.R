@@ -211,6 +211,7 @@ general_config_test <- function(
     reshapedData   = NULL, ### List of reshaped data
     configuredData = NULL, ### List of configured data
     # reshapedFile   = "." |> file.path("data_tests", "reshapedData_testResults.csv"), ### File name of reshaped data test
+    byState   = FALSE, 
     outPath   = ".",
     xlsxName  = "generalConfig_testResults.xlsx",
     save      = TRUE,
@@ -415,8 +416,20 @@ general_config_test <- function(
     } ### End: for name_i
   } ### End if(save)
 
-
-  ###### Save Option Outputs ######
+  ###### Create Scaled Impact Results ######
+  ### Get results
+  scaledData  <- configuredData |> get_fredi_sectorOptions_results(byState=byState)
+  scaledPlots <- configuredData |> get_scaled_impact_plots(byState=byState, save=save)
+  ### Save
+  if(save) {
+    wbook0 |> addWorksheet(sheetName = "scaledImpacts_data")
+    wbook0 |> writeDataTable(sheet = "scaledImpacts_data", scaledData)
+    rm("name_i")
+  }
+  ### Add to return list
+  saveList[["scaledImpactPlots" ]] <- list(data=scaledData, plots=scaledPlots)
+  rm("scaledData", "scaledPlots")
+  ###### Save Outputs ######
   ### Save the workbook
   ### Remove workbook
   if(save){
@@ -437,172 +450,420 @@ general_config_test <- function(
 } ### End general_config_test
 
 ###### New Sector Plot Function ######
-### Make regional or national variant plot
-make_variant_plot  <- function(
-    variant0,
-    sector0,
-    df0
+get_fredi_sectorOptions <- function(
+    dataList, ### Data list, rDataList produced by createSystemData
+    byState = FALSE
 ){
-  ### Scales
-  # lab_x0 <- xScale[["lab"]]; brk_x0 <- xScale[["brk"]]; lim_x0 <- xScale[["lim"]]
-  # lab_y0 <- yScale[["lab"]]; brk_y0 <- yScale[["brk"]]; lim_y0 <- yScale[["lim"]]
-  ### Filter data
-  df0      <- df0 |> filter(sector  == sector0)
-  df0      <- df0 |> filter(variant == variant0)
-  nImp0    <- df0[["impactType"]] |> unique() |> length()
-
-  ### Get unique models & impact types
-  models0  <- df0[["model_dot" ]] |> unique()
-  impacts0 <- df0[["impactType"]] |> unique()
-  ### Number of models & impacts
-  nModels0 <- models_i |> length()
-  nImp0    <- impacts_i |> length()
-  # nVariants  <- variants_i |> length()
-
-  ### Plot info
-  title0   <- sector0 |> paste0(" -- ","Regional")
-  yCol0    <- "scaled_impact"
-  groups0  <- c("sector", "variant", "impactYear", "impactType", "model_dot", "region_dot","temp_C")
-
-  ### Initialize scalar labels
-  lvl_y0   <- 10**c(0, 3, 6, 9)
-  lbl_y0   <- c("") |> c(paste0(", ", c("Thousands", "Millions", "Billions")))
-  ### Get maximum y value, get scalar, label for y
-  max_y0   <- df0[[yCol0]] |> abs() |> max(na.rm=T)
-  scale_y  <- max_y0 %>% (function(x){case_when(
-    x > lvl_y0[4] ~ lvl_y0[4],
-    x > lvl_y0[3] ~ lvl_y0[3],
-    x > lvl_y0[2] ~ lvl_y0[2],
-    TRUE ~ 1
-  )})
-
-  ###### Adjust data
-  df0      <- df0 |> mutate_at(.vars=c(yCol0), function(x){x / scale_y})
-
-  ###### Plot values
-  ### X label, breaks
-  lab_x0   <- expression("CONUS Degrees of Warming ("*~degree*C*")")
-  brk_x0   <- (-1:6)*2
-  ### Y label, breaks
-  unit_y0  <- scale_y |> factor(lvl_y0, lbl_y0) |> as.character()
-  lab_y0   <- yCol0 |> str_split(pattern="_") |> unlist() |> paste(collapse=" ") |> str_to_title()
-  lab_y0   <- paste0("(", lab_y0, unit_y0, ")")
-  # brk_yrs0  <- seq(2010, 2300, by=20)
-
-  ### Plot
-  plot0    <- df0 |>
-    group_by_at(.vars=c(groups0)) |>
-    ggplot() +
-    geom_line(aes(x=temp_C, y=scaled_impact, color=region_dot), alpha = 0.7)
-  # ### Add facets
-  # plot0    <- plot0 + facet_wrap(facets=c("model_dot", "impactType"),scales = "free")
-  plot0    <- plot0 + facet_wrap(facets=c("impactType", "model_dot"), scales = "free", nrow=nImp0)
-  ### Add scales
-  plot0    <- plot0 + scale_x_continuous(lab_x0, breaks=brk_x0, limits=NULL)
-  plot0    <- plot0 + scale_y_continuous(lab_y0)
-  plot0    <- plot0 + scale_color_discrete("Region")
-  plot0    <- plot0 + theme(legend.position = "bottom")
-  ### Add title
-  plot0    <- plot0 + ggtitle(title0)
-
+  ### Assign data objects
+  df_sect    <- dataList[["co_sectors"    ]]
+  df_vars    <- dataList[["co_variants"   ]]
+  df_types   <- dataList[["co_impactTypes"]]
+  df_years   <- dataList[["co_impactYears"]]
+  df_regions <- dataList[["co_regions"    ]]
+  df_models  <- dataList[["co_models"     ]]
+  df_states  <- dataList[["co_states"     ]]
+  # ### Glimpse
+  # df_sect |> glimpse()
+  # df_vars |> glimpse()
+  # df_types |> glimpse()
+  # df_years |> glimpse()
+  # df_models |> glimpse()
+  # df_regions |> glimpse()
+  # df_states |> glimpse()
+  
+  ### Select columns
+  df_vars    <- df_vars    |> select(c("sector_id", "variant_label", "variant_id"))
+  df_types   <- df_types   |> select(c("sector_id", "impactType_label", "impactType_id"))
+  df_years   <- df_years   |> select(c("sector_id", "impactYear_label", "impactYear_id"))
+  df_models  <- df_models  |> select(c("model_id", "model_dot", "model_label", "modelType"))
+  df_regions <- df_regions |> select(c("region_label", "region_dot")) |> mutate(joinCol=1)
+  if(byState){df_states  <- df_states  |> select(c("state", "postal", "region_label"))}
+  
+  ### Join sectors and variants
+  df_x       <- df_sect |> left_join(df_vars, by="sector_id")
+  df_x       <- df_x |> left_join(df_types , by="sector_id", relationship = "many-to-many")
+  df_x       <- df_x |> left_join(df_years , by="sector_id", relationship = "many-to-many")
+  df_x       <- df_x |> left_join(df_models, by="modelType", relationship = "many-to-many")
+  df_x       <- df_x |> mutate(joinCol=1) |> 
+    left_join(df_regions, by="joinCol", relationship = "many-to-many") |> 
+    select(-c("joinCol"))
+  if(byState){df_x <- df_x |> left_join(df_states, by=c("region_dot"), relationship = "many-to-many")}
+  
+  ### Get scenario ID
+  ### c("sector", "variant", "impactYear", "impactType", "model_type")")
+  get_scenario_id <- utils::getFromNamespace("get_scenario_id", "FrEDI")
+  rename0    <- c("sector_id", "variant_id", "impactType_id", "impactYear_id", "region_dot", "model_label", "modelType")
+  rename1    <- c("sector", "variant", "impactType", "impactYear", "region", "model", "model_type")
+  df_x       <- df_x |> rename_at(.vars=c(rename0), ~c(rename1))
+  df_x       <- df_x |> get_scenario_id(include=c("model_dot", "region"))
+  if(byState){df_x <- df_x |> mutate(scenario_id = scenario_id |> paste0("_", postal))}
+  
+  ### Rename columns
+  rename0    <- c("sector", "variant", "impactType", "impactYear", "region")
+  rename1    <- c("sector_id", "variant_id", "impactType_id", "impactYear_id", "region_dot")
+  rename2    <- c("sector_label", "variant_label", "impactType_label", "impactYear_label", "region_label")
+  df_x       <- df_x |> rename_at(.vars=c(rename0), ~c(rename1))
+  df_x       <- df_x |> rename_at(.vars=c(rename2), ~c(rename0))
+  
   ### Return
-  return(plot0)
+  return(df_x)
 }
-### Make list of plots for a sector
-make_sector_plots <- function(
-    sector0,
-    df0
+
+get_fredi_sectorOptions_results <- function(
+    dataList, ### Data list, rDataList produced by createSystemData
+    byState = FALSE
 ){
-  paste0("Plotting scaled impacts for sector \'", sector_i, "\'", "...") |> message()
-  ### Regional plots
-  variants0   <- (df0 |> filter(sector=sector0))[["variant"]] |> unique()
-  plots0      <- variants0 |> map(make_variant_plot(x, sector0=sector0, df0=df0))
+  ###### Sector Options ######
+  df0        <- dataList |> get_fredi_sectorOptions()
+  # df0 |> glimpse()
+  
+  ###### Split Data ######
+  ### Split sectors by model type
+  df_gcm     <- df0 |> filter(model_type=="gcm")
+  df_slr     <- df0 |> filter(model_type=="slr")
+  ### Number of sector options
+  n_gcm      <- df_gcm |> nrow()
+  n_slr      <- df_slr |> nrow()
+  ### Whether to do GCM and/or SLR
+  do_gcm     <- n_gcm > 0
+  do_slr     <- n_slr > 0
+  
+  ###### Initialize Tibble ######
+  df0        <- tibble()
+  
+  ###### Do SLR Results ######
+  if(do_slr){
+    ### Load SLR data
+    slrImp     <- dataList[["slrImpacts"]]
+    # slrImp |> glimpse(); 
+    
+    ### Join df_slr with impacts
+    rename0    <- c("sector", "variant", "impactType", "impactYear", "region")
+    rename1    <- c("sector_id", "variant_id", "impactType_id", "impactYear_id", "region_dot")
+    join0      <- rename1 |> c("model_dot", "model_type")
+    slrImp     <- slrImp |> rename_at(.vars=c(rename0), ~c(rename1))
+    slrImp     <- slrImp |> select(-c("model"))
+    # slrImp |> glimpse(); df_slr |> glimpse()
+    df_slr     <- df_slr |> left_join(slrImp, by=c(join0))
+    rm(join0, slrImp)
+    ### Add driverValue
+    df_slr     <- df_slr |> mutate(driverValue=gsub("cm", "", model_dot) |> as.numeric())
+    # df_slr |> glimpse()
+    ### Relocate columns
+    select0    <- c("scenario_id")
+    df_slr     <- df_slr |> relocate(c(all_of(select0)))
+    ### Bind with initial results
+    df0        <- df0 |> rbind(df_slr)
+    rm(df_slr)
+  } ### End if(do_slr)
+  
+  ###### Do GCM Results ######
+  if(do_gcm){
+    # # ### Load GCM data
+    # # dataList$data_scaledImpacts |> glimpse()
+    # gcmImp    <- dataList[["data_scaledImpacts"]]
+    # gcmImp |> glimpse(); gcmImp |> glimpse()
+    # ### Join df_slr with impacts
+    # join0     <- c("sector", "variant", "impactType", "impactYear", "region", "model_dot", "scenario_id")
+    # gcmImp    <- gcmImp |> rename_at(.vars=c("region_dot"), ~c("region"))
+    # df_gcm    <- df_gcm |> left_join(gcmImp, by=c(join0))
+    # df_gcm |> glimpse()
+    # rm(join0, gcmImp)
+    ### Get function list
+    funList    <- dataList[["list_impactFunctions"]]
+    funNames   <- funList  |> names()
+    nFunctions <- funNames |> length()
+    ### Create temperature scenario
+    df_temps   <- tibble(temp_C = -1:11)
+    ### Execute the impact functions across new sectors (creates a wide tibble)
+    ### Add temperatures
+    ### Gather scenario values
+    df_vals    <- df_temps |> map_df(~ funList |> map_df(exec,.x))
+    ### Add temperatures
+    df_vals    <- df_vals  |> mutate(driverValue = df_temps[["temp_C"]])
+    ### Gather values
+    # idCols0    <- c("driverValue")
+    keyCols0   <- funNames
+    # select0    <- c(scenario_id)
+    df_vals    <- df_vals |> gather(key="scenario_id",value="scaled_impacts", c(all_of(keyCols0)))
+    # df_vals    <- df_vals |> select(c(all_of(select0)))
+    rm(keyCols0)
+    # ### Separate scenario_id into components
+    # into0      <- c("sector", "variant", "impactYear", "impactType", "model_type", "model_dot", "region_dot")
+    # df_vals    <- df_vals |> separate(col = scenario_id , into = c(into0), sep = "_")
+    ### Join with df_gcm
+    select0    <- c("scenario_id")
+    # df_vals |> names() |> print(); df_gcm |> names() |> print()
+    df_gcm     <- df_gcm |> relocate(c(all_of(select0)))
+    df_gcm     <- df_gcm |> left_join(df_vals, by=c("scenario_id"))
+    # "got here" |> print()
+    rm(df_vals)
+    ### Add year
+    df_gcm     <- df_gcm |> mutate(year = impactYear |> na_if("N/A"))
+    df_gcm     <- df_gcm |> mutate(year = year |> as.numeric())
+    ### Bind with initial results
+    # df0 |> names() |> print(); df_gcm |> names() |> print()
+    df0        <- df0 |> rbind(df_gcm)
+    rm(df_gcm)
+  } ### End if(do_gcm)
+  ###### Add Model Type Info ######
+  rename0    <- c("modelType_id", "modelUnit_label")
+  rename1    <- c("model_type", "modelUnit")
+  join0      <- c("model_type")
+  df_mTypes  <- dataList[["co_modelTypes" ]]
+  df_mTypes  <- df_mTypes  |> rename_at(.vars=c(rename0), ~c(rename1))
+  df0        <- df0 |> left_join(df_mTypes, by=c(join0))
+  rm(rename0, rename1, join0)
+  ###### Arrange ######
+  ### Arrange and add scaled impacts to list of items to save
+  arrange0   <- c("sector", "variant", "impactType", "impactYear", "region", "model_type", "model")
+  if(byState){arrange0 <- arrange0 |> c("postal")}
+  df0        <- df0 |> arrange_at(.vars=c(arrange0))
+  rm(arrange0)
+  ###### Select Columns ######
+  select0    <- c("scenario_id", "sector", "variant", "impactType", "impactYear", "region", "model_type", "model", "scaled_impacts", "modelUnit", "driverValue", "year")
+  if(byState){select0 <- select0 |> paste0("state", "postal")}
+  mutate0    <- c("variant", "impactType", "impactYear")
+  df0        <- df0 |> mutate_at(.vars=c(mutate0), function(y){y |> na_if("N/A") |> replace_na("NA")})
+  df0        <- df0 |> select(c(all_of(select0)))
+  df0        <- df0 |> mutate(model_type = model_type |> toupper())
+  ###### Return ######
+  return(df0)
+}
+
+#### Plot information by model type
+make_scaled_impact_plots <- function(
+    df0,
+    # xCol    = "driverValue",
+    byState = FALSE, 
+    yCol    = "scaled_impacts",
+    colorCol= "model",
+    options = list(
+      # title      = "Scaled Impacts",
+      # subtitle   = NULL,
+      # xTitle     = expression("Degrees of Warming (°C)"),
+      # yTitle     = "Scaled Impacts",
+      # lgdTitle   = "Model",
+      lgdTitle   = "Model",
+      lgdPos     = "top",
+      margins    = c(0, 0, .15, 0),
+      marginUnit = "cm",
+      theme      = NULL
+    )
+){
+  ### Other values
+  # years      <- c("NA", "2010", "2090")
+  years      <- df0[["impactYear"]] |> unique()
+  models     <- df0[["model_type"]] |> unique()
+  ### Data frame to iterate over
+  do_gcm     <- "gcm" %in% tolower(models)
+  do_slr     <- "slr" %in% tolower(models)
+  
+  ### Get iteration list
+  df_types   <- df0 |> 
+    group_by_at(.vars=c("sector", "impactYear", "model_type")) |> 
+    summarize(n=n(), .groups="keep") |> ungroup() |> select(-c("n")) |>
+    mutate(label = sector |> paste0("_", impactYear))
+  # df_types |> glimpse()
+  
+  ### Get list
+  # models |> print()
+  list0    <- models |> map(function(.x){
+    paste0("Creating plots for model type ", .x, "...") |> message()
+    df_x      <- df0 |> filter(model_type %in% c(.x))
+    # df_x |> glimpse()
+    ### Sectors
+    types_x   <- df_types |> filter(model_type==.x)
+    sectors_x <- types_x[["sector"]]
+    ### Get X column
+    xCol_x    <- (tolower(.x) == "gcm") |> ifelse("driverValue", "year")
+    # df_types |> glimpse()
+    pList_x   <- list(x1=types_x[["sector"]], x2=types_x[["impactYear"]])
+    ### Iterate over list
+    list_x    <- pList_x %>% pmap(function(x1, x2){
+      x1 |> paste0("_", x2) |> print()
+      df_y   <- df0  |> filter(sector == x1)
+      df_y   <- df_y |> filter(impactYear %in% x2)
+      # df_y |> glimpse()
+      # ### Group values
+      # groups0   <- c("sector", "variant", "impactType", "impactYear", "region", "model", xCol_x)
+      # df_y      <- df_y |> group_by_at(.vars=c(groups0))
+      ### Make plots
+      plot_y <- df_y |> create_scaledImpact_plots(
+        sector    = x1,
+        modelType = .x,
+        yCol      = yCol,
+        xCol      = xCol_x,
+        colorCol  = colorCol,
+        silent    = TRUE,
+        options   = options
+      )
+      # plot_y |> names() |> print()
+      ### Return
+      return(plot_y)
+    })
+    ### Add names
+    labels_x <- types_x[["label"]]
+    list_x   <- list_x |> addListNames(labels_x)
+    ### Return
+    return(list_x)
+  })
   ### Add names
-  names(plots0) <- variants0
+  list0   <- list0 |> addListNames(models)
   ### Return
-  return(plots0)
+  return(list0)
+} ### End plot_DoW_by_sector
+
+# ### Make scaled impact plots for sectors
+get_scaled_impact_plots <- function(
+    dataList, 
+    byState = FALSE, 
+    save    = TRUE,
+    fpath   = "." |> file.path("data_tests")
+){
+  ### returnList
+  return0   <- list()
+  ### Get results
+  results0  <- dataList |> get_fredi_sectorOptions_results()
+  return0[["data"]] <- results0
+  # results0 |> glimpse()
+  
+  # ### Group results
+  # groups0   <- c("sector", "variant", "impactYear", "impactType", "model", "region")
+  # results0  <- results0 |> group_by_at(.vars=c(groups0))
+  # return0[["data"]] <- results0
+  # results0 |> glimpse()
+  
+  ### Make scaled impact plots
+  plots0    <- results0 |> make_scaled_impact_plots(byState=byState)
+  return0[["plots"]] <- plots0
+  
+  ### Save results
+  if(save){
+    "Saving plots..." |> message()
+    save_gcm <- plots0 |> save_scaled_impact_figures(df0=results0, modelType="GCM", byState=byState, fpath=fpath)
+    save_slr <- plots0 |> save_scaled_impact_figures(df0=results0, modelType="SLR", byState=byState, fpath=fpath)
+  } ### End if save
+  
+  ### Return plot list
+  return(return0)
 }
 
-#### Save sector plots
-add_sector_plot <- function(
-    wbook,
-    # sheet     = 1,
-    # wbook     = openxlsx::createWorkbook(),
-    sector0,
-    variant0,
-    outPath   = ".",
-    df0, ### Data
-    plotsList = list()
+###### save_appendix_figures ######
+### Wrapper function to help save appendix figures to file
+save_scaled_impact_figures <- function(
+    plotList,
+    df0,      ### Dataframe used to create plots
+    byState   = FALSE, 
+    modelType = "GCM", ### Or SLR
+    fpath     = ".",
+    device    = "pdf",
+    res       = 200,
+    units     = "in",
+    createDir = TRUE ### Whether to create directory if it doesn't exist
 ){
-  ### Plot info
-  fType0  <- "png"
-  units0  <- "cm"
-  cUnit0  <- 6 ### Columns per unit
-  col0    <- 1
-  path0   <- outPath
-
-  ### Sector values
-  df0       <- df0    |> filter(sector==sector_i)
-  ### Unique models & impacts
-  models0   <- df0[["model_dot"]] |> unique()
-  impacts0  <- df0[["impactType"]] |> unique()
-  ### Numbers of unique models & impacts
-  nModels0  <- models0   |> length()
-  nImp0     <- impacts0  |> length()
-  ### Get variants
-  variants_i <- plots_i    |> names()
-  nVar_i     <- variants_i |> length()
-
-  ### Heights & Widths
-  ### Regional
-  width0  <- cUnit0 * 3 * nModels0 + cUnit0
-  height0 <- cUnit0 * 2 * nImp0    + cUnit0
-  # c(widthR_i, heightR_i) |> print
-
-  ### Plot multipliers by columns
-  # height0  <- 12 * nImp0
-
-  ### Plot
-  plot0    <- plotsList[["sector0"]][["variant0"]]
-
-  ### Add worksheet
-  sheet0   <- "plots" |> paste(sector0, variant0, sep="_")
-  wbook |> addWorksheet(sheetName = sheet0)
-
-  ### File names
-  file0  <- "tmp_" |> paste0(sector0, "_", variant0, ".png")
-  fpath0 <- path0 |> file.path(file_0)
-  ### Temporarily Save Plots
-  file_j |> ggsave(plot=plot0, device=fType0, path=path0, width=width0, height=height0, units=units0)
-  ### Add plots to workbook
-  wbook |> insertImage(sheet=sheet0, file=fpath0, startCol=2, startRow=1, width= width0, height=height0, units=units0)
-
-  ### Iterate over each sector and add worksheet for each sector
-  if(save){
-    ### Iterate over sectors
-    sectors0 |> walk(function(sector_i, plots_i = plots0[[sector_i]]){
-      ### Add worksheet
-      sheet_i <-
-      #wbook0 |> writeDataTable(sheet = sheet_i,diff)
-
-      ### Add Plots
-      for(j in 1:nVar_i){
-        variant_j <- variants_i[j]
-        ### Plots
-        plot_j   <- plots_i[[j]]
-
-
-        ### Delete temporary files
-        pathReg_j |> file.remove()
-        ### Delete intermediate values
-        rm("j", "variant_j", "plots_j")
-        rm("regPlot_j", "rowReg_j", "fileReg_j", "pathReg_j")
-        rm("natPlot_j", "rowNat_j", "fileNat_j", "pathNat_j")
-      } ### End for(j in 1:nVar_i)
-    }) ### End function(sector_i), end walk
-  } ### End if(save)
-} 
-### End if(funLength)
+  ### Create directory if it doesn't exist
+  fdir      <- fpath; rm("fpath")
+  fdir      <- fdir |> file.path("images")
+  created0  <- fdir |> check_and_create_path(createDir=createDir)
+  ### Prepare data
+  df0       <- df0  |> filter(model_type %in% modelType)
+  list0     <- plotList[[modelType]]
+  ### Unique values
+  names0    <- list0  |> names()
+  sectors0  <- names0 |> map(function(.x){str_split(string=.x, pattern="_")[[1]][1]}) |> unlist() |> unique()
+  refYears0 <- names0 |> map(function(.x){str_split(string=.x, pattern="_")[[1]][2]}) |> unlist() |> unique()
+  # names0 |> print(); #sectors0 |> print(); refYears0 |> print()
+  
+  ### Iterate over sectors
+  names0 |> map(function(.x){
+    ### Plot .x
+    list_x    <- list0[[.x]]
+    .x |> print()
+    
+    ### Split name into sector and ref year
+    sector_x  <- .x |> map(function(.y){str_split(string=.y, pattern="_")[[1]][1]}) |> unlist() |> unique()
+    year_x    <- .x |> map(function(.y){str_split(string=.y, pattern="_")[[1]][2]}) |> unlist() |> unique()
+    regions_x <- list_x |> names()
+    # sector_x |> c(year_x) |> print()
+    
+    ### Filter to data
+    df_x      <- df0 |> filter(sector == sector_x)
+    # df0 |> glimpse()
+    
+    ### Unique sector values
+    c_types   <- df_x[["impactType"]] |> unique()
+    c_regions <- df_x[["region"    ]] |> unique()
+    c_states  <- df_x[["state"     ]] |> unique()
+    c_models  <- df_x[["model"     ]] |> unique()
+    # c_years |> print(); c_types |> print(); c_vars |> print();
+    
+    ### Number of values
+    # n_years   <- c_years |> length()
+    n_types   <- c_types   |> length()
+    n_regions <- c_regions |> length()
+    n_states  <- c_states  |> length()
+    n_models  <- c_models  |> length()
+    # n_types |> c(n_vars, n_models) |> print()
+    
+    ### Get number of legend rows
+    lgdCols  <- 4
+    lgdRows  <- (n_models - 1) %/% lgdCols + 1
+    
+    ### Plot heights
+    ### Functions for plot height & width
+    fun_plot_width  <- function(nvars =1){1.5 + 3.3 * n_regions}
+    fun_plot_height <- function(ntypes=1, nrows=1){
+      ### Multiplier
+      factor0 <- case_when(
+        ntypes == 5 ~ 3.5,
+        .default = 3
+      )
+      ### Spacer for titles & legend
+      spacer0 <- case_when(
+        ntypes == 5 ~ 3,
+        nrows  == 4 ~ 2,
+        nrows  == 3 ~ 1.5,
+        .default = 1
+      )
+      1.5 + spacer0 + factor0 * ntypes
+      # 2 + nrows + 3.5 * ntypes
+    }
+    w_x       <- n_regions |> fun_plot_width ()
+    h_x       <- n_types   |> fun_plot_height(nrows = lgdRows)
+    # w_x |> c(h_x) |> print()
+    
+    ### Plot options
+    units_x   <- units; #rm(units)
+    res_x     <- res  ; #rm(res  )
+    dev_x     <- device |> tolower()
+    opts_x    <- list(
+      height = h_x,
+      width  = w_x,
+      res    = res_x,
+      units  = units_x
+    ) ### End options
+    # "got here" |> print()
+    ### Iterate over regions
+    regions_x |> map(function(.y){
+      allReg_y  <- "all" == (.y |> tolower())
+      regLbl_y  <- allReg_y |> ifelse(.y |> paste0("Regions"), .y)
+      fname_y   <- sector_x |> paste0("_", regLbl_y, "_", year_x)
+      list_y    <- list_x[[.y]]
+      plot_y    <- list_y[[1]]
+      # "got here1" |> print()
+      saved_y   <- plot_y  |> save_image(
+        fpath     = fdir , ### File path
+        fname     = fname_y,
+        device    = dev_x,
+        createDir = createDir,
+        options   = opts_x
+      ) ### End save_image
+    })
+    # "got here2" |> print()
+  }) ### End map(function(.z))
+  ### Return
+} ### End save_appendix_figures
 
 ###### New Sector Configuration Tests ######
 #' configTest_newSectors
@@ -622,6 +883,7 @@ add_sector_plot <- function(
 newSectors_config_test <- function(
     newData   = NULL,
     refDataFile = "." |> file.path("data", "sysdata.rda"),
+    byState   = FALSE, 
     # sector_id = "",
     outPath   = ".",
     xslxName  = "newSectorsConfig_testResults.xlsx",
@@ -793,84 +1055,6 @@ newSectors_config_test <- function(
       wbook0 |> writeDataTable(sheet = sheet0, diff0)
     } ### End if(save)
   }) ### End function(name_i), end walk
-
-  ###### New Sector Results ######
-  ###### ** New Impact Functions ######
-  ### Figure out which functions are new and then filter to those functions
-  ### Function lists
-  ### Names
-  newFunNames <- newFunList |> names()
-  refFunNames <- refFunList |> names()
-  ### New names and new list
-  funNames    <- newFunNames[!(newFunNames %in% refFunNames)]
-  funList     <- newFunList[funNames]
-  funLength   <- funList |> length()
-  ### Remove intermediate values
-  rm("newFunList", "newFunNames", "refFunList", "refFunNames")
-
-  ###### ** Scaled Impacts: Values ######
-  if(funLength){
-    ### Create temperature scenario
-    df_temps    <- tibble(temp_C = -1:11)
-    ### Execute the impact functions across new sectors, then gather values
-    df_vals     <- df_temps |> map_df(~ funList |> map_df(exec,.x))
-    ### Add temperatures
-    df_vals     <- df_vals  |> mutate(temp_C = df_temps$temp_C)
-    ### Gather values
-    idCols0     <- c("temp_C")
-    df_vals     <- df_vals  |> gather(key="scenario_id",value="scaled_impact", -c(all_of(idCols0)))
-    # |> mutate( temp_C = rep(-1:11,length(scaled_impact)/length(df_temps$temp_C)))
-    rm("df_temps")
-
-    ### Separate scenario_id into components
-    into0       <- c("sector", "variant", "impactYear", "impactType", "model_type", "model_dot", "region_dot")
-    df_vals     <- df_vals |> separate(col = scenario_id , into = c(all_of(into0)), sep = "_")
-    ### Filter to new sector_id
-    # df_vals0    <- df_vals0 |> filter(sector==sector_id)
-    # df_vals0    <- df_vals0 |> rename_at(.vars=c("sector"), ~sector_id)
-
-    ### Arrange and add scaled impacts to list of items to save
-    arrange0    <- c("sector", "variant", "impactYear", "impactType", "model_type", "model_dot", "region_dot")
-    df_vals     <- df_vals |> arrange_at(.vars=c(arrange0))
-    saveList[[c_impact0]] <- df_vals
-    rm("arrange0")
-
-    ### Add worksheet and write data table if(save)
-    if(save) {
-      sheet0 <- c_impact0
-      wbook0 |> addWorksheet(sheetName = sheet0)
-      wbook0 |> writeDataTable(sheet = sheet0, df_vals)
-    } ### End if(save)
-  } ### End if(funLength)
-
-  ###### ** Scaled Impacts: Plots ######
-  if(funLength){
-    ### Get unique sectors
-    sectors0    <- df_vals[["sector"]] |> unique()
-    ### Regional plots
-    listPlots0  <- sectors0 |> map(make_sector_plots(x, df0 = df_vals))
-    names(listPlots0) <- sectors0
-
-    ### Add plots to list of items to save
-    saveList[[c_plots0]] <- listPlots0
-
-    ### Iterate over each sector and add worksheet for each sector
-    if(save){
-      for(sector_i in sectors0){
-        variants0 <-  (df_vals |> filter(sector==sector_i))[["variant"]] |> unique()
-        for(variant_j in variants0){
-          add_sector_plot(
-            wbook     = wbook0,
-            sector0   = sector_i,
-            variant0  = variant_j,
-            outPath   = ".",
-            df0       = df_vals, ### Data
-            plotsList = listPlots0
-          )
-        } ### End for variant_j
-      } ### End for sector_i
-    } ### End if(save)
-  } ### End if(funLength)
 
   ###### Save Workbook ######
   if(save){
