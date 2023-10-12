@@ -78,9 +78,9 @@ loadStateData <- function(
   scalars        <- fpath %>% loadStateScalars
   scaled_impacts <- fpath %>% loadStateScaledImpacts(sectors = sectors)
   
-  state_data <- list(df_stateScalars    = scalars,
-                     df_gcmStateImpacts = scaled_impacts$gcm,
-                     df_slrStateImpacts = scaled_impacts$slr)
+  state_data <- list(df_stateScalars    = scalars %>% as.data.frame,
+                     df_gcmStateImpacts = scaled_impacts$gcm %>% as.data.frame,
+                     df_slrStateImpacts = scaled_impacts$slr %>% as.data.frame)
   
   return(state_data)
 }
