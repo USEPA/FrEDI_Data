@@ -19,7 +19,7 @@ loadStateScaledImpacts <- function(
         file.path("gcm", paste0(sector, "_scaledImpacts.csv")) %>%
         read.csv %>%
         select(all_of(gcm_col_names)) %>%
-        as.tibble()
+        as_tibble
     })
   
   slr_sector_data_list <- slr_sectors %>%
@@ -28,7 +28,7 @@ loadStateScaledImpacts <- function(
         file.path("slr", paste0(sector, "_scaledImpacts.csv")) %>%
         read.csv %>%
         select(all_of(slr_col_names)) %>%
-        as.tibble()
+        as_tibble
     })
   
   gcm_sector_data <- gcm_sector_data_list %>%
@@ -58,7 +58,7 @@ loadStateScalars <- function(
         file.path("scalars", file) %>%
         read.csv %>%
         select(all_of(scalar_col_names)) %>%
-        as.tibble()
+        as_tibble
     })
   
   scalar_data <- scalar_data_list %>%

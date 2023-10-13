@@ -7,7 +7,8 @@ createSystemData <- function(
     configPath  = "." %>% file.path("R"   , "fredi_config.R"), ### Path to config file
     save        = FALSE,
     silent      = FALSE,  ### Whether to message the user
-    return      = TRUE
+    return      = TRUE,
+    byState     = FALSE
 ){
   
   ###### Set up the environment ######
@@ -298,5 +299,3 @@ createSystemData <- function(
 ### Uncomment following two lines to create and save data and check the outputs
 # test_systemData <- createSystemData(save=F)
 # rm("createSystemData")
-
-

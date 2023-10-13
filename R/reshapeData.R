@@ -23,13 +23,15 @@ reshapeData <- function(
   ### Filter to those tables to include
   ### Make a copy of the sectors list to include variants
   ### Drop variant column from `co_sectors`
-  drop0         <- c("include", "variants", "impactYears", "impactTypes")
-  co_sectors    <- co_sectors %>% filter(include == 1)
-  co_sectorsRef <- co_sectors
-  co_sectors    <- co_sectors %>% select(-c(all_of(drop0)))
+  drop0           <- c("include", "variants", "impactYears", "impactTypes", "byState")
+  co_sectors      <- co_sectors %>% filter(include == 1)
+  co_stateSectors <- co_sectors %>% filter(byState == 1)
+  co_sectorsRef   <- co_sectors
+  co_sectors      <- co_sectors %>% select(-c(all_of(drop0)))
   ### Update values in list
-  dataList[["co_sectors"   ]] <- co_sectors
-  dataList[["co_sectorsRef"]] <- co_sectorsRef
+  dataList[["co_sectors"   ]]   <- co_sectors
+  dataList[["co_sectorsRef"]]   <- co_sectorsRef
+  dataList[["co_stateSectors"]] <- co_stateSectors
   ### Remove intermediate variables
   rm("drop0")
   
