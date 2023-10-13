@@ -9,7 +9,7 @@ loadStateScaledImpacts <- function(
     sectors = c() # list of sectors with state-level data available
 ){
   gcm_col_names <- c("state", "postal", "sector", "variant", "impactType", "model", "modelUnitValue", "impactYear", "value")
-  slr_col_names <- c("state", "postal", "sector", "variant", "impactType", "model", "year", "value")
+  slr_col_names <- c("state", "postal", "sector", "variant", "impactType", "model", "year", "impactYear", "value")
   slr_sectors   <- sectors[sectors %in% c("HTF", "CoastalProperties")]
   gcm_sectors   <- sectors[!(sectors %in% c("HTF", "CoastalProperties"))]
   
