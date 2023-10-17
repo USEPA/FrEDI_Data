@@ -79,10 +79,12 @@ loadStateData <- function(
 ){
   scalars        <- fpath %>% loadStateScalars
   scaled_impacts <- fpath %>% loadStateScaledImpacts(sectors = sectors)
+  state_pop      <- fpath %>% file.path("scenarios", "State ICLUS Population.csv") %>% read.csv
   
   state_data <- list(df_stateScalars    = scalars %>% as.data.frame,
                      df_gcmStateImpacts = scaled_impacts$gcm %>% as.data.frame,
-                     df_slrStateImpacts = scaled_impacts$slr %>% as.data.frame)
+                     df_slrStateImpacts = scaled_impacts$slr %>% as.data.frame,
+                     df_statePop        = state_pop %>% as.data.frame)
   
   return(state_data)
 }

@@ -89,8 +89,9 @@ loadData <- function(
     loadStateData(sectors = state_sectors)
     
   dataList$data_scaledImpactsState <- state_data$df_gcmStateImpacts
-  dataList$slrImpactsState <- state_data$df_slrStateImpacts
-  dataList$scalarDataframeState <- state_data$df_stateScalars
+  dataList$slrImpactsState         <- state_data$df_slrStateImpacts
+  dataList$scalarDataframeState    <- state_data$df_stateScalars
+  dataList$co_defaultScenarioState <- state_data$df_statePop
   
   return(dataList)
 }

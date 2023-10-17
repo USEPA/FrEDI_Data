@@ -177,7 +177,7 @@ reshapeData <- function(
   c_regSlr   <- c_regSlr   %>% mutate(row_id = row_number())
   slrImpacts <- slrImpacts %>% mutate(row_id = row_number())
   ### Check impacts
-  "nrow(c_regSlr) == nrow(slrImpacts)" %>% paste0(": ", nrow(c_regSlr) == nrow(slrImpacts)) %>% print()
+  #"nrow(c_regSlr) == nrow(slrImpacts)" %>% paste0(": ", nrow(c_regSlr) == nrow(slrImpacts)) %>% print()
   ### Join and drop join columns
   slrImpacts <- slrImpacts %>% left_join(c_regSlr, by = c(join0))
   slrImpacts <- slrImpacts %>% select(-c(all_of(join0), all_of(select0)))
@@ -289,6 +289,15 @@ reshapeData <- function(
   scalarDataframeState <- scalarDataframeState %>%
     left_join(co_scalarInfo %>% select(scalarName, scalarLabel, scalarType), by = c("scalarName" = "scalarName"))
   dataList[["scalarDataframeState"]] <- scalarDataframeState
+  
+  ### state default population scenario
+  year_cols <- names(co_defaultScenarioState)[grep("proj", names(co_defaultScenarioState))]
+  co_defaultScenarioState <- co_defaultScenarioState %>%
+    pivot_longer(cols = all_of(year_cols), names_to = "year", values_to = "state_pop") %>%
+    mutate(year = as.integer(gsub("proj_", "", year))) %>%
+    select(-proportion_2100, -fips) %>%
+    left_join(co_defaultScenario %>% select(year, gdp_usd) %>% unique, by = c("year" = "year"))
+  dataList[["co_defaultScenarioState"]] <- co_defaultScenarioState
   
   ### Return the list of dataframes
   return(dataList)
