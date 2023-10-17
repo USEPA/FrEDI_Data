@@ -5,8 +5,7 @@ loadData <- function(
     fileDir   = "." %>% file.path("inst", "extdata"), ### Path to project
     fileName  = NULL, ### name of excel file with config information
     sheetName = "tableNames",
-    silent    = FALSE,
-    byState   = FALSE
+    silent    = FALSE
 ) {
   # if(is.null(sheetName)){sheetName <- "tableNames"}
   # print(getwd())
@@ -82,15 +81,16 @@ loadData <- function(
     rm("table_i", "tableInfo_i", "tableName_i", "i")
   } ### End lapply
   
-  if (byState){
-    state_data <- fileDir %>%
-      file.path("state") %>%
-      loadStateData(sectors = c("HTF", "MentalHealth", "ElecTD"))
+  
+  state_sectors <- dataList$co_sectors %>% filter(byState == 1)
+  state_sectors <- state_sectors$sector_id %>% unique
+  state_data <- fileDir %>%
+    file.path("state") %>%
+    loadStateData(sectors = state_sectors)
     
-    dataList$data_scaledImpacts <- state_data$df_gcmStateImpacts
-    dataList$slrImpacts <- state_data$df_slrStateImpacts
-    dataList$scalarDataframe <- state_data$df_stateScalars
-  }
+  dataList$data_scaledImpactsState <- state_data$df_gcmStateImpacts
+  dataList$slrImpactsState <- state_data$df_slrStateImpacts
+  dataList$scalarDataframeState <- state_data$df_stateScalars
   
   return(dataList)
 }

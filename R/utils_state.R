@@ -19,6 +19,7 @@ loadStateScaledImpacts <- function(
         file.path("gcm", paste0(sector, "_scaledImpacts.csv")) %>%
         read.csv %>%
         select(all_of(gcm_col_names)) %>%
+        mutate(variant = as.character(variant)) %>%
         as_tibble
     })
   
@@ -28,6 +29,7 @@ loadStateScaledImpacts <- function(
         file.path("slr", paste0(sector, "_scaledImpacts.csv")) %>%
         read.csv %>%
         select(all_of(slr_col_names)) %>%
+        mutate(variant = as.character(variant)) %>%
         as_tibble
     })
   

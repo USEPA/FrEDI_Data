@@ -9,7 +9,7 @@
 #' @examples
 reshapeData <- function(
     dataList = NULL,
-    silent = T
+    silent   = TRUE
 ) {
   ###### Assign Objects ######
   ### Assign tables in dataList to object in local environment
@@ -184,7 +184,6 @@ reshapeData <- function(
   ### Drop intermediate values (update in list further down)
   rm("idCols0", "select0", "names0", "join0", "c_regSlr")
   
-  
   ###### ** Format Scaled Impacts ######
   list_scaledImpacts <- list(data_scaledImpacts = data_scaledImpacts, slrImpacts = slrImpacts)
   rm("data_scaledImpacts", "slrImpacts")
@@ -242,7 +241,7 @@ reshapeData <- function(
     (function(list_x, names_x = names(list_scaledImpacts)) {
       names(list_x) <- names_x; return(list_x)
     })
-  
+
   ### Update objects in environment
   for (name_i in names(list_scaledImpacts)) {assign(name_i, list_scaledImpacts[[name_i]])}
   
@@ -264,6 +263,32 @@ reshapeData <- function(
   scalarDataframe <- scalarDataframe %>% mutate(region = region %>% factor(levels0, labels0) %>% as.character())
   dataList[["scalarDataframe"]] <- scalarDataframe
   rm("levels0", "labels0")
+  
+  ###### ** State-level Tables ######
+  ### state gcm scaledImpacts
+  data_scaledImpactsState <- data_scaledImpactsState %>%
+    left_join(co_states, by = c("state" = "state", "postal" = "postal")) %>%
+    mutate(model_type = "gcm",
+           model_dot  = gsub("[-_]", ".", model),
+           region_dot = gsub(" ", ".", region)) %>%
+    rename(scaledImpact = value) %>%
+    select(-fips, -region)
+  dataList[["data_scaledImpactsState"]] <- data_scaledImpactsState
+  
+  ### state slr scaledImpacts
+  slrImpactsState <- slrImpactsState %>%
+    left_join(co_states, by = c("state" = "state", "postal" = "postal")) %>%
+    left_join(co_models %>% select(model_id, model_dot), by = c("model" = "model_id")) %>%
+    mutate(model_type = "gcm",
+           region = gsub(" ", ".", region)) %>%
+    rename(scaled_impacts = value) %>%
+    select(-fips)
+  dataList[["slrImpactsState"]] <- slrImpactsState
+  
+  ### state scalars
+  scalarDataframeState <- scalarDataframeState %>%
+    left_join(co_scalarInfo %>% select(scalarName, scalarLabel, scalarType), by = c("scalarName" = "scalarName"))
+  dataList[["scalarDataframeState"]] <- scalarDataframeState
   
   ### Return the list of dataframes
   return(dataList)
