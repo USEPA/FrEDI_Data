@@ -749,7 +749,7 @@ get_scaled_impact_plots <- function(
   return(return0)
 }
 
-###### save_appendix_figures ######
+###### save_scaled_impact_figures ######
 ### Wrapper function to help save appendix figures to file
 save_scaled_impact_figures <- function(
     plotList,
@@ -792,10 +792,14 @@ save_scaled_impact_figures <- function(
     # df0 |> glimpse()
     
     ### Unique sector values
+    # c_types   <- (df_x |> filter(!is.na(scaled_impacts)))[["impactType"]] |> unique()
+    # c_regions <- (df_x |> filter(!is.na(scaled_impacts)))[["region"    ]] |> unique()
+    # c_states  <- (df_x |> filter(!is.na(scaled_impacts)))[["state"     ]] |> unique()
+    # c_models  <- (df_x |> filter(!is.na(scaled_impacts)))[["model"     ]] |> unique()
     c_types   <- df_x[["impactType"]] |> unique()
     c_regions <- df_x[["region"    ]] |> unique()
     c_states  <- df_x[["state"     ]] |> unique()
-    c_models  <- df_x[["model"     ]] |> unique()
+    c_models  <- (df_x |> filter(!is.na(scaled_impacts)))[["model"     ]] |> unique()
     # c_years |> print(); c_types |> print(); c_vars |> print();
     
     ### Number of values
@@ -812,25 +816,27 @@ save_scaled_impact_figures <- function(
     
     ### Plot heights
     ### Functions for plot height & width
-    fun_plot_width  <- function(nvars =1){1.5 + 3.3 * n_regions}
-    fun_plot_height <- function(ntypes=1, nrows=1){
-      ### Multiplier
-      factor0 <- case_when(
-        ntypes == 5 ~ 3.5,
-        .default = 3
+    # fun_plot_width   <- function(nvars =1){1.5 + 3.3 * nvars}
+    fun_plot_width   <- function(nvars =1){1.5 + 2.0 * nvars}
+    # fun_plot_height1 <- function(nvars =1, ntypes=1){1.5 + 2.0 * nvars}
+    # fun_plot_height2 <- function(nvars =1, height=fun_plot_height1()){3 + height * nvars}
+    # fun_plot_height2 <- function(nvars =1, height=fun_plot_height1()){3 + height * nvars}
+    fun_plot_height1 <- function(nvars =1, ntypes=1){
+      scale0 <- case_when(
+        nvars   == 1 ~ 3.0,
+        ntypes  == 5 ~ 1.25,
+        ntypes  == 4 ~ 1.50,
+        .default = 2.5
       )
-      ### Spacer for titles & legend
-      spacer0 <- case_when(
-        ntypes == 5 ~ 3,
-        nrows  == 4 ~ 2,
-        nrows  == 3 ~ 1.5,
-        .default = 1
-      )
-      1.5 + spacer0 + factor0 * ntypes
-      # 2 + nrows + 3.5 * ntypes
-    }
-    w_x       <- n_regions |> fun_plot_width ()
-    h_x       <- n_types   |> fun_plot_height(nrows = lgdRows)
+      h0 <- 1.5 + scale0 * nvars
+      h1 <- h0 * ntypes
+      return(h1)
+      }
+    
+    w_x       <- n_regions |> fun_plot_width  ()
+    h_x       <- n_models  |> fun_plot_height1(ntypes=n_types)
+    # h_x       <- h_x + 3
+    # h_x       <- n_types  |> fun_plot_height2(height=h_x)
     # w_x |> c(h_x) |> print()
     
     ### Plot options

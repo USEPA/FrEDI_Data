@@ -109,7 +109,7 @@ fun_nNna <- function(z, a, b){
 ### Get region plot info (for scaled impact plots)
 get_region_plotInfo <- function(
     df0, ### Data
-    yCol      = "yCol",
+    yCol      = "scaled_impacts",
     byState   = FALSE,
     groupCols = c("sector", "variant", "impactType", "impactYear", "region", "model"),
     nCol      = 4,
@@ -158,7 +158,9 @@ get_region_plotInfo <- function(
   ### Drop values for which nObs == nNA
   # naThresh0     <- 
   df_sectorInfo <- df_sectorInfo |> mutate(naThresh = df_sectorInfo[["nObs"]] |> max())
-  df_sectorInfo <- df_sectorInfo |> filter(!(nObs < naThresh))
+  # return(df_sectorInfo)
+  # df_sectorInfo <- df_sectorInfo |> filter(!(nObs < naThresh))
+  df_sectorInfo <- df_sectorInfo |> filter(!(nObs == nNA))
   ### Remove values
   rm(df_na, group0)
   
@@ -400,39 +402,52 @@ create_scaledImpact_plot <- function(
   else      {df_points0 <- df0}
   
   ### Plot
+  # if(byState){
+  #   plot0  <- df0 |> ggplot(aes(x=.data[[xCol]], y=.data[[yCol]], color=.data[[colorCol]], group=interaction(sector, variant, impactType, impactYear, region, state, model)))
+  # } else{
+  #   plot0  <- df0 |> ggplot(aes(x=.data[[xCol]], y=.data[[yCol]], color=.data[[colorCol]], group=interaction(sector, variant, impactType, impactYear, region, model)))
+  # }
+  # if(byState){
+  #   plot0  <- df0 |> ggplot(aes(x=.data[[xCol]], y=.data[[yCol]], color=.data[[variant]], group=interaction(sector, variant, impactType, impactYear, region, state, model)))
+  # } else{
+  #   plot0  <- df0 |> ggplot(aes(x=.data[[xCol]], y=.data[[yCol]], color=.data[[variant]], group=interaction(sector, variant, impactType, impactYear, region, model)))
+  # }
   if(byState){
-    plot0  <- df0 |> ggplot(aes(x=.data[[xCol]], y=.data[[yCol]], color=.data[[colorCol]], group=interaction(sector, variant, impactType, impactYear, region, state, model)))
+    plot0  <- df0 |> ggplot(aes(x=.data[[xCol]], y=.data[[yCol]], color=.data[["region"]], group=interaction(sector, variant, impactType, impactYear, region, state, model)))
   } else{
-    plot0  <- df0 |> ggplot(aes(x=.data[[xCol]], y=.data[[yCol]], color=.data[[colorCol]], group=interaction(sector, variant, impactType, impactYear, region, model)))
+    plot0  <- df0 |> ggplot(aes(x=.data[[xCol]], y=.data[[yCol]], color=.data[["region"]], group=interaction(sector, variant, impactType, impactYear, region, model)))
   }
   
-  ### Add Geoms
-  plot0  <- plot0 + geom_line(aes(linetype = .data[["variant"]]))
-  plot0  <- plot0 + facet_grid(.~.data[[facetCol]])
+  ###### * Add Geoms ######
+  plot0  <- plot0 + geom_line(aes(linetype = .data[["variant"]]), alpha=0.5)
+  # plot0  <- plot0 + facet_grid(.~.data[[facetCol]])
+  # plot0  <- plot0 + facet_grid(model~region)
+  # plot0  <- plot0 + facet_grid(model~.data[[facetCol]])
+  plot0  <- plot0 + facet_grid(model~.data[["region"]])
   
-  ### Add Scales
-  plot0  <- plot0 + scale_linetype_discrete("Variant")
-  plot0  <- plot0 + scale_color_discrete(lgdLbl)
-  
-  ###### Adjust legend title ######
+  ###### ** Adjust legend title ######
   if(hasLgdPos){plot0 <- plot0 + guides(color = guide_legend(title.position = lgdPos))}
   plot0  <- plot0 + theme(legend.direction = "vertical", legend.box = "vertical")
   
-  ###### Add themes and title ######
+  ###### ** Add and title ######
   plot0  <- plot0 + ggtitle(title0)
   
-  ###### Add scales ######
+  ###### ** Add scales ######
   plot0  <- plot0 + scale_x_continuous(xTitle, breaks=x_breaks, limits=x_limits)
   plot0  <- plot0 + scale_y_continuous(y_label)
+  plot0  <- plot0 + scale_linetype_discrete("Variant")
+  # plot0  <- plot0 + scale_color_discrete("Variant")
+  # plot0  <- plot0 + scale_color_discrete(lgdLbl)
+  plot0  <- plot0 + scale_color_discrete("Region")
   
-  ###### Adjust Appearance ######
+  ###### ** Adjust Appearance ######
   plot0  <- plot0 + theme(plot.title    = element_text(hjust = 0.5, size=11))
   plot0  <- plot0 + theme(plot.subtitle = element_text(hjust = 0.5, size=10))
   plot0  <- plot0 + theme(axis.title.x  = element_text(hjust = 0.5, size=9))
   plot0  <- plot0 + theme(axis.title.y  = element_text(hjust = 0.5, size=9))
   plot0  <- plot0 + theme(legend.position = "bottom")
   
-  ###### Add Themes & Margins ######
+  ###### ** Add Themes & Margins ######
   ### Theme
   if(hasTheme  ){
     if(theme=="bw"){plot0 <- plot0 + theme_bw()}
@@ -448,6 +463,19 @@ create_scaledImpact_plot <- function(
       unit = mUnit
     ))
   } ### End if(hasMargins)
+  
+  ###### Legend ######
+  ### Add guide to legend
+  nLgdCols  <- 7
+  # nLgdCols  <- nRegions
+  # nLgdCols |> print()
+  plot0  <- plot0 + guides(linetype        = guide_legend(ncol=nLgdCols, order = 1))
+  plot0  <- plot0 + guides(color           = guide_legend(ncol=nLgdCols, order = 2))
+  plot0  <- plot0 + theme(legend.box.just  = "left")
+  plot0  <- plot0 + theme(legend.title     = element_text(size=10))
+  plot0  <- plot0 + theme(legend.text      = element_text(size=9))
+  plot0  <- plot0 + theme(legend.spacing.y = unit(0.05, "cm"))
+  # refPlot0  <- refPlot0 + theme(legend.box.margin = margin(t=0.05, r=0.05, b=0.05, l=0.05, unit='cm'))
   
   
   ###### Return ######
@@ -596,6 +624,8 @@ create_scaledImpact_plots <- function(
   cModels       <- df0[["model"]] |> unique()
   nModels       <- cModels   |> length()
   rm(join0)
+  # nRegions |> print()
+  # df0[["region"]] |> unique() |> print()
   # df0           <- df0 |> filter(sector     %in% cSectors)
   # df0           <- df0 |> filter(variant    %in% cVariants)
   # df0           <- df0 |> filter(impactType %in% cImpTypes)
@@ -664,43 +694,45 @@ create_scaledImpact_plots <- function(
   nIter1 <- cIter1 |> length()
   # nIter2 <- cIter2 |> length()
   
-  ###### Reference Plot ######
-  ### Reference plots
-  refPlot0   <- df0 |> create_scaledImpact_plot(
-    sector0   = sector0,
-    # variant0  = cVariants[1],
-    impType0  = cImpTypes[1],
-    impYear0  = cImpYears[1],
-    region0   = cRegions[1],
-    byState   = byState, 
-    infoList0 = infoList0, ### Dataframe with sector info...output from get_region_plotInfo
-    xCol      = xCol,   ### X-Column,
-    yCol      = yCol,   ### Y-Column,
-    xInfo     = x_info, ### xScale...outputs of get_colScale
-    colorCol  = colorCol,
-    refPlot   = TRUE, ### Whether to do a ref plot
-    silent    = silent,
-    options   = plotOpts0
-  )
-  # refPlot0 |> print()
-  
-  ###### Legend & Spacer #####
-  ### Add guide to legend
-  nLgdCols   <- 4
-  # nLgdCols |> print()
-  refPlot0  <- refPlot0 + guides(linetype=guide_legend(ncol=nLgdCols, order = 1))
-  refPlot0  <- refPlot0 + guides(color   =guide_legend(ncol=nLgdCols, order = 2))
-  refPlot0  <- refPlot0 + theme(legend.box.just = "left")
-  refPlot0  <- refPlot0 + theme(legend.title = element_text(size=10))
-  refPlot0  <- refPlot0 + theme(legend.text  = element_text(size=9))
-  refPlot0  <- refPlot0 + theme(legend.spacing.y = unit(0.05, "cm"))
-  # refPlot0  <- refPlot0 + theme(legend.box.margin = margin(t=0.05, r=0.05, b=0.05, l=0.05, unit='cm'))
-  
-  ###### Common Plot Elements ######
+  # ###### Reference Plot ######
+  # ### Reference plots
+  # refPlot0   <- df0 |> create_scaledImpact_plot(
+  #   sector0   = sector0,
+  #   # variant0  = cVariants[1],
+  #   impType0  = cImpTypes[1],
+  #   impYear0  = cImpYears[1],
+  #   region0   = cRegions[1],
+  #   byState   = byState, 
+  #   infoList0 = infoList0, ### Dataframe with sector info...output from get_region_plotInfo
+  #   xCol      = xCol,   ### X-Column,
+  #   yCol      = yCol,   ### Y-Column,
+  #   xInfo     = x_info, ### xScale...outputs of get_colScale
+  #   colorCol  = colorCol,
+  #   refPlot   = TRUE, ### Whether to do a ref plot
+  #   silent    = silent,
+  #   options   = plotOpts0
+  # )
+  # # refPlot0 |> print()
+  # 
+  # ###### Legend & Spacer #####
+  # ### Add guide to legend
+  # # nLgdCols  <- 4
+  # nLgdCols  <- nRegions
+  # # nLgdCols |> print()
+  # refPlot0  <- refPlot0 + guides(linetype        = guide_legend(ncol=nLgdCols, order = 1))
+  # refPlot0  <- refPlot0 + guides(color           = guide_legend(ncol=nLgdCols, order = 2))
+  # refPlot0  <- refPlot0 + theme(legend.box.just  = "left")
+  # refPlot0  <- refPlot0 + theme(legend.title     = element_text(size=10))
+  # refPlot0  <- refPlot0 + theme(legend.text      = element_text(size=9))
+  # refPlot0  <- refPlot0 + theme(legend.spacing.y = unit(0.05, "cm"))
+  # # refPlot0  <- refPlot0 + theme(legend.box.margin = margin(t=0.05, r=0.05, b=0.05, l=0.05, unit='cm'))
+  # 
+  # ###### Common Plot Elements ######
+  nLgdCols  <- nRegions
   spacer0   <- ggplot() + theme_void()
-  legend0   <- refPlot0 |> ggpubr::get_legend()
-  # # "got here..." |> print()
-  grobLgd0  <- ggarrange(plotlist=list(legend=legend0))
+  # legend0   <- refPlot0 |> ggpubr::get_legend()
+  # # # "got here..." |> print()
+  # grobLgd0  <- ggarrange(plotlist=list(legend=legend0))
   
   ###### Create Plot List ######
   ### Iterate over Impact Years
@@ -734,7 +766,9 @@ create_scaledImpact_plots <- function(
         grobType_k  <- text_grob(typeTitle_k, face="italic", size=11)
         plotGrid_k  <- plot_k
         plotList_k  <- list(spacer1=spacer0, plots=plotGrid_k, spacer2=spacer0)
-        plotGrid_k  <- ggarrange(plotlist=plotList_k, nrow=3, ncol=1, common.legend=T, legend="none", heights=c(0.01, 1, 0.01))
+        # plotGrid_k  <- ggarrange(plotlist=plotList_k, nrow=3, ncol=1, common.legend=T, legend="none", heights=c(0.01, 1, 0.01))
+        # plotGrid_k  <- ggarrange(plotlist=plotList_k, nrow=3, ncol=1, common.legend=T, legend="bottom", heights=c(0.01, 1, 0.1))
+        plotGrid_k  <- ggarrange(plotlist=plotList_k, nrow=3, ncol=1, heights=c(0.01, 1, 0.1))
         plotGrid_k  <- plotGrid_k |> annotate_figure(top=grobType_k)
         
         ### Return
@@ -746,7 +780,8 @@ create_scaledImpact_plots <- function(
       listTypes_j <- listTypes_j |> addListNames(cImpTypes)
       
       ### Arrange plot list
-      plotGrid_j  <- ggarrange(plotlist=listTypes_j, ncol=1, nrow=nRow, common.legend=T, legend="none")
+      # plotGrid_j  <- ggarrange(plotlist=listTypes_j, ncol=1, nrow=nRow, common.legend=F, legend="none")
+      plotGrid_j  <- ggarrange(plotlist=listTypes_j, ncol=1, nrow=nRow, common.legend=F)
       
       ### Add spacer to the top
       # "got here2..." |> print()
@@ -757,14 +792,23 @@ create_scaledImpact_plots <- function(
       plotGrid_j  <- plotGrid_j |> annotate_figure(top=grobYear_j)
       
       ### Add Plot Title & Y Title
-      plotList_j  <- list(spacer1=spacer0, plot=plotGrid_j, legend=grobLgd0)
-      nModels |> print()
+      # plotList_j  <- list(spacer1=spacer0, plot=plotGrid_j, spacer2=spacer0, legend=grobLgd0)
+      # plotList_j  <- list(spacer1=spacer0, plot=plotGrid_j, legend=grobLgd0)
+      plotList_j  <- list(spacer1=spacer0, plot=plotGrid_j, spacer2=spacer0)
+      # nModels |> print()
       modMult     <- (nModels - 1) %/% nLgdCols + 1
-      plotGrid_j  <- ggarrange(plotlist=plotList_j, nrow=3, ncol=1, legend="none", heights=c(0.01, nImpTypes, 0.2 * modMult))
+      # plotGrid_j  <- ggarrange(plotlist=plotList_j, nrow=4, ncol=1, legend="none", heights=c(0.01, nImpTypes, 0.01, 0.2))
+      # plotGrid_j  <- ggarrange(plotlist=plotList_j, nrow=4, ncol=1, legend="none", heights=c(0.01, nImpTypes, 0.01, 0.2 * modMult))
+      # plotGrid_j  <- ggarrange(plotlist=plotList_j, nrow=3, ncol=1, legend="none", heights=c(0.01, nImpTypes, 0.2))
+      plotGrid_j  <- ggarrange(plotlist=plotList_j, nrow=3, ncol=1, legend="none", heights=c(0.01, nImpTypes, 0.01))
       title0_j    <- sector0
-      grobTit_j   <- text_grob(title0_j, color="black", size=14, face="bold", hjust=0.5)
+      grobTit_j   <- text_grob(title0_j, color="black", size = 14, face="bold", hjust=0.5)
+      plotGrid_j  <- plotGrid_j |> annotate_figure(top=grobTit_j)
+      
       plotYTit_j  <- text_grob(yTitle, color = "black", rot  = 90)
-      plotGrid_j  <- plotGrid_j |> annotate_figure(top=grobTit_j, left=plotYTit_j)
+      plotList_j  <- list(spacer1=spacer0, plot=plotGrid_j, spacer2=spacer0)
+      plotGrid_j  <- ggarrange(plotlist=plotList_j, nrow=1, legend="none", widths=c(0.01, nRegions, 0.01))
+      plotGrid_j  <- plotGrid_j |> annotate_figure(left=plotYTit_j)
       # return(plotGrid_j)
       
       ###### Return Impact Type Plot ######
