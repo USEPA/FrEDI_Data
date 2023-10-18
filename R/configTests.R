@@ -427,7 +427,7 @@ general_config_test <- function(
     rm("name_i")
   }
   ### Add to return list
-  saveList[["scaledImpactPlots" ]] <- list(data=scaledData, plots=scaledPlots)
+  saveList[["scaledImpactsPlots"]] <- list(data=scaledData, plots=scaledPlots)
   rm("scaledData", "scaledPlots")
   ###### Save Outputs ######
   ### Save the workbook
@@ -651,6 +651,9 @@ make_scaled_impact_plots <- function(
       theme      = NULL
     )
 ){
+  ###### Get from FrEDI Namespace ######
+  addListNames <- utils::getFromNamespace("addListNames", "FrEDI")
+  
   ### Other values
   # years      <- c("NA", "2010", "2090")
   years      <- df0[["impactYear"]] |> unique()
@@ -762,6 +765,8 @@ save_scaled_impact_figures <- function(
     units     = "in",
     createDir = TRUE ### Whether to create directory if it doesn't exist
 ){
+  ### Get from FrEDI Namespace
+  check_and_create_path <- utils::getFromNamespace("check_and_create_path", "FrEDI")
   ### Create directory if it doesn't exist
   fdir      <- fpath; rm("fpath")
   fdir      <- fdir |> file.path(byState |> ifelse("images-state", "images"))
