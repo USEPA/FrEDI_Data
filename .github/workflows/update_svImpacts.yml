@@ -41,6 +41,7 @@ jobs:
           cache-version: 1
           packages: |
             any::tidyverse
+            any::ggpubr
             any::openxlsx
             any::devtools
       
