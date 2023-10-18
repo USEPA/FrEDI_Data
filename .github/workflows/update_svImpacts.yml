@@ -60,7 +60,8 @@ jobs:
         run: |
           Rscript -e '
             source("./scripts/update_svImpactLists.R")
-            fpath1      <- getwd()
+            fpath1      <- "."
+            fpath1 |> print()
             sectors1    <- c("${{ github.event.inputs.svSectors }}")
             list1       <- update_svImpactLists(
               fpath0  = fpath1,
