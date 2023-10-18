@@ -767,6 +767,7 @@ save_scaled_impact_figures <- function(
 ){
   ### Get from FrEDI Namespace
   check_and_create_path <- utils::getFromNamespace("check_and_create_path", "FrEDI")
+  save_image            <- utils::getFromNamespace("save_image", "FrEDI")
   ### Create directory if it doesn't exist
   fdir      <- fpath; rm("fpath")
   fdir      <- fdir |> file.path(byState |> ifelse("images-state", "images"))
