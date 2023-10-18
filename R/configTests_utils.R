@@ -118,6 +118,10 @@ get_region_plotInfo <- function(
   ###### Initialize Return List ######
   list0  <- list()
   
+  ###### Get from FrEDI Namespace ######
+  fun_limitsByGroup <- utils::getFromNamespace("fun_limitsByGroup", "FrEDI")
+  get_column_values <- utils::getFromNamespace("get_column_values", "FrEDI")
+  
   ###### Grouping Columns ######
   ### Add state to grouping
   if(byState){
@@ -273,6 +277,10 @@ create_scaledImpact_plot <- function(
   ###### Messaging ######
   print_msg <- !silent
   if(print_msg){ "Running create_scaledImpact_plot()..." |> message()}
+  
+  ###### Get from FrEDI Namespace ######
+  get_colScale <- utils::getFromNamespace("get_colScale", "FrEDI")
+  addListNames <- utils::getFromNamespace("addListNames", "FrEDI")
   
   ###### Data ######
   df0        <- data |> filter(sector     == sector0)
@@ -517,6 +525,10 @@ create_scaledImpact_plots <- function(
   do_gcm    <- "gcm" %in% (modelType |> tolower())
   do_slr    <- "slr" %in% (modelType |> tolower())
   # modelType |> print(); do_gcm |> print(); do_slr |> print()
+  
+  ###### Get from FrEDI Namespace ######
+  get_colScale <- utils::getFromNamespace("get_colScale", "FrEDI")
+  addListNames <- utils::getFromNamespace("addListNames", "FrEDI")
   
   ###### Format Data ######
   ### Filter to sector and convert to data frame
