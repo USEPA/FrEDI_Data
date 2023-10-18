@@ -51,10 +51,10 @@ jobs:
       - name: Run createsystemData
         run: |
           Rscript -e '
-          "./data_tests/" |> list.files() |> print()
-          "./data/" |> list.files() |> print()
-          source("./scripts/createSystemData_main.R")
-          getwd() |> print()
+          projectDir <- "."
+          scriptDir  <- projectDir |> file.path("scripts")
+          scriptDir |> file.path("configureFrediData.R") |> source()
+          test0      <- projectDir |> configureFrediData(save=T)
           "./data_tests/" |> list.files() |> print()
           "./data/" |> list.files() |> print()
           '
@@ -64,7 +64,7 @@ jobs:
         with:
           name: Data
           path: |
-            ./data_tests/
+            ./data_tests/*
             ./data/tmp_sysdata.rda
       
 
