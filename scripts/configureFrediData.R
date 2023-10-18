@@ -57,7 +57,7 @@ list_reshapeData <- list_loadData |> reshapeData(silent=T)
 returnList[["reshapedDataList"]] <- list_reshapeData
 
 ###### 3. Configure Data ######
-list_systemData0 <- list_reshapeData |> createSystemData(save=F, silent=T, outPath= dataOutDir |> file.path("tmp_sysdata.rda"))
+list_systemData0 <- list_reshapeData |> createSystemData(save=save, silent=T, outPath=dataOutDir |> file.path("tmp_sysdata.rda"))
 ### Add to list
 returnList[["systemDataList"]] <- list_systemData0
 
@@ -65,7 +65,7 @@ returnList[["systemDataList"]] <- list_systemData0
 test_general_config <- general_config_test(
   reshapedData   = list_reshapeData,
   configuredData = list_systemData0,
-  save           = TRUE,
+  save           = save,
   overwrite      = TRUE,
   xlsxName       = "generalConfig_testResults.xlsx",
   fredi_config   = fredi_config
