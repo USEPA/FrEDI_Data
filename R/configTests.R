@@ -764,7 +764,7 @@ save_scaled_impact_figures <- function(
 ){
   ### Create directory if it doesn't exist
   fdir      <- fpath; rm("fpath")
-  fdir      <- fdir |> file.path("images")
+  fdir      <- fdir |> file.path(byState |> ifelse("images-state", "images"))
   created0  <- fdir |> check_and_create_path(createDir=createDir)
   ### Prepare data
   df0       <- df0  |> filter(model_type %in% modelType)
