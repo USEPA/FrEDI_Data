@@ -53,7 +53,7 @@ jobs:
           Rscript -e '
           projectDir <- "."
           scriptDir  <- projectDir |> file.path("scripts")
-          scriptDir |> file.path("configureFrediData") |> source()
+          scriptDir |> file.path("configureFrediData.R") |> source()
           test0      <- projectDir |> configureFrediData(save=T)
           "./data_tests/" |> list.files() |> print()
           "./data/" |> list.files() |> print()
