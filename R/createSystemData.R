@@ -21,13 +21,13 @@ createSystemData <- function(
   
   ###### Create File Paths ######
   ### Output file
-  outPath     <- ifelse(outPath %>% is.null, "." %>% file.path("data", "sysdata.rda"), outPath)
+  outPath     <- if (is.null(outPath)) {"." %>% file.path("data", "sysdata.rda")} else {outPath}
   sysDataFile <- outPath %>% basename()
   sysDataPath <- outPath %>% dirname()
   sysDataFile <- sysDataPath %>% file.path(sysDataFile)
   # sysDataFile %>% print
   ### Config file
-  configPath <- ifelse(configPath %>% is.null, "." %>% file.path("R", "fredi_config.R"), configPath)
+  configPath <- if (is.null(configPath)) {"." %>% file.path("R", "fredi_config.R")} else {configPath}
   configFile <- configPath %>% basename()
   configPath <- configPath %>% dirname()
   configFile <- configPath %>% file.path(configFile)
@@ -47,7 +47,7 @@ createSystemData <- function(
   get_uniqueValues      <- utils::getFromNamespace("get_uniqueValues"     , "FrEDI")
   get_scenario_id       <- utils::getFromNamespace("get_scenario_id"      , "FrEDI")
   extend_slr            <- utils::getFromNamespace("extend_slr"           , "FrEDI")
-  
+
   get_impactFunctions   <- utils::getFromNamespace("get_impactFunctions"  , "FrEDI")
   interpolate_annual    <- utils::getFromNamespace("interpolate_annual"   , "FrEDI")
   match_scalarValues    <- utils::getFromNamespace("match_scalarValues"   , "FrEDI")
@@ -59,17 +59,17 @@ createSystemData <- function(
   ###### Table names physScalars_table1, econScalars_table1, outputs_table1, co_sectors
   ### Add loaded tables to data list
   ### Load data from file
-  loadDataList <- dataList 
+  loadDataList <- dataList
   rDataList    <- rDataList %>% c(loadDataList)
   if(msgUser) {paste0("\t", messages_data[["loadInputs"]]$success) %>% message()}
-  for(name_i in names(loadDataList)) {assign(name_i, loadDataList[[name_i]]); rm("name_i")} 
+  for(name_i in names(loadDataList)) {assign(name_i, loadDataList[[name_i]]); rm("name_i")}
   
   ###### Sector Info ######
   ### Exclude some sectors, get the number of sectors and sector info
   ### Sector info with additional sector info: df_sectorsInfo
   ### Sector info with models: df_sectorsModels
-  num_sectors  <- co_sectors %>% nrow #; num_sectors
-  sector_ids   <- co_sectors$sector_id
+  num_sectors  <- if (byState) {co_stateSectors %>% nrow}  else {co_sectors %>% nrow} #; num_sectors
+  sector_ids   <- if (byState) {co_stateSectors$sector_id} else {co_sectors$sector_id}
   
   ###### Default Driver Scenarios ######
   ### Get reference years and add to fredi_config
@@ -106,32 +106,38 @@ createSystemData <- function(
   ###### Default Socioeconomic Scenario ######
   ### Columns
   gdpCols     <- c("year", "gdp_usd")
-  popCols     <- c("year", "region", "reg_pop")
   group0      <- c("year")
-  sum0        <- c("reg_pop")
-  drop0       <- c("region")
   nationalDot <- c("National.Total")
+  drop0       <- c("region")
+  
+  if (byState) {
+    popCols     <- c("year", "state", "postal", "state_pop")
+    popColName  <- "state_pop"
+  } else {
+    popCols     <- c("year", "region", "reg_pop")
+    popColName  <- "reg_pop"
+    gdp_default <- co_defaultScenario %>% filter(region == co_regions$region[1])
+  }
   
   ### Interpolate annual values for GDP:
   ### Filter to first unique region
   ### Select GDP columns and add national total
-  gdp_default <- co_defaultScenario %>% filter(region==co_regions$region[1])
-  gdp_default <- gdp_default        %>% select(c(all_of(gdpCols))) %>% mutate(region=nationalDot)
-  gdp_default <- gdp_default        %>% interpolate_annual(years = list_years, column = "gdp_usd", rule=1:2)
-  gdp_default <- gdp_default        %>% select(-c(all_of(drop0)))
+  gdp_default <- gdp_default %>% select(c(all_of(gdpCols))) %>% mutate(region = nationalDot)
+  gdp_default <- gdp_default %>% interpolate_annual(years = list_years, column = "gdp_usd", rule = 1:2)
+  gdp_default <- gdp_default %>% select(-c(any_of(drop0)))
   rDataList[["gdp_default"]] <- gdp_default
   
   ### Interpolate annual values for population and add to data list
   pop_default <- co_defaultScenario %>% select(c(all_of(popCols)))
-  pop_default <- pop_default        %>% interpolate_annual(years = list_years, column="reg_pop", rule=1:2)
+  pop_default <- pop_default        %>% interpolate_annual(years = list_years, column = popColName, rule = 1:2, byState = byState)
   rDataList[["pop_default"]] <- pop_default
   # pop_default %>% names %>% print
   
   ### Calculate national population and add to data list
   df_national <- pop_default %>% 
     group_by_at(.vars=c(group0)) %>% 
-    summarize_at(.vars=c(sum0), sum, na.rm=T) %>% ungroup
-  df_national <- df_national %>% rename_at(.vars=c(sum0), ~c("national_pop"))
+    summarize_at(.vars=c(popColName), sum, na.rm=T) %>% ungroup
+  df_national <- df_national %>% rename_at(.vars=c(popColName), ~c("national_pop"))
   rDataList[["national_pop_default"]] <- df_national
   # df_national %>% names %>% print
  
@@ -144,7 +150,7 @@ createSystemData <- function(
   rDataList[["df_defaultScenario"]] <- df_national
   # df_defaultScenario %>% names %>% print
   ### Drop intermediate values
-  rm("gdpCols", "popCols", "group0", "sum0", "drop0", "nationalDot")
+  rm("gdpCols", "popCols", "group0", "popColName", "drop0", "nationalDot")
   rm("gdp_default", "pop_default")
   
   ###### Extreme SLR Scenarios ######
@@ -183,7 +189,8 @@ createSystemData <- function(
   df_mainScalars <- fun_formatScalars(
     data_x  = scalarDataframe, ### rDataList$scalarDataframe
     info_x  = co_scalarInfo,   ### rDataList$co_scalarInfo
-    years_x = list_years       ### rDataList$list_years
+    years_x = list_years,      ### rDataList$list_years
+    byState = byState
   )
   rDataList[["df_mainScalars"]] <- df_mainScalars
   
@@ -202,14 +209,14 @@ createSystemData <- function(
   
   ### Physical adjustment
   # df_mainScalars %>% names %>% print; df_results0 %>% names %>% print
-  df_results0 <- df_results0  %>% match_scalarValues(df_mainScalars, scalarType="physAdj")
+  df_results0 <- df_results0 %>% match_scalarValues(df_mainScalars, scalarType="physAdj")
   ### Damage adjustment
-  df_results0 <- df_results0  %>% match_scalarValues(df_mainScalars, scalarType="damageAdj")
+  df_results0 <- df_results0 %>% match_scalarValues(df_mainScalars, scalarType="damageAdj")
   ### Economic scalar
-  df_results0 <- df_results0  %>% match_scalarValues(df_mainScalars, scalarType="econScalar")
+  df_results0 <- df_results0 %>% match_scalarValues(df_mainScalars, scalarType="econScalar")
   ### Drop extra columns and add to data list
-  drop0       <- c("gdp_usd", "reg_pop", "national_pop", "gdp_percap")
-  df_results0 <- df_results0  %>% select(-c(all_of(drop0)))
+  drop0       <- c("gdp_usd", "reg_pop", "state_pop", "national_pop", "gdp_percap")
+  df_results0 <- df_results0 %>% select(-c(any_of(drop0)))
   rDataList[["df_results0"]] <- df_results0
   ### Message the user
   if(msgUser) {paste0("\t", messages_data[["calcScalars"]]$success) %>% message()}
@@ -219,7 +226,12 @@ createSystemData <- function(
   ### Get list of scenarios for scenarios with at least some non-NA values
   ### Add information on non-missing scenarios to scaled impacts data
   # data_scaledImpacts %>% glimpse
-  data_scaledImpacts <- data_scaledImpacts %>% get_scenario_id(include=c("model_dot", "region_dot"))
+  if (byState) {
+    includeCols <- c("state", "postal", "model_dot")
+  } else {
+    includeCols <- c("model_dot", "region_dot")
+  }
+  data_scaledImpacts <- data_scaledImpacts %>% get_scenario_id(include=includeCols)
   c_scenariosList    <- data_scaledImpacts %>% filter(!is.na(scaledImpact)) %>% get_uniqueValues(column="scenario_id")
   data_scaledImpacts <- data_scaledImpacts %>% mutate(hasScenario = (scenario_id %in% c_scenariosList))
   # rm("c_scenariosList")

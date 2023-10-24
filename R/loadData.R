@@ -5,7 +5,8 @@ loadData <- function(
     fileDir   = "." %>% file.path("inst", "extdata"), ### Path to project
     fileName  = NULL, ### name of excel file with config information
     sheetName = "tableNames",
-    silent    = FALSE
+    silent    = FALSE,
+    byState   = FALSE
 ) {
   # if(is.null(sheetName)){sheetName <- "tableNames"}
   # print(getwd())
@@ -81,17 +82,20 @@ loadData <- function(
     rm("table_i", "tableInfo_i", "tableName_i", "i")
   } ### End lapply
   
-  
-  state_sectors <- dataList$co_sectors %>% filter(byState == 1)
-  state_sectors <- state_sectors$sector_id %>% unique
-  state_data <- fileDir %>%
-    file.path("state") %>%
-    loadStateData(sectors = state_sectors)
+  if (byState) {
+    state_sectors <- dataList$co_sectors %>% filter(byState == 1)
+    state_sectors <- state_sectors$sector_id %>% unique
+    state_data <- fileDir %>%
+      file.path("state") %>%
+      loadStateData(sectors = state_sectors)
+    yr_gdp <- dataList$co_defaultScenario %>% select(year, gdp_usd)
     
-  dataList$data_scaledImpactsState <- state_data$df_gcmStateImpacts
-  dataList$slrImpactsState         <- state_data$df_slrStateImpacts
-  dataList$scalarDataframeState    <- state_data$df_stateScalars
-  dataList$co_defaultScenarioState <- state_data$df_statePop
-  
+    dataList$data_scaledImpacts <- state_data$df_gcmStateImpacts
+    dataList$slrImpacts         <- state_data$df_slrStateImpacts
+    dataList$scalarDataframe    <- state_data$df_stateScalars
+    dataList$co_defaultScenario <- state_data$df_statePop
+    dataList$gdp_default        <- yr_gdp
+  }
+
   return(dataList)
 }
