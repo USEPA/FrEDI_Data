@@ -31,9 +31,9 @@ configureSystemData <- function(
   ###### Initialize Object List ######
   ### Initialize list of objects to return
   rDataList  <- list()
-  rDataList[["rDataList"]] <- list(name="rDataList", data=list())
-  rDataList[["region"   ]] <- list(name="region"   , data=list())
-  rDataList[["state"    ]] <- list(name="state"    , data=list())
+  rDataList[["frediData" ]] <- list(name="frediData" , data=list())
+  rDataList[["regionData"]] <- list(name="region"   , data=list())
+  rDataList[["stateData" ]] <- list(name="stateData" , data=list())
   
   ###### Regional Data ######
   msg0 |> paste0("Configuring region-level data...") |> message()
@@ -63,8 +63,8 @@ configureSystemData <- function(
   which0     <- inList0 |> which()
   which1     <- (!inList0) |> which()
   ### Update objects
-  rDataList[["rDataList"]][["data"]] <- sysDataList0[which0]
-  rDataList[["region"   ]][["data"]] <- sysDataList0[which1]
+  rDataList[["frediData" ]][["data"]] <- sysDataList0[which0]
+  rDataList[["regionData"]][["data"]] <- sysDataList0[which1]
   ### Remove objects
   rm(names0, inList0, which0, which1)
   rm(loadList0, reshapeList0, sysDataList0)
@@ -94,7 +94,7 @@ configureSystemData <- function(
   inList0    <- (names0 %in% objects0)
   which1     <- (!inList0) |> which()
   ### Update objects
-  rDataList[["state"    ]][["data"]] <- sysDataList0[which1]
+  rDataList[["stateData" ]][["data"]] <- sysDataList0[which1]
   ### Remove objects
   rm(names0, inList0, which1)
   rm(loadList0, reshapeList0, sysDataList0)
