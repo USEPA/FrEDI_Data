@@ -106,10 +106,17 @@ configureSystemData <- function(
   ### - Check if the output file directory exists
   ### - If the outpath exists, try to save the file
   if(save) {
-    paste0("\n", "Saving results to ", sysDataPath, "...") |> message()
+    paste0("\n", msg0, "Saving results to ", sysDataPath, "...") |> message()
     outPathExists <- sysDataPath |> dir.exists()
-    expr0         <- try(save(rDataList[["fredi_config"]], rDataList, file=sysDataFile), silent=T)
-    if(outPathExists) {trySave <- expr0 |> eval()} ### End if outPathExists
+    fredi_config <- rDataList[["frediData"]][["data"]][["fredi_config"]]
+    if(outPathExists){ 
+      save(fredi_config, rDataList, file=sysDataFile)
+    } else{
+      paste0(msg0, "Warning: outPath = ", sysDataPath, "doesn't exist!") |> message()
+      paste0(msg0, msg0, "Exiting without saving...") |> message()
+    }
+    # expr0         <- try(save(rDataList[["fredi_config"]], rDataList, file=sysDataFile), silent=T) |> expression()
+    # if(outPathExists) {trySave <- expr0 |> eval()} ### End if outPathExists
   } ### End if save
   # rDataList |> names() |> print()
   
