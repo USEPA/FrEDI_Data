@@ -31,6 +31,7 @@ jobs:
           cache-version: 1
           packages: |
             any::tidyverse
+            any::ggpubr
             any::openxlsx
             any::devtools
 
@@ -51,10 +52,10 @@ jobs:
       - name: Run createsystemData
         run: |
           Rscript -e '
-          "./data_tests/" |> list.files() |> print()
-          "./data/" |> list.files() |> print()
-          source("./scripts/createSystemData_main.R")
-          getwd() |> print()
+          projectDir <- "."
+          scriptDir  <- projectDir |> file.path("scripts")
+          scriptDir |> file.path("configureFrediData.R") |> source()
+          test0      <- projectDir |> configureFrediData(save=T)
           "./data_tests/" |> list.files() |> print()
           "./data/" |> list.files() |> print()
           '
@@ -64,7 +65,7 @@ jobs:
         with:
           name: Data
           path: |
-            ./data_tests/
+            ./data_tests/*
             ./data/tmp_sysdata.rda
       
 
@@ -72,7 +73,7 @@ jobs:
         run: |
           git config --local core.autocrlf false
           git config --local user.email "${{ github.actor }}@users.noreply.github.com"
-          git config --local user.name "${{ github.actor }}"
+          git config --local user.name  "${{ github.actor }}"
           git add data/tmp_sysdata.rda
           git add data_tests/**.xlsx
           git pull origin ${{ github.head_ref }} --autostash --rebase -X ours
