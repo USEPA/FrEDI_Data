@@ -24,16 +24,18 @@ Authors@R: c(person("Corinne", "Hartin",
               )
 URL: https://usepa.github.io/FrEDI, https://epa.gov/cira/FrEDI/, https://github.com/USEPA/FrEDI/
 Description: This R package compiles data used in the FrEDI R package. 
-This package includes functions used in processing underlying data and 
-scripts for compiling and testing the compiled data.
+    This package includes functions used in processing underlying data and 
+    scripts for compiling and testing the compiled data.
 License: file LICENSE
 Encoding: UTF-8
 Depends: 
     tidyverse,
-    openxlsx
+    openxlsx,
+    devtools,
+    ggpubr
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
 LazyData: TRUE
-Suggests: knitr, rmarkdown, prettydoc
+Suggests: knitr, rmarkdown, prettydoc,kableExtra
 VignetteBuilder: knitr
 Language: en-US
