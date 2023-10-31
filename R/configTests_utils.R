@@ -112,6 +112,7 @@ get_region_plotInfo <- function(
     yCol      = "scaled_impacts",
     byState   = FALSE,
     groupCols = c("sector", "variant", "impactType", "impactYear", "region", "model"),
+    # groupCols = c("sector", "variant", "impactType", "impactYear", "region", "state", "postal", "model"),
     nCol      = 4,
     silent    = TRUE
 ){
@@ -130,7 +131,7 @@ get_region_plotInfo <- function(
     groupCols <- groupCols |> c(group0)
     rm(group0)
   } ### End if(byType)
-  
+  # groupCols |> print()
   ###### Get Value Ranges ######
   # df0 |> glimpse()
   df_sectorInfo <- df0 |> fun_limitsByGroup(
@@ -142,12 +143,12 @@ get_region_plotInfo <- function(
   
   ###### Number of NA Values ######
   ### Get number of observations in a group
-  group0        <- groupCols
+  group0        <- groupCols[!(groupCols %in% c("state", "postal"))]
   df_na         <- df0 |> 
     mutate_at(.vars=c(yCol), is.na) |>
     rename_at(.vars=c(yCol), ~c("nNA")) |>
     mutate(nObs = 1) |>
-    group_by_at(.vars=c(groupCols)) |> 
+    group_by_at(.vars=c(group0)) |> 
     summarize_at(.vars=c("nObs", "nNA"), sum) |> ungroup()
   # ### Get number of NA values
   # df0 |> nrow() |> print(); df0[[yCol]] |> length() |> print()
@@ -157,6 +158,8 @@ get_region_plotInfo <- function(
   #   summarize(nNA=isNA |> sum(), .groups="keep") |> ungroup()
   # ### Join observations
   # df_na         <- df_obs |> left_join(df_na, by=c(group0))
+  
+  
   ### Join with df_sectorInfo
   df_sectorInfo <- df_sectorInfo |> left_join(df_na, by=c(group0))
   ### Drop values for which nObs == nNA
@@ -393,8 +396,8 @@ create_scaledImpact_plot <- function(
   if(!hasTheme  ){theme0  <- def_theme }
   # xTitle |> print()
   ###### Standardize column names ######
-  title0 <- byState |> ifelse(state0, region0)
-  title0 <- "Region: " |> paste0(title0)
+  # title0 <- byState |> ifelse(state0, region0)
+  title0 <- "Region: " |> paste0(region0)
   
   ###### Create the plot ######
   # colorCol |> print(); def_lgdLbl |> print()
@@ -410,18 +413,8 @@ create_scaledImpact_plot <- function(
   else      {df_points0 <- df0}
   
   ### Plot
-  # if(byState){
-  #   plot0  <- df0 |> ggplot(aes(x=.data[[xCol]], y=.data[[yCol]], color=.data[[colorCol]], group=interaction(sector, variant, impactType, impactYear, region, state, model)))
-  # } else{
-  #   plot0  <- df0 |> ggplot(aes(x=.data[[xCol]], y=.data[[yCol]], color=.data[[colorCol]], group=interaction(sector, variant, impactType, impactYear, region, model)))
-  # }
-  # if(byState){
-  #   plot0  <- df0 |> ggplot(aes(x=.data[[xCol]], y=.data[[yCol]], color=.data[[variant]], group=interaction(sector, variant, impactType, impactYear, region, state, model)))
-  # } else{
-  #   plot0  <- df0 |> ggplot(aes(x=.data[[xCol]], y=.data[[yCol]], color=.data[[variant]], group=interaction(sector, variant, impactType, impactYear, region, model)))
-  # }
   if(byState){
-    plot0  <- df0 |> ggplot(aes(x=.data[[xCol]], y=.data[[yCol]], color=.data[["region"]], group=interaction(sector, variant, impactType, impactYear, region, state, model)))
+    plot0  <- df0 |> ggplot(aes(x=.data[[xCol]], y=.data[[yCol]], color=.data[["state"]], group=interaction(sector, variant, impactType, impactYear, region, state, model)))
   } else{
     plot0  <- df0 |> ggplot(aes(x=.data[[xCol]], y=.data[[yCol]], color=.data[["region"]], group=interaction(sector, variant, impactType, impactYear, region, model)))
   }
@@ -431,8 +424,14 @@ create_scaledImpact_plot <- function(
   # plot0  <- plot0 + facet_grid(.~.data[[facetCol]])
   # plot0  <- plot0 + facet_grid(model~region)
   # plot0  <- plot0 + facet_grid(model~.data[[facetCol]])
-  plot0  <- plot0 + facet_grid(model~.data[["region"]])
-  
+  # plot0  <- plot0 + facet_grid(model~.data[["region"]])
+  # plot0 |> print()
+  if(byState){
+    plot0  <- plot0 + facet_grid(model~.data[["state"]])
+  } else{
+    plot0  <- plot0 + facet_grid(model~.data[["region"]])
+  }
+  # plot0 |> print()
   ###### ** Adjust legend title ######
   if(hasLgdPos){plot0 <- plot0 + guides(color = guide_legend(title.position = lgdPos))}
   plot0  <- plot0 + theme(legend.direction = "vertical", legend.box = "vertical")
@@ -622,7 +621,7 @@ create_scaledImpact_plots <- function(
   nVariants     <- cVariants |> length()
   nImpTypes     <- cImpTypes |> length()
   nImpYears     <- cImpYears |> length()
-  nRegions      <- cRegions  |> length()
+  # nRegions      <- cRegions  |> length()
   nStates       <- cStates   |> length()
   # cSectors |> print(); cVariants |> print(); cImpTypes |> print(); cImpYears |> print(); cStates |> head() |> print(); cModels |> print();
   # c(nSectors, nVariants, nImpTypes, nImpYears, nRegions, nModels, nStates) |> print()
@@ -633,8 +632,10 @@ create_scaledImpact_plots <- function(
   if(byState){join0 <- join0 |> c("state", "postal")}
   df0           <- df0 |> left_join(df_info, by=c(join0))
   df0           <- df0 |> filter(!is.na(nObs))
-  cModels       <- df0[["model"]] |> unique()
+  cModels       <- df0[["model" ]] |> unique()
+  cRegions      <- df0[["region"]] |> unique()
   nModels       <- cModels   |> length()
+  nRegions      <- cRegions  |> length()
   rm(join0)
   # nRegions |> print()
   # df0[["region"]] |> unique() |> print()
@@ -642,7 +643,7 @@ create_scaledImpact_plots <- function(
   # df0           <- df0 |> filter(variant    %in% cVariants)
   # df0           <- df0 |> filter(impactType %in% cImpTypes)
   # df0           <- df0 |> filter(impactYear %in% cImpYears)
-  # df0           <- df0 |> filter(region     %in% cRegions)
+  df0           <- df0 |> filter(region     %in% cRegions)
   # df0           <- df0 |> filter(model      %in% cModels)
   
   
@@ -748,11 +749,13 @@ create_scaledImpact_plots <- function(
   
   ###### Create Plot List ######
   ### Iterate over Impact Years
+  # cIter1 |> print()
   listIter1 <- cIter1 |> map(function(iter1_i){
     listYears0 <- cImpYears |> map(function(impYear_j){
       listTypes_j <- cImpTypes |> map(function(impType_k){
         ### Figure out min/max across all variants for an impact type to get the y-scale
         region_k  <- iter1_i
+        # "\t\t" |> paste0(c(iter1_i, impYear_j, impType_k, region_k) |> paste(collapse=", ")) |> message()
         ###### Create the plot ######
         plot_k    <- df0 |> create_scaledImpact_plot(
           sector0   = sector0,

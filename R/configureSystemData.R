@@ -36,7 +36,7 @@ configureSystemData <- function(
   rDataList[["stateData" ]] <- list(name="stateData" , data=list())
   
   ###### Regional Data ######
-  msg0 |> paste0("Configuring region-level data...") |> message()
+  "\n" |> paste0(msg0, "Configuring region-level data...") |> message()
   ###### 1. Load Excel Data ######
   ### list_loadData
   byState0    <- FALSE
@@ -70,7 +70,7 @@ configureSystemData <- function(
   rm(loadList0, reshapeList0, sysDataList0)
   
   ###### State Data ######
-  msg0 |> paste0("Configuring state-level data...") |> message()
+  "\n" |> paste0(msg0, "Configuring state-level data...") |> message()
   ###### 1. Load Excel Data ######
   ### list_loadData
   byState0    <- TRUE
