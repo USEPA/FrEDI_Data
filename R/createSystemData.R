@@ -169,6 +169,7 @@ createSystemData <- function(
   string0     <- c("slr")
   ### Replace NA values
   slr_cm      <- slr_cm     |> mutate_at(.vars = c(mutate0), replace_na, string0)
+  # slrImpacts |> glimpse()
   slrImpacts  <- slrImpacts |> mutate_at(.vars = c(mutate0), replace_na, string0)
   ### Convert to character
   slr_cm      <- slr_cm     |> mutate_at(.vars = c(mutate0), as.character)
@@ -184,9 +185,14 @@ createSystemData <- function(
   c_cm         <- c("model", "year")
   c_imp        <- c("sector", "variant", "impactType", "impactYear", "region")
   if(byState){c_imp <- c_imp |>  c("state", "postal", "year")} else{ c_imp <- c_imp |> c("year")}
-  slr_cm       <- slr_cm      |> extend_slr(arrange_x=c_cm)
-  slrImpacts   <- slrImpacts  |> extend_slr(arrange_x=c_imp)
-  slrExtremes  <- slrExtremes |> extend_slr(arrange_x=c_imp)
+  # slr_cm       <- slr_cm      |> extend_slr(arrange_x=c_cm)
+  # slrImpacts   <- slrImpacts  |> extend_slr(arrange_x=c_imp)
+  # slrExtremes  <- slrExtremes |> extend_slr(arrange_x=c_imp)
+  df_newYears  <- tibble(year = seq(2091, 2300, by=1))      
+  slr_cm       <- slr_cm      |> extend_data()
+  slrImpacts   <- slrImpacts  |> extend_data()
+  slrExtremes  <- slrExtremes |> extend_data()
+
   ### Update in data list and remove objects
   rDataList[["slr_cm"     ]] <- slr_cm
   rDataList[["slrImpacts" ]] <- slrImpacts
