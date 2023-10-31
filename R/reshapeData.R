@@ -347,22 +347,22 @@ reshapeData <- function(
   dataList[["slrImpacts"        ]] <- slrImpacts
   
   ###### ** Reshape Scalars ######
-  ### refactor region
-  ### Update in list
+  ### state scalars
+  if (byState) {
+    select0         <- c("state", "postal", "region")
+    select1         <- c("scalarName", "scalarLabel", "scalarType")
+    # scalarDataframe |> glimpse()
+    scalarDataframe <- scalarDataframe |> left_join(co_states |> select(c(all_of(select0))), by=c("state", "postal"))
+    scalarDataframe <- scalarDataframe |> left_join(co_scalarInfo |> select(c(all_of(select1))), by=c("scalarName"))
+    rm(select0, select1)
+  }
+  ### refactor region, Update in list
   ### Remove intermediate objects
   levels0 <- co_regions[["region_label"]] |> c("National Total")
   labels0 <- co_regions[["region_dot"  ]] |> c("National.Total")
   scalarDataframe <- scalarDataframe |> mutate(region = region |> factor(levels0, labels0) |> as.character())
   dataList[["scalarDataframe"]] <- scalarDataframe
   rm("levels0", "labels0")
-  
-  if (byState) {
-    ### state scalars
-    select0         <- c("scalarName", "scalarLabel", "scalarType")
-    scalarDataframe <- scalarDataframe |> left_join(co_scalarInfo |> select(c(all_of(select0))), by = c("scalarName"))
-    dataList[["scalarDataframe"]] <- scalarDataframe
-    rm(select0)
-  }
   
   ### Return the list of dataframes
   return(dataList)
