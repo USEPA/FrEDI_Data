@@ -455,7 +455,8 @@ get_fredi_sectorOptions <- function(
     byState = FALSE
 ){
   ### Assign data objects
-  df_sect    <- dataList[["co_sectors"    ]]
+  sectId     <- byState |> ifelse("co_stateSectors", "co_sectors")
+  df_sect    <- dataList[[sectId]]
   df_vars    <- dataList[["co_variants"   ]]
   df_types   <- dataList[["co_impactTypes"]]
   df_years   <- dataList[["co_impactYears"]]
@@ -471,13 +472,17 @@ get_fredi_sectorOptions <- function(
   # df_regions |> glimpse()
   # df_states |> glimpse()
   
+  ### State Columns
+  stateCols <- c()
+  if(byState){stateCols <- c("state", "postal")}
+  
   ### Select columns
   df_vars    <- df_vars    |> select(c("sector_id", "variant_label", "variant_id"))
   df_types   <- df_types   |> select(c("sector_id", "impactType_label", "impactType_id"))
   df_years   <- df_years   |> select(c("sector_id", "impactYear_label", "impactYear_id"))
   df_models  <- df_models  |> select(c("model_id", "model_dot", "model_label", "modelType"))
   df_regions <- df_regions |> select(c("region_label", "region_dot")) |> mutate(joinCol=1)
-  if(byState){df_states  <- df_states  |> select(c("state", "postal", "region_label"))}
+  df_states  <- df_states  |> select(c("state", "postal", "region")) |> rename_at(c("region"), ~"region_label")
   
   ### Join sectors and variants
   df_x       <- df_sect |> left_join(df_vars, by="sector_id")
@@ -487,7 +492,7 @@ get_fredi_sectorOptions <- function(
   df_x       <- df_x |> mutate(joinCol=1) |> 
     left_join(df_regions, by="joinCol", relationship = "many-to-many") |> 
     select(-c("joinCol"))
-  if(byState){df_x <- df_x |> left_join(df_states, by=c("region_dot"), relationship = "many-to-many")}
+  if(byState){df_x <- df_x |> left_join(df_states, by=c("region_label"), relationship = "many-to-many")}
   
   ### Get scenario ID
   ### c("sector", "variant", "impactYear", "impactType", "model_type")")
@@ -495,8 +500,7 @@ get_fredi_sectorOptions <- function(
   rename0    <- c("sector_id", "variant_id", "impactType_id", "impactYear_id", "region_dot", "model_label", "modelType")
   rename1    <- c("sector", "variant", "impactType", "impactYear", "region", "model", "model_type")
   df_x       <- df_x |> rename_at(.vars=c(rename0), ~c(rename1))
-  df_x       <- df_x |> get_scenario_id(include=c("model_dot", "region"))
-  if(byState){df_x <- df_x |> mutate(scenario_id = scenario_id |> paste0("_", postal))}
+  df_x       <- df_x |> get_scenario_id(include=c("model_dot", "region") |> c(stateCols))
   
   ### Rename columns
   rename0    <- c("sector", "variant", "impactType", "impactYear", "region")
@@ -513,8 +517,18 @@ get_fredi_sectorOptions_results <- function(
     dataList, ### Data list, rDataList produced by createSystemData
     byState = FALSE
 ){
+  
+  ###### Data Lists ######
+  dataId     <- byState |> ifelse("state", "region") |> paste0("Data")
+  frediData  <- dataList[["frediData"]][["data"]]
+  dataList   <- dataList[[dataId]][["data"]]
+  
+  ### State Columns
+  stateCols <- c()
+  if(byState){stateCols <- c("state", "postal")}
+  
   ###### Sector Options ######
-  df0        <- dataList |> get_fredi_sectorOptions()
+  df0        <- frediData |> get_fredi_sectorOptions(byState=byState)
   # df0 |> glimpse()
   
   ###### Split Data ######
@@ -534,13 +548,14 @@ get_fredi_sectorOptions_results <- function(
   ###### Do SLR Results ######
   if(do_slr){
     ### Load SLR data
+    
     slrImp     <- dataList[["slrImpacts"]]
     # slrImp |> glimpse(); 
     
     ### Join df_slr with impacts
     rename0    <- c("sector", "variant", "impactType", "impactYear", "region")
     rename1    <- c("sector_id", "variant_id", "impactType_id", "impactYear_id", "region_dot")
-    join0      <- rename1 |> c("model_dot", "model_type")
+    join0      <- rename1 |> c(stateCols) |> c("model_dot", "model_type")
     slrImp     <- slrImp |> rename_at(.vars=c(rename0), ~c(rename1))
     slrImp     <- slrImp |> select(-c("model"))
     # slrImp |> glimpse(); df_slr |> glimpse()
@@ -594,8 +609,10 @@ get_fredi_sectorOptions_results <- function(
     ### Join with df_gcm
     select0    <- c("scenario_id")
     # df_vals |> names() |> print(); df_gcm |> names() |> print()
+    # df_gcm     <- df_gcm |> relocate(c(all_of(select0)))
+    # df_gcm     <- df_gcm |> left_join(df_vals, by=c("scenario_id"))
+    df_gcm     <- df_vals |> left_join(df_gcm, by=c("scenario_id"))
     df_gcm     <- df_gcm |> relocate(c(all_of(select0)))
-    df_gcm     <- df_gcm |> left_join(df_vals, by=c("scenario_id"))
     # "got here" |> print()
     rm(df_vals)
     ### Add year
@@ -610,19 +627,21 @@ get_fredi_sectorOptions_results <- function(
   rename0    <- c("modelType_id", "modelUnit_label")
   rename1    <- c("model_type", "modelUnit")
   join0      <- c("model_type")
-  df_mTypes  <- dataList[["co_modelTypes" ]]
+  df_mTypes  <- frediData[["co_modelTypes" ]]
   df_mTypes  <- df_mTypes  |> rename_at(.vars=c(rename0), ~c(rename1))
   df0        <- df0 |> left_join(df_mTypes, by=c(join0))
   rm(rename0, rename1, join0)
   ###### Arrange ######
   ### Arrange and add scaled impacts to list of items to save
-  arrange0   <- c("sector", "variant", "impactType", "impactYear", "region", "model_type", "model")
-  if(byState){arrange0 <- arrange0 |> c("postal")}
+  arrange0   <- c("sector", "variant", "impactType", "impactYear", "region") |> c(stateCols) |> c("model_type", "model")
+  # if(byState){arrange0 <- arrange0 |> c("postal")}
   df0        <- df0 |> arrange_at(.vars=c(arrange0))
   rm(arrange0)
   ###### Select Columns ######
-  select0    <- c("scenario_id", "sector", "variant", "impactType", "impactYear", "region", "model_type", "model", "scaled_impacts", "modelUnit", "driverValue", "year")
-  if(byState){select0 <- select0 |> paste0("state", "postal")}
+  select0    <- c("scenario_id", "sector", "variant", "impactType", "impactYear", "region") |> 
+    c(stateCols) |> 
+    c("model_type", "model", "scaled_impacts", "modelUnit", "driverValue", "year")
+  # if(byState){select0 <- select0 |> paste0("state", "postal")}
   mutate0    <- c("variant", "impactType", "impactYear")
   df0        <- df0 |> mutate_at(.vars=c(mutate0), function(y){y |> na_if("N/A") |> replace_na("NA")})
   df0        <- df0 |> select(c(all_of(select0)))
@@ -698,6 +717,7 @@ make_scaled_impact_plots <- function(
         yCol      = yCol,
         xCol      = xCol_x,
         colorCol  = colorCol,
+        byState   = byState,
         silent    = TRUE,
         options   = options
       )

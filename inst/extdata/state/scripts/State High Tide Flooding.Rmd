@@ -1,0 +1,159 @@
+---
+title: "FrEDI State High Tide Flooding"
+author: "Industrial Economics, Inc."
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output:
+  rmarkdown::html_document:
+    theme: spacelab
+    toc: true
+    toc_float: true
+    code_folding: hide
+---
+
+```{=html}
+<style>
+/* Simplified version of Bootstrap's responsive table CSS */
+.table-responsive {
+display: block;
+width: 100%;
+overflow-x: auto;
+}
+
+.table-responsive > table {
+width: 100%;
+}
+</style>
+```
+
+```{r knitr setup, include=FALSE}
+### The following parameters declare the options for compiling the Markdown document.
+knitr::opts_chunk$set(
+  include = T,     ### Evaluate and depict outputs of code chunks in the compiled document
+  echo    = T,     ### Echo the commands of the code chunks in the compiled document
+  message = FALSE, ### Don't include command-line messages output from evaluating code chunks
+  cache   = FALSE, ### Don't cache the evaluation of code chunks
+  warning = FALSE, ### Don't include warnings from evaluating code chunks
+  table.format = "html"
+)
+```
+
+```{r load packages, echo = F}
+library(tidyverse)
+library(readxl)
+library(zoo)
+```
+
+## Set up workspace
+
+### Set Paths
+
+```{r set paths}
+# set relative file paths and create lists of input files
+projPath  <- getwd()
+dataPath  <- projPath %>% file.path("extdata")
+codePath  <- projPath %>% file.path("code")
+outPath   <- projPath %>% file.path("outputs")
+today     <- format(Sys.Date(), "%Y%m%d")
+files     <- list.files(dataPath)
+htf_files <- files %>% grep("HighTideFlooding", ., value = T)
+```
+
+### Code & custom functions
+
+```{r load code}
+for(code_i in list.files(codePath, pattern=".R", full.names = T)){source(code_i)}
+```
+
+### Set constants
+
+```{r set constants}
+# toggle whether to save final files
+saveFiles <- TRUE
+
+years <- as.character(2000:2100)
+```
+
+### Read in data
+
+The study authors provided annual county-level impact data for 6 different sea level rise trajectories and 3 adaptation scenarios.
+
+```{r read in data}
+# loop through FUTURE files, filter to just the HIF we'll use (AVERAGE), and save the data in a df
+htf_df <- data.frame()
+for (i in htf_files){
+  df_i <- dataPath %>% file.path(i) %>%
+          read.csv(header = T, check.names = F) %>%
+          mutate(variant = str_extract(i, "(?<=-)(.*?)(?=-)"),
+                 model = case_when(
+                   str_extract(i, "([^\\-]+)(?=\\.csv$)") == "low" ~ "0p3",
+                   str_extract(i, "([^\\-]+)(?=\\.csv$)") == "intlow" ~ "0p5",
+                   str_extract(i, "([^\\-]+)(?=\\.csv$)") == "int" ~ "1p0",
+                   str_extract(i, "([^\\-]+)(?=\\.csv$)") == "inthigh" ~ "1p5",
+                   str_extract(i, "([^\\-]+)(?=\\.csv$)") == "high" ~ "2p0",
+                   str_extract(i, "([^\\-]+)(?=\\.csv$)") == "extreme" ~ "2p5"
+                 ))
+  htf_df <- bind_rows(htf_df, df_i)
+}
+htf_df <- htf_df %>%
+  rename(county = "NaN") %>%
+  mutate(ST_fips = as.character(county) %>% substr(1, nchar(county)-3)) %>%
+  select(county, ST_fips, variant, model, all_of(years))
+
+# read in state naming crosswalk
+state_crosswalk <- file.path(dataPath, "State Crosswalk.xlsx") %>% read_xlsx(sheet = "States")
+```
+
+## Process data
+
+### Calculate FrEDI impact inputs
+
+For each SLR trajectory-adaptation scenario combination, we calculate 11 year rolling averages across the study period, shrinking the range at the edges to preserve balance (so for the second year in the time series, we use a 3 year average, for the 3rd, a 7 year average, etc. Same applies to the end of the time series).
+
+We aggregate from counties to states. Damages are calculated relative to the year 2000, so there is no baseline for which to adjust. Costs are already in 2015$, so no dollar year adjustment is needed.
+
+```{r FrEDI impacts}
+htf_df_state <- htf_df %>%
+  select(-county) %>%
+  group_by(ST_fips, variant, model) %>%
+  summarize_all(sum, na.rm = TRUE)
+
+htf_smooth <- htf_df_state %>%
+  pivot_longer(
+    cols = -c(ST_fips, variant, model),
+    names_to = 'year',
+    values_to = 'value1'
+  ) %>%
+  arrange(ST_fips, variant, model, year) %>%
+  group_by(ST_fips, variant, model) %>%
+  mutate(value11 = rollmean(value1, k = 11, align = "center", fill = NA),
+         value9  = rollmean(value1, k = 9, align = "center", fill = NA),
+         value7  = rollmean(value1, k = 7, align = "center", fill = NA),
+         value5  = rollmean(value1, k = 5, align = "center", fill = NA),
+         value3  = rollmean(value1, k = 3, align = "center", fill = NA)) %>%
+  mutate(value = case_when(
+    !is.na(value11) ~ value11,
+    !is.na(value9)  ~ value9,
+    !is.na(value7)  ~ value7,
+    !is.na(value5)  ~ value5,
+    !is.na(value3)  ~ value3,
+    !is.na(value1)  ~ value1
+  )) %>%
+  mutate(sector = "HTF",
+         impactType = NA) %>%
+  left_join(state_crosswalk, by = c("ST_fips" = "ST_fips_alt")) %>%
+  ungroup %>%
+  select(ST_full, ST_postal, sector, variant, impactType, year, model, value) %>%
+  rename(state = ST_full,
+         postal = ST_postal)
+
+htf_smooth %>% write.csv(file.path(outPath, "HTF_scaledimpacts.csv"), row.names = F)
+```
+
+```{r impacts qc check}
+# in this case we only have impacts for coastal states, so we check that NOT all states are present
+!(all(htf_smooth$state %in% state_crosswalk$ST_full) && all(state_crosswalk$ST_full %in% htf_smooth$state)); htf_smooth$state %>% unique
+```
+
+### Calculate scalars
+
+There are no scalars for this sector.
