@@ -6,7 +6,8 @@ configureSystemData <- function(
     save       = FALSE,  ### Whether to message the user
     outPath    = "." |> file.path("data", "tmp_sysdata.rda"),
     return     = TRUE,
-    silent     = TRUE
+    silent     = TRUE,
+    reshape = TRUE  # Return reshapeData
 ){
   "Running configureSystemData()..." |> message()
   msg0 <- "\t"
@@ -34,7 +35,10 @@ configureSystemData <- function(
   rDataList[["frediData" ]] <- list(name="frediData" , data=list())
   rDataList[["regionData"]] <- list(name="region"   , data=list())
   rDataList[["stateData" ]] <- list(name="stateData" , data=list())
-  
+  if(reshape){ 
+    rDataList[["rsData_reg" ]] <- list(name="rsData_reg" , data=list())
+    rDataList[["rsData_state" ]] <- list(name="rsData_state" , data=list())
+  }
   ###### Regional Data ######
   "\n" |> paste0(msg0, "Configuring region-level data...") |> message()
   ###### 1. Load Excel Data ######
@@ -51,6 +55,14 @@ configureSystemData <- function(
   ###### 2. Reshape Loaded Data ######
   ### list_reshapeData
   reshapeList0 <- loadList0 |> reshapeData(byState=byState0, silent=silent)
+  ## Add reshape region data if argument = TRUE
+  if(reshape){
+  names0     <- reshapeList0|> names()
+  inList0    <- (names0 %in% objects0)
+  which0     <- inList0 |> which()
+  which1     <- (!inList0) |> which()
+  rDataList[["rsData_reg" ]] <- reshapeList0[which1] 
+  }
   
   ###### 3. Configure Data ######
   sysDataList0 <- reshapeList0 |> createSystemData(byState=byState0, save=save, silent=silent)
@@ -85,7 +97,14 @@ configureSystemData <- function(
   ###### 2. Reshape Loaded Data ######
   ### list_reshapeData
   reshapeList0 <- loadList0 |> reshapeData(byState=byState0, silent=silent)
-  
+  ### Update object of reshape data to be returned
+  if(reshape){
+    names0     <- reshapeList0|> names()
+    inList0    <- (names0 %in% objects0)
+    which0     <- inList0 |> which()
+    which1     <- (!inList0) |> which()
+    rDataList[["rsData_state" ]] <- reshapeList0[which1] 
+  }
   ###### 3. Configure Data ######
   sysDataList0 <- reshapeList0 |> createSystemData(byState=byState0, save=save, silent=silent)
   # list_systemData0 <- list_reshapeData |> createSystemData(save=T, silent=T, outPath= dataOutDir |> file.path("tmp_sysdata.rda"))
