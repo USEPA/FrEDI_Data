@@ -208,10 +208,9 @@ add_gen_plot <- function(
 
 ### Configuration Test
 general_config_test <- function(
-    reshapedData   = NULL, ### List of reshaped data
     configuredData = NULL, ### List of configured data
     # reshapedFile   = "." |> file.path("data_tests", "reshapedData_testResults.csv"), ### File name of reshaped data test
-    byState   = FALSE, 
+    byState   = TRUE, 
     outPath   = ".",
     xlsxName  = "generalConfig_testResults.xlsx",
     save      = TRUE,
@@ -219,6 +218,27 @@ general_config_test <- function(
     overwrite = TRUE, ### Whether to overwrite an existing file,
     fredi_config = NULL ### fredi_config list object
 ){
+
+  
+  ###### Get Names of lists of configured Data
+  dataNames <- configuredData |> names()
+  ## Check if reshaped data exists
+  rshpExist <- dataNames |> grepl("rsData", x = _) |> any()
+  ###### Breakout Reshaped Data if it exists
+    if(rshpExist){
+      if(byState){
+        rshp_state <- configuredData[["rsData_state"]]
+        rshp_reg <- configuredData[["rsData_reg"]]
+        configuredData[["rsData_state"]] <- NULL
+        configuredData[["rsData_reg"]] <- NULL
+        
+      }else{
+        rshp_reg <- configuredData[["rsData_reg"]]
+        configuredData[["rsData_reg"]] <- NULL
+      }
+      
+    }
+  
   ###### Create Workbook ######
   if(save){
     outDir    <- outPath |> file.path("data_tests")
@@ -240,29 +260,53 @@ general_config_test <- function(
 
   ###### Data Names ######
   ### Data Names
-  rshpName0  <- "reshapedData_base_test"
+  if(rshpExist){
+    # If state data exists create the region and state data object
+    if(byState){
+      rshp_state0  <- "rshpData_base_test_state"
+      rshp_reg0  <- "rshpData_base_test_reg"
+    }else{
+      rshp_reg0 <- "rshpData_base_test_reg"
+    }
+    
+  }
   cfigName0  <- "configuredData_base_test"
   defParam0  <- "defaultParameters"
   defPlots0  <- "defaultPlots"
 
   ###### Reshaped Data ######
-  ### Check if reshaphedData exists
-  has_data0  <- !is.null(reshapedData)
-  # has_file0  <- !is.null(reshapedFile)
   ### If reshapedData exists, check if it's the correct class
-  if(has_data0) {
-    class0   <- reshapedData |> class()
-    is_list0 <- "list" %in% class0
-    ### If reshapedData is not a list, message the user
+  if(rshpExist) {
+    # Check State reshaped data if it exists
+    if(!is.null(rshp_state)){
+      class0   <- rshp_state |> class()
+      is_list0 <- "list" %in% class0
+      ### If reshapedData is not a list, message the user
     if(!is_list0) {
       "`reshapedData` must be of class \`list\`..." |> message()
       "\t" |> paste0("Exiting", "...", "\n") |> message()
       return()
     } ### End if(!is_list0)
     else          {
-      reshape0 <- reshapedData |> dataInfo_test(save = F, return = T)
+      reshape0_state <- rshp_state |> dataInfo_test(save = F, return = T)
     } ### End else(!is_list0)
     rm("class0", "is_list0")
+    }
+    # Check region reshaped data if it exists
+    if(!is.null(rshp_reg)){
+      class0   <- rshp_reg |> class()
+      is_list0 <- "list" %in% class0
+      ### If reshapedData is not a list, message the user
+      if(!is_list0) {
+        "`reshapedData` must be of class \`list\`..." |> message()
+        "\t" |> paste0("Exiting", "...", "\n") |> message()
+        return()
+      } ### End if(!is_list0)
+      else          {
+        reshape0_reg <- rshp_reg |> dataInfo_test(save = F, return = T)
+      } ### End else(!is_list0)
+      rm("class0", "is_list0")}
+   
   } ### End if(has_data0)
   else           {reshape0 <- data.frame()}
   # ### If no reshapedData passed to argument, try to load from file
@@ -281,8 +325,9 @@ general_config_test <- function(
   # ### Remove intermediate objects
   # rm("has_data0", "has_file0")
   ### Add table to list
-  saveList[[rshpName0]] <- reshape0
-
+  if(!is.null(reshape0_state)){saveList[[rshp_state0 ]] <- reshape0_state}
+  if(!is.null(reshape0_reg)){saveList[[rshp_reg0 ]] <- reshape0_reg}
+  
   ###### Configured Data ######
   ### Check if configuredData exists
   has_data0  <- !is.null(configuredData)
@@ -354,44 +399,46 @@ general_config_test <- function(
   brk_yrs0  <- seq(lim_yrs0[1], lim_yrs0[2], by=20)
 
   ### Temp plot
-  temp_plot <- configuredData[["temp_default"]] |>
+  temp_plot <- configuredData$frediData$data[["temp_default"]] |>
     ggplot() +
     geom_line(aes(x = year, y = temp_C_conus)) +
     scale_x_continuous(lab_yrs0, breaks=brk_yrs0, limits = lim_yrs0) +
     scale_y_continuous(lab_tmp0) +
     ggtitle("Default Temperature Scenario")
   ### SLR plot
-  slr_plot  <- configuredData[["slr_default"]] |>
+  slr_plot  <- configuredData$frediData$data[["slr_default"]] |>
     ggplot() +
     geom_line(aes(x = year, y = slr_cm)) +
     scale_x_continuous(lab_yrs0, breaks=brk_yrs0, limits = lim_yrs0) +
     scale_y_continuous("SLR (cm)") +
     ggtitle("Default SLR Scenario")
+  ### BY State or region #### COME BACK TO THIS ONCE OTHER PLOTS WORK
   ### GDP Plot: Convert to Billions
-  gdp_plot <- configuredData[["gdp_default"]] |>
-    mutate(gdp_usd = gdp_usd / 1e12) |>
-    ggplot() +
-    geom_line(aes(x = year, y = gdp_usd)) +
-    scale_x_continuous(lab_yrs0, breaks=brk_yrs0, limits = lim_yrs0) +
-    scale_y_continuous("U.S. National GDP (2015$, trillions)") +
-    ggtitle("Default GDP Scenario")
-  ### Pop plot
-  pop_plot <- configuredData[["pop_default"]] |>
-    mutate(reg_pop = reg_pop / 1e6) |>
-    ggplot() +
-    geom_line(aes(x = year, y = reg_pop, color = region), alpha = 0.75) +
-    scale_x_continuous(lab_yrs0, breaks=brk_yrs0, limits = lim_yrs0) +
-    scale_y_continuous("Regional Population (millions)") +
-    # theme(axis.text.x = element_text(angle=90)) +
-    theme(legend.position = "bottom") +
-    scale_color_discrete("Region") +
-    ggtitle("Default Population Scenario")
+  # gdp_plot <- configuredData[["gdp_default"]] |>
+  #   mutate(gdp_usd = gdp_usd / 1e12) |>
+  #   ggplot() +
+  #   geom_line(aes(x = year, y = gdp_usd)) +
+  #   scale_x_continuous(lab_yrs0, breaks=brk_yrs0, limits = lim_yrs0) +
+  #   scale_y_continuous("U.S. National GDP (2015$, trillions)") +
+  #   ggtitle("Default GDP Scenario")
+  ### Pop plot 
+  
+  # pop_plot <- configuredData[["pop_default"]] |>
+  #   mutate(reg_pop = reg_pop / 1e6) |>
+  #   ggplot() +
+  #   geom_line(aes(x = year, y = reg_pop, color = region), alpha = 0.75) +
+  #   scale_x_continuous(lab_yrs0, breaks=brk_yrs0, limits = lim_yrs0) +
+  #   scale_y_continuous("Regional Population (millions)") +
+  #   # theme(axis.text.x = element_text(angle=90)) +
+  #   theme(legend.position = "bottom") +
+  #   scale_color_discrete("Region") +
+  #   ggtitle("Default Population Scenario")
 
   ### Add plots to list
   listPlots[["temp"]] <- list(plot=temp_plot) |> c(listPlots[["temp"]])
   listPlots[["slr" ]] <- list(plot=slr_plot ) |> c(listPlots[["slr" ]])
-  listPlots[["gdp" ]] <- list(plot=gdp_plot ) |> c(listPlots[["gdp" ]])
-  listPlots[["pop" ]] <- list(plot=pop_plot ) |> c(listPlots[["pop" ]])
+  #listPlots[["gdp" ]] <- list(plot=gdp_plot ) |> c(listPlots[["gdp" ]])
+  #listPlots[["pop" ]] <- list(plot=pop_plot ) |> c(listPlots[["pop" ]])
   ### Add plot list to saveList
   saveList[[defPlots0]] <- listPlots
 
@@ -419,7 +466,7 @@ general_config_test <- function(
   ###### Create Scaled Impact Results ######
   ### Get results
   scaledData  <- configuredData |> get_fredi_sectorOptions_results(byState=byState)
-  scaledPlots <- configuredData |> get_scaled_impact_plots(byState=byState, save=save)
+  #scaledPlots <- configuredData |> get_scaled_impact_plots(byState=byState, save=save)
   ### Save
   if(save) {
     wbook0 |> addWorksheet(sheetName = "scaledImpacts_data")
@@ -427,7 +474,7 @@ general_config_test <- function(
     rm("name_i")
   }
   ### Add to return list
-  saveList[["scaledImpactsPlots"]] <- list(data=scaledData, plots=scaledPlots)
+  #saveList[["scaledImpactsPlots"]] <- list(data=scaledData, plots=scaledPlots)
   rm("scaledData", "scaledPlots")
   ###### Save Outputs ######
   ### Save the workbook
