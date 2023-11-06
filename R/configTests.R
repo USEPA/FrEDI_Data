@@ -412,33 +412,54 @@ general_config_test <- function(
     scale_x_continuous(lab_yrs0, breaks=brk_yrs0, limits = lim_yrs0) +
     scale_y_continuous("SLR (cm)") +
     ggtitle("Default SLR Scenario")
-  ### BY State or region #### COME BACK TO THIS ONCE OTHER PLOTS WORK
   ### GDP Plot: Convert to Billions
-  # gdp_plot <- configuredData[["gdp_default"]] |>
-  #   mutate(gdp_usd = gdp_usd / 1e12) |>
-  #   ggplot() +
-  #   geom_line(aes(x = year, y = gdp_usd)) +
-  #   scale_x_continuous(lab_yrs0, breaks=brk_yrs0, limits = lim_yrs0) +
-  #   scale_y_continuous("U.S. National GDP (2015$, trillions)") +
-  #   ggtitle("Default GDP Scenario")
-  ### Pop plot 
+  if(byState){
+    gdp_plot <- configuredData$stateData$data[["gdp_default"]] |>
+         mutate(gdp_usd = gdp_usd / 1e12) |>
+         ggplot() +
+         geom_line(aes(x = year, y = gdp_usd)) +
+         scale_x_continuous(lab_yrs0, breaks=brk_yrs0, limits = lim_yrs0) +
+         scale_y_continuous("U.S. National GDP (2015$, trillions)") +
+         ggtitle("Default GDP Scenario")
+  }else{
+    gdp_plot <- configuredData$regionData$data[["gdp_default"]] |>
+      mutate(gdp_usd = gdp_usd / 1e12) |>
+      ggplot() +
+      geom_line(aes(x = year, y = gdp_usd)) +
+      scale_x_continuous(lab_yrs0, breaks=brk_yrs0, limits = lim_yrs0) +
+      scale_y_continuous("U.S. National GDP (2015$, trillions)") +
+      ggtitle("Default GDP Scenario")
+  }
   
-  # pop_plot <- configuredData[["pop_default"]] |>
-  #   mutate(reg_pop = reg_pop / 1e6) |>
-  #   ggplot() +
-  #   geom_line(aes(x = year, y = reg_pop, color = region), alpha = 0.75) +
-  #   scale_x_continuous(lab_yrs0, breaks=brk_yrs0, limits = lim_yrs0) +
-  #   scale_y_continuous("Regional Population (millions)") +
-  #   # theme(axis.text.x = element_text(angle=90)) +
-  #   theme(legend.position = "bottom") +
-  #   scale_color_discrete("Region") +
-  #   ggtitle("Default Population Scenario")
-
+  ### Pop plot 
+  if(byState){
+   pop_plot <- configuredData$stateData$data$pop_default |>
+     mutate(state_pop = state_pop / 1e6) |>
+     ggplot() +
+     geom_line(aes(x = year, y = state_pop, color = state), alpha = 0.75) +
+     scale_x_continuous(lab_yrs0, breaks=brk_yrs0, limits = lim_yrs0) +
+     scale_y_continuous("State Population (millions)") +
+     # theme(axis.text.x = element_text(angle=90)) +
+     theme(legend.position = "bottom") +
+     scale_color_discrete("State") +
+     ggtitle("Default Population Scenario")
+  }else{
+    pop_plot <- configuredData$regionData$data$pop_default |>
+      mutate(reg_pop = reg_pop / 1e6) |>
+      ggplot() +
+      geom_line(aes(x = year, y = reg_pop, color = region), alpha = 0.75) +
+      scale_x_continuous(lab_yrs0, breaks=brk_yrs0, limits = lim_yrs0) +
+      scale_y_continuous("Regional Population (millions)") +
+      # theme(axis.text.x = element_text(angle=90)) +
+      theme(legend.position = "bottom") +
+      scale_color_discrete("Region") +
+      ggtitle("Default Population Scenario")
+  }
   ### Add plots to list
   listPlots[["temp"]] <- list(plot=temp_plot) |> c(listPlots[["temp"]])
   listPlots[["slr" ]] <- list(plot=slr_plot ) |> c(listPlots[["slr" ]])
-  #listPlots[["gdp" ]] <- list(plot=gdp_plot ) |> c(listPlots[["gdp" ]])
-  #listPlots[["pop" ]] <- list(plot=pop_plot ) |> c(listPlots[["pop" ]])
+  listPlots[["gdp" ]] <- list(plot=gdp_plot ) |> c(listPlots[["gdp" ]])
+  listPlots[["pop" ]] <- list(plot=pop_plot ) |> c(listPlots[["pop" ]])
   ### Add plot list to saveList
   saveList[[defPlots0]] <- listPlots
 
@@ -465,8 +486,8 @@ general_config_test <- function(
 
   ###### Create Scaled Impact Results ######
   ### Get results
-  scaledData  <- configuredData |> get_fredi_sectorOptions_results(byState=byState)
-  #scaledPlots <- configuredData |> get_scaled_impact_plots(byState=byState, save=save)
+  scaledData  <- configuredData |> get_fredi_sectorOptions_results(byState=byState) 
+  scaledPlots <- configuredData |> get_scaled_impact_plots(byState=byState, save=save)
   ### Save
   if(save) {
     wbook0 |> addWorksheet(sheetName = "scaledImpacts_data")
@@ -474,7 +495,7 @@ general_config_test <- function(
     rm("name_i")
   }
   ### Add to return list
-  #saveList[["scaledImpactsPlots"]] <- list(data=scaledData, plots=scaledPlots)
+  saveList[["scaledImpactsPlots"]] <- list(data=scaledData, plots=scaledPlots)
   rm("scaledData", "scaledPlots")
   ###### Save Outputs ######
   ### Save the workbook
@@ -787,14 +808,14 @@ make_scaled_impact_plots <- function(
 # ### Make scaled impact plots for sectors
 get_scaled_impact_plots <- function(
     dataList, 
-    byState = FALSE, 
+    byState = TRUE, 
     save    = TRUE,
     fpath   = "." |> file.path("data_tests")
 ){
   ### returnList
   return0   <- list()
   ### Get results
-  results0  <- dataList |> get_fredi_sectorOptions_results()
+  results0  <- dataList |> get_fredi_sectorOptions_results(byState = byState)
   return0[["data"]] <- results0
   # results0 |> glimpse()
   
