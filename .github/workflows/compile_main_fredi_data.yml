@@ -45,7 +45,7 @@ jobs:
           Rscript -e '
             devtools::install_github( 
               repo    = "https://github.com/USEPA/FrEDI", 
-              ref     = ${{ github.event.inputs.branch_name }}, 
+              ref     = "${{ github.event.inputs.branch_name }}", 
               subdir  = "FrEDI", 
               dependencies = FALSE,
               upgrade = "never", 
