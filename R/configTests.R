@@ -334,7 +334,7 @@ general_config_test <- function(
   # has_file0  <- !is.null(configuredFile)
   ### If reshapedData exists, check if it's the correct class
   if(has_data0) {
-    class0   <- configuredData |> class()
+    class0   <- configuredData$frediData$data |> class()
     is_list0 <- "list" %in% class0
     ### If configuredData is not a list, message the user
     if(!is_list0) {
@@ -343,7 +343,7 @@ general_config_test <- function(
       return()
     } ### End if(!is_list0)
     else          {
-      configure0 <- configuredData |> dataInfo_test(save = F, return = T)
+      configure0 <- configuredData$frediData$data |> dataInfo_test(save = F, return = T)
     } ### End else(!is_list0)
     rm("class0", "is_list0")
   } ### End if(has_reshape0)
