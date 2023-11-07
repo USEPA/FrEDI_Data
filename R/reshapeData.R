@@ -16,7 +16,8 @@ reshapeData <- function(
   ### Assign tables in dataList to object in local environment
   listNames <- dataList |> names()
   # listNames |> print
-  for(name_i in listNames) {name_i |> assign(dataList[[name_i]],envir = .GlobalEnv)}
+  # for(name_i in listNames) {name_i |> assign(dataList[[name_i]],envir = .GlobalEnv)}
+  for(name_i in listNames) {name_i |> assign(dataList[[name_i]])}
   
   ###### Modify Tables and Update in List  ######
   ###### ** Sectors     ######
@@ -24,8 +25,9 @@ reshapeData <- function(
   ### Make a copy of the sectors list to include variants
   ### Drop variant column from `co_sectors`
   drop0           <- c("include", "variants", "impactYears", "impactTypes", "byState")
-  co_sectors      <- co_sectors |> filter(include == 1)
+  # co_sectors      <- co_sectors |> filter(include == 1)
   co_stateSectors <- co_sectors |> filter(byState == 1)
+  if(byState){co_sectors <- co_stateSectors |> filter(byState == 1)}
   co_sectorsRef   <- co_sectors
   co_sectors      <- co_sectors |> select(-c(all_of(drop0)))
   ### Update values in list
@@ -48,7 +50,7 @@ reshapeData <- function(
   drop1 <- c("impactYear2")
   join0 <- c("impactYear_label")
   c_impactYearLevels  <- co_impactYears |> select(-c(all_of(drop0))) |> names()
-  co_impactYearLevels <- data.frame(impactYear_label = c_impactYearLevels)
+  co_impactYearLevels <- tibble(impactYear_label = c_impactYearLevels)
   co_impactYearLevels <- co_impactYearLevels |> mutate(impactYear_id = gsub("/", "", impactYear_label))
   co_impactYearLevels <- co_impactYearLevels |> mutate(impactYear_excel = gsub("NA", "", impactYear_id))
   
@@ -100,6 +102,7 @@ reshapeData <- function(
   rename0 <- c("sector", "variant", "impactYear", "impactType") |> paste("id", sep = "_")
   rename1 <- gsub("_id", "", c(rename0))
   ### Join with co_impactYears, co_impactTypes
+  # df_sectorsInfo <- co_sectors     |> left_join(co_variants    |> select(-c(all_of(drop0))), by = c(join0))
   df_sectorsInfo <- co_sectors     |> left_join(co_variants    |> select(-c(all_of(drop0))), by = c(join0))
   df_sectorsInfo <- df_sectorsInfo |> left_join(co_impactYears |> select(-c(all_of(drop1))), by = c(join0), relationship = "many-to-many")
   df_sectorsInfo <- df_sectorsInfo |> left_join(co_impactTypes |> select(-c(all_of(drop2))), by = c(join0), relationship = "many-to-many")
@@ -165,10 +168,11 @@ reshapeData <- function(
   }
   
   # ###### ** Scalar Info ######
+  # ### Add national values to state scalars
   # if (byState){
   #   ### Need to add scalar info
   #   select0 <- c("scalarType", "scalarLabel", "scalarName")
-  #   scalarDataframe <- co_scalarInfo |> 
+  #   scalarDataframe <- scalarDataframe |> filter(national_or_regional=="national")
   #     select(c(all_of(select0))) |>
   #     left_join(scalarDataframe, by=c("scalarName"))
   #   rm(select0)

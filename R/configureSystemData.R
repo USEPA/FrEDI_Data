@@ -26,17 +26,18 @@ configureSystemData <- function(
     c("co_regions", "co_states") |>
     c("co_models", "co_modelTypes") |>
     c("co_econMultipliers", "co_scalarInfo") |>
-    c("co_defaultTemps", "temp_default", "slr_default")
+    c("co_defaultTemps", "temp_default") |> 
+    c("slr_cm", "slr_default")
   
   ###### Initialize Object List ######
   ### Initialize list of objects to return
   rDataList  <- list()
   rDataList[["frediData" ]] <- list(name="frediData" , data=list())
-  rDataList[["regionData"]] <- list(name="region"   , data=list())
+  rDataList[["regionData"]] <- list(name="regionData", data=list())
   rDataList[["stateData" ]] <- list(name="stateData" , data=list())
   
   ###### Regional Data ######
-  "\n" |> paste0(msg0, "Configuring region-level data...") |> message()
+  (!silent) |> ifelse("\n", "") |> paste0(msg0, "Configuring region-level data...") |> message()
   ###### 1. Load Excel Data ######
   ### list_loadData
   byState0    <- FALSE
@@ -70,21 +71,35 @@ configureSystemData <- function(
   rm(loadList0, reshapeList0, sysDataList0)
   
   ###### State Data ######
-  "\n" |> paste0(msg0, "Configuring state-level data...") |> message()
+  (!silent) |> ifelse("\n", "") |> paste0(msg0, "Configuring state-level data...", (!silent) |> ifelse("\n", "")) |> message()
   ###### 1. Load Excel Data ######
   ### list_loadData
   byState0    <- TRUE
-  loadList0   <- loadData( 
+  loadList0   <- loadData(
     fileDir   = fileDir,    ### Path to project
     fileName  = fileName,   ### name of excel file with config information
     sheetName = sheetName, ### Sheet with info about tables in config file
     byState   = byState0,
     silent    = silent
   )
-  
+
   ###### 2. Reshape Loaded Data ######
   ### list_reshapeData
   reshapeList0 <- loadList0 |> reshapeData(byState=byState0, silent=silent)
+  ### Add national level scalars from regional data
+  ### - Format regional scalars
+  # states0      <- reshapeList0[["co_states"      ]] |> select(c("region", "state", "postal"))
+  scalars0     <- reshapeList0[["scalarDataframe"]]
+  scalars1     <- rDataList[["regionData"]][["data"]][["scalarDataframe"]]
+  ### - Format data
+  # scalars1     <- scalars1 |> filter(region=="National.Total") |> select(-c("region")) |> mutate(joinCol=1)
+  # states0      <- states0  |> mutate(joinCol=1)
+  # scalars1     <- scalars1 |> left_join(states0, by=c("joinCol")) |> select(-c("joinCol"))
+  scalars1     <- scalars1 |> filter(region=="National.Total")
+  scalars1     <- scalars1 |> mutate(state="N/A", postal="N/A")
+  scalars0     <- scalars1 |> rbind(scalars0)
+  reshapeList0[["scalarDataframe"]] <- scalars0
+  rm(scalars0, scalars1); #rm(states0)
   
   ###### 3. Configure Data ######
   sysDataList0 <- reshapeList0 |> createSystemData(byState=byState0, save=save, silent=silent)
@@ -106,7 +121,7 @@ configureSystemData <- function(
   ### - Check if the output file directory exists
   ### - If the outpath exists, try to save the file
   if(save) {
-    paste0("\n", msg0, "Saving results to ", sysDataPath, "...") |> message()
+    msg0 |> paste0("Saving results to ", sysDataPath, "...") |> message()
     outPathExists <- sysDataPath |> dir.exists()
     fredi_config <- rDataList[["frediData"]][["data"]][["fredi_config"]]
     if(outPathExists){ 
