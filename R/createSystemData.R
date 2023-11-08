@@ -22,14 +22,8 @@ createSystemData <- function(
   rDataList   <- list()
   
   ###### Create File Paths ######
-  # ### Output file
-  # outPath     <- if (is.null(outPath)) {"." |> file.path("data", "sysdata.rda")} else {outPath}
-  # sysDataFile <- outPath |> basename()
-  # sysDataPath <- outPath |> dirname()
-  # sysDataFile <- sysDataPath |> file.path(sysDataFile)
-  # sysDataFile |> print
   ### Config file
-  configPath <- if (is.null(configPath)) {"." |> file.path("R", "fredi_config.R")} else {configPath}
+  configPath <- if (configPath |> is.null()) {"." |> file.path("R", "fredi_config.R")} else {configPath}
   configFile <- configPath |> basename()
   configPath <- configPath |> dirname()
   configFile <- configPath |> file.path(configFile)
@@ -197,20 +191,17 @@ createSystemData <- function(
   c_cm         <- c("model", "year")
   c_imp        <- c("sector", "variant", "impactType", "impactYear", "region")
   if(byState){c_imp <- c_imp |>  c("state", "postal", "year")} else{ c_imp <- c_imp |> c("year")}
-  # slr_cm       <- slr_cm      |> extend_slr(arrange_x=c_cm)
-  # slrImpacts   <- slrImpacts  |> extend_slr(arrange_x=c_imp)
-  # slrExtremes  <- slrExtremes |> extend_slr(arrange_x=c_imp)
-  df_newYears  <- tibble(year = seq(2091, 2300, by=1))      
-  slr_cm       <- slr_cm      |> extend_data()
-  slrImpacts   <- slrImpacts  |> extend_data()
-  slrExtremes  <- slrExtremes |> extend_data()
+  ### Extend values 
+  slr_cm       <- slr_cm      |> extend_slr()
+  slrImpacts   <- slrImpacts  |> extend_slr()
+  slrExtremes  <- slrExtremes |> extend_slr()
 
   ### Update in data list and remove objects
   rDataList[["slr_cm"     ]] <- slr_cm
   rDataList[["slrImpacts" ]] <- slrImpacts
   rDataList[["slrExtremes"]] <- slrExtremes
   rm("slr_cm", "slrImpacts", "slrExtremes"); rm("c_cm", "c_imp")
-  
+
   ###### Format Scalar Tables ######
   ### Interpolate values to annual levels
   # scalarDataframe |> names |> print
@@ -239,15 +230,11 @@ createSystemData <- function(
   # df_results0$sector |> unique() |> print()
   
   ### Physical adjustment
-  # df_mainScalars |> names |> print; df_results0 |> names |> print
   df_results0 <- df_results0 |> match_scalarValues(df_mainScalars, scalarType="physAdj")
-  # "got here1" |> print(); df_results0$sector |> unique() |> print()
   ### Damage adjustment
   df_results0 <- df_results0 |> match_scalarValues(df_mainScalars, scalarType="damageAdj")
-  "got here2" |> print(); df_results0$sector |> unique() |> print()
   ### Economic scalar
   df_results0 <- df_results0 |> match_scalarValues(df_mainScalars, scalarType="econScalar")
-  "got here3" |> print(); df_results0$sector |> unique() |> print()
   ### Drop extra columns and add to data list
   drop0       <- c("gdp_usd", "reg_pop", "state_pop", "national_pop", "gdp_percap")
   df_results0 <- df_results0 |> select(-c(any_of(drop0)))
@@ -260,7 +247,7 @@ createSystemData <- function(
   ### Get list of scenarios for scenarios with at least some non-NA values
   ### Add information on non-missing scenarios to scaled impacts data
   # data_scaledImpacts |> glimpse()
-  includeCols <- c("model_dot", "region_dot") |> c(stateCols0)
+  includeCols        <- c("model_dot", "region_dot") |> c(stateCols0)
   data_scaledImpacts <- data_scaledImpacts |> get_scenario_id(include=includeCols)
   c_scenariosList    <- data_scaledImpacts |> filter(!is.na(scaledImpact)) |> get_uniqueValues(column="scenario_id")
   data_scaledImpacts <- data_scaledImpacts |> mutate(hasScenario = (scenario_id %in% c_scenariosList))
@@ -272,17 +259,15 @@ createSystemData <- function(
   ###### Get Interpolation Functions for Scenarios ######
   ### Iterate over sectors to get interpolation functions with fun_getImpactFunctions()
   ### fun_getImpactFunctions depends on the function fun_tempImpactFunction()
-  if(msgUser) {message("\t", messages_data[["interpFuns"]]$try)}
+  if(msgUser) {paste0("\t", messages_data[["interpFuns"]]$try) |> message()}
   df_hasScenario       <- data_scaledImpacts |> filter(hasScenario)
   df_hasScenario       <- df_hasScenario     |> ungroup() #|> as.data.frame()
   c_modelTypes         <- c("gcm")
-  # list_impactFunctions <- list()
   ### Max output value, maximum extrapolation value, unit scale,   extend type
   df_gcm         <- (co_modelTypes |> filter(modelType_id==c_modelTypes))
   maxOutput_gcm  <- df_gcm[["modelMaxOutput"]][1]
   maxExtrap_gcm  <- df_gcm[["modelMaxExtrap"]][1]
   unitScale_gcm  <- df_gcm[["modelUnitScale"]][1]
-  ### Format data
   ### Get functions
   functions_gcm  <- df_hasScenario |> get_impactFunctions(
     groupCol    = "scenario_id",
@@ -293,48 +278,20 @@ createSystemData <- function(
     extend_all  = FALSE,
     unitScale   = unitScale_gcm
   ) 
-  # paste(modelType_i, length(functions_i)) |> print
+  
   ### Add values to list and remove intermediate values
-  # list_impactFunctions <- list_impactFunctions |> c(functions_gcm)
-  # rDataList[["list_impactFunctions"]] <- list_impactFunctions
   rDataList[["list_impactFunctions"]] <- functions_gcm
   rm("c_modelTypes", "maxOutput_gcm", "maxExtrap_gcm", "unitScale_gcm")
   rm("df_gcm", "df_hasScenario", "functions_gcm")
-  
-  ###### Aggregate R Data objects ######
   ### Message the user
   if(msgUser) {msg1 |> paste0(messages_data[["interpFuns"]]$success) |> message()}
   
-  # ### Make a new data list
-  # rDataList <- list(
-  #   "gdp_default"               = gdp_default,
-  #   "pop_default"               = pop_default,
-  #   "national_pop_default"      = national_pop_default,
-  #   "df_mainScalars"            = df_mainScalars,
-  #   "df_results0"               = df_results0,
-  #   "list_impactFunctions"      = list_impactFunctions
-  # )
-  # ### Combine with the data list
-  # rDataList <- loadDataList |> c(rDataList)
+  ###### Add Config List ######
+  ### Add config to data list
   rDataList[["fredi_config"]] <- fredi_config
-  
-  
-  # ###### Save R Data objects ######
-  # ### If save:
-  # ### - Message the user
-  # ### - Check if the output file directory exists
-  # ### - If the outpath exists, try to save the file
-  # if(save) {
-  #   paste0("\n", "Saving results to ", sysDataPath, "...") |> message()
-  #   outPathExists <- sysDataPath |> dir.exists()
-  #   expr0         <- try(save(fredi_config, rDataList, file=sysDataFile), silent=T)
-  #   if(outPathExists) {trySave <- expr0 |> eval()} ### End if outPathExists
-  # } ### End if save
-  # # rDataList |> names |> print
   
   ###### Return object ######
   if(msgUser){msg1 |> paste0("...Finished running createSystemData()", ".") |> message()}
-  
   return(rDataList)
 } ### End function
 
