@@ -738,8 +738,6 @@ make_scaled_impact_plots <- function(
       theme      = NULL
     )
 ){
-  ###### Get from FrEDI Namespace ######
-  addListNames <- utils::getFromNamespace("addListNames", "FrEDI")
   
   ### Other values
   # years      <- c("NA", "2010", "2090")
@@ -795,12 +793,12 @@ make_scaled_impact_plots <- function(
     })
     ### Add names
     labels_x <- types_x[["label"]]
-    list_x   <- list_x |> addListNames(labels_x)
+    list_x   <- list_x |> set_names(labels_x)
     ### Return
     return(list_x)
   })
   ### Add names
-  list0   <- list0 |> addListNames(models)
+  list0   <- list0 |> set_names(models)
   ### Return
   return(list0)
 } ### End plot_DoW_by_sector

@@ -10,6 +10,7 @@ createSystemData <- function(
     return      = TRUE,
     byState     = FALSE
 ){
+  
   ###### Set up the environment ######
   ### Level of messaging (default is to message the user) and save behavior
   msgUser     <- !silent
