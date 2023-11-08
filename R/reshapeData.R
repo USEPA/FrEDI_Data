@@ -159,7 +159,9 @@ reshapeData <- function(
     co_defaultScenario <- co_defaultScenario |> select(c(all_of(select0), "region", "year", "state_pop"))
     ### Join with GDP default scenario
     co_defaultScenario <- co_defaultScenario |> left_join(gdp_default, by = c("year"))
-    ### Join with region info
+    ### Standardize region name
+    co_defaultScenario <- co_defaultScenario |> mutate_at (c("region"), function(x){gsub(" ", ".", x)})
+    
     ### Remove values
     rm(str0, names0, names1, names2, select0, select1)
     ### Update in list
@@ -189,9 +191,14 @@ reshapeData <- function(
     ### - Join with state info
     data_scaledImpacts <- data_scaledImpacts |> left_join(co_states, by = c("state", "postal"))
     ### - Mutate model info
-    data_scaledImpacts <- data_scaledImpacts |> mutate(model_type = "gcm")
-    data_scaledImpacts <- data_scaledImpacts |> mutate(model_dot  = gsub("[-_]", ".", model))
-    data_scaledImpacts <- data_scaledImpacts |> mutate(region_dot = gsub(" ", ".", region))
+    # data_scaledImpacts <- data_scaledImpacts |> mutate(model_type = "gcm")
+    # # data_scaledImpacts <- data_scaledImpacts |> mutate(model_dot  = gsub("[-_ ]", ".", model))
+    # # # data_scaledImpacts <- data_scaledImpacts |> mutate(region_dot = gsub(" ", ".", region))
+    # # data_scaledImpacts <- data_scaledImpacts |> mutate(region_dot = gsub(" ", ".", region))
+    # # data_scaledImpacts <- data_scaledImpacts |> select(-c("region"))
+    # data_scaledImpacts <- data_scaledImpacts |> mutate(model_dot  = gsub("[-_ ]", ".", model))
+    data_scaledImpacts <- data_scaledImpacts |> rename_at(c("region"), ~"region_dot")
+    data_scaledImpacts <- data_scaledImpacts |> mutate(region_dot = gsub(" ", ".", region_dot))
     ### Rename and drop cols
     data_scaledImpacts <- data_scaledImpacts |> rename_at(.vars=c("value"), ~"scaledImpact")
     data_scaledImpacts <- data_scaledImpacts |> select(-c("fips"))
@@ -203,6 +210,7 @@ reshapeData <- function(
   ### Update in list, remove intermediate variables
   filter0 <- co_models [["model_id" ]] |> unique()
   filter1 <- co_sectors[["sector_id"]] |> unique()
+  # data_scaledImpacts |> glimpse()
   data_scaledImpacts <- data_scaledImpacts |> filter(model  %in% filter0) ### All models
   data_scaledImpacts <- data_scaledImpacts |> filter(sector %in% filter1)
   rm("filter0", "filter1")
@@ -275,7 +283,7 @@ reshapeData <- function(
     ### Update data list
     dataList[["slrImpacts"]] <- slrImpacts
   }
-  
+  # slrImpacts |> glimpse()
   ###### ** Format Scaled Impacts ######
   ### Create a list
   list_scaledImpacts <- list(data_scaledImpacts = data_scaledImpacts, slrImpacts = slrImpacts)
