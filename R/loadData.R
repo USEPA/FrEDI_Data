@@ -10,7 +10,7 @@ loadData <- function(
 ) {
   # if(is.null(sheetName)){sheetName <- "tableNames"}
   # print(getwd())
-  if (is.null(silent)) {silent <- F}
+  if (silent |> is.null()) {silent <- F}
   
   ###### File Path ######
   #fileExt       <- "xlsx"

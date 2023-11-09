@@ -163,7 +163,7 @@ createSystemData <- function(
   rDataList[["df_defaultScenario"]] <- df_national
   # df_defaultScenario |> names |> print
   ### Drop intermediate values
-  rm("nationalDot", "gdpCols", "group0", "drop0", "popCols", "popColName")
+  rm("nationalDot", "gdpCols", "group0", "drop0")
   rm("gdp_default", "pop_default")
   # return(rDataList)
 
@@ -201,7 +201,8 @@ createSystemData <- function(
   rDataList[["slrImpacts" ]] <- slrImpacts
   rDataList[["slrExtremes"]] <- slrExtremes
   rm("slr_cm", "slrImpacts", "slrExtremes"); rm("c_cm", "c_imp")
-
+  # return(rDataList)
+  
   ###### Format Scalar Tables ######
   ### Interpolate values to annual levels
   # scalarDataframe |> names |> print
@@ -227,8 +228,15 @@ createSystemData <- function(
   df_results0    <- df_sectorsInfo |> left_join(df_national, by=c(join0), relationship = "many-to-many")
   df_results0    <- df_results0    |> select(-c(all_of(join0)))
   rm("join0"); rm("df_sectorsInfo", "df_national")
+  # df_results0 |> glimpse()
+  ### Adjust values in state and postal columns for non-state-level sectors
+  sum0        <- popColName
+  group0      <- df_results0 |> names() |> (function(x){x[!(x %in% sum0)]})()
+  df_results0 <- df_results0 |> mutate(state  = byState |> ifelse(state , "N/A"))
+  df_results0 <- df_results0 |> mutate(postal = byState |> ifelse(postal, "N/A"))
+  df_results0 <- df_results0 |> group_by_at(c(group0)) |> summarize_at(c(sum0), sum, na.rm=T) |> ungroup()
   # df_results0$sector |> unique() |> print()
-  
+  # df_results0 |> glimpse(); df_results0 |> glimpse()
   ### Physical adjustment
   df_results0 <- df_results0 |> match_scalarValues(df_mainScalars, scalarType="physAdj")
   ### Damage adjustment
@@ -244,12 +252,13 @@ createSystemData <- function(
   
   ###### Get Scenario Info for Scaled Impacts  ######
   ### Add a column with a scenario id
-  ### Get list of scenarios for scenarios with at least some non-NA values
-  ### Add information on non-missing scenarios to scaled impacts data
   # data_scaledImpacts |> glimpse()
-  includeCols        <- c("model_dot", "region_dot") |> c(stateCols0)
+  includeCols        <- c("region_dot") |> c(stateCols0) |> c("model_dot")
   data_scaledImpacts <- data_scaledImpacts |> get_scenario_id(include=includeCols)
-  c_scenariosList    <- data_scaledImpacts |> filter(!is.na(scaledImpact)) |> get_uniqueValues(column="scenario_id")
+  ### Get list of scenarios for scenarios with at least some non-NA values
+  c_scenariosList    <- data_scaledImpacts |> filter(!(scaledImpact |> is.na()))
+  c_scenariosList    <- c_scenariosList    |> get_uniqueValues(column="scenario_id")
+  ### Add information on non-missing scenarios to scaled impacts data
   data_scaledImpacts <- data_scaledImpacts |> mutate(hasScenario = (scenario_id %in% c_scenariosList))
   # rm("c_scenariosList")
   ### Update in data list

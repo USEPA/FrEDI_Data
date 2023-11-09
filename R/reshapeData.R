@@ -19,15 +19,19 @@ reshapeData <- function(
   # for(name_i in listNames) {name_i |> assign(dataList[[name_i]],envir = .GlobalEnv)}
   for(name_i in listNames) {name_i |> assign(dataList[[name_i]])}
   
+  ###### ByState  ######
+  if(byState){stateCols0 <- c("state", "postal")} else{stateCols0 <- c()}
+  
   ###### Modify Tables and Update in List  ######
   ###### ** Sectors     ######
   ### Filter to those tables to include
   ### Make a copy of the sectors list to include variants
   ### Drop variant column from `co_sectors`
-  drop0           <- c("include", "variants", "impactYears", "impactTypes", "byState")
+  # drop0           <- c("include", "variants", "impactYears", "impactTypes", "byState")
+  drop0           <- c("include", "variants", "impactYears", "impactTypes")
   # co_sectors      <- co_sectors |> filter(include == 1)
   co_stateSectors <- co_sectors |> filter(byState == 1)
-  if(byState){co_sectors <- co_stateSectors |> filter(byState == 1)}
+  # if(byState){co_sectors <- co_sectors |> filter(byState == 1)}
   co_sectorsRef   <- co_sectors
   co_sectors      <- co_sectors |> select(-c(all_of(drop0)))
   ### Update values in list
@@ -161,7 +165,9 @@ reshapeData <- function(
     co_defaultScenario <- co_defaultScenario |> left_join(gdp_default, by = c("year"))
     ### Standardize region name
     co_defaultScenario <- co_defaultScenario |> mutate_at (c("region"), function(x){gsub(" ", ".", x)})
-    
+    ### Select names   
+    select0            <- c("region", "state", "postal", "year", "gdp_usd", "state_pop")
+    co_defaultScenario <- co_defaultScenario |> select(c(all_of(select0)))
     ### Remove values
     rm(str0, names0, names1, names2, select0, select1)
     ### Update in list
@@ -169,16 +175,27 @@ reshapeData <- function(
     dataList[["co_statePopRatios" ]] <- co_statePopRatios
   }
   
-  # ###### ** Scalar Info ######
-  # ### Add national values to state scalars
-  # if (byState){
-  #   ### Need to add scalar info
-  #   select0 <- c("scalarType", "scalarLabel", "scalarName")
-  #   scalarDataframe <- scalarDataframe |> filter(national_or_regional=="national")
-  #     select(c(all_of(select0))) |>
-  #     left_join(scalarDataframe, by=c("scalarName"))
-  #   rm(select0)
-  # } ### End if byState for Scalar Info
+  ###### ** Scalar Info ######
+  ### state scalars
+  if (byState) {
+    select0         <- c("state", "postal", "region")
+    select1         <- c("scalarName", "scalarLabel", "scalarType")
+    # scalarDataframe |> glimpse()
+    scalarDataframe <- scalarDataframe |> left_join(co_states |> select(c(all_of(select0))), by=c("state", "postal"))
+    scalarDataframe <- scalarDataframe |> left_join(co_scalarInfo |> select(c(all_of(select1))), by=c("scalarName"))
+    rm(select0, select1)
+  }
+  ### refactor region, Update in list
+  ### Remove intermediate objects
+  select0 <- c("scalarType", "scalarLabel", "scalarName", "region") |> c(stateCols0) |> c("year", "value")
+  scalarDataframe <- scalarDataframe |> select(all_of(select0))
+  scalarDataframe <- scalarDataframe |> mutate(region = gsub(" ", ".", region))
+  # levels0 <- co_regions[["region_label"]] |> c("National Total")
+  # labels0 <- co_regions[["region_dot"  ]] |> c("National.Total")
+  # scalarDataframe <- scalarDataframe |> mutate(region = region |> factor(levels0, labels0) |> as.character())
+  # rm(levels0, labels0)
+  dataList[["scalarDataframe"]] <- scalarDataframe
+  rm(select0)
   
   ###### ** GCM Scaled Impacts ######
   if (byState) {
@@ -191,20 +208,21 @@ reshapeData <- function(
     ### - Join with state info
     data_scaledImpacts <- data_scaledImpacts |> left_join(co_states, by = c("state", "postal"))
     ### - Mutate model info
-    # data_scaledImpacts <- data_scaledImpacts |> mutate(model_type = "gcm")
-    # # data_scaledImpacts <- data_scaledImpacts |> mutate(model_dot  = gsub("[-_ ]", ".", model))
-    # # # data_scaledImpacts <- data_scaledImpacts |> mutate(region_dot = gsub(" ", ".", region))
-    # # data_scaledImpacts <- data_scaledImpacts |> mutate(region_dot = gsub(" ", ".", region))
-    # # data_scaledImpacts <- data_scaledImpacts |> select(-c("region"))
-    # data_scaledImpacts <- data_scaledImpacts |> mutate(model_dot  = gsub("[-_ ]", ".", model))
     data_scaledImpacts <- data_scaledImpacts |> rename_at(c("region"), ~"region_dot")
     data_scaledImpacts <- data_scaledImpacts |> mutate(region_dot = gsub(" ", ".", region_dot))
     ### Rename and drop cols
     data_scaledImpacts <- data_scaledImpacts |> rename_at(.vars=c("value"), ~"scaledImpact")
     data_scaledImpacts <- data_scaledImpacts |> select(-c("fips"))
-    ### Update in list
-    dataList[["data_scaledImpacts"]] <- data_scaledImpacts
-  } ### End if(byState)
+  } else{
+    ### Reshape data_scaledImpacts (move columns with regional values to rows)
+    valueCols0         <- co_regions[["region_dot"]]
+    data_scaledImpacts <- data_scaledImpacts |> pivot_longer(
+      cols      = all_of(valueCols0),
+      names_to  = "region_dot", 
+      values_to = "scaledImpact"
+    )
+  } ### End else(byState)
+  
   
   ### Remove empty rows and GCM and SLR Averages
   ### Update in list, remove intermediate variables
@@ -284,16 +302,21 @@ reshapeData <- function(
     dataList[["slrImpacts"]] <- slrImpacts
   }
   # slrImpacts |> glimpse()
+  
+  
   ###### ** Format Scaled Impacts ######
   ### Create a list
-  list_scaledImpacts <- list(data_scaledImpacts = data_scaledImpacts, slrImpacts = slrImpacts)
-  rm("data_scaledImpacts", "slrImpacts")
+  list_scaledImpacts <- list()
+  list_scaledImpacts[["gcm"]] <- list(name="gcm", data=data_scaledImpacts)
+  list_scaledImpacts[["slr"]] <- list(name="slr", data=slrImpacts)
+  # list_scaledImpacts <- list(data_scaledImpacts = data_scaledImpacts, slrImpacts = slrImpacts)
+  # rm("data_scaledImpacts", "slrImpacts")
   
-  list_scaledImpacts <- list_scaledImpacts |>
-    names() %>%
-    map(function(name_i, list_x = list_scaledImpacts) {
+  list_scaledImpacts <- list_scaledImpacts |> map(function(list_i) {
       ## Data frame
-      df_i    <- list_x[[name_i]]
+      name_i  <- list_i[["name"]]
+      df_i    <- list_i[["data"]]
+      do_gcm  <- name_i == "gcm"
       ### Replace NA values in impactYear, impactType
       df_i    <- df_i |> mutate(impactYear = impactYear |> as.character() |> replace_na("N/A"))
       df_i    <- df_i |> mutate(impactType = impactType |> as.character() |> replace_na("NA"))
@@ -319,62 +342,43 @@ reshapeData <- function(
       df_i    <- df_i |> mutate(sector_impactType = sector |> paste(impactType, sep = "_"))
       df_i    <- df_i |> mutate(sector_impactType = sector_impactType |> factor(levels0, labels0))
       df_i    <- df_i |> mutate(impactType        = sector_impactType)
-      df_i    <- df_i |> select(-c(all_of(select0)))
+      df_i    <- df_i |> select(-all_of(select0))
       rm("levels0", "labels0", "select0")
-      ### Refactor model types
-      levels0 <- co_models[["model_id" ]]
-      labels0 <- co_models[["model_dot"]]
-      levels1 <- co_models[["model_dot"]]
-      labels1 <- co_models[["modelType"]]
+      ### Refactor model types/models
       ### Factor model only if name_i=="data_scaledImpacts"
-      ### Factor model_type
-      ### Then convert to character
       doDot0  <- name_i == "data_scaledImpacts"
+      levels0 <- co_models[["model_id" ]]
+      if(do_gcm){labels0 <- co_models[["model_label"]]} else{labels0 <- co_models[["model_dot"]]}
+      levels1 <- labels0
+      labels1 <- co_models[["modelType"]]
+      # levels0 |> print(); labels0 |> print(); levels1 |> print(); labels1 |> print(); df_i$model
       if (doDot0) {df_i <- df_i |> mutate(model_dot = model |> factor(levels0, labels0))}
       else        {df_i <- df_i |> mutate(model_dot = model)}
       df_i    <- df_i |> mutate(model_type = model_dot |> factor(levels1, labels1))
       ### Convert to character
-      mutate0 <- c("variant", "impactYear", "impactType", "model_dot")
-      df_i    <- df_i |> mutate_at(.vars = c(mutate0), as.character)
+      mutate0 <- c("variant", "impactType", "impactYear", "model_type", "model_dot")
+      df_i    <- df_i |> mutate_at(c(mutate0), as.character)
       # rm("levels0", "labels0", "doDot0", "mutate0")
+      ### Join with sector info
+      select0 <- c("sector_id", "byState")
+      df_i    <- df_i |> left_join(co_sectors |> select(all_of(select0)), by=c("sector"="sector_id"))
+      ### Select columns
+      boths0  <- c("sector", "variant", "impactType", "impactYear", "model_type", "model", "model_dot")
+      gcm0    <- boths0 |> c("region_dot") |> c(stateCols0) |> c("modelUnitValue", "scaledImpact"  )
+      slr0    <- boths0 |> c("region"    ) |> c(stateCols0) |> c("year"          , "scaled_impacts")
+      if(do_gcm){useCols0 <- gcm0} else{useCols0 <- slr0}
+      df_i      <- df_i |> select(all_of(useCols0))
+      ### Return
       return(df_i)
-    }) %>%
-    (function(list_x, names_x = names(list_scaledImpacts)) {
-      names(list_x) <- names_x; return(list_x)
-    })
+    }) |> set_names(list_scaledImpacts |> names())
   
-  ### Update objects in environment
-  for (name_i in names(list_scaledImpacts)) {assign(name_i, list_scaledImpacts[[name_i]])}
-  
-  ### Reshape data_scaledImpacts (move columns with regional values to rows)
-  
-  if(!byState){
-    valueCols0         <- co_regions[["region_dot"]]
-    data_scaledImpacts <- data_scaledImpacts |> gather(key = "region_dot", value = "scaledImpact", c(all_of(valueCols0)))
-    rm("valueCols0")
-  }
+  # ### Update objects in environment
+  # for (name_i in names(list_scaledImpacts)) {assign(name_i, list_scaledImpacts[[name_i]])}
   
   ### Update scaled impacts in list
-  dataList[["data_scaledImpacts"]] <- data_scaledImpacts
-  dataList[["slrImpacts"        ]] <- slrImpacts
+  dataList[["data_scaledImpacts"]] <- list_scaledImpacts[["gcm"]]
+  dataList[["slrImpacts"        ]] <- list_scaledImpacts[["slr"]]
   
-  ###### ** Reshape Scalars ######
-  ### state scalars
-  if (byState) {
-    select0         <- c("state", "postal", "region")
-    select1         <- c("scalarName", "scalarLabel", "scalarType")
-    # scalarDataframe |> glimpse()
-    scalarDataframe <- scalarDataframe |> left_join(co_states |> select(c(all_of(select0))), by=c("state", "postal"))
-    scalarDataframe <- scalarDataframe |> left_join(co_scalarInfo |> select(c(all_of(select1))), by=c("scalarName"))
-    rm(select0, select1)
-  }
-  ### refactor region, Update in list
-  ### Remove intermediate objects
-  levels0 <- co_regions[["region_label"]] |> c("National Total")
-  labels0 <- co_regions[["region_dot"  ]] |> c("National.Total")
-  scalarDataframe <- scalarDataframe |> mutate(region = region |> factor(levels0, labels0) |> as.character())
-  dataList[["scalarDataframe"]] <- scalarDataframe
-  rm("levels0", "labels0")
   
   ### Return the list of dataframes
   return(dataList)
