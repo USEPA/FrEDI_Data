@@ -72,7 +72,6 @@ createSystemData <- function(
   sector_ids   <- sector_ids |> unique()
   num_sectors  <- sector_ids |> length()
   
-  
   ###### Default Driver Scenarios ######
   ### Get reference years and add to fredi_config
   refYear_temp <- (co_modelTypes |> filter(modelUnitType=="temperature"))$modelRefYear |> unique()
@@ -90,26 +89,21 @@ createSystemData <- function(
   temp_default <- co_defaultTemps |> filter(year > refYear_temp) |> select(c("year", "temp_C_conus"))
   temp_default <- df_refTemp      |> rbind(temp_default)
   # rDataList[["temp_default"]] <- temp_default
-  # return(rDataList)
   ### Interpolate annual
-  
   temp_default <- temp_default    |> interpolate_annual(years=years0, column="temp_C_conus", rule=1:2)
   ### Calculate global temperatures and update in list
   temp_default <- temp_default    |> mutate(temp_C_global = temp_C_conus |> convertTemps(from="conus"))
-  temp_default <- temp_default    |> select(-c(all_of(drop0)))
+  temp_default <- temp_default    |> select(-all_of(drop0))
   rDataList[["temp_default"]] <- temp_default
   # temp_default |> glimpse(); temp_default$year |> length() |> print()
-  # return(rDataList)
-  # temp_default |> glimpse
-  
   ### Calculate annual values for SLR from global temperatures and add to list
   ### Ref year not needed since temps2slr will zero out values
-  df_refSlr    <- tibble(year = refYear_slr, slr_cm = 0)
+  df_refSlr    <- tibble(year=refYear_slr, slr_cm=0)
   slr_default  <- temps2slr(temps=temp_default[["temp_C_global"]], years=temp_default[["year"]])
   rDataList[["slr_default"]] <- slr_default
   # slr_default |> names |> print
   ### Remove intermediate values
-  rm("tempCols", "drop0"); rm("temp_default", "slr_default")
+  rm(tempCols, drop0); rm(temp_default, slr_default)
   
   ###### Default Socioeconomic Scenario ######
   ### Columns
@@ -125,15 +119,15 @@ createSystemData <- function(
   ### Filter to first unique region
   ### Select GDP columns and add national total
   # list_years |> print()
-  gdp_default <- gdp_default |> select(c(all_of(gdpCols))) |> mutate(region = nationalDot)
-  gdp_default <- gdp_default |> interpolate_annual(years = list_years, column = "gdp_usd", rule = 1:2)
-  gdp_default <- gdp_default |> select(-c(any_of(drop0)))
+  gdp_default <- gdp_default |> select(all_of(gdpCols)) |> mutate(region = nationalDot)
+  gdp_default <- gdp_default |> interpolate_annual(years=list_years, column = "gdp_usd", rule=1:2)
+  gdp_default <- gdp_default |> select(-any_of(drop0))
   # gdp_default$year |> unique() |> print()
   rDataList[["gdp_default"]] <- gdp_default
   
   ### Interpolate annual values for population and add to data list
-  pop_default <- co_defaultScenario |> select(c(all_of(popCols)))
-  pop_default <- pop_default        |> interpolate_annual(years = list_years, column = popColName, rule = 1:2, byState = byState)
+  pop_default <- co_defaultScenario |> select(all_of(popCols))
+  pop_default <- pop_default        |> interpolate_annual(years=list_years, column=popColName, rule=1:2, byState=byState)
   rDataList[["pop_default"]] <- pop_default
   # pop_default |> names |> print
   
@@ -163,8 +157,8 @@ createSystemData <- function(
   rDataList[["df_defaultScenario"]] <- df_national
   # df_defaultScenario |> names |> print
   ### Drop intermediate values
-  rm("nationalDot", "gdpCols", "group0", "drop0")
-  rm("gdp_default", "pop_default")
+  rm(nationalDot, gdpCols, group0, drop0)
+  rm(gdp_default, pop_default)
   # return(rDataList)
 
   ###### Extreme SLR Scenarios ######
@@ -223,29 +217,11 @@ createSystemData <- function(
   
   ### Initialized results: Join sector info and default scenario
   join0          <- c("joinCol")
-  df_sectorsInfo <- df_sectorsInfo |> mutate(joinCol=1)
-  df_national    <- df_national    |> mutate(joinCol=1)
+  df_results0    <- df_national    |> update_scalarScenario(df2=df_sectorsInfo, df3=df_mainScalars)
   df_results0    <- df_sectorsInfo |> left_join(df_national, by=c(join0), relationship = "many-to-many")
-  df_results0    <- df_results0    |> select(-c(all_of(join0)))
-  rm("join0"); rm("df_sectorsInfo", "df_national")
+  df_results0    <- df_results0    |> select(-all_of(join0))
+  rm(join0); #rm(df_sectorsInfo, df_national)
   # df_results0 |> glimpse()
-  ### Adjust values in state and postal columns for non-state-level sectors
-  sum0        <- popColName
-  group0      <- df_results0 |> names() |> (function(x){x[!(x %in% sum0)]})()
-  df_results0 <- df_results0 |> mutate(state  = byState |> ifelse(state , "N/A"))
-  df_results0 <- df_results0 |> mutate(postal = byState |> ifelse(postal, "N/A"))
-  df_results0 <- df_results0 |> group_by_at(c(group0)) |> summarize_at(c(sum0), sum, na.rm=T) |> ungroup()
-  # df_results0$sector |> unique() |> print()
-  # df_results0 |> glimpse(); df_results0 |> glimpse()
-  ### Physical adjustment
-  df_results0 <- df_results0 |> match_scalarValues(df_mainScalars, scalarType="physAdj")
-  ### Damage adjustment
-  df_results0 <- df_results0 |> match_scalarValues(df_mainScalars, scalarType="damageAdj")
-  ### Economic scalar
-  df_results0 <- df_results0 |> match_scalarValues(df_mainScalars, scalarType="econScalar")
-  ### Drop extra columns and add to data list
-  drop0       <- c("gdp_usd", "reg_pop", "state_pop", "national_pop", "gdp_percap")
-  df_results0 <- df_results0 |> select(-c(any_of(drop0)))
   rDataList[["df_results0"]] <- df_results0
   ### Message the user
   if(msgUser) {paste0("\t", messages_data[["calcScalars"]]$success) |> message()}
