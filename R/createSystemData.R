@@ -5,6 +5,7 @@ createSystemData <- function(
     dataList    = list(), ### List of data created by reshapeData
     outPath     = "." |> file.path("data", "sysdata.rda"),
     configPath  = "." |> file.path("R"   , "fredi_config.R"), ### Path to config file
+    extend_all  = FALSE, 
     save        = FALSE,
     silent      = FALSE,  ### Whether to message the user
     return      = TRUE,
@@ -284,7 +285,7 @@ createSystemData <- function(
     yCol        = "scaledImpact",
     extend_from = maxOutput_gcm,
     extend_to   = maxExtrap_gcm,
-    extend_all  = FALSE,
+    extend_all  = extend_all,
     unitScale   = unitScale_gcm
   ) 
   

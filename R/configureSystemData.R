@@ -3,6 +3,7 @@ configureSystemData <- function(
     fileName   = "FrEDI_config.xlsx", ### name of excel file with config information
     sheetName  = "tableNames",
     configPath = "." |> file.path("R"   , "fredi_config.R"), ### Path to config file
+    extend_all = FALSE,
     save       = FALSE,  ### Whether to message the user
     outPath    = "." |> file.path("data", "tmp_sysdata.rda"),
     return     = TRUE,
@@ -72,7 +73,7 @@ configureSystemData <- function(
   ###### 4. Configure Data ######
   ### Names of objects to combine from reshaped data
   (!silent) |> ifelse("\n", "") |> paste0(msg1, "Configuring data...") |> message()
-  sysDataList0  <- listReshape0 |> createSystemData(byState=T, save=F, silent=silent)
+  sysDataList0  <- listReshape0 |> createSystemData(byState=T, extend_all=extend_all, save=F, silent=silent)
   rm(listReshape0)
   
   ###### 5. FrEDI Data  ######
