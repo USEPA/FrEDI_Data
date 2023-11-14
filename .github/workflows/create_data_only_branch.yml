@@ -9,7 +9,7 @@ on:
       branch_name:
         type: string
         description: Type suffix to your branch name data_only_branch_*
-          
+
           
 jobs:
   get_data:
@@ -28,7 +28,7 @@ jobs:
           git symbolic-ref HEAD refs/heads/data_only_branch_${{ github.event.inputs.branch_name }}
           rm .git/index
           git clean -fdx
-          git checkout main ./data
+          git checkout ${GITHUB_REF##*/} ./data
           git add ./data/*
           git commit -am "creating data only branch on data_only_branch_${{ github.event.inputs.branch_name }}"
           git fetch origin
