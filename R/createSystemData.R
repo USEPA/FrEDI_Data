@@ -14,9 +14,8 @@ createSystemData <- function(
   ###### Set up the environment ######
   ### Level of messaging (default is to message the user) and save behavior
   msgUser     <- !silent
-  msg0        <- "\t"
-  msg1        <- msg0 |> rep(2) |> paste(collapse="")
-  if(msgUser) {msg0 |> paste0("Running createSystemData()...") |> message()}
+  msg0        <- function(lvl0=1){"\t" |> rep(lvl0) |> paste(collapse="")}
+  if(msgUser) {msg0() |> paste0("Running createSystemData()...") |> message()}
   
   ###### Initialize Data List ######
   ### Initialize list of data to save
@@ -32,20 +31,12 @@ createSystemData <- function(
   
   ###### Configuration Data ######
   ### Read in configuration data and assign data tables to objects in the list
-  if(msgUser) {msg1 |> paste0("Loading config info from '", configFile, "'...") |> message()}
-  # if(msgUser) {messages_data[["loadInputs"]]$try |> message()}
+  if(msgUser) {msg0(1) |> paste0("Loading config info from '", configFile, "'...") |> message()}
   configFile |> source()
-  # configFile |> file.exists |> print; fredi_config |> print; fredi_config |> names |> print
   for(name_i in names(fredi_config)) {assign(name_i, fredi_config[[name_i]]); rm("name_i")}
   
   ###### Import Functions to Namespace ######
-  fun_slrConfigExtremes <- utils::getFromNamespace("fun_slrConfigExtremes", "FrEDI")
-  fun_formatScalars     <- utils::getFromNamespace("fun_formatScalars"    , "FrEDI")
-  get_uniqueValues      <- utils::getFromNamespace("get_uniqueValues"     , "FrEDI")
   get_scenario_id       <- utils::getFromNamespace("get_scenario_id"      , "FrEDI")
-  extend_slr            <- utils::getFromNamespace("extend_slr"           , "FrEDI")
-  
-  get_impactFunctions   <- utils::getFromNamespace("get_impactFunctions"  , "FrEDI")
   interpolate_annual    <- utils::getFromNamespace("interpolate_annual"   , "FrEDI")
   match_scalarValues    <- utils::getFromNamespace("match_scalarValues"   , "FrEDI")
   convertTemps          <- utils::getFromNamespace("convertTemps"         , "FrEDI")
@@ -61,20 +52,21 @@ createSystemData <- function(
   ### Load data from file
   loadDataList <- dataList
   rDataList    <- rDataList |> c(loadDataList)
-  if(msgUser) {msg1 |> paste0(messages_data[["loadInputs"]]$success) |> message()}
+  if(msgUser) {msg0(1) |> paste0(messages_data[["loadInputs"]]$success) |> message()}
   for(name_i in names(loadDataList)) {assign(name_i, loadDataList[[name_i]]); rm("name_i")}
   
   ###### Sector Info ######
   ### Exclude some sectors, get the number of sectors and sector info
   ### Sector info with additional sector info: df_sectorsInfo
   ### Sector info with models: df_sectorsModels
-  if(msgUser) {msg1 |> paste0("Configuring data...") |> message()}
+  if(msgUser) {msg0(1) |> paste0("Configuring data...") |> message()}
   sector_ids   <- if (byState) {co_stateSectors[["sector_id"]]} else {co_sectors[["sector_id"]]}
   sector_ids   <- sector_ids |> unique()
   num_sectors  <- sector_ids |> length()
   
   ###### Default Driver Scenarios ######
   ### Get reference years and add to fredi_config
+  if(msgUser) {msg0(2) |> paste0("Creating driver scenarios...") |> message()}
   refYear_temp <- (co_modelTypes |> filter(modelUnitType=="temperature"))$modelRefYear |> unique()
   refYear_slr  <- (co_modelTypes |> filter(modelUnitType=="slr"        ))$modelRefYear |> unique()
   fredi_config[["refYear_temp"]] <- refYear_temp
@@ -107,6 +99,7 @@ createSystemData <- function(
   rm(tempCols, drop0); rm(temp_default, slr_default)
   
   ###### Default Socioeconomic Scenario ######
+  if(msgUser) {msg0(2) |> paste0("Creating socioeconomic scenario...") |> message()}
   ### Columns
   nationalDot <- c("National.Total")
   gdpCols     <- c("year", "gdp_usd")
@@ -135,17 +128,17 @@ createSystemData <- function(
   ### Calculate region population totals
   if(byState){
     df_regPop   <- pop_default |> 
-      group_by_at(.vars=c("year", "region")) |> 
-      summarize_at(.vars=c(popColName), sum, na.rm=T) |> ungroup()
-    df_regPop   <- df_regPop |> rename_at(.vars=c(popColName), ~c("reg_pop"))
+      group_by_at (c("year", "region")) |> 
+      summarize_at(c(popColName), sum, na.rm=T) |> ungroup()
+    df_regPop   <- df_regPop |> rename_at(c(popColName), ~c("reg_pop"))
     rDataList[["df_regPop"]] <- df_regPop
   }
   
   ### Calculate national population and add to data list
   df_national <- pop_default |> 
-    group_by_at(.vars=c(group0)) |> 
-    summarize_at(.vars=c(popColName), sum, na.rm=T) |> ungroup()
-  df_national <- df_national |> rename_at(.vars=c(popColName), ~c("national_pop"))
+    group_by_at (c(group0)) |> 
+    summarize_at(c(popColName), sum, na.rm=T) |> ungroup()
+  df_national <- df_national |> rename_at(c(popColName), ~c("national_pop"))
   rDataList[["national_pop_default"]] <- df_national
   # df_national |> names |> print
   
@@ -175,10 +168,11 @@ createSystemData <- function(
   slr_cm      <- slr_cm     |> mutate_at(.vars = c(mutate0), as.character)
   slrImpacts  <- slrImpacts |> mutate_at(.vars = c(mutate0), as.character)
   ### Create data for extreme values above 250cm
+  if(msgUser) {msg0(2) |> paste0("Creating extreme SLR impact values...") |> message()}
   slrExtremes <- fun_slrConfigExtremes(
     slr_x = slr_cm,    ### rDataList$slr_cm
     imp_x = slrImpacts ### rDataList$slrImpacts
-  )
+  ) ### End fun_slrConfigExtremes
   # return(rDataList)
   
   ###### Interpolate SLR Scenarios ######
@@ -187,6 +181,7 @@ createSystemData <- function(
   c_imp        <- c("sector", "variant", "impactType", "impactYear", "region")
   if(byState){c_imp <- c_imp |>  c("state", "postal", "year")} else{ c_imp <- c_imp |> c("year")}
   ### Extend values 
+  if(msgUser) {msg0(2) |> paste0("Extending SLR values...") |> message()}
   slr_cm       <- slr_cm      |> extend_slr()
   slrImpacts   <- slrImpacts  |> extend_slr()
   slrExtremes  <- slrExtremes |> extend_slr()
@@ -195,39 +190,27 @@ createSystemData <- function(
   rDataList[["slr_cm"     ]] <- slr_cm
   rDataList[["slrImpacts" ]] <- slrImpacts
   rDataList[["slrExtremes"]] <- slrExtremes
-  rm("slr_cm", "slrImpacts", "slrExtremes"); rm("c_cm", "c_imp")
+  rm(slr_cm, slrImpacts, slrExtremes); rm(c_cm, c_imp)
   # return(rDataList)
   
   ###### Format Scalar Tables ######
   ### Interpolate values to annual levels
+  if(msgUser) {msg0(2) |> paste0("Formatting scalars...") |> message()}
   # scalarDataframe |> names |> print
   df_mainScalars <- fun_formatScalars(
     data_x  = scalarDataframe, ### rDataList$scalarDataframe
     info_x  = co_scalarInfo,   ### rDataList$co_scalarInfo
     years_x = list_years,      ### rDataList$list_years
     byState = byState
-  )
+  ) ### End fun_formatScalars
+  ### Add other info
+  df_mainScalars <- df_mainScalars |> update_popScalars(df_national)
   ### Update list
   rDataList[["df_mainScalars"]] <- df_mainScalars
   # return(rDataList)
   
-  ###### Physical and Economic Scalars ######
-  ### Physical scalars: Get population weights, then physical scalar multipliers
-  ### Economic scalars: Get economic scalars, then multipliers
-  if(msgUser) {messages_data[["calcScalars"]]$try |> message()}
-  
-  ### Initialized results: Join sector info and default scenario
-  join0          <- c("joinCol")
-  df_results0    <- df_national    |> update_scalarScenario(df2=df_sectorsInfo, df3=df_mainScalars)
-  df_results0    <- df_sectorsInfo |> left_join(df_national, by=c(join0), relationship = "many-to-many")
-  df_results0    <- df_results0    |> select(-all_of(join0))
-  rm(join0); #rm(df_sectorsInfo, df_national)
-  # df_results0 |> glimpse()
-  rDataList[["df_results0"]] <- df_results0
-  ### Message the user
-  if(msgUser) {paste0("\t", messages_data[["calcScalars"]]$success) |> message()}
-  
   ###### Get Scenario Info for Scaled Impacts  ######
+  if(msgUser) {msg0(2) |> paste0("Getting scenario IDs...") |> message()}
   ### Add a column with a scenario id
   # data_scaledImpacts |> glimpse()
   includeCols        <- c("region_dot") |> c(stateCols0) |> c("model_dot")
@@ -245,7 +228,8 @@ createSystemData <- function(
   ###### Get Interpolation Functions for Scenarios ######
   ### Iterate over sectors to get interpolation functions with fun_getImpactFunctions()
   ### fun_getImpactFunctions depends on the function fun_tempImpactFunction()
-  if(msgUser) {paste0("\t", messages_data[["interpFuns"]]$try) |> message()}
+  if(msgUser) {msg0(2) |> paste0("Creating list of impact functions...") |> message()}
+  # if(msgUser) {paste0("\t", messages_data[["interpFuns"]]$try) |> message()}
   df_hasScenario       <- data_scaledImpacts |> filter(hasScenario)
   df_hasScenario       <- df_hasScenario     |> ungroup() #|> as.data.frame()
   c_modelTypes         <- c("gcm")
@@ -263,25 +247,23 @@ createSystemData <- function(
     extend_to   = maxExtrap_gcm,
     extend_all  = extend_all,
     unitScale   = unitScale_gcm
-  ) 
+  ) ### get_impactFunctions
   
   ### Add values to list and remove intermediate values
   rDataList[["list_impactFunctions"]] <- functions_gcm
   rm("c_modelTypes", "maxOutput_gcm", "maxExtrap_gcm", "unitScale_gcm")
   rm("df_gcm", "df_hasScenario", "functions_gcm")
   ### Message the user
-  if(msgUser) {msg1 |> paste0(messages_data[["interpFuns"]]$success) |> message()}
+  if(msgUser) {msg0(1) |> paste0(messages_data[["interpFuns"]]$success) |> message()}
   
   ###### Add Config List ######
   ### Add config to data list
   rDataList[["fredi_config"]] <- fredi_config
   
   ###### Return object ######
-  if(msgUser){msg1 |> paste0("...Finished running createSystemData()", ".") |> message()}
+  if(msgUser){msg0(1) |> paste0("...Finished running createSystemData()", ".") |> message()}
   return(rDataList)
 } ### End function
 
 
-### Uncomment following two lines to create and save data and check the outputs
-# test_systemData <- createSystemData(save=F)
-# rm("createSystemData")
+

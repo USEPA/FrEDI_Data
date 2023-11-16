@@ -131,12 +131,12 @@ combineReshapedLists <- function(
       group0    <- c("scalarType", "scalarName")
       scalars0  <- df_state |> 
         group_by_at(c(group0)) |> 
-        summarize(inState=n(), .groups="keep") |> ungroup() |>
-        mutate(inState = 1)
+        summarize(byState=n(), .groups="keep") |> ungroup() |>
+        mutate(byState = 1)
       ### Join with region data & filter to scalars not in state
       df_region <- df_region |> left_join(scalars0, by=c(group0))
-      df_region <- df_region |> filter(inState |> is.na())
-      df_region <- df_region |> select(-c("inState"))
+      df_region <- df_region |> filter(byState |> is.na())
+      df_region <- df_region |> select(-c("byState"))
     } else{
       # df_region |> glimpse(); df_state |> glimpse()
       sectors0  <- df_state [["sector"]] |> unique()
@@ -144,8 +144,9 @@ combineReshapedLists <- function(
       rm(sectors0)
     } ### End else
     ### Modify region and combine
-    df_region <- df_region |> mutate(state="N/A", postal="N/A")
-    df_state  <- df_state |> rbind(df_region)
+    df_region <- df_region |> mutate(state="N/A", postal="N/A", byState=0)
+    df_state  <- df_state  |> mutate(byState=1) 
+    df_state  <- df_state  |> rbind(df_region)
     ### Return
     return(df_state)
   }) |> set_names(colsCombine0)

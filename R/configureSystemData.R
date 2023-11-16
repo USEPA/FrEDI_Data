@@ -69,6 +69,7 @@ configureSystemData <- function(
   listReshape0  <- reshapeReg0 |> combineReshapedLists(stateList0=reshapeState0)
   rm(reshapeReg0, reshapeState0)
   # return(listReshape0)
+  # listReshape0 |> names() |> print()
   
   ###### 4. Configure Data ######
   ### Names of objects to combine from reshaped data
@@ -86,12 +87,14 @@ configureSystemData <- function(
     c("co_regions", "co_states") |>
     c("co_models", "co_modelTypes") |>
     c("co_econMultipliers", "co_scalarInfo") |>
+    c("co_slrScalars") |>
     c("co_defaultTemps", "temp_default") |> 
     c("slr_cm", "slr_default") |>
     c("gdp_default") |> 
     c("co_inputScenarioInfo", "testDev") |>
     c("co_defaultScenario", "co_statePopRatios")
   ### Update objects
+  # sysDataList0 |> names() |> print()
   frediList0    <- sysDataList0 |> (function(x){x[  names(x) %in% frediNames0 ]})()
   sysDataList0  <- sysDataList0 |> (function(x){x[!(names(x) %in% frediNames0)]})()
   ### Update in list
