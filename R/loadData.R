@@ -81,7 +81,7 @@ loadData <- function(
     ### Remove intermediate values
     rm("table_i", "tableInfo_i", "tableName_i", "i")
   } ### End lapply
-  
+
   ###### Set Aside GDP Default ######
   ### Default scenario
   gdp_default   <- dataList[["co_defaultScenario"]]
@@ -90,7 +90,7 @@ loadData <- function(
   
   ###### Load State Data ######
   if (byState) {
-    ### State sectors
+    # ### State sectors
     state_sectors <- dataList     [["co_sectors"]] |> filter(byState == 1)
     state_sectors <- state_sectors[["sector_id" ]] |> unique()
     ### Load state data
@@ -102,6 +102,7 @@ loadData <- function(
     dataList[["scalarDataframe"   ]] <- state_data[["df_stateScalars"   ]]
     dataList[["co_defaultScenario"]] <- state_data[["df_statePop"       ]]
   } ### End if(byState)
-
+  
+  ###### Return ######
   return(dataList)
 }

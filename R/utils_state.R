@@ -16,7 +16,7 @@ loadStateScaledImpacts <- function(
   gcm_sector_data_list <- gcm_sectors %>%
     map(function(sector){
       sector_data <- fpath %>%
-        file.path("gcm", paste0(sector, "_scaledImpacts.csv")) %>%
+        file.path("gcm", paste0(sector, "_scaledimpacts.csv")) %>%
         read.csv %>%
         select(all_of(gcm_col_names)) %>%
         mutate(variant = as.character(variant)) %>%
@@ -26,7 +26,7 @@ loadStateScaledImpacts <- function(
   slr_sector_data_list <- slr_sectors %>%
     map(function(sector){
       sector_data <- fpath %>%
-        file.path("slr", paste0(sector, "_scaledImpacts.csv")) %>%
+        file.path("slr", paste0(sector, "_scaledimpacts.csv")) %>%
         read.csv %>%
         select(all_of(slr_col_names)) %>%
         mutate(variant = as.character(variant)) %>%

@@ -10,6 +10,7 @@ createSystemData <- function(
     return      = TRUE,
     byState     = FALSE
 ){
+  
   ###### Set up the environment ######
   ### Level of messaging (default is to message the user) and save behavior
   msgUser     <- !silent
@@ -22,14 +23,8 @@ createSystemData <- function(
   rDataList   <- list()
   
   ###### Create File Paths ######
-  # ### Output file
-  # outPath     <- if (is.null(outPath)) {"." |> file.path("data", "sysdata.rda")} else {outPath}
-  # sysDataFile <- outPath |> basename()
-  # sysDataPath <- outPath |> dirname()
-  # sysDataFile <- sysDataPath |> file.path(sysDataFile)
-  # sysDataFile |> print
   ### Config file
-  configPath <- if (is.null(configPath)) {"." |> file.path("R", "fredi_config.R")} else {configPath}
+  configPath <- if (configPath |> is.null()) {"." |> file.path("R", "fredi_config.R")} else {configPath}
   configFile <- configPath |> basename()
   configPath <- configPath |> dirname()
   configFile <- configPath |> file.path(configFile)
@@ -55,6 +50,9 @@ createSystemData <- function(
   match_scalarValues    <- utils::getFromNamespace("match_scalarValues"   , "FrEDI")
   convertTemps          <- utils::getFromNamespace("convertTemps"         , "FrEDI")
   temps2slr             <- utils::getFromNamespace("temps2slr"            , "FrEDI")
+  
+  ###### By State ######
+  if(byState){stateCols0 <- c("state", "postal")} else{stateCols0 <- c()}
   
   ###### Assign Data Objects ###### 
   ###### This section reads in data from the data file and returns a list of tables
@@ -82,26 +80,32 @@ createSystemData <- function(
   refYear_slr  <- (co_modelTypes |> filter(modelUnitType=="slr"        ))$modelRefYear |> unique()
   fredi_config[["refYear_temp"]] <- refYear_temp
   fredi_config[["refYear_slr" ]] <- refYear_slr
+  
+  ### Default temperature scenario
   ### Columns, years for interpolation
   tempCols     <- c("year", "temp_C_conus", "temp_C_global")
   drop0        <- c("region")
   years0       <- refYear_temp:maxYear
-  ### Create initial year values
-  df_refTemp   <- tibble(year = refYear_temp, temp_C_conus = 0)
-  df_refTemp   <- df_refTemp |> mutate(temp_C_global = temp_C_conus |> convertTemps(from="conus"))
-  df_refSlr    <- tibble(year = refYear_slr, slr_cm = 0)
   ### Zero out CONUS values for temperature at reference year and interpolate annual values
-  ### Calculate global temperatures and update in list
-  temp_default <- co_defaultTemps |> filter(year > refYear_temp)
+  df_refTemp   <- tibble(year = refYear_temp, temp_C_conus = 0)
+  temp_default <- co_defaultTemps |> filter(year > refYear_temp) |> select(c("year", "temp_C_conus"))
   temp_default <- df_refTemp      |> rbind(temp_default)
-  temp_default <- temp_default    |> interpolate_annual(years = years0, column="temp_C_conus", rule=1:2)
+  # rDataList[["temp_default"]] <- temp_default
+  # return(rDataList)
+  ### Interpolate annual
+  
+  temp_default <- temp_default    |> interpolate_annual(years=years0, column="temp_C_conus", rule=1:2)
+  ### Calculate global temperatures and update in list
   temp_default <- temp_default    |> mutate(temp_C_global = temp_C_conus |> convertTemps(from="conus"))
   temp_default <- temp_default    |> select(-c(all_of(drop0)))
   rDataList[["temp_default"]] <- temp_default
+  # temp_default |> glimpse(); temp_default$year |> length() |> print()
+  # return(rDataList)
   # temp_default |> glimpse
   
   ### Calculate annual values for SLR from global temperatures and add to list
   ### Ref year not needed since temps2slr will zero out values
+  df_refSlr    <- tibble(year = refYear_slr, slr_cm = 0)
   slr_default  <- temps2slr(temps=temp_default[["temp_C_global"]], years=temp_default[["year"]])
   rDataList[["slr_default"]] <- slr_default
   # slr_default |> names |> print
@@ -116,15 +120,16 @@ createSystemData <- function(
   drop0       <- c("region")
   ### Population columns
   popColName  <- byState |> ifelse("state_pop", "reg_pop")
-  popCols     <- c("year", "region") |> c(popColName)
-  if (byState) {popCols <- popCols |> c("state", "postal")} 
+  popCols     <- c("year", "region") |> c(stateCols0) |> c(popColName)
   
   ### Interpolate annual values for GDP:
   ### Filter to first unique region
   ### Select GDP columns and add national total
+  # list_years |> print()
   gdp_default <- gdp_default |> select(c(all_of(gdpCols))) |> mutate(region = nationalDot)
   gdp_default <- gdp_default |> interpolate_annual(years = list_years, column = "gdp_usd", rule = 1:2)
   gdp_default <- gdp_default |> select(-c(any_of(drop0)))
+  # gdp_default$year |> unique() |> print()
   rDataList[["gdp_default"]] <- gdp_default
   
   ### Interpolate annual values for population and add to data list
@@ -161,7 +166,8 @@ createSystemData <- function(
   ### Drop intermediate values
   rm("nationalDot", "gdpCols", "group0", "drop0", "popCols", "popColName")
   rm("gdp_default", "pop_default")
-  
+  # return(rDataList)
+
   ###### Extreme SLR Scenarios ######
   ### replace NA values and convert to character
   # slr_cm |> names |> print; slrImpacts |> names |> print; 
@@ -179,26 +185,24 @@ createSystemData <- function(
     slr_x = slr_cm,    ### rDataList$slr_cm
     imp_x = slrImpacts ### rDataList$slrImpacts
   )
+  # return(rDataList)
   
   ###### Interpolate SLR Scenarios ######
   ### Extend SLR Heights, Impacts, and Extremes
   c_cm         <- c("model", "year")
   c_imp        <- c("sector", "variant", "impactType", "impactYear", "region")
   if(byState){c_imp <- c_imp |>  c("state", "postal", "year")} else{ c_imp <- c_imp |> c("year")}
-  # slr_cm       <- slr_cm      |> extend_slr(arrange_x=c_cm)
-  # slrImpacts   <- slrImpacts  |> extend_slr(arrange_x=c_imp)
-  # slrExtremes  <- slrExtremes |> extend_slr(arrange_x=c_imp)
-  df_newYears  <- tibble(year = seq(2091, 2300, by=1))      
-  slr_cm       <- slr_cm      |> extend_data()
-  slrImpacts   <- slrImpacts  |> extend_data()
-  slrExtremes  <- slrExtremes |> extend_data()
+  ### Extend values 
+  slr_cm       <- slr_cm      |> extend_slr()
+  slrImpacts   <- slrImpacts  |> extend_slr()
+  slrExtremes  <- slrExtremes |> extend_slr()
 
   ### Update in data list and remove objects
   rDataList[["slr_cm"     ]] <- slr_cm
   rDataList[["slrImpacts" ]] <- slrImpacts
   rDataList[["slrExtremes"]] <- slrExtremes
   rm("slr_cm", "slrImpacts", "slrExtremes"); rm("c_cm", "c_imp")
-  
+
   ###### Format Scalar Tables ######
   ### Interpolate values to annual levels
   # scalarDataframe |> names |> print
@@ -208,7 +212,9 @@ createSystemData <- function(
     years_x = list_years,      ### rDataList$list_years
     byState = byState
   )
+  ### Update list
   rDataList[["df_mainScalars"]] <- df_mainScalars
+  # return(rDataList)
   
   ###### Physical and Economic Scalars ######
   ### Physical scalars: Get population weights, then physical scalar multipliers
@@ -222,9 +228,9 @@ createSystemData <- function(
   df_results0    <- df_sectorsInfo |> left_join(df_national, by=c(join0), relationship = "many-to-many")
   df_results0    <- df_results0    |> select(-c(all_of(join0)))
   rm("join0"); rm("df_sectorsInfo", "df_national")
+  # df_results0$sector |> unique() |> print()
   
   ### Physical adjustment
-  # df_mainScalars |> names |> print; df_results0 |> names |> print
   df_results0 <- df_results0 |> match_scalarValues(df_mainScalars, scalarType="physAdj")
   ### Damage adjustment
   df_results0 <- df_results0 |> match_scalarValues(df_mainScalars, scalarType="damageAdj")
@@ -242,29 +248,27 @@ createSystemData <- function(
   ### Get list of scenarios for scenarios with at least some non-NA values
   ### Add information on non-missing scenarios to scaled impacts data
   # data_scaledImpacts |> glimpse()
-  includeCols <- c("model_dot", "region_dot")
-  if (byState) {includeCols <- includeCols |> c("state", "postal")} 
+  includeCols        <- c("model_dot", "region_dot") |> c(stateCols0)
   data_scaledImpacts <- data_scaledImpacts |> get_scenario_id(include=includeCols)
   c_scenariosList    <- data_scaledImpacts |> filter(!is.na(scaledImpact)) |> get_uniqueValues(column="scenario_id")
   data_scaledImpacts <- data_scaledImpacts |> mutate(hasScenario = (scenario_id %in% c_scenariosList))
   # rm("c_scenariosList")
   ### Update in data list
   rDataList[["data_scaledImpacts"]] <- data_scaledImpacts
+  # return(rDataList)
   
   ###### Get Interpolation Functions for Scenarios ######
   ### Iterate over sectors to get interpolation functions with fun_getImpactFunctions()
   ### fun_getImpactFunctions depends on the function fun_tempImpactFunction()
-  if(msgUser) {message("\t", messages_data[["interpFuns"]]$try)}
+  if(msgUser) {paste0("\t", messages_data[["interpFuns"]]$try) |> message()}
   df_hasScenario       <- data_scaledImpacts |> filter(hasScenario)
-  df_hasScenario       <- df_hasScenario     |> ungroup() |> as.data.frame()
+  df_hasScenario       <- df_hasScenario     |> ungroup() #|> as.data.frame()
   c_modelTypes         <- c("gcm")
-  # list_impactFunctions <- list()
   ### Max output value, maximum extrapolation value, unit scale,   extend type
   df_gcm         <- (co_modelTypes |> filter(modelType_id==c_modelTypes))
   maxOutput_gcm  <- df_gcm[["modelMaxOutput"]][1]
   maxExtrap_gcm  <- df_gcm[["modelMaxExtrap"]][1]
   unitScale_gcm  <- df_gcm[["modelUnitScale"]][1]
-  ### Format data
   ### Get functions
   functions_gcm  <- df_hasScenario |> get_impactFunctions(
     groupCol    = "scenario_id",
@@ -275,48 +279,20 @@ createSystemData <- function(
     extend_all  = FALSE,
     unitScale   = unitScale_gcm
   ) 
-  # paste(modelType_i, length(functions_i)) |> print
+  
   ### Add values to list and remove intermediate values
-  # list_impactFunctions <- list_impactFunctions |> c(functions_gcm)
-  # rDataList[["list_impactFunctions"]] <- list_impactFunctions
   rDataList[["list_impactFunctions"]] <- functions_gcm
   rm("c_modelTypes", "maxOutput_gcm", "maxExtrap_gcm", "unitScale_gcm")
   rm("df_gcm", "df_hasScenario", "functions_gcm")
-  
-  ###### Aggregate R Data objects ######
   ### Message the user
   if(msgUser) {msg1 |> paste0(messages_data[["interpFuns"]]$success) |> message()}
   
-  # ### Make a new data list
-  # rDataList <- list(
-  #   "gdp_default"               = gdp_default,
-  #   "pop_default"               = pop_default,
-  #   "national_pop_default"      = national_pop_default,
-  #   "df_mainScalars"            = df_mainScalars,
-  #   "df_results0"               = df_results0,
-  #   "list_impactFunctions"      = list_impactFunctions
-  # )
-  # ### Combine with the data list
-  # rDataList <- loadDataList |> c(rDataList)
+  ###### Add Config List ######
+  ### Add config to data list
   rDataList[["fredi_config"]] <- fredi_config
-  
-  
-  # ###### Save R Data objects ######
-  # ### If save:
-  # ### - Message the user
-  # ### - Check if the output file directory exists
-  # ### - If the outpath exists, try to save the file
-  # if(save) {
-  #   paste0("\n", "Saving results to ", sysDataPath, "...") |> message()
-  #   outPathExists <- sysDataPath |> dir.exists()
-  #   expr0         <- try(save(fredi_config, rDataList, file=sysDataFile), silent=T)
-  #   if(outPathExists) {trySave <- expr0 |> eval()} ### End if outPathExists
-  # } ### End if save
-  # # rDataList |> names |> print
   
   ###### Return object ######
   if(msgUser){msg1 |> paste0("...Finished running createSystemData()", ".") |> message()}
-  
   return(rDataList)
 } ### End function
 
