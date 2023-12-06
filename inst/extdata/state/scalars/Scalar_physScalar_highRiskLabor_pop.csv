@@ -1,99 +1,50 @@
-"state","postal","scalarName","year","value"
-"Alabama","AL","highRiskLabor_pop",2010,567739
-"Delaware","DE","highRiskLabor_pop",2010,92042
-"District of Columbia","DC","highRiskLabor_pop",2010,23894
-"Florida","FL","highRiskLabor_pop",2010,1544839
-"Georgia","GA","highRiskLabor_pop",2010,1066005
-"Idaho","ID","highRiskLabor_pop",2010,194535
-"Illinois","IL","highRiskLabor_pop",2010,1508381
-"Indiana","IN","highRiskLabor_pop",2010,924095
-"Iowa","IA","highRiskLabor_pop",2010,460987
-"Kansas","KS","highRiskLabor_pop",2010,383466
-"Kentucky","KY","highRiskLabor_pop",2010,537623
-"Louisiana","LA","highRiskLabor_pop",2010,521077
-"Maine","ME","highRiskLabor_pop",2010,150951
-"Maryland","MD","highRiskLabor_pop",2010,500657
-"Massachusetts","MA","highRiskLabor_pop",2010,632183
-"Michigan","MI","highRiskLabor_pop",2010,1165238
-"Minnesota","MN","highRiskLabor_pop",2010,721686
-"Mississippi","MS","highRiskLabor_pop",2010,349503
-"Missouri","MO","highRiskLabor_pop",2010,694305
-"Montana","MT","highRiskLabor_pop",2010,119801
-"Nebraska","NE","highRiskLabor_pop",2010,263058
-"Nevada","NV","highRiskLabor_pop",2010,222929
-"New Hampshire","NH","highRiskLabor_pop",2010,171851
-"New Jersey","NJ","highRiskLabor_pop",2010,876209
-"New Mexico","NM","highRiskLabor_pop",2010,190532
-"New York","NY","highRiskLabor_pop",2010,1664192
-"North Carolina","NC","highRiskLabor_pop",2010,1102279
-"North Dakota","ND","highRiskLabor_pop",2010,103639
-"Ohio","OH","highRiskLabor_pop",2010,1409036
-"Arizona","AZ","highRiskLabor_pop",2010,577384
-"Oklahoma","OK","highRiskLabor_pop",2010,460303
-"Oregon","OR","highRiskLabor_pop",2010,437578
-"Pennsylvania","PA","highRiskLabor_pop",2010,1480485
-"Rhode Island","RI","highRiskLabor_pop",2010,107019
-"South Carolina","SC","highRiskLabor_pop",2010,528672
-"South Dakota","SD","highRiskLabor_pop",2010,114971
-"Tennessee","TN","highRiskLabor_pop",2010,759587
-"Texas","TX","highRiskLabor_pop",2010,2995014
-"Utah","UT","highRiskLabor_pop",2010,309480
-"Arkansas","AR","highRiskLabor_pop",2010,376837
-"Vermont","VT","highRiskLabor_pop",2010,79501
-"Virginia","VA","highRiskLabor_pop",2010,762664
-"Washington","WA","highRiskLabor_pop",2010,783389
-"West Virginia","WV","highRiskLabor_pop",2010,196647
-"Wisconsin","WI","highRiskLabor_pop",2010,881278
-"Wyoming","WY","highRiskLabor_pop",2010,93188
-"California","CA","highRiskLabor_pop",2010,3863782
-"Colorado","CO","highRiskLabor_pop",2010,554322
-"Connecticut","CT","highRiskLabor_pop",2010,373233
-"Alabama","AL","highRiskLabor_pop",2090,567739
-"Delaware","DE","highRiskLabor_pop",2090,92042
-"District of Columbia","DC","highRiskLabor_pop",2090,23894
-"Florida","FL","highRiskLabor_pop",2090,1544839
-"Georgia","GA","highRiskLabor_pop",2090,1066005
-"Idaho","ID","highRiskLabor_pop",2090,194535
-"Illinois","IL","highRiskLabor_pop",2090,1508381
-"Indiana","IN","highRiskLabor_pop",2090,924095
-"Iowa","IA","highRiskLabor_pop",2090,460987
-"Kansas","KS","highRiskLabor_pop",2090,383466
-"Kentucky","KY","highRiskLabor_pop",2090,537623
-"Louisiana","LA","highRiskLabor_pop",2090,521077
-"Maine","ME","highRiskLabor_pop",2090,150951
-"Maryland","MD","highRiskLabor_pop",2090,500657
-"Massachusetts","MA","highRiskLabor_pop",2090,632183
-"Michigan","MI","highRiskLabor_pop",2090,1165238
-"Minnesota","MN","highRiskLabor_pop",2090,721686
-"Mississippi","MS","highRiskLabor_pop",2090,349503
-"Missouri","MO","highRiskLabor_pop",2090,694305
-"Montana","MT","highRiskLabor_pop",2090,119801
-"Nebraska","NE","highRiskLabor_pop",2090,263058
-"Nevada","NV","highRiskLabor_pop",2090,222929
-"New Hampshire","NH","highRiskLabor_pop",2090,171851
-"New Jersey","NJ","highRiskLabor_pop",2090,876209
-"New Mexico","NM","highRiskLabor_pop",2090,190532
-"New York","NY","highRiskLabor_pop",2090,1664192
-"North Carolina","NC","highRiskLabor_pop",2090,1102279
-"North Dakota","ND","highRiskLabor_pop",2090,103639
-"Ohio","OH","highRiskLabor_pop",2090,1409036
-"Arizona","AZ","highRiskLabor_pop",2090,577384
-"Oklahoma","OK","highRiskLabor_pop",2090,460303
-"Oregon","OR","highRiskLabor_pop",2090,437578
-"Pennsylvania","PA","highRiskLabor_pop",2090,1480485
-"Rhode Island","RI","highRiskLabor_pop",2090,107019
-"South Carolina","SC","highRiskLabor_pop",2090,528672
-"South Dakota","SD","highRiskLabor_pop",2090,114971
-"Tennessee","TN","highRiskLabor_pop",2090,759587
-"Texas","TX","highRiskLabor_pop",2090,2995014
-"Utah","UT","highRiskLabor_pop",2090,309480
-"Arkansas","AR","highRiskLabor_pop",2090,376837
-"Vermont","VT","highRiskLabor_pop",2090,79501
-"Virginia","VA","highRiskLabor_pop",2090,762664
-"Washington","WA","highRiskLabor_pop",2090,783389
-"West Virginia","WV","highRiskLabor_pop",2090,196647
-"Wisconsin","WI","highRiskLabor_pop",2090,881278
-"Wyoming","WY","highRiskLabor_pop",2090,93188
-"California","CA","highRiskLabor_pop",2090,3863782
-"Colorado","CO","highRiskLabor_pop",2090,554322
-"Connecticut","CT","highRiskLabor_pop",2090,373233
+state,postal,scalarName,year,value
+Alabama,AL,highRiskLabor_pop,2010,567739
+Delaware,DE,highRiskLabor_pop,2010,92042
+District of Columbia,DC,highRiskLabor_pop,2010,23894
+Florida,FL,highRiskLabor_pop,2010,1544839
+Georgia,GA,highRiskLabor_pop,2010,1066005
+Idaho,ID,highRiskLabor_pop,2010,194535
+Illinois,IL,highRiskLabor_pop,2010,1508381
+Indiana,IN,highRiskLabor_pop,2010,924095
+Iowa,IA,highRiskLabor_pop,2010,460987
+Kansas,KS,highRiskLabor_pop,2010,383466
+Kentucky,KY,highRiskLabor_pop,2010,537623
+Louisiana,LA,highRiskLabor_pop,2010,521077
+Maine,ME,highRiskLabor_pop,2010,150951
+Maryland,MD,highRiskLabor_pop,2010,500657
+Massachusetts,MA,highRiskLabor_pop,2010,632183
+Michigan,MI,highRiskLabor_pop,2010,1165238
+Minnesota,MN,highRiskLabor_pop,2010,721686
+Mississippi,MS,highRiskLabor_pop,2010,349503
+Missouri,MO,highRiskLabor_pop,2010,694305
+Montana,MT,highRiskLabor_pop,2010,119801
+Nebraska,NE,highRiskLabor_pop,2010,263058
+Nevada,NV,highRiskLabor_pop,2010,222929
+New Hampshire,NH,highRiskLabor_pop,2010,171851
+New Jersey,NJ,highRiskLabor_pop,2010,876209
+New Mexico,NM,highRiskLabor_pop,2010,190532
+New York,NY,highRiskLabor_pop,2010,1664192
+North Carolina,NC,highRiskLabor_pop,2010,1102279
+North Dakota,ND,highRiskLabor_pop,2010,103639
+Ohio,OH,highRiskLabor_pop,2010,1409036
+Arizona,AZ,highRiskLabor_pop,2010,577384
+Oklahoma,OK,highRiskLabor_pop,2010,460303
+Oregon,OR,highRiskLabor_pop,2010,437578
+Pennsylvania,PA,highRiskLabor_pop,2010,1480485
+Rhode Island,RI,highRiskLabor_pop,2010,107019
+South Carolina,SC,highRiskLabor_pop,2010,528672
+South Dakota,SD,highRiskLabor_pop,2010,114971
+Tennessee,TN,highRiskLabor_pop,2010,759587
+Texas,TX,highRiskLabor_pop,2010,2995014
+Utah,UT,highRiskLabor_pop,2010,309480
+Arkansas,AR,highRiskLabor_pop,2010,376837
+Vermont,VT,highRiskLabor_pop,2010,79501
+Virginia,VA,highRiskLabor_pop,2010,762664
+Washington,WA,highRiskLabor_pop,2010,783389
+West Virginia,WV,highRiskLabor_pop,2010,196647
+Wisconsin,WI,highRiskLabor_pop,2010,881278
+Wyoming,WY,highRiskLabor_pop,2010,93188
+California,CA,highRiskLabor_pop,2010,3863782
+Colorado,CO,highRiskLabor_pop,2010,554322
+Connecticut,CT,highRiskLabor_pop,2010,373233
