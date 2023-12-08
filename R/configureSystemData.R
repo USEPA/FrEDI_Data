@@ -3,6 +3,7 @@ configureSystemData <- function(
     fileName   = "FrEDI_config.xlsx", ### name of excel file with config information
     sheetName  = "tableNames",
     configPath = "." |> file.path("R"   , "fredi_config.R"), ### Path to config file
+    extend_all = FALSE,
     save       = FALSE,  ### Whether to message the user
     outPath    = "." |> file.path("data", "tmp_sysdata.rda"),
     return     = TRUE,
@@ -68,11 +69,12 @@ configureSystemData <- function(
   listReshape0  <- reshapeReg0 |> combineReshapedLists(stateList0=reshapeState0)
   rm(reshapeReg0, reshapeState0)
   # return(listReshape0)
+  # listReshape0 |> names() |> print()
   
   ###### 4. Configure Data ######
   ### Names of objects to combine from reshaped data
   (!silent) |> ifelse("\n", "") |> paste0(msg1, "Configuring data...") |> message()
-  sysDataList0  <- listReshape0 |> createSystemData(byState=T, save=F, silent=silent)
+  sysDataList0  <- listReshape0 |> createSystemData(byState=T, extend_all=extend_all, save=F, silent=silent)
   rm(listReshape0)
   
   ###### 5. FrEDI Data  ######
@@ -85,12 +87,14 @@ configureSystemData <- function(
     c("co_regions", "co_states") |>
     c("co_models", "co_modelTypes") |>
     c("co_econMultipliers", "co_scalarInfo") |>
+    c("co_slrScalars") |>
     c("co_defaultTemps", "temp_default") |> 
     c("slr_cm", "slr_default") |>
     c("gdp_default") |> 
     c("co_inputScenarioInfo", "testDev") |>
     c("co_defaultScenario", "co_statePopRatios")
   ### Update objects
+  # sysDataList0 |> names() |> print()
   frediList0    <- sysDataList0 |> (function(x){x[  names(x) %in% frediNames0 ]})()
   sysDataList0  <- sysDataList0 |> (function(x){x[!(names(x) %in% frediNames0)]})()
   ### Update in list
