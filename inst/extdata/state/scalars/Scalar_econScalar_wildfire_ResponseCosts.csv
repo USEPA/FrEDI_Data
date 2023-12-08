@@ -1,0 +1,35 @@
+state,postal,year,scalarName,value
+Arizona,AZ,2010,wildfire_ResponseCosts,184.0482181390635
+California,CA,2010,wildfire_ResponseCosts,727.9660970003495
+Colorado,CO,2010,wildfire_ResponseCosts,411.99921818884474
+Idaho,ID,2010,wildfire_ResponseCosts,125.71828461958681
+Kansas,KS,2010,wildfire_ResponseCosts,9.812827202956653
+Montana,MT,2010,wildfire_ResponseCosts,257.80058823018453
+Nebraska,NE,2010,wildfire_ResponseCosts,95.49057209522589
+Nevada,NV,2010,wildfire_ResponseCosts,56.73322966976484
+New Mexico,NM,2010,wildfire_ResponseCosts,160.62684474961623
+North Dakota,ND,2010,wildfire_ResponseCosts,95.49057209522589
+Oklahoma,OK,2010,wildfire_ResponseCosts,9.604784444128102
+Oregon,OR,2010,wildfire_ResponseCosts,325.01267532165673
+South Dakota,SD,2010,wildfire_ResponseCosts,95.49057209522589
+Texas,TX,2010,wildfire_ResponseCosts,13.918412104851
+Utah,UT,2010,wildfire_ResponseCosts,152.81544311398912
+Washington,WA,2010,wildfire_ResponseCosts,298.2195728610405
+Wyoming,WY,2010,wildfire_ResponseCosts,248.78977832347823
+Arizona,AZ,2090,wildfire_ResponseCosts,184.0482181390635
+California,CA,2090,wildfire_ResponseCosts,727.9660970003495
+Colorado,CO,2090,wildfire_ResponseCosts,411.99921818884474
+Idaho,ID,2090,wildfire_ResponseCosts,125.71828461958681
+Kansas,KS,2090,wildfire_ResponseCosts,9.812827202956653
+Montana,MT,2090,wildfire_ResponseCosts,257.80058823018453
+Nebraska,NE,2090,wildfire_ResponseCosts,95.49057209522589
+Nevada,NV,2090,wildfire_ResponseCosts,56.73322966976484
+New Mexico,NM,2090,wildfire_ResponseCosts,160.62684474961623
+North Dakota,ND,2090,wildfire_ResponseCosts,95.49057209522589
+Oklahoma,OK,2090,wildfire_ResponseCosts,9.604784444128102
+Oregon,OR,2090,wildfire_ResponseCosts,325.01267532165673
+South Dakota,SD,2090,wildfire_ResponseCosts,95.49057209522589
+Texas,TX,2090,wildfire_ResponseCosts,13.918412104851
+Utah,UT,2090,wildfire_ResponseCosts,152.81544311398912
+Washington,WA,2090,wildfire_ResponseCosts,298.2195728610405
+Wyoming,WY,2090,wildfire_ResponseCosts,248.78977832347823
