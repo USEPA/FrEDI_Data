@@ -283,8 +283,7 @@ create_scaledImpact_plot <- function(
   
   ###### Get from FrEDI Namespace ######
   get_colScale <- utils::getFromNamespace("get_colScale", "FrEDI")
-  addListNames <- utils::getFromNamespace("addListNames", "FrEDI")
-  
+
   ###### Data ######
   df0        <- data |> filter(sector     == sector0)
   df0        <- df0  |> filter(impactType == impType0)
@@ -527,8 +526,7 @@ create_scaledImpact_plots <- function(
   
   ###### Get from FrEDI Namespace ######
   get_colScale <- utils::getFromNamespace("get_colScale", "FrEDI")
-  addListNames <- utils::getFromNamespace("addListNames", "FrEDI")
-  
+
   ###### Format Data ######
   ### Filter to sector and convert to data frame
   # data |> glimpse()
@@ -792,7 +790,7 @@ create_scaledImpact_plots <- function(
       
       ### Name the plots
       # listTypes_j |> length() |> print(); cImpTypes |> print()
-      listTypes_j <- listTypes_j |> addListNames(cImpTypes)
+      listTypes_j <- listTypes_j |> set_names(cImpTypes)
       
       ### Arrange plot list
       # plotGrid_j  <- ggarrange(plotlist=listTypes_j, ncol=1, nrow=nRow, common.legend=F, legend="none")
@@ -830,11 +828,11 @@ create_scaledImpact_plots <- function(
       return(plotGrid_j)
     })
     ### Name the plots
-    listYears0 <- listYears0 |> addListNames(cImpYears)
+    listYears0 <- listYears0 |> set_names(cImpYears)
     return(listYears0)
   }) ### End iter1_i
   ### Name the plots
-  listIter1 <- listIter1 |> addListNames(cIter1)
+  listIter1 <- listIter1 |> set_names(cIter1)
   
   ###### Return ######
   ### Return the plot
