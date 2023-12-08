@@ -215,11 +215,18 @@ reshapeData <- function(
     mutate0 <- "region"
     data_scaledImpacts <- data_scaledImpacts |> mutate_at(c(mutate0), function(x){gsub(" ", ".", x)})
     rm(mutate0)
-    ### Rename columns
+    # ### Standardize model name
+    # mutate0 <- "model_dot"
+    # data_scaledImpacts <- data_scaledImpacts |> mutate_at(c(mutate0), function(x){gsub(" ", ".", x)})
+    # data_scaledImpacts <- data_scaledImpacts |> mutate_at(c(mutate0), function(x){gsub("-", ".", x)})
+    # rm(mutate0)
+    ### Standardize region name & rename column
+    mutate0 <- c("region")
     rename0 <- c("region", "value")
     rename1 <- c("region_dot", "scaledImpact")
+    data_scaledImpacts <- data_scaledImpacts |> mutate_at(c(mutate0), function(x){gsub(" ", ".", x)})
     data_scaledImpacts <- data_scaledImpacts |> rename_at(c(rename0), ~rename1)
-    rm(rename0, rename1)
+    rm(mutate0, rename0, rename1)
   } else{
     ### Reshape data_scaledImpacts (move columns with regional values to rows)
     gather0 <- co_regions[["region_dot"]]
@@ -227,7 +234,7 @@ reshapeData <- function(
       cols      = all_of(gather0),
       names_to  = "region_dot", 
       values_to = "scaledImpact"
-    )
+    ) ### End pivot_longer()
     rm(gather0)
   } ### End else(byState)
   ### Remove empty rows and GCM and SLR Averages
@@ -235,6 +242,7 @@ reshapeData <- function(
   filter0 <- co_models [["model_id" ]] |> unique()
   filter1 <- co_sectors[["sector_id"]] |> unique()
   # data_scaledImpacts |> glimpse()
+  filter0 |> print(); data_scaledImpacts$model |> unique() |> print()
   data_scaledImpacts <- data_scaledImpacts |> filter(model  %in% filter0) ### All models
   data_scaledImpacts <- data_scaledImpacts |> filter(sector %in% filter1)
   rm(filter0, filter1)
