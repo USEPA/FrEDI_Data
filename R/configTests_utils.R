@@ -646,8 +646,10 @@ create_scaledImpact_plots <- function(
   # if(byState){join0 <- join0 |> c("state", "postal")}
   df0           <- df0 |> left_join(df_info, by=c(join0))
   df0           <- df0 |> filter(!is.na(nObs))
-  cModels       <- df0[["model" ]] |> unique()
-  cRegions      <- df0[["region"]] |> unique()
+  # cModels       <- df0[["model" ]] |> unique()
+  # cRegions      <- df0[["region"]] |> unique()
+  cModels       <- df_info[["model" ]] |> unique()
+  cRegions      <- df_info[["region"]] |> unique()
   nModels       <- cModels   |> length()
   nRegions      <- cRegions  |> length()
   rm(join0)
@@ -766,6 +768,7 @@ create_scaledImpact_plots <- function(
   listIter1 <- cIter1 |> map(function(iter1_i){
     listYears0 <- cImpYears |> map(function(impYear_j){
       listTypes_j <- cImpTypes |> map(function(impType_k){
+        # iter1_i |> print(); impYear_j |> print(); impType_k |> print(); 
         ### Figure out min/max across all variants for an impact type to get the y-scale
         region_k  <- iter1_i
         # "\t\t" |> paste0(c(iter1_i, impYear_j, impType_k, region_k) |> paste(collapse=", ")) |> message()
@@ -785,7 +788,7 @@ create_scaledImpact_plots <- function(
           silent    = silent,
           options   = plotOpts0
         )
-        
+        plot_k |> print()
         
         ###### Annotate Plots ######
         ### Labels on top
