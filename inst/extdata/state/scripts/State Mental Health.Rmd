@@ -181,7 +181,8 @@ Because these rates are calculated based only on the population age 5 and older 
 FrEDI_pops <- dataPath %>% file.path("ICLUS_v2_UN_Probabilistic_Median.xlsx") %>%
   read_xlsx(sheet = "ICLUS_Multiplier")
 
-mh_pop_multiplier_df <- mh_future_df_statesum %>% left_join(FrEDI_pops, by = c("ST" = "ST_postal", "YEAR_POP" = "Year")) %>%
+mh_pop_multiplier_df <- mh_future_df_statesum %>%
+  left_join(FrEDI_pops, by = c("ST" = "ST_postal", "YEAR_POP" = "Year")) %>%
   mutate(value = POP_SIZE/FrEDI_pop) %>%
   select(c(ST_full, ST, YEAR_POP, value)) %>%
   distinct %>%
@@ -190,16 +191,30 @@ mh_pop_multiplier_df <- mh_future_df_statesum %>% left_join(FrEDI_pops, by = c("
          postal = ST,
          year = YEAR_POP)
 
+mh_pop_multiplier_df_full <- mh_pop_multiplier_df
+for (i in mh_pop_multiplier_df$state %>% unique){
+  df_state_11 <- mh_pop_multiplier_df %>%
+    filter(state == i & year == 2011)
+  df_state_13 <- mh_pop_multiplier_df %>%
+    filter(state == i & year == 2013)
+
+  df_state_10       <- df_state_13
+  df_state_10$value <- df_state_11$value - ((df_state_13$value - df_state_11$value)/(df_state_13$year - df_state_11$year))
+  df_state_10$year  <- 2010
+  mh_pop_multiplier_df_full <- mh_pop_multiplier_df_full %>% bind_rows(df_state_10)
+}
+mh_pop_multiplier_df_full <- mh_pop_multiplier_df_full %>% arrange(year)
+
 if (saveFiles){
-  mh_pop_multiplier_df %>% write.csv(file.path(outPath, "Scalar_physAdj_MH_popSliceAdj.csv"), row.names = F)
+  mh_pop_multiplier_df_full %>% write.csv(file.path(outPath, "Scalar_physAdj_MH_popSliceAdj.csv"), row.names = F)
 }
 ```
 
 Because this scalar represents the proportion of the population that is 5 and older, it should always be less than 1.
 
 ```{r MH_popSliceAdj qc check}
-all(mh_pop_multiplier_df$state %in% state_crosswalk$ST_full) && all(state_crosswalk$ST_full %in% mh_pop_multiplier_df$state)
-sum(mh_pop_multiplier_df$value >= 1) == 0
+all(mh_pop_multiplier_df_full$state %in% state_crosswalk$ST_full) && all(state_crosswalk$ST_full %in% mh_pop_multiplier_df_full$state)
+sum(mh_pop_multiplier_df_full$value >= 1) == 0
 ```
 
 #### Demographic Adjustment Factor
@@ -226,11 +241,25 @@ all_state_df <- all_state_df %>%
          postal = ST,
          year = YEAR_CLIM)
 
+all_state_df_full <- all_state_df
+for (i in all_state_df$state %>% unique){
+  df_state_11 <- all_state_df %>%
+    filter(state == i & year == 2011)
+  df_state_13 <- all_state_df %>%
+    filter(state == i & year == 2013)
+
+  df_state_10       <- df_state_13
+  df_state_10$value <- df_state_11$value - ((df_state_13$value - df_state_11$value)/(df_state_13$year - df_state_11$year))
+  df_state_10$year  <- 2010
+  all_state_df_full <- all_state_df_full %>% bind_rows(df_state_10)
+}
+all_state_df_full <- all_state_df_full %>% arrange(year)
+
 if (saveFiles){
-  all_state_df %>% write.csv(file.path(outPath, "Scalar_damageAdj_MH_popDemoAdj.csv"), row.names = F)
+  all_state_df_full %>% write.csv(file.path(outPath, "Scalar_damageAdj_MH_popDemoAdj.csv"), row.names = F)
 }
 ```
 
 ```{r MH_popDemoAdj qc check}
-all(all_state_df$state %in% state_crosswalk$ST_full) && all(state_crosswalk$ST_full %in% all_state_df$state)
+all(all_state_df_full$state %in% state_crosswalk$ST_full) && all(state_crosswalk$ST_full %in% all_state_df_full$state)
 ```

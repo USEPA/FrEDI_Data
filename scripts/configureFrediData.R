@@ -11,7 +11,8 @@ require(devtools)
 
 configureFrediData <- function(
     projectDir = ".",
-    save       = FALSE
+    save       = FALSE,
+    byState    = TRUE
 ){
 
 ###### Set Arguments ######
@@ -38,33 +39,26 @@ dataOutPath <- dataOutDir |> file.path(dataOutName)
 ### Load FrEDI Data Code
 projectDir |> devtools::load_all()
 
+
+
 ###### 1. Load Excel Data ######
-### list_loadData
-list_loadData <- loadData( 
-  fileDir   = dataInDir,    ### Path to project
-  fileName  = dataInName,   ### name of excel file with config information
-  sheetName = "tableNames", ### Sheet with info about tables in config file
-  # byState   = TRUE,
-  silent    = NULL
-)
-### Add to list
-returnList[["loadedDataList"  ]] <- list_loadData
-
 ###### 2. Reshape Loaded Data ######
-### list_reshapeData
-list_reshapeData <- list_loadData |> reshapeData(silent=T)
-### Add to list
-returnList[["reshapedDataList"]] <- list_reshapeData
-
 ###### 3. Configure Data ######
-list_systemData0 <- list_reshapeData |> createSystemData(save=save, silent=T, outPath=dataOutDir |> file.path("tmp_sysdata.rda"))
-### Add to list
+
+list_systemData0 <- dataInDir |> configureSystemData(
+  fileName=dataInName, 
+  save  =T, 
+  silent=T, 
+  outPath=dataOutDir |> file.path("tmp_sysdata.rda"),
+  reshape =T
+)
+
 returnList[["systemDataList"]] <- list_systemData0
 
 ###### 4. Run General Tests on Data ######
 test_general_config <- general_config_test(
-  reshapedData   = list_reshapeData,
   configuredData = list_systemData0,
+  byState        =  byState,
   save           = save,
   overwrite      = TRUE,
   xlsxName       = "generalConfig_testResults.xlsx",
@@ -88,25 +82,25 @@ rm("newEnv_ref")
 
 ###### 6. Run New Sector Tests on Data ######
 ###### Determine if tests need to be run
-df_sectors_new <- list_systemData0[["co_sectors"]][["sector_id"]]
-df_sectors_ref <- refDataList[["co_sectors"]][["sector_id"]]
-df_sectors_new |> glimpse(); df_sectors_ref |> glimpse()
-c_sectors_new  <- df_sectors_new |> unique()
-c_sectors_ref  <- df_sectors_ref |> unique()
-hasNewSectors  <- (c_sectors_new %in% c_sectors_ref) |> all()
-doNewTest      <- !hasNewSectors
-###### Run test if there are new sectors
-if(doNewTest){
-  test_newSectors_config <- newSectors_config_test(
-    newData     = list_systemData0,
-    refDataFile = dataOutPath,
-    xslxName    = "newSectorsConfig_testResults.xlsx",
-    save        = save_test,
-    return      = return_test
-  )
-}
-### New sector tests
-returnList[["newSectorConfigTests"]] <- test_general_config
+# df_sectors_new <- list_systemData0[["co_sectors"]][["sector_id"]]
+# df_sectors_ref <- refDataList[["co_sectors"]][["sector_id"]]
+# df_sectors_new |> glimpse(); df_sectors_ref |> glimpse()
+# c_sectors_new  <- df_sectors_new |> unique()
+# c_sectors_ref  <- df_sectors_ref |> unique()
+# hasNewSectors  <- (c_sectors_new %in% c_sectors_ref) |> all()
+# doNewTest      <- !hasNewSectors
+# ###### Run test if there are new sectors
+# if(doNewTest){
+#   test_newSectors_config <- newSectors_config_test(
+#     newData     = list_systemData0,
+#     refDataFile = dataOutPath,
+#     xslxName    = "newSectorsConfig_testResults.xlsx",
+#     save        = save_test,
+#     return      = return_test
+#   )
+# }
+# ### New sector tests
+# returnList[["newSectorConfigTests"]] <- test_general_config
 
 # ###### 7. Create Images of scaled impacts ######
 # ### Test create results

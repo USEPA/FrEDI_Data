@@ -110,9 +110,9 @@ fun_nNna <- function(z, a, b){
 get_region_plotInfo <- function(
     df0, ### Data
     yCol      = "scaled_impacts",
-    byState   = FALSE,
-    groupCols = c("sector", "variant", "impactType", "impactYear", "region", "model"),
-    # groupCols = c("sector", "variant", "impactType", "impactYear", "region", "state", "postal", "model"),
+    # byState   = FALSE,
+    # groupCols = c("sector", "variant", "impactType", "impactYear", "region", "model"),
+    groupCols = c("sector", "variant", "impactType", "impactYear", "region", "state", "postal", "model"),
     nCol      = 4,
     silent    = TRUE
 ){
@@ -125,12 +125,12 @@ get_region_plotInfo <- function(
   
   ###### Grouping Columns ######
   ### Add state to grouping
-  if(byState){
-    group0    <- c("state", "postal", "model")
-    groupCols <- groupCols[!(groupCols %in% group0)]
-    groupCols <- groupCols |> c(group0)
-    rm(group0)
-  } ### End if(byType)
+  # if(byState){
+  #   group0    <- c("state", "postal", "model")
+  #   groupCols <- groupCols |> (function(x){x[!(x %in% group0)]})
+  #   groupCols <- groupCols |> c(group0)
+  #   rm(group0)
+  # } ### End if(byType)
   # groupCols |> print()
   ###### Get Value Ranges ######
   # df0 |> glimpse()
@@ -138,18 +138,18 @@ get_region_plotInfo <- function(
     sumCols   = yCol,
     groupCols = groupCols,
     silent    = silent
-  )
+  ) ### End fun_limitsByGroup()
   # df_sectorInfo |> print()
   
   ###### Number of NA Values ######
   ### Get number of observations in a group
   group0        <- groupCols[!(groupCols %in% c("state", "postal"))]
-  df_na         <- df0 |> 
-    mutate_at(.vars=c(yCol), is.na) |>
-    rename_at(.vars=c(yCol), ~c("nNA")) |>
-    mutate(nObs = 1) |>
-    group_by_at(.vars=c(group0)) |> 
-    summarize_at(.vars=c("nObs", "nNA"), sum) |> ungroup()
+  df_na         <- df0   |> mutate_at(c(yCol), is.na)
+  df_na         <- df_na |> rename_at(c(yCol), ~c("nNA"))
+  df_na         <- df_na |> mutate(nObs = 1)
+  df_na         <- df_na |>
+    group_by_at (c(group0)) |> 
+    summarize_at(c("nObs", "nNA"), sum) |> ungroup()
   # ### Get number of NA values
   # df0 |> nrow() |> print(); df0[[yCol]] |> length() |> print()
   # df_na         <- df0 |> 
@@ -181,16 +181,17 @@ get_region_plotInfo <- function(
   doStates   <- "state"      %in% groupCols
   # cCols      <- c("sector", "variant", "impactType", "impactYear", "region")
   cCols      <- groupCols[!(groupCols %in% c("postal"))]
-  df_iter    <- tibble(column = cCols) |>
+  df_iter    <- tibble(column = cCols)
+  df_iter    <- df_iter |>
     mutate(colSuffix = case_when(
       column == "impactType" ~ "ImpTypes",
       column == "impactYear" ~ "ImpYears",
       .default = column |> str_to_title() |> paste0("s")
-    )) |> 
-    mutate(cName = "c" |> paste0(colSuffix)) |> 
-    mutate(nName = "n" |> paste0(colSuffix)) |>
-    mutate(factorCol = column  |> paste0("_factor")) |>
-    mutate(orderCol  = "order_" |> paste0(column))
+    ))
+  df_iter    <- df_iter |> mutate(cName = "c" |> paste0(colSuffix))
+  df_iter    <- df_iter |> mutate(nName = "n" |> paste0(colSuffix))
+  df_iter    <- df_iter |> mutate(factorCol = column  |> paste0("_factor"))
+  df_iter    <- df_iter |> mutate(orderCol  = "order_" |> paste0(column))
   ### Iterate over iteration column
   for(i in df_iter |> row_number()){
     fCol_i  <- df_iter[["factorCol"]][i]
@@ -207,7 +208,8 @@ get_region_plotInfo <- function(
   ###### Number of Rows & Columns ######
   # "got here" |> print()
   # colCol    <- byState |> ifelse(list0[["state"]], list0[["region"]])
-  colCol    <- byState |> ifelse("state", "region")
+  # colCol    <- byState |> ifelse("state", "region")
+  colCol    <- "state"
   rowCol    <- "impactType"
   ### Initialize rows & columns
   col_nCol  <- df_iter |> filter(column == colCol) |> get_column_values(col0 = "nName", unique0 = T)
@@ -237,7 +239,11 @@ get_region_plotInfo <- function(
     summarize(min = min(min), max=max(max)) |>
     ungroup()
   ### Gather values
-  df_minMax   <- df_minMax |> gather(key="summary_type", value = "summary_value", -c("plotRow"))
+  df_minMax   <- df_minMax |> pivot_longer(
+    cols      = -c("plotRow"),
+    names_to  = "summary_type", 
+    values_to = "summary_value"
+  ) ### End pivot_longer
   # df_minMax[["summary_value"]] |> print()
   
   ###### Return List ######
@@ -257,7 +263,7 @@ create_scaledImpact_plot <- function(
     impType0,
     impYear0,
     region0,   ### Region or state
-    byState  = FALSE,
+    # byState  = FALSE,
     infoList0, ### Dataframe with sector info...output from get_region_plotInfo
     xCol     = "driverValue", ### X-Column,
     yCol     = "scaled_impacts", ### Y-Column,
@@ -283,15 +289,18 @@ create_scaledImpact_plot <- function(
   
   ###### Get from FrEDI Namespace ######
   get_colScale <- utils::getFromNamespace("get_colScale", "FrEDI")
-  addListNames <- utils::getFromNamespace("addListNames", "FrEDI")
   
   ###### Data ######
   df0        <- data |> filter(sector     == sector0)
   df0        <- df0  |> filter(impactType == impType0)
   df0        <- df0  |> filter(impactYear == impYear0)
-  if(byState){df0 <- df0 |> filter(region == region0)} 
   type0      <- df0[["model_type"]] |> unique()
   # df0 |> glimpse()
+  
+  ###### By State ######
+  byState    <- df0[["state"]] |> unique() |> (function(x){!("N/A" %in% x)})()
+  stateCols  <- c("state", "postal")
+  if(byState){df0 <- df0 |> filter(region == region0)} 
   
   ###### Model Types ######
   # type0 %>% print
@@ -501,7 +510,7 @@ create_scaledImpact_plots <- function(
     yCol      = "scaled_impacts",
     colorCol  = "model",
     modelType = "GCM",
-    byState   = FALSE, 
+    # byState   = FALSE, 
     nTicks    = 5,
     silent    = TRUE,
     options   = list(
@@ -527,7 +536,6 @@ create_scaledImpact_plots <- function(
   
   ###### Get from FrEDI Namespace ######
   get_colScale <- utils::getFromNamespace("get_colScale", "FrEDI")
-  addListNames <- utils::getFromNamespace("addListNames", "FrEDI")
   
   ###### Format Data ######
   ### Filter to sector and convert to data frame
@@ -538,6 +546,11 @@ create_scaledImpact_plots <- function(
   df0       <- df0 |> filter(model_type == modelType)
   df0       <- df0 |> filter(sector     == sector0  )
   # df0 |> glimpse()
+  
+  ###### By State ######
+  byState    <- df0[["state"]] |> unique() |> (function(x){!("N/A" %in% x)})()
+  stateCols <- c("state", "postal")
+  # if(byState){stateCols <- c("state", "postal")} else{stateCols <- c()}
   
   ###### Plot Options ######
   ### Defaults
@@ -602,7 +615,8 @@ create_scaledImpact_plots <- function(
   )
   
   ###### Get Sector Info ######
-  infoList0     <- df0 |> get_region_plotInfo(yCol=yCol, byState=byState, silent=silent)
+  # infoList0     <- df0 |> get_region_plotInfo(yCol=yCol, byState=byState, silent=silent)
+  infoList0     <- df0 |> get_region_plotInfo(yCol=yCol, silent=silent)
   df_info       <- infoList0[["sectorInfo"]]
   df_minMax     <- infoList0[["minMax"    ]]
   df_iter       <- infoList0[["df_iter"   ]]
@@ -628,12 +642,14 @@ create_scaledImpact_plots <- function(
   
   ###### Drop Data ######
   ### Join iteration with data and drop models
-  join0         <- c("sector", "variant", "impactType", "impactYear", "region", "model")
-  if(byState){join0 <- join0 |> c("state", "postal")}
+  join0         <- c("sector", "variant", "impactType", "impactYear", "region") |> c(stateCols) |> c("model")
+  # if(byState){join0 <- join0 |> c("state", "postal")}
   df0           <- df0 |> left_join(df_info, by=c(join0))
   df0           <- df0 |> filter(!is.na(nObs))
-  cModels       <- df0[["model" ]] |> unique()
-  cRegions      <- df0[["region"]] |> unique()
+  # cModels       <- df0[["model" ]] |> unique()
+  # cRegions      <- df0[["region"]] |> unique()
+  cModels       <- df_info[["model" ]] |> unique()
+  cRegions      <- df_info[["region"]] |> unique()
   nModels       <- cModels   |> length()
   nRegions      <- cRegions  |> length()
   rm(join0)
@@ -701,9 +717,8 @@ create_scaledImpact_plots <- function(
   
   ###### State vs. Region Options ######
   ### What to iterate over
-  if(byState){cIter1 <- cRegions} 
-  else{cIter1 <- "All"} ### End else
   ### Number of iteration values
+  if(byState){cIter1 <- cRegions} else{cIter1 <- "All"} ### End else
   nIter1 <- cIter1 |> length()
   # nIter2 <- cIter2 |> length()
   
@@ -753,6 +768,7 @@ create_scaledImpact_plots <- function(
   listIter1 <- cIter1 |> map(function(iter1_i){
     listYears0 <- cImpYears |> map(function(impYear_j){
       listTypes_j <- cImpTypes |> map(function(impType_k){
+        # iter1_i |> print(); impYear_j |> print(); impType_k |> print(); 
         ### Figure out min/max across all variants for an impact type to get the y-scale
         region_k  <- iter1_i
         # "\t\t" |> paste0(c(iter1_i, impYear_j, impType_k, region_k) |> paste(collapse=", ")) |> message()
@@ -762,7 +778,7 @@ create_scaledImpact_plots <- function(
           impType0  = impType_k,
           impYear0  = impYear_j,
           region0   = region_k,
-          byState   = byState,
+          # byState   = byState,
           infoList0 = infoList0, ### Dataframe with sector info...output from get_region_plotInfo
           xCol      = xCol,   ### X-Column,
           yCol      = yCol,   ### Y-Column,
@@ -772,7 +788,7 @@ create_scaledImpact_plots <- function(
           silent    = silent,
           options   = plotOpts0
         )
-        
+        plot_k |> print()
         
         ###### Annotate Plots ######
         ### Labels on top
@@ -792,7 +808,7 @@ create_scaledImpact_plots <- function(
       
       ### Name the plots
       # listTypes_j |> length() |> print(); cImpTypes |> print()
-      listTypes_j <- listTypes_j |> addListNames(cImpTypes)
+      listTypes_j <- listTypes_j |> set_names(cImpTypes)
       
       ### Arrange plot list
       # plotGrid_j  <- ggarrange(plotlist=listTypes_j, ncol=1, nrow=nRow, common.legend=F, legend="none")
@@ -830,11 +846,11 @@ create_scaledImpact_plots <- function(
       return(plotGrid_j)
     })
     ### Name the plots
-    listYears0 <- listYears0 |> addListNames(cImpYears)
+    listYears0 <- listYears0 |> set_names(cImpYears)
     return(listYears0)
   }) ### End iter1_i
   ### Name the plots
-  listIter1 <- listIter1 |> addListNames(cIter1)
+  listIter1 <- listIter1 |> set_names(cIter1)
   
   ###### Return ######
   ### Return the plot
