@@ -62,6 +62,7 @@ configureSystemData <- function(
   (!silent) |> ifelse("\n", "") |> paste0(msg1, "Reshaping state-level data...") |> message()
   reshapeState0 <- loadState0 |> reshapeData(byState=T, silent=silent)
   rm(loadState0)
+  # "got here1" |> print(); return(reshapeState0)
   
   ###### 3. Combine Reshaped Data ######
   ### Names of objects to combine from reshaped data
@@ -71,12 +72,14 @@ configureSystemData <- function(
   rm(reshapeReg0, reshapeState0)
   # return(listReshape0)
   # listReshape0 |> names() |> print()
+  # "got here2" |> print(); return(listReshape0)
   
   ###### 4. Configure Data ######
   ### Names of objects to combine from reshaped data
   (!silent) |> ifelse("\n", "") |> paste0(msg1, "Configuring data...") |> message()
   sysDataList0  <- listReshape0 |> createSystemData(byState=T, extend_all=extend_all, save=F, silent=silent)
   rm(listReshape0)
+  # "got here3" |> print(); return(sysDataList0)
   
   ###### 5. FrEDI Data  ######
   ### List of data that is the same for both state & region and not modified in confiuration steps

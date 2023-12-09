@@ -242,7 +242,7 @@ reshapeData <- function(
   filter0 <- co_models [["model_id" ]] |> unique()
   filter1 <- co_sectors[["sector_id"]] |> unique()
   # data_scaledImpacts |> glimpse()
-  filter0 |> print(); data_scaledImpacts$model |> unique() |> print()
+  # filter0 |> print(); data_scaledImpacts$model |> unique() |> print()
   data_scaledImpacts <- data_scaledImpacts |> filter(model  %in% filter0) ### All models
   data_scaledImpacts <- data_scaledImpacts |> filter(sector %in% filter1)
   rm(filter0, filter1)

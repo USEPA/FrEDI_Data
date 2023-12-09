@@ -239,6 +239,7 @@ createSystemData <- function(
   maxOutput_gcm  <- df_gcm[["modelMaxOutput"]][1]
   maxExtrap_gcm  <- df_gcm[["modelMaxExtrap"]][1]
   unitScale_gcm  <- df_gcm[["modelUnitScale"]][1]
+  # "got here1" |> print(); #return(rDataList)
   ### Get functions
   functions_gcm  <- df_hasScenario |> get_impactFunctions(
     groupCol    = "scenario_id",
@@ -249,7 +250,7 @@ createSystemData <- function(
     extend_all  = extend_all,
     unitScale   = unitScale_gcm
   ) ### get_impactFunctions
-  
+  # "got here2" |> print(); return(rDataList)
   ### Add values to list and remove intermediate values
   rDataList[["list_impactFunctions"]] <- functions_gcm
   rm("c_modelTypes", "maxOutput_gcm", "maxExtrap_gcm", "unitScale_gcm")
