@@ -247,7 +247,7 @@ fun_formatScalars <- function(
     byState_i <- !("N/A" %in% states_i) & byState
     ### Interpolate data
     interpolate_annual    <- utils::getFromNamespace("interpolate_annual"   , "FrEDI")
-    data_i    <- data_i |> FrEDI::interpolate_annual(
+    data_i    <- data_i |> interpolate_annual(
       years   = years_x,
       column  = "value",
       rule    = 1:2,
