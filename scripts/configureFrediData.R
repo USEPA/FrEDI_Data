@@ -50,7 +50,8 @@ list_systemData0 <- dataInDir |> configureSystemData(
   save  =T, 
   silent=T, 
   outPath=dataOutDir |> file.path("tmp_sysdata.rda"),
-  reshape =T
+  reshape =T,
+  extend_all  = T
 )
 
 returnList[["systemDataList"]] <- list_systemData0
