@@ -246,6 +246,7 @@ fun_formatScalars <- function(
     if(byState){states_i <- data_i[["state"]] |> unique()} else{states_i <- "N/A"}
     byState_i <- !("N/A" %in% states_i) & byState
     ### Interpolate data
+    interpolate_annual    <- utils::getFromNamespace("interpolate_annual"   , "FrEDI")
     data_i    <- data_i |> FrEDI::interpolate_annual(
       years   = years_x,
       column  = "value",
