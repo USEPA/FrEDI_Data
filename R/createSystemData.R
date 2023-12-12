@@ -243,7 +243,6 @@ createSystemData <- function(
   unitScale_gcm  <- df_gcm[["modelUnitScale"]][1]
   # "got here1" |> print(); #return(rDataList)
   ### Get functions
-  get_impactFunctions   <- utils::getFromNamespace("get_impactFunctions", "FrEDI")
   functions_gcm  <- df_hasScenario |> get_impactFunctions(
     groupCol    = "scenario_id",
     xCol        = "modelUnitValue",
