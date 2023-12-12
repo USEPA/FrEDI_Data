@@ -205,6 +205,7 @@ createSystemData <- function(
     byState = byState
   ) ### End fun_formatScalars
   ### Add other info
+  update_popScalars   <- utils::getFromNamespace("update_popScalars", "FrEDI")
   df_mainScalars <- df_mainScalars |> update_popScalars(df_national)
   ### Update list
   rDataList[["df_mainScalars"]] <- df_mainScalars
@@ -218,6 +219,7 @@ createSystemData <- function(
   data_scaledImpacts <- data_scaledImpacts |> get_scenario_id(include=includeCols)
   ### Get list of scenarios for scenarios with at least some non-NA values
   c_scenariosList    <- data_scaledImpacts |> filter(!(scaledImpact |> is.na()))
+  get_uniqueValues   <- utils::getFromNamespace("get_uniqueValues", "FrEDI")
   c_scenariosList    <- c_scenariosList    |> get_uniqueValues(column="scenario_id")
   ### Add information on non-missing scenarios to scaled impacts data
   data_scaledImpacts <- data_scaledImpacts |> mutate(hasScenario = (scenario_id %in% c_scenariosList))
@@ -241,6 +243,7 @@ createSystemData <- function(
   unitScale_gcm  <- df_gcm[["modelUnitScale"]][1]
   # "got here1" |> print(); #return(rDataList)
   ### Get functions
+  get_impactFunctions   <- utils::getFromNamespace("get_impactFunctions", "FrEDI")
   functions_gcm  <- df_hasScenario |> get_impactFunctions(
     groupCol    = "scenario_id",
     xCol        = "modelUnitValue",
