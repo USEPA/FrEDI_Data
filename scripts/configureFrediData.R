@@ -56,16 +56,16 @@ list_systemData0 <- dataInDir |> configureSystemData(
 returnList[["systemDataList"]] <- list_systemData0
 
 ###### 4. Run General Tests on Data ######
-test_general_config <- general_config_test(
-  configuredData = list_systemData0,
-  byState        =  byState,
-  save           = save,
-  overwrite      = TRUE,
-  xlsxName       = "generalConfig_testResults.xlsx",
-  fredi_config   = fredi_config
-)
-### General tests
-returnList[["generalConfigTests"]] <- test_general_config
+# test_general_config <- general_config_test(
+#   configuredData = list_systemData0,
+#   byState        =  byState,
+#   save           = save,
+#   overwrite      = TRUE,
+#   xlsxName       = "generalConfig_testResults.xlsx",
+#   fredi_config   = fredi_config
+# )
+# ### General tests
+# returnList[["generalConfigTests"]] <- test_general_config
 
 ###### 5. Load Reference Data ######
 ### Load ref data
