@@ -1,721 +1,721 @@
-"state","postal","sector","variant","impactType","model","modelUnitValue","impactYear","value"
-"Alabama","AL","Asphalt Roads",NA,NA,"CCSM4",1,NA,702.076800966372
-"Alabama","AL","Asphalt Roads",NA,NA,"CCSM4",2,NA,1316.39400181195
-"Alabama","AL","Asphalt Roads",NA,NA,"CCSM4",3,NA,1319.5945596468
-"Alabama","AL","Asphalt Roads",NA,NA,"CCSM4",4,NA,1333.60589061273
-"Alabama","AL","Asphalt Roads",NA,NA,"CCSM4",5,NA,1344.55891075869
-"Alabama","AL","Asphalt Roads",NA,NA,"MIROC5",2,NA,1281.87874929137
-"Alabama","AL","Asphalt Roads",NA,NA,"MIROC5",3,NA,1308.54962623909
-"Alabama","AL","Asphalt Roads",NA,NA,"MIROC5",4,NA,1457.47776665011
-"Alabama","AL","Asphalt Roads",NA,NA,"MIROC5",5,NA,1622.07549229464
-"Alabama","AL","Asphalt Roads",NA,NA,"CanESM2",1,NA,702.076800966372
-"Alabama","AL","Asphalt Roads",NA,NA,"CanESM2",2,NA,1316.39400181195
-"Alabama","AL","Asphalt Roads",NA,NA,"CanESM2",3,NA,1316.39400181195
-"Alabama","AL","Asphalt Roads",NA,NA,"CanESM2",4,NA,1530.60921338591
-"Alabama","AL","Asphalt Roads",NA,NA,"CanESM2",5,NA,1959.03963653385
-"Alabama","AL","Asphalt Roads",NA,NA,"CanESM2",6,NA,2418.07223276378
-"Arkansas","AR","Asphalt Roads",NA,NA,"CCSM4",1,NA,100.95153179184
-"Arkansas","AR","Asphalt Roads",NA,NA,"CCSM4",2,NA,320.836279090825
-"Arkansas","AR","Asphalt Roads",NA,NA,"CCSM4",3,NA,686.218473467445
-"Arkansas","AR","Asphalt Roads",NA,NA,"CCSM4",4,NA,1427.28089255048
-"Arkansas","AR","Asphalt Roads",NA,NA,"CCSM4",5,NA,2005.80949672465
-"Arkansas","AR","Asphalt Roads",NA,NA,"MIROC5",2,NA,266.213506046875
-"Arkansas","AR","Asphalt Roads",NA,NA,"MIROC5",3,NA,429.688446913374
-"Arkansas","AR","Asphalt Roads",NA,NA,"MIROC5",4,NA,1029.73374756827
-"Arkansas","AR","Asphalt Roads",NA,NA,"MIROC5",5,NA,1673.69225587813
-"Arkansas","AR","Asphalt Roads",NA,NA,"CanESM2",1,NA,114.122118142553
-"Arkansas","AR","Asphalt Roads",NA,NA,"CanESM2",2,NA,277.890508184925
-"Arkansas","AR","Asphalt Roads",NA,NA,"CanESM2",3,NA,397.724639436744
-"Arkansas","AR","Asphalt Roads",NA,NA,"CanESM2",4,NA,779.066124584447
-"Arkansas","AR","Asphalt Roads",NA,NA,"CanESM2",5,NA,1429.90390571149
-"Arkansas","AR","Asphalt Roads",NA,NA,"CanESM2",6,NA,2127.23009977617
-"Arizona","AZ","Asphalt Roads",NA,NA,"CCSM4",1,NA,114.165580556045
-"Arizona","AZ","Asphalt Roads",NA,NA,"CCSM4",2,NA,406.771125503853
-"Arizona","AZ","Asphalt Roads",NA,NA,"CCSM4",3,NA,774.853505866476
-"Arizona","AZ","Asphalt Roads",NA,NA,"CCSM4",4,NA,1128.62086591413
-"Arizona","AZ","Asphalt Roads",NA,NA,"CCSM4",5,NA,1404.02870521219
-"Arizona","AZ","Asphalt Roads",NA,NA,"MIROC5",2,NA,461.508113976132
-"Arizona","AZ","Asphalt Roads",NA,NA,"MIROC5",3,NA,606.921917236832
-"Arizona","AZ","Asphalt Roads",NA,NA,"MIROC5",4,NA,907.301457149799
-"Arizona","AZ","Asphalt Roads",NA,NA,"MIROC5",5,NA,1207.8473604392
-"Arizona","AZ","Asphalt Roads",NA,NA,"CanESM2",1,NA,110.582028934662
-"Arizona","AZ","Asphalt Roads",NA,NA,"CanESM2",2,NA,479.650278284554
-"Arizona","AZ","Asphalt Roads",NA,NA,"CanESM2",3,NA,990.229604594671
-"Arizona","AZ","Asphalt Roads",NA,NA,"CanESM2",4,NA,1366.47239233199
-"Arizona","AZ","Asphalt Roads",NA,NA,"CanESM2",5,NA,1642.41726325052
-"Arizona","AZ","Asphalt Roads",NA,NA,"CanESM2",6,NA,1938.07248209181
-"California","CA","Asphalt Roads",NA,NA,"CCSM4",1,NA,242.359575252306
-"California","CA","Asphalt Roads",NA,NA,"CCSM4",2,NA,680.516084502569
-"California","CA","Asphalt Roads",NA,NA,"CCSM4",3,NA,1066.63659869889
-"California","CA","Asphalt Roads",NA,NA,"CCSM4",4,NA,1281.52753805564
-"California","CA","Asphalt Roads",NA,NA,"CCSM4",5,NA,1448.17439490785
-"California","CA","Asphalt Roads",NA,NA,"MIROC5",2,NA,808.636642793981
-"California","CA","Asphalt Roads",NA,NA,"MIROC5",3,NA,900.428691685615
-"California","CA","Asphalt Roads",NA,NA,"MIROC5",4,NA,1112.2794328664
-"California","CA","Asphalt Roads",NA,NA,"MIROC5",5,NA,1327.94135923215
-"California","CA","Asphalt Roads",NA,NA,"CanESM2",1,NA,346.656890777094
-"California","CA","Asphalt Roads",NA,NA,"CanESM2",2,NA,899.676694156982
-"California","CA","Asphalt Roads",NA,NA,"CanESM2",3,NA,1367.8548640631
-"California","CA","Asphalt Roads",NA,NA,"CanESM2",4,NA,1643.67713996095
-"California","CA","Asphalt Roads",NA,NA,"CanESM2",5,NA,1758.35539984428
-"California","CA","Asphalt Roads",NA,NA,"CanESM2",6,NA,1881.22496400499
-"Colorado","CO","Asphalt Roads",NA,NA,"CCSM4",1,NA,628.981162894848
-"Colorado","CO","Asphalt Roads",NA,NA,"CCSM4",2,NA,1282.47545486267
-"Colorado","CO","Asphalt Roads",NA,NA,"CCSM4",3,NA,1481.77155027093
-"Colorado","CO","Asphalt Roads",NA,NA,"CCSM4",4,NA,1681.18914367236
-"Colorado","CO","Asphalt Roads",NA,NA,"CCSM4",5,NA,1836.46825186346
-"Colorado","CO","Asphalt Roads",NA,NA,"MIROC5",2,NA,1253.04852398353
-"Colorado","CO","Asphalt Roads",NA,NA,"MIROC5",3,NA,1384.92554583728
-"Colorado","CO","Asphalt Roads",NA,NA,"MIROC5",4,NA,1638.06468101497
-"Colorado","CO","Asphalt Roads",NA,NA,"MIROC5",5,NA,1888.14175279208
-"Colorado","CO","Asphalt Roads",NA,NA,"CanESM2",1,NA,572.11862503572
-"Colorado","CO","Asphalt Roads",NA,NA,"CanESM2",2,NA,1186.06673512897
-"Colorado","CO","Asphalt Roads",NA,NA,"CanESM2",3,NA,1398.58732235458
-"Colorado","CO","Asphalt Roads",NA,NA,"CanESM2",4,NA,1600.43690491643
-"Colorado","CO","Asphalt Roads",NA,NA,"CanESM2",5,NA,1805.78352196288
-"Colorado","CO","Asphalt Roads",NA,NA,"CanESM2",6,NA,2025.79775451265
-"Connecticut","CT","Asphalt Roads",NA,NA,"CCSM4",1,NA,80.3351955379472
-"Connecticut","CT","Asphalt Roads",NA,NA,"CCSM4",2,NA,201.674892083195
-"Connecticut","CT","Asphalt Roads",NA,NA,"CCSM4",3,NA,457.845969044865
-"Connecticut","CT","Asphalt Roads",NA,NA,"CCSM4",4,NA,1246.18098895819
-"Connecticut","CT","Asphalt Roads",NA,NA,"CCSM4",5,NA,1862.14057744953
-"Connecticut","CT","Asphalt Roads",NA,NA,"MIROC5",2,NA,150.628491633651
-"Connecticut","CT","Asphalt Roads",NA,NA,"MIROC5",3,NA,150.628491633651
-"Connecticut","CT","Asphalt Roads",NA,NA,"MIROC5",4,NA,344.15266100747
-"Connecticut","CT","Asphalt Roads",NA,NA,"MIROC5",5,NA,569.93085861026
-"Connecticut","CT","Asphalt Roads",NA,NA,"CanESM2",1,NA,80.3351955379472
-"Connecticut","CT","Asphalt Roads",NA,NA,"CanESM2",2,NA,184.65942526668
-"Connecticut","CT","Asphalt Roads",NA,NA,"CanESM2",3,NA,248.46742582861
-"Connecticut","CT","Asphalt Roads",NA,NA,"CanESM2",4,NA,648.265585310533
-"Connecticut","CT","Asphalt Roads",NA,NA,"CanESM2",5,NA,1388.30777041658
-"Connecticut","CT","Asphalt Roads",NA,NA,"CanESM2",6,NA,2181.21011160163
-"Delaware","DE","Asphalt Roads",NA,NA,"CCSM4",1,NA,0
-"Delaware","DE","Asphalt Roads",NA,NA,"CCSM4",2,NA,726.098369243649
-"Delaware","DE","Asphalt Roads",NA,NA,"CCSM4",3,NA,1809.74517788758
-"Delaware","DE","Asphalt Roads",NA,NA,"CCSM4",4,NA,1815.24592310912
-"Delaware","DE","Asphalt Roads",NA,NA,"CCSM4",5,NA,1815.24592310912
-"Delaware","DE","Asphalt Roads",NA,NA,"MIROC5",2,NA,484.065579495766
-"Delaware","DE","Asphalt Roads",NA,NA,"MIROC5",3,NA,1512.70493592427
-"Delaware","DE","Asphalt Roads",NA,NA,"MIROC5",4,NA,1815.24592310912
-"Delaware","DE","Asphalt Roads",NA,NA,"MIROC5",5,NA,1815.24592310912
-"Delaware","DE","Asphalt Roads",NA,NA,"CanESM2",1,NA,863.841857784607
-"Delaware","DE","Asphalt Roads",NA,NA,"CanESM2",2,NA,1671.8481339496
-"Delaware","DE","Asphalt Roads",NA,NA,"CanESM2",3,NA,1769.61935383109
-"Delaware","DE","Asphalt Roads",NA,NA,"CanESM2",4,NA,1815.24592310912
-"Delaware","DE","Asphalt Roads",NA,NA,"CanESM2",5,NA,1815.24592310912
-"Delaware","DE","Asphalt Roads",NA,NA,"CanESM2",6,NA,1815.24592310912
-"Florida","FL","Asphalt Roads",NA,NA,"CCSM4",1,NA,803.90342931498
-"Florida","FL","Asphalt Roads",NA,NA,"CCSM4",2,NA,1612.67369314018
-"Florida","FL","Asphalt Roads",NA,NA,"CCSM4",3,NA,1769.9076957568
-"Florida","FL","Asphalt Roads",NA,NA,"CCSM4",4,NA,1770.70583790206
-"Florida","FL","Asphalt Roads",NA,NA,"CCSM4",5,NA,1770.70583790206
-"Florida","FL","Asphalt Roads",NA,NA,"MIROC5",2,NA,1481.86387125341
-"Florida","FL","Asphalt Roads",NA,NA,"MIROC5",3,NA,1705.059936391
-"Florida","FL","Asphalt Roads",NA,NA,"MIROC5",4,NA,1770.70583790206
-"Florida","FL","Asphalt Roads",NA,NA,"MIROC5",5,NA,1770.70583790206
-"Florida","FL","Asphalt Roads",NA,NA,"CanESM2",1,NA,944.376446881097
-"Florida","FL","Asphalt Roads",NA,NA,"CanESM2",2,NA,1770.70583790206
-"Florida","FL","Asphalt Roads",NA,NA,"CanESM2",3,NA,1770.70583790206
-"Florida","FL","Asphalt Roads",NA,NA,"CanESM2",4,NA,1863.00297588374
-"Florida","FL","Asphalt Roads",NA,NA,"CanESM2",5,NA,2047.59725184709
-"Florida","FL","Asphalt Roads",NA,NA,"CanESM2",6,NA,2245.3768332364
-"Georgia","GA","Asphalt Roads",NA,NA,"CCSM4",1,NA,347.433131860913
-"Georgia","GA","Asphalt Roads",NA,NA,"CCSM4",2,NA,661.258911008387
-"Georgia","GA","Asphalt Roads",NA,NA,"CCSM4",3,NA,681.597024322301
-"Georgia","GA","Asphalt Roads",NA,NA,"CCSM4",4,NA,706.536498862153
-"Georgia","GA","Asphalt Roads",NA,NA,"CCSM4",5,NA,725.974165489427
-"Georgia","GA","Asphalt Roads",NA,NA,"MIROC5",2,NA,552.943378866554
-"Georgia","GA","Asphalt Roads",NA,NA,"MIROC5",3,NA,648.026090685878
-"Georgia","GA","Asphalt Roads",NA,NA,"MIROC5",4,NA,706.039209701115
-"Georgia","GA","Asphalt Roads",NA,NA,"MIROC5",5,NA,741.094761163242
-"Georgia","GA","Asphalt Roads",NA,NA,"CanESM2",1,NA,347.433131860913
-"Georgia","GA","Asphalt Roads",NA,NA,"CanESM2",2,NA,657.984981418662
-"Georgia","GA","Asphalt Roads",NA,NA,"CanESM2",3,NA,670.262217380131
-"Georgia","GA","Asphalt Roads",NA,NA,"CanESM2",4,NA,936.199086163688
-"Georgia","GA","Asphalt Roads",NA,NA,"CanESM2",5,NA,1456.61407016676
-"Georgia","GA","Asphalt Roads",NA,NA,"CanESM2",6,NA,2014.2015530272
-"Iowa","IA","Asphalt Roads",NA,NA,"CCSM4",1,NA,373.024631532129
-"Iowa","IA","Asphalt Roads",NA,NA,"CCSM4",2,NA,1102.46055923703
-"Iowa","IA","Asphalt Roads",NA,NA,"CCSM4",3,NA,1715.92909558806
-"Iowa","IA","Asphalt Roads",NA,NA,"CCSM4",4,NA,1771.35291416413
-"Iowa","IA","Asphalt Roads",NA,NA,"CCSM4",5,NA,1812.29228196318
-"Iowa","IA","Asphalt Roads",NA,NA,"MIROC5",2,NA,882.386776298989
-"Iowa","IA","Asphalt Roads",NA,NA,"MIROC5",3,NA,1313.86495259525
-"Iowa","IA","Asphalt Roads",NA,NA,"MIROC5",4,NA,1587.29640762916
-"Iowa","IA","Asphalt Roads",NA,NA,"MIROC5",5,NA,1758.24353487099
-"Iowa","IA","Asphalt Roads",NA,NA,"CanESM2",1,NA,230.381163889343
-"Iowa","IA","Asphalt Roads",NA,NA,"CanESM2",2,NA,671.106582229236
-"Iowa","IA","Asphalt Roads",NA,NA,"CanESM2",3,NA,1119.49764461058
-"Iowa","IA","Asphalt Roads",NA,NA,"CanESM2",4,NA,1432.85816587816
-"Iowa","IA","Asphalt Roads",NA,NA,"CanESM2",5,NA,1641.08088352406
-"Iowa","IA","Asphalt Roads",NA,NA,"CanESM2",6,NA,1864.17665243039
-"Idaho","ID","Asphalt Roads",NA,NA,"CCSM4",1,NA,468.482502409981
-"Idaho","ID","Asphalt Roads",NA,NA,"CCSM4",2,NA,1114.2715218552
-"Idaho","ID","Asphalt Roads",NA,NA,"CCSM4",3,NA,1528.86186958355
-"Idaho","ID","Asphalt Roads",NA,NA,"CCSM4",4,NA,1804.59682085395
-"Idaho","ID","Asphalt Roads",NA,NA,"CCSM4",5,NA,2018.74912810014
-"Idaho","ID","Asphalt Roads",NA,NA,"MIROC5",2,NA,668.649765022456
-"Idaho","ID","Asphalt Roads",NA,NA,"MIROC5",3,NA,836.63206662152
-"Idaho","ID","Asphalt Roads",NA,NA,"MIROC5",4,NA,1170.19838722799
-"Idaho","ID","Asphalt Roads",NA,NA,"MIROC5",5,NA,1501.71810875939
-"Idaho","ID","Asphalt Roads",NA,NA,"CanESM2",1,NA,318.432084768101
-"Idaho","ID","Asphalt Roads",NA,NA,"CanESM2",2,NA,805.931231539643
-"Idaho","ID","Asphalt Roads",NA,NA,"CanESM2",3,NA,1197.56449266362
-"Idaho","ID","Asphalt Roads",NA,NA,"CanESM2",4,NA,1526.38329586475
-"Idaho","ID","Asphalt Roads",NA,NA,"CanESM2",5,NA,1818.49652521796
-"Idaho","ID","Asphalt Roads",NA,NA,"CanESM2",6,NA,2131.47498523925
-"Illinois","IL","Asphalt Roads",NA,NA,"CCSM4",1,NA,623.641955390009
-"Illinois","IL","Asphalt Roads",NA,NA,"CCSM4",2,NA,1415.27887147897
-"Illinois","IL","Asphalt Roads",NA,NA,"CCSM4",3,NA,1796.67395979609
-"Illinois","IL","Asphalt Roads",NA,NA,"CCSM4",4,NA,1861.28408188727
-"Illinois","IL","Asphalt Roads",NA,NA,"CCSM4",5,NA,1910.33492907541
-"Illinois","IL","Asphalt Roads",NA,NA,"MIROC5",2,NA,1127.77682684346
-"Illinois","IL","Asphalt Roads",NA,NA,"MIROC5",3,NA,1592.83548983828
-"Illinois","IL","Asphalt Roads",NA,NA,"MIROC5",4,NA,1782.31156983879
-"Illinois","IL","Asphalt Roads",NA,NA,"MIROC5",5,NA,1843.78804351764
-"Illinois","IL","Asphalt Roads",NA,NA,"CanESM2",1,NA,591.507677822481
-"Illinois","IL","Asphalt Roads",NA,NA,"CanESM2",2,NA,1262.26231953075
-"Illinois","IL","Asphalt Roads",NA,NA,"CanESM2",3,NA,1549.48498880626
-"Illinois","IL","Asphalt Roads",NA,NA,"CanESM2",4,NA,1727.55123142873
-"Illinois","IL","Asphalt Roads",NA,NA,"CanESM2",5,NA,1815.60922534988
-"Illinois","IL","Asphalt Roads",NA,NA,"CanESM2",6,NA,1909.95707597968
-"Indiana","IN","Asphalt Roads",NA,NA,"CCSM4",1,NA,358.577680698568
-"Indiana","IN","Asphalt Roads",NA,NA,"CCSM4",2,NA,1145.49415478777
-"Indiana","IN","Asphalt Roads",NA,NA,"CCSM4",3,NA,1851.65110694806
-"Indiana","IN","Asphalt Roads",NA,NA,"CCSM4",4,NA,1855.23566000471
-"Indiana","IN","Asphalt Roads",NA,NA,"CCSM4",5,NA,1855.23566000471
-"Indiana","IN","Asphalt Roads",NA,NA,"MIROC5",2,NA,631.061254610842
-"Indiana","IN","Asphalt Roads",NA,NA,"MIROC5",3,NA,1499.87344561022
-"Indiana","IN","Asphalt Roads",NA,NA,"MIROC5",4,NA,1795.33812977967
-"Indiana","IN","Asphalt Roads",NA,NA,"MIROC5",5,NA,1841.92509773248
-"Indiana","IN","Asphalt Roads",NA,NA,"CanESM2",1,NA,286.781380821428
-"Indiana","IN","Asphalt Roads",NA,NA,"CanESM2",2,NA,873.70240223752
-"Indiana","IN","Asphalt Roads",NA,NA,"CanESM2",3,NA,1503.67861448254
-"Indiana","IN","Asphalt Roads",NA,NA,"CanESM2",4,NA,1812.57747928684
-"Indiana","IN","Asphalt Roads",NA,NA,"CanESM2",5,NA,1842.39741080012
-"Indiana","IN","Asphalt Roads",NA,NA,"CanESM2",6,NA,1874.34733742148
-"Kansas","KS","Asphalt Roads",NA,NA,"CCSM4",1,NA,466.425155770518
-"Kansas","KS","Asphalt Roads",NA,NA,"CCSM4",2,NA,1197.96589214168
-"Kansas","KS","Asphalt Roads",NA,NA,"CCSM4",3,NA,1716.81463897966
-"Kansas","KS","Asphalt Roads",NA,NA,"CCSM4",4,NA,1877.61251003778
-"Kansas","KS","Asphalt Roads",NA,NA,"CCSM4",5,NA,2001.39702931206
-"Kansas","KS","Asphalt Roads",NA,NA,"MIROC5",2,NA,925.74228396641
-"Kansas","KS","Asphalt Roads",NA,NA,"MIROC5",3,NA,1475.86823999038
-"Kansas","KS","Asphalt Roads",NA,NA,"MIROC5",4,NA,1761.94060347794
-"Kansas","KS","Asphalt Roads",NA,NA,"MIROC5",5,NA,1906.92298381305
-"Kansas","KS","Asphalt Roads",NA,NA,"CanESM2",1,NA,283.464110319135
-"Kansas","KS","Asphalt Roads",NA,NA,"CanESM2",2,NA,680.823202177538
-"Kansas","KS","Asphalt Roads",NA,NA,"CanESM2",3,NA,960.813193419715
-"Kansas","KS","Asphalt Roads",NA,NA,"CanESM2",4,NA,1283.61885890516
-"Kansas","KS","Asphalt Roads",NA,NA,"CanESM2",5,NA,1667.90619805
-"Kansas","KS","Asphalt Roads",NA,NA,"CanESM2",6,NA,2079.64263284806
-"Kentucky","KY","Asphalt Roads",NA,NA,"CCSM4",1,NA,846.668935282923
-"Kentucky","KY","Asphalt Roads",NA,NA,"CCSM4",2,NA,1699.35961798989
-"Kentucky","KY","Asphalt Roads",NA,NA,"CCSM4",3,NA,1868.45502202464
-"Kentucky","KY","Asphalt Roads",NA,NA,"CCSM4",4,NA,1878.75730206847
-"Kentucky","KY","Asphalt Roads",NA,NA,"CCSM4",5,NA,1886.14843507199
-"Kentucky","KY","Asphalt Roads",NA,NA,"MIROC5",2,NA,1069.97305392765
-"Kentucky","KY","Asphalt Roads",NA,NA,"MIROC5",3,NA,1664.30833575183
-"Kentucky","KY","Asphalt Roads",NA,NA,"MIROC5",4,NA,1861.24731330151
-"Kentucky","KY","Asphalt Roads",NA,NA,"MIROC5",5,NA,1887.0708766796
-"Kentucky","KY","Asphalt Roads",NA,NA,"CanESM2",1,NA,871.596297805028
-"Kentucky","KY","Asphalt Roads",NA,NA,"CanESM2",2,NA,1696.34962001298
-"Kentucky","KY","Asphalt Roads",NA,NA,"CanESM2",3,NA,1812.79942306653
-"Kentucky","KY","Asphalt Roads",NA,NA,"CanESM2",4,NA,1882.34301385805
-"Kentucky","KY","Asphalt Roads",NA,NA,"CanESM2",5,NA,1912.74371259113
-"Kentucky","KY","Asphalt Roads",NA,NA,"CanESM2",6,NA,1945.31588980513
-"Louisiana","LA","Asphalt Roads",NA,NA,"CCSM4",1,NA,441.113293890188
-"Louisiana","LA","Asphalt Roads",NA,NA,"CCSM4",2,NA,841.580943875009
-"Louisiana","LA","Asphalt Roads",NA,NA,"CCSM4",3,NA,918.811978926983
-"Louisiana","LA","Asphalt Roads",NA,NA,"CCSM4",4,NA,1162.3286641617
-"Louisiana","LA","Asphalt Roads",NA,NA,"CCSM4",5,NA,1352.60612823283
-"Louisiana","LA","Asphalt Roads",NA,NA,"MIROC5",2,NA,828.498103300148
-"Louisiana","LA","Asphalt Roads",NA,NA,"MIROC5",3,NA,831.495792469247
-"Louisiana","LA","Asphalt Roads",NA,NA,"MIROC5",4,NA,1214.95192009614
-"Louisiana","LA","Asphalt Roads",NA,NA,"MIROC5",5,NA,1661.28878349497
-"Louisiana","LA","Asphalt Roads",NA,NA,"CanESM2",1,NA,443.93464840228
-"Louisiana","LA","Asphalt Roads",NA,NA,"CanESM2",2,NA,865.176203605829
-"Louisiana","LA","Asphalt Roads",NA,NA,"CanESM2",3,NA,926.673837077491
-"Louisiana","LA","Asphalt Roads",NA,NA,"CanESM2",4,NA,1217.16479101582
-"Louisiana","LA","Asphalt Roads",NA,NA,"CanESM2",5,NA,1740.74890765227
-"Louisiana","LA","Asphalt Roads",NA,NA,"CanESM2",6,NA,2301.73188976275
-"Massachusetts","MA","Asphalt Roads",NA,NA,"CCSM4",1,NA,238.883548126718
-"Massachusetts","MA","Asphalt Roads",NA,NA,"CCSM4",2,NA,447.906652737596
-"Massachusetts","MA","Asphalt Roads",NA,NA,"CCSM4",3,NA,611.463112909649
-"Massachusetts","MA","Asphalt Roads",NA,NA,"CCSM4",4,NA,1327.47694966286
-"Massachusetts","MA","Asphalt Roads",NA,NA,"CCSM4",5,NA,1887.20350225166
-"Massachusetts","MA","Asphalt Roads",NA,NA,"MIROC5",2,NA,447.906652737596
-"Massachusetts","MA","Asphalt Roads",NA,NA,"MIROC5",3,NA,447.906652737596
-"Massachusetts","MA","Asphalt Roads",NA,NA,"MIROC5",4,NA,547.067172043883
-"Massachusetts","MA","Asphalt Roads",NA,NA,"MIROC5",5,NA,662.754444567883
-"Massachusetts","MA","Asphalt Roads",NA,NA,"CanESM2",1,NA,238.883548126718
-"Massachusetts","MA","Asphalt Roads",NA,NA,"CanESM2",2,NA,499.839213727426
-"Massachusetts","MA","Asphalt Roads",NA,NA,"CanESM2",3,NA,597.212765583356
-"Massachusetts","MA","Asphalt Roads",NA,NA,"CanESM2",4,NA,946.504496484102
-"Massachusetts","MA","Asphalt Roads",NA,NA,"CanESM2",5,NA,1554.20597655339
-"Massachusetts","MA","Asphalt Roads",NA,NA,"CanESM2",6,NA,2205.31470519906
-"Maryland","MD","Asphalt Roads",NA,NA,"CCSM4",1,NA,126.531023062398
-"Maryland","MD","Asphalt Roads",NA,NA,"CCSM4",2,NA,854.898691189723
-"Maryland","MD","Asphalt Roads",NA,NA,"CCSM4",3,NA,1784.93841611563
-"Maryland","MD","Asphalt Roads",NA,NA,"CCSM4",4,NA,1825.68778066572
-"Maryland","MD","Asphalt Roads",NA,NA,"CCSM4",5,NA,1853.8847702458
-"Maryland","MD","Asphalt Roads",NA,NA,"MIROC5",2,NA,503.945314210738
-"Maryland","MD","Asphalt Roads",NA,NA,"MIROC5",3,NA,1436.15250060441
-"Maryland","MD","Asphalt Roads",NA,NA,"MIROC5",4,NA,1748.87082161235
-"Maryland","MD","Asphalt Roads",NA,NA,"MIROC5",5,NA,1793.83384784927
-"Maryland","MD","Asphalt Roads",NA,NA,"CanESM2",1,NA,793.112550708983
-"Maryland","MD","Asphalt Roads",NA,NA,"CanESM2",2,NA,1565.5639507212
-"Maryland","MD","Asphalt Roads",NA,NA,"CanESM2",3,NA,1712.71004723719
-"Maryland","MD","Asphalt Roads",NA,NA,"CanESM2",4,NA,1795.47672040135
-"Maryland","MD","Asphalt Roads",NA,NA,"CanESM2",5,NA,1823.67370998143
-"Maryland","MD","Asphalt Roads",NA,NA,"CanESM2",6,NA,1853.8847702458
-"Maine","ME","Asphalt Roads",NA,NA,"CCSM4",1,NA,838.15343441998
-"Maine","ME","Asphalt Roads",NA,NA,"CCSM4",2,NA,1571.53768953746
-"Maine","ME","Asphalt Roads",NA,NA,"CCSM4",3,NA,1582.1156245454
-"Maine","ME","Asphalt Roads",NA,NA,"CCSM4",4,NA,1628.42347335794
-"Maine","ME","Asphalt Roads",NA,NA,"CCSM4",5,NA,1664.62351760734
-"Maine","ME","Asphalt Roads",NA,NA,"MIROC5",2,NA,1571.53768953746
-"Maine","ME","Asphalt Roads",NA,NA,"MIROC5",3,NA,1571.53768953746
-"Maine","ME","Asphalt Roads",NA,NA,"MIROC5",4,NA,1571.53768953746
-"Maine","ME","Asphalt Roads",NA,NA,"MIROC5",5,NA,1571.53768953746
-"Maine","ME","Asphalt Roads",NA,NA,"CanESM2",1,NA,838.15343441998
-"Maine","ME","Asphalt Roads",NA,NA,"CanESM2",2,NA,1571.53768953746
-"Maine","ME","Asphalt Roads",NA,NA,"CanESM2",3,NA,1571.53768953746
-"Maine","ME","Asphalt Roads",NA,NA,"CanESM2",4,NA,1742.03927393974
-"Maine","ME","Asphalt Roads",NA,NA,"CanESM2",5,NA,2083.04244274431
-"Maine","ME","Asphalt Roads",NA,NA,"CanESM2",6,NA,2448.4029807492
-"Michigan","MI","Asphalt Roads",NA,NA,"CCSM4",1,NA,226.728210382659
-"Michigan","MI","Asphalt Roads",NA,NA,"CCSM4",2,NA,733.764911837409
-"Michigan","MI","Asphalt Roads",NA,NA,"CCSM4",3,NA,1285.00572763152
-"Michigan","MI","Asphalt Roads",NA,NA,"CCSM4",4,NA,1683.99163379015
-"Michigan","MI","Asphalt Roads",NA,NA,"CCSM4",5,NA,1994.06137208878
-"Michigan","MI","Asphalt Roads",NA,NA,"MIROC5",2,NA,490.550512974359
-"Michigan","MI","Asphalt Roads",NA,NA,"MIROC5",3,NA,629.600139801464
-"Michigan","MI","Asphalt Roads",NA,NA,"MIROC5",4,NA,1119.08562835644
-"Michigan","MI","Asphalt Roads",NA,NA,"MIROC5",5,NA,1642.43892442599
-"Michigan","MI","Asphalt Roads",NA,NA,"CanESM2",1,NA,226.728210382659
-"Michigan","MI","Asphalt Roads",NA,NA,"CanESM2",2,NA,466.890778609434
-"Michigan","MI","Asphalt Roads",NA,NA,"CanESM2",3,NA,545.219623875587
-"Michigan","MI","Asphalt Roads",NA,NA,"CanESM2",4,NA,880.867929954054
-"Michigan","MI","Asphalt Roads",NA,NA,"CanESM2",5,NA,1479.05761986258
-"Michigan","MI","Asphalt Roads",NA,NA,"CanESM2",6,NA,2119.97514476457
-"Minnesota","MN","Asphalt Roads",NA,NA,"CCSM4",1,NA,251.290883720624
-"Minnesota","MN","Asphalt Roads",NA,NA,"CCSM4",2,NA,742.340488743858
-"Minnesota","MN","Asphalt Roads",NA,NA,"CCSM4",3,NA,1246.69546309245
-"Minnesota","MN","Asphalt Roads",NA,NA,"CCSM4",4,NA,1685.01359496418
-"Minnesota","MN","Asphalt Roads",NA,NA,"CCSM4",5,NA,2026.05231178069
-"Minnesota","MN","Asphalt Roads",NA,NA,"MIROC5",2,NA,621.22244958869
-"Minnesota","MN","Asphalt Roads",NA,NA,"MIROC5",3,NA,929.477232417245
-"Minnesota","MN","Asphalt Roads",NA,NA,"MIROC5",4,NA,1297.05263611695
-"Minnesota","MN","Asphalt Roads",NA,NA,"MIROC5",5,NA,1620.11690710975
-"Minnesota","MN","Asphalt Roads",NA,NA,"CanESM2",1,NA,247.805180420515
-"Minnesota","MN","Asphalt Roads",NA,NA,"CanESM2",2,NA,508.492031789648
-"Minnesota","MN","Asphalt Roads",NA,NA,"CanESM2",3,NA,590.724503979367
-"Minnesota","MN","Asphalt Roads",NA,NA,"CanESM2",4,NA,912.34766770857
-"Minnesota","MN","Asphalt Roads",NA,NA,"CanESM2",5,NA,1478.8436877899
-"Minnesota","MN","Asphalt Roads",NA,NA,"CanESM2",6,NA,2085.80370930562
-"Missouri","MO","Asphalt Roads",NA,NA,"CCSM4",1,NA,885.000333354403
-"Missouri","MO","Asphalt Roads",NA,NA,"CCSM4",2,NA,1684.73745896042
-"Missouri","MO","Asphalt Roads",NA,NA,"CCSM4",3,NA,1818.29024076447
-"Missouri","MO","Asphalt Roads",NA,NA,"CCSM4",4,NA,2237.44519159311
-"Missouri","MO","Asphalt Roads",NA,NA,"CCSM4",5,NA,2564.9592708894
-"Missouri","MO","Asphalt Roads",NA,NA,"MIROC5",2,NA,1661.57387889001
-"Missouri","MO","Asphalt Roads",NA,NA,"MIROC5",3,NA,1666.24516832232
-"Missouri","MO","Asphalt Roads",NA,NA,"MIROC5",4,NA,1996.16703785287
-"Missouri","MO","Asphalt Roads",NA,NA,"MIROC5",5,NA,2379.47299220585
-"Missouri","MO","Asphalt Roads",NA,NA,"CanESM2",1,NA,885.000333354403
-"Missouri","MO","Asphalt Roads",NA,NA,"CanESM2",2,NA,1659.37562503951
-"Missouri","MO","Asphalt Roads",NA,NA,"CanESM2",3,NA,1659.37562503951
-"Missouri","MO","Asphalt Roads",NA,NA,"CanESM2",4,NA,1798.33045845528
-"Missouri","MO","Asphalt Roads",NA,NA,"CanESM2",5,NA,2076.24012528683
-"Missouri","MO","Asphalt Roads",NA,NA,"CanESM2",6,NA,2374.00048260635
-"Mississippi","MS","Asphalt Roads",NA,NA,"CCSM4",1,NA,542.020560632697
-"Mississippi","MS","Asphalt Roads",NA,NA,"CCSM4",2,NA,1016.28855118631
-"Mississippi","MS","Asphalt Roads",NA,NA,"CCSM4",3,NA,1043.1714734598
-"Mississippi","MS","Asphalt Roads",NA,NA,"CCSM4",4,NA,1160.8589331904
-"Mississippi","MS","Asphalt Roads",NA,NA,"CCSM4",5,NA,1252.85826719301
-"Mississippi","MS","Asphalt Roads",NA,NA,"MIROC5",2,NA,1016.28855118631
-"Mississippi","MS","Asphalt Roads",NA,NA,"MIROC5",3,NA,1016.28855118631
-"Mississippi","MS","Asphalt Roads",NA,NA,"MIROC5",4,NA,1441.60874789612
-"Mississippi","MS","Asphalt Roads",NA,NA,"MIROC5",5,NA,1937.81564405757
-"Mississippi","MS","Asphalt Roads",NA,NA,"CanESM2",1,NA,542.020560632697
-"Mississippi","MS","Asphalt Roads",NA,NA,"CanESM2",2,NA,1016.28855118631
-"Mississippi","MS","Asphalt Roads",NA,NA,"CanESM2",3,NA,1016.28855118631
-"Mississippi","MS","Asphalt Roads",NA,NA,"CanESM2",4,NA,1296.73600408059
-"Mississippi","MS","Asphalt Roads",NA,NA,"CanESM2",5,NA,1857.63090986915
-"Mississippi","MS","Asphalt Roads",NA,NA,"CanESM2",6,NA,2458.58973749975
-"Montana","MT","Asphalt Roads",NA,NA,"CCSM4",1,NA,630.562285699794
-"Montana","MT","Asphalt Roads",NA,NA,"CCSM4",2,NA,1311.8093324667
-"Montana","MT","Asphalt Roads",NA,NA,"CCSM4",3,NA,1574.42605112004
-"Montana","MT","Asphalt Roads",NA,NA,"CCSM4",4,NA,1878.96334379635
-"Montana","MT","Asphalt Roads",NA,NA,"CCSM4",5,NA,2116.26107908016
-"Montana","MT","Asphalt Roads",NA,NA,"MIROC5",2,NA,783.497646948138
-"Montana","MT","Asphalt Roads",NA,NA,"MIROC5",3,NA,1044.13162013168
-"Montana","MT","Asphalt Roads",NA,NA,"MIROC5",4,NA,1345.02204768871
-"Montana","MT","Asphalt Roads",NA,NA,"MIROC5",5,NA,1606.62765374618
-"Montana","MT","Asphalt Roads",NA,NA,"CanESM2",1,NA,315.690076203926
-"Montana","MT","Asphalt Roads",NA,NA,"CanESM2",2,NA,793.416737763826
-"Montana","MT","Asphalt Roads",NA,NA,"CanESM2",3,NA,1171.22519691657
-"Montana","MT","Asphalt Roads",NA,NA,"CanESM2",4,NA,1499.33104539376
-"Montana","MT","Asphalt Roads",NA,NA,"CanESM2",5,NA,1802.92151380556
-"Montana","MT","Asphalt Roads",NA,NA,"CanESM2",6,NA,2128.19701567535
-"North Carolina","NC","Asphalt Roads",NA,NA,"CCSM4",1,NA,752.066423997425
-"North Carolina","NC","Asphalt Roads",NA,NA,"CCSM4",2,NA,1538.14397425183
-"North Carolina","NC","Asphalt Roads",NA,NA,"CCSM4",3,NA,1736.68733669278
-"North Carolina","NC","Asphalt Roads",NA,NA,"CCSM4",4,NA,1770.42074430376
-"North Carolina","NC","Asphalt Roads",NA,NA,"CCSM4",5,NA,1796.03287004636
-"North Carolina","NC","Asphalt Roads",NA,NA,"MIROC5",2,NA,925.881317095883
-"North Carolina","NC","Asphalt Roads",NA,NA,"MIROC5",3,NA,1487.02743930981
-"North Carolina","NC","Asphalt Roads",NA,NA,"MIROC5",4,NA,1710.49824479562
-"North Carolina","NC","Asphalt Roads",NA,NA,"MIROC5",5,NA,1778.6640445537
-"North Carolina","NC","Asphalt Roads",NA,NA,"CanESM2",1,NA,878.178691482726
-"North Carolina","NC","Asphalt Roads",NA,NA,"CanESM2",2,NA,1670.35891893217
-"North Carolina","NC","Asphalt Roads",NA,NA,"CanESM2",3,NA,1714.93492968604
-"North Carolina","NC","Asphalt Roads",NA,NA,"CanESM2",4,NA,1784.10699472295
-"North Carolina","NC","Asphalt Roads",NA,NA,"CanESM2",5,NA,1880.84684809316
-"North Carolina","NC","Asphalt Roads",NA,NA,"CanESM2",6,NA,1984.49669098981
-"North Dakota","ND","Asphalt Roads",NA,NA,"CCSM4",1,NA,179.906160039192
-"North Dakota","ND","Asphalt Roads",NA,NA,"CCSM4",2,NA,704.38936834941
-"North Dakota","ND","Asphalt Roads",NA,NA,"CCSM4",3,NA,1310.11465037514
-"North Dakota","ND","Asphalt Roads",NA,NA,"CCSM4",4,NA,1566.40425242045
-"North Dakota","ND","Asphalt Roads",NA,NA,"CCSM4",5,NA,1764.57864756592
-"North Dakota","ND","Asphalt Roads",NA,NA,"MIROC5",2,NA,366.637133380713
-"North Dakota","ND","Asphalt Roads",NA,NA,"MIROC5",3,NA,896.687344592335
-"North Dakota","ND","Asphalt Roads",NA,NA,"MIROC5",4,NA,1302.02900138884
-"North Dakota","ND","Asphalt Roads",NA,NA,"MIROC5",5,NA,1593.0476265494
-"North Dakota","ND","Asphalt Roads",NA,NA,"CanESM2",1,NA,3.39931877634757
-"North Dakota","ND","Asphalt Roads",NA,NA,"CanESM2",2,NA,291.548966576323
-"North Dakota","ND","Asphalt Roads",NA,NA,"CanESM2",3,NA,826.252548833831
-"North Dakota","ND","Asphalt Roads",NA,NA,"CanESM2",4,NA,1217.97899575842
-"North Dakota","ND","Asphalt Roads",NA,NA,"CanESM2",5,NA,1502.37521283392
-"North Dakota","ND","Asphalt Roads",NA,NA,"CanESM2",6,NA,1807.08544541481
-"Nebraska","NE","Asphalt Roads",NA,NA,"CCSM4",1,NA,859.956480353182
-"Nebraska","NE","Asphalt Roads",NA,NA,"CCSM4",2,NA,1648.16814798879
-"Nebraska","NE","Asphalt Roads",NA,NA,"CCSM4",3,NA,1780.42819125809
-"Nebraska","NE","Asphalt Roads",NA,NA,"CCSM4",4,NA,2126.13306664651
-"Nebraska","NE","Asphalt Roads",NA,NA,"CCSM4",5,NA,2396.16780152605
-"Nebraska","NE","Asphalt Roads",NA,NA,"MIROC5",2,NA,1634.12508537435
-"Nebraska","NE","Asphalt Roads",NA,NA,"MIROC5",3,NA,1680.25179038765
-"Nebraska","NE","Asphalt Roads",NA,NA,"MIROC5",4,NA,1936.63990188189
-"Nebraska","NE","Asphalt Roads",NA,NA,"MIROC5",5,NA,2219.9315743559
-"Nebraska","NE","Asphalt Roads",NA,NA,"CanESM2",1,NA,852.253385933105
-"Nebraska","NE","Asphalt Roads",NA,NA,"CanESM2",2,NA,1608.16062234704
-"Nebraska","NE","Asphalt Roads",NA,NA,"CanESM2",3,NA,1627.25847932667
-"Nebraska","NE","Asphalt Roads",NA,NA,"CanESM2",4,NA,1780.20081690641
-"Nebraska","NE","Asphalt Roads",NA,NA,"CanESM2",5,NA,2068.26082555158
-"Nebraska","NE","Asphalt Roads",NA,NA,"CanESM2",6,NA,2376.89654909998
-"New Hampshire","NH","Asphalt Roads",NA,NA,"CCSM4",1,NA,512.997406860303
-"New Hampshire","NH","Asphalt Roads",NA,NA,"CCSM4",2,NA,961.870137863068
-"New Hampshire","NH","Asphalt Roads",NA,NA,"CCSM4",3,NA,1081.34631969821
-"New Hampshire","NH","Asphalt Roads",NA,NA,"CCSM4",4,NA,1604.38649350986
-"New Hampshire","NH","Asphalt Roads",NA,NA,"CCSM4",5,NA,2013.26053801236
-"New Hampshire","NH","Asphalt Roads",NA,NA,"MIROC5",2,NA,961.870137863068
-"New Hampshire","NH","Asphalt Roads",NA,NA,"MIROC5",3,NA,961.870137863068
-"New Hampshire","NH","Asphalt Roads",NA,NA,"MIROC5",4,NA,1081.49033157905
-"New Hampshire","NH","Asphalt Roads",NA,NA,"MIROC5",5,NA,1221.04722424769
-"New Hampshire","NH","Asphalt Roads",NA,NA,"CanESM2",1,NA,512.997406860303
-"New Hampshire","NH","Asphalt Roads",NA,NA,"CanESM2",2,NA,961.870137863068
-"New Hampshire","NH","Asphalt Roads",NA,NA,"CanESM2",3,NA,961.870137863068
-"New Hampshire","NH","Asphalt Roads",NA,NA,"CanESM2",4,NA,1211.75376635299
-"New Hampshire","NH","Asphalt Roads",NA,NA,"CanESM2",5,NA,1711.52102333282
-"New Hampshire","NH","Asphalt Roads",NA,NA,"CanESM2",6,NA,2246.9859415255
-"New Jersey","NJ","Asphalt Roads",NA,NA,"CCSM4",1,NA,0
-"New Jersey","NJ","Asphalt Roads",NA,NA,"CCSM4",2,NA,595.00423566239
-"New Jersey","NJ","Asphalt Roads",NA,NA,"CCSM4",3,NA,1523.58416247689
-"New Jersey","NJ","Asphalt Roads",NA,NA,"CCSM4",4,NA,1705.74716343097
-"New Jersey","NJ","Asphalt Roads",NA,NA,"CCSM4",5,NA,1844.62498342414
-"New Jersey","NJ","Asphalt Roads",NA,NA,"MIROC5",2,NA,308.708936044211
-"New Jersey","NJ","Asphalt Roads",NA,NA,"MIROC5",3,NA,964.715425138159
-"New Jersey","NJ","Asphalt Roads",NA,NA,"MIROC5",4,NA,1371.77394581977
-"New Jersey","NJ","Asphalt Roads",NA,NA,"MIROC5",5,NA,1621.57528741608
-"New Jersey","NJ","Asphalt Roads",NA,NA,"CanESM2",1,NA,371.341748947487
-"New Jersey","NJ","Asphalt Roads",NA,NA,"CanESM2",2,NA,893.741111813278
-"New Jersey","NJ","Asphalt Roads",NA,NA,"CanESM2",3,NA,1264.00736031967
-"New Jersey","NJ","Asphalt Roads",NA,NA,"CanESM2",4,NA,1518.07005928812
-"New Jersey","NJ","Asphalt Roads",NA,NA,"CanESM2",5,NA,1680.61362528574
-"New Jersey","NJ","Asphalt Roads",NA,NA,"CanESM2",6,NA,1854.76744599748
-"New Mexico","NM","Asphalt Roads",NA,NA,"CCSM4",1,NA,213.221431398334
-"New Mexico","NM","Asphalt Roads",NA,NA,"CCSM4",2,NA,598.682231133333
-"New Mexico","NM","Asphalt Roads",NA,NA,"CCSM4",3,NA,956.85964120053
-"New Mexico","NM","Asphalt Roads",NA,NA,"CCSM4",4,NA,1226.92597981069
-"New Mexico","NM","Asphalt Roads",NA,NA,"CCSM4",5,NA,1436.86595658307
-"New Mexico","NM","Asphalt Roads",NA,NA,"MIROC5",2,NA,729.86371187082
-"New Mexico","NM","Asphalt Roads",NA,NA,"MIROC5",3,NA,997.640146757935
-"New Mexico","NM","Asphalt Roads",NA,NA,"MIROC5",4,NA,1331.32414121519
-"New Mexico","NM","Asphalt Roads",NA,NA,"MIROC5",5,NA,1628.73806395406
-"New Mexico","NM","Asphalt Roads",NA,NA,"CanESM2",1,NA,208.961345802874
-"New Mexico","NM","Asphalt Roads",NA,NA,"CanESM2",2,NA,631.906566507452
-"New Mexico","NM","Asphalt Roads",NA,NA,"CanESM2",3,NA,1082.1016473707
-"New Mexico","NM","Asphalt Roads",NA,NA,"CanESM2",4,NA,1416.59652486092
-"New Mexico","NM","Asphalt Roads",NA,NA,"CanESM2",5,NA,1665.40420436901
-"New Mexico","NM","Asphalt Roads",NA,NA,"CanESM2",6,NA,1931.98386098482
-"Nevada","NV","Asphalt Roads",NA,NA,"CCSM4",1,NA,198.731071698194
-"Nevada","NV","Asphalt Roads",NA,NA,"CCSM4",2,NA,569.777830870795
-"Nevada","NV","Asphalt Roads",NA,NA,"CCSM4",3,NA,928.325129642179
-"Nevada","NV","Asphalt Roads",NA,NA,"CCSM4",4,NA,1211.33308251753
-"Nevada","NV","Asphalt Roads",NA,NA,"CCSM4",5,NA,1431.40012901225
-"Nevada","NV","Asphalt Roads",NA,NA,"MIROC5",2,NA,525.942353049805
-"Nevada","NV","Asphalt Roads",NA,NA,"MIROC5",3,NA,607.139728064257
-"Nevada","NV","Asphalt Roads",NA,NA,"MIROC5",4,NA,887.366908375876
-"Nevada","NV","Asphalt Roads",NA,NA,"MIROC5",5,NA,1186.43677437173
-"Nevada","NV","Asphalt Roads",NA,NA,"CanESM2",1,NA,227.744445157659
-"Nevada","NV","Asphalt Roads",NA,NA,"CanESM2",2,NA,587.911614056971
-"Nevada","NV","Asphalt Roads",NA,NA,"CanESM2",3,NA,889.581825406397
-"Nevada","NV","Asphalt Roads",NA,NA,"CanESM2",4,NA,1236.99312584151
-"Nevada","NV","Asphalt Roads",NA,NA,"CanESM2",5,NA,1650.25686278561
-"Nevada","NV","Asphalt Roads",NA,NA,"CanESM2",6,NA,2093.03943808286
-"New York","NY","Asphalt Roads",NA,NA,"CCSM4",1,NA,333.605103234922
-"New York","NY","Asphalt Roads",NA,NA,"CCSM4",2,NA,683.658254062184
-"New York","NY","Asphalt Roads",NA,NA,"CCSM4",3,NA,891.214449193383
-"New York","NY","Asphalt Roads",NA,NA,"CCSM4",4,NA,1420.37533363738
-"New York","NY","Asphalt Roads",NA,NA,"CCSM4",5,NA,1833.68972993838
-"New York","NY","Asphalt Roads",NA,NA,"MIROC5",2,NA,642.150916160439
-"New York","NY","Asphalt Roads",NA,NA,"MIROC5",3,NA,677.51377979973
-"New York","NY","Asphalt Roads",NA,NA,"MIROC5",4,NA,882.686158826232
-"New York","NY","Asphalt Roads",NA,NA,"MIROC5",5,NA,1109.91961840249
-"New York","NY","Asphalt Roads",NA,NA,"CanESM2",1,NA,333.605103234922
-"New York","NY","Asphalt Roads",NA,NA,"CanESM2",2,NA,683.596709949701
-"New York","NY","Asphalt Roads",NA,NA,"CanESM2",3,NA,792.510100045121
-"New York","NY","Asphalt Roads",NA,NA,"CanESM2",4,NA,1104.03081286405
-"New York","NY","Asphalt Roads",NA,NA,"CanESM2",5,NA,1625.41974107951
-"New York","NY","Asphalt Roads",NA,NA,"CanESM2",6,NA,2184.05073559607
-"Ohio","OH","Asphalt Roads",NA,NA,"CCSM4",1,NA,82.6322417169715
-"Ohio","OH","Asphalt Roads",NA,NA,"CCSM4",2,NA,767.686416942869
-"Ohio","OH","Asphalt Roads",NA,NA,"CCSM4",3,NA,1706.63301923131
-"Ohio","OH","Asphalt Roads",NA,NA,"CCSM4",4,NA,1818.36518895
-"Ohio","OH","Asphalt Roads",NA,NA,"CCSM4",5,NA,1902.08030576388
-"Ohio","OH","Asphalt Roads",NA,NA,"MIROC5",2,NA,294.929428727327
-"Ohio","OH","Asphalt Roads",NA,NA,"MIROC5",3,NA,870.667102398937
-"Ohio","OH","Asphalt Roads",NA,NA,"MIROC5",4,NA,1358.55577034962
-"Ohio","OH","Asphalt Roads",NA,NA,"MIROC5",5,NA,1730.20217140477
-"Ohio","OH","Asphalt Roads",NA,NA,"CanESM2",1,NA,100.940026338077
-"Ohio","OH","Asphalt Roads",NA,NA,"CanESM2",2,NA,448.251287345272
-"Ohio","OH","Asphalt Roads",NA,NA,"CanESM2",3,NA,933.855171022854
-"Ohio","OH","Asphalt Roads",NA,NA,"CanESM2",4,NA,1322.74667194731
-"Ohio","OH","Asphalt Roads",NA,NA,"CanESM2",5,NA,1647.2993823638
-"Ohio","OH","Asphalt Roads",NA,NA,"CanESM2",6,NA,1995.03442923862
-"Oklahoma","OK","Asphalt Roads",NA,NA,"CCSM4",1,NA,300.326443451068
-"Oklahoma","OK","Asphalt Roads",NA,NA,"CCSM4",2,NA,1048.08856506168
-"Oklahoma","OK","Asphalt Roads",NA,NA,"CCSM4",3,NA,1780.29233477331
-"Oklahoma","OK","Asphalt Roads",NA,NA,"CCSM4",4,NA,1820.79711889158
-"Oklahoma","OK","Asphalt Roads",NA,NA,"CCSM4",5,NA,1849.58864608291
-"Oklahoma","OK","Asphalt Roads",NA,NA,"MIROC5",2,NA,988.591102836661
-"Oklahoma","OK","Asphalt Roads",NA,NA,"MIROC5",3,NA,1547.28253201491
-"Oklahoma","OK","Asphalt Roads",NA,NA,"MIROC5",4,NA,1764.47764955098
-"Oklahoma","OK","Asphalt Roads",NA,NA,"MIROC5",5,NA,1826.16410999758
-"Oklahoma","OK","Asphalt Roads",NA,NA,"CanESM2",1,NA,566.19832676159
-"Oklahoma","OK","Asphalt Roads",NA,NA,"CanESM2",2,NA,1218.73110865501
-"Oklahoma","OK","Asphalt Roads",NA,NA,"CanESM2",3,NA,1513.31094486194
-"Oklahoma","OK","Asphalt Roads",NA,NA,"CanESM2",4,NA,1694.29070827062
-"Oklahoma","OK","Asphalt Roads",NA,NA,"CanESM2",5,NA,1781.30905462819
-"Oklahoma","OK","Asphalt Roads",NA,NA,"CanESM2",6,NA,1874.54299715415
-"Oregon","OR","Asphalt Roads",NA,NA,"CCSM4",1,NA,365.376519502122
-"Oregon","OR","Asphalt Roads",NA,NA,"CCSM4",2,NA,942.214975664806
-"Oregon","OR","Asphalt Roads",NA,NA,"CCSM4",3,NA,1406.75304587558
-"Oregon","OR","Asphalt Roads",NA,NA,"CCSM4",4,NA,1762.36003910847
-"Oregon","OR","Asphalt Roads",NA,NA,"CCSM4",5,NA,2038.82444159239
-"Oregon","OR","Asphalt Roads",NA,NA,"MIROC5",2,NA,753.085398247925
-"Oregon","OR","Asphalt Roads",NA,NA,"MIROC5",3,NA,904.994055283261
-"Oregon","OR","Asphalt Roads",NA,NA,"MIROC5",4,NA,1159.9123800633
-"Oregon","OR","Asphalt Roads",NA,NA,"MIROC5",5,NA,1405.19157273573
-"Oregon","OR","Asphalt Roads",NA,NA,"CanESM2",1,NA,257.856666973049
-"Oregon","OR","Asphalt Roads",NA,NA,"CanESM2",2,NA,812.299925496879
-"Oregon","OR","Asphalt Roads",NA,NA,"CanESM2",3,NA,1428.8349409764
-"Oregon","OR","Asphalt Roads",NA,NA,"CanESM2",4,NA,1790.84292026301
-"Oregon","OR","Asphalt Roads",NA,NA,"CanESM2",5,NA,1939.426197722
-"Oregon","OR","Asphalt Roads",NA,NA,"CanESM2",6,NA,2098.62256642806
-"Pennsylvania","PA","Asphalt Roads",NA,NA,"CCSM4",1,NA,174.457551172557
-"Pennsylvania","PA","Asphalt Roads",NA,NA,"CCSM4",2,NA,624.607804522829
-"Pennsylvania","PA","Asphalt Roads",NA,NA,"CCSM4",3,NA,1171.92156300985
-"Pennsylvania","PA","Asphalt Roads",NA,NA,"CCSM4",4,NA,1626.47728763492
-"Pennsylvania","PA","Asphalt Roads",NA,NA,"CCSM4",5,NA,1980.05342154442
-"Pennsylvania","PA","Asphalt Roads",NA,NA,"MIROC5",2,NA,434.117349122394
-"Pennsylvania","PA","Asphalt Roads",NA,NA,"MIROC5",3,NA,661.512410554325
-"Pennsylvania","PA","Asphalt Roads",NA,NA,"MIROC5",4,NA,1067.16354398618
-"Pennsylvania","PA","Asphalt Roads",NA,NA,"MIROC5",5,NA,1462.39548249865
-"Pennsylvania","PA","Asphalt Roads",NA,NA,"CanESM2",1,NA,245.073920706781
-"Pennsylvania","PA","Asphalt Roads",NA,NA,"CanESM2",2,NA,613.358901517278
-"Pennsylvania","PA","Asphalt Roads",NA,NA,"CanESM2",3,NA,901.818839377395
-"Pennsylvania","PA","Asphalt Roads",NA,NA,"CanESM2",4,NA,1237.80083108596
-"Pennsylvania","PA","Asphalt Roads",NA,NA,"CanESM2",5,NA,1640.53553916699
-"Pennsylvania","PA","Asphalt Roads",NA,NA,"CanESM2",6,NA,2072.03701211095
-"Rhode Island","RI","Asphalt Roads",NA,NA,"CCSM4",1,NA,290.048122948882
-"Rhode Island","RI","Asphalt Roads",NA,NA,"CCSM4",2,NA,543.840230529154
-"Rhode Island","RI","Asphalt Roads",NA,NA,"CCSM4",3,NA,668.382782965119
-"Rhode Island","RI","Asphalt Roads",NA,NA,"CCSM4",4,NA,1213.60240140701
-"Rhode Island","RI","Asphalt Roads",NA,NA,"CCSM4",5,NA,1639.81469196564
-"Rhode Island","RI","Asphalt Roads",NA,NA,"MIROC5",2,NA,543.840230529154
-"Rhode Island","RI","Asphalt Roads",NA,NA,"MIROC5",3,NA,543.840230529154
-"Rhode Island","RI","Asphalt Roads",NA,NA,"MIROC5",4,NA,543.840230529154
-"Rhode Island","RI","Asphalt Roads",NA,NA,"MIROC5",5,NA,543.840230529154
-"Rhode Island","RI","Asphalt Roads",NA,NA,"CanESM2",1,NA,290.048122948882
-"Rhode Island","RI","Asphalt Roads",NA,NA,"CanESM2",2,NA,543.840230529154
-"Rhode Island","RI","Asphalt Roads",NA,NA,"CanESM2",3,NA,543.840230529154
-"Rhode Island","RI","Asphalt Roads",NA,NA,"CanESM2",4,NA,900.622436727012
-"Rhode Island","RI","Asphalt Roads",NA,NA,"CanESM2",5,NA,1614.18684912273
-"Rhode Island","RI","Asphalt Roads",NA,NA,"CanESM2",6,NA,2378.72014811814
-"South Carolina","SC","Asphalt Roads",NA,NA,"CCSM4",1,NA,437.513684696264
-"South Carolina","SC","Asphalt Roads",NA,NA,"CCSM4",2,NA,837.038049122673
-"South Carolina","SC","Asphalt Roads",NA,NA,"CCSM4",3,NA,861.961370277854
-"South Carolina","SC","Asphalt Roads",NA,NA,"CCSM4",4,NA,862.087884598439
-"South Carolina","SC","Asphalt Roads",NA,NA,"CCSM4",5,NA,862.087884598439
-"South Carolina","SC","Asphalt Roads",NA,NA,"MIROC5",2,NA,741.032067649113
-"South Carolina","SC","Asphalt Roads",NA,NA,"MIROC5",3,NA,819.510718117376
-"South Carolina","SC","Asphalt Roads",NA,NA,"MIROC5",4,NA,850.390758321847
-"South Carolina","SC","Asphalt Roads",NA,NA,"MIROC5",5,NA,859.488523203641
-"South Carolina","SC","Asphalt Roads",NA,NA,"CanESM2",1,NA,449.382759539975
-"South Carolina","SC","Asphalt Roads",NA,NA,"CanESM2",2,NA,847.791396927049
-"South Carolina","SC","Asphalt Roads",NA,NA,"CanESM2",3,NA,857.539002157542
-"South Carolina","SC","Asphalt Roads",NA,NA,"CanESM2",4,NA,1070.99965916913
-"South Carolina","SC","Asphalt Roads",NA,NA,"CanESM2",5,NA,1488.82320831051
-"South Carolina","SC","Asphalt Roads",NA,NA,"CanESM2",6,NA,1936.49129667627
-"South Dakota","SD","Asphalt Roads",NA,NA,"CCSM4",1,NA,616.584831281519
-"South Dakota","SD","Asphalt Roads",NA,NA,"CCSM4",2,NA,1293.18583779907
-"South Dakota","SD","Asphalt Roads",NA,NA,"CCSM4",3,NA,1584.82051924614
-"South Dakota","SD","Asphalt Roads",NA,NA,"CCSM4",4,NA,1966.89786596764
-"South Dakota","SD","Asphalt Roads",NA,NA,"CCSM4",5,NA,2264.76575379897
-"South Dakota","SD","Asphalt Roads",NA,NA,"MIROC5",2,NA,1227.60273767823
-"South Dakota","SD","Asphalt Roads",NA,NA,"MIROC5",3,NA,1420.34250999499
-"South Dakota","SD","Asphalt Roads",NA,NA,"MIROC5",4,NA,1670.47741687483
-"South Dakota","SD","Asphalt Roads",NA,NA,"MIROC5",5,NA,1896.16527851811
-"South Dakota","SD","Asphalt Roads",NA,NA,"CanESM2",1,NA,469.645053110892
-"South Dakota","SD","Asphalt Roads",NA,NA,"CanESM2",2,NA,1016.16341641252
-"South Dakota","SD","Asphalt Roads",NA,NA,"CanESM2",3,NA,1270.37393234303
-"South Dakota","SD","Asphalt Roads",NA,NA,"CanESM2",4,NA,1520.2300184419
-"South Dakota","SD","Asphalt Roads",NA,NA,"CanESM2",5,NA,1782.67904243783
-"South Dakota","SD","Asphalt Roads",NA,NA,"CanESM2",6,NA,2063.87442529063
-"Tennessee","TN","Asphalt Roads",NA,NA,"CCSM4",1,NA,815.803999331499
-"Tennessee","TN","Asphalt Roads",NA,NA,"CCSM4",2,NA,1627.15242818643
-"Tennessee","TN","Asphalt Roads",NA,NA,"CCSM4",3,NA,1782.55851108268
-"Tennessee","TN","Asphalt Roads",NA,NA,"CCSM4",4,NA,1826.4839714912
-"Tennessee","TN","Asphalt Roads",NA,NA,"CCSM4",5,NA,1860.24411185617
-"Tennessee","TN","Asphalt Roads",NA,NA,"MIROC5",2,NA,1421.14179533726
-"Tennessee","TN","Asphalt Roads",NA,NA,"MIROC5",3,NA,1671.38499234371
-"Tennessee","TN","Asphalt Roads",NA,NA,"MIROC5",4,NA,1830.12214269104
-"Tennessee","TN","Asphalt Roads",NA,NA,"MIROC5",5,NA,1929.44772108424
-"Tennessee","TN","Asphalt Roads",NA,NA,"CanESM2",1,NA,839.677057882411
-"Tennessee","TN","Asphalt Roads",NA,NA,"CanESM2",2,NA,1626.56869306112
-"Tennessee","TN","Asphalt Roads",NA,NA,"CanESM2",3,NA,1724.39533593286
-"Tennessee","TN","Asphalt Roads",NA,NA,"CanESM2",4,NA,1824.58687531239
-"Tennessee","TN","Asphalt Roads",NA,NA,"CanESM2",5,NA,1933.66508739117
-"Tennessee","TN","Asphalt Roads",NA,NA,"CanESM2",6,NA,2050.53460033271
-"Texas","TX","Asphalt Roads",NA,NA,"CCSM4",1,NA,136.147901747223
-"Texas","TX","Asphalt Roads",NA,NA,"CCSM4",2,NA,478.400278691775
-"Texas","TX","Asphalt Roads",NA,NA,"CCSM4",3,NA,920.692509899863
-"Texas","TX","Asphalt Roads",NA,NA,"CCSM4",4,NA,1400.8656826052
-"Texas","TX","Asphalt Roads",NA,NA,"CCSM4",5,NA,1774.90811140328
-"Texas","TX","Asphalt Roads",NA,NA,"MIROC5",2,NA,598.062985718963
-"Texas","TX","Asphalt Roads",NA,NA,"MIROC5",3,NA,835.124986761439
-"Texas","TX","Asphalt Roads",NA,NA,"MIROC5",4,NA,1235.64861451515
-"Texas","TX","Asphalt Roads",NA,NA,"MIROC5",5,NA,1621.58137594854
-"Texas","TX","Asphalt Roads",NA,NA,"CanESM2",1,NA,255.518414619022
-"Texas","TX","Asphalt Roads",NA,NA,"CanESM2",2,NA,739.527513081048
-"Texas","TX","Asphalt Roads",NA,NA,"CanESM2",3,NA,1227.83467371301
-"Texas","TX","Asphalt Roads",NA,NA,"CanESM2",4,NA,1536.19674410226
-"Texas","TX","Asphalt Roads",NA,NA,"CanESM2",5,NA,1697.1675349576
-"Texas","TX","Asphalt Roads",NA,NA,"CanESM2",6,NA,1869.63623944546
-"Utah","UT","Asphalt Roads",NA,NA,"CCSM4",1,NA,506.35642990996
-"Utah","UT","Asphalt Roads",NA,NA,"CCSM4",2,NA,1093.05045571365
-"Utah","UT","Asphalt Roads",NA,NA,"CCSM4",3,NA,1361.75327281523
-"Utah","UT","Asphalt Roads",NA,NA,"CCSM4",4,NA,1600.74172526583
-"Utah","UT","Asphalt Roads",NA,NA,"CCSM4",5,NA,1786.71457214986
-"Utah","UT","Asphalt Roads",NA,NA,"MIROC5",2,NA,1079.0819914038
-"Utah","UT","Asphalt Roads",NA,NA,"MIROC5",3,NA,1191.72905520732
-"Utah","UT","Asphalt Roads",NA,NA,"MIROC5",4,NA,1461.06275016023
-"Utah","UT","Asphalt Roads",NA,NA,"MIROC5",5,NA,1736.63199002565
-"Utah","UT","Asphalt Roads",NA,NA,"CanESM2",1,NA,496.617068997707
-"Utah","UT","Asphalt Roads",NA,NA,"CanESM2",2,NA,1064.99421041838
-"Utah","UT","Asphalt Roads",NA,NA,"CanESM2",3,NA,1315.93897175779
-"Utah","UT","Asphalt Roads",NA,NA,"CanESM2",4,NA,1571.55564754605
-"Utah","UT","Asphalt Roads",NA,NA,"CanESM2",5,NA,1848.57388853912
-"Utah","UT","Asphalt Roads",NA,NA,"CanESM2",6,NA,2145.37914674599
-"Virginia","VA","Asphalt Roads",NA,NA,"CCSM4",1,NA,414.842926061456
-"Virginia","VA","Asphalt Roads",NA,NA,"CCSM4",2,NA,1143.65365170683
-"Virginia","VA","Asphalt Roads",NA,NA,"CCSM4",3,NA,1709.33480148907
-"Virginia","VA","Asphalt Roads",NA,NA,"CCSM4",4,NA,1798.42628930652
-"Virginia","VA","Asphalt Roads",NA,NA,"CCSM4",5,NA,1865.90494631662
-"Virginia","VA","Asphalt Roads",NA,NA,"MIROC5",2,NA,629.00965466053
-"Virginia","VA","Asphalt Roads",NA,NA,"MIROC5",3,NA,1372.94405942143
-"Virginia","VA","Asphalt Roads",NA,NA,"MIROC5",4,NA,1679.13832234141
-"Virginia","VA","Asphalt Roads",NA,NA,"MIROC5",5,NA,1781.09335293795
-"Virginia","VA","Asphalt Roads",NA,NA,"CanESM2",1,NA,741.408996111136
-"Virginia","VA","Asphalt Roads",NA,NA,"CanESM2",2,NA,1470.74094291127
-"Virginia","VA","Asphalt Roads",NA,NA,"CanESM2",3,NA,1621.86420891669
-"Virginia","VA","Asphalt Roads",NA,NA,"CanESM2",4,NA,1744.55652591617
-"Virginia","VA","Asphalt Roads",NA,NA,"CanESM2",5,NA,1848.89277831006
-"Virginia","VA","Asphalt Roads",NA,NA,"CanESM2",6,NA,1960.68162016066
-"Vermont","VT","Asphalt Roads",NA,NA,"CCSM4",1,NA,690.659586275273
-"Vermont","VT","Asphalt Roads",NA,NA,"CCSM4",2,NA,1294.98672426614
-"Vermont","VT","Asphalt Roads",NA,NA,"CCSM4",3,NA,1358.67293683653
-"Vermont","VT","Asphalt Roads",NA,NA,"CCSM4",4,NA,1637.47702297804
-"Vermont","VT","Asphalt Roads",NA,NA,"CCSM4",5,NA,1855.42539488562
-"Vermont","VT","Asphalt Roads",NA,NA,"MIROC5",2,NA,1294.98672426614
-"Vermont","VT","Asphalt Roads",NA,NA,"MIROC5",3,NA,1294.98672426614
-"Vermont","VT","Asphalt Roads",NA,NA,"MIROC5",4,NA,1294.98672426614
-"Vermont","VT","Asphalt Roads",NA,NA,"MIROC5",5,NA,1294.98672426614
-"Vermont","VT","Asphalt Roads",NA,NA,"CanESM2",1,NA,690.659586275273
-"Vermont","VT","Asphalt Roads",NA,NA,"CanESM2",2,NA,1294.98672426614
-"Vermont","VT","Asphalt Roads",NA,NA,"CanESM2",3,NA,1294.98672426614
-"Vermont","VT","Asphalt Roads",NA,NA,"CanESM2",4,NA,1504.95908225099
-"Vermont","VT","Asphalt Roads",NA,NA,"CanESM2",5,NA,1924.9037982207
-"Vermont","VT","Asphalt Roads",NA,NA,"CanESM2",6,NA,2374.84456533111
-"Washington","WA","Asphalt Roads",NA,NA,"CCSM4",1,NA,797.478112356731
-"Washington","WA","Asphalt Roads",NA,NA,"CCSM4",2,NA,1556.40795371218
-"Washington","WA","Asphalt Roads",NA,NA,"CCSM4",3,NA,1710.0324830739
-"Washington","WA","Asphalt Roads",NA,NA,"CCSM4",4,NA,1983.59430886376
-"Washington","WA","Asphalt Roads",NA,NA,"CCSM4",5,NA,2197.08260969161
-"Washington","WA","Asphalt Roads",NA,NA,"MIROC5",2,NA,1238.02554508787
-"Washington","WA","Asphalt Roads",NA,NA,"MIROC5",3,NA,1474.59620533113
-"Washington","WA","Asphalt Roads",NA,NA,"MIROC5",4,NA,1588.21849187337
-"Washington","WA","Asphalt Roads",NA,NA,"MIROC5",5,NA,1639.60161922643
-"Washington","WA","Asphalt Roads",NA,NA,"CanESM2",1,NA,686.994013269432
-"Washington","WA","Asphalt Roads",NA,NA,"CanESM2",2,NA,1437.82737586593
-"Washington","WA","Asphalt Roads",NA,NA,"CanESM2",3,NA,1718.5403777142
-"Washington","WA","Asphalt Roads",NA,NA,"CanESM2",4,NA,1961.89479730585
-"Washington","WA","Asphalt Roads",NA,NA,"CanESM2",5,NA,2186.60483476408
-"Washington","WA","Asphalt Roads",NA,NA,"CanESM2",6,NA,2427.36558918362
-"Wisconsin","WI","Asphalt Roads",NA,NA,"CCSM4",1,NA,248.178897485868
-"Wisconsin","WI","Asphalt Roads",NA,NA,"CCSM4",2,NA,817.398374484666
-"Wisconsin","WI","Asphalt Roads",NA,NA,"CCSM4",3,NA,1416.09129073238
-"Wisconsin","WI","Asphalt Roads",NA,NA,"CCSM4",4,NA,1739.49915640555
-"Wisconsin","WI","Asphalt Roads",NA,NA,"CCSM4",5,NA,1990.23048237012
-"Wisconsin","WI","Asphalt Roads",NA,NA,"MIROC5",2,NA,581.275870096277
-"Wisconsin","WI","Asphalt Roads",NA,NA,"MIROC5",3,NA,827.64929938061
-"Wisconsin","WI","Asphalt Roads",NA,NA,"MIROC5",4,NA,1256.0322602879
-"Wisconsin","WI","Asphalt Roads",NA,NA,"MIROC5",5,NA,1671.272479141
-"Wisconsin","WI","Asphalt Roads",NA,NA,"CanESM2",1,NA,248.178897485868
-"Wisconsin","WI","Asphalt Roads",NA,NA,"CanESM2",2,NA,498.210902939919
-"Wisconsin","WI","Asphalt Roads",NA,NA,"CanESM2",3,NA,559.85240947851
-"Wisconsin","WI","Asphalt Roads",NA,NA,"CanESM2",4,NA,881.340494414399
-"Wisconsin","WI","Asphalt Roads",NA,NA,"CanESM2",5,NA,1466.78459151682
-"Wisconsin","WI","Asphalt Roads",NA,NA,"CanESM2",6,NA,2094.04612412657
-"West Virginia","WV","Asphalt Roads",NA,NA,"CCSM4",1,NA,168.179907591124
-"West Virginia","WV","Asphalt Roads",NA,NA,"CCSM4",2,NA,722.597417150929
-"West Virginia","WV","Asphalt Roads",NA,NA,"CCSM4",3,NA,1385.6767588157
-"West Virginia","WV","Asphalt Roads",NA,NA,"CCSM4",4,NA,1630.74158300826
-"West Virginia","WV","Asphalt Roads",NA,NA,"CCSM4",5,NA,1819.90323860979
-"West Virginia","WV","Asphalt Roads",NA,NA,"MIROC5",2,NA,307.453404235151
-"West Virginia","WV","Asphalt Roads",NA,NA,"MIROC5",3,NA,569.464045847013
-"West Virginia","WV","Asphalt Roads",NA,NA,"MIROC5",4,NA,984.05963362804
-"West Virginia","WV","Asphalt Roads",NA,NA,"MIROC5",5,NA,1377.84887372144
-"West Virginia","WV","Asphalt Roads",NA,NA,"CanESM2",1,NA,190.071048137022
-"West Virginia","WV","Asphalt Roads",NA,NA,"CanESM2",2,NA,522.090332833326
-"West Virginia","WV","Asphalt Roads",NA,NA,"CanESM2",3,NA,832.791178289096
-"West Virginia","WV","Asphalt Roads",NA,NA,"CanESM2",4,NA,1164.72463013136
-"West Virginia","WV","Asphalt Roads",NA,NA,"CanESM2",5,NA,1538.60407805717
-"West Virginia","WV","Asphalt Roads",NA,NA,"CanESM2",6,NA,1939.18920083482
-"Wyoming","WY","Asphalt Roads",NA,NA,"CCSM4",1,NA,565.543926916817
-"Wyoming","WY","Asphalt Roads",NA,NA,"CCSM4",2,NA,1211.63430209969
-"Wyoming","WY","Asphalt Roads",NA,NA,"CCSM4",3,NA,1494.87793561488
-"Wyoming","WY","Asphalt Roads",NA,NA,"CCSM4",4,NA,1747.87824326943
-"Wyoming","WY","Asphalt Roads",NA,NA,"CCSM4",5,NA,1944.75946847999
-"Wyoming","WY","Asphalt Roads",NA,NA,"MIROC5",2,NA,1094.772861645
-"Wyoming","WY","Asphalt Roads",NA,NA,"MIROC5",3,NA,1295.11961108541
-"Wyoming","WY","Asphalt Roads",NA,NA,"MIROC5",4,NA,1537.76175277206
-"Wyoming","WY","Asphalt Roads",NA,NA,"MIROC5",5,NA,1752.09781777497
-"Wyoming","WY","Asphalt Roads",NA,NA,"CanESM2",1,NA,460.401900542837
-"Wyoming","WY","Asphalt Roads",NA,NA,"CanESM2",2,NA,995.223092382285
-"Wyoming","WY","Asphalt Roads",NA,NA,"CanESM2",3,NA,1242.66595900316
-"Wyoming","WY","Asphalt Roads",NA,NA,"CanESM2",4,NA,1494.65854693729
-"Wyoming","WY","Asphalt Roads",NA,NA,"CanESM2",5,NA,1767.69704729275
-"Wyoming","WY","Asphalt Roads",NA,NA,"CanESM2",6,NA,2060.2382976736
+state,postal,sector,variant,impactType,model,modelUnitValue,impactYear,value
+Alabama,AL,AsphaltRoads,NA,NA,CCSM4,1,NA,702.076801
+Alabama,AL,AsphaltRoads,NA,NA,CCSM4,2,NA,1316.394002
+Alabama,AL,AsphaltRoads,NA,NA,CCSM4,3,NA,1319.59456
+Alabama,AL,AsphaltRoads,NA,NA,CCSM4,4,NA,1333.605891
+Alabama,AL,AsphaltRoads,NA,NA,CCSM4,5,NA,1344.558911
+Alabama,AL,AsphaltRoads,NA,NA,MIROC5,2,NA,1281.878749
+Alabama,AL,AsphaltRoads,NA,NA,MIROC5,3,NA,1308.549626
+Alabama,AL,AsphaltRoads,NA,NA,MIROC5,4,NA,1457.477767
+Alabama,AL,AsphaltRoads,NA,NA,MIROC5,5,NA,1622.075492
+Alabama,AL,AsphaltRoads,NA,NA,CanESM2,1,NA,702.076801
+Alabama,AL,AsphaltRoads,NA,NA,CanESM2,2,NA,1316.394002
+Alabama,AL,AsphaltRoads,NA,NA,CanESM2,3,NA,1316.394002
+Alabama,AL,AsphaltRoads,NA,NA,CanESM2,4,NA,1530.609213
+Alabama,AL,AsphaltRoads,NA,NA,CanESM2,5,NA,1959.039637
+Alabama,AL,AsphaltRoads,NA,NA,CanESM2,6,NA,2418.072233
+Arkansas,AR,AsphaltRoads,NA,NA,CCSM4,1,NA,100.9515318
+Arkansas,AR,AsphaltRoads,NA,NA,CCSM4,2,NA,320.8362791
+Arkansas,AR,AsphaltRoads,NA,NA,CCSM4,3,NA,686.2184735
+Arkansas,AR,AsphaltRoads,NA,NA,CCSM4,4,NA,1427.280893
+Arkansas,AR,AsphaltRoads,NA,NA,CCSM4,5,NA,2005.809497
+Arkansas,AR,AsphaltRoads,NA,NA,MIROC5,2,NA,266.213506
+Arkansas,AR,AsphaltRoads,NA,NA,MIROC5,3,NA,429.6884469
+Arkansas,AR,AsphaltRoads,NA,NA,MIROC5,4,NA,1029.733748
+Arkansas,AR,AsphaltRoads,NA,NA,MIROC5,5,NA,1673.692256
+Arkansas,AR,AsphaltRoads,NA,NA,CanESM2,1,NA,114.1221181
+Arkansas,AR,AsphaltRoads,NA,NA,CanESM2,2,NA,277.8905082
+Arkansas,AR,AsphaltRoads,NA,NA,CanESM2,3,NA,397.7246394
+Arkansas,AR,AsphaltRoads,NA,NA,CanESM2,4,NA,779.0661246
+Arkansas,AR,AsphaltRoads,NA,NA,CanESM2,5,NA,1429.903906
+Arkansas,AR,AsphaltRoads,NA,NA,CanESM2,6,NA,2127.2301
+Arizona,AZ,AsphaltRoads,NA,NA,CCSM4,1,NA,114.1655806
+Arizona,AZ,AsphaltRoads,NA,NA,CCSM4,2,NA,406.7711255
+Arizona,AZ,AsphaltRoads,NA,NA,CCSM4,3,NA,774.8535059
+Arizona,AZ,AsphaltRoads,NA,NA,CCSM4,4,NA,1128.620866
+Arizona,AZ,AsphaltRoads,NA,NA,CCSM4,5,NA,1404.028705
+Arizona,AZ,AsphaltRoads,NA,NA,MIROC5,2,NA,461.508114
+Arizona,AZ,AsphaltRoads,NA,NA,MIROC5,3,NA,606.9219172
+Arizona,AZ,AsphaltRoads,NA,NA,MIROC5,4,NA,907.3014571
+Arizona,AZ,AsphaltRoads,NA,NA,MIROC5,5,NA,1207.84736
+Arizona,AZ,AsphaltRoads,NA,NA,CanESM2,1,NA,110.5820289
+Arizona,AZ,AsphaltRoads,NA,NA,CanESM2,2,NA,479.6502783
+Arizona,AZ,AsphaltRoads,NA,NA,CanESM2,3,NA,990.2296046
+Arizona,AZ,AsphaltRoads,NA,NA,CanESM2,4,NA,1366.472392
+Arizona,AZ,AsphaltRoads,NA,NA,CanESM2,5,NA,1642.417263
+Arizona,AZ,AsphaltRoads,NA,NA,CanESM2,6,NA,1938.072482
+California,CA,AsphaltRoads,NA,NA,CCSM4,1,NA,242.3595753
+California,CA,AsphaltRoads,NA,NA,CCSM4,2,NA,680.5160845
+California,CA,AsphaltRoads,NA,NA,CCSM4,3,NA,1066.636599
+California,CA,AsphaltRoads,NA,NA,CCSM4,4,NA,1281.527538
+California,CA,AsphaltRoads,NA,NA,CCSM4,5,NA,1448.174395
+California,CA,AsphaltRoads,NA,NA,MIROC5,2,NA,808.6366428
+California,CA,AsphaltRoads,NA,NA,MIROC5,3,NA,900.4286917
+California,CA,AsphaltRoads,NA,NA,MIROC5,4,NA,1112.279433
+California,CA,AsphaltRoads,NA,NA,MIROC5,5,NA,1327.941359
+California,CA,AsphaltRoads,NA,NA,CanESM2,1,NA,346.6568908
+California,CA,AsphaltRoads,NA,NA,CanESM2,2,NA,899.6766942
+California,CA,AsphaltRoads,NA,NA,CanESM2,3,NA,1367.854864
+California,CA,AsphaltRoads,NA,NA,CanESM2,4,NA,1643.67714
+California,CA,AsphaltRoads,NA,NA,CanESM2,5,NA,1758.3554
+California,CA,AsphaltRoads,NA,NA,CanESM2,6,NA,1881.224964
+Colorado,CO,AsphaltRoads,NA,NA,CCSM4,1,NA,628.9811629
+Colorado,CO,AsphaltRoads,NA,NA,CCSM4,2,NA,1282.475455
+Colorado,CO,AsphaltRoads,NA,NA,CCSM4,3,NA,1481.77155
+Colorado,CO,AsphaltRoads,NA,NA,CCSM4,4,NA,1681.189144
+Colorado,CO,AsphaltRoads,NA,NA,CCSM4,5,NA,1836.468252
+Colorado,CO,AsphaltRoads,NA,NA,MIROC5,2,NA,1253.048524
+Colorado,CO,AsphaltRoads,NA,NA,MIROC5,3,NA,1384.925546
+Colorado,CO,AsphaltRoads,NA,NA,MIROC5,4,NA,1638.064681
+Colorado,CO,AsphaltRoads,NA,NA,MIROC5,5,NA,1888.141753
+Colorado,CO,AsphaltRoads,NA,NA,CanESM2,1,NA,572.118625
+Colorado,CO,AsphaltRoads,NA,NA,CanESM2,2,NA,1186.066735
+Colorado,CO,AsphaltRoads,NA,NA,CanESM2,3,NA,1398.587322
+Colorado,CO,AsphaltRoads,NA,NA,CanESM2,4,NA,1600.436905
+Colorado,CO,AsphaltRoads,NA,NA,CanESM2,5,NA,1805.783522
+Colorado,CO,AsphaltRoads,NA,NA,CanESM2,6,NA,2025.797755
+Connecticut,CT,AsphaltRoads,NA,NA,CCSM4,1,NA,80.33519554
+Connecticut,CT,AsphaltRoads,NA,NA,CCSM4,2,NA,201.6748921
+Connecticut,CT,AsphaltRoads,NA,NA,CCSM4,3,NA,457.845969
+Connecticut,CT,AsphaltRoads,NA,NA,CCSM4,4,NA,1246.180989
+Connecticut,CT,AsphaltRoads,NA,NA,CCSM4,5,NA,1862.140577
+Connecticut,CT,AsphaltRoads,NA,NA,MIROC5,2,NA,150.6284916
+Connecticut,CT,AsphaltRoads,NA,NA,MIROC5,3,NA,150.6284916
+Connecticut,CT,AsphaltRoads,NA,NA,MIROC5,4,NA,344.152661
+Connecticut,CT,AsphaltRoads,NA,NA,MIROC5,5,NA,569.9308586
+Connecticut,CT,AsphaltRoads,NA,NA,CanESM2,1,NA,80.33519554
+Connecticut,CT,AsphaltRoads,NA,NA,CanESM2,2,NA,184.6594253
+Connecticut,CT,AsphaltRoads,NA,NA,CanESM2,3,NA,248.4674258
+Connecticut,CT,AsphaltRoads,NA,NA,CanESM2,4,NA,648.2655853
+Connecticut,CT,AsphaltRoads,NA,NA,CanESM2,5,NA,1388.30777
+Connecticut,CT,AsphaltRoads,NA,NA,CanESM2,6,NA,2181.210112
+Delaware,DE,AsphaltRoads,NA,NA,CCSM4,1,NA,0
+Delaware,DE,AsphaltRoads,NA,NA,CCSM4,2,NA,726.0983692
+Delaware,DE,AsphaltRoads,NA,NA,CCSM4,3,NA,1809.745178
+Delaware,DE,AsphaltRoads,NA,NA,CCSM4,4,NA,1815.245923
+Delaware,DE,AsphaltRoads,NA,NA,CCSM4,5,NA,1815.245923
+Delaware,DE,AsphaltRoads,NA,NA,MIROC5,2,NA,484.0655795
+Delaware,DE,AsphaltRoads,NA,NA,MIROC5,3,NA,1512.704936
+Delaware,DE,AsphaltRoads,NA,NA,MIROC5,4,NA,1815.245923
+Delaware,DE,AsphaltRoads,NA,NA,MIROC5,5,NA,1815.245923
+Delaware,DE,AsphaltRoads,NA,NA,CanESM2,1,NA,863.8418578
+Delaware,DE,AsphaltRoads,NA,NA,CanESM2,2,NA,1671.848134
+Delaware,DE,AsphaltRoads,NA,NA,CanESM2,3,NA,1769.619354
+Delaware,DE,AsphaltRoads,NA,NA,CanESM2,4,NA,1815.245923
+Delaware,DE,AsphaltRoads,NA,NA,CanESM2,5,NA,1815.245923
+Delaware,DE,AsphaltRoads,NA,NA,CanESM2,6,NA,1815.245923
+Florida,FL,AsphaltRoads,NA,NA,CCSM4,1,NA,803.9034293
+Florida,FL,AsphaltRoads,NA,NA,CCSM4,2,NA,1612.673693
+Florida,FL,AsphaltRoads,NA,NA,CCSM4,3,NA,1769.907696
+Florida,FL,AsphaltRoads,NA,NA,CCSM4,4,NA,1770.705838
+Florida,FL,AsphaltRoads,NA,NA,CCSM4,5,NA,1770.705838
+Florida,FL,AsphaltRoads,NA,NA,MIROC5,2,NA,1481.863871
+Florida,FL,AsphaltRoads,NA,NA,MIROC5,3,NA,1705.059936
+Florida,FL,AsphaltRoads,NA,NA,MIROC5,4,NA,1770.705838
+Florida,FL,AsphaltRoads,NA,NA,MIROC5,5,NA,1770.705838
+Florida,FL,AsphaltRoads,NA,NA,CanESM2,1,NA,944.3764469
+Florida,FL,AsphaltRoads,NA,NA,CanESM2,2,NA,1770.705838
+Florida,FL,AsphaltRoads,NA,NA,CanESM2,3,NA,1770.705838
+Florida,FL,AsphaltRoads,NA,NA,CanESM2,4,NA,1863.002976
+Florida,FL,AsphaltRoads,NA,NA,CanESM2,5,NA,2047.597252
+Florida,FL,AsphaltRoads,NA,NA,CanESM2,6,NA,2245.376833
+Georgia,GA,AsphaltRoads,NA,NA,CCSM4,1,NA,347.4331319
+Georgia,GA,AsphaltRoads,NA,NA,CCSM4,2,NA,661.258911
+Georgia,GA,AsphaltRoads,NA,NA,CCSM4,3,NA,681.5970243
+Georgia,GA,AsphaltRoads,NA,NA,CCSM4,4,NA,706.5364989
+Georgia,GA,AsphaltRoads,NA,NA,CCSM4,5,NA,725.9741655
+Georgia,GA,AsphaltRoads,NA,NA,MIROC5,2,NA,552.9433789
+Georgia,GA,AsphaltRoads,NA,NA,MIROC5,3,NA,648.0260907
+Georgia,GA,AsphaltRoads,NA,NA,MIROC5,4,NA,706.0392097
+Georgia,GA,AsphaltRoads,NA,NA,MIROC5,5,NA,741.0947612
+Georgia,GA,AsphaltRoads,NA,NA,CanESM2,1,NA,347.4331319
+Georgia,GA,AsphaltRoads,NA,NA,CanESM2,2,NA,657.9849814
+Georgia,GA,AsphaltRoads,NA,NA,CanESM2,3,NA,670.2622174
+Georgia,GA,AsphaltRoads,NA,NA,CanESM2,4,NA,936.1990862
+Georgia,GA,AsphaltRoads,NA,NA,CanESM2,5,NA,1456.61407
+Georgia,GA,AsphaltRoads,NA,NA,CanESM2,6,NA,2014.201553
+Iowa,IA,AsphaltRoads,NA,NA,CCSM4,1,NA,373.0246315
+Iowa,IA,AsphaltRoads,NA,NA,CCSM4,2,NA,1102.460559
+Iowa,IA,AsphaltRoads,NA,NA,CCSM4,3,NA,1715.929096
+Iowa,IA,AsphaltRoads,NA,NA,CCSM4,4,NA,1771.352914
+Iowa,IA,AsphaltRoads,NA,NA,CCSM4,5,NA,1812.292282
+Iowa,IA,AsphaltRoads,NA,NA,MIROC5,2,NA,882.3867763
+Iowa,IA,AsphaltRoads,NA,NA,MIROC5,3,NA,1313.864953
+Iowa,IA,AsphaltRoads,NA,NA,MIROC5,4,NA,1587.296408
+Iowa,IA,AsphaltRoads,NA,NA,MIROC5,5,NA,1758.243535
+Iowa,IA,AsphaltRoads,NA,NA,CanESM2,1,NA,230.3811639
+Iowa,IA,AsphaltRoads,NA,NA,CanESM2,2,NA,671.1065822
+Iowa,IA,AsphaltRoads,NA,NA,CanESM2,3,NA,1119.497645
+Iowa,IA,AsphaltRoads,NA,NA,CanESM2,4,NA,1432.858166
+Iowa,IA,AsphaltRoads,NA,NA,CanESM2,5,NA,1641.080884
+Iowa,IA,AsphaltRoads,NA,NA,CanESM2,6,NA,1864.176652
+Idaho,ID,AsphaltRoads,NA,NA,CCSM4,1,NA,468.4825024
+Idaho,ID,AsphaltRoads,NA,NA,CCSM4,2,NA,1114.271522
+Idaho,ID,AsphaltRoads,NA,NA,CCSM4,3,NA,1528.86187
+Idaho,ID,AsphaltRoads,NA,NA,CCSM4,4,NA,1804.596821
+Idaho,ID,AsphaltRoads,NA,NA,CCSM4,5,NA,2018.749128
+Idaho,ID,AsphaltRoads,NA,NA,MIROC5,2,NA,668.649765
+Idaho,ID,AsphaltRoads,NA,NA,MIROC5,3,NA,836.6320666
+Idaho,ID,AsphaltRoads,NA,NA,MIROC5,4,NA,1170.198387
+Idaho,ID,AsphaltRoads,NA,NA,MIROC5,5,NA,1501.718109
+Idaho,ID,AsphaltRoads,NA,NA,CanESM2,1,NA,318.4320848
+Idaho,ID,AsphaltRoads,NA,NA,CanESM2,2,NA,805.9312315
+Idaho,ID,AsphaltRoads,NA,NA,CanESM2,3,NA,1197.564493
+Idaho,ID,AsphaltRoads,NA,NA,CanESM2,4,NA,1526.383296
+Idaho,ID,AsphaltRoads,NA,NA,CanESM2,5,NA,1818.496525
+Idaho,ID,AsphaltRoads,NA,NA,CanESM2,6,NA,2131.474985
+Illinois,IL,AsphaltRoads,NA,NA,CCSM4,1,NA,623.6419554
+Illinois,IL,AsphaltRoads,NA,NA,CCSM4,2,NA,1415.278871
+Illinois,IL,AsphaltRoads,NA,NA,CCSM4,3,NA,1796.67396
+Illinois,IL,AsphaltRoads,NA,NA,CCSM4,4,NA,1861.284082
+Illinois,IL,AsphaltRoads,NA,NA,CCSM4,5,NA,1910.334929
+Illinois,IL,AsphaltRoads,NA,NA,MIROC5,2,NA,1127.776827
+Illinois,IL,AsphaltRoads,NA,NA,MIROC5,3,NA,1592.83549
+Illinois,IL,AsphaltRoads,NA,NA,MIROC5,4,NA,1782.31157
+Illinois,IL,AsphaltRoads,NA,NA,MIROC5,5,NA,1843.788044
+Illinois,IL,AsphaltRoads,NA,NA,CanESM2,1,NA,591.5076778
+Illinois,IL,AsphaltRoads,NA,NA,CanESM2,2,NA,1262.26232
+Illinois,IL,AsphaltRoads,NA,NA,CanESM2,3,NA,1549.484989
+Illinois,IL,AsphaltRoads,NA,NA,CanESM2,4,NA,1727.551231
+Illinois,IL,AsphaltRoads,NA,NA,CanESM2,5,NA,1815.609225
+Illinois,IL,AsphaltRoads,NA,NA,CanESM2,6,NA,1909.957076
+Indiana,IN,AsphaltRoads,NA,NA,CCSM4,1,NA,358.5776807
+Indiana,IN,AsphaltRoads,NA,NA,CCSM4,2,NA,1145.494155
+Indiana,IN,AsphaltRoads,NA,NA,CCSM4,3,NA,1851.651107
+Indiana,IN,AsphaltRoads,NA,NA,CCSM4,4,NA,1855.23566
+Indiana,IN,AsphaltRoads,NA,NA,CCSM4,5,NA,1855.23566
+Indiana,IN,AsphaltRoads,NA,NA,MIROC5,2,NA,631.0612546
+Indiana,IN,AsphaltRoads,NA,NA,MIROC5,3,NA,1499.873446
+Indiana,IN,AsphaltRoads,NA,NA,MIROC5,4,NA,1795.33813
+Indiana,IN,AsphaltRoads,NA,NA,MIROC5,5,NA,1841.925098
+Indiana,IN,AsphaltRoads,NA,NA,CanESM2,1,NA,286.7813808
+Indiana,IN,AsphaltRoads,NA,NA,CanESM2,2,NA,873.7024022
+Indiana,IN,AsphaltRoads,NA,NA,CanESM2,3,NA,1503.678614
+Indiana,IN,AsphaltRoads,NA,NA,CanESM2,4,NA,1812.577479
+Indiana,IN,AsphaltRoads,NA,NA,CanESM2,5,NA,1842.397411
+Indiana,IN,AsphaltRoads,NA,NA,CanESM2,6,NA,1874.347337
+Kansas,KS,AsphaltRoads,NA,NA,CCSM4,1,NA,466.4251558
+Kansas,KS,AsphaltRoads,NA,NA,CCSM4,2,NA,1197.965892
+Kansas,KS,AsphaltRoads,NA,NA,CCSM4,3,NA,1716.814639
+Kansas,KS,AsphaltRoads,NA,NA,CCSM4,4,NA,1877.61251
+Kansas,KS,AsphaltRoads,NA,NA,CCSM4,5,NA,2001.397029
+Kansas,KS,AsphaltRoads,NA,NA,MIROC5,2,NA,925.742284
+Kansas,KS,AsphaltRoads,NA,NA,MIROC5,3,NA,1475.86824
+Kansas,KS,AsphaltRoads,NA,NA,MIROC5,4,NA,1761.940603
+Kansas,KS,AsphaltRoads,NA,NA,MIROC5,5,NA,1906.922984
+Kansas,KS,AsphaltRoads,NA,NA,CanESM2,1,NA,283.4641103
+Kansas,KS,AsphaltRoads,NA,NA,CanESM2,2,NA,680.8232022
+Kansas,KS,AsphaltRoads,NA,NA,CanESM2,3,NA,960.8131934
+Kansas,KS,AsphaltRoads,NA,NA,CanESM2,4,NA,1283.618859
+Kansas,KS,AsphaltRoads,NA,NA,CanESM2,5,NA,1667.906198
+Kansas,KS,AsphaltRoads,NA,NA,CanESM2,6,NA,2079.642633
+Kentucky,KY,AsphaltRoads,NA,NA,CCSM4,1,NA,846.6689353
+Kentucky,KY,AsphaltRoads,NA,NA,CCSM4,2,NA,1699.359618
+Kentucky,KY,AsphaltRoads,NA,NA,CCSM4,3,NA,1868.455022
+Kentucky,KY,AsphaltRoads,NA,NA,CCSM4,4,NA,1878.757302
+Kentucky,KY,AsphaltRoads,NA,NA,CCSM4,5,NA,1886.148435
+Kentucky,KY,AsphaltRoads,NA,NA,MIROC5,2,NA,1069.973054
+Kentucky,KY,AsphaltRoads,NA,NA,MIROC5,3,NA,1664.308336
+Kentucky,KY,AsphaltRoads,NA,NA,MIROC5,4,NA,1861.247313
+Kentucky,KY,AsphaltRoads,NA,NA,MIROC5,5,NA,1887.070877
+Kentucky,KY,AsphaltRoads,NA,NA,CanESM2,1,NA,871.5962978
+Kentucky,KY,AsphaltRoads,NA,NA,CanESM2,2,NA,1696.34962
+Kentucky,KY,AsphaltRoads,NA,NA,CanESM2,3,NA,1812.799423
+Kentucky,KY,AsphaltRoads,NA,NA,CanESM2,4,NA,1882.343014
+Kentucky,KY,AsphaltRoads,NA,NA,CanESM2,5,NA,1912.743713
+Kentucky,KY,AsphaltRoads,NA,NA,CanESM2,6,NA,1945.31589
+Louisiana,LA,AsphaltRoads,NA,NA,CCSM4,1,NA,441.1132939
+Louisiana,LA,AsphaltRoads,NA,NA,CCSM4,2,NA,841.5809439
+Louisiana,LA,AsphaltRoads,NA,NA,CCSM4,3,NA,918.8119789
+Louisiana,LA,AsphaltRoads,NA,NA,CCSM4,4,NA,1162.328664
+Louisiana,LA,AsphaltRoads,NA,NA,CCSM4,5,NA,1352.606128
+Louisiana,LA,AsphaltRoads,NA,NA,MIROC5,2,NA,828.4981033
+Louisiana,LA,AsphaltRoads,NA,NA,MIROC5,3,NA,831.4957925
+Louisiana,LA,AsphaltRoads,NA,NA,MIROC5,4,NA,1214.95192
+Louisiana,LA,AsphaltRoads,NA,NA,MIROC5,5,NA,1661.288783
+Louisiana,LA,AsphaltRoads,NA,NA,CanESM2,1,NA,443.9346484
+Louisiana,LA,AsphaltRoads,NA,NA,CanESM2,2,NA,865.1762036
+Louisiana,LA,AsphaltRoads,NA,NA,CanESM2,3,NA,926.6738371
+Louisiana,LA,AsphaltRoads,NA,NA,CanESM2,4,NA,1217.164791
+Louisiana,LA,AsphaltRoads,NA,NA,CanESM2,5,NA,1740.748908
+Louisiana,LA,AsphaltRoads,NA,NA,CanESM2,6,NA,2301.73189
+Massachusetts,MA,AsphaltRoads,NA,NA,CCSM4,1,NA,238.8835481
+Massachusetts,MA,AsphaltRoads,NA,NA,CCSM4,2,NA,447.9066527
+Massachusetts,MA,AsphaltRoads,NA,NA,CCSM4,3,NA,611.4631129
+Massachusetts,MA,AsphaltRoads,NA,NA,CCSM4,4,NA,1327.47695
+Massachusetts,MA,AsphaltRoads,NA,NA,CCSM4,5,NA,1887.203502
+Massachusetts,MA,AsphaltRoads,NA,NA,MIROC5,2,NA,447.9066527
+Massachusetts,MA,AsphaltRoads,NA,NA,MIROC5,3,NA,447.9066527
+Massachusetts,MA,AsphaltRoads,NA,NA,MIROC5,4,NA,547.067172
+Massachusetts,MA,AsphaltRoads,NA,NA,MIROC5,5,NA,662.7544446
+Massachusetts,MA,AsphaltRoads,NA,NA,CanESM2,1,NA,238.8835481
+Massachusetts,MA,AsphaltRoads,NA,NA,CanESM2,2,NA,499.8392137
+Massachusetts,MA,AsphaltRoads,NA,NA,CanESM2,3,NA,597.2127656
+Massachusetts,MA,AsphaltRoads,NA,NA,CanESM2,4,NA,946.5044965
+Massachusetts,MA,AsphaltRoads,NA,NA,CanESM2,5,NA,1554.205977
+Massachusetts,MA,AsphaltRoads,NA,NA,CanESM2,6,NA,2205.314705
+Maryland,MD,AsphaltRoads,NA,NA,CCSM4,1,NA,126.5310231
+Maryland,MD,AsphaltRoads,NA,NA,CCSM4,2,NA,854.8986912
+Maryland,MD,AsphaltRoads,NA,NA,CCSM4,3,NA,1784.938416
+Maryland,MD,AsphaltRoads,NA,NA,CCSM4,4,NA,1825.687781
+Maryland,MD,AsphaltRoads,NA,NA,CCSM4,5,NA,1853.88477
+Maryland,MD,AsphaltRoads,NA,NA,MIROC5,2,NA,503.9453142
+Maryland,MD,AsphaltRoads,NA,NA,MIROC5,3,NA,1436.152501
+Maryland,MD,AsphaltRoads,NA,NA,MIROC5,4,NA,1748.870822
+Maryland,MD,AsphaltRoads,NA,NA,MIROC5,5,NA,1793.833848
+Maryland,MD,AsphaltRoads,NA,NA,CanESM2,1,NA,793.1125507
+Maryland,MD,AsphaltRoads,NA,NA,CanESM2,2,NA,1565.563951
+Maryland,MD,AsphaltRoads,NA,NA,CanESM2,3,NA,1712.710047
+Maryland,MD,AsphaltRoads,NA,NA,CanESM2,4,NA,1795.47672
+Maryland,MD,AsphaltRoads,NA,NA,CanESM2,5,NA,1823.67371
+Maryland,MD,AsphaltRoads,NA,NA,CanESM2,6,NA,1853.88477
+Maine,ME,AsphaltRoads,NA,NA,CCSM4,1,NA,838.1534344
+Maine,ME,AsphaltRoads,NA,NA,CCSM4,2,NA,1571.53769
+Maine,ME,AsphaltRoads,NA,NA,CCSM4,3,NA,1582.115625
+Maine,ME,AsphaltRoads,NA,NA,CCSM4,4,NA,1628.423473
+Maine,ME,AsphaltRoads,NA,NA,CCSM4,5,NA,1664.623518
+Maine,ME,AsphaltRoads,NA,NA,MIROC5,2,NA,1571.53769
+Maine,ME,AsphaltRoads,NA,NA,MIROC5,3,NA,1571.53769
+Maine,ME,AsphaltRoads,NA,NA,MIROC5,4,NA,1571.53769
+Maine,ME,AsphaltRoads,NA,NA,MIROC5,5,NA,1571.53769
+Maine,ME,AsphaltRoads,NA,NA,CanESM2,1,NA,838.1534344
+Maine,ME,AsphaltRoads,NA,NA,CanESM2,2,NA,1571.53769
+Maine,ME,AsphaltRoads,NA,NA,CanESM2,3,NA,1571.53769
+Maine,ME,AsphaltRoads,NA,NA,CanESM2,4,NA,1742.039274
+Maine,ME,AsphaltRoads,NA,NA,CanESM2,5,NA,2083.042443
+Maine,ME,AsphaltRoads,NA,NA,CanESM2,6,NA,2448.402981
+Michigan,MI,AsphaltRoads,NA,NA,CCSM4,1,NA,226.7282104
+Michigan,MI,AsphaltRoads,NA,NA,CCSM4,2,NA,733.7649118
+Michigan,MI,AsphaltRoads,NA,NA,CCSM4,3,NA,1285.005728
+Michigan,MI,AsphaltRoads,NA,NA,CCSM4,4,NA,1683.991634
+Michigan,MI,AsphaltRoads,NA,NA,CCSM4,5,NA,1994.061372
+Michigan,MI,AsphaltRoads,NA,NA,MIROC5,2,NA,490.550513
+Michigan,MI,AsphaltRoads,NA,NA,MIROC5,3,NA,629.6001398
+Michigan,MI,AsphaltRoads,NA,NA,MIROC5,4,NA,1119.085628
+Michigan,MI,AsphaltRoads,NA,NA,MIROC5,5,NA,1642.438924
+Michigan,MI,AsphaltRoads,NA,NA,CanESM2,1,NA,226.7282104
+Michigan,MI,AsphaltRoads,NA,NA,CanESM2,2,NA,466.8907786
+Michigan,MI,AsphaltRoads,NA,NA,CanESM2,3,NA,545.2196239
+Michigan,MI,AsphaltRoads,NA,NA,CanESM2,4,NA,880.86793
+Michigan,MI,AsphaltRoads,NA,NA,CanESM2,5,NA,1479.05762
+Michigan,MI,AsphaltRoads,NA,NA,CanESM2,6,NA,2119.975145
+Minnesota,MN,AsphaltRoads,NA,NA,CCSM4,1,NA,251.2908837
+Minnesota,MN,AsphaltRoads,NA,NA,CCSM4,2,NA,742.3404887
+Minnesota,MN,AsphaltRoads,NA,NA,CCSM4,3,NA,1246.695463
+Minnesota,MN,AsphaltRoads,NA,NA,CCSM4,4,NA,1685.013595
+Minnesota,MN,AsphaltRoads,NA,NA,CCSM4,5,NA,2026.052312
+Minnesota,MN,AsphaltRoads,NA,NA,MIROC5,2,NA,621.2224496
+Minnesota,MN,AsphaltRoads,NA,NA,MIROC5,3,NA,929.4772324
+Minnesota,MN,AsphaltRoads,NA,NA,MIROC5,4,NA,1297.052636
+Minnesota,MN,AsphaltRoads,NA,NA,MIROC5,5,NA,1620.116907
+Minnesota,MN,AsphaltRoads,NA,NA,CanESM2,1,NA,247.8051804
+Minnesota,MN,AsphaltRoads,NA,NA,CanESM2,2,NA,508.4920318
+Minnesota,MN,AsphaltRoads,NA,NA,CanESM2,3,NA,590.724504
+Minnesota,MN,AsphaltRoads,NA,NA,CanESM2,4,NA,912.3476677
+Minnesota,MN,AsphaltRoads,NA,NA,CanESM2,5,NA,1478.843688
+Minnesota,MN,AsphaltRoads,NA,NA,CanESM2,6,NA,2085.803709
+Missouri,MO,AsphaltRoads,NA,NA,CCSM4,1,NA,885.0003334
+Missouri,MO,AsphaltRoads,NA,NA,CCSM4,2,NA,1684.737459
+Missouri,MO,AsphaltRoads,NA,NA,CCSM4,3,NA,1818.290241
+Missouri,MO,AsphaltRoads,NA,NA,CCSM4,4,NA,2237.445192
+Missouri,MO,AsphaltRoads,NA,NA,CCSM4,5,NA,2564.959271
+Missouri,MO,AsphaltRoads,NA,NA,MIROC5,2,NA,1661.573879
+Missouri,MO,AsphaltRoads,NA,NA,MIROC5,3,NA,1666.245168
+Missouri,MO,AsphaltRoads,NA,NA,MIROC5,4,NA,1996.167038
+Missouri,MO,AsphaltRoads,NA,NA,MIROC5,5,NA,2379.472992
+Missouri,MO,AsphaltRoads,NA,NA,CanESM2,1,NA,885.0003334
+Missouri,MO,AsphaltRoads,NA,NA,CanESM2,2,NA,1659.375625
+Missouri,MO,AsphaltRoads,NA,NA,CanESM2,3,NA,1659.375625
+Missouri,MO,AsphaltRoads,NA,NA,CanESM2,4,NA,1798.330458
+Missouri,MO,AsphaltRoads,NA,NA,CanESM2,5,NA,2076.240125
+Missouri,MO,AsphaltRoads,NA,NA,CanESM2,6,NA,2374.000483
+Mississippi,MS,AsphaltRoads,NA,NA,CCSM4,1,NA,542.0205606
+Mississippi,MS,AsphaltRoads,NA,NA,CCSM4,2,NA,1016.288551
+Mississippi,MS,AsphaltRoads,NA,NA,CCSM4,3,NA,1043.171473
+Mississippi,MS,AsphaltRoads,NA,NA,CCSM4,4,NA,1160.858933
+Mississippi,MS,AsphaltRoads,NA,NA,CCSM4,5,NA,1252.858267
+Mississippi,MS,AsphaltRoads,NA,NA,MIROC5,2,NA,1016.288551
+Mississippi,MS,AsphaltRoads,NA,NA,MIROC5,3,NA,1016.288551
+Mississippi,MS,AsphaltRoads,NA,NA,MIROC5,4,NA,1441.608748
+Mississippi,MS,AsphaltRoads,NA,NA,MIROC5,5,NA,1937.815644
+Mississippi,MS,AsphaltRoads,NA,NA,CanESM2,1,NA,542.0205606
+Mississippi,MS,AsphaltRoads,NA,NA,CanESM2,2,NA,1016.288551
+Mississippi,MS,AsphaltRoads,NA,NA,CanESM2,3,NA,1016.288551
+Mississippi,MS,AsphaltRoads,NA,NA,CanESM2,4,NA,1296.736004
+Mississippi,MS,AsphaltRoads,NA,NA,CanESM2,5,NA,1857.63091
+Mississippi,MS,AsphaltRoads,NA,NA,CanESM2,6,NA,2458.589737
+Montana,MT,AsphaltRoads,NA,NA,CCSM4,1,NA,630.5622857
+Montana,MT,AsphaltRoads,NA,NA,CCSM4,2,NA,1311.809332
+Montana,MT,AsphaltRoads,NA,NA,CCSM4,3,NA,1574.426051
+Montana,MT,AsphaltRoads,NA,NA,CCSM4,4,NA,1878.963344
+Montana,MT,AsphaltRoads,NA,NA,CCSM4,5,NA,2116.261079
+Montana,MT,AsphaltRoads,NA,NA,MIROC5,2,NA,783.4976469
+Montana,MT,AsphaltRoads,NA,NA,MIROC5,3,NA,1044.13162
+Montana,MT,AsphaltRoads,NA,NA,MIROC5,4,NA,1345.022048
+Montana,MT,AsphaltRoads,NA,NA,MIROC5,5,NA,1606.627654
+Montana,MT,AsphaltRoads,NA,NA,CanESM2,1,NA,315.6900762
+Montana,MT,AsphaltRoads,NA,NA,CanESM2,2,NA,793.4167378
+Montana,MT,AsphaltRoads,NA,NA,CanESM2,3,NA,1171.225197
+Montana,MT,AsphaltRoads,NA,NA,CanESM2,4,NA,1499.331045
+Montana,MT,AsphaltRoads,NA,NA,CanESM2,5,NA,1802.921514
+Montana,MT,AsphaltRoads,NA,NA,CanESM2,6,NA,2128.197016
+North Carolina,NC,AsphaltRoads,NA,NA,CCSM4,1,NA,752.066424
+North Carolina,NC,AsphaltRoads,NA,NA,CCSM4,2,NA,1538.143974
+North Carolina,NC,AsphaltRoads,NA,NA,CCSM4,3,NA,1736.687337
+North Carolina,NC,AsphaltRoads,NA,NA,CCSM4,4,NA,1770.420744
+North Carolina,NC,AsphaltRoads,NA,NA,CCSM4,5,NA,1796.03287
+North Carolina,NC,AsphaltRoads,NA,NA,MIROC5,2,NA,925.8813171
+North Carolina,NC,AsphaltRoads,NA,NA,MIROC5,3,NA,1487.027439
+North Carolina,NC,AsphaltRoads,NA,NA,MIROC5,4,NA,1710.498245
+North Carolina,NC,AsphaltRoads,NA,NA,MIROC5,5,NA,1778.664045
+North Carolina,NC,AsphaltRoads,NA,NA,CanESM2,1,NA,878.1786915
+North Carolina,NC,AsphaltRoads,NA,NA,CanESM2,2,NA,1670.358919
+North Carolina,NC,AsphaltRoads,NA,NA,CanESM2,3,NA,1714.93493
+North Carolina,NC,AsphaltRoads,NA,NA,CanESM2,4,NA,1784.106995
+North Carolina,NC,AsphaltRoads,NA,NA,CanESM2,5,NA,1880.846848
+North Carolina,NC,AsphaltRoads,NA,NA,CanESM2,6,NA,1984.496691
+North Dakota,ND,AsphaltRoads,NA,NA,CCSM4,1,NA,179.90616
+North Dakota,ND,AsphaltRoads,NA,NA,CCSM4,2,NA,704.3893683
+North Dakota,ND,AsphaltRoads,NA,NA,CCSM4,3,NA,1310.11465
+North Dakota,ND,AsphaltRoads,NA,NA,CCSM4,4,NA,1566.404252
+North Dakota,ND,AsphaltRoads,NA,NA,CCSM4,5,NA,1764.578648
+North Dakota,ND,AsphaltRoads,NA,NA,MIROC5,2,NA,366.6371334
+North Dakota,ND,AsphaltRoads,NA,NA,MIROC5,3,NA,896.6873446
+North Dakota,ND,AsphaltRoads,NA,NA,MIROC5,4,NA,1302.029001
+North Dakota,ND,AsphaltRoads,NA,NA,MIROC5,5,NA,1593.047627
+North Dakota,ND,AsphaltRoads,NA,NA,CanESM2,1,NA,3.399318776
+North Dakota,ND,AsphaltRoads,NA,NA,CanESM2,2,NA,291.5489666
+North Dakota,ND,AsphaltRoads,NA,NA,CanESM2,3,NA,826.2525488
+North Dakota,ND,AsphaltRoads,NA,NA,CanESM2,4,NA,1217.978996
+North Dakota,ND,AsphaltRoads,NA,NA,CanESM2,5,NA,1502.375213
+North Dakota,ND,AsphaltRoads,NA,NA,CanESM2,6,NA,1807.085445
+Nebraska,NE,AsphaltRoads,NA,NA,CCSM4,1,NA,859.9564804
+Nebraska,NE,AsphaltRoads,NA,NA,CCSM4,2,NA,1648.168148
+Nebraska,NE,AsphaltRoads,NA,NA,CCSM4,3,NA,1780.428191
+Nebraska,NE,AsphaltRoads,NA,NA,CCSM4,4,NA,2126.133067
+Nebraska,NE,AsphaltRoads,NA,NA,CCSM4,5,NA,2396.167802
+Nebraska,NE,AsphaltRoads,NA,NA,MIROC5,2,NA,1634.125085
+Nebraska,NE,AsphaltRoads,NA,NA,MIROC5,3,NA,1680.25179
+Nebraska,NE,AsphaltRoads,NA,NA,MIROC5,4,NA,1936.639902
+Nebraska,NE,AsphaltRoads,NA,NA,MIROC5,5,NA,2219.931574
+Nebraska,NE,AsphaltRoads,NA,NA,CanESM2,1,NA,852.2533859
+Nebraska,NE,AsphaltRoads,NA,NA,CanESM2,2,NA,1608.160622
+Nebraska,NE,AsphaltRoads,NA,NA,CanESM2,3,NA,1627.258479
+Nebraska,NE,AsphaltRoads,NA,NA,CanESM2,4,NA,1780.200817
+Nebraska,NE,AsphaltRoads,NA,NA,CanESM2,5,NA,2068.260826
+Nebraska,NE,AsphaltRoads,NA,NA,CanESM2,6,NA,2376.896549
+New Hampshire,NH,AsphaltRoads,NA,NA,CCSM4,1,NA,512.9974069
+New Hampshire,NH,AsphaltRoads,NA,NA,CCSM4,2,NA,961.8701379
+New Hampshire,NH,AsphaltRoads,NA,NA,CCSM4,3,NA,1081.34632
+New Hampshire,NH,AsphaltRoads,NA,NA,CCSM4,4,NA,1604.386494
+New Hampshire,NH,AsphaltRoads,NA,NA,CCSM4,5,NA,2013.260538
+New Hampshire,NH,AsphaltRoads,NA,NA,MIROC5,2,NA,961.8701379
+New Hampshire,NH,AsphaltRoads,NA,NA,MIROC5,3,NA,961.8701379
+New Hampshire,NH,AsphaltRoads,NA,NA,MIROC5,4,NA,1081.490332
+New Hampshire,NH,AsphaltRoads,NA,NA,MIROC5,5,NA,1221.047224
+New Hampshire,NH,AsphaltRoads,NA,NA,CanESM2,1,NA,512.9974069
+New Hampshire,NH,AsphaltRoads,NA,NA,CanESM2,2,NA,961.8701379
+New Hampshire,NH,AsphaltRoads,NA,NA,CanESM2,3,NA,961.8701379
+New Hampshire,NH,AsphaltRoads,NA,NA,CanESM2,4,NA,1211.753766
+New Hampshire,NH,AsphaltRoads,NA,NA,CanESM2,5,NA,1711.521023
+New Hampshire,NH,AsphaltRoads,NA,NA,CanESM2,6,NA,2246.985942
+New Jersey,NJ,AsphaltRoads,NA,NA,CCSM4,1,NA,0
+New Jersey,NJ,AsphaltRoads,NA,NA,CCSM4,2,NA,595.0042357
+New Jersey,NJ,AsphaltRoads,NA,NA,CCSM4,3,NA,1523.584162
+New Jersey,NJ,AsphaltRoads,NA,NA,CCSM4,4,NA,1705.747163
+New Jersey,NJ,AsphaltRoads,NA,NA,CCSM4,5,NA,1844.624983
+New Jersey,NJ,AsphaltRoads,NA,NA,MIROC5,2,NA,308.708936
+New Jersey,NJ,AsphaltRoads,NA,NA,MIROC5,3,NA,964.7154251
+New Jersey,NJ,AsphaltRoads,NA,NA,MIROC5,4,NA,1371.773946
+New Jersey,NJ,AsphaltRoads,NA,NA,MIROC5,5,NA,1621.575287
+New Jersey,NJ,AsphaltRoads,NA,NA,CanESM2,1,NA,371.3417489
+New Jersey,NJ,AsphaltRoads,NA,NA,CanESM2,2,NA,893.7411118
+New Jersey,NJ,AsphaltRoads,NA,NA,CanESM2,3,NA,1264.00736
+New Jersey,NJ,AsphaltRoads,NA,NA,CanESM2,4,NA,1518.070059
+New Jersey,NJ,AsphaltRoads,NA,NA,CanESM2,5,NA,1680.613625
+New Jersey,NJ,AsphaltRoads,NA,NA,CanESM2,6,NA,1854.767446
+New Mexico,NM,AsphaltRoads,NA,NA,CCSM4,1,NA,213.2214314
+New Mexico,NM,AsphaltRoads,NA,NA,CCSM4,2,NA,598.6822311
+New Mexico,NM,AsphaltRoads,NA,NA,CCSM4,3,NA,956.8596412
+New Mexico,NM,AsphaltRoads,NA,NA,CCSM4,4,NA,1226.92598
+New Mexico,NM,AsphaltRoads,NA,NA,CCSM4,5,NA,1436.865957
+New Mexico,NM,AsphaltRoads,NA,NA,MIROC5,2,NA,729.8637119
+New Mexico,NM,AsphaltRoads,NA,NA,MIROC5,3,NA,997.6401468
+New Mexico,NM,AsphaltRoads,NA,NA,MIROC5,4,NA,1331.324141
+New Mexico,NM,AsphaltRoads,NA,NA,MIROC5,5,NA,1628.738064
+New Mexico,NM,AsphaltRoads,NA,NA,CanESM2,1,NA,208.9613458
+New Mexico,NM,AsphaltRoads,NA,NA,CanESM2,2,NA,631.9065665
+New Mexico,NM,AsphaltRoads,NA,NA,CanESM2,3,NA,1082.101647
+New Mexico,NM,AsphaltRoads,NA,NA,CanESM2,4,NA,1416.596525
+New Mexico,NM,AsphaltRoads,NA,NA,CanESM2,5,NA,1665.404204
+New Mexico,NM,AsphaltRoads,NA,NA,CanESM2,6,NA,1931.983861
+Nevada,NV,AsphaltRoads,NA,NA,CCSM4,1,NA,198.7310717
+Nevada,NV,AsphaltRoads,NA,NA,CCSM4,2,NA,569.7778309
+Nevada,NV,AsphaltRoads,NA,NA,CCSM4,3,NA,928.3251296
+Nevada,NV,AsphaltRoads,NA,NA,CCSM4,4,NA,1211.333083
+Nevada,NV,AsphaltRoads,NA,NA,CCSM4,5,NA,1431.400129
+Nevada,NV,AsphaltRoads,NA,NA,MIROC5,2,NA,525.942353
+Nevada,NV,AsphaltRoads,NA,NA,MIROC5,3,NA,607.1397281
+Nevada,NV,AsphaltRoads,NA,NA,MIROC5,4,NA,887.3669084
+Nevada,NV,AsphaltRoads,NA,NA,MIROC5,5,NA,1186.436774
+Nevada,NV,AsphaltRoads,NA,NA,CanESM2,1,NA,227.7444452
+Nevada,NV,AsphaltRoads,NA,NA,CanESM2,2,NA,587.9116141
+Nevada,NV,AsphaltRoads,NA,NA,CanESM2,3,NA,889.5818254
+Nevada,NV,AsphaltRoads,NA,NA,CanESM2,4,NA,1236.993126
+Nevada,NV,AsphaltRoads,NA,NA,CanESM2,5,NA,1650.256863
+Nevada,NV,AsphaltRoads,NA,NA,CanESM2,6,NA,2093.039438
+New York,NY,AsphaltRoads,NA,NA,CCSM4,1,NA,333.6051032
+New York,NY,AsphaltRoads,NA,NA,CCSM4,2,NA,683.6582541
+New York,NY,AsphaltRoads,NA,NA,CCSM4,3,NA,891.2144492
+New York,NY,AsphaltRoads,NA,NA,CCSM4,4,NA,1420.375334
+New York,NY,AsphaltRoads,NA,NA,CCSM4,5,NA,1833.68973
+New York,NY,AsphaltRoads,NA,NA,MIROC5,2,NA,642.1509162
+New York,NY,AsphaltRoads,NA,NA,MIROC5,3,NA,677.5137798
+New York,NY,AsphaltRoads,NA,NA,MIROC5,4,NA,882.6861588
+New York,NY,AsphaltRoads,NA,NA,MIROC5,5,NA,1109.919618
+New York,NY,AsphaltRoads,NA,NA,CanESM2,1,NA,333.6051032
+New York,NY,AsphaltRoads,NA,NA,CanESM2,2,NA,683.5967099
+New York,NY,AsphaltRoads,NA,NA,CanESM2,3,NA,792.5101
+New York,NY,AsphaltRoads,NA,NA,CanESM2,4,NA,1104.030813
+New York,NY,AsphaltRoads,NA,NA,CanESM2,5,NA,1625.419741
+New York,NY,AsphaltRoads,NA,NA,CanESM2,6,NA,2184.050736
+Ohio,OH,AsphaltRoads,NA,NA,CCSM4,1,NA,82.63224172
+Ohio,OH,AsphaltRoads,NA,NA,CCSM4,2,NA,767.6864169
+Ohio,OH,AsphaltRoads,NA,NA,CCSM4,3,NA,1706.633019
+Ohio,OH,AsphaltRoads,NA,NA,CCSM4,4,NA,1818.365189
+Ohio,OH,AsphaltRoads,NA,NA,CCSM4,5,NA,1902.080306
+Ohio,OH,AsphaltRoads,NA,NA,MIROC5,2,NA,294.9294287
+Ohio,OH,AsphaltRoads,NA,NA,MIROC5,3,NA,870.6671024
+Ohio,OH,AsphaltRoads,NA,NA,MIROC5,4,NA,1358.55577
+Ohio,OH,AsphaltRoads,NA,NA,MIROC5,5,NA,1730.202171
+Ohio,OH,AsphaltRoads,NA,NA,CanESM2,1,NA,100.9400263
+Ohio,OH,AsphaltRoads,NA,NA,CanESM2,2,NA,448.2512873
+Ohio,OH,AsphaltRoads,NA,NA,CanESM2,3,NA,933.855171
+Ohio,OH,AsphaltRoads,NA,NA,CanESM2,4,NA,1322.746672
+Ohio,OH,AsphaltRoads,NA,NA,CanESM2,5,NA,1647.299382
+Ohio,OH,AsphaltRoads,NA,NA,CanESM2,6,NA,1995.034429
+Oklahoma,OK,AsphaltRoads,NA,NA,CCSM4,1,NA,300.3264435
+Oklahoma,OK,AsphaltRoads,NA,NA,CCSM4,2,NA,1048.088565
+Oklahoma,OK,AsphaltRoads,NA,NA,CCSM4,3,NA,1780.292335
+Oklahoma,OK,AsphaltRoads,NA,NA,CCSM4,4,NA,1820.797119
+Oklahoma,OK,AsphaltRoads,NA,NA,CCSM4,5,NA,1849.588646
+Oklahoma,OK,AsphaltRoads,NA,NA,MIROC5,2,NA,988.5911028
+Oklahoma,OK,AsphaltRoads,NA,NA,MIROC5,3,NA,1547.282532
+Oklahoma,OK,AsphaltRoads,NA,NA,MIROC5,4,NA,1764.47765
+Oklahoma,OK,AsphaltRoads,NA,NA,MIROC5,5,NA,1826.16411
+Oklahoma,OK,AsphaltRoads,NA,NA,CanESM2,1,NA,566.1983268
+Oklahoma,OK,AsphaltRoads,NA,NA,CanESM2,2,NA,1218.731109
+Oklahoma,OK,AsphaltRoads,NA,NA,CanESM2,3,NA,1513.310945
+Oklahoma,OK,AsphaltRoads,NA,NA,CanESM2,4,NA,1694.290708
+Oklahoma,OK,AsphaltRoads,NA,NA,CanESM2,5,NA,1781.309055
+Oklahoma,OK,AsphaltRoads,NA,NA,CanESM2,6,NA,1874.542997
+Oregon,OR,AsphaltRoads,NA,NA,CCSM4,1,NA,365.3765195
+Oregon,OR,AsphaltRoads,NA,NA,CCSM4,2,NA,942.2149757
+Oregon,OR,AsphaltRoads,NA,NA,CCSM4,3,NA,1406.753046
+Oregon,OR,AsphaltRoads,NA,NA,CCSM4,4,NA,1762.360039
+Oregon,OR,AsphaltRoads,NA,NA,CCSM4,5,NA,2038.824442
+Oregon,OR,AsphaltRoads,NA,NA,MIROC5,2,NA,753.0853982
+Oregon,OR,AsphaltRoads,NA,NA,MIROC5,3,NA,904.9940553
+Oregon,OR,AsphaltRoads,NA,NA,MIROC5,4,NA,1159.91238
+Oregon,OR,AsphaltRoads,NA,NA,MIROC5,5,NA,1405.191573
+Oregon,OR,AsphaltRoads,NA,NA,CanESM2,1,NA,257.856667
+Oregon,OR,AsphaltRoads,NA,NA,CanESM2,2,NA,812.2999255
+Oregon,OR,AsphaltRoads,NA,NA,CanESM2,3,NA,1428.834941
+Oregon,OR,AsphaltRoads,NA,NA,CanESM2,4,NA,1790.84292
+Oregon,OR,AsphaltRoads,NA,NA,CanESM2,5,NA,1939.426198
+Oregon,OR,AsphaltRoads,NA,NA,CanESM2,6,NA,2098.622566
+Pennsylvania,PA,AsphaltRoads,NA,NA,CCSM4,1,NA,174.4575512
+Pennsylvania,PA,AsphaltRoads,NA,NA,CCSM4,2,NA,624.6078045
+Pennsylvania,PA,AsphaltRoads,NA,NA,CCSM4,3,NA,1171.921563
+Pennsylvania,PA,AsphaltRoads,NA,NA,CCSM4,4,NA,1626.477288
+Pennsylvania,PA,AsphaltRoads,NA,NA,CCSM4,5,NA,1980.053422
+Pennsylvania,PA,AsphaltRoads,NA,NA,MIROC5,2,NA,434.1173491
+Pennsylvania,PA,AsphaltRoads,NA,NA,MIROC5,3,NA,661.5124106
+Pennsylvania,PA,AsphaltRoads,NA,NA,MIROC5,4,NA,1067.163544
+Pennsylvania,PA,AsphaltRoads,NA,NA,MIROC5,5,NA,1462.395482
+Pennsylvania,PA,AsphaltRoads,NA,NA,CanESM2,1,NA,245.0739207
+Pennsylvania,PA,AsphaltRoads,NA,NA,CanESM2,2,NA,613.3589015
+Pennsylvania,PA,AsphaltRoads,NA,NA,CanESM2,3,NA,901.8188394
+Pennsylvania,PA,AsphaltRoads,NA,NA,CanESM2,4,NA,1237.800831
+Pennsylvania,PA,AsphaltRoads,NA,NA,CanESM2,5,NA,1640.535539
+Pennsylvania,PA,AsphaltRoads,NA,NA,CanESM2,6,NA,2072.037012
+Rhode Island,RI,AsphaltRoads,NA,NA,CCSM4,1,NA,290.0481229
+Rhode Island,RI,AsphaltRoads,NA,NA,CCSM4,2,NA,543.8402305
+Rhode Island,RI,AsphaltRoads,NA,NA,CCSM4,3,NA,668.382783
+Rhode Island,RI,AsphaltRoads,NA,NA,CCSM4,4,NA,1213.602401
+Rhode Island,RI,AsphaltRoads,NA,NA,CCSM4,5,NA,1639.814692
+Rhode Island,RI,AsphaltRoads,NA,NA,MIROC5,2,NA,543.8402305
+Rhode Island,RI,AsphaltRoads,NA,NA,MIROC5,3,NA,543.8402305
+Rhode Island,RI,AsphaltRoads,NA,NA,MIROC5,4,NA,543.8402305
+Rhode Island,RI,AsphaltRoads,NA,NA,MIROC5,5,NA,543.8402305
+Rhode Island,RI,AsphaltRoads,NA,NA,CanESM2,1,NA,290.0481229
+Rhode Island,RI,AsphaltRoads,NA,NA,CanESM2,2,NA,543.8402305
+Rhode Island,RI,AsphaltRoads,NA,NA,CanESM2,3,NA,543.8402305
+Rhode Island,RI,AsphaltRoads,NA,NA,CanESM2,4,NA,900.6224367
+Rhode Island,RI,AsphaltRoads,NA,NA,CanESM2,5,NA,1614.186849
+Rhode Island,RI,AsphaltRoads,NA,NA,CanESM2,6,NA,2378.720148
+South Carolina,SC,AsphaltRoads,NA,NA,CCSM4,1,NA,437.5136847
+South Carolina,SC,AsphaltRoads,NA,NA,CCSM4,2,NA,837.0380491
+South Carolina,SC,AsphaltRoads,NA,NA,CCSM4,3,NA,861.9613703
+South Carolina,SC,AsphaltRoads,NA,NA,CCSM4,4,NA,862.0878846
+South Carolina,SC,AsphaltRoads,NA,NA,CCSM4,5,NA,862.0878846
+South Carolina,SC,AsphaltRoads,NA,NA,MIROC5,2,NA,741.0320676
+South Carolina,SC,AsphaltRoads,NA,NA,MIROC5,3,NA,819.5107181
+South Carolina,SC,AsphaltRoads,NA,NA,MIROC5,4,NA,850.3907583
+South Carolina,SC,AsphaltRoads,NA,NA,MIROC5,5,NA,859.4885232
+South Carolina,SC,AsphaltRoads,NA,NA,CanESM2,1,NA,449.3827595
+South Carolina,SC,AsphaltRoads,NA,NA,CanESM2,2,NA,847.7913969
+South Carolina,SC,AsphaltRoads,NA,NA,CanESM2,3,NA,857.5390022
+South Carolina,SC,AsphaltRoads,NA,NA,CanESM2,4,NA,1070.999659
+South Carolina,SC,AsphaltRoads,NA,NA,CanESM2,5,NA,1488.823208
+South Carolina,SC,AsphaltRoads,NA,NA,CanESM2,6,NA,1936.491297
+South Dakota,SD,AsphaltRoads,NA,NA,CCSM4,1,NA,616.5848313
+South Dakota,SD,AsphaltRoads,NA,NA,CCSM4,2,NA,1293.185838
+South Dakota,SD,AsphaltRoads,NA,NA,CCSM4,3,NA,1584.820519
+South Dakota,SD,AsphaltRoads,NA,NA,CCSM4,4,NA,1966.897866
+South Dakota,SD,AsphaltRoads,NA,NA,CCSM4,5,NA,2264.765754
+South Dakota,SD,AsphaltRoads,NA,NA,MIROC5,2,NA,1227.602738
+South Dakota,SD,AsphaltRoads,NA,NA,MIROC5,3,NA,1420.34251
+South Dakota,SD,AsphaltRoads,NA,NA,MIROC5,4,NA,1670.477417
+South Dakota,SD,AsphaltRoads,NA,NA,MIROC5,5,NA,1896.165279
+South Dakota,SD,AsphaltRoads,NA,NA,CanESM2,1,NA,469.6450531
+South Dakota,SD,AsphaltRoads,NA,NA,CanESM2,2,NA,1016.163416
+South Dakota,SD,AsphaltRoads,NA,NA,CanESM2,3,NA,1270.373932
+South Dakota,SD,AsphaltRoads,NA,NA,CanESM2,4,NA,1520.230018
+South Dakota,SD,AsphaltRoads,NA,NA,CanESM2,5,NA,1782.679042
+South Dakota,SD,AsphaltRoads,NA,NA,CanESM2,6,NA,2063.874425
+Tennessee,TN,AsphaltRoads,NA,NA,CCSM4,1,NA,815.8039993
+Tennessee,TN,AsphaltRoads,NA,NA,CCSM4,2,NA,1627.152428
+Tennessee,TN,AsphaltRoads,NA,NA,CCSM4,3,NA,1782.558511
+Tennessee,TN,AsphaltRoads,NA,NA,CCSM4,4,NA,1826.483971
+Tennessee,TN,AsphaltRoads,NA,NA,CCSM4,5,NA,1860.244112
+Tennessee,TN,AsphaltRoads,NA,NA,MIROC5,2,NA,1421.141795
+Tennessee,TN,AsphaltRoads,NA,NA,MIROC5,3,NA,1671.384992
+Tennessee,TN,AsphaltRoads,NA,NA,MIROC5,4,NA,1830.122143
+Tennessee,TN,AsphaltRoads,NA,NA,MIROC5,5,NA,1929.447721
+Tennessee,TN,AsphaltRoads,NA,NA,CanESM2,1,NA,839.6770579
+Tennessee,TN,AsphaltRoads,NA,NA,CanESM2,2,NA,1626.568693
+Tennessee,TN,AsphaltRoads,NA,NA,CanESM2,3,NA,1724.395336
+Tennessee,TN,AsphaltRoads,NA,NA,CanESM2,4,NA,1824.586875
+Tennessee,TN,AsphaltRoads,NA,NA,CanESM2,5,NA,1933.665087
+Tennessee,TN,AsphaltRoads,NA,NA,CanESM2,6,NA,2050.5346
+Texas,TX,AsphaltRoads,NA,NA,CCSM4,1,NA,136.1479017
+Texas,TX,AsphaltRoads,NA,NA,CCSM4,2,NA,478.4002787
+Texas,TX,AsphaltRoads,NA,NA,CCSM4,3,NA,920.6925099
+Texas,TX,AsphaltRoads,NA,NA,CCSM4,4,NA,1400.865683
+Texas,TX,AsphaltRoads,NA,NA,CCSM4,5,NA,1774.908111
+Texas,TX,AsphaltRoads,NA,NA,MIROC5,2,NA,598.0629857
+Texas,TX,AsphaltRoads,NA,NA,MIROC5,3,NA,835.1249868
+Texas,TX,AsphaltRoads,NA,NA,MIROC5,4,NA,1235.648615
+Texas,TX,AsphaltRoads,NA,NA,MIROC5,5,NA,1621.581376
+Texas,TX,AsphaltRoads,NA,NA,CanESM2,1,NA,255.5184146
+Texas,TX,AsphaltRoads,NA,NA,CanESM2,2,NA,739.5275131
+Texas,TX,AsphaltRoads,NA,NA,CanESM2,3,NA,1227.834674
+Texas,TX,AsphaltRoads,NA,NA,CanESM2,4,NA,1536.196744
+Texas,TX,AsphaltRoads,NA,NA,CanESM2,5,NA,1697.167535
+Texas,TX,AsphaltRoads,NA,NA,CanESM2,6,NA,1869.636239
+Utah,UT,AsphaltRoads,NA,NA,CCSM4,1,NA,506.3564299
+Utah,UT,AsphaltRoads,NA,NA,CCSM4,2,NA,1093.050456
+Utah,UT,AsphaltRoads,NA,NA,CCSM4,3,NA,1361.753273
+Utah,UT,AsphaltRoads,NA,NA,CCSM4,4,NA,1600.741725
+Utah,UT,AsphaltRoads,NA,NA,CCSM4,5,NA,1786.714572
+Utah,UT,AsphaltRoads,NA,NA,MIROC5,2,NA,1079.081991
+Utah,UT,AsphaltRoads,NA,NA,MIROC5,3,NA,1191.729055
+Utah,UT,AsphaltRoads,NA,NA,MIROC5,4,NA,1461.06275
+Utah,UT,AsphaltRoads,NA,NA,MIROC5,5,NA,1736.63199
+Utah,UT,AsphaltRoads,NA,NA,CanESM2,1,NA,496.617069
+Utah,UT,AsphaltRoads,NA,NA,CanESM2,2,NA,1064.99421
+Utah,UT,AsphaltRoads,NA,NA,CanESM2,3,NA,1315.938972
+Utah,UT,AsphaltRoads,NA,NA,CanESM2,4,NA,1571.555648
+Utah,UT,AsphaltRoads,NA,NA,CanESM2,5,NA,1848.573889
+Utah,UT,AsphaltRoads,NA,NA,CanESM2,6,NA,2145.379147
+Virginia,VA,AsphaltRoads,NA,NA,CCSM4,1,NA,414.8429261
+Virginia,VA,AsphaltRoads,NA,NA,CCSM4,2,NA,1143.653652
+Virginia,VA,AsphaltRoads,NA,NA,CCSM4,3,NA,1709.334801
+Virginia,VA,AsphaltRoads,NA,NA,CCSM4,4,NA,1798.426289
+Virginia,VA,AsphaltRoads,NA,NA,CCSM4,5,NA,1865.904946
+Virginia,VA,AsphaltRoads,NA,NA,MIROC5,2,NA,629.0096547
+Virginia,VA,AsphaltRoads,NA,NA,MIROC5,3,NA,1372.944059
+Virginia,VA,AsphaltRoads,NA,NA,MIROC5,4,NA,1679.138322
+Virginia,VA,AsphaltRoads,NA,NA,MIROC5,5,NA,1781.093353
+Virginia,VA,AsphaltRoads,NA,NA,CanESM2,1,NA,741.4089961
+Virginia,VA,AsphaltRoads,NA,NA,CanESM2,2,NA,1470.740943
+Virginia,VA,AsphaltRoads,NA,NA,CanESM2,3,NA,1621.864209
+Virginia,VA,AsphaltRoads,NA,NA,CanESM2,4,NA,1744.556526
+Virginia,VA,AsphaltRoads,NA,NA,CanESM2,5,NA,1848.892778
+Virginia,VA,AsphaltRoads,NA,NA,CanESM2,6,NA,1960.68162
+Vermont,VT,AsphaltRoads,NA,NA,CCSM4,1,NA,690.6595863
+Vermont,VT,AsphaltRoads,NA,NA,CCSM4,2,NA,1294.986724
+Vermont,VT,AsphaltRoads,NA,NA,CCSM4,3,NA,1358.672937
+Vermont,VT,AsphaltRoads,NA,NA,CCSM4,4,NA,1637.477023
+Vermont,VT,AsphaltRoads,NA,NA,CCSM4,5,NA,1855.425395
+Vermont,VT,AsphaltRoads,NA,NA,MIROC5,2,NA,1294.986724
+Vermont,VT,AsphaltRoads,NA,NA,MIROC5,3,NA,1294.986724
+Vermont,VT,AsphaltRoads,NA,NA,MIROC5,4,NA,1294.986724
+Vermont,VT,AsphaltRoads,NA,NA,MIROC5,5,NA,1294.986724
+Vermont,VT,AsphaltRoads,NA,NA,CanESM2,1,NA,690.6595863
+Vermont,VT,AsphaltRoads,NA,NA,CanESM2,2,NA,1294.986724
+Vermont,VT,AsphaltRoads,NA,NA,CanESM2,3,NA,1294.986724
+Vermont,VT,AsphaltRoads,NA,NA,CanESM2,4,NA,1504.959082
+Vermont,VT,AsphaltRoads,NA,NA,CanESM2,5,NA,1924.903798
+Vermont,VT,AsphaltRoads,NA,NA,CanESM2,6,NA,2374.844565
+Washington,WA,AsphaltRoads,NA,NA,CCSM4,1,NA,797.4781124
+Washington,WA,AsphaltRoads,NA,NA,CCSM4,2,NA,1556.407954
+Washington,WA,AsphaltRoads,NA,NA,CCSM4,3,NA,1710.032483
+Washington,WA,AsphaltRoads,NA,NA,CCSM4,4,NA,1983.594309
+Washington,WA,AsphaltRoads,NA,NA,CCSM4,5,NA,2197.08261
+Washington,WA,AsphaltRoads,NA,NA,MIROC5,2,NA,1238.025545
+Washington,WA,AsphaltRoads,NA,NA,MIROC5,3,NA,1474.596205
+Washington,WA,AsphaltRoads,NA,NA,MIROC5,4,NA,1588.218492
+Washington,WA,AsphaltRoads,NA,NA,MIROC5,5,NA,1639.601619
+Washington,WA,AsphaltRoads,NA,NA,CanESM2,1,NA,686.9940133
+Washington,WA,AsphaltRoads,NA,NA,CanESM2,2,NA,1437.827376
+Washington,WA,AsphaltRoads,NA,NA,CanESM2,3,NA,1718.540378
+Washington,WA,AsphaltRoads,NA,NA,CanESM2,4,NA,1961.894797
+Washington,WA,AsphaltRoads,NA,NA,CanESM2,5,NA,2186.604835
+Washington,WA,AsphaltRoads,NA,NA,CanESM2,6,NA,2427.365589
+Wisconsin,WI,AsphaltRoads,NA,NA,CCSM4,1,NA,248.1788975
+Wisconsin,WI,AsphaltRoads,NA,NA,CCSM4,2,NA,817.3983745
+Wisconsin,WI,AsphaltRoads,NA,NA,CCSM4,3,NA,1416.091291
+Wisconsin,WI,AsphaltRoads,NA,NA,CCSM4,4,NA,1739.499156
+Wisconsin,WI,AsphaltRoads,NA,NA,CCSM4,5,NA,1990.230482
+Wisconsin,WI,AsphaltRoads,NA,NA,MIROC5,2,NA,581.2758701
+Wisconsin,WI,AsphaltRoads,NA,NA,MIROC5,3,NA,827.6492994
+Wisconsin,WI,AsphaltRoads,NA,NA,MIROC5,4,NA,1256.03226
+Wisconsin,WI,AsphaltRoads,NA,NA,MIROC5,5,NA,1671.272479
+Wisconsin,WI,AsphaltRoads,NA,NA,CanESM2,1,NA,248.1788975
+Wisconsin,WI,AsphaltRoads,NA,NA,CanESM2,2,NA,498.2109029
+Wisconsin,WI,AsphaltRoads,NA,NA,CanESM2,3,NA,559.8524095
+Wisconsin,WI,AsphaltRoads,NA,NA,CanESM2,4,NA,881.3404944
+Wisconsin,WI,AsphaltRoads,NA,NA,CanESM2,5,NA,1466.784592
+Wisconsin,WI,AsphaltRoads,NA,NA,CanESM2,6,NA,2094.046124
+West Virginia,WV,AsphaltRoads,NA,NA,CCSM4,1,NA,168.1799076
+West Virginia,WV,AsphaltRoads,NA,NA,CCSM4,2,NA,722.5974172
+West Virginia,WV,AsphaltRoads,NA,NA,CCSM4,3,NA,1385.676759
+West Virginia,WV,AsphaltRoads,NA,NA,CCSM4,4,NA,1630.741583
+West Virginia,WV,AsphaltRoads,NA,NA,CCSM4,5,NA,1819.903239
+West Virginia,WV,AsphaltRoads,NA,NA,MIROC5,2,NA,307.4534042
+West Virginia,WV,AsphaltRoads,NA,NA,MIROC5,3,NA,569.4640458
+West Virginia,WV,AsphaltRoads,NA,NA,MIROC5,4,NA,984.0596336
+West Virginia,WV,AsphaltRoads,NA,NA,MIROC5,5,NA,1377.848874
+West Virginia,WV,AsphaltRoads,NA,NA,CanESM2,1,NA,190.0710481
+West Virginia,WV,AsphaltRoads,NA,NA,CanESM2,2,NA,522.0903328
+West Virginia,WV,AsphaltRoads,NA,NA,CanESM2,3,NA,832.7911783
+West Virginia,WV,AsphaltRoads,NA,NA,CanESM2,4,NA,1164.72463
+West Virginia,WV,AsphaltRoads,NA,NA,CanESM2,5,NA,1538.604078
+West Virginia,WV,AsphaltRoads,NA,NA,CanESM2,6,NA,1939.189201
+Wyoming,WY,AsphaltRoads,NA,NA,CCSM4,1,NA,565.5439269
+Wyoming,WY,AsphaltRoads,NA,NA,CCSM4,2,NA,1211.634302
+Wyoming,WY,AsphaltRoads,NA,NA,CCSM4,3,NA,1494.877936
+Wyoming,WY,AsphaltRoads,NA,NA,CCSM4,4,NA,1747.878243
+Wyoming,WY,AsphaltRoads,NA,NA,CCSM4,5,NA,1944.759468
+Wyoming,WY,AsphaltRoads,NA,NA,MIROC5,2,NA,1094.772862
+Wyoming,WY,AsphaltRoads,NA,NA,MIROC5,3,NA,1295.119611
+Wyoming,WY,AsphaltRoads,NA,NA,MIROC5,4,NA,1537.761753
+Wyoming,WY,AsphaltRoads,NA,NA,MIROC5,5,NA,1752.097818
+Wyoming,WY,AsphaltRoads,NA,NA,CanESM2,1,NA,460.4019005
+Wyoming,WY,AsphaltRoads,NA,NA,CanESM2,2,NA,995.2230924
+Wyoming,WY,AsphaltRoads,NA,NA,CanESM2,3,NA,1242.665959
+Wyoming,WY,AsphaltRoads,NA,NA,CanESM2,4,NA,1494.658547
+Wyoming,WY,AsphaltRoads,NA,NA,CanESM2,5,NA,1767.697047
+Wyoming,WY,AsphaltRoads,NA,NA,CanESM2,6,NA,2060.238298
