@@ -69,16 +69,16 @@ jobs:
           
       - name: Configure SV data
         if: |
-          inputs.run_sv      == 'true' ||
-          inputs.run_pop     == 'true' ||
-          inputs.run_formats == 'true'
+          ${{ inputs.run_sv }}      == 'true' ||
+          ${{ inputs.run_pop }}     == 'true' ||
+          ${{ inputs.run_formats }} == 'true'
         run: |
           Rscript -e '
             source("./scripts/update_svDataObjects.R")
             fpath1      <- getwd()
-            sv0         <- "${{ inputs.run_sv      }}" == "true"
-            pop0        <- "${{ inputs.run_pop     }}" == "true"
-            format0     <- "${{ inputs.run_formats }}" == "true"
+            sv0         <- ifelse("${{ inputs.run_sv      }}" == "true",TRUE,FALSE)
+            pop0        <- ifelse("${{ inputs.run_pop     }}" == "true",TRUE, FALSE)
+            format0     <- ifelse("${{ inputs.run_formats }}" == "true",TRUE,FALSE)
             list1       <- update_svDataObjects(
               fpath0  = fpath1,
               sv      = sv0,
@@ -90,9 +90,9 @@ jobs:
             '
       - name: Commit results
         if: |
-          inputs.run_sv      == 'true' ||
-          inputs.run_pop     == 'true' ||
-          inputs.run_formats == 'true'
+          ${{ inputs.run_sv }}      == 'true' ||
+          ${{ inputs.run_pop }}     == 'true' ||
+          ${{ inputs.run_formats }} == 'true'
         run: |
           git config --local core.autocrlf false
           git config --local user.email "${{ github.actor }}@users.noreply.github.com"
