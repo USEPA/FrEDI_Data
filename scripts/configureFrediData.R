@@ -12,7 +12,8 @@ require(devtools)
 configureFrediData <- function(
     projectDir = ".",
     save       = FALSE,
-    byState    = TRUE
+    byState    = TRUE,
+    update_sv = FALSE
 ){
 
 ###### Set Arguments ######
@@ -56,6 +57,13 @@ list_systemData0 <- dataInDir |> configureSystemData(
 
 returnList[["systemDataList"]] <- list_systemData0
 
+if(update_sv = TRUE){
+update_sysdata(
+  save    = TRUE,
+  sv      = TRUE,
+  outPath = dataOutDir
+)
+}
 ###### 4. Run General Tests on Data ######
 # test_general_config <- general_config_test(
 #   configuredData = list_systemData0,

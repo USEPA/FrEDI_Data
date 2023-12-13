@@ -15,7 +15,9 @@ on:
           - Roads
           - High Tide Flooding and Traffic
           - Coastal Properties
-
+        branch_name:
+         type: string
+         description: Which FrEDI Package branch do you want to use?
 jobs:
   compile_data:
     runs-on: ubuntu-latest
@@ -49,7 +51,7 @@ jobs:
         run: |
           Rscript -e 'devtools::install_github( 
               repo         = "https://github.com/USEPA/FrEDI", 
-              ref          = "main", 
+              ref          = "${{ github.event.inputs.branch_name }}", 
               subdir       = "FrEDI", 
               dependencies = FALSE,
               upgrade      = "never", 
