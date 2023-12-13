@@ -60,7 +60,6 @@ returnList[["systemDataList"]] <- list_systemData0
 if(update_sv){
 update_sysdata(
   save    = TRUE,
-  sv      = TRUE,
   outPath = dataOutDir
 )
 }
