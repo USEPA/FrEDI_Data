@@ -13,7 +13,7 @@ configureFrediData <- function(
     projectDir = ".",
     save       = FALSE,
     byState    = TRUE,
-    update_sv = FALSE
+    update_sv = TRUE
 ){
 
 ###### Set Arguments ######
