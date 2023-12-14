@@ -38,6 +38,7 @@ jobs:
             any::ggpubr
             any::openxlsx
             any::devtools
+            any::admisc
 
 
       - name: Install FrEDI
