@@ -547,12 +547,25 @@ get_fredi_sectorOptions <- function(
   stateCols  <- c("state", "postal")
   
   ### Select columns
-  df_vars    <- df_vars    |> select(c("sector_id", "variant_label", "variant_id"))
-  df_types   <- df_types   |> select(c("sector_id", "impactType_label", "impactType_id"))
-  df_years   <- df_years   |> select(c("sector_id", "impactYear_label", "impactYear_id"))
-  df_models  <- df_models  |> select(c("model_id", "model_dot", "model_label", "modelType"))
-  df_regions <- df_regions |> select(c("region_label", "region_dot"))
-  df_states  <- df_states  |> select(c("region") |> c(stateCols)) |> rename_at(c("region"), ~"region_label")
+  ### - Columns
+  select0    <- c("sector_id", "variant_label", "variant_id")
+  select1    <- c("sector_id", "impactType_label", "impactType_id")
+  select2    <- c("sector_id", "impactYear_label", "impactYear_id")
+  select3    <- c("model_id", "model_dot", "model_label", "modelType", "maxUnitValue")
+  select4    <- c("region_label", "region_dot")
+  select5    <- c("region") |> c(stateCols)
+  ### - Select
+  df_vars    <- df_vars    |> select(all_of(select0))
+  df_types   <- df_types   |> select(all_of(select1))
+  df_years   <- df_years   |> select(all_of(select2))
+  df_models  <- df_models  |> select(all_of(select3))
+  df_regions <- df_regions |> select(all_of(select4))
+  df_states  <- df_states  |> select(all_of(select5))
+  ### - Remove vars
+  rm(select0, select1, select2, select3, select4, select5)
+  
+  ### Rename some names
+  df_states  <- df_states  |> rename_at(c("region"), ~"region_label")
   
   ### Join sectors and variants
   df_x       <- df_sect |> left_join(df_vars  , by="sector_id")
@@ -586,7 +599,7 @@ get_fredi_sectorOptions <- function(
   # include0   <- c("model_dot", "region") |> c(stateCols)
   # include0   <- c("region") |> c(stateCols) |> c("model_dot")
   include0   <- c("region") |> c(stateCols) |> c("model")
-  df_x       <- df_x |> rename_at(.vars=c(rename0), ~c(rename1))
+  df_x       <- df_x |> rename_at(c(rename0), ~c(rename1))
   df_x       <- df_x |> get_scenario_id(include=c(include0))
   rm(rename0, rename1, include0)
   
@@ -594,8 +607,8 @@ get_fredi_sectorOptions <- function(
   rename0    <- c("sector", "variant", "impactType", "impactYear", "region")
   rename1    <- c("sector_id", "variant_id", "impactType_id", "impactYear_id", "region_dot")
   rename2    <- c("sector_label", "variant_label", "impactType_label", "impactYear_label", "region_label")
-  df_x       <- df_x |> rename_at(.vars=c(rename0), ~c(rename1))
-  df_x       <- df_x |> rename_at(.vars=c(rename2), ~c(rename0))
+  df_x       <- df_x |> rename_at(c(rename0), ~c(rename1))
+  df_x       <- df_x |> rename_at(c(rename2), ~c(rename0))
   rm(rename0, rename1, rename2)
   
   ### Return
@@ -648,7 +661,7 @@ get_fredi_sectorOptions_results <- function(
     rename0    <- c("sector", "variant", "impactType", "impactYear", "region")
     rename1    <- c("sector_id", "variant_id", "impactType_id", "impactYear_id", "region_dot")
     join0      <- rename1 |> c(stateCols) |> c("model_dot", "model_type") |> c("byState")
-    slrImp     <- slrImp |> rename_at(.vars=c(rename0), ~c(rename1))
+    slrImp     <- slrImp |> rename_at(c(rename0), ~c(rename1))
     slrImp     <- slrImp |> select(-c("model"))
     # slrImp |> glimpse(); df_slr |> glimpse()
     df_slr     <- df_slr |> left_join(slrImp, by=c(join0))
@@ -658,7 +671,7 @@ get_fredi_sectorOptions_results <- function(
     # df_slr |> glimpse()
     ### Relocate columns
     select0    <- c("scenario_id")
-    df_slr     <- df_slr |> relocate(c(all_of(select0)))
+    df_slr     <- df_slr |> relocate(all_of(select0))
     ### Bind with initial results
     df0        <- df0 |> rbind(df_slr)
     rm(df_slr)
@@ -682,7 +695,11 @@ get_fredi_sectorOptions_results <- function(
     # idCols0    <- c("driverValue")
     keyCols0   <- funNames
     # select0    <- c(scenario_id)
-    df_vals    <- df_vals |> gather(key="scenario_id",value="scaled_impacts", c(all_of(keyCols0)))
+    df_vals    <- df_vals |> pivot_longer(
+      all_of(keyCols0), 
+      names_to  = "scenario_id",
+      values_to = "scaled_impacts"
+    ) ### End pivot_longer
     rm(keyCols0)
     
     ### Join with df_gcm
@@ -691,7 +708,7 @@ get_fredi_sectorOptions_results <- function(
     select0    <- join0 #|> c("scenario_id2")
     # df_gcm     <- df_gcm |> left_join(df_vals, by=c(join0))
     df_gcm     <- df_vals |> left_join(df_gcm, by=c(join0))
-    df_gcm     <- df_gcm  |> relocate(c(all_of(select0)))
+    df_gcm     <- df_gcm  |> relocate(all_of(select0))
     # "got here" |> print()
     rm(df_vals, select0, join0)
     ### Add year
@@ -708,23 +725,24 @@ get_fredi_sectorOptions_results <- function(
   rename1    <- c("model_type", "modelUnit")
   join0      <- c("model_type")
   df_mTypes  <- frediData[["co_modelTypes" ]]
-  df_mTypes  <- df_mTypes  |> rename_at(.vars=c(rename0), ~c(rename1))
+  df_mTypes  <- df_mTypes  |> rename_at(c(rename0), ~c(rename1))
   df0        <- df0 |> left_join(df_mTypes, by=c(join0))
   rm(rename0, rename1, join0)
   ###### Arrange ######
   ### Arrange and add scaled impacts to list of items to save
-  arrange0   <- c("sector", "variant", "impactType", "impactYear", "region") |> c(stateCols) |> c("model_type", "model")
+  arrange0   <- c("sector", "variant", "impactType", "impactYear")
+  arrange0   <- c("region") |> c(stateCols) |> c("model_type", "model")
   # if(byState){arrange0 <- arrange0 |> c("postal")}
-  df0        <- df0 |> arrange_at(.vars=c(arrange0))
+  df0        <- df0 |> arrange_at(c(arrange0))
   rm(arrange0)
   ###### Select Columns ######
   # select0    <- c("scenario_id", "scenario_id2", "sector", "variant", "impactType", "impactYear", "region") |> c(stateCols)
   select0    <- c("scenario_id", "sector", "variant", "impactType", "impactYear", "region") |> c(stateCols)
-  select0    <- select0 |> c("model_type", "model", "scaled_impacts", "modelUnit", "driverValue", "year")
+  select0    <- select0 |> c("model_type", "model", "scaled_impacts", "modelUnit", "maxUnitValue", "driverValue", "year")
   # if(byState){select0 <- select0 |> paste0("state", "postal")}
   mutate0    <- c("variant", "impactType", "impactYear")
-  df0        <- df0 |> mutate_at(.vars=c(mutate0), function(y){y |> na_if("N/A") |> replace_na("NA")})
-  df0        <- df0 |> select(c(all_of(select0)))
+  df0        <- df0 |> mutate_at(c(mutate0), function(y){y |> na_if("N/A") |> replace_na("NA")})
+  df0        <- df0 |> select(all_of(select0))
   df0        <- df0 |> mutate(model_type = model_type |> toupper())
   ###### Return ######
   return(df0)
@@ -1051,9 +1069,9 @@ newSectors_config_test <- function(
   levels0   <- c("No", "Maybe", "Yes")
   mutate0   <- c("changes_expected")
   df_status <- newData[["testDev"]]
-  df_status <- df_status |> rename_at(.vars=c("Changes.if.new.sector.added"), ~mutate0)
-  df_status <- df_status |> mutate_at(.vars=c(mutate0), factor, levels=levels0)
-  rm("mutate0", "levels0")
+  df_status <- df_status |> rename_at(c("Changes.if.new.sector.added"), ~mutate0)
+  df_status <- df_status |> mutate_at(c(mutate0), factor, levels=levels0)
+  rm(mutate0, levels0)
 
   ###### Compare New & Ref Data ######
   ###### ** Get Test Info ######
@@ -1068,14 +1086,14 @@ newSectors_config_test <- function(
   select1   <- join0 |> c(sum0)
   suffix0   <- c("_new", "_ref")
   ### Select columns
-  newTests  <- newTests |> select(c(all_of(select0)))
-  refTests  <- refTests |> select(c(all_of(select1)))
+  newTests  <- newTests |> select(all_of(select0))
+  refTests  <- refTests |> select(all_of(select1))
   ### Rename columns
-  newTests  <- newTests |> rename_at(.vars=c(sum0), ~rename0)
-  refTests  <- refTests |> rename_at(.vars=c(sum0), ~rename0)
+  newTests  <- newTests |> rename_at(c(sum0), ~rename0)
+  refTests  <- refTests |> rename_at(c(sum0), ~rename0)
   ### Join old and new
   df_tests  <- newTests |> left_join(refTests, by=c(join0), suffix=suffix0)
-  rm("join0", "sum0", "select0", "select1", "rename0"); rm("newTests", "refTests")
+  rm(join0, sum0, select0, select1, rename0); rm(newTests, refTests)
 
   ###### ** Join Tests and Test Info ######
   ### Join df_tests with df_status
@@ -1084,12 +1102,12 @@ newSectors_config_test <- function(
   ### Check number of rows before
   dim0      <- c(nrow(df_status), nrow(df_tests))
   ### Rename columns and join columns
-  df_tests  <- df_tests  |> rename_at(.vars=c(rename0), ~join0)
+  df_tests  <- df_tests  |> rename_at(c(rename0), ~join0)
   df_status <- df_status |> left_join(df_tests, by=c(join0))
   ### Check number of rows before
   dim1      <- c(nrow(df_status), nrow(df_tests))
   all0      <- (dim1 == dim0) |> all()
-  rm("join0", "rename0", "all0"); rm("df_tests")
+  rm(join0, rename0, all0); rm(df_tests)
   # "got here2" |> print;
 
   ###### ** Compare Values ######
@@ -1119,14 +1137,14 @@ newSectors_config_test <- function(
   # checkVals |> print
   df_status <- df_status |> mutate(sameVals = checkVals)
   df_status <- df_status |> mutate(hasDiffs = 1 * (!sameDims | !sameVals))
-  rm("checkVals")
+  rm(checkVals)
 
   ###### ** Arrange Test Results ######
   ### Arrange values and add to save list
   arrange0  <- c("changes_expected", "hasDiffs", "sameDims", "sameVals", "Table.Name")
-  df_status <- df_status |> arrange_at(.vars=c(arrange0))
+  df_status <- df_status |> arrange_at(c(arrange0))
   saveList[[c_config0]] <- df_status
-  rm("arrange0")
+  rm(arrange0)
 
   ###### Create Workbook ######
   ### Create workbook if(save)
@@ -1136,7 +1154,7 @@ newSectors_config_test <- function(
     sheet0  <- c_config0
     wbook0 |> addWorksheet(sheetName = sheet0)
     wbook0 |> writeDataTable(sheet = sheet0, x = df_status)
-    rm("sheet0")
+    rm(sheet0)
   } ### End if(save)
 
   ###### Print Test Results ######
@@ -1158,9 +1176,9 @@ newSectors_config_test <- function(
     sheet0 <- name_i |> paste("diff", sep="_")
 
     ### Get difference
-    join0  <- new0 |> names() %>% (function(y, z=ref0){y[(y %in% names(z))]})
+    join0  <- new0 |> names() |> (function(y, z=ref0){y[(y %in% names(z))]})()
     diff0  <- new0 |> anti_join(ref0, by=c(join0))
-    rm("join0")
+    rm(join0)
 
     ### Add table to list
     saveList[[sheet0]] <- diff0
