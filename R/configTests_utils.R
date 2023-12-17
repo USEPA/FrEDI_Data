@@ -105,14 +105,13 @@ fun_nNna <- function(z, a, b){
   return(y)
 } ### End fun_nNna
 
-###### get_region_plotInfo ######
 ### Get region plot info (for scaled impact plots)
 get_region_plotInfo <- function(
     df0, ### Data
     yCol      = "scaled_impacts",
     # byState   = FALSE,
     # groupCols = c("sector", "variant", "impactType", "impactYear", "region", "model"),
-    groupCols = c("sector", "variant", "impactType", "impactYear", "region", "state", "postal", "model"),
+    groupCols = c("sector", "variant", "impactType", "impactYear", "region", "state", "postal", "model", "maxUnitValue"),
     nCol      = 4,
     silent    = TRUE
 ){
@@ -412,35 +411,73 @@ create_scaledImpact_plot <- function(
   # colorCol |> print(); def_lgdLbl |> print()
   # plot0  <- df0 |> ggplot(aes(x=.data[[xCol]], y=.data[[yCol]], color=.data[[colorCol]]))
   ### Group values
-  groups0  <- c("sector", "variant", "impactType", "impactYear", "region", "model", xCol)
+  groups0  <- c("sector", "variant", "impactType", "impactYear", "region", "model", "maxUnitValue", xCol)
   facetCol <- byState |> ifelse("state", "region") 
   if(byState){groups0 <- groups0 |> c("state")} 
-  df0    <- df0 |> group_by_at(.vars=c(groups0))
+  df0    <- df0 |> group_by_at(c(groups0))
+  rm(groups0)
   
   ### Points dataframe
   if(do_slr){df_points0 <- df0 |> filter(year %in% x_breaks)}
   else      {df_points0 <- df0}
   
-  ### Plot
+  ###### ** Initialize plot ######
+  plot0  <- ggplot()
+  # if(byState){
+  #   plot0  <- df0 |> ggplot(aes(x=.data[[xCol]], y=.data[[yCol]], color=.data[["state"]], group=interaction(sector, variant, impactType, impactYear, region, state, model)))
+  # } else{
+  #   plot0  <- df0 |> ggplot(aes(x=.data[[xCol]], y=.data[[yCol]], color=.data[["region"]], group=interaction(sector, variant, impactType, impactYear, region, model)))
+  # }
   if(byState){
-    plot0  <- df0 |> ggplot(aes(x=.data[[xCol]], y=.data[[yCol]], color=.data[["state"]], group=interaction(sector, variant, impactType, impactYear, region, state, model)))
+    regCol0   <- c("state")
+    stateCol0 <- c("state")
   } else{
-    plot0  <- df0 |> ggplot(aes(x=.data[[xCol]], y=.data[[yCol]], color=.data[["region"]], group=interaction(sector, variant, impactType, impactYear, region, model)))
+    regCol0   <- c("region")
+    stateCol0 <- c()
+  } ### End else (byState)
+  group0 <- c("sector", "variant", "impactType", "impactYear", "region") |> c(stateCol0) |> c("model")
+  
+  ###### ** Add geoms ######
+  if(do_slr){
+    plot0  <- df0 |> ggplot(aes(x=.data[[xCol]], y=.data[[yCol]], color=.data[[regCol0]], group=interaction(!!!syms(group0))))
+  } else{
+    ### Separate GCM values
+    ### Plot these values as lines
+    df0_1 <- df0 |> filter((maxUnitValue < 6 & driverValue <= maxUnitValue) | maxUnitValue >=6) 
+    ### Plot these values as points
+    df0_2 <- df0 |> filter((maxUnitValue < 6 & driverValue >= maxUnitValue))
+    ### Plot values as lines
+    plot0  <- plot0 + geom_line(
+      data = df0_1,
+      aes(
+        x        = .data[[xCol]], 
+        y        = .data[[yCol]], 
+        color    = .data[[regCol0]], 
+        group    = interaction(!!!syms(group0)), 
+        linetype = .data[["variant"]]
+        ), alpha=0.5 ### End aes
+      ) ### End geom_line
+    ### Plot values as points
+    plot0  <- plot0 + geom_point(
+      data = df0_2,
+      aes(
+        x        = .data[[xCol]], 
+        y        = .data[[yCol]], 
+        color    = .data[[regCol0]], 
+        group    = interaction(!!!syms(group0)), 
+        shape   = .data[["variant"]]
+      ), alpha=0.5 ### End aes
+    ) ### End geom_line
   }
   
-  ###### * Add Geoms ######
-  plot0  <- plot0 + geom_line(aes(linetype = .data[["variant"]]), alpha=0.5)
-  # plot0  <- plot0 + facet_grid(.~.data[[facetCol]])
-  # plot0  <- plot0 + facet_grid(model~region)
-  # plot0  <- plot0 + facet_grid(model~.data[[facetCol]])
-  # plot0  <- plot0 + facet_grid(model~.data[["region"]])
+  
+  ###### * Add geoms
+  # plot0  <- plot0 + geom_line(aes(linetype = .data[["variant"]]), alpha=0.5)
+
+  ###### ** Add facet_grid ######
+  plot0  <- plot0 + facet_grid(model~.data[[regCol0]])
   # plot0 |> print()
-  if(byState){
-    plot0  <- plot0 + facet_grid(model~.data[["state"]])
-  } else{
-    plot0  <- plot0 + facet_grid(model~.data[["region"]])
-  }
-  # plot0 |> print()
+  
   ###### ** Adjust legend title ######
   if(hasLgdPos){plot0 <- plot0 + guides(color = guide_legend(title.position = lgdPos))}
   plot0  <- plot0 + theme(legend.direction = "vertical", legend.box = "vertical")
@@ -452,8 +489,7 @@ create_scaledImpact_plot <- function(
   plot0  <- plot0 + scale_x_continuous(xTitle, breaks=x_breaks, limits=x_limits)
   plot0  <- plot0 + scale_y_continuous(y_label)
   plot0  <- plot0 + scale_linetype_discrete("Variant")
-  # plot0  <- plot0 + scale_color_discrete("Variant")
-  # plot0  <- plot0 + scale_color_discrete(lgdLbl)
+  plot0  <- plot0 + scale_shape_discrete("Variant")
   plot0  <- plot0 + scale_color_discrete("Region")
   
   ###### ** Adjust Appearance ######
@@ -489,7 +525,7 @@ create_scaledImpact_plot <- function(
   plot0  <- plot0 + guides(color           = guide_legend(ncol=nLgdCols, order = 2))
   plot0  <- plot0 + theme(legend.box.just  = "left")
   plot0  <- plot0 + theme(legend.title     = element_text(size=10))
-  plot0  <- plot0 + theme(legend.text      = element_text(size=9))
+  plot0  <- plot0 + theme(legend.text      = element_text(size=9 ))
   plot0  <- plot0 + theme(legend.spacing.y = unit(0.05, "cm"))
   # refPlot0  <- refPlot0 + theme(legend.box.margin = margin(t=0.05, r=0.05, b=0.05, l=0.05, unit='cm'))
   
@@ -640,9 +676,15 @@ create_scaledImpact_plots <- function(
   # cSectors |> print(); cVariants |> print(); cImpTypes |> print(); cImpYears |> print(); cStates |> head() |> print(); cModels |> print();
   # c(nSectors, nVariants, nImpTypes, nImpYears, nRegions, nModels, nStates) |> print()
   
+  ### Add maxUnitValue to df_iter
+  # join0         <- c("sector", "variant", "impactType", "impactYear", "region") |> c(stateCols) |> c("model")
+  # df_iter
+  
   ###### Drop Data ######
   ### Join iteration with data and drop models
+  # join0         <- c("sector", "variant", "impactType", "impactYear", "region") |> c(stateCols) |> c("model")
   join0         <- c("sector", "variant", "impactType", "impactYear", "region") |> c(stateCols) |> c("model")
+  join0         <- join0 |> c("maxUnitValue")
   # if(byState){join0 <- join0 |> c("state", "postal")}
   df0           <- df0 |> left_join(df_info, by=c(join0))
   df0           <- df0 |> filter(!is.na(nObs))
@@ -668,9 +710,12 @@ create_scaledImpact_plots <- function(
     col_i    <- df_iter[["column"]][i]
     cCol_i   <- df_iter[["cName" ]][i]
     levels_i <- infoList0[[cCol_i]]
-    df0      <- df0 |> mutate_at(.vars=c(col_i), factor, levels=levels_i)
+    df0      <- df0 |> mutate_at(c(col_i), factor, levels=levels_i)
     rm(i, col_i, cCol_i, levels_i)
   } ### End for(i in df_iter |> row_number())
+  ### Convert maxUnitValue to numeric
+  df0     <- df0 |> mutate_at(c("maxUnitValue"), as.character)
+  df0     <- df0 |> mutate_at(c("maxUnitValue"), as.numeric  )
   
   ###### Plot Title Info ######
   ### Default for now
