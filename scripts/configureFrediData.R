@@ -13,7 +13,8 @@ configureFrediData <- function(
     projectDir = ".",
     save       = FALSE,
     byState    = TRUE,
-    update_sv = TRUE
+    update_sv = TRUE,
+    reshape = T
 ){
   
   ###### Set Arguments ######
@@ -51,7 +52,7 @@ configureFrediData <- function(
     save       = T, 
     silent     = T, 
     outPath    = dataOutDir |> file.path("tmp_sysdata.rda"),
-    reshape    = T,
+    reshape    = reshape,
     extend_all = T
   ) ### End configureSystemData
   

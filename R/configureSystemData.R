@@ -26,7 +26,12 @@ configureSystemData <- function(
   rDataList[["frediData" ]] <- list(name="frediData" , data=list())
   # rDataList[["regionData"]] <- list(name="regionData", data=list())
   rDataList[["stateData" ]] <- list(name="stateData" , data=list())
-    
+  
+  if(reshape){ 
+    rDataList[["rsData_reg" ]] <- list(name="rsData_reg" , data=list())
+    rDataList[["rsData_state" ]] <- list(name="rsData_state" , data=list())
+  }
+  
   ###### Message User ######
   (!silent) |> ifelse("\n", "") |> paste0(msg0, "Creating FrEDI data...") |> message()
   
@@ -43,6 +48,7 @@ configureSystemData <- function(
   
   ### Load state data
   (!silent) |> ifelse("\n", "") |> paste0(msg1, "Loading state-level data...") |> message()
+  
   loadState0    <- loadData(
     fileDir   = fileDir,    ### Path to project
     fileName  = fileName,   ### name of excel file with config information
@@ -56,11 +62,17 @@ configureSystemData <- function(
   ### Reshape region data
   (!silent) |> ifelse("\n", "") |> paste0(msg1, "Reshaping region-level data...") |> message()
   reshapeReg0   <- loadReg0   |> reshapeData(byState=F, silent=silent)
+  if(reshape){ 
+    rDataList[["rsData_reg" ]] <- reshapeReg0
+  }
   rm(loadReg0)
   
   ### Reshape state data
   (!silent) |> ifelse("\n", "") |> paste0(msg1, "Reshaping state-level data...") |> message()
   reshapeState0 <- loadState0 |> reshapeData(byState=T, silent=silent)
+  if(reshape){ 
+    rDataList[["rsData_state" ]] <- reshapeState0
+  }
   rm(loadState0)
   # "got here1" |> print(); return(reshapeState0)
   

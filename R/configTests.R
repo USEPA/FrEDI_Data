@@ -307,8 +307,7 @@ general_config_test <- function(
       } ### End else(!is_list0)
       rm("class0", "is_list0")}
    
-  } ### End if(has_data0)
-  else           {reshape0 <- data.frame()}
+  }  else           {reshape0 <- data.frame()}
   # ### If no reshapedData passed to argument, try to load from file
   # else          {
   #   expr0    <- reshapedFile |> read.csv()
@@ -414,7 +413,7 @@ general_config_test <- function(
     ggtitle("Default SLR Scenario")
   ### GDP Plot: Convert to Billions
   if(byState){
-    gdp_plot <- configuredData$stateData$data[["gdp_default"]] |>
+    gdp_plot <- configuredData$stateData$data[["df_defaultScenario"]] |>
          mutate(gdp_usd = gdp_usd / 1e12) |>
          ggplot() +
          geom_line(aes(x = year, y = gdp_usd)) +
@@ -422,7 +421,7 @@ general_config_test <- function(
          scale_y_continuous("U.S. National GDP (2015$, trillions)") +
          ggtitle("Default GDP Scenario")
   }else{
-    gdp_plot <- configuredData$regionData$data[["gdp_default"]] |>
+    gdp_plot <- configuredData$frediData$data[["gdp_default"]] |>
       mutate(gdp_usd = gdp_usd / 1e12) |>
       ggplot() +
       geom_line(aes(x = year, y = gdp_usd)) +
@@ -444,7 +443,7 @@ general_config_test <- function(
      scale_color_discrete("State") +
      ggtitle("Default Population Scenario")
   }else{
-    pop_plot <- configuredData$regionData$data$pop_default |>
+    pop_plot <- configuredData$frediData$data$pop_default |>
       mutate(reg_pop = reg_pop / 1e6) |>
       ggplot() +
       geom_line(aes(x = year, y = reg_pop, color = region), alpha = 0.75) +
@@ -486,8 +485,8 @@ general_config_test <- function(
 
   ###### Create Scaled Impact Results ######
   ### Get results
-  scaledData  <- configuredData |> get_fredi_sectorOptions_results(byState=byState) 
-  scaledPlots <- configuredData |> get_scaled_impact_plots(byState=byState, save=save)
+  scaledData  <- configuredData |> get_fredi_sectorOptions_results() 
+  scaledPlots <- configuredData |> get_scaled_impact_plots()
   ### Save
   if(save) {
     wbook0 |> addWorksheet(sheetName = "scaledImpacts_data")
@@ -843,7 +842,7 @@ get_scaled_impact_plots <- function(
   ### returnList
   return0   <- list()
   ### Get results
-  results0  <- dataList |> get_fredi_sectorOptions_results(byState = byState)
+  results0  <- dataList |> get_fredi_sectorOptions_results()
   return0[["data"]] <- results0
   # results0 |> glimpse()
   
