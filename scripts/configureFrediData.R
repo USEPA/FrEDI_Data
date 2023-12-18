@@ -13,8 +13,8 @@ configureFrediData <- function(
     projectDir = ".",
     save       = FALSE,
     byState    = TRUE,
-    update_sv = TRUE,
-    reshape = T
+    update_sv  = TRUE,
+    reshape    = TRUE
 ){
   
   ###### Set Arguments ######
@@ -37,18 +37,15 @@ configureFrediData <- function(
   dataOutName <- "sysdata"  |> paste0(".rda")
   dataOutPath <- dataOutDir |> file.path(dataOutName)
   
+  
   ###### 0. Load FrEDI Data Code ###### 
   ### Load FrEDI Data Code
   projectDir |> devtools::load_all()
   
   
-  
-  ###### 1. Load Excel Data ######
-  ###### 2. Reshape Loaded Data ######
-  ###### 3. Configure Data ######
-  
+  ###### 1. Configure Data ######
   list_systemData0 <- dataInDir |> configureSystemData(
-    fileName=dataInName, 
+    fileName   = dataInName, 
     save       = T, 
     silent     = T, 
     outPath    = dataOutDir |> file.path("tmp_sysdata.rda"),
@@ -56,8 +53,10 @@ configureFrediData <- function(
     extend_all = T
   ) ### End configureSystemData
   
+  ### Add to return list
   returnList[["systemDataList"]] <- list_systemData0
   
+  ### Update system data
   if(update_sv){
     update_sysdata(
       save    = TRUE,
@@ -65,54 +64,32 @@ configureFrediData <- function(
     ) ### End update_sysdata
   } ### End if(update_sv)
   
-  ###### 4. Run General Tests on Data ######
+  ###### 2. Run General Tests on Data ######
+  ### Run general tests
   test_general_config <- general_config_test(
     configuredData = list_systemData0,
-    byState        =  byState,
+    byState        = byState,
     save           = save,
     overwrite      = TRUE,
     xlsxName       = "generalConfig_testResults.xlsx",
     fredi_config   = fredi_config
   )
-  ### General tests
+  
+  ### Add to return list
   returnList[["generalConfigTests"]] <- test_general_config
   
-  # ###### 5. Load Reference Data ######
-  # ### Load ref data
-  # newEnv_ref  <- new.env()
-  # dataOutPath |> load(verbose = F, envir=newEnv_ref)
-  # # ls(envir=newEnv_ref) |> print()
-  # refDataList <- "rDataList" |> get(envir=newEnv_ref, inherits = F)
-  # # ls() |> print(); refDataList |> names() |> print()
-  # rm("newEnv_ref")
-  # # dataOutPath |> source(encoding="utf-8")
-  # # source(dataOutPath)
-  # # rDataList |> names() %>% print()
-  # # refDataList <- rDataList
+  ###### 3. Drop Reshaped Data ######
+  rDataList    <- list_systemData0[["rDataList"]]
+  drop0        <- c("rsData_reg", "rsData_state")
+  inDrop0      <- (rDataList |> names()) %in% drop0
+  rDataList    <- rDataList[!inDrop0]
+  ### Update list
+  list_systemData0[["rDataList"]] <- rDataList
+  ### Save list
+  sysDataFile  <- dataOutDir |> file.path("tmp_sysdata.rda")
+  save(fredi_config, rDataList, file=sysDataFile)
   
-  ###### 6. Run New Sector Tests on Data ######
-  ###### Determine if tests need to be run
-  # df_sectors_new <- list_systemData0[["co_sectors"]][["sector_id"]]
-  # df_sectors_ref <- refDataList[["co_sectors"]][["sector_id"]]
-  # df_sectors_new |> glimpse(); df_sectors_ref |> glimpse()
-  # c_sectors_new  <- df_sectors_new |> unique()
-  # c_sectors_ref  <- df_sectors_ref |> unique()
-  # hasNewSectors  <- (c_sectors_new %in% c_sectors_ref) |> all()
-  # doNewTest      <- !hasNewSectors
-  # ###### Run test if there are new sectors
-  # if(doNewTest){
-  #   test_newSectors_config <- newSectors_config_test(
-  #     newData     = list_systemData0,
-  #     refDataFile = dataOutPath,
-  #     xslxName    = "newSectorsConfig_testResults.xlsx",
-  #     save        = save_test,
-  #     return      = return_test
-  #   )
-  # }
-  # ### New sector tests
-  # returnList[["newSectorConfigTests"]] <- test_general_config
-  
-  ###### 7. Create Images of scaled impacts ######
+  ###### 4. Create Images of Scaled Impacts ######
   ### Test create results
   testResults  <- list_systemData0 |> get_fredi_sectorOptions_results(); testResults |> glimpse()
   
@@ -132,9 +109,9 @@ configureFrediData <- function(
   # ### Test get plots
   # testPlots    <- list_systemData0 |> get_scaled_impact_plots(save=T)
   # 
+  
   ###### Return ######
   return(returnList)
-  
 }
 
 ###### End script ######
