@@ -404,8 +404,8 @@ create_scaledImpact_plot <- function(
   if(!hasTheme  ){theme0  <- def_theme }
   # xTitle |> print()
   ###### Standardize column names ######
-  # title0 <- byState |> ifelse(state0, region0)
-  title0 <- "Region: " |> paste0(region0)
+  # title0   <- byState |> ifelse(state0, region0)
+  title0   <- "Region: " |> paste0(region0)
   
   ###### Create the plot ######
   # colorCol |> print(); def_lgdLbl |> print()
@@ -414,7 +414,7 @@ create_scaledImpact_plot <- function(
   groups0  <- c("sector", "variant", "impactType", "impactYear", "region", "model", "maxUnitValue", xCol)
   facetCol <- byState |> ifelse("state", "region") 
   if(byState){groups0 <- groups0 |> c("state")} 
-  df0    <- df0 |> group_by_at(c(groups0))
+  df0      <- df0 |> group_by_at(c(groups0))
   rm(groups0)
   
   ### Points dataframe
@@ -422,7 +422,7 @@ create_scaledImpact_plot <- function(
   else      {df_points0 <- df0}
   
   ###### ** Initialize plot ######
-  plot0  <- ggplot()
+  # plot0  <- ggplot()
   # if(byState){
   #   plot0  <- df0 |> ggplot(aes(x=.data[[xCol]], y=.data[[yCol]], color=.data[["state"]], group=interaction(sector, variant, impactType, impactYear, region, state, model)))
   # } else{
@@ -439,13 +439,19 @@ create_scaledImpact_plot <- function(
   
   ###### ** Add geoms ######
   if(do_slr){
+    ### Points data
     plot0  <- df0 |> ggplot(aes(x=.data[[xCol]], y=.data[[yCol]], color=.data[[regCol0]], group=interaction(!!!syms(group0))))
+    plot0  <- plot0 + geom_line(alpha=0.65)
+    plot0  <- plot0 + geom_point(data=df_points0, aes(x=.data[[xCol]], y=.data[[yCol]], color=.data[[regCol0]], group=interaction(!!!syms(group0)), shape=model), alpha=0.65)
+    rm(df0_2)
   } else{
+    ### Initialize plot
+    plot0  <- ggplot()
     ### Separate GCM values
     ### Plot these values as lines
-    df0_1 <- df0 |> filter((maxUnitValue < 6 & driverValue <= maxUnitValue) | maxUnitValue >=6) 
+    df0_1  <- df0 |> filter((maxUnitValue < 6 & driverValue <= maxUnitValue) | maxUnitValue >=6) 
     ### Plot these values as points
-    df0_2 <- df0 |> filter((maxUnitValue < 6 & driverValue >= maxUnitValue))
+    df0_2  <- df0 |> filter((maxUnitValue < 6 & driverValue >= maxUnitValue))
     ### Plot values as lines
     plot0  <- plot0 + geom_line(
       data = df0_1,
@@ -455,7 +461,7 @@ create_scaledImpact_plot <- function(
         color    = .data[[regCol0]], 
         group    = interaction(!!!syms(group0)), 
         linetype = .data[["variant"]]
-        ), alpha=0.5 ### End aes
+        ), alpha=0.65 ### End aes
       ) ### End geom_line
     ### Plot values as points
     plot0  <- plot0 + geom_point(
@@ -466,8 +472,9 @@ create_scaledImpact_plot <- function(
         color    = .data[[regCol0]], 
         group    = interaction(!!!syms(group0)), 
         shape   = .data[["variant"]]
-      ), alpha=0.5 ### End aes
+      ), alpha=0.65 ### End aes
     ) ### End geom_line
+    rm(df0_1, df0_2)
   }
   
   
@@ -498,6 +505,8 @@ create_scaledImpact_plot <- function(
   plot0  <- plot0 + theme(axis.title.x  = element_text(hjust = 0.5, size=9))
   plot0  <- plot0 + theme(axis.title.y  = element_text(hjust = 0.5, size=9))
   plot0  <- plot0 + theme(legend.position = "bottom")
+  
+  if(do_slr){plot0 <- plot0 + theme(axis.text.x = element_text(angle=90))}
   
   ###### ** Add Themes & Margins ######
   ### Theme
