@@ -121,9 +121,8 @@ configureSystemData <- function(
   ###### Drop Reshaped Data Objects ######
   drop0        <- c("rsData_reg", "rsData_state")
   inDrop0      <- (rDataList |> names()) %in% drop0
-  returnList   <- rDataList
+  returnList <- rDataList
   rDataList    <- rDataList[!inDrop0]
-  
   ###### Save to File ######
   ### Save R Data objects
   ### If save:

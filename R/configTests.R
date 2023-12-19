@@ -307,7 +307,7 @@ general_config_test <- function(
       } ### End else(!is_list0)
       rm("class0", "is_list0")}
    
-  }  else           {reshape0 <- data.frame()}
+  }  else {reshape0 <- data.frame()}
   # ### If no reshapedData passed to argument, try to load from file
   # else          {
   #   expr0    <- reshapedFile |> read.csv()

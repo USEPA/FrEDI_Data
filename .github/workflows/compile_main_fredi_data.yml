@@ -14,11 +14,7 @@ on:
       branch_name:
         type: string
         description: Which FrEDI Package branch do you want to use?
-      reshape_test:
-        description: Do you want to run the reshape data test?
-        type: boolean
-        required: false
-        default: true
+
 jobs:
   compile_data:
     runs-on: ubuntu-latest
@@ -65,7 +61,7 @@ jobs:
           projectDir <- "."
           scriptDir  <- projectDir |> file.path("scripts")
           scriptDir |> file.path("configureFrediData.R") |> source()
-          test0      <- projectDir |> configureFrediData(save=T, reshape = ifelse("${{ github.event.inputs.reshape_test }}" == "true",TRUE,FALSE))
+          test0      <- projectDir |> configureFrediData(save=T)
           "./data_tests/" |> list.files() |> print()
           "./data/" |> list.files() |> print()
           '

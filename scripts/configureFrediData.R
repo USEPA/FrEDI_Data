@@ -13,7 +13,7 @@ configureFrediData <- function(
     projectDir = ".",
     save       = FALSE,
     byState    = TRUE,
-    update_sv  = TRUE,
+    #update_sv  = TRUE,
     reshape    = TRUE
 ){
   
@@ -50,7 +50,8 @@ configureFrediData <- function(
     silent     = T, 
     outPath    = dataOutDir |> file.path("tmp_sysdata.rda"),
     reshape    = reshape,
-    extend_all = T
+    extend_all = T,
+    return = T
   ) ### End configureSystemData
   
   ### Add to return list
@@ -66,6 +67,7 @@ configureFrediData <- function(
     xlsxName       = "generalConfig_testResults.xlsx",
     fredi_config   = fredi_config
   )
+  
   
   ### Add to return list
   returnList[["generalConfigTests"]] <- test_general_config
