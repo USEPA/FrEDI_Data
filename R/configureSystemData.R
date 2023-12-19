@@ -118,6 +118,12 @@ configureSystemData <- function(
   rDataList[["stateData" ]][["data"]] <- sysDataList0
   rm(frediNames0, frediList0, sysDataList0)
   
+  ###### Drop Reshaped Data Objects ######
+  drop0        <- c("rsData_reg", "rsData_state")
+  inDrop0      <- (rDataList |> names()) %in% drop0
+  returnList   <- rDataList
+  rDataList    <- rDataList[!inDrop0]
+  
   ###### Save to File ######
   ### Save R Data objects
   ### If save:
@@ -141,5 +147,5 @@ configureSystemData <- function(
   
   ###### Return ######
   "...Finished running configureSystemData()." |> message()
-  return(rDataList)
+  return(returnList)
 }

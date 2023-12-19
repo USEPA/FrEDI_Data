@@ -56,14 +56,6 @@ configureFrediData <- function(
   ### Add to return list
   returnList[["systemDataList"]] <- list_systemData0
   
-  ### Update system data
-  if(update_sv){
-    update_sysdata(
-      save    = TRUE,
-      outPath = dataOutDir
-    ) ### End update_sysdata
-  } ### End if(update_sv)
-  
   ###### 2. Run General Tests on Data ######
   ### Run general tests
   test_general_config <- general_config_test(
@@ -89,7 +81,16 @@ configureFrediData <- function(
   sysDataFile  <- dataOutDir |> file.path("tmp_sysdata.rda")
   save(fredi_config, rDataList, file=sysDataFile)
   
-  ###### 4. Create Images of Scaled Impacts ######
+  ###### 4. Add SV Data ######
+  ### Update system data: Added in another step
+  # if(update_sv){
+  #   update_sysdata(
+  #     save    = TRUE,
+  #     outPath = dataOutDir
+  #   ) ### End update_sysdata
+  # } ### End if(update_sv)
+  
+  ###### 5. Create Images of Scaled Impacts ######
   ### Test create results
   testResults  <- list_systemData0 |> get_fredi_sectorOptions_results(); testResults |> glimpse()
   
