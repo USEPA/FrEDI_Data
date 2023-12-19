@@ -70,16 +70,16 @@ configureFrediData <- function(
   ### Add to return list
   returnList[["generalConfigTests"]] <- test_general_config
   
-  ###### 3. Drop Reshaped Data ######
-  rDataList    <- list_systemData0[["rDataList"]]
-  drop0        <- c("rsData_reg", "rsData_state")
-  inDrop0      <- (rDataList |> names()) %in% drop0
-  rDataList    <- rDataList[!inDrop0]
-  ### Update list
-  list_systemData0[["rDataList"]] <- rDataList
-  ### Save list
-  sysDataFile  <- dataOutDir |> file.path("tmp_sysdata.rda")
-  save(fredi_config, rDataList, file=sysDataFile)
+  # ###### 3. Drop Reshaped Data ######
+  # rDataList    <- list_systemData0[["rDataList"]]
+  # drop0        <- c("rsData_reg", "rsData_state")
+  # inDrop0      <- (rDataList |> names()) %in% drop0
+  # rDataList    <- rDataList[!inDrop0]
+  # ### Update list
+  # list_systemData0[["rDataList"]] <- rDataList
+  # ### Save list
+  # sysDataFile  <- dataOutDir |> file.path("tmp_sysdata.rda")
+  # save(fredi_config, rDataList, file=sysDataFile)
   
   ###### 4. Add SV Data ######
   ### Update system data: Added in another step
