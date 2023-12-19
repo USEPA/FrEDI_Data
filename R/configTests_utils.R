@@ -422,7 +422,7 @@ create_scaledImpact_plot <- function(
   else      {df_points0 <- df0}
   
   ###### ** Initialize plot ######
-  plot0  <- ggplot()
+  # plot0  <- ggplot()
   # if(byState){
   #   plot0  <- df0 |> ggplot(aes(x=.data[[xCol]], y=.data[[yCol]], color=.data[["state"]], group=interaction(sector, variant, impactType, impactYear, region, state, model)))
   # } else{
@@ -440,7 +440,10 @@ create_scaledImpact_plot <- function(
   ###### ** Add geoms ######
   if(do_slr){
     plot0  <- df0 |> ggplot(aes(x=.data[[xCol]], y=.data[[yCol]], color=.data[[regCol0]], group=interaction(!!!syms(group0))))
+    plot0  <- plot0 + geom_line() + geom_point(aes(shape=model))
   } else{
+    ### Initialize plot
+    plot0  <- ggplot()
     ### Separate GCM values
     ### Plot these values as lines
     df0_1 <- df0 |> filter((maxUnitValue < 6 & driverValue <= maxUnitValue) | maxUnitValue >=6) 
