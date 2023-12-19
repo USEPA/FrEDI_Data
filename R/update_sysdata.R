@@ -31,7 +31,7 @@ update_sysdata <- function(
   ### SV demo data
   ### SV pop data
   ### format data
-  sysDataName     <- "sysdata" %>% paste0(".", rDataExt)
+  sysDataName     <- "tmp_sysdata" %>% paste0(".", rDataExt)
 
   ###### List of Objects ######
   df_sv <- data.frame(

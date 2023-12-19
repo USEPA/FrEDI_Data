@@ -21,7 +21,7 @@ update_svDataObjects <- function(
   ###### Code path
   codeDir     <- projectDir |> file.path("R")
   codeNames   <- codeDir    |> list.files(".R", full.names = T)
-  codePaths   <- codeDir    |> file.path(codeNames)
+  codePaths   <-  file.path(codeNames)
   ###### Data output path and file name
   dataOutDir  <- projectDir |> file.path("data", "sv")
   

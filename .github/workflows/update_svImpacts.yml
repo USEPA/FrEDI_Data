@@ -15,7 +15,9 @@ on:
           - Roads
           - High Tide Flooding and Traffic
           - Coastal Properties
-
+        branch_name:
+         type: string
+         description: Which FrEDI Package branch do you want to use?
 jobs:
   compile_data:
     runs-on: ubuntu-latest
@@ -41,6 +43,7 @@ jobs:
           cache-version: 1
           packages: |
             any::tidyverse
+            any::ggpubr
             any::openxlsx
             any::devtools
       
@@ -48,7 +51,7 @@ jobs:
         run: |
           Rscript -e 'devtools::install_github( 
               repo         = "https://github.com/USEPA/FrEDI", 
-              ref          = "main", 
+              ref          = "${{ github.event.inputs.branch_name }}", 
               subdir       = "FrEDI", 
               dependencies = FALSE,
               upgrade      = "never", 
@@ -60,7 +63,8 @@ jobs:
         run: |
           Rscript -e '
             source("./scripts/update_svImpactLists.R")
-            fpath1      <- getwd()
+            fpath1      <- "."
+            fpath1 |> print()
             sectors1    <- c("${{ github.event.inputs.svSectors }}")
             list1       <- update_svImpactLists(
               fpath0  = fpath1,
