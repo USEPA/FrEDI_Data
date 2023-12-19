@@ -439,8 +439,11 @@ create_scaledImpact_plot <- function(
   
   ###### ** Add geoms ######
   if(do_slr){
+    ### Points data
     plot0  <- df0 |> ggplot(aes(x=.data[[xCol]], y=.data[[yCol]], color=.data[[regCol0]], group=interaction(!!!syms(group0))))
-    plot0  <- plot0 + geom_line(alpha=0.65) + geom_point(aes(shape=model), alpha=0.65)
+    plot0  <- plot0 + geom_line(alpha=0.65)
+    plot0  <- plot0 + geom_point(data=df_points0, aes(x=.data[[xCol]], y=.data[[yCol]], color=.data[[regCol0]], group=interaction(!!!syms(group0)), shape=model), alpha=0.65)
+    rm(df0_2)
   } else{
     ### Initialize plot
     plot0  <- ggplot()
@@ -471,6 +474,7 @@ create_scaledImpact_plot <- function(
         shape   = .data[["variant"]]
       ), alpha=0.65 ### End aes
     ) ### End geom_line
+    rm(df0_1, df0_2)
   }
   
   
@@ -501,6 +505,8 @@ create_scaledImpact_plot <- function(
   plot0  <- plot0 + theme(axis.title.x  = element_text(hjust = 0.5, size=9))
   plot0  <- plot0 + theme(axis.title.y  = element_text(hjust = 0.5, size=9))
   plot0  <- plot0 + theme(legend.position = "bottom")
+  
+  if(do_slr){plot0 <- plot0 + theme(axis.text.x = element_text(angle=90))}
   
   ###### ** Add Themes & Margins ######
   ### Theme
