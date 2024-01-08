@@ -36,7 +36,7 @@ update_svImpactLists <- function(
     pop         = F,
     format      = F,
     impacts     = T,
-    sectors     - sectors,
+    sectors     = sectors,
     save        = save, 
     return      = return
   )
