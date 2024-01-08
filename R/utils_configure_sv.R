@@ -690,9 +690,9 @@ get_svImpactsList <- function(
   } ### End if(!dataFileExists)
 
   ###### Load Data from CSV ######
-  msg1 %>% paste0("Loading data from `dataFile=", dataFile, "` in `dataPath='", dataPath,"'`...") %>% message()
-  df_data <- dataFilePath %>% read.csv()
-  rows0   <- df_data %>% nrow()
+  msg1 |> paste0("Loading data from `dataFile=", dataFile, "` in `dataPath='", dataPath,"'`...") |> message()
+  df_data <- dataFilePath |> read.csv()
+  rows0   <- df_data |> nrow()
 
   ###### Load SV Data ######
   ### Load sv data "svData"
