@@ -780,7 +780,7 @@ get_svImpactsList <- function(
   ### Start system time
   ### Initialize impact list
   ### Iterate over values
-  msg1 %>% paste0("Creating impacts lists...") %>% message()
+  msg1 |> paste0("Creating impacts lists...") |> message()
   sysTime1    <- Sys.time()
   ### Initialize list
   impactsList <- list()
@@ -847,11 +847,11 @@ get_svImpactsList <- function(
         # df_new_i |> print
         ### Bind the new observations with the other observations
         df_i <- df_i |> rbind(df_new_i)
-        rm("df_ref_i", "lm_i", "x_new_i", "y_new_i", "df_new_i")
+        rm(df_ref_i, lm_i, x_new_i, y_new_i, df_new_i)
         ### Sort and get new y value to extend to
         which_i <- (df_i$xIn == extend_h$to) |> which()
         yMaxNew <- df_i$yIn[which_i]
-        rm("which_i")
+        rm(which_i)
       } ### End if(extrapolate)
       ### Get approximation function
       fun_i        <- approxfun(
