@@ -156,6 +156,8 @@ get_svDataList <- function(
       ### Calculate global values
       ### Calculate sea level rise
       df_scen_i <- x_i |> approx(y = y_i, xout = c_years)
+      # df_scen_i |> glimpse()
+      df_scen_i <- df_scen_i |> as.data.frame() |> as_tibble()
       df_scen_i <- df_scen_i |> rename(year = x, temp_C_conus = y)
       df_scen_i <- df_scen_i |> mutate(temp_C_global = temp_C_conus |> (function(y){FrEDI::convertTemps(y, from = "conus")})())
       df_scen_i <- df_scen_i |> (function(y){
@@ -174,29 +176,38 @@ get_svDataList <- function(
   rm(gcamScenarios)
 
   ###### Format the SV Data ######
-  msg1 %>% paste0("Formatting SV data...") %>% message()
+  msg1 |> paste0("Formatting SV data...") |> message()
   c_svDataTables <- c("svData", "svDataCoastal")
   ### Iterate over tables
   for(name_i in c_svDataTables){
-    msg1 %>% paste0("\t", "Formatting ", name_i ,"...") %>% message()
-    # name_i %>% print()
-    table_i    <- svDataList[[name_i]] #; names(table_i) %>% print
-    info_i     <- svDataList[["svDemoInfo"]]; #info_i %>% names %>% print
-    orderCol_i <- (name_i=="svData") |> ifelse("colOrder_excel", "colOrder_coastal")
+    msg1 |> paste0("\t", "Formatting ", name_i ,"...") |> message()
+    # name_i |> print()
+    table_i    <- svDataList[[name_i]] #; table_i |> names() |> print()
+    info_i     <- svDataList[["svDemoInfo"]]; #info_i |> names() |> print()
+    # info_i |> glimpse()
 
     ### Exclude missing columns
+    # name_i |> print()
+    orderCol_i <- (name_i=="svData") |> ifelse("colOrder_excel", "colOrder_coastal")
     order_i    <- info_i[[orderCol_i]]
-    which_i    <- !(order_i |> is.na()) %>% which()
+    which_i    <- (!(order_i |> is.na())) |> which()
+    # order_i |> print(); which_i |> print()
+    # order_i    <- info_i[,orderCol_i] |> as.vector()
+    # which_i    <- !(order_i |> is.na()) |> which()
+    # info_i     <- info_i[which_i,]
     info_i     <- info_i[which_i,]
 
-    ### Order columns
-    order_i    <- order_i[which_i]
-    info_i     <- info_i[order_i,]
+    # ### Order columns
+    # order_i    <- order_i[which_i]
+    # info_i     <- info_i[order_i,]
     nchar_i    <- (name_i=="svData") |> ifelse(10, 11)
-    # info_i$colName %>% print()
-    names(table_i) <- info_i$colName
+    # info_i$colName |> print()
+    # names(table_i) <- info_i$colName
+    # table_i |> glimpse(); info_i |> glimpse()
+    table_i    <- table_i |> set_names(info_i$colName)
 
     ### Remove "County", "Parish", and "city"
+    # table_i |> glimpse()
     table_i <- table_i |> rename(svCounty = county)
     ### Standardize formatting
     table_i <- table_i |> mutate(county   = svCounty |> (function(x){gsub(" County", "", x)})())
@@ -483,6 +494,7 @@ get_svPopList <- function(
   iclus_region_pop <- c_regions |> map(function(region_i, df_x=iclus_region_pop, years = c_intYears){
     df_i1   <- df_x  |> filter(region == region_i)
     df_i2   <- approx(x = df_i1$year, y = df_i1$region_pop, xout = years)
+    df_i2   <- df_i2 |> as.data.frame() |> as_tibble()
     ### Rename and mutate
     df_i2   <- df_i2 |> rename(year = x, region_pop = y)
     df_i2   <- df_i2 |> mutate(region = region_i)
@@ -506,10 +518,11 @@ get_svPopList <- function(
     df_i1    <- df_x |> filter(state == state_i)
     region_i <- df_i1$region |> unique()
     df_i2    <- approx(x = df_i1$year, y = df_i1$state_pop, xout = years)
+    df_i2    <- df_i2 |> as.data.frame() |> as_tibble()
     ### Rename and mutate
-    df_i2   <- df_i2 |> rename(year = x, state_pop = y)
-    df_i2   <- df_i2 |> mutate(region = region_i)
-    df_i2   <- df_i2 |> mutate(state  = state_i)
+    df_i2    <- df_i2 |> rename(year = x, state_pop = y)
+    df_i2    <- df_i2 |> mutate(region = region_i)
+    df_i2    <- df_i2 |> mutate(state  = state_i)
     ## Return
     return(df_i2)
   }) |> bind_rows()
@@ -538,6 +551,7 @@ get_svPopList <- function(
   ### Unique regions
   msg1 %>% paste0("\t", "Creating functions...") %>% message()
   x_regions   <- iclusData$region %>% unique()
+  # iclusData |> glimpse()
   for(i in 1:length(x_regions)){
     region_i  <- x_regions[i]
     df_i      <- iclusData  %>% filter(region==region_i)
@@ -567,7 +581,8 @@ get_svPopList <- function(
       for(k in 1:length(geoids_j)){
         geoid_k  <- geoids_j[k] |> as.character()
         df_k     <- df_i |> filter(state==state_j) |> filter(as.character(geoid10) == geoid_k)
-        county_k <- (df_k$iclusCounty |> unique())[1]
+        # county_k <- (df_k$iclusCounty |> unique())[1]
+        county_k <- (df_k$county |> unique())[1]
 
         ### Create list and add to state
         x_k <- df_k$year
