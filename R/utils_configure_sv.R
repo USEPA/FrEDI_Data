@@ -659,7 +659,8 @@ get_svImpactsList <- function(
     # modelType = "gcm",
     # svData     = NULL,
     sector     = NULL,
-    svInfo     = NULL,
+    svDataList = NULL,
+    # svInfo     = NULL,
     save       = F,
     return     = T,
     msg0       = "",
@@ -696,16 +697,27 @@ get_svImpactsList <- function(
 
   ###### Load SV Data ######
   ### Load sv data "svData"
-  if(svInfo |> is.null()){
-    df_sv_path <- outPath |> file.path("..", "..", "R", "svDataList.rda")
+  # hasSvInf0 <- !(svInfo |> is.null())
+  hasSvInf0 <- !(svDataList |> is.null())
+  if(!hasSvInf0){
+    # outPath |> list.files() |> print()
+    df_sv_path <- outPath |> file.path("..", "svDataList.rda")
     df_sv_path |> load()
-    if(sector == "Coastal Properties"){
-      svInfo <- svDataList$svDataCoastal
-    } else{
-      svInfo <- svDataList$svData
-    } ### End else
-    # svInfo$fips |> unique() |> head() |> print()
+    # # df_sv_path |> print()
+    # if(sector == "Coastal Properties"){
+    #   svInfo <- svDataList$svDataCoastal
+    # } else{
+    #   svInfo <- svDataList$svData
+    # } ### End else
+    # # svInfo$fips |> unique() |> head() |> print()
   } ### End if(svInfo |> is.null())
+  
+  ### Assign data objects
+  if(sector == "Coastal Properties"){
+    svInfo <- svDataList$svDataCoastal
+  } else{
+    svInfo <- svDataList$svData
+  } ### End else
 
   ### Rename block_group
   if(sector=="Coastal Properties"){df_data <- df_data |> rename(tract = block_group)}
@@ -799,6 +811,7 @@ get_svImpactsList <- function(
   # from_h   <- extend_i$from; to_h <- extend_h$to; rm("extend_h")
   ### Iterate
   for(i in 1:n_fips){
+  # for(i in 1:1e3){
     ### Message about status
     check_i <- (i / n_fips * 1e2) |> ceiling()
     which_status_i <- (i == status_pcts) |> which()
@@ -839,12 +852,12 @@ get_svImpactsList <- function(
         ### - Interpolate the last few values and get linear trend
         df_ref_i  <- df_i[len_i + -1:0,]
         lm_i      <- lm(yIn~xIn, data=df_ref_i)
-        # df_ref_i |> print
+        # df_ref_i |> print()
         ### Extend values
         x_new_i   <- seq(xIn_max + extend_h$unitScale, extend_h$to, extend_h$unitScale)
         y_new_i   <- x_new_i * lm_i$coefficients[2] + lm_i$coefficients[1]
         df_new_i  <- tibble(xIn = x_new_i, yIn = y_new_i)
-        # df_new_i |> print
+        # df_new_i |> print()
         ### Bind the new observations with the other observations
         df_i <- df_i |> rbind(df_new_i)
         rm(df_ref_i, lm_i, x_new_i, y_new_i, df_new_i)
@@ -862,9 +875,11 @@ get_svImpactsList <- function(
         yright = yMaxNew
       ) ### End approxfun
       impactsList[[fips_i]] <- fun_i
+      ### Rest the system
+      Sys.sleep(1e-6)
     } ### End else(length_there < 2)
-    ### Rest the system
-    Sys.sleep(1e-4)
+    # ### Rest the system
+    # Sys.sleep(1e-4)
   } ### End for(i in 1:n_fips)
   sysTime2  <- Sys.time()
   deltaTime <- (sysTime2 - sysTime1)

@@ -44,6 +44,7 @@ createSVData <- function(
   
   ###### SV Demographic Data ######
   ### Create or load SV demographic data
+  # sv_filePath |> print()
   if(sv){
     svDataList  <- get_svDataList(
       save    = save, 
@@ -128,30 +129,32 @@ createSVData <- function(
         paste0(ifelse(is.na(variant_abbr_i), "", "_")) |>
         paste0(ifelse(is.na(variant_abbr_i), "", variant_abbr_i))
       
-      # outfile_i     <- outName_i %>% paste(rDataExt, sep=".")
-      outfile_i     <- outName_i %>% paste0(".", rDataExt)
+      # outfile_i     <- outName_i |> paste(rDataExt, sep=".")
+      outfile_i     <- outName_i |> paste0(".", rDataExt)
       
-      ### SV Data
-      hasSVDataList <- !(svDataList |> is.null())
-      if(hasSVDataList){
-        if(sector_i == "Coastal Properties"){
-          paste0("Using coastal properties data") |> print()
-          svInfo <- svDataList$svDataCoastal  
-        } else{
-          svInfo <- svDataList$svData  
-        } ### End if(sector_i == "Coastal Properties")
-        # svInfo$fips |> unique |> head |> print
-      } else{
-        svInfo <- NULL
-      } ### End if(hasSVDataList)
-      
+      # ### SV Data
+      # hasSVDataList <- !(svDataList |> is.null())
+      # if(hasSVDataList){
+      #   if(sector_i == "Coastal Properties"){
+      #     paste0("Using coastal properties data...") |> print()
+      #     svInfo <- svDataList$svDataCoastal  
+      #   } else{
+      #     "got here" |> print()
+      #     svInfo <- svDataList$svData  
+      #   } ### End if(sector_i == "Coastal Properties")
+      #   # svInfo$fips |> unique |> head |> print
+      # } else{
+      #   svInfo <- NULL
+      # } ### End if(hasSVDataList)
+      # svInfo |> names() |> print()
       
       ### Create impacts list
       impactsList <- get_svImpactsList(
         dataFile   = infile_i, 
         dataPath   = extDataPath |> file.path("impacts"),
         outFile    = outName_i,
-        svInfo     = svInfo, 
+        svDataList = svDataList, 
+        # svInfo     = svInfo, 
         createList = T, 
         sector     = sector_i,
         rDataExt   = "rds", 
