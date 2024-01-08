@@ -103,7 +103,6 @@ get_sv_sectorInfo <- function(
 ### Created 2022.02.14. Last updated 2022.02.14
 ### This function attempts to load a user-specified input file
 ### Use this function to calculate tract level impacts
-
 calc_countyPop <- function(
     regPop,  ### Dataframe of population projection
     funList, ### Dataframe of population projections
@@ -130,7 +129,7 @@ calc_countyPop <- function(
       df_j <- df_j |> mutate(state = state_j, region  = region_i)
 
       ### Get list of counties in the state
-      geoids_j      <- funList[[region_i]][[state_j]]$county2state |> names
+      geoids_j      <- funList[[region_i]][[state_j]]$county2state |> names()
       statePop_j    <- geoids_j |> map(function(geoid_k){
         fun_k <- funList[[region_i]][[state_j]]$county2state[[geoid_k]]
         has_k <- !(fun_k |> is.null())
@@ -138,7 +137,7 @@ calc_countyPop <- function(
         df_k  <- tibble(year = years_i, ratioCounty2StatePop = y_k)
         df_k  <- df_k |> mutate(state = state_j, geoid10 = geoid_k)
         return(df_k)
-      }) |> (function(z){do.call(rbind, z)})
+      }) |> bind_rows()
       ### Join with state population
       df_j <- df_j |> left_join(statePop_j, by = c("state", "year"))
       return(df_j)
@@ -150,6 +149,7 @@ calc_countyPop <- function(
     ### Return
     return(df_i)
   }) |> bind_rows()
+
   ### Return
   # x_popProj <- x_popProj |> as.data.frame
   return(x_popProj)
@@ -317,7 +317,7 @@ calc_tractImpacts <- function(
   x_impacts   <- x_impacts |> select(-all_of(c_dropCols1))
   # (x_impacts$tract_totPop != 0) |> which() |> length() |> print()
   rm(c_dropCols1)
-  
+
   ###### Non-Meaningful Groups ######
   ### Convert values for non-meaningful SV groups to zero
   if     (sector=="Air Quality - Childhood Asthma"   ) {
@@ -421,7 +421,7 @@ calc_tractImpacts <- function(
   # x_impacts   <- x_impacts |> gather(key = "svGroupType", value = "svRatio2Ref", c(all_of(svGroups)))
   x_impacts   <- x_impacts |> pivot_longer(
     cols      = c(svGroups),
-    names_to  = "svGroupType", 
+    names_to  = "svGroupType",
     values_to = "svRatio2Ref"
   ) ### End pivot_longer
 
@@ -464,7 +464,7 @@ calc_tractImpacts <- function(
     x_impacts    <- x_impacts |> rename_at(vars(sumCols0), ~gsub("tract_", "", sumCols0));
     rm(sumCols0, groupCols0, select0)
 
-    ###### Average Rates ######
+    ###### Average Rates
     ### Convert 0 values to NA and then to zero
     rateCols0    <- c("aveRate") |> paste(c_suffix0, sep="_")
     c_impPop1    <- gsub("tract_", "", c_impPop1)
