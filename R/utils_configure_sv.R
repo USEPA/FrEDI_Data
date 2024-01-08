@@ -666,8 +666,8 @@ get_svImpactsList <- function(
     msg0       = "",
     extrapolate = TRUE, ### Whether to extrapolate cold models
     extend     = list(
-      gcm = list(from = 6  , to = 20 , unitScale = 1),
-      slr = list(from = 200, to = 250, unitScale = 50)
+      gcm = list(from = 6  , to = 30  , unitScale = 1),
+      slr = list(from = 200, to = 1000, unitScale = 50)
     ) ### End list
 ){
   msg0 |> paste0("Running get_svImpactsList():", "\n") |> message()
