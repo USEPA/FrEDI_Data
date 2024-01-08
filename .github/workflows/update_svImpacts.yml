@@ -13,7 +13,7 @@ on:
           - Labor
           - Extreme Temperature
           - Roads
-          - High Tide Flooding and Traffic
+          - Transportation Impacts from High Tide Flooding
           - Coastal Properties
         branch_name:
          type: string
