@@ -47,7 +47,8 @@ jobs:
         if: |
           github.event.inputs.passed_tests == 'true'
         run:  |
-          git rm data/sysdata.rda
+          Rscript -e '"." |> file.path("data") |> list.files() |> print()'
+          rm data/sysdata.rda
           git mv data/tmp_sysdata.rda data/sysdata.rda
 
       - name: Add SV Data to sysdata
