@@ -317,7 +317,7 @@ create_scaledImpact_plot <- function(
   do_xInfo   <- is.null(xInfo)
   if(do_xInfo){
     if(xCol == "year"){
-      x_limits   <- c(2010, 2090)
+      x_limits   <- c(2000, 2100)
       x_breaks <- seq(x_limits[1] - 10, x_limits[2] + 10, by = 20)
       x_denom  <- 1
     } ### End if(xCol == "year")
