@@ -2,7 +2,7 @@
 ###### Load Packages ######
 require(tidyverse)
 require(openxlsx)
-# require(devtools)
+require(devtools)
 
 ###### Set Arguments ######
 ###### Parameters for saving tests
@@ -26,7 +26,8 @@ dataOutName <- "sysdata"  |> paste0(".rda")
 dataOutPath <- dataOutDir |> file.path(dataOutName)
 
 ###### 0. Local Function ###### 
-for(i in codePaths){ i |> source() }
+# for(i in codePaths){ i |> source() }
+projectDir |> load_all()
 
 update_sysdata(
   save    = TRUE,
