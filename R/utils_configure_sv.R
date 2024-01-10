@@ -762,7 +762,7 @@ get_svImpactsList <- function(
   df_data   <- df_data |> left_join(svInfo |> select(all_of(joinVars0)), by = "fips")
   rm(svInfo, joinVars0)
 
-  ###### Remove missing values ######
+  ###### Remove Missing Values ######
   tracts_data <- df_data$fips |> unique() |> length()
   msg1 |> paste0("\t", "Data has ", tracts_data, " tracts...") |> message()
   tracts_na   <- (df_data |> filter(county |> is.na()))$fips |> unique() |> length()
@@ -788,7 +788,7 @@ get_svImpactsList <- function(
   c_fips <- df_data$fips |> unique()
   n_fips <- c_fips |> length()
 
-  ###### Create the impacts list ######
+  ###### Create the Impacts List ######
   ### Start system time
   ### Initialize impact list
   ### Iterate over values
@@ -885,14 +885,19 @@ get_svImpactsList <- function(
   deltaTime <- (sysTime2 - sysTime1)
 
   msg1 |> paste0("\t", "Created impact list in ", deltaTime) |> message()
-  ###### Save the impacts list ######
+  ###### Save the Impacts List ######
   if(save){
     msg1 |> paste0("Saving impacts list...") |> message()
     ### Check that the directory exists
     if((outPath |> dir.exists()) & !(outFile |> is.null())){
+      ### File path
       outname     <- outFile
       outFileName <- outFile |> paste0(".", rDataExt)
       outFilePath <- outPath |> file.path(outFileName)
+      ### Check if file exists & if it does, remove the file
+      exists0     <- outFilePath |> file.exists()
+      if(exists0){outFilePath |> file.remove()}
+      ### Then, save the impacts list
       impactsList |> saveRDS(file=outFilePath)
       # eval(substitute(rm(x), list(x=outname)))
       msg1 |> paste0("\t", "Impacts list saved.") |> message()
