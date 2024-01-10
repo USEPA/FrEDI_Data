@@ -6,35 +6,32 @@ require(devtools)
 
 ###### Set Arguments ######
 ###### Parameters for saving tests
-save_test   <- TRUE
-return_test <- TRUE
+add_svData_to_sysdata <- function(
+    projectDir = ".",
+    save       = TRUE
+){
+  ###### Set Paths ######
+  ###### Project path
+  # projectDir  <- "."
+  projectDir  <- projectDir
+  
+  ###### Data output path and file name
+  dataOutDir  <- projectDir |> file.path("data")
+  # dataOutName <- "sysdata"  |> paste0(".rda")
+  # dataOutPath <- dataOutDir |> file.path(dataOutName)
+  
+  ###### 0. Local Function ###### 
+  projectDir |> load_all()
+  
+  ###### 1. Add SV Data to sysdata.rda ###### 
+  update_sysdata(
+    save    = save,
+    sv      = TRUE,
+    outPath = dataOutDir
+  )
+  
+}
 
-###### Set Paths ######
-###### Project path
-projectDir  <- "."
-###### Code path
-codeDir     <- projectDir |> file.path("R")
-codeNames   <- codeDir    |> list.files(".R")
-codePaths   <- codeDir    |> file.path(codeNames)
-###### Data input path and file name
-dataInDir   <- projectDir |> file.path("inst", "extdata")
-dataInName  <- "FrEDI_config" |> paste0(".xlsx")
-dataInPath  <- dataInDir |> file.path(dataInName)
-###### Data output path and file name
-dataOutDir  <- projectDir |> file.path("data")
-dataOutName <- "sysdata"  |> paste0(".rda")
-dataOutPath <- dataOutDir |> file.path(dataOutName)
-
-###### 0. Local Function ###### 
-# for(i in codePaths){ i |> source() }
-projectDir |> load_all()
-
-update_sysdata(
-  save    = TRUE,
-  sv      = TRUE,
-  impacts = FALSE,
-  outPath = dataOutDir
-)
 
 
 

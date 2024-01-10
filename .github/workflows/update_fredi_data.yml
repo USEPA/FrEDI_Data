@@ -54,7 +54,12 @@ jobs:
 #        if: |
 #          github.event.inputs.passed_tests == 'yes'
 #        run:  |
-#          Rscript -e 'source("./scripts/add_svData_to_sysdata.R")'
+#          Rscript -e '
+#            pPath0 <- "."
+#            sPath0 <- "./scripts/add_svData_to_sysdata.R" 
+#            sPath0 |> source()
+#            add_svData_to_sysdata(projectDir = pPath0, save = T)
+#            '
           
           
 #      - name: Commit results
