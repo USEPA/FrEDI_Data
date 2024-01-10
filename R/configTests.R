@@ -743,6 +743,10 @@ get_fredi_sectorOptions_results <- function(
   df0        <- df0 |> mutate_at(c(mutate0), function(y){y |> na_if("N/A") |> replace_na("NA")})
   df0        <- df0 |> select(all_of(select0))
   df0        <- df0 |> mutate(model_type = model_type |> toupper())
+  
+  ###### Filter ######
+  # df0        <- df0 |> filter(!(model_type == "SLR" & (year |> is.na())))
+  
   ###### Return ######
   return(df0)
 }

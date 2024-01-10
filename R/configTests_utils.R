@@ -361,9 +361,12 @@ create_scaledImpact_plot <- function(
   # ###### Plot Options ######
   ###### Defaults ######
   ### Defaults
-  def_titles  <- list(GCM="Scaled Impacts by Degrees of Warming", SLR="Scaled Impacts by GMSL (cm)")
-  def_xTitles <- list(GCM=expression("Degrees of Warming (°C)"), SLR="GMSL (cm)")
-  def_lgdLbls <- list(GCM="Region", SLR="Year")
+  # def_titles  <- list(GCM="Scaled Impacts by Degrees of Warming", SLR="Scaled Impacts by GMSL (cm)")
+  # def_xTitles <- list(GCM=expression("Degrees of Warming (°C)") , SLR="GMSL (cm)")
+  # def_lgdLbls <- list(GCM="Region", SLR="Year")
+  def_titles  <- list(GCM="Scaled Impacts by Degrees of Warming", SLR="Scaled Impacts by Year")
+  def_xTitles <- list(GCM=expression("Degrees of Warming (°C)") , SLR="Year")
+  def_lgdLbls <- list(GCM="Region", SLR="Region")
   def_margins <- list(GCM=c(0, 0, .15, 0), SLR=c(0, .2, .15, 0))
   ### Values
   title0      <- options[["title"     ]]
@@ -439,7 +442,38 @@ create_scaledImpact_plot <- function(
   
   ###### ** Add geoms ######
   if(do_slr){
-    plot0  <- df0 |> ggplot(aes(x=.data[[xCol]], y=.data[[yCol]], color=.data[[regCol0]], group=interaction(!!!syms(group0))))
+    ### Factor model
+    lvls0  <- df0[["driverValue"]] |> unique() |> sort(decreasing = T)
+    lvls0  <- lvls0 |> paste("cm")
+    df0    <- df0 |> mutate(model = model |> factor(levels = lvls0))
+    rm(lvls0)
+    ### Points data
+    # plot0  <- df0 |> ggplot(aes(x=.data[[xCol]], y=.data[[yCol]], color=.data[[regCol0]], group=interaction(!!!syms(group0))))
+    plot0  <- df0 |> ggplot()
+    plot0  <- plot0 + geom_line(
+      data  = df0, 
+      aes(
+        x     = .data[[xCol]], 
+        y     = .data[[yCol]], 
+        color = .data[[regCol0]], 
+        group = interaction(!!!syms(group0)), 
+        shape = .data[["variant"]]
+      ), ### End aes
+      alpha = 0.65
+    ) ### End geom_line
+    # plot0  <- plot0 + geom_point(data=df_points0, aes(x=.data[[xCol]], y=.data[[yCol]], color=.data[[regCol0]], group=interaction(!!!syms(group0)), shape=.data[[regCol0]]), alpha=0.65)
+    plot0  <- plot0 + geom_point(
+      data  = df_points0, 
+      aes(
+        x     = .data[[xCol]], 
+        y     = .data[[yCol]], 
+        color = .data[[regCol0]], 
+        group = interaction(!!!syms(group0)), 
+        shape = .data[["variant"]]
+        ), ### End aes
+      alpha = 0.65
+    ) ### End geom_point
+    rm(df0_2)
   } else{
     ### Separate GCM values
     ### Plot these values as lines
@@ -448,15 +482,16 @@ create_scaledImpact_plot <- function(
     df0_2 <- df0 |> filter((maxUnitValue < 6 & driverValue >= maxUnitValue))
     ### Plot values as lines
     plot0  <- plot0 + geom_line(
-      data = df0_1,
+      data  = df0_1,
       aes(
         x        = .data[[xCol]], 
         y        = .data[[yCol]], 
         color    = .data[[regCol0]], 
         group    = interaction(!!!syms(group0)), 
         linetype = .data[["variant"]]
-        ), alpha=0.5 ### End aes
-      ) ### End geom_line
+      ), ### End aes
+      alpha = 0.65 
+    ) ### End geom_line
     ### Plot values as points
     plot0  <- plot0 + geom_point(
       data = df0_2,
@@ -466,7 +501,8 @@ create_scaledImpact_plot <- function(
         color    = .data[[regCol0]], 
         group    = interaction(!!!syms(group0)), 
         shape   = .data[["variant"]]
-      ), alpha=0.5 ### End aes
+      ), ### End aes
+      alpha=0.65 
     ) ### End geom_line
   }
   
@@ -492,14 +528,17 @@ create_scaledImpact_plot <- function(
   plot0  <- plot0 + scale_shape_discrete("Variant")
   plot0  <- plot0 + scale_color_discrete("Region")
   
-  ###### ** Adjust Appearance ######
+  ###### ** Adjust appearance ######
   plot0  <- plot0 + theme(plot.title    = element_text(hjust = 0.5, size=11))
   plot0  <- plot0 + theme(plot.subtitle = element_text(hjust = 0.5, size=10))
   plot0  <- plot0 + theme(axis.title.x  = element_text(hjust = 0.5, size=9))
   plot0  <- plot0 + theme(axis.title.y  = element_text(hjust = 0.5, size=9))
   plot0  <- plot0 + theme(legend.position = "bottom")
   
-  ###### ** Add Themes & Margins ######
+
+  if(do_slr){plot0 <- plot0 + theme(axis.text.x = element_text(angle=90))}
+  
+  ###### ** Add themes & margins ######
   ### Theme
   if(hasTheme  ){
     if(theme=="bw"){plot0 <- plot0 + theme_bw()}
@@ -516,7 +555,7 @@ create_scaledImpact_plot <- function(
     ))
   } ### End if(hasMargins)
   
-  ###### Legend ######
+  ###### Format Legend ######
   ### Add guide to legend
   nLgdCols  <- 7
   # nLgdCols  <- nRegions
@@ -590,8 +629,10 @@ create_scaledImpact_plots <- function(
   
   ###### Plot Options ######
   ### Defaults
-  def_titles  <- list(GCM="Scaled Impacts by Degrees of Warming", SLR="Scaled Impacts by GMSL (cm)")
-  def_xTitles <- list(GCM=expression("Degrees of Warming (°C)"), SLR="GMSL (cm)")
+  # def_titles  <- list(GCM="Scaled Impacts by Degrees of Warming", SLR="Scaled Impacts by GMSL (cm)")
+  # def_xTitles <- list(GCM=expression("Degrees of Warming (°C)") , SLR="GMSL (cm)")
+  def_titles  <- list(GCM="Scaled Impacts by Degrees of Warming", SLR="Scaled Impacts by Year")
+  def_xTitles <- list(GCM=expression("Degrees of Warming (°C)") , SLR="Year")
   def_lgdLbls <- list(GCM="Model", SLR="Scenario")
   def_margins <- list(GCM=c(0, 0, .15, 0), SLR=c(0, .2, .15, 0))
   ### Defaults: Default Heights Below
@@ -723,7 +764,7 @@ create_scaledImpact_plots <- function(
   
   ###### ** X Breaks ######
   if(xCol == "year"){
-    x_limits <- c(2010, 2090)
+    x_limits <- c(2000, 2100)
     x_breaks <- seq(x_limits[1] - 10, x_limits[2] + 10, by = 20)
     x_denom  <- 1
     x_info   <- NULL
