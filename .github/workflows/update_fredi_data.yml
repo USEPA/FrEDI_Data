@@ -60,14 +60,14 @@ jobs:
             sPath0 |> source()
             add_svData_to_sysdata(projectDir = pPath0, save = T)
             '
-#       - name: Commit results
-#         if: |
-#           github.event.inputs.passed_tests == 'true'
-#         run: |
-#           git config --local core.autocrlf false
-#           git config --local user.email "${{ github.actor }}@users.noreply.github.com"
-#           git config --local user.name  "${{ github.actor }}"
-#           git add data/**.rda
-#           git pull origin ${{ github.head_ref }} --autostash --rebase -X ours
-#           git commit -a -m "Updated sysdata and added SV data to sysdata"
-#           git push
+      - name: Commit results
+        if: |
+          github.event.inputs.passed_tests == 'true'
+        run: |
+          git config --local core.autocrlf false
+          git config --local user.email "${{ github.actor }}@users.noreply.github.com"
+          git config --local user.name  "${{ github.actor }}"
+          git add data/**.rda
+          git pull origin ${{ github.head_ref }} --autostash --rebase -X ours
+          git commit -a -m "Updated sysdata and added SV data to sysdata"
+          git push
