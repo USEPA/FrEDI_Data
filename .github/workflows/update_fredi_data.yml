@@ -48,7 +48,7 @@ jobs:
           github.event.inputs.passed_tests == 'true'
         run:  |
           git rm data/sysdata.rda
-          git cp data/tmp_sysdata.rda data/sysdata.rda
+          cp data/tmp_sysdata.rda data/sysdata.rda
 
       - name: Add SV Data to sysdata
         if: |
