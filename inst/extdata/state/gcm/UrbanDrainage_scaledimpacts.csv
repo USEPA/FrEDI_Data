@@ -1,0 +1,851 @@
+"state","postal","sector","variant","impactType","model","impactYear","value","modelUnitValue"
+"Alabama","AL","UrbanDrainage",NA,NA,"CanESM2",NA,29.8754301866962,1
+"Alabama","AL","UrbanDrainage",NA,NA,"CanESM2",NA,66.7932652389172,2
+"Alabama","AL","UrbanDrainage",NA,NA,"CanESM2",NA,79.1147256209357,3
+"Alabama","AL","UrbanDrainage",NA,NA,"CanESM2",NA,151.237834483079,4
+"Alabama","AL","UrbanDrainage",NA,NA,"CanESM2",NA,149.586092659054,5
+"Alabama","AL","UrbanDrainage",NA,NA,"CanESM2",NA,22.1756512575969,6
+"Alabama","AL","UrbanDrainage",NA,NA,"CCSM4",NA,3.30943094311157,1
+"Alabama","AL","UrbanDrainage",NA,NA,"CCSM4",NA,52.1989900213548,2
+"Alabama","AL","UrbanDrainage",NA,NA,"CCSM4",NA,92.1462974935235,3
+"Alabama","AL","UrbanDrainage",NA,NA,"CCSM4",NA,68.2039233437356,4
+"Alabama","AL","UrbanDrainage",NA,NA,"CCSM4",NA,126.772556974466,5
+"Alabama","AL","UrbanDrainage",NA,NA,"GISS-E2-R",NA,117.008519507473,1
+"Alabama","AL","UrbanDrainage",NA,NA,"GISS-E2-R",NA,135.393340708231,2
+"Alabama","AL","UrbanDrainage",NA,NA,"GISS-E2-R",NA,200.067823414118,3
+"Alabama","AL","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,45.8071606413842,1
+"Alabama","AL","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,91.8241789378527,2
+"Alabama","AL","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,206.310220065103,3
+"Alabama","AL","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,210.944762041074,4
+"Alabama","AL","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,128.844080223963,5
+"Alabama","AL","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,85.4618371975952,6
+"Alabama","AL","UrbanDrainage",NA,NA,"MIROC5",NA,71.8407844817979,1
+"Alabama","AL","UrbanDrainage",NA,NA,"MIROC5",NA,97.3111457718268,2
+"Alabama","AL","UrbanDrainage",NA,NA,"MIROC5",NA,32.5871016154996,3
+"Alabama","AL","UrbanDrainage",NA,NA,"MIROC5",NA,138.576563283212,4
+"Alabama","AL","UrbanDrainage",NA,NA,"MIROC5",NA,198.479089891871,5
+"Arkansas","AR","UrbanDrainage",NA,NA,"CanESM2",NA,10.1713240531402,1
+"Arkansas","AR","UrbanDrainage",NA,NA,"CanESM2",NA,18.4355248463166,2
+"Arkansas","AR","UrbanDrainage",NA,NA,"CanESM2",NA,2.83178908297654,3
+"Arkansas","AR","UrbanDrainage",NA,NA,"CanESM2",NA,0,4
+"Arkansas","AR","UrbanDrainage",NA,NA,"CanESM2",NA,0,5
+"Arkansas","AR","UrbanDrainage",NA,NA,"CanESM2",NA,0,6
+"Arkansas","AR","UrbanDrainage",NA,NA,"CCSM4",NA,0,1
+"Arkansas","AR","UrbanDrainage",NA,NA,"CCSM4",NA,0,2
+"Arkansas","AR","UrbanDrainage",NA,NA,"CCSM4",NA,0,3
+"Arkansas","AR","UrbanDrainage",NA,NA,"CCSM4",NA,0,4
+"Arkansas","AR","UrbanDrainage",NA,NA,"CCSM4",NA,0,5
+"Arkansas","AR","UrbanDrainage",NA,NA,"GISS-E2-R",NA,0.0546365797661056,1
+"Arkansas","AR","UrbanDrainage",NA,NA,"GISS-E2-R",NA,22.0946788484285,2
+"Arkansas","AR","UrbanDrainage",NA,NA,"GISS-E2-R",NA,38.8987101793483,3
+"Arkansas","AR","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,11.1811828031187,1
+"Arkansas","AR","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,19.5670699054577,2
+"Arkansas","AR","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,6.52235663515257,3
+"Arkansas","AR","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,0.277802770693044,4
+"Arkansas","AR","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,0.777847757940524,5
+"Arkansas","AR","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,3.54653536976654,6
+"Arkansas","AR","UrbanDrainage",NA,NA,"MIROC5",NA,0.764960116722573,1
+"Arkansas","AR","UrbanDrainage",NA,NA,"MIROC5",NA,4.45639911377996,2
+"Arkansas","AR","UrbanDrainage",NA,NA,"MIROC5",NA,18.5456375055371,3
+"Arkansas","AR","UrbanDrainage",NA,NA,"MIROC5",NA,6.7339769402261,4
+"Arkansas","AR","UrbanDrainage",NA,NA,"MIROC5",NA,5.47290317470334,5
+"Arizona","AZ","UrbanDrainage",NA,NA,"CanESM2",NA,0.997929024855457,1
+"Arizona","AZ","UrbanDrainage",NA,NA,"CanESM2",NA,14.8274325598487,2
+"Arizona","AZ","UrbanDrainage",NA,NA,"CanESM2",NA,67.7351253586733,3
+"Arizona","AZ","UrbanDrainage",NA,NA,"CanESM2",NA,36.0932327801916,4
+"Arizona","AZ","UrbanDrainage",NA,NA,"CanESM2",NA,10.5397080143025,5
+"Arizona","AZ","UrbanDrainage",NA,NA,"CanESM2",NA,19.0982379708156,6
+"Arizona","AZ","UrbanDrainage",NA,NA,"CCSM4",NA,1.73584548249381,1
+"Arizona","AZ","UrbanDrainage",NA,NA,"CCSM4",NA,10.5934181586928,2
+"Arizona","AZ","UrbanDrainage",NA,NA,"CCSM4",NA,24.9647756100732,3
+"Arizona","AZ","UrbanDrainage",NA,NA,"CCSM4",NA,28.8439653335207,4
+"Arizona","AZ","UrbanDrainage",NA,NA,"CCSM4",NA,32.3252053500722,5
+"Arizona","AZ","UrbanDrainage",NA,NA,"GISS-E2-R",NA,1.17613259065501,1
+"Arizona","AZ","UrbanDrainage",NA,NA,"GISS-E2-R",NA,218.855318028849,2
+"Arizona","AZ","UrbanDrainage",NA,NA,"GISS-E2-R",NA,171.321975568108,3
+"Arizona","AZ","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,107.362203654431,1
+"Arizona","AZ","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,193.061451873119,2
+"Arizona","AZ","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,142.362922490886,3
+"Arizona","AZ","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,90.6328164129019,4
+"Arizona","AZ","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,48.7391050326359,5
+"Arizona","AZ","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,136.298731600235,6
+"Arizona","AZ","UrbanDrainage",NA,NA,"MIROC5",NA,13.1130644174037,1
+"Arizona","AZ","UrbanDrainage",NA,NA,"MIROC5",NA,23.0364116453347,2
+"Arizona","AZ","UrbanDrainage",NA,NA,"MIROC5",NA,33.8885214827868,3
+"Arizona","AZ","UrbanDrainage",NA,NA,"MIROC5",NA,31.3790267936129,4
+"Arizona","AZ","UrbanDrainage",NA,NA,"MIROC5",NA,18.9532045886427,5
+"California","CA","UrbanDrainage",NA,NA,"CanESM2",NA,339.101243254139,1
+"California","CA","UrbanDrainage",NA,NA,"CanESM2",NA,659.931949226648,2
+"California","CA","UrbanDrainage",NA,NA,"CanESM2",NA,341.936512875597,3
+"California","CA","UrbanDrainage",NA,NA,"CanESM2",NA,406.024082292686,4
+"California","CA","UrbanDrainage",NA,NA,"CanESM2",NA,521.571312862442,5
+"California","CA","UrbanDrainage",NA,NA,"CanESM2",NA,595.232959645072,6
+"California","CA","UrbanDrainage",NA,NA,"CCSM4",NA,54.2902337325157,1
+"California","CA","UrbanDrainage",NA,NA,"CCSM4",NA,119.770266286404,2
+"California","CA","UrbanDrainage",NA,NA,"CCSM4",NA,143.080944529836,3
+"California","CA","UrbanDrainage",NA,NA,"CCSM4",NA,178.450401023279,4
+"California","CA","UrbanDrainage",NA,NA,"CCSM4",NA,196.794460510449,5
+"California","CA","UrbanDrainage",NA,NA,"GISS-E2-R",NA,1055.58741818261,1
+"California","CA","UrbanDrainage",NA,NA,"GISS-E2-R",NA,785.005078822136,2
+"California","CA","UrbanDrainage",NA,NA,"GISS-E2-R",NA,285.435712314771,3
+"California","CA","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,150.083527689841,1
+"California","CA","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,279.471171549747,2
+"California","CA","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,346.653695110638,3
+"California","CA","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,471.675809079351,4
+"California","CA","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,654.422340958159,5
+"California","CA","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,632.699598842458,6
+"California","CA","UrbanDrainage",NA,NA,"MIROC5",NA,126.112950768179,1
+"California","CA","UrbanDrainage",NA,NA,"MIROC5",NA,249.063274068142,2
+"California","CA","UrbanDrainage",NA,NA,"MIROC5",NA,486.278388297152,3
+"California","CA","UrbanDrainage",NA,NA,"MIROC5",NA,519.312120631781,4
+"California","CA","UrbanDrainage",NA,NA,"MIROC5",NA,573.944639527697,5
+"Colorado","CO","UrbanDrainage",NA,NA,"CanESM2",NA,44.540888973881,1
+"Colorado","CO","UrbanDrainage",NA,NA,"CanESM2",NA,80.7303612651593,2
+"Colorado","CO","UrbanDrainage",NA,NA,"CanESM2",NA,14.7417766508891,3
+"Colorado","CO","UrbanDrainage",NA,NA,"CanESM2",NA,51.5061413545382,4
+"Colorado","CO","UrbanDrainage",NA,NA,"CanESM2",NA,155.822318913516,5
+"Colorado","CO","UrbanDrainage",NA,NA,"CanESM2",NA,330.769193886731,6
+"Colorado","CO","UrbanDrainage",NA,NA,"CCSM4",NA,47.7674942356412,1
+"Colorado","CO","UrbanDrainage",NA,NA,"CCSM4",NA,75.0234410634811,2
+"Colorado","CO","UrbanDrainage",NA,NA,"CCSM4",NA,11.1634838812811,3
+"Colorado","CO","UrbanDrainage",NA,NA,"CCSM4",NA,0.926605269671267,4
+"Colorado","CO","UrbanDrainage",NA,NA,"CCSM4",NA,2.7798158090138,5
+"Colorado","CO","UrbanDrainage",NA,NA,"GISS-E2-R",NA,5.9535278933033,1
+"Colorado","CO","UrbanDrainage",NA,NA,"GISS-E2-R",NA,12.8190702009133,2
+"Colorado","CO","UrbanDrainage",NA,NA,"GISS-E2-R",NA,3.1962757827364,3
+"Colorado","CO","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,0,1
+"Colorado","CO","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,0.0119646489488476,2
+"Colorado","CO","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,0.184255593812252,3
+"Colorado","CO","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,19.3473462579562,4
+"Colorado","CO","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,53.698769423903,5
+"Colorado","CO","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,62.0747958632718,6
+"Colorado","CO","UrbanDrainage",NA,NA,"MIROC5",NA,44.394888167326,1
+"Colorado","CO","UrbanDrainage",NA,NA,"MIROC5",NA,66.3470261721591,2
+"Colorado","CO","UrbanDrainage",NA,NA,"MIROC5",NA,50.5447390005137,3
+"Colorado","CO","UrbanDrainage",NA,NA,"MIROC5",NA,61.7244020033607,4
+"Colorado","CO","UrbanDrainage",NA,NA,"MIROC5",NA,50.5963982167508,5
+"District of Columbia","DC","UrbanDrainage",NA,NA,"CanESM2",NA,0,1
+"District of Columbia","DC","UrbanDrainage",NA,NA,"CanESM2",NA,20.4918988959777,2
+"District of Columbia","DC","UrbanDrainage",NA,NA,"CanESM2",NA,106.300847823566,3
+"District of Columbia","DC","UrbanDrainage",NA,NA,"CanESM2",NA,59.4641193546982,4
+"District of Columbia","DC","UrbanDrainage",NA,NA,"CanESM2",NA,14.8990907649112,5
+"District of Columbia","DC","UrbanDrainage",NA,NA,"CanESM2",NA,13.0934387509051,6
+"District of Columbia","DC","UrbanDrainage",NA,NA,"CCSM4",NA,45.0429082190873,1
+"District of Columbia","DC","UrbanDrainage",NA,NA,"CCSM4",NA,64.0755616626257,2
+"District of Columbia","DC","UrbanDrainage",NA,NA,"CCSM4",NA,18.8772676899449,3
+"District of Columbia","DC","UrbanDrainage",NA,NA,"CCSM4",NA,34.8562083761964,4
+"District of Columbia","DC","UrbanDrainage",NA,NA,"CCSM4",NA,20.8804143953232,5
+"District of Columbia","DC","UrbanDrainage",NA,NA,"GISS-E2-R",NA,42.4517261620549,1
+"District of Columbia","DC","UrbanDrainage",NA,NA,"GISS-E2-R",NA,27.5601734843082,2
+"District of Columbia","DC","UrbanDrainage",NA,NA,"GISS-E2-R",NA,5.30944441928785,3
+"District of Columbia","DC","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,15.8590756526708,1
+"District of Columbia","DC","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,29.2186768692193,2
+"District of Columbia","DC","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,31.8166624105565,3
+"District of Columbia","DC","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,24.1773588712484,4
+"District of Columbia","DC","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,9.67094354849935,5
+"District of Columbia","DC","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,12.1548480954015,6
+"District of Columbia","DC","UrbanDrainage",NA,NA,"MIROC5",NA,0,1
+"District of Columbia","DC","UrbanDrainage",NA,NA,"MIROC5",NA,0.861279168970105,2
+"District of Columbia","DC","UrbanDrainage",NA,NA,"MIROC5",NA,4.54564005845333,3
+"District of Columbia","DC","UrbanDrainage",NA,NA,"MIROC5",NA,0.932046159359603,4
+"District of Columbia","DC","UrbanDrainage",NA,NA,"MIROC5",NA,2.85426861237643,5
+"Florida","FL","UrbanDrainage",NA,NA,"CanESM2",NA,282.794266089235,1
+"Florida","FL","UrbanDrainage",NA,NA,"CanESM2",NA,600.593737949039,2
+"Florida","FL","UrbanDrainage",NA,NA,"CanESM2",NA,538.930364386804,3
+"Florida","FL","UrbanDrainage",NA,NA,"CanESM2",NA,333.557604161791,4
+"Florida","FL","UrbanDrainage",NA,NA,"CanESM2",NA,197.660792108011,5
+"Florida","FL","UrbanDrainage",NA,NA,"CanESM2",NA,198.582419190296,6
+"Florida","FL","UrbanDrainage",NA,NA,"CCSM4",NA,119.39553898524,1
+"Florida","FL","UrbanDrainage",NA,NA,"CCSM4",NA,349.811700414896,2
+"Florida","FL","UrbanDrainage",NA,NA,"CCSM4",NA,369.535065135544,3
+"Florida","FL","UrbanDrainage",NA,NA,"CCSM4",NA,493.205908417928,4
+"Florida","FL","UrbanDrainage",NA,NA,"CCSM4",NA,1094.70496123729,5
+"Florida","FL","UrbanDrainage",NA,NA,"GISS-E2-R",NA,330.59886694542,1
+"Florida","FL","UrbanDrainage",NA,NA,"GISS-E2-R",NA,509.974084634016,2
+"Florida","FL","UrbanDrainage",NA,NA,"GISS-E2-R",NA,413.301842575718,3
+"Florida","FL","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,186.825097560568,1
+"Florida","FL","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,332.184147237383,2
+"Florida","FL","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,189.680795108727,3
+"Florida","FL","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,165.1434740496,4
+"Florida","FL","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,254.888757685863,5
+"Florida","FL","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,408.210479091922,6
+"Florida","FL","UrbanDrainage",NA,NA,"MIROC5",NA,313.371194083922,1
+"Florida","FL","UrbanDrainage",NA,NA,"MIROC5",NA,428.775892880344,2
+"Florida","FL","UrbanDrainage",NA,NA,"MIROC5",NA,150.134535557369,3
+"Florida","FL","UrbanDrainage",NA,NA,"MIROC5",NA,427.802956002099,4
+"Florida","FL","UrbanDrainage",NA,NA,"MIROC5",NA,632.539071776368,5
+"Georgia","GA","UrbanDrainage",NA,NA,"CanESM2",NA,42.9622014413373,1
+"Georgia","GA","UrbanDrainage",NA,NA,"CanESM2",NA,90.2834265864882,2
+"Georgia","GA","UrbanDrainage",NA,NA,"CanESM2",NA,80.6075020952135,3
+"Georgia","GA","UrbanDrainage",NA,NA,"CanESM2",NA,129.460349984455,4
+"Georgia","GA","UrbanDrainage",NA,NA,"CanESM2",NA,226.585752715591,5
+"Georgia","GA","UrbanDrainage",NA,NA,"CanESM2",NA,380.075344027402,6
+"Georgia","GA","UrbanDrainage",NA,NA,"CCSM4",NA,49.3262933153417,1
+"Georgia","GA","UrbanDrainage",NA,NA,"CCSM4",NA,126.254198815202,2
+"Georgia","GA","UrbanDrainage",NA,NA,"CCSM4",NA,131.246935055658,3
+"Georgia","GA","UrbanDrainage",NA,NA,"CCSM4",NA,121.51073104383,4
+"Georgia","GA","UrbanDrainage",NA,NA,"CCSM4",NA,173.150342459968,5
+"Georgia","GA","UrbanDrainage",NA,NA,"GISS-E2-R",NA,84.3965390938876,1
+"Georgia","GA","UrbanDrainage",NA,NA,"GISS-E2-R",NA,222.549655059838,2
+"Georgia","GA","UrbanDrainage",NA,NA,"GISS-E2-R",NA,151.499072427643,3
+"Georgia","GA","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,70.8480961235459,1
+"Georgia","GA","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,129.414170776082,2
+"Georgia","GA","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,124.950095494162,3
+"Georgia","GA","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,121.158294723216,4
+"Georgia","GA","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,124.215123853907,5
+"Georgia","GA","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,171.02271188132,6
+"Georgia","GA","UrbanDrainage",NA,NA,"MIROC5",NA,128.685729506579,1
+"Georgia","GA","UrbanDrainage",NA,NA,"MIROC5",NA,215.9051318589,2
+"Georgia","GA","UrbanDrainage",NA,NA,"MIROC5",NA,265.387018118152,3
+"Georgia","GA","UrbanDrainage",NA,NA,"MIROC5",NA,137.122949952068,4
+"Georgia","GA","UrbanDrainage",NA,NA,"MIROC5",NA,205.322419710464,5
+"Iowa","IA","UrbanDrainage",NA,NA,"CanESM2",NA,23.3328120284239,1
+"Iowa","IA","UrbanDrainage",NA,NA,"CanESM2",NA,45.4977046801022,2
+"Iowa","IA","UrbanDrainage",NA,NA,"CanESM2",NA,23.5062043543141,3
+"Iowa","IA","UrbanDrainage",NA,NA,"CanESM2",NA,17.535259736092,4
+"Iowa","IA","UrbanDrainage",NA,NA,"CanESM2",NA,23.4310302190164,5
+"Iowa","IA","UrbanDrainage",NA,NA,"CanESM2",NA,41.6087380369361,6
+"Iowa","IA","UrbanDrainage",NA,NA,"CCSM4",NA,0,1
+"Iowa","IA","UrbanDrainage",NA,NA,"CCSM4",NA,0,2
+"Iowa","IA","UrbanDrainage",NA,NA,"CCSM4",NA,0,3
+"Iowa","IA","UrbanDrainage",NA,NA,"CCSM4",NA,0,4
+"Iowa","IA","UrbanDrainage",NA,NA,"CCSM4",NA,0,5
+"Iowa","IA","UrbanDrainage",NA,NA,"GISS-E2-R",NA,0.728932593335328,1
+"Iowa","IA","UrbanDrainage",NA,NA,"GISS-E2-R",NA,17.0200451272569,2
+"Iowa","IA","UrbanDrainage",NA,NA,"GISS-E2-R",NA,5.06766113644012,3
+"Iowa","IA","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,0,1
+"Iowa","IA","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,0.513766032644831,2
+"Iowa","IA","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,7.91199690273039,3
+"Iowa","IA","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,11.5596843257625,4
+"Iowa","IA","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,12.0219812193996,5
+"Iowa","IA","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,8.2505877695661,6
+"Iowa","IA","UrbanDrainage",NA,NA,"MIROC5",NA,0,1
+"Iowa","IA","UrbanDrainage",NA,NA,"MIROC5",NA,0,2
+"Iowa","IA","UrbanDrainage",NA,NA,"MIROC5",NA,1.37555775189588,3
+"Iowa","IA","UrbanDrainage",NA,NA,"MIROC5",NA,16.6420303878646,4
+"Iowa","IA","UrbanDrainage",NA,NA,"MIROC5",NA,10.8385662670156,5
+"Idaho","ID","UrbanDrainage",NA,NA,"CanESM2",NA,5.22248954936817,1
+"Idaho","ID","UrbanDrainage",NA,NA,"CanESM2",NA,10.7416275227205,2
+"Idaho","ID","UrbanDrainage",NA,NA,"CanESM2",NA,8.44440869825216,3
+"Idaho","ID","UrbanDrainage",NA,NA,"CanESM2",NA,11.8846784599821,4
+"Idaho","ID","UrbanDrainage",NA,NA,"CanESM2",NA,10.8782879139242,5
+"Idaho","ID","UrbanDrainage",NA,NA,"CanESM2",NA,1.54943759639941,6
+"Idaho","ID","UrbanDrainage",NA,NA,"CCSM4",NA,5.00622478445583,1
+"Idaho","ID","UrbanDrainage",NA,NA,"CCSM4",NA,15.4268720943704,2
+"Idaho","ID","UrbanDrainage",NA,NA,"CCSM4",NA,13.0564440740993,3
+"Idaho","ID","UrbanDrainage",NA,NA,"CCSM4",NA,3.89387856709384,4
+"Idaho","ID","UrbanDrainage",NA,NA,"CCSM4",NA,11.6816357012815,5
+"Idaho","ID","UrbanDrainage",NA,NA,"GISS-E2-R",NA,0.0404064826849366,1
+"Idaho","ID","UrbanDrainage",NA,NA,"GISS-E2-R",NA,7.51560577939821,2
+"Idaho","ID","UrbanDrainage",NA,NA,"GISS-E2-R",NA,0.0510012625109706,3
+"Idaho","ID","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,14.2625496698482,1
+"Idaho","ID","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,25.3439323945929,2
+"Idaho","ID","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,14.2406659150663,3
+"Idaho","ID","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,6.34376279391595,4
+"Idaho","ID","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,2.53750511756638,5
+"Idaho","ID","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,6.47583456704053,6
+"Idaho","ID","UrbanDrainage",NA,NA,"MIROC5",NA,9.99009296682418,1
+"Idaho","ID","UrbanDrainage",NA,NA,"MIROC5",NA,13.2207476590303,2
+"Idaho","ID","UrbanDrainage",NA,NA,"MIROC5",NA,1.88313117802841,3
+"Idaho","ID","UrbanDrainage",NA,NA,"MIROC5",NA,6.38831609032589,4
+"Idaho","ID","UrbanDrainage",NA,NA,"MIROC5",NA,3.46572600480012,5
+"Illinois","IL","UrbanDrainage",NA,NA,"CanESM2",NA,0,1
+"Illinois","IL","UrbanDrainage",NA,NA,"CanESM2",NA,0,2
+"Illinois","IL","UrbanDrainage",NA,NA,"CanESM2",NA,3.24647896795781,3
+"Illinois","IL","UrbanDrainage",NA,NA,"CanESM2",NA,71.4225372950718,4
+"Illinois","IL","UrbanDrainage",NA,NA,"CanESM2",NA,83.3262935109171,5
+"Illinois","IL","UrbanDrainage",NA,NA,"CanESM2",NA,-5.95187810792265,6
+"Illinois","IL","UrbanDrainage",NA,NA,"CCSM4",NA,0,1
+"Illinois","IL","UrbanDrainage",NA,NA,"CCSM4",NA,0,2
+"Illinois","IL","UrbanDrainage",NA,NA,"CCSM4",NA,499.222230062773,3
+"Illinois","IL","UrbanDrainage",NA,NA,"CCSM4",NA,721.098776757338,4
+"Illinois","IL","UrbanDrainage",NA,NA,"CCSM4",NA,-55.4691366736414,5
+"Illinois","IL","UrbanDrainage",NA,NA,"GISS-E2-R",NA,115.263491185434,1
+"Illinois","IL","UrbanDrainage",NA,NA,"GISS-E2-R",NA,33.5115562642826,2
+"Illinois","IL","UrbanDrainage",NA,NA,"GISS-E2-R",NA,42.7005785764316,3
+"Illinois","IL","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,0,1
+"Illinois","IL","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,0,2
+"Illinois","IL","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,0,3
+"Illinois","IL","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,0,4
+"Illinois","IL","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,0,5
+"Illinois","IL","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,18.4106075421096,6
+"Illinois","IL","UrbanDrainage",NA,NA,"MIROC5",NA,95.6542509649513,1
+"Illinois","IL","UrbanDrainage",NA,NA,"MIROC5",NA,146.285309155856,2
+"Illinois","IL","UrbanDrainage",NA,NA,"MIROC5",NA,119.425260675102,3
+"Illinois","IL","UrbanDrainage",NA,NA,"MIROC5",NA,50.9235339692488,4
+"Illinois","IL","UrbanDrainage",NA,NA,"MIROC5",NA,57.5846897940552,5
+"Indiana","IN","UrbanDrainage",NA,NA,"CanESM2",NA,0,1
+"Indiana","IN","UrbanDrainage",NA,NA,"CanESM2",NA,0,2
+"Indiana","IN","UrbanDrainage",NA,NA,"CanESM2",NA,3.63477820454991,3
+"Indiana","IN","UrbanDrainage",NA,NA,"CanESM2",NA,79.965120500098,4
+"Indiana","IN","UrbanDrainage",NA,NA,"CanESM2",NA,111.887759321433,5
+"Indiana","IN","UrbanDrainage",NA,NA,"CanESM2",NA,58.4191555412741,6
+"Indiana","IN","UrbanDrainage",NA,NA,"CCSM4",NA,67.2658972668155,1
+"Indiana","IN","UrbanDrainage",NA,NA,"CCSM4",NA,137.338838732932,2
+"Indiana","IN","UrbanDrainage",NA,NA,"CCSM4",NA,69.1853014298296,3
+"Indiana","IN","UrbanDrainage",NA,NA,"CCSM4",NA,31.5718098770305,4
+"Indiana","IN","UrbanDrainage",NA,NA,"CCSM4",NA,78.4293608150046,5
+"Indiana","IN","UrbanDrainage",NA,NA,"GISS-E2-R",NA,0.164425092578476,1
+"Indiana","IN","UrbanDrainage",NA,NA,"GISS-E2-R",NA,30.5830672195966,2
+"Indiana","IN","UrbanDrainage",NA,NA,"GISS-E2-R",NA,0,3
+"Indiana","IN","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,30.05059311226,1
+"Indiana","IN","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,52.5885379464551,2
+"Indiana","IN","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,17.5295126488184,3
+"Indiana","IN","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,33.4292833694925,4
+"Indiana","IN","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,93.6019934345791,5
+"Indiana","IN","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,101.336168782715,6
+"Indiana","IN","UrbanDrainage",NA,NA,"MIROC5",NA,11.6233852120407,1
+"Indiana","IN","UrbanDrainage",NA,NA,"MIROC5",NA,19.5118862587996,2
+"Indiana","IN","UrbanDrainage",NA,NA,"MIROC5",NA,24.8294545842239,3
+"Indiana","IN","UrbanDrainage",NA,NA,"MIROC5",NA,23.6167011915405,4
+"Indiana","IN","UrbanDrainage",NA,NA,"MIROC5",NA,85.5043167599176,5
+"Kansas","KS","UrbanDrainage",NA,NA,"CanESM2",NA,0,1
+"Kansas","KS","UrbanDrainage",NA,NA,"CanESM2",NA,0,2
+"Kansas","KS","UrbanDrainage",NA,NA,"CanESM2",NA,0.0372369322859727,3
+"Kansas","KS","UrbanDrainage",NA,NA,"CanESM2",NA,0.819212510291399,4
+"Kansas","KS","UrbanDrainage",NA,NA,"CanESM2",NA,12.1450095756993,5
+"Kansas","KS","UrbanDrainage",NA,NA,"CanESM2",NA,39.0941480554002,6
+"Kansas","KS","UrbanDrainage",NA,NA,"CCSM4",NA,0,1
+"Kansas","KS","UrbanDrainage",NA,NA,"CCSM4",NA,0,2
+"Kansas","KS","UrbanDrainage",NA,NA,"CCSM4",NA,0,3
+"Kansas","KS","UrbanDrainage",NA,NA,"CCSM4",NA,0,4
+"Kansas","KS","UrbanDrainage",NA,NA,"CCSM4",NA,0,5
+"Kansas","KS","UrbanDrainage",NA,NA,"GISS-E2-R",NA,0,1
+"Kansas","KS","UrbanDrainage",NA,NA,"GISS-E2-R",NA,5.1432331627479,2
+"Kansas","KS","UrbanDrainage",NA,NA,"GISS-E2-R",NA,16.164447082922,3
+"Kansas","KS","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,0,1
+"Kansas","KS","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,0,2
+"Kansas","KS","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,0,3
+"Kansas","KS","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,0,4
+"Kansas","KS","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,0,5
+"Kansas","KS","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,0.535906054348151,6
+"Kansas","KS","UrbanDrainage",NA,NA,"MIROC5",NA,0,1
+"Kansas","KS","UrbanDrainage",NA,NA,"MIROC5",NA,0,2
+"Kansas","KS","UrbanDrainage",NA,NA,"MIROC5",NA,0,3
+"Kansas","KS","UrbanDrainage",NA,NA,"MIROC5",NA,0,4
+"Kansas","KS","UrbanDrainage",NA,NA,"MIROC5",NA,0,5
+"Kentucky","KY","UrbanDrainage",NA,NA,"CanESM2",NA,7.01952378672404,1
+"Kentucky","KY","UrbanDrainage",NA,NA,"CanESM2",NA,12.7228868634373,2
+"Kentucky","KY","UrbanDrainage",NA,NA,"CanESM2",NA,2.7308709694286,3
+"Kentucky","KY","UrbanDrainage",NA,NA,"CanESM2",NA,17.0845781337445,4
+"Kentucky","KY","UrbanDrainage",NA,NA,"CanESM2",NA,84.2776971102671,5
+"Kentucky","KY","UrbanDrainage",NA,NA,"CanESM2",NA,223.786197661999,6
+"Kentucky","KY","UrbanDrainage",NA,NA,"CCSM4",NA,106.744550925633,1
+"Kentucky","KY","UrbanDrainage",NA,NA,"CCSM4",NA,162.947216177653,2
+"Kentucky","KY","UrbanDrainage",NA,NA,"CCSM4",NA,129.22246055189,3
+"Kentucky","KY","UrbanDrainage",NA,NA,"CCSM4",NA,263.527382190779,4
+"Kentucky","KY","UrbanDrainage",NA,NA,"CCSM4",NA,294.271455949942,5
+"Kentucky","KY","UrbanDrainage",NA,NA,"GISS-E2-R",NA,29.0633471288516,1
+"Kentucky","KY","UrbanDrainage",NA,NA,"GISS-E2-R",NA,122.77173358347,2
+"Kentucky","KY","UrbanDrainage",NA,NA,"GISS-E2-R",NA,406.392807384082,3
+"Kentucky","KY","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,11.1956240429279,1
+"Kentucky","KY","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,21.1029442383376,2
+"Kentucky","KY","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,29.7940540051997,3
+"Kentucky","KY","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,52.0754654098445,4
+"Kentucky","KY","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,85.9914574843,5
+"Kentucky","KY","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,195.586230692672,6
+"Kentucky","KY","UrbanDrainage",NA,NA,"MIROC5",NA,92.9738803789558,1
+"Kentucky","KY","UrbanDrainage",NA,NA,"MIROC5",NA,144.653872931939,2
+"Kentucky","KY","UrbanDrainage",NA,NA,"MIROC5",NA,143.211439710158,3
+"Kentucky","KY","UrbanDrainage",NA,NA,"MIROC5",NA,223.526897048785,4
+"Kentucky","KY","UrbanDrainage",NA,NA,"MIROC5",NA,202.219681999831,5
+"Louisiana","LA","UrbanDrainage",NA,NA,"CanESM2",NA,20.0036617299868,1
+"Louisiana","LA","UrbanDrainage",NA,NA,"CanESM2",NA,61.1268512399268,2
+"Louisiana","LA","UrbanDrainage",NA,NA,"CanESM2",NA,135.567140938928,3
+"Louisiana","LA","UrbanDrainage",NA,NA,"CanESM2",NA,93.834164929152,4
+"Louisiana","LA","UrbanDrainage",NA,NA,"CanESM2",NA,107.900310757789,5
+"Louisiana","LA","UrbanDrainage",NA,NA,"CanESM2",NA,239.98313924152,6
+"Louisiana","LA","UrbanDrainage",NA,NA,"CCSM4",NA,16.6366240332591,1
+"Louisiana","LA","UrbanDrainage",NA,NA,"CCSM4",NA,78.1351632324394,2
+"Louisiana","LA","UrbanDrainage",NA,NA,"CCSM4",NA,151.100281745924,3
+"Louisiana","LA","UrbanDrainage",NA,NA,"CCSM4",NA,118.975314871423,4
+"Louisiana","LA","UrbanDrainage",NA,NA,"CCSM4",NA,65.8641195762841,5
+"Louisiana","LA","UrbanDrainage",NA,NA,"GISS-E2-R",NA,54.6460450665654,1
+"Louisiana","LA","UrbanDrainage",NA,NA,"GISS-E2-R",NA,155.858982691741,2
+"Louisiana","LA","UrbanDrainage",NA,NA,"GISS-E2-R",NA,49.9994466592898,3
+"Louisiana","LA","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,64.81271161073,1
+"Louisiana","LA","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,118.221140403044,2
+"Louisiana","LA","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,111.710399403967,3
+"Louisiana","LA","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,103.670291199771,4
+"Louisiana","LA","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,100.240570022395,5
+"Louisiana","LA","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,94.5005808071655,6
+"Louisiana","LA","UrbanDrainage",NA,NA,"MIROC5",NA,55.7856254012442,1
+"Louisiana","LA","UrbanDrainage",NA,NA,"MIROC5",NA,86.2230922533638,2
+"Louisiana","LA","UrbanDrainage",NA,NA,"MIROC5",NA,104.116895415815,3
+"Louisiana","LA","UrbanDrainage",NA,NA,"MIROC5",NA,389.012976628952,4
+"Louisiana","LA","UrbanDrainage",NA,NA,"MIROC5",NA,245.781653366209,5
+"Massachusetts","MA","UrbanDrainage",NA,NA,"CanESM2",NA,0,1
+"Massachusetts","MA","UrbanDrainage",NA,NA,"CanESM2",NA,0,2
+"Massachusetts","MA","UrbanDrainage",NA,NA,"CanESM2",NA,0.728186878124827,3
+"Massachusetts","MA","UrbanDrainage",NA,NA,"CanESM2",NA,16.0201113187462,4
+"Massachusetts","MA","UrbanDrainage",NA,NA,"CanESM2",NA,18.6901298718706,5
+"Massachusetts","MA","UrbanDrainage",NA,NA,"CanESM2",NA,-1.33500927656218,6
+"Massachusetts","MA","UrbanDrainage",NA,NA,"CCSM4",NA,0,1
+"Massachusetts","MA","UrbanDrainage",NA,NA,"CCSM4",NA,0,2
+"Massachusetts","MA","UrbanDrainage",NA,NA,"CCSM4",NA,0,3
+"Massachusetts","MA","UrbanDrainage",NA,NA,"CCSM4",NA,0,4
+"Massachusetts","MA","UrbanDrainage",NA,NA,"CCSM4",NA,0,5
+"Massachusetts","MA","UrbanDrainage",NA,NA,"GISS-E2-R",NA,0,1
+"Massachusetts","MA","UrbanDrainage",NA,NA,"GISS-E2-R",NA,0,2
+"Massachusetts","MA","UrbanDrainage",NA,NA,"GISS-E2-R",NA,2.73602451850392,3
+"Massachusetts","MA","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,0,1
+"Massachusetts","MA","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,8.08010095036759,2
+"Massachusetts","MA","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,124.433554635661,3
+"Massachusetts","MA","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,133.321665681065,4
+"Massachusetts","MA","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,53.3286662724261,5
+"Massachusetts","MA","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,0,6
+"Massachusetts","MA","UrbanDrainage",NA,NA,"MIROC5",NA,0,1
+"Massachusetts","MA","UrbanDrainage",NA,NA,"MIROC5",NA,0,2
+"Massachusetts","MA","UrbanDrainage",NA,NA,"MIROC5",NA,0,3
+"Massachusetts","MA","UrbanDrainage",NA,NA,"MIROC5",NA,0,4
+"Massachusetts","MA","UrbanDrainage",NA,NA,"MIROC5",NA,0,5
+"Maryland","MD","UrbanDrainage",NA,NA,"CanESM2",NA,0,1
+"Maryland","MD","UrbanDrainage",NA,NA,"CanESM2",NA,24.8224664482084,2
+"Maryland","MD","UrbanDrainage",NA,NA,"CanESM2",NA,128.964769942668,3
+"Maryland","MD","UrbanDrainage",NA,NA,"CanESM2",NA,76.4150593324195,4
+"Maryland","MD","UrbanDrainage",NA,NA,"CanESM2",NA,29.9916092379077,5
+"Maryland","MD","UrbanDrainage",NA,NA,"CanESM2",NA,39.3959693089773,6
+"Maryland","MD","UrbanDrainage",NA,NA,"CCSM4",NA,39.9988690821948,1
+"Maryland","MD","UrbanDrainage",NA,NA,"CCSM4",NA,59.9116426669433,2
+"Maryland","MD","UrbanDrainage",NA,NA,"CCSM4",NA,65.7211184574984,3
+"Maryland","MD","UrbanDrainage",NA,NA,"CCSM4",NA,103.957792860798,4
+"Maryland","MD","UrbanDrainage",NA,NA,"CCSM4",NA,40.9990474047334,5
+"Maryland","MD","UrbanDrainage",NA,NA,"GISS-E2-R",NA,163.222734399589,1
+"Maryland","MD","UrbanDrainage",NA,NA,"GISS-E2-R",NA,144.027574394074,2
+"Maryland","MD","UrbanDrainage",NA,NA,"GISS-E2-R",NA,29.0148305381034,3
+"Maryland","MD","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,110.928441933846,1
+"Maryland","MD","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,200.241947214246,2
+"Maryland","MD","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,158.912734776986,3
+"Maryland","MD","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,100.93336819526,4
+"Maryland","MD","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,40.3733472781038,5
+"Maryland","MD","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,6.81532568526744,6
+"Maryland","MD","UrbanDrainage",NA,NA,"MIROC5",NA,3.53928177083196,1
+"Maryland","MD","UrbanDrainage",NA,NA,"MIROC5",NA,9.53593689901439,2
+"Maryland","MD","UrbanDrainage",NA,NA,"MIROC5",NA,28.6706865739217,3
+"Maryland","MD","UrbanDrainage",NA,NA,"MIROC5",NA,36.3269397117027,4
+"Maryland","MD","UrbanDrainage",NA,NA,"MIROC5",NA,29.5106302925777,5
+"Michigan","MI","UrbanDrainage",NA,NA,"CanESM2",NA,0,1
+"Michigan","MI","UrbanDrainage",NA,NA,"CanESM2",NA,0,2
+"Michigan","MI","UrbanDrainage",NA,NA,"CanESM2",NA,5.0351223947515,3
+"Michigan","MI","UrbanDrainage",NA,NA,"CanESM2",NA,110.772692684533,4
+"Michigan","MI","UrbanDrainage",NA,NA,"CanESM2",NA,165.459401120535,5
+"Michigan","MI","UrbanDrainage",NA,NA,"CanESM2",NA,117.555017736318,6
+"Michigan","MI","UrbanDrainage",NA,NA,"CCSM4",NA,0,1
+"Michigan","MI","UrbanDrainage",NA,NA,"CCSM4",NA,0,2
+"Michigan","MI","UrbanDrainage",NA,NA,"CCSM4",NA,5.6037936431947,3
+"Michigan","MI","UrbanDrainage",NA,NA,"CCSM4",NA,8.09436859572568,4
+"Michigan","MI","UrbanDrainage",NA,NA,"CCSM4",NA,-0.622643738132745,5
+"Michigan","MI","UrbanDrainage",NA,NA,"GISS-E2-R",NA,0.562531018664219,1
+"Michigan","MI","UrbanDrainage",NA,NA,"GISS-E2-R",NA,104.630769471545,2
+"Michigan","MI","UrbanDrainage",NA,NA,"GISS-E2-R",NA,0,3
+"Michigan","MI","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,0,1
+"Michigan","MI","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,0,2
+"Michigan","MI","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,0,3
+"Michigan","MI","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,0,4
+"Michigan","MI","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,0,5
+"Michigan","MI","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,8.75634274013549,6
+"Michigan","MI","UrbanDrainage",NA,NA,"MIROC5",NA,0,1
+"Michigan","MI","UrbanDrainage",NA,NA,"MIROC5",NA,0,2
+"Michigan","MI","UrbanDrainage",NA,NA,"MIROC5",NA,0.683690147750348,3
+"Michigan","MI","UrbanDrainage",NA,NA,"MIROC5",NA,8.24986111618753,4
+"Michigan","MI","UrbanDrainage",NA,NA,"MIROC5",NA,4.51235497515229,5
+"Minnesota","MN","UrbanDrainage",NA,NA,"CanESM2",NA,0,1
+"Minnesota","MN","UrbanDrainage",NA,NA,"CanESM2",NA,0.110122408274219,2
+"Minnesota","MN","UrbanDrainage",NA,NA,"CanESM2",NA,0.568965776083464,3
+"Minnesota","MN","UrbanDrainage",NA,NA,"CanESM2",NA,0.269188109114757,4
+"Minnesota","MN","UrbanDrainage",NA,NA,"CanESM2",NA,0,5
+"Minnesota","MN","UrbanDrainage",NA,NA,"CanESM2",NA,0,6
+"Minnesota","MN","UrbanDrainage",NA,NA,"CCSM4",NA,0,1
+"Minnesota","MN","UrbanDrainage",NA,NA,"CCSM4",NA,0,2
+"Minnesota","MN","UrbanDrainage",NA,NA,"CCSM4",NA,0,3
+"Minnesota","MN","UrbanDrainage",NA,NA,"CCSM4",NA,0,4
+"Minnesota","MN","UrbanDrainage",NA,NA,"CCSM4",NA,0,5
+"Minnesota","MN","UrbanDrainage",NA,NA,"GISS-E2-R",NA,25.6325362501523,1
+"Minnesota","MN","UrbanDrainage",NA,NA,"GISS-E2-R",NA,0.795688486700958,2
+"Minnesota","MN","UrbanDrainage",NA,NA,"GISS-E2-R",NA,0,3
+"Minnesota","MN","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,0,1
+"Minnesota","MN","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,0,2
+"Minnesota","MN","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,0,3
+"Minnesota","MN","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,0,4
+"Minnesota","MN","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,0,5
+"Minnesota","MN","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,0,6
+"Minnesota","MN","UrbanDrainage",NA,NA,"MIROC5",NA,0,1
+"Minnesota","MN","UrbanDrainage",NA,NA,"MIROC5",NA,0,2
+"Minnesota","MN","UrbanDrainage",NA,NA,"MIROC5",NA,0,3
+"Minnesota","MN","UrbanDrainage",NA,NA,"MIROC5",NA,0,4
+"Minnesota","MN","UrbanDrainage",NA,NA,"MIROC5",NA,0,5
+"Missouri","MO","UrbanDrainage",NA,NA,"CanESM2",NA,1.20332831441346,1
+"Missouri","MO","UrbanDrainage",NA,NA,"CanESM2",NA,5.75748966802982,2
+"Missouri","MO","UrbanDrainage",NA,NA,"CanESM2",NA,19.1897837011394,3
+"Missouri","MO","UrbanDrainage",NA,NA,"CanESM2",NA,17.0233493599982,4
+"Missouri","MO","UrbanDrainage",NA,NA,"CanESM2",NA,9.67672018306758,5
+"Missouri","MO","UrbanDrainage",NA,NA,"CanESM2",NA,-0.635223841006192,6
+"Missouri","MO","UrbanDrainage",NA,NA,"CCSM4",NA,4.41603424404467,1
+"Missouri","MO","UrbanDrainage",NA,NA,"CCSM4",NA,20.502026316206,2
+"Missouri","MO","UrbanDrainage",NA,NA,"CCSM4",NA,38.4774681611589,3
+"Missouri","MO","UrbanDrainage",NA,NA,"CCSM4",NA,23.2946635273873,4
+"Missouri","MO","UrbanDrainage",NA,NA,"CCSM4",NA,-1.79189719441441,5
+"Missouri","MO","UrbanDrainage",NA,NA,"GISS-E2-R",NA,475.002040308903,1
+"Missouri","MO","UrbanDrainage",NA,NA,"GISS-E2-R",NA,539.020267820165,2
+"Missouri","MO","UrbanDrainage",NA,NA,"GISS-E2-R",NA,510.954247120957,3
+"Missouri","MO","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,3.43587978181268,1
+"Missouri","MO","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,35.7350088795105,2
+"Missouri","MO","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,459.726439830667,3
+"Missouri","MO","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,530.151012348322,4
+"Missouri","MO","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,307.422951826305,5
+"Missouri","MO","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,312.09572377248,6
+"Missouri","MO","UrbanDrainage",NA,NA,"MIROC5",NA,80.9880430035338,1
+"Missouri","MO","UrbanDrainage",NA,NA,"MIROC5",NA,122.934276029771,2
+"Missouri","MO","UrbanDrainage",NA,NA,"MIROC5",NA,111.485581565822,3
+"Missouri","MO","UrbanDrainage",NA,NA,"MIROC5",NA,230.592479893827,4
+"Missouri","MO","UrbanDrainage",NA,NA,"MIROC5",NA,332.711883261917,5
+"North Carolina","NC","UrbanDrainage",NA,NA,"CanESM2",NA,81.2614942578742,1
+"North Carolina","NC","UrbanDrainage",NA,NA,"CanESM2",NA,148.837034018735,2
+"North Carolina","NC","UrbanDrainage",NA,NA,"CanESM2",NA,32.8022066049484,3
+"North Carolina","NC","UrbanDrainage",NA,NA,"CanESM2",NA,51.4634205333767,4
+"North Carolina","NC","UrbanDrainage",NA,NA,"CanESM2",NA,59.5942062891451,5
+"North Carolina","NC","UrbanDrainage",NA,NA,"CanESM2",NA,9.9417035300818,6
+"North Carolina","NC","UrbanDrainage",NA,NA,"CCSM4",NA,136.04642366755,1
+"North Carolina","NC","UrbanDrainage",NA,NA,"CCSM4",NA,250.500859418868,2
+"North Carolina","NC","UrbanDrainage",NA,NA,"CCSM4",NA,255.16481913428,3
+"North Carolina","NC","UrbanDrainage",NA,NA,"CCSM4",NA,334.720057681972,4
+"North Carolina","NC","UrbanDrainage",NA,NA,"CCSM4",NA,268.607553675958,5
+"North Carolina","NC","UrbanDrainage",NA,NA,"GISS-E2-R",NA,142.174387778507,1
+"North Carolina","NC","UrbanDrainage",NA,NA,"GISS-E2-R",NA,61.2651012173065,2
+"North Carolina","NC","UrbanDrainage",NA,NA,"GISS-E2-R",NA,76.8534346422277,3
+"North Carolina","NC","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,254.338051080406,1
+"North Carolina","NC","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,452.915376144047,2
+"North Carolina","NC","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,268.850179131619,3
+"North Carolina","NC","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,221.73380479253,4
+"North Carolina","NC","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,311.032697986957,5
+"North Carolina","NC","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,309.464689448852,6
+"North Carolina","NC","UrbanDrainage",NA,NA,"MIROC5",NA,320.896690235961,1
+"North Carolina","NC","UrbanDrainage",NA,NA,"MIROC5",NA,451.751910574978,2
+"North Carolina","NC","UrbanDrainage",NA,NA,"MIROC5",NA,205.519569247095,3
+"North Carolina","NC","UrbanDrainage",NA,NA,"MIROC5",NA,265.883655918062,4
+"North Carolina","NC","UrbanDrainage",NA,NA,"MIROC5",NA,458.797071930761,5
+"Nebraska","NE","UrbanDrainage",NA,NA,"CanESM2",NA,33.8095362655998,1
+"Nebraska","NE","UrbanDrainage",NA,NA,"CanESM2",NA,68.1091087929389,2
+"Nebraska","NE","UrbanDrainage",NA,NA,"CanESM2",NA,45.3415669999481,3
+"Nebraska","NE","UrbanDrainage",NA,NA,"CanESM2",NA,30.8584381664174,4
+"Nebraska","NE","UrbanDrainage",NA,NA,"CanESM2",NA,42.8493836104906,5
+"Nebraska","NE","UrbanDrainage",NA,NA,"CanESM2",NA,90.9539497460258,6
+"Nebraska","NE","UrbanDrainage",NA,NA,"CCSM4",NA,0,1
+"Nebraska","NE","UrbanDrainage",NA,NA,"CCSM4",NA,5.95981401050088,2
+"Nebraska","NE","UrbanDrainage",NA,NA,"CCSM4",NA,53.2859073752491,3
+"Nebraska","NE","UrbanDrainage",NA,NA,"CCSM4",NA,63.4407010737467,4
+"Nebraska","NE","UrbanDrainage",NA,NA,"CCSM4",NA,-4.88005392874975,5
+"Nebraska","NE","UrbanDrainage",NA,NA,"GISS-E2-R",NA,30.1482117278517,1
+"Nebraska","NE","UrbanDrainage",NA,NA,"GISS-E2-R",NA,9.67754984780796,2
+"Nebraska","NE","UrbanDrainage",NA,NA,"GISS-E2-R",NA,77.2485286638595,3
+"Nebraska","NE","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,3.75846162505327,1
+"Nebraska","NE","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,8.36356188682,2
+"Nebraska","NE","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,29.70074820979,3
+"Nebraska","NE","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,34.6540722594339,4
+"Nebraska","NE","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,26.295742224535,5
+"Nebraska","NE","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,58.2908674266277,6
+"Nebraska","NE","UrbanDrainage",NA,NA,"MIROC5",NA,18.2454968540979,1
+"Nebraska","NE","UrbanDrainage",NA,NA,"MIROC5",NA,25.223743464794,2
+"Nebraska","NE","UrbanDrainage",NA,NA,"MIROC5",NA,9.16355741361382,3
+"Nebraska","NE","UrbanDrainage",NA,NA,"MIROC5",NA,13.3109893702496,4
+"Nebraska","NE","UrbanDrainage",NA,NA,"MIROC5",NA,12.1958678567508,5
+"New Mexico","NM","UrbanDrainage",NA,NA,"CanESM2",NA,0,1
+"New Mexico","NM","UrbanDrainage",NA,NA,"CanESM2",NA,0,2
+"New Mexico","NM","UrbanDrainage",NA,NA,"CanESM2",NA,0,3
+"New Mexico","NM","UrbanDrainage",NA,NA,"CanESM2",NA,0,4
+"New Mexico","NM","UrbanDrainage",NA,NA,"CanESM2",NA,0,5
+"New Mexico","NM","UrbanDrainage",NA,NA,"CanESM2",NA,0,6
+"New Mexico","NM","UrbanDrainage",NA,NA,"CCSM4",NA,0.294255670177348,1
+"New Mexico","NM","UrbanDrainage",NA,NA,"CCSM4",NA,0.418394781033417,2
+"New Mexico","NM","UrbanDrainage",NA,NA,"CCSM4",NA,0,3
+"New Mexico","NM","UrbanDrainage",NA,NA,"CCSM4",NA,4.39607831519253,4
+"New Mexico","NM","UrbanDrainage",NA,NA,"CCSM4",NA,13.1882349455776,5
+"New Mexico","NM","UrbanDrainage",NA,NA,"GISS-E2-R",NA,0,1
+"New Mexico","NM","UrbanDrainage",NA,NA,"GISS-E2-R",NA,0,2
+"New Mexico","NM","UrbanDrainage",NA,NA,"GISS-E2-R",NA,61.9363552331876,3
+"New Mexico","NM","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,0,1
+"New Mexico","NM","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,0,2
+"New Mexico","NM","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,0,3
+"New Mexico","NM","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,0,4
+"New Mexico","NM","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,0,5
+"New Mexico","NM","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,0,6
+"New Mexico","NM","UrbanDrainage",NA,NA,"MIROC5",NA,0,1
+"New Mexico","NM","UrbanDrainage",NA,NA,"MIROC5",NA,0,2
+"New Mexico","NM","UrbanDrainage",NA,NA,"MIROC5",NA,0,3
+"New Mexico","NM","UrbanDrainage",NA,NA,"MIROC5",NA,0,4
+"New Mexico","NM","UrbanDrainage",NA,NA,"MIROC5",NA,0,5
+"Nevada","NV","UrbanDrainage",NA,NA,"CanESM2",NA,18.9895925074582,1
+"Nevada","NV","UrbanDrainage",NA,NA,"CanESM2",NA,41.6123562276781,2
+"Nevada","NV","UrbanDrainage",NA,NA,"CanESM2",NA,43.9335716978105,3
+"Nevada","NV","UrbanDrainage",NA,NA,"CanESM2",NA,50.1258201638733,4
+"Nevada","NV","UrbanDrainage",NA,NA,"CanESM2",NA,51.6372980221732,5
+"Nevada","NV","UrbanDrainage",NA,NA,"CanESM2",NA,45.1423274753667,6
+"Nevada","NV","UrbanDrainage",NA,NA,"CCSM4",NA,0,1
+"Nevada","NV","UrbanDrainage",NA,NA,"CCSM4",NA,0.636519511285632,2
+"Nevada","NV","UrbanDrainage",NA,NA,"CCSM4",NA,5.77865886781371,3
+"Nevada","NV","UrbanDrainage",NA,NA,"CCSM4",NA,10.9110748754067,4
+"Nevada","NV","UrbanDrainage",NA,NA,"CCSM4",NA,11.495829419519,5
+"Nevada","NV","UrbanDrainage",NA,NA,"GISS-E2-R",NA,5.97304649469879,1
+"Nevada","NV","UrbanDrainage",NA,NA,"GISS-E2-R",NA,4.5691998808239,2
+"Nevada","NV","UrbanDrainage",NA,NA,"GISS-E2-R",NA,36.4617196528574,3
+"Nevada","NV","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,13.8338812027203,1
+"Nevada","NV","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,28.5527864164064,2
+"Nevada","NV","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,74.9595764342658,3
+"Nevada","NV","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,86.2185025230774,4
+"Nevada","NV","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,69.4094323234422,5
+"Nevada","NV","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,53.1012497404325,6
+"Nevada","NV","UrbanDrainage",NA,NA,"MIROC5",NA,1.83988680720887,1
+"Nevada","NV","UrbanDrainage",NA,NA,"MIROC5",NA,3.59303373811274,2
+"Nevada","NV","UrbanDrainage",NA,NA,"MIROC5",NA,16.24617859315,3
+"Nevada","NV","UrbanDrainage",NA,NA,"MIROC5",NA,121.250781786414,4
+"Nevada","NV","UrbanDrainage",NA,NA,"MIROC5",NA,98.3465963167115,5
+"New York","NY","UrbanDrainage",NA,NA,"CanESM2",NA,18.7414624136444,1
+"New York","NY","UrbanDrainage",NA,NA,"CanESM2",NA,33.9689006247306,2
+"New York","NY","UrbanDrainage",NA,NA,"CanESM2",NA,5.21779351288965,3
+"New York","NY","UrbanDrainage",NA,NA,"CanESM2",NA,0,4
+"New York","NY","UrbanDrainage",NA,NA,"CanESM2",NA,31.2846739249246,5
+"New York","NY","UrbanDrainage",NA,NA,"CanESM2",NA,109.496358737236,6
+"New York","NY","UrbanDrainage",NA,NA,"CCSM4",NA,38.2852044712239,1
+"New York","NY","UrbanDrainage",NA,NA,"CCSM4",NA,54.4367751075214,2
+"New York","NY","UrbanDrainage",NA,NA,"CCSM4",NA,0,3
+"New York","NY","UrbanDrainage",NA,NA,"CCSM4",NA,29.4675869455228,4
+"New York","NY","UrbanDrainage",NA,NA,"CCSM4",NA,88.4027608365684,5
+"New York","NY","UrbanDrainage",NA,NA,"GISS-E2-R",NA,0.82599506637746,1
+"New York","NY","UrbanDrainage",NA,NA,"GISS-E2-R",NA,208.366207325174,2
+"New York","NY","UrbanDrainage",NA,NA,"GISS-E2-R",NA,250.883621400369,3
+"New York","NY","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,32.6166396871108,1
+"New York","NY","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,62.6859129156402,2
+"New York","NY","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,105.370992484038,3
+"New York","NY","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,127.088034106836,4
+"New York","NY","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,133.817474356568,5
+"New York","NY","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,90.6086146309272,6
+"New York","NY","UrbanDrainage",NA,NA,"MIROC5",NA,0,1
+"New York","NY","UrbanDrainage",NA,NA,"MIROC5",NA,0,2
+"New York","NY","UrbanDrainage",NA,NA,"MIROC5",NA,0.556623116212489,3
+"New York","NY","UrbanDrainage",NA,NA,"MIROC5",NA,6.71658560229737,4
+"New York","NY","UrbanDrainage",NA,NA,"MIROC5",NA,3.67371256700243,5
+"Ohio","OH","UrbanDrainage",NA,NA,"CanESM2",NA,42.5184409180543,1
+"Ohio","OH","UrbanDrainage",NA,NA,"CanESM2",NA,77.2144369367929,2
+"Ohio","OH","UrbanDrainage",NA,NA,"CanESM2",NA,20.2268191829797,3
+"Ohio","OH","UrbanDrainage",NA,NA,"CanESM2",NA,167.907623003316,4
+"Ohio","OH","UrbanDrainage",NA,NA,"CanESM2",NA,232.101591543399,5
+"Ohio","OH","UrbanDrainage",NA,NA,"CanESM2",NA,114.265836129761,6
+"Ohio","OH","UrbanDrainage",NA,NA,"CCSM4",NA,46.9555141214851,1
+"Ohio","OH","UrbanDrainage",NA,NA,"CCSM4",NA,66.7648716414866,2
+"Ohio","OH","UrbanDrainage",NA,NA,"CCSM4",NA,18.74158875216,3
+"Ohio","OH","UrbanDrainage",NA,NA,"CCSM4",NA,28.887656401223,4
+"Ohio","OH","UrbanDrainage",NA,NA,"CCSM4",NA,3.36701919406875,5
+"Ohio","OH","UrbanDrainage",NA,NA,"GISS-E2-R",NA,6.51234583692461,1
+"Ohio","OH","UrbanDrainage",NA,NA,"GISS-E2-R",NA,90.8695256736491,2
+"Ohio","OH","UrbanDrainage",NA,NA,"GISS-E2-R",NA,80.0175184702016,3
+"Ohio","OH","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,5.39578504748069,1
+"Ohio","OH","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,9.44262383309121,2
+"Ohio","OH","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,3.14754127769707,3
+"Ohio","OH","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,295.865467823852,4
+"Ohio","OH","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,828.423309906786,5
+"Ohio","OH","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,807.220029034936,6
+"Ohio","OH","UrbanDrainage",NA,NA,"MIROC5",NA,0,1
+"Ohio","OH","UrbanDrainage",NA,NA,"MIROC5",NA,14.354013361686,2
+"Ohio","OH","UrbanDrainage",NA,NA,"MIROC5",NA,78.1625034342437,3
+"Ohio","OH","UrbanDrainage",NA,NA,"MIROC5",NA,44.4766440527696,4
+"Ohio","OH","UrbanDrainage",NA,NA,"MIROC5",NA,60.2311758685247,5
+"Oklahoma","OK","UrbanDrainage",NA,NA,"CanESM2",NA,11.7797218476233,1
+"Oklahoma","OK","UrbanDrainage",NA,NA,"CanESM2",NA,51.9992897185242,2
+"Oklahoma","OK","UrbanDrainage",NA,NA,"CanESM2",NA,167.350956965293,3
+"Oklahoma","OK","UrbanDrainage",NA,NA,"CanESM2",NA,200.771099855676,4
+"Oklahoma","OK","UrbanDrainage",NA,NA,"CanESM2",NA,219.181671033297,5
+"Oklahoma","OK","UrbanDrainage",NA,NA,"CanESM2",NA,242.750694187124,6
+"Oklahoma","OK","UrbanDrainage",NA,NA,"CCSM4",NA,75.4403285606381,1
+"Oklahoma","OK","UrbanDrainage",NA,NA,"CCSM4",NA,140.822096047801,2
+"Oklahoma","OK","UrbanDrainage",NA,NA,"CCSM4",NA,112.160724165838,3
+"Oklahoma","OK","UrbanDrainage",NA,NA,"CCSM4",NA,146.984444727707,4
+"Oklahoma","OK","UrbanDrainage",NA,NA,"CCSM4",NA,176.816253847386,5
+"Oklahoma","OK","UrbanDrainage",NA,NA,"GISS-E2-R",NA,601.757435924082,1
+"Oklahoma","OK","UrbanDrainage",NA,NA,"GISS-E2-R",NA,212.986678003646,2
+"Oklahoma","OK","UrbanDrainage",NA,NA,"GISS-E2-R",NA,701.633194180002,3
+"Oklahoma","OK","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,259.541536961981,1
+"Oklahoma","OK","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,464.096038720181,2
+"Oklahoma","OK","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,303.833805059894,3
+"Oklahoma","OK","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,406.361455681415,4
+"Oklahoma","OK","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,745.837454054063,5
+"Oklahoma","OK","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,755.970809801298,6
+"Oklahoma","OK","UrbanDrainage",NA,NA,"MIROC5",NA,62.7970989917659,1
+"Oklahoma","OK","UrbanDrainage",NA,NA,"MIROC5",NA,194.42381682416,2
+"Oklahoma","OK","UrbanDrainage",NA,NA,"MIROC5",NA,617.651168174549,3
+"Oklahoma","OK","UrbanDrainage",NA,NA,"MIROC5",NA,377.094294603682,4
+"Oklahoma","OK","UrbanDrainage",NA,NA,"MIROC5",NA,337.626376421745,5
+"Oregon","OR","UrbanDrainage",NA,NA,"CanESM2",NA,25.3014252218442,1
+"Oregon","OR","UrbanDrainage",NA,NA,"CanESM2",NA,56.8884266502357,2
+"Oregon","OR","UrbanDrainage",NA,NA,"CanESM2",NA,65.597957984612,3
+"Oregon","OR","UrbanDrainage",NA,NA,"CanESM2",NA,61.4479540577972,4
+"Oregon","OR","UrbanDrainage",NA,NA,"CanESM2",NA,55.6732814695477,5
+"Oregon","OR","UrbanDrainage",NA,NA,"CanESM2",NA,51.1617948952577,6
+"Oregon","OR","UrbanDrainage",NA,NA,"CCSM4",NA,24.1061888645034,1
+"Oregon","OR","UrbanDrainage",NA,NA,"CCSM4",NA,50.3624386527572,2
+"Oregon","OR","UrbanDrainage",NA,NA,"CCSM4",NA,62.1264925658344,3
+"Oregon","OR","UrbanDrainage",NA,NA,"CCSM4",NA,77.4980992335779,4
+"Oregon","OR","UrbanDrainage",NA,NA,"CCSM4",NA,68.7263719931873,5
+"Oregon","OR","UrbanDrainage",NA,NA,"GISS-E2-R",NA,38.2322159998744,1
+"Oregon","OR","UrbanDrainage",NA,NA,"GISS-E2-R",NA,26.7983162047933,2
+"Oregon","OR","UrbanDrainage",NA,NA,"GISS-E2-R",NA,44.7894699637543,3
+"Oregon","OR","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,30.2280733657493,1
+"Oregon","OR","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,57.0188804691542,2
+"Oregon","OR","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,81.0772248147176,3
+"Oregon","OR","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,85.8852509537492,4
+"Oregon","OR","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,77.3365203384194,5
+"Oregon","OR","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,78.8181226109601,6
+"Oregon","OR","UrbanDrainage",NA,NA,"MIROC5",NA,53.9761007627592,1
+"Oregon","OR","UrbanDrainage",NA,NA,"MIROC5",NA,78.6484225054827,2
+"Oregon","OR","UrbanDrainage",NA,NA,"MIROC5",NA,50.6481282243458,3
+"Oregon","OR","UrbanDrainage",NA,NA,"MIROC5",NA,71.1219110322388,4
+"Oregon","OR","UrbanDrainage",NA,NA,"MIROC5",NA,60.127014608416,5
+"Pennsylvania","PA","UrbanDrainage",NA,NA,"CanESM2",NA,0,1
+"Pennsylvania","PA","UrbanDrainage",NA,NA,"CanESM2",NA,25.4221892535761,2
+"Pennsylvania","PA","UrbanDrainage",NA,NA,"CanESM2",NA,134.48753879917,3
+"Pennsylvania","PA","UrbanDrainage",NA,NA,"CanESM2",NA,131.213471045107,4
+"Pennsylvania","PA","UrbanDrainage",NA,NA,"CanESM2",NA,81.7834453954214,5
+"Pennsylvania","PA","UrbanDrainage",NA,NA,"CanESM2",NA,-1.55103177680875,6
+"Pennsylvania","PA","UrbanDrainage",NA,NA,"CCSM4",NA,104.937357383816,1
+"Pennsylvania","PA","UrbanDrainage",NA,NA,"CCSM4",NA,152.625843233608,2
+"Pennsylvania","PA","UrbanDrainage",NA,NA,"CCSM4",NA,5.37120289120586,3
+"Pennsylvania","PA","UrbanDrainage",NA,NA,"CCSM4",NA,36.1011645349132,4
+"Pennsylvania","PA","UrbanDrainage",NA,NA,"CCSM4",NA,108.30349360474,5
+"Pennsylvania","PA","UrbanDrainage",NA,NA,"GISS-E2-R",NA,73.953488448379,1
+"Pennsylvania","PA","UrbanDrainage",NA,NA,"GISS-E2-R",NA,5.70212144636053,2
+"Pennsylvania","PA","UrbanDrainage",NA,NA,"GISS-E2-R",NA,16.8320772473657,3
+"Pennsylvania","PA","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,8.32071097492105,1
+"Pennsylvania","PA","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,17.6080620110678,2
+"Pennsylvania","PA","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,51.7747422650256,3
+"Pennsylvania","PA","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,118.006873950618,4
+"Pennsylvania","PA","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,209.765261985474,5
+"Pennsylvania","PA","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,211.381597995512,6
+"Pennsylvania","PA","UrbanDrainage",NA,NA,"MIROC5",NA,0,1
+"Pennsylvania","PA","UrbanDrainage",NA,NA,"MIROC5",NA,0,2
+"Pennsylvania","PA","UrbanDrainage",NA,NA,"MIROC5",NA,0,3
+"Pennsylvania","PA","UrbanDrainage",NA,NA,"MIROC5",NA,0.145406486759031,4
+"Pennsylvania","PA","UrbanDrainage",NA,NA,"MIROC5",NA,5.86472829928091,5
+"Tennessee","TN","UrbanDrainage",NA,NA,"CanESM2",NA,138.679610241484,1
+"Tennessee","TN","UrbanDrainage",NA,NA,"CanESM2",NA,334.046047262627,2
+"Tennessee","TN","UrbanDrainage",NA,NA,"CanESM2",NA,471.609551506965,3
+"Tennessee","TN","UrbanDrainage",NA,NA,"CanESM2",NA,329.114970020034,4
+"Tennessee","TN","UrbanDrainage",NA,NA,"CanESM2",NA,252.05377037441,5
+"Tennessee","TN","UrbanDrainage",NA,NA,"CanESM2",NA,353.081182985579,6
+"Tennessee","TN","UrbanDrainage",NA,NA,"CCSM4",NA,54.0468728611691,1
+"Tennessee","TN","UrbanDrainage",NA,NA,"CCSM4",NA,134.71719496402,2
+"Tennessee","TN","UrbanDrainage",NA,NA,"CCSM4",NA,162.105544948402,3
+"Tennessee","TN","UrbanDrainage",NA,NA,"CCSM4",NA,167.218269753453,4
+"Tennessee","TN","UrbanDrainage",NA,NA,"CCSM4",NA,185.352243623019,5
+"Tennessee","TN","UrbanDrainage",NA,NA,"GISS-E2-R",NA,259.298076691965,1
+"Tennessee","TN","UrbanDrainage",NA,NA,"GISS-E2-R",NA,171.073821409152,2
+"Tennessee","TN","UrbanDrainage",NA,NA,"GISS-E2-R",NA,293.519331985876,3
+"Tennessee","TN","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,222.52144503156,1
+"Tennessee","TN","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,396.192765004354,2
+"Tennessee","TN","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,234.219813734923,3
+"Tennessee","TN","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,263.604464436587,4
+"Tennessee","TN","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,469.595146937124,5
+"Tennessee","TN","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,556.409994918299,6
+"Tennessee","TN","UrbanDrainage",NA,NA,"MIROC5",NA,111.209788417804,1
+"Tennessee","TN","UrbanDrainage",NA,NA,"MIROC5",NA,187.159095553749,2
+"Tennessee","TN","UrbanDrainage",NA,NA,"MIROC5",NA,238.978999737376,3
+"Tennessee","TN","UrbanDrainage",NA,NA,"MIROC5",NA,200.790228665647,4
+"Tennessee","TN","UrbanDrainage",NA,NA,"MIROC5",NA,304.72647589023,5
+"Texas","TX","UrbanDrainage",NA,NA,"CanESM2",NA,157.462949496532,1
+"Texas","TX","UrbanDrainage",NA,NA,"CanESM2",NA,416.627053051454,2
+"Texas","TX","UrbanDrainage",NA,NA,"CanESM2",NA,736.478901087143,3
+"Texas","TX","UrbanDrainage",NA,NA,"CanESM2",NA,642.888308686549,4
+"Texas","TX","UrbanDrainage",NA,NA,"CanESM2",NA,920.420830102474,5
+"Texas","TX","UrbanDrainage",NA,NA,"CanESM2",NA,1879.32720062664,6
+"Texas","TX","UrbanDrainage",NA,NA,"CCSM4",NA,622.633081848253,1
+"Texas","TX","UrbanDrainage",NA,NA,"CCSM4",NA,912.036108071705,2
+"Texas","TX","UrbanDrainage",NA,NA,"CCSM4",NA,52.4949686327077,3
+"Texas","TX","UrbanDrainage",NA,NA,"CCSM4",NA,56.8750998657574,4
+"Texas","TX","UrbanDrainage",NA,NA,"CCSM4",NA,123.997910757248,5
+"Texas","TX","UrbanDrainage",NA,NA,"GISS-E2-R",NA,913.468416614965,1
+"Texas","TX","UrbanDrainage",NA,NA,"GISS-E2-R",NA,450.407715718434,2
+"Texas","TX","UrbanDrainage",NA,NA,"GISS-E2-R",NA,1401.34598304562,3
+"Texas","TX","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,194.951711130692,1
+"Texas","TX","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,401.854957566755,2
+"Texas","TX","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,1048.33956304877,3
+"Texas","TX","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,1306.93386137396,4
+"Texas","TX","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,1256.11207356058,5
+"Texas","TX","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,1568.26857513726,6
+"Texas","TX","UrbanDrainage",NA,NA,"MIROC5",NA,1994.32607602079,1
+"Texas","TX","UrbanDrainage",NA,NA,"MIROC5",NA,2781.90361058848,2
+"Texas","TX","UrbanDrainage",NA,NA,"MIROC5",NA,1192.69143974017,3
+"Texas","TX","UrbanDrainage",NA,NA,"MIROC5",NA,2215.41378169885,4
+"Texas","TX","UrbanDrainage",NA,NA,"MIROC5",NA,2161.90196749121,5
+"Virginia","VA","UrbanDrainage",NA,NA,"CanESM2",NA,86.2086842734884,1
+"Virginia","VA","UrbanDrainage",NA,NA,"CanESM2",NA,167.068863565662,2
+"Virginia","VA","UrbanDrainage",NA,NA,"CanESM2",NA,84.1502522308704,3
+"Virginia","VA","UrbanDrainage",NA,NA,"CanESM2",NA,120.339697539133,4
+"Virginia","VA","UrbanDrainage",NA,NA,"CanESM2",NA,120.21460982356,5
+"Virginia","VA","UrbanDrainage",NA,NA,"CanESM2",NA,29.4948543764456,6
+"Virginia","VA","UrbanDrainage",NA,NA,"CCSM4",NA,32.3038059269343,1
+"Virginia","VA","UrbanDrainage",NA,NA,"CCSM4",NA,92.4681890329983,2
+"Virginia","VA","UrbanDrainage",NA,NA,"CCSM4",NA,206.827224923516,3
+"Virginia","VA","UrbanDrainage",NA,NA,"CCSM4",NA,257.155949858344,4
+"Virginia","VA","UrbanDrainage",NA,NA,"CCSM4",NA,177.250573589266,5
+"Virginia","VA","UrbanDrainage",NA,NA,"GISS-E2-R",NA,83.9450057967063,1
+"Virginia","VA","UrbanDrainage",NA,NA,"GISS-E2-R",NA,114.387012627381,2
+"Virginia","VA","UrbanDrainage",NA,NA,"GISS-E2-R",NA,205.296926488023,3
+"Virginia","VA","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,166.698572510324,1
+"Virginia","VA","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,297.39425633467,2
+"Virginia","VA","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,184.585852365051,3
+"Virginia","VA","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,285.450586884791,4
+"Virginia","VA","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,574.660167389913,5
+"Virginia","VA","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,632.432935268603,6
+"Virginia","VA","UrbanDrainage",NA,NA,"MIROC5",NA,235.648790773082,1
+"Virginia","VA","UrbanDrainage",NA,NA,"MIROC5",NA,391.050399697668,2
+"Virginia","VA","UrbanDrainage",NA,NA,"MIROC5",NA,459.085257706007,3
+"Virginia","VA","UrbanDrainage",NA,NA,"MIROC5",NA,193.524740203524,4
+"Virginia","VA","UrbanDrainage",NA,NA,"MIROC5",NA,206.248351215302,5
+"Washington","WA","UrbanDrainage",NA,NA,"CanESM2",NA,4.65682928832662,1
+"Washington","WA","UrbanDrainage",NA,NA,"CanESM2",NA,8.64791177512288,2
+"Washington","WA","UrbanDrainage",NA,NA,"CanESM2",NA,2.57263450124797,3
+"Washington","WA","UrbanDrainage",NA,NA,"CanESM2",NA,5.00642422302112,4
+"Washington","WA","UrbanDrainage",NA,NA,"CanESM2",NA,8.47569410947478,5
+"Washington","WA","UrbanDrainage",NA,NA,"CanESM2",NA,10.9173243708882,6
+"Washington","WA","UrbanDrainage",NA,NA,"CCSM4",NA,8.89787171265716,1
+"Washington","WA","UrbanDrainage",NA,NA,"CCSM4",NA,28.6594850262961,2
+"Washington","WA","UrbanDrainage",NA,NA,"CCSM4",NA,25.6469651434659,3
+"Washington","WA","UrbanDrainage",NA,NA,"CCSM4",NA,10.3232589737213,4
+"Washington","WA","UrbanDrainage",NA,NA,"CCSM4",NA,28.7839385270161,5
+"Washington","WA","UrbanDrainage",NA,NA,"GISS-E2-R",NA,33.6043911001382,1
+"Washington","WA","UrbanDrainage",NA,NA,"GISS-E2-R",NA,15.4412470408529,2
+"Washington","WA","UrbanDrainage",NA,NA,"GISS-E2-R",NA,18.0496050118259,3
+"Washington","WA","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,38.4594833651067,1
+"Washington","WA","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,68.8721717626666,2
+"Washington","WA","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,46.5830670850856,3
+"Washington","WA","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,34.0292897725636,4
+"Washington","WA","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,33.1862067634751,5
+"Washington","WA","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,25.1432179736205,6
+"Washington","WA","UrbanDrainage",NA,NA,"MIROC5",NA,63.9710210774681,1
+"Washington","WA","UrbanDrainage",NA,NA,"MIROC5",NA,84.3254368748444,2
+"Washington","WA","UrbanDrainage",NA,NA,"MIROC5",NA,8.50444093980933,3
+"Washington","WA","UrbanDrainage",NA,NA,"MIROC5",NA,19.0878436239602,4
+"Washington","WA","UrbanDrainage",NA,NA,"MIROC5",NA,18.3281435893978,5
+"Wisconsin","WI","UrbanDrainage",NA,NA,"CanESM2",NA,0,1
+"Wisconsin","WI","UrbanDrainage",NA,NA,"CanESM2",NA,12.5313807226804,2
+"Wisconsin","WI","UrbanDrainage",NA,NA,"CanESM2",NA,65.6195505954784,3
+"Wisconsin","WI","UrbanDrainage",NA,NA,"CanESM2",NA,49.8621016112937,4
+"Wisconsin","WI","UrbanDrainage",NA,NA,"CanESM2",NA,26.29682537856,5
+"Wisconsin","WI","UrbanDrainage",NA,NA,"CanESM2",NA,11.9145653977957,6
+"Wisconsin","WI","UrbanDrainage",NA,NA,"CCSM4",NA,0,1
+"Wisconsin","WI","UrbanDrainage",NA,NA,"CCSM4",NA,0,2
+"Wisconsin","WI","UrbanDrainage",NA,NA,"CCSM4",NA,0,3
+"Wisconsin","WI","UrbanDrainage",NA,NA,"CCSM4",NA,0,4
+"Wisconsin","WI","UrbanDrainage",NA,NA,"CCSM4",NA,0,5
+"Wisconsin","WI","UrbanDrainage",NA,NA,"GISS-E2-R",NA,0,1
+"Wisconsin","WI","UrbanDrainage",NA,NA,"GISS-E2-R",NA,0,2
+"Wisconsin","WI","UrbanDrainage",NA,NA,"GISS-E2-R",NA,32.9574097327267,3
+"Wisconsin","WI","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,0,1
+"Wisconsin","WI","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,1.45757569063816,2
+"Wisconsin","WI","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,22.4466656358276,3
+"Wisconsin","WI","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,24.0499988955296,4
+"Wisconsin","WI","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,9.61999955821183,5
+"Wisconsin","WI","UrbanDrainage",NA,NA,"HadGEM2-ES",NA,5.78596564991749,6
+"Wisconsin","WI","UrbanDrainage",NA,NA,"MIROC5",NA,0,1
+"Wisconsin","WI","UrbanDrainage",NA,NA,"MIROC5",NA,2.25370102558665,2
+"Wisconsin","WI","UrbanDrainage",NA,NA,"MIROC5",NA,11.8945331905962,3
+"Wisconsin","WI","UrbanDrainage",NA,NA,"MIROC5",NA,2.25370102558665,4
+"Wisconsin","WI","UrbanDrainage",NA,NA,"MIROC5",NA,0,5

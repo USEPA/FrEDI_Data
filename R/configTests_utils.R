@@ -425,108 +425,120 @@ create_scaledImpact_plot <- function(
   else      {df_points0 <- df0}
   
   ###### ** Initialize plot ######
+  ### Initialize plot
   plot0  <- ggplot()
-  # if(byState){
-  #   plot0  <- df0 |> ggplot(aes(x=.data[[xCol]], y=.data[[yCol]], color=.data[["state"]], group=interaction(sector, variant, impactType, impactYear, region, state, model)))
-  # } else{
-  #   plot0  <- df0 |> ggplot(aes(x=.data[[xCol]], y=.data[[yCol]], color=.data[["region"]], group=interaction(sector, variant, impactType, impactYear, region, model)))
-  # }
-  if(byState){
-    regCol0   <- c("state")
-    stateCol0 <- c("state")
-  } else{
-    regCol0   <- c("region")
-    stateCol0 <- c()
-  } ### End else (byState)
-  group0 <- c("sector", "variant", "impactType", "impactYear", "region") |> c(stateCol0) |> c("model")
   
-  ###### ** Add geoms ######
-  if(do_slr){
-    ### Factor model
-    lvls0  <- df0[["driverValue"]] |> unique() |> sort(decreasing = T)
-    lvls0  <- lvls0 |> paste("cm")
-    df0    <- df0 |> mutate(model = model |> factor(levels = lvls0))
-    rm(lvls0)
-    ### Points data
-    # plot0  <- df0 |> ggplot(aes(x=.data[[xCol]], y=.data[[yCol]], color=.data[[regCol0]], group=interaction(!!!syms(group0))))
-    plot0  <- df0 |> ggplot()
-    plot0  <- plot0 + geom_line(
-      data  = df0, 
-      aes(
-        x     = .data[[xCol]], 
-        y     = .data[[yCol]], 
-        color = .data[[regCol0]], 
-        group = interaction(!!!syms(group0)), 
-        shape = .data[["variant"]]
-      ), ### End aes
-      alpha = 0.65
-    ) ### End geom_line
-    # plot0  <- plot0 + geom_point(data=df_points0, aes(x=.data[[xCol]], y=.data[[yCol]], color=.data[[regCol0]], group=interaction(!!!syms(group0)), shape=.data[[regCol0]]), alpha=0.65)
-    plot0  <- plot0 + geom_point(
-      data  = df_points0, 
-      aes(
-        x     = .data[[xCol]], 
-        y     = .data[[yCol]], 
-        color = .data[[regCol0]], 
-        group = interaction(!!!syms(group0)), 
-        shape = .data[["variant"]]
+  ### Check if the plot needs to be made
+  allNA  <- df0[[yCol]] |> is.na() |> all()
+  doPlot <- !allNA
+  
+  if(doPlot){
+    
+    ### Determine the columns to use
+    # if(byState){
+    #   plot0  <- df0 |> ggplot(aes(x=.data[[xCol]], y=.data[[yCol]], color=.data[["state"]], group=interaction(sector, variant, impactType, impactYear, region, state, model)))
+    # } else{
+    #   plot0  <- df0 |> ggplot(aes(x=.data[[xCol]], y=.data[[yCol]], color=.data[["region"]], group=interaction(sector, variant, impactType, impactYear, region, model)))
+    # }
+    if(byState){
+      regCol0   <- c("state")
+      stateCol0 <- c("state")
+    } else{
+      regCol0   <- c("region")
+      stateCol0 <- c()
+    } ### End else (byState)
+    group0 <- c("sector", "variant", "impactType", "impactYear", "region") |> c(stateCol0) |> c("model")
+    
+    ###### ** Add geoms ######
+    if(do_slr){
+      ### Factor model
+      lvls0  <- df0[["driverValue"]] |> unique() |> sort(decreasing = T)
+      lvls0  <- lvls0 |> paste("cm")
+      df0    <- df0 |> mutate(model = model |> factor(levels = lvls0))
+      rm(lvls0)
+      ### Points data
+      # plot0  <- df0 |> ggplot(aes(x=.data[[xCol]], y=.data[[yCol]], color=.data[[regCol0]], group=interaction(!!!syms(group0))))
+      plot0  <- df0 |> ggplot()
+      plot0  <- plot0 + geom_line(
+        data  = df0, 
+        aes(
+          x     = .data[[xCol]], 
+          y     = .data[[yCol]], 
+          color = .data[[regCol0]], 
+          group = interaction(!!!syms(group0)), 
+          shape = .data[["variant"]]
         ), ### End aes
-      alpha = 0.65
-    ) ### End geom_point
-    rm(df0_2)
-  } else{
-    ### Separate GCM values
-    ### Plot these values as lines
-    df0_1 <- df0 |> filter((maxUnitValue < 6 & driverValue <= maxUnitValue) | maxUnitValue >=6) 
-    ### Plot these values as points
-    df0_2 <- df0 |> filter((maxUnitValue < 6 & driverValue >= maxUnitValue))
-    ### Plot values as lines
-    plot0  <- plot0 + geom_line(
-      data  = df0_1,
-      aes(
-        x        = .data[[xCol]], 
-        y        = .data[[yCol]], 
-        color    = .data[[regCol0]], 
-        group    = interaction(!!!syms(group0)), 
-        linetype = .data[["variant"]]
-      ), ### End aes
-      alpha = 0.65 
-    ) ### End geom_line
-    ### Plot values as points
-    plot0  <- plot0 + geom_point(
-      data = df0_2,
-      aes(
-        x        = .data[[xCol]], 
-        y        = .data[[yCol]], 
-        color    = .data[[regCol0]], 
-        group    = interaction(!!!syms(group0)), 
-        shape   = .data[["variant"]]
-      ), ### End aes
-      alpha=0.65 
-    ) ### End geom_line
-  }
-  
-  
-  ###### * Add geoms
-  # plot0  <- plot0 + geom_line(aes(linetype = .data[["variant"]]), alpha=0.5)
-
-  ###### ** Add facet_grid ######
-  plot0  <- plot0 + facet_grid(model~.data[[regCol0]])
-  # plot0 |> print()
-  
-  ###### ** Adjust legend title ######
-  if(hasLgdPos){plot0 <- plot0 + guides(color = guide_legend(title.position = lgdPos))}
-  plot0  <- plot0 + theme(legend.direction = "vertical", legend.box = "vertical")
-  
-  ###### ** Add and title ######
-  plot0  <- plot0 + ggtitle(title0)
-  
-  ###### ** Add scales ######
-  plot0  <- plot0 + scale_x_continuous(xTitle, breaks=x_breaks, limits=x_limits)
-  plot0  <- plot0 + scale_y_continuous(y_label)
-  plot0  <- plot0 + scale_linetype_discrete("Variant")
-  plot0  <- plot0 + scale_shape_discrete("Variant")
-  plot0  <- plot0 + scale_color_discrete("Region")
+        alpha = 0.65
+      ) ### End geom_line
+      # plot0  <- plot0 + geom_point(data=df_points0, aes(x=.data[[xCol]], y=.data[[yCol]], color=.data[[regCol0]], group=interaction(!!!syms(group0)), shape=.data[[regCol0]]), alpha=0.65)
+      plot0  <- plot0 + geom_point(
+        data  = df_points0, 
+        aes(
+          x     = .data[[xCol]], 
+          y     = .data[[yCol]], 
+          color = .data[[regCol0]], 
+          group = interaction(!!!syms(group0)), 
+          shape = .data[["variant"]]
+        ), ### End aes
+        alpha = 0.65
+      ) ### End geom_point
+      rm(df0_2)
+    } else{
+      ### Separate GCM values
+      ### Plot these values as lines
+      df0_1 <- df0 |> filter((maxUnitValue < 6 & driverValue <= maxUnitValue) | maxUnitValue >=6) 
+      ### Plot these values as points
+      df0_2 <- df0 |> filter((maxUnitValue < 6 & driverValue >= maxUnitValue))
+      ### Plot values as lines
+      plot0  <- plot0 + geom_line(
+        data  = df0_1,
+        aes(
+          x        = .data[[xCol]], 
+          y        = .data[[yCol]], 
+          color    = .data[[regCol0]], 
+          group    = interaction(!!!syms(group0)), 
+          linetype = .data[["variant"]]
+        ), ### End aes
+        alpha = 0.65 
+      ) ### End geom_line
+      ### Plot values as points
+      plot0  <- plot0 + geom_point(
+        data = df0_2,
+        aes(
+          x        = .data[[xCol]], 
+          y        = .data[[yCol]], 
+          color    = .data[[regCol0]], 
+          group    = interaction(!!!syms(group0)), 
+          shape   = .data[["variant"]]
+        ), ### End aes
+        alpha=0.65 
+      ) ### End geom_line
+    }
+    
+    
+    ###### * Add geoms
+    # plot0  <- plot0 + geom_line(aes(linetype = .data[["variant"]]), alpha=0.5)
+    
+    ###### ** Add facet_grid ######
+    plot0  <- plot0 + facet_grid(model~.data[[regCol0]])
+    # plot0 |> print()
+    
+    ###### ** Adjust legend title ######
+    if(hasLgdPos){plot0 <- plot0 + guides(color = guide_legend(title.position = lgdPos))}
+    plot0  <- plot0 + theme(legend.direction = "vertical", legend.box = "vertical")
+    
+    ###### ** Add and title ######
+    plot0  <- plot0 + ggtitle(title0)
+    
+    ###### ** Add scales ######
+    plot0  <- plot0 + scale_x_continuous(xTitle, breaks=x_breaks, limits=x_limits)
+    plot0  <- plot0 + scale_y_continuous(y_label)
+    plot0  <- plot0 + scale_linetype_discrete("Variant")
+    plot0  <- plot0 + scale_shape_discrete("Variant")
+    plot0  <- plot0 + scale_color_discrete("Region")
+    
+    
+  } ### End if(doPlot)
   
   ###### ** Adjust appearance ######
   plot0  <- plot0 + theme(plot.title    = element_text(hjust = 0.5, size=11))

@@ -1,0 +1,99 @@
+state,postal,year,scalarName,value
+Arizona,AZ,2010,wildfire_ResponseCosts,184.0482181
+California,CA,2010,wildfire_ResponseCosts,727.966097
+Colorado,CO,2010,wildfire_ResponseCosts,411.9992182
+Idaho,ID,2010,wildfire_ResponseCosts,125.7182846
+Kansas,KS,2010,wildfire_ResponseCosts,9.812827203
+Montana,MT,2010,wildfire_ResponseCosts,257.8005882
+Nebraska,NE,2010,wildfire_ResponseCosts,95.4905721
+Nevada,NV,2010,wildfire_ResponseCosts,56.73322967
+New Mexico,NM,2010,wildfire_ResponseCosts,160.6268447
+North Dakota,ND,2010,wildfire_ResponseCosts,95.4905721
+Oklahoma,OK,2010,wildfire_ResponseCosts,9.604784444
+Oregon,OR,2010,wildfire_ResponseCosts,325.0126753
+South Dakota,SD,2010,wildfire_ResponseCosts,95.4905721
+Texas,TX,2010,wildfire_ResponseCosts,13.9184121
+Utah,UT,2010,wildfire_ResponseCosts,152.8154431
+Washington,WA,2010,wildfire_ResponseCosts,298.2195729
+Wyoming,WY,2010,wildfire_ResponseCosts,248.7897783
+Arizona,AZ,2090,wildfire_ResponseCosts,184.0482181
+California,CA,2090,wildfire_ResponseCosts,727.966097
+Colorado,CO,2090,wildfire_ResponseCosts,411.9992182
+Idaho,ID,2090,wildfire_ResponseCosts,125.7182846
+Kansas,KS,2090,wildfire_ResponseCosts,9.812827203
+Montana,MT,2090,wildfire_ResponseCosts,257.8005882
+Nebraska,NE,2090,wildfire_ResponseCosts,95.4905721
+Nevada,NV,2090,wildfire_ResponseCosts,56.73322967
+New Mexico,NM,2090,wildfire_ResponseCosts,160.6268447
+North Dakota,ND,2090,wildfire_ResponseCosts,95.4905721
+Oklahoma,OK,2090,wildfire_ResponseCosts,9.604784444
+Oregon,OR,2090,wildfire_ResponseCosts,325.0126753
+South Dakota,SD,2090,wildfire_ResponseCosts,95.4905721
+Texas,TX,2090,wildfire_ResponseCosts,13.9184121
+Utah,UT,2090,wildfire_ResponseCosts,152.8154431
+Washington,WA,2090,wildfire_ResponseCosts,298.2195729
+Wyoming,WY,2090,wildfire_ResponseCosts,248.7897783
+Alabama,AL,2010,wildfire_ResponseCosts,0
+Arkansas,AR,2010,wildfire_ResponseCosts,0
+Connecticut,CT,2010,wildfire_ResponseCosts,0
+Delaware,DE,2010,wildfire_ResponseCosts,0
+District of Columbia,DC,2010,wildfire_ResponseCosts,0
+Florida,FL,2010,wildfire_ResponseCosts,0
+Georgia,GA,2010,wildfire_ResponseCosts,0
+Illinois,IL,2010,wildfire_ResponseCosts,0
+Indiana,IN,2010,wildfire_ResponseCosts,0
+Iowa,IA,2010,wildfire_ResponseCosts,0
+Kentucky,KY,2010,wildfire_ResponseCosts,0
+Louisiana,LA,2010,wildfire_ResponseCosts,0
+Maine,ME,2010,wildfire_ResponseCosts,0
+Maryland,MD,2010,wildfire_ResponseCosts,0
+Massachusetts,MA,2010,wildfire_ResponseCosts,0
+Michigan,MI,2010,wildfire_ResponseCosts,0
+Minnesota,MN,2010,wildfire_ResponseCosts,0
+Mississippi,MS,2010,wildfire_ResponseCosts,0
+Missouri,MO,2010,wildfire_ResponseCosts,0
+New Hampshire,NH,2010,wildfire_ResponseCosts,0
+New Jersey,NJ,2010,wildfire_ResponseCosts,0
+New York,NY,2010,wildfire_ResponseCosts,0
+North Carolina,NC,2010,wildfire_ResponseCosts,0
+Ohio,OH,2010,wildfire_ResponseCosts,0
+Pennsylvania,PA,2010,wildfire_ResponseCosts,0
+Rhode Island,RI,2010,wildfire_ResponseCosts,0
+South Carolina,SC,2010,wildfire_ResponseCosts,0
+Tennessee,TN,2010,wildfire_ResponseCosts,0
+Vermont,VT,2010,wildfire_ResponseCosts,0
+Virginia,VA,2010,wildfire_ResponseCosts,0
+West Virginia,WV,2010,wildfire_ResponseCosts,0
+Wisconsin,WI,2010,wildfire_ResponseCosts,0
+Alabama,AL,2090,wildfire_ResponseCosts,0
+Arkansas,AR,2090,wildfire_ResponseCosts,0
+Connecticut,CT,2090,wildfire_ResponseCosts,0
+Delaware,DE,2090,wildfire_ResponseCosts,0
+District of Columbia,DC,2090,wildfire_ResponseCosts,0
+Florida,FL,2090,wildfire_ResponseCosts,0
+Georgia,GA,2090,wildfire_ResponseCosts,0
+Illinois,IL,2090,wildfire_ResponseCosts,0
+Indiana,IN,2090,wildfire_ResponseCosts,0
+Iowa,IA,2090,wildfire_ResponseCosts,0
+Kentucky,KY,2090,wildfire_ResponseCosts,0
+Louisiana,LA,2090,wildfire_ResponseCosts,0
+Maine,ME,2090,wildfire_ResponseCosts,0
+Maryland,MD,2090,wildfire_ResponseCosts,0
+Massachusetts,MA,2090,wildfire_ResponseCosts,0
+Michigan,MI,2090,wildfire_ResponseCosts,0
+Minnesota,MN,2090,wildfire_ResponseCosts,0
+Mississippi,MS,2090,wildfire_ResponseCosts,0
+Missouri,MO,2090,wildfire_ResponseCosts,0
+New Hampshire,NH,2090,wildfire_ResponseCosts,0
+New Jersey,NJ,2090,wildfire_ResponseCosts,0
+New York,NY,2090,wildfire_ResponseCosts,0
+North Carolina,NC,2090,wildfire_ResponseCosts,0
+Ohio,OH,2090,wildfire_ResponseCosts,0
+Pennsylvania,PA,2090,wildfire_ResponseCosts,0
+Rhode Island,RI,2090,wildfire_ResponseCosts,0
+South Carolina,SC,2090,wildfire_ResponseCosts,0
+Tennessee,TN,2090,wildfire_ResponseCosts,0
+Vermont,VT,2090,wildfire_ResponseCosts,0
+Virginia,VA,2090,wildfire_ResponseCosts,0
+West Virginia,WV,2090,wildfire_ResponseCosts,0
+Wisconsin,WI,2090,wildfire_ResponseCosts,0
