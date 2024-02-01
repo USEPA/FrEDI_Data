@@ -47,39 +47,39 @@ jobs:
             any::openxlsx
             any::devtools
       
-      - name: Install FrEDI
-        run: |
-          Rscript -e 'devtools::install_github( 
-              repo         = "https://github.com/USEPA/FrEDI", 
-              ref          = "${{ github.event.inputs.branch_name }}", 
-              subdir       = "FrEDI", 
-              dependencies = TRUE,
-              upgrade      = "never", 
-              force        = TRUE,
-              type         = "source" 
-            )'
-          
-      - name: Configure SV data
-        run: |
-          Rscript -e '
-            source("./scripts/update_svImpactLists.R")
-            fpath1      <- "."
-            fpath1 |> print()
-            sectors1    <- c("${{ github.event.inputs.svSectors }}")
-            list1       <- update_svImpactLists(
-              fpath0  = fpath1,
-              sectors = sectors1,
-              save    = T,
-              return  = F
-            )
-            '
-
-      - name: Commit results
-        run: |
-          git config --local core.autocrlf false
-          git config --local user.email "${{ github.actor }}@users.noreply.github.com"
-          git config --local user.name  "${{ github.actor }}"
-          git add data/sv/impactsLists/**.rds
-          git pull origin ${{ github.head_ref }} --autostash --rebase -X ours
-          git commit -a -m "Updated SV FrEDI impact lists for ${{ github.event.inputs.svSectors }}"
-          git push
+#       - name: Install FrEDI
+#         run: |
+#           Rscript -e 'devtools::install_github( 
+#               repo         = "https://github.com/USEPA/FrEDI", 
+#               ref          = "${{ github.event.inputs.branch_name }}", 
+#               subdir       = "FrEDI", 
+#               dependencies = FALSE,
+#               upgrade      = "never", 
+#               force        = TRUE,
+#               type         = "source" 
+#             )'
+#           
+#       - name: Configure SV data
+#         run: |
+#           Rscript -e '
+#             source("./scripts/update_svImpactLists.R")
+#             fpath1      <- "."
+#             fpath1 |> print()
+#             sectors1    <- c("${{ github.event.inputs.svSectors }}")
+#             list1       <- update_svImpactLists(
+#               fpath0  = fpath1,
+#               sectors = sectors1,
+#               save    = T,
+#               return  = F
+#             )
+#             '
+# 
+#       - name: Commit results
+#         run: |
+#           git config --local core.autocrlf false
+#           git config --local user.email "${{ github.actor }}@users.noreply.github.com"
+#           git config --local user.name  "${{ github.actor }}"
+#           git add data/sv/impactsLists/**.rds
+#           git pull origin ${{ github.head_ref }} --autostash --rebase -X ours
+#           git commit -a -m "Updated SV FrEDI impact lists for ${{ github.event.inputs.svSectors }}"
+#           git push
