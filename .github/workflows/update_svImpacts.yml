@@ -47,17 +47,17 @@ jobs:
             any::openxlsx
             any::devtools
       
-#       - name: Install FrEDI
-#         run: |
-#           Rscript -e 'devtools::install_github( 
-#               repo         = "https://github.com/USEPA/FrEDI", 
-#               ref          = "${{ github.event.inputs.branch_name }}", 
-#               subdir       = "FrEDI", 
-#               dependencies = FALSE,
-#               upgrade      = "never", 
-#               force        = TRUE,
-#               type         = "source" 
-#             )'
+      - name: Install FrEDI
+        run: |
+          Rscript -e 'devtools::install_github(
+              repo         = "https://github.com/USEPA/FrEDI",
+              ref          = "${{ github.event.inputs.branch_name }}",
+              subdir       = "FrEDI",
+              dependencies = FALSE,
+              upgrade      = "never",
+              force        = TRUE,
+              type         = "source"
+            )'
 #           
 #       - name: Configure SV data
 #         run: |
