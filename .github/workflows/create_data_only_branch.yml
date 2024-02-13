@@ -29,7 +29,7 @@ jobs:
           rm .git/index
           git clean -fdx
           git checkout ${GITHUB_REF##*/} ./data
-          git add ./data/*
+          git add ./data/*.rda
           git commit -am "creating data only branch on data_only_branch_${{ github.event.inputs.branch_name }}"
           git fetch origin
           git branch -a

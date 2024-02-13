@@ -1,0 +1,721 @@
+"state","postal","sector","variant","impactType","model","modelUnitValue","impactYear","value"
+"Alabama","AL","AsphaltRoads",NA,NA,"CCSM4",1,NA,745.95660102677
+"Alabama","AL","AsphaltRoads",NA,NA,"CCSM4",2,NA,1316.39400181195
+"Alabama","AL","AsphaltRoads",NA,NA,"CCSM4",3,NA,1322.65287046678
+"Alabama","AL","AsphaltRoads",NA,NA,"CCSM4",4,NA,1333.60589061273
+"Alabama","AL","AsphaltRoads",NA,NA,"MIROC5",1,NA,676.974799133228
+"Alabama","AL","AsphaltRoads",NA,NA,"MIROC5",2,NA,1278.74099906223
+"Alabama","AL","AsphaltRoads",NA,NA,"MIROC5",3,NA,1305.41187600995
+"Alabama","AL","AsphaltRoads",NA,NA,"MIROC5",4,NA,1433.96380584375
+"Alabama","AL","AsphaltRoads",NA,NA,"MIROC5",5,NA,1598.56153148828
+"Alabama","AL","AsphaltRoads",NA,NA,"CanESM2",1,NA,658.197000905974
+"Alabama","AL","AsphaltRoads",NA,NA,"CanESM2",2,NA,1316.39400181195
+"Alabama","AL","AsphaltRoads",NA,NA,"CanESM2",3,NA,1316.39400181195
+"Alabama","AL","AsphaltRoads",NA,NA,"CanESM2",4,NA,1622.4157326319
+"Alabama","AL","AsphaltRoads",NA,NA,"CanESM2",5,NA,1989.64180961584
+"Alabama","AL","AsphaltRoads",NA,NA,"CanESM2",6,NA,2418.07223276378
+"Arkansas","AR","AsphaltRoads",NA,NA,"CCSM4",1,NA,107.26100252883
+"Arkansas","AR","AsphaltRoads",NA,NA,"CCSM4",2,NA,364.686998084534
+"Arkansas","AR","AsphaltRoads",NA,NA,"CCSM4",3,NA,848.752288376321
+"Arkansas","AR","AsphaltRoads",NA,NA,"CCSM4",4,NA,1427.28089255048
+"Arkansas","AR","AsphaltRoads",NA,NA,"MIROC5",1,NA,100.95153179184
+"Arkansas","AR","AsphaltRoads",NA,NA,"MIROC5",2,NA,246.981160062581
+"Arkansas","AR","AsphaltRoads",NA,NA,"MIROC5",3,NA,410.45610092908
+"Arkansas","AR","AsphaltRoads",NA,NA,"MIROC5",4,NA,937.739674952578
+"Arkansas","AR","AsphaltRoads",NA,NA,"MIROC5",5,NA,1581.69818326244
+"Arkansas","AR","AsphaltRoads",NA,NA,"CanESM2",1,NA,106.989485758644
+"Arkansas","AR","AsphaltRoads",NA,NA,"CanESM2",2,NA,277.890508184925
+"Arkansas","AR","AsphaltRoads",NA,NA,"CanESM2",3,NA,397.724639436744
+"Arkansas","AR","AsphaltRoads",NA,NA,"CanESM2",4,NA,918.531363397384
+"Arkansas","AR","AsphaltRoads",NA,NA,"CanESM2",5,NA,1476.39231864913
+"Arkansas","AR","AsphaltRoads",NA,NA,"CanESM2",6,NA,2127.23009977617
+"Arizona","AZ","AsphaltRoads",NA,NA,"CCSM4",1,NA,121.300929340798
+"Arizona","AZ","AsphaltRoads",NA,NA,"CCSM4",2,NA,471.008012824276
+"Arizona","AZ","AsphaltRoads",NA,NA,"CCSM4",3,NA,853.213026616073
+"Arizona","AZ","AsphaltRoads",NA,NA,"CCSM4",4,NA,1128.62086591413
+"Arizona","AZ","AsphaltRoads",NA,NA,"MIROC5",1,NA,209.641647419879
+"Arizona","AZ","AsphaltRoads",NA,NA,"MIROC5",2,NA,444.400607710167
+"Arizona","AZ","AsphaltRoads",NA,NA,"MIROC5",3,NA,589.814410970867
+"Arizona","AZ","AsphaltRoads",NA,NA,"MIROC5",4,NA,864.366328108457
+"Arizona","AZ","AsphaltRoads",NA,NA,"MIROC5",5,NA,1164.91223139785
+"Arizona","AZ","AsphaltRoads",NA,NA,"CanESM2",1,NA,103.670652126246
+"Arizona","AZ","AsphaltRoads",NA,NA,"CanESM2",2,NA,479.650278284554
+"Arizona","AZ","AsphaltRoads",NA,NA,"CanESM2",3,NA,990.229604594671
+"Arizona","AZ","AsphaltRoads",NA,NA,"CanESM2",4,NA,1425.60343610025
+"Arizona","AZ","AsphaltRoads",NA,NA,"CanESM2",5,NA,1662.12761117328
+"Arizona","AZ","AsphaltRoads",NA,NA,"CanESM2",6,NA,1938.07248209181
+"California","CA","AsphaltRoads",NA,NA,"CCSM4",1,NA,257.507048705575
+"California","CA","AsphaltRoads",NA,NA,"CCSM4",2,NA,755.880044804068
+"California","CA","AsphaltRoads",NA,NA,"CCSM4",3,NA,1114.88068120343
+"California","CA","AsphaltRoads",NA,NA,"CCSM4",4,NA,1281.52753805564
+"California","CA","AsphaltRoads",NA,NA,"MIROC5",1,NA,408.234871729086
+"California","CA","AsphaltRoads",NA,NA,"MIROC5",2,NA,797.837578218495
+"California","CA","AsphaltRoads",NA,NA,"MIROC5",3,NA,889.629627110128
+"California","CA","AsphaltRoads",NA,NA,"MIROC5",4,NA,1081.47058624272
+"California","CA","AsphaltRoads",NA,NA,"MIROC5",5,NA,1297.13251260847
+"California","CA","AsphaltRoads",NA,NA,"CanESM2",1,NA,324.990835103526
+"California","CA","AsphaltRoads",NA,NA,"CanESM2",2,NA,899.676694156982
+"California","CA","AsphaltRoads",NA,NA,"CanESM2",3,NA,1367.8548640631
+"California","CA","AsphaltRoads",NA,NA,"CanESM2",4,NA,1668.25105279309
+"California","CA","AsphaltRoads",NA,NA,"CanESM2",5,NA,1766.54670412166
+"California","CA","AsphaltRoads",NA,NA,"CanESM2",6,NA,1881.22496400499
+"Colorado","CO","AsphaltRoads",NA,NA,"CCSM4",1,NA,668.292485575776
+"Colorado","CO","AsphaltRoads",NA,NA,"CCSM4",2,NA,1316.85404634095
+"Colorado","CO","AsphaltRoads",NA,NA,"CCSM4",3,NA,1525.91003548126
+"Colorado","CO","AsphaltRoads",NA,NA,"CCSM4",4,NA,1681.18914367236
+"Colorado","CO","AsphaltRoads",NA,NA,"MIROC5",1,NA,635.193999463213
+"Colorado","CO","AsphaltRoads",NA,NA,"MIROC5",2,NA,1237.53358023602
+"Colorado","CO","AsphaltRoads",NA,NA,"MIROC5",3,NA,1369.41060208978
+"Colorado","CO","AsphaltRoads",NA,NA,"MIROC5",4,NA,1602.33938504682
+"Colorado","CO","AsphaltRoads",NA,NA,"MIROC5",5,NA,1852.41645682392
+"Colorado","CO","AsphaltRoads",NA,NA,"CanESM2",1,NA,536.361210970987
+"Colorado","CO","AsphaltRoads",NA,NA,"CanESM2",2,NA,1186.06673512897
+"Colorado","CO","AsphaltRoads",NA,NA,"CanESM2",3,NA,1398.58732235458
+"Colorado","CO","AsphaltRoads",NA,NA,"CanESM2",4,NA,1644.43975142638
+"Colorado","CO","AsphaltRoads",NA,NA,"CanESM2",5,NA,1820.4511374662
+"Colorado","CO","AsphaltRoads",NA,NA,"CanESM2",6,NA,2025.79775451265
+"Connecticut","CT","AsphaltRoads",NA,NA,"CCSM4",1,NA,85.3561452590689
+"Connecticut","CT","AsphaltRoads",NA,NA,"CCSM4",2,NA,218.69035889971
+"Connecticut","CT","AsphaltRoads",NA,NA,"CCSM4",3,NA,630.221400466849
+"Connecticut","CT","AsphaltRoads",NA,NA,"CCSM4",4,NA,1246.18098895819
+"Connecticut","CT","AsphaltRoads",NA,NA,"MIROC5",1,NA,80.3351955379472
+"Connecticut","CT","AsphaltRoads",NA,NA,"MIROC5",2,NA,150.628491633651
+"Connecticut","CT","AsphaltRoads",NA,NA,"MIROC5",3,NA,150.628491633651
+"Connecticut","CT","AsphaltRoads",NA,NA,"MIROC5",4,NA,311.8986327785
+"Connecticut","CT","AsphaltRoads",NA,NA,"MIROC5",5,NA,537.67683038129
+"Connecticut","CT","AsphaltRoads",NA,NA,"CanESM2",1,NA,75.3142458168255
+"Connecticut","CT","AsphaltRoads",NA,NA,"CanESM2",2,NA,184.65942526668
+"Connecticut","CT","AsphaltRoads",NA,NA,"CanESM2",3,NA,248.46742582861
+"Connecticut","CT","AsphaltRoads",NA,NA,"CanESM2",4,NA,806.846053547543
+"Connecticut","CT","AsphaltRoads",NA,NA,"CanESM2",5,NA,1441.16792649558
+"Connecticut","CT","AsphaltRoads",NA,NA,"CanESM2",6,NA,2181.21011160163
+"Delaware","DE","AsphaltRoads",NA,NA,"CCSM4",1,NA,0
+"Delaware","DE","AsphaltRoads",NA,NA,"CCSM4",2,NA,968.131158991532
+"Delaware","DE","AsphaltRoads",NA,NA,"CCSM4",3,NA,1815.24592310912
+"Delaware","DE","AsphaltRoads",NA,NA,"CCSM4",4,NA,1815.24592310912
+"Delaware","DE","AsphaltRoads",NA,NA,"MIROC5",1,NA,0
+"Delaware","DE","AsphaltRoads",NA,NA,"MIROC5",2,NA,363.049184621825
+"Delaware","DE","AsphaltRoads",NA,NA,"MIROC5",3,NA,1391.68854105033
+"Delaware","DE","AsphaltRoads",NA,NA,"MIROC5",4,NA,1815.24592310912
+"Delaware","DE","AsphaltRoads",NA,NA,"MIROC5",5,NA,1815.24592310912
+"Delaware","DE","AsphaltRoads",NA,NA,"CanESM2",1,NA,809.851741673069
+"Delaware","DE","AsphaltRoads",NA,NA,"CanESM2",2,NA,1671.8481339496
+"Delaware","DE","AsphaltRoads",NA,NA,"CanESM2",3,NA,1769.61935383109
+"Delaware","DE","AsphaltRoads",NA,NA,"CanESM2",4,NA,1815.24592310912
+"Delaware","DE","AsphaltRoads",NA,NA,"CanESM2",5,NA,1815.24592310912
+"Delaware","DE","AsphaltRoads",NA,NA,"CanESM2",6,NA,1815.24592310912
+"Florida","FL","AsphaltRoads",NA,NA,"CCSM4",1,NA,854.147393647166
+"Florida","FL","AsphaltRoads",NA,NA,"CCSM4",2,NA,1647.7919475317
+"Florida","FL","AsphaltRoads",NA,NA,"CCSM4",3,NA,1770.70583790206
+"Florida","FL","AsphaltRoads",NA,NA,"CCSM4",4,NA,1770.70583790206
+"Florida","FL","AsphaltRoads",NA,NA,"MIROC5",1,NA,734.309562045715
+"Florida","FL","AsphaltRoads",NA,NA,"MIROC5",2,NA,1455.60551064898
+"Florida","FL","AsphaltRoads",NA,NA,"MIROC5",3,NA,1678.80157578658
+"Florida","FL","AsphaltRoads",NA,NA,"MIROC5",4,NA,1770.70583790206
+"Florida","FL","AsphaltRoads",NA,NA,"MIROC5",5,NA,1770.70583790206
+"Florida","FL","AsphaltRoads",NA,NA,"CanESM2",1,NA,885.352918951029
+"Florida","FL","AsphaltRoads",NA,NA,"CanESM2",2,NA,1770.70583790206
+"Florida","FL","AsphaltRoads",NA,NA,"CanESM2",3,NA,1770.70583790206
+"Florida","FL","AsphaltRoads",NA,NA,"CanESM2",4,NA,1902.5588921616
+"Florida","FL","AsphaltRoads",NA,NA,"CanESM2",5,NA,2060.78255727305
+"Florida","FL","AsphaltRoads",NA,NA,"CanESM2",6,NA,2245.3768332364
+"Georgia","GA","AsphaltRoads",NA,NA,"CCSM4",1,NA,369.14770260222
+"Georgia","GA","AsphaltRoads",NA,NA,"CCSM4",2,NA,664.532840598112
+"Georgia","GA","AsphaltRoads",NA,NA,"CCSM4",3,NA,687.098832234878
+"Georgia","GA","AsphaltRoads",NA,NA,"CCSM4",4,NA,706.536498862153
+"Georgia","GA","AsphaltRoads",NA,NA,"MIROC5",1,NA,271.039239095744
+"Georgia","GA","AsphaltRoads",NA,NA,"MIROC5",2,NA,541.757177476045
+"Georgia","GA","AsphaltRoads",NA,NA,"MIROC5",3,NA,636.839889295369
+"Georgia","GA","AsphaltRoads",NA,NA,"MIROC5",4,NA,701.031273777955
+"Georgia","GA","AsphaltRoads",NA,NA,"MIROC5",5,NA,736.086825240081
+"Georgia","GA","AsphaltRoads",NA,NA,"CanESM2",1,NA,325.718561119606
+"Georgia","GA","AsphaltRoads",NA,NA,"CanESM2",2,NA,657.984981418662
+"Georgia","GA","AsphaltRoads",NA,NA,"CanESM2",3,NA,670.262217380131
+"Georgia","GA","AsphaltRoads",NA,NA,"CanESM2",4,NA,1047.71658273578
+"Georgia","GA","AsphaltRoads",NA,NA,"CanESM2",5,NA,1493.78656902413
+"Georgia","GA","AsphaltRoads",NA,NA,"CanESM2",6,NA,2014.2015530272
+"Iowa","IA","AsphaltRoads",NA,NA,"CCSM4",1,NA,396.338671002887
+"Iowa","IA","AsphaltRoads",NA,NA,"CCSM4",2,NA,1236.80701760846
+"Iowa","IA","AsphaltRoads",NA,NA,"CCSM4",3,NA,1730.41354636507
+"Iowa","IA","AsphaltRoads",NA,NA,"CCSM4",4,NA,1771.35291416413
+"Iowa","IA","AsphaltRoads",NA,NA,"MIROC5",1,NA,362.313718798832
+"Iowa","IA","AsphaltRoads",NA,NA,"MIROC5",2,NA,831.624637911194
+"Iowa","IA","AsphaltRoads",NA,NA,"MIROC5",3,NA,1263.10281420745
+"Iowa","IA","AsphaltRoads",NA,NA,"MIROC5",4,NA,1562.87538945176
+"Iowa","IA","AsphaltRoads",NA,NA,"MIROC5",5,NA,1733.82251669359
+"Iowa","IA","AsphaltRoads",NA,NA,"CanESM2",1,NA,215.982341146259
+"Iowa","IA","AsphaltRoads",NA,NA,"CanESM2",2,NA,671.106582229236
+"Iowa","IA","AsphaltRoads",NA,NA,"CanESM2",3,NA,1119.49764461058
+"Iowa","IA","AsphaltRoads",NA,NA,"CanESM2",4,NA,1477.47731965943
+"Iowa","IA","AsphaltRoads",NA,NA,"CanESM2",5,NA,1655.95393478449
+"Iowa","IA","AsphaltRoads",NA,NA,"CanESM2",6,NA,1864.17665243039
+"Idaho","ID","AsphaltRoads",NA,NA,"CCSM4",1,NA,497.762658810604
+"Idaho","ID","AsphaltRoads",NA,NA,"CCSM4",2,NA,1192.89379846737
+"Idaho","ID","AsphaltRoads",NA,NA,"CCSM4",3,NA,1590.44451360776
+"Idaho","ID","AsphaltRoads",NA,NA,"CCSM4",4,NA,1804.59682085395
+"Idaho","ID","AsphaltRoads",NA,NA,"MIROC5",1,NA,314.452944081231
+"Idaho","ID","AsphaltRoads",NA,NA,"MIROC5",2,NA,648.887141304919
+"Idaho","ID","AsphaltRoads",NA,NA,"MIROC5",3,NA,816.869442903983
+"Idaho","ID","AsphaltRoads",NA,NA,"MIROC5",4,NA,1122.83842700922
+"Idaho","ID","AsphaltRoads",NA,NA,"MIROC5",5,NA,1454.35814854062
+"Idaho","ID","AsphaltRoads",NA,NA,"CanESM2",1,NA,298.530079470094
+"Idaho","ID","AsphaltRoads",NA,NA,"CanESM2",2,NA,805.931231539643
+"Idaho","ID","AsphaltRoads",NA,NA,"CanESM2",3,NA,1197.56449266362
+"Idaho","ID","AsphaltRoads",NA,NA,"CanESM2",4,NA,1588.978987869
+"Idaho","ID","AsphaltRoads",NA,NA,"CanESM2",5,NA,1839.36175588604
+"Idaho","ID","AsphaltRoads",NA,NA,"CanESM2",6,NA,2131.47498523925
+"Illinois","IL","AsphaltRoads",NA,NA,"CCSM4",1,NA,662.619577601884
+"Illinois","IL","AsphaltRoads",NA,NA,"CCSM4",2,NA,1497.26227318654
+"Illinois","IL","AsphaltRoads",NA,NA,"CCSM4",3,NA,1812.23323469912
+"Illinois","IL","AsphaltRoads",NA,NA,"CCSM4",4,NA,1861.28408188727
+"Illinois","IL","AsphaltRoads",NA,NA,"MIROC5",1,NA,484.760368702128
+"Illinois","IL","AsphaltRoads",NA,NA,"MIROC5",2,NA,1073.06404296172
+"Illinois","IL","AsphaltRoads",NA,NA,"MIROC5",3,NA,1538.12270595653
+"Illinois","IL","AsphaltRoads",NA,NA,"MIROC5",4,NA,1773.5292164561
+"Illinois","IL","AsphaltRoads",NA,NA,"MIROC5",5,NA,1835.00569013494
+"Illinois","IL","AsphaltRoads",NA,NA,"CanESM2",1,NA,554.538447958576
+"Illinois","IL","AsphaltRoads",NA,NA,"CanESM2",2,NA,1262.26231953075
+"Illinois","IL","AsphaltRoads",NA,NA,"CanESM2",3,NA,1549.48498880626
+"Illinois","IL","AsphaltRoads",NA,NA,"CanESM2",4,NA,1746.42080155469
+"Illinois","IL","AsphaltRoads",NA,NA,"CanESM2",5,NA,1821.89908205854
+"Illinois","IL","AsphaltRoads",NA,NA,"CanESM2",6,NA,1909.95707597968
+"Indiana","IN","AsphaltRoads",NA,NA,"CCSM4",1,NA,380.988785742229
+"Indiana","IN","AsphaltRoads",NA,NA,"CCSM4",2,NA,1303.21448928042
+"Indiana","IN","AsphaltRoads",NA,NA,"CCSM4",3,NA,1855.23566000471
+"Indiana","IN","AsphaltRoads",NA,NA,"CCSM4",4,NA,1855.23566000471
+"Indiana","IN","AsphaltRoads",NA,NA,"MIROC5",1,NA,118.511178051428
+"Indiana","IN","AsphaltRoads",NA,NA,"MIROC5",2,NA,528.848055669738
+"Indiana","IN","AsphaltRoads",NA,NA,"MIROC5",3,NA,1397.66024666912
+"Indiana","IN","AsphaltRoads",NA,NA,"MIROC5",4,NA,1788.68284864356
+"Indiana","IN","AsphaltRoads",NA,NA,"MIROC5",5,NA,1835.26981659636
+"Indiana","IN","AsphaltRoads",NA,NA,"CanESM2",1,NA,268.857544520089
+"Indiana","IN","AsphaltRoads",NA,NA,"CanESM2",2,NA,873.70240223752
+"Indiana","IN","AsphaltRoads",NA,NA,"CanESM2",3,NA,1503.67861448254
+"Indiana","IN","AsphaltRoads",NA,NA,"CanESM2",4,NA,1818.96746461112
+"Indiana","IN","AsphaltRoads",NA,NA,"CanESM2",5,NA,1844.52740590821
+"Indiana","IN","AsphaltRoads",NA,NA,"CanESM2",6,NA,1874.34733742148
+"Kansas","KS","AsphaltRoads",NA,NA,"CCSM4",1,NA,495.576728006175
+"Kansas","KS","AsphaltRoads",NA,NA,"CCSM4",2,NA,1305.77213383234
+"Kansas","KS","AsphaltRoads",NA,NA,"CCSM4",3,NA,1753.8279907635
+"Kansas","KS","AsphaltRoads",NA,NA,"CCSM4",4,NA,1877.61251003778
+"Kansas","KS","AsphaltRoads",NA,NA,"MIROC5",1,NA,355.658389936854
+"Kansas","KS","AsphaltRoads",NA,NA,"MIROC5",2,NA,861.021583257708
+"Kansas","KS","AsphaltRoads",NA,NA,"MIROC5",3,NA,1411.14753928168
+"Kansas","KS","AsphaltRoads",NA,NA,"MIROC5",4,NA,1741.22883485864
+"Kansas","KS","AsphaltRoads",NA,NA,"MIROC5",5,NA,1886.21121519375
+"Kansas","KS","AsphaltRoads",NA,NA,"CanESM2",1,NA,265.747603424189
+"Kansas","KS","AsphaltRoads",NA,NA,"CanESM2",2,NA,680.823202177538
+"Kansas","KS","AsphaltRoads",NA,NA,"CanESM2",3,NA,960.813193419715
+"Kansas","KS","AsphaltRoads",NA,NA,"CanESM2",4,NA,1365.96614586477
+"Kansas","KS","AsphaltRoads",NA,NA,"CanESM2",5,NA,1695.35529370321
+"Kansas","KS","AsphaltRoads",NA,NA,"CanESM2",6,NA,2079.64263284806
+"Kentucky","KY","AsphaltRoads",NA,NA,"CCSM4",1,NA,899.585743738105
+"Kentucky","KY","AsphaltRoads",NA,NA,"CCSM4",2,NA,1736.6447394347
+"Kentucky","KY","AsphaltRoads",NA,NA,"CCSM4",3,NA,1871.36616906495
+"Kentucky","KY","AsphaltRoads",NA,NA,"CCSM4",4,NA,1878.75730206847
+"Kentucky","KY","AsphaltRoads",NA,NA,"MIROC5",1,NA,421.485793323189
+"Kentucky","KY","AsphaltRoads",NA,NA,"MIROC5",2,NA,1000.05125606598
+"Kentucky","KY","AsphaltRoads",NA,NA,"MIROC5",3,NA,1594.38653789016
+"Kentucky","KY","AsphaltRoads",NA,NA,"MIROC5",4,NA,1857.55823281892
+"Kentucky","KY","AsphaltRoads",NA,NA,"MIROC5",5,NA,1883.38179619701
+"Kentucky","KY","AsphaltRoads",NA,NA,"CanESM2",1,NA,817.121529192213
+"Kentucky","KY","AsphaltRoads",NA,NA,"CanESM2",2,NA,1696.34962001298
+"Kentucky","KY","AsphaltRoads",NA,NA,"CanESM2",3,NA,1812.79942306653
+"Kentucky","KY","AsphaltRoads",NA,NA,"CanESM2",4,NA,1888.85744930085
+"Kentucky","KY","AsphaltRoads",NA,NA,"CanESM2",5,NA,1914.91519107206
+"Kentucky","KY","AsphaltRoads",NA,NA,"CanESM2",6,NA,1945.31588980513
+"Louisiana","LA","AsphaltRoads",NA,NA,"CCSM4",1,NA,468.682874758324
+"Louisiana","LA","AsphaltRoads",NA,NA,"CCSM4",2,NA,846.412116485311
+"Louisiana","LA","AsphaltRoads",NA,NA,"CCSM4",3,NA,972.051200090582
+"Louisiana","LA","AsphaltRoads",NA,NA,"CCSM4",4,NA,1162.3286641617
+"Louisiana","LA","AsphaltRoads",NA,NA,"MIROC5",1,NA,441.113293890188
+"Louisiana","LA","AsphaltRoads",NA,NA,"MIROC5",2,NA,828.145433986137
+"Louisiana","LA","AsphaltRoads",NA,NA,"MIROC5",3,NA,831.143123155235
+"Louisiana","LA","AsphaltRoads",NA,NA,"MIROC5",4,NA,1151.18951103916
+"Louisiana","LA","AsphaltRoads",NA,NA,"MIROC5",5,NA,1597.526374438
+"Louisiana","LA","AsphaltRoads",NA,NA,"CanESM2",1,NA,416.188732877138
+"Louisiana","LA","AsphaltRoads",NA,NA,"CanESM2",2,NA,865.176203605829
+"Louisiana","LA","AsphaltRoads",NA,NA,"CanESM2",3,NA,926.673837077491
+"Louisiana","LA","AsphaltRoads",NA,NA,"CanESM2",4,NA,1329.36138743792
+"Louisiana","LA","AsphaltRoads",NA,NA,"CanESM2",5,NA,1778.1477731263
+"Louisiana","LA","AsphaltRoads",NA,NA,"CanESM2",6,NA,2301.73188976275
+"Massachusetts","MA","AsphaltRoads",NA,NA,"CCSM4",1,NA,253.813769884638
+"Massachusetts","MA","AsphaltRoads",NA,NA,"CCSM4",2,NA,447.906652737596
+"Massachusetts","MA","AsphaltRoads",NA,NA,"CCSM4",3,NA,767.750397074054
+"Massachusetts","MA","AsphaltRoads",NA,NA,"CCSM4",4,NA,1327.47694966286
+"Massachusetts","MA","AsphaltRoads",NA,NA,"MIROC5",1,NA,238.883548126718
+"Massachusetts","MA","AsphaltRoads",NA,NA,"MIROC5",2,NA,447.906652737596
+"Massachusetts","MA","AsphaltRoads",NA,NA,"MIROC5",3,NA,447.906652737596
+"Massachusetts","MA","AsphaltRoads",NA,NA,"MIROC5",4,NA,530.540418826168
+"Massachusetts","MA","AsphaltRoads",NA,NA,"MIROC5",5,NA,646.227691350169
+"Massachusetts","MA","AsphaltRoads",NA,NA,"CanESM2",1,NA,223.953326368798
+"Massachusetts","MA","AsphaltRoads",NA,NA,"CanESM2",2,NA,499.839213727426
+"Massachusetts","MA","AsphaltRoads",NA,NA,"CanESM2",3,NA,597.212765583356
+"Massachusetts","MA","AsphaltRoads",NA,NA,"CanESM2",4,NA,1076.72624221324
+"Massachusetts","MA","AsphaltRoads",NA,NA,"CanESM2",5,NA,1597.61322512977
+"Massachusetts","MA","AsphaltRoads",NA,NA,"CanESM2",6,NA,2205.31470519906
+"Maryland","MD","AsphaltRoads",NA,NA,"CCSM4",1,NA,134.439212003797
+"Maryland","MD","AsphaltRoads",NA,NA,"CCSM4",2,NA,1060.7830321723
+"Maryland","MD","AsphaltRoads",NA,NA,"CCSM4",3,NA,1797.49079108564
+"Maryland","MD","AsphaltRoads",NA,NA,"CCSM4",4,NA,1825.68778066572
+"Maryland","MD","AsphaltRoads",NA,NA,"MIROC5",1,NA,34.8051090331968
+"Maryland","MD","AsphaltRoads",NA,NA,"MIROC5",2,NA,394.273880517364
+"Maryland","MD","AsphaltRoads",NA,NA,"MIROC5",3,NA,1326.48106691104
+"Maryland","MD","AsphaltRoads",NA,NA,"MIROC5",4,NA,1742.44753214993
+"Maryland","MD","AsphaltRoads",NA,NA,"MIROC5",5,NA,1787.41055838685
+"Maryland","MD","AsphaltRoads",NA,NA,"CanESM2",1,NA,743.543016289672
+"Maryland","MD","AsphaltRoads",NA,NA,"CanESM2",2,NA,1565.5639507212
+"Maryland","MD","AsphaltRoads",NA,NA,"CanESM2",3,NA,1712.71004723719
+"Maryland","MD","AsphaltRoads",NA,NA,"CanESM2",4,NA,1801.51893245423
+"Maryland","MD","AsphaltRoads",NA,NA,"CanESM2",5,NA,1825.68778066572
+"Maryland","MD","AsphaltRoads",NA,NA,"CanESM2",6,NA,1853.8847702458
+"Maine","ME","AsphaltRoads",NA,NA,"CCSM4",1,NA,890.538024071229
+"Maine","ME","AsphaltRoads",NA,NA,"CCSM4",2,NA,1571.53768953746
+"Maine","ME","AsphaltRoads",NA,NA,"CCSM4",3,NA,1592.22342910855
+"Maine","ME","AsphaltRoads",NA,NA,"CCSM4",4,NA,1628.42347335794
+"Maine","ME","AsphaltRoads",NA,NA,"MIROC5",1,NA,838.15343441998
+"Maine","ME","AsphaltRoads",NA,NA,"MIROC5",2,NA,1571.53768953746
+"Maine","ME","AsphaltRoads",NA,NA,"MIROC5",3,NA,1571.53768953746
+"Maine","ME","AsphaltRoads",NA,NA,"MIROC5",4,NA,1571.53768953746
+"Maine","ME","AsphaltRoads",NA,NA,"MIROC5",5,NA,1571.53768953746
+"Maine","ME","AsphaltRoads",NA,NA,"CanESM2",1,NA,785.768844768731
+"Maine","ME","AsphaltRoads",NA,NA,"CanESM2",2,NA,1571.53768953746
+"Maine","ME","AsphaltRoads",NA,NA,"CanESM2",3,NA,1571.53768953746
+"Maine","ME","AsphaltRoads",NA,NA,"CanESM2",4,NA,1815.11138154072
+"Maine","ME","AsphaltRoads",NA,NA,"CanESM2",5,NA,2107.39981194463
+"Maine","ME","AsphaltRoads",NA,NA,"CanESM2",6,NA,2448.4029807492
+"Michigan","MI","AsphaltRoads",NA,NA,"CCSM4",1,NA,240.898723531576
+"Michigan","MI","AsphaltRoads",NA,NA,"CCSM4",2,NA,836.648084294049
+"Michigan","MI","AsphaltRoads",NA,NA,"CCSM4",3,NA,1373.92189549151
+"Michigan","MI","AsphaltRoads",NA,NA,"CCSM4",4,NA,1683.99163379015
+"Michigan","MI","AsphaltRoads",NA,NA,"MIROC5",1,NA,226.728210382659
+"Michigan","MI","AsphaltRoads",NA,NA,"MIROC5",2,NA,474.191733347641
+"Michigan","MI","AsphaltRoads",NA,NA,"MIROC5",3,NA,613.241360174746
+"Michigan","MI","AsphaltRoads",NA,NA,"MIROC5",4,NA,1044.32087177508
+"Michigan","MI","AsphaltRoads",NA,NA,"MIROC5",5,NA,1567.67416784463
+"Michigan","MI","AsphaltRoads",NA,NA,"CanESM2",1,NA,212.557697233743
+"Michigan","MI","AsphaltRoads",NA,NA,"CanESM2",2,NA,466.890778609434
+"Michigan","MI","AsphaltRoads",NA,NA,"CanESM2",3,NA,545.219623875587
+"Michigan","MI","AsphaltRoads",NA,NA,"CanESM2",4,NA,1009.05143493445
+"Michigan","MI","AsphaltRoads",NA,NA,"CanESM2",5,NA,1521.78545485605
+"Michigan","MI","AsphaltRoads",NA,NA,"CanESM2",6,NA,2119.97514476457
+"Minnesota","MN","AsphaltRoads",NA,NA,"CCSM4",1,NA,266.996563953164
+"Minnesota","MN","AsphaltRoads",NA,NA,"CCSM4",2,NA,832.730515999754
+"Minnesota","MN","AsphaltRoads",NA,NA,"CCSM4",3,NA,1343.97487814768
+"Minnesota","MN","AsphaltRoads",NA,NA,"CCSM4",4,NA,1685.01359496418
+"Minnesota","MN","AsphaltRoads",NA,NA,"MIROC5",1,NA,253.952733502096
+"Minnesota","MN","AsphaltRoads",NA,NA,"MIROC5",2,NA,584.957181020625
+"Minnesota","MN","AsphaltRoads",NA,NA,"MIROC5",3,NA,893.211963849179
+"Minnesota","MN","AsphaltRoads",NA,NA,"MIROC5",4,NA,1250.90059740369
+"Minnesota","MN","AsphaltRoads",NA,NA,"MIROC5",5,NA,1573.96486839649
+"Minnesota","MN","AsphaltRoads",NA,NA,"CanESM2",1,NA,232.317356644232
+"Minnesota","MN","AsphaltRoads",NA,NA,"CanESM2",2,NA,508.492031789648
+"Minnesota","MN","AsphaltRoads",NA,NA,"CanESM2",3,NA,590.724503979367
+"Minnesota","MN","AsphaltRoads",NA,NA,"CanESM2",4,NA,1033.73967201171
+"Minnesota","MN","AsphaltRoads",NA,NA,"CanESM2",5,NA,1519.30768922428
+"Minnesota","MN","AsphaltRoads",NA,NA,"CanESM2",6,NA,2085.80370930562
+"Missouri","MO","AsphaltRoads",NA,NA,"CCSM4",1,NA,940.312854189053
+"Missouri","MO","AsphaltRoads",NA,NA,"CCSM4",2,NA,1693.19140360073
+"Missouri","MO","AsphaltRoads",NA,NA,"CCSM4",3,NA,1909.93111229682
+"Missouri","MO","AsphaltRoads",NA,NA,"CCSM4",4,NA,2237.44519159311
+"Missouri","MO","AsphaltRoads",NA,NA,"MIROC5",1,NA,885.000333354403
+"Missouri","MO","AsphaltRoads",NA,NA,"MIROC5",2,NA,1661.02431542738
+"Missouri","MO","AsphaltRoads",NA,NA,"MIROC5",3,NA,1665.69560485969
+"Missouri","MO","AsphaltRoads",NA,NA,"MIROC5",4,NA,1941.40904437387
+"Missouri","MO","AsphaltRoads",NA,NA,"MIROC5",5,NA,2324.71499872685
+"Missouri","MO","AsphaltRoads",NA,NA,"CanESM2",1,NA,829.687812519753
+"Missouri","MO","AsphaltRoads",NA,NA,"CanESM2",2,NA,1659.37562503951
+"Missouri","MO","AsphaltRoads",NA,NA,"CanESM2",3,NA,1659.37562503951
+"Missouri","MO","AsphaltRoads",NA,NA,"CanESM2",4,NA,1857.88252991918
+"Missouri","MO","AsphaltRoads",NA,NA,"CanESM2",5,NA,2096.0908157748
+"Missouri","MO","AsphaltRoads",NA,NA,"CanESM2",6,NA,2374.00048260635
+"Mississippi","MS","AsphaltRoads",NA,NA,"CCSM4",1,NA,575.896845672241
+"Mississippi","MS","AsphaltRoads",NA,NA,"CCSM4",2,NA,1016.28855118631
+"Mississippi","MS","AsphaltRoads",NA,NA,"CCSM4",3,NA,1068.8595991878
+"Mississippi","MS","AsphaltRoads",NA,NA,"CCSM4",4,NA,1160.8589331904
+"Mississippi","MS","AsphaltRoads",NA,NA,"MIROC5",1,NA,542.020560632697
+"Mississippi","MS","AsphaltRoads",NA,NA,"MIROC5",2,NA,1016.28855118631
+"Mississippi","MS","AsphaltRoads",NA,NA,"MIROC5",3,NA,1016.28855118631
+"Mississippi","MS","AsphaltRoads",NA,NA,"MIROC5",4,NA,1370.72204844449
+"Mississippi","MS","AsphaltRoads",NA,NA,"MIROC5",5,NA,1866.92894460594
+"Mississippi","MS","AsphaltRoads",NA,NA,"CanESM2",1,NA,508.144275593154
+"Mississippi","MS","AsphaltRoads",NA,NA,"CanESM2",2,NA,1016.28855118631
+"Mississippi","MS","AsphaltRoads",NA,NA,"CanESM2",3,NA,1016.28855118631
+"Mississippi","MS","AsphaltRoads",NA,NA,"CanESM2",4,NA,1416.92776960671
+"Mississippi","MS","AsphaltRoads",NA,NA,"CanESM2",5,NA,1897.69483171119
+"Mississippi","MS","AsphaltRoads",NA,NA,"CanESM2",6,NA,2458.58973749975
+"Montana","MT","AsphaltRoads",NA,NA,"CCSM4",1,NA,669.972428556031
+"Montana","MT","AsphaltRoads",NA,NA,"CCSM4",2,NA,1354.97768139323
+"Montana","MT","AsphaltRoads",NA,NA,"CCSM4",3,NA,1641.66560851255
+"Montana","MT","AsphaltRoads",NA,NA,"CCSM4",4,NA,1878.96334379635
+"Montana","MT","AsphaltRoads",NA,NA,"MIROC5",1,NA,352.451394906667
+"Montana","MT","AsphaltRoads",NA,NA,"MIROC5",2,NA,752.834826573604
+"Montana","MT","AsphaltRoads",NA,NA,"MIROC5",3,NA,1013.46879975715
+"Montana","MT","AsphaltRoads",NA,NA,"MIROC5",4,NA,1307.64981825193
+"Montana","MT","AsphaltRoads",NA,NA,"MIROC5",5,NA,1569.2554243094
+"Montana","MT","AsphaltRoads",NA,NA,"CanESM2",1,NA,295.959446441181
+"Montana","MT","AsphaltRoads",NA,NA,"CanESM2",2,NA,793.416737763826
+"Montana","MT","AsphaltRoads",NA,NA,"CanESM2",3,NA,1171.22519691657
+"Montana","MT","AsphaltRoads",NA,NA,"CanESM2",4,NA,1564.38614576772
+"Montana","MT","AsphaltRoads",NA,NA,"CanESM2",5,NA,1824.60654726355
+"Montana","MT","AsphaltRoads",NA,NA,"CanESM2",6,NA,2128.19701567535
+"North Carolina","NC","AsphaltRoads",NA,NA,"CCSM4",1,NA,799.070575497264
+"North Carolina","NC","AsphaltRoads",NA,NA,"CCSM4",2,NA,1580.81711733739
+"North Carolina","NC","AsphaltRoads",NA,NA,"CCSM4",3,NA,1744.80861856116
+"North Carolina","NC","AsphaltRoads",NA,NA,"CCSM4",4,NA,1770.42074430376
+"North Carolina","NC","AsphaltRoads",NA,NA,"MIROC5",1,NA,352.966695307249
+"North Carolina","NC","AsphaltRoads",NA,NA,"MIROC5",2,NA,859.864126247185
+"North Carolina","NC","AsphaltRoads",NA,NA,"MIROC5",3,NA,1421.01024846112
+"North Carolina","NC","AsphaltRoads",NA,NA,"MIROC5",4,NA,1700.76027340161
+"North Carolina","NC","AsphaltRoads",NA,NA,"MIROC5",5,NA,1768.92607315969
+"North Carolina","NC","AsphaltRoads",NA,NA,"CanESM2",1,NA,823.292523265056
+"North Carolina","NC","AsphaltRoads",NA,NA,"CanESM2",2,NA,1670.35891893217
+"North Carolina","NC","AsphaltRoads",NA,NA,"CanESM2",3,NA,1714.93492968604
+"North Carolina","NC","AsphaltRoads",NA,NA,"CanESM2",4,NA,1804.83696330228
+"North Carolina","NC","AsphaltRoads",NA,NA,"CanESM2",5,NA,1887.7568376196
+"North Carolina","NC","AsphaltRoads",NA,NA,"CanESM2",6,NA,1984.49669098981
+"North Dakota","ND","AsphaltRoads",NA,NA,"CCSM4",1,NA,191.150295041641
+"North Dakota","ND","AsphaltRoads",NA,NA,"CCSM4",2,NA,826.744474441385
+"North Dakota","ND","AsphaltRoads",NA,NA,"CCSM4",3,NA,1368.22985727499
+"North Dakota","ND","AsphaltRoads",NA,NA,"CCSM4",4,NA,1566.40425242045
+"North Dakota","ND","AsphaltRoads",NA,NA,"MIROC5",1,NA,62.5075945969927
+"North Dakota","ND","AsphaltRoads",NA,NA,"MIROC5",2,NA,304.278285002875
+"North Dakota","ND","AsphaltRoads",NA,NA,"MIROC5",3,NA,834.328496214497
+"North Dakota","ND","AsphaltRoads",NA,NA,"MIROC5",4,NA,1260.45491208019
+"North Dakota","ND","AsphaltRoads",NA,NA,"MIROC5",5,NA,1551.47353724075
+"North Dakota","ND","AsphaltRoads",NA,NA,"CanESM2",1,NA,3.18686135282585
+"North Dakota","ND","AsphaltRoads",NA,NA,"CanESM2",2,NA,291.548966576323
+"North Dakota","ND","AsphaltRoads",NA,NA,"CanESM2",3,NA,826.252548833831
+"North Dakota","ND","AsphaltRoads",NA,NA,"CanESM2",4,NA,1278.9210422746
+"North Dakota","ND","AsphaltRoads",NA,NA,"CanESM2",5,NA,1522.68922833931
+"North Dakota","ND","AsphaltRoads",NA,NA,"CanESM2",6,NA,1807.08544541481
+"Nebraska","NE","AsphaltRoads",NA,NA,"CCSM4",1,NA,913.703760375255
+"Nebraska","NE","AsphaltRoads",NA,NA,"CCSM4",2,NA,1660.08473043099
+"Nebraska","NE","AsphaltRoads",NA,NA,"CCSM4",3,NA,1856.09833176697
+"Nebraska","NE","AsphaltRoads",NA,NA,"CCSM4",4,NA,2126.13306664651
+"Nebraska","NE","AsphaltRoads",NA,NA,"MIROC5",1,NA,859.956480353182
+"Nebraska","NE","AsphaltRoads",NA,NA,"MIROC5",2,NA,1628.69841419632
+"Nebraska","NE","AsphaltRoads",NA,NA,"MIROC5",3,NA,1674.82511920962
+"Nebraska","NE","AsphaltRoads",NA,NA,"MIROC5",4,NA,1896.16966295703
+"Nebraska","NE","AsphaltRoads",NA,NA,"MIROC5",5,NA,2179.46133543104
+"Nebraska","NE","AsphaltRoads",NA,NA,"CanESM2",1,NA,798.987549312286
+"Nebraska","NE","AsphaltRoads",NA,NA,"CanESM2",2,NA,1608.16062234704
+"Nebraska","NE","AsphaltRoads",NA,NA,"CanESM2",3,NA,1627.25847932667
+"Nebraska","NE","AsphaltRoads",NA,NA,"CanESM2",4,NA,1841.92796161609
+"Nebraska","NE","AsphaltRoads",NA,NA,"CanESM2",5,NA,2088.83654045481
+"Nebraska","NE","AsphaltRoads",NA,NA,"CanESM2",6,NA,2376.89654909998
+"New Hampshire","NH","AsphaltRoads",NA,NA,"CCSM4",1,NA,545.059744789072
+"New Hampshire","NH","AsphaltRoads",NA,NA,"CCSM4",2,NA,961.870137863068
+"New Hampshire","NH","AsphaltRoads",NA,NA,"CCSM4",3,NA,1195.51244900735
+"New Hampshire","NH","AsphaltRoads",NA,NA,"CCSM4",4,NA,1604.38649350986
+"New Hampshire","NH","AsphaltRoads",NA,NA,"MIROC5",1,NA,512.997406860303
+"New Hampshire","NH","AsphaltRoads",NA,NA,"MIROC5",2,NA,961.870137863068
+"New Hampshire","NH","AsphaltRoads",NA,NA,"MIROC5",3,NA,961.870137863068
+"New Hampshire","NH","AsphaltRoads",NA,NA,"MIROC5",4,NA,1061.55363262638
+"New Hampshire","NH","AsphaltRoads",NA,NA,"MIROC5",5,NA,1201.11052529502
+"New Hampshire","NH","AsphaltRoads",NA,NA,"CanESM2",1,NA,480.935068931534
+"New Hampshire","NH","AsphaltRoads",NA,NA,"CanESM2",2,NA,961.870137863068
+"New Hampshire","NH","AsphaltRoads",NA,NA,"CanESM2",3,NA,961.870137863068
+"New Hampshire","NH","AsphaltRoads",NA,NA,"CanESM2",4,NA,1318.84674999152
+"New Hampshire","NH","AsphaltRoads",NA,NA,"CanESM2",5,NA,1747.21868454567
+"New Hampshire","NH","AsphaltRoads",NA,NA,"CanESM2",6,NA,2246.9859415255
+"New Jersey","NJ","AsphaltRoads",NA,NA,"CCSM4",1,NA,0
+"New Jersey","NJ","AsphaltRoads",NA,NA,"CCSM4",2,NA,793.338980883187
+"New Jersey","NJ","AsphaltRoads",NA,NA,"CCSM4",3,NA,1566.86934343779
+"New Jersey","NJ","AsphaltRoads",NA,NA,"CCSM4",4,NA,1705.74716343097
+"New Jersey","NJ","AsphaltRoads",NA,NA,"MIROC5",1,NA,0
+"New Jersey","NJ","AsphaltRoads",NA,NA,"MIROC5",2,NA,231.531702033158
+"New Jersey","NJ","AsphaltRoads",NA,NA,"MIROC5",3,NA,887.538191127106
+"New Jersey","NJ","AsphaltRoads",NA,NA,"MIROC5",4,NA,1336.08803987744
+"New Jersey","NJ","AsphaltRoads",NA,NA,"MIROC5",5,NA,1585.88938147375
+"New Jersey","NJ","AsphaltRoads",NA,NA,"CanESM2",1,NA,348.132889638269
+"New Jersey","NJ","AsphaltRoads",NA,NA,"CanESM2",2,NA,893.741111813278
+"New Jersey","NJ","AsphaltRoads",NA,NA,"CanESM2",3,NA,1264.00736031967
+"New Jersey","NJ","AsphaltRoads",NA,NA,"CanESM2",4,NA,1552.90082343047
+"New Jersey","NJ","AsphaltRoads",NA,NA,"CanESM2",5,NA,1692.22387999986
+"New Jersey","NJ","AsphaltRoads",NA,NA,"CanESM2",6,NA,1854.76744599748
+"New Mexico","NM","AsphaltRoads",NA,NA,"CCSM4",1,NA,226.54777086073
+"New Mexico","NM","AsphaltRoads",NA,NA,"CCSM4",2,NA,664.979580220484
+"New Mexico","NM","AsphaltRoads",NA,NA,"CCSM4",3,NA,1016.98600303831
+"New Mexico","NM","AsphaltRoads",NA,NA,"CCSM4",4,NA,1226.92597981069
+"New Mexico","NM","AsphaltRoads",NA,NA,"MIROC5",1,NA,322.054011692769
+"New Mexico","NM","AsphaltRoads",NA,NA,"MIROC5",2,NA,698.360601884101
+"New Mexico","NM","AsphaltRoads",NA,NA,"MIROC5",3,NA,966.137036771215
+"New Mexico","NM","AsphaltRoads",NA,NA,"MIROC5",4,NA,1288.83643796678
+"New Mexico","NM","AsphaltRoads",NA,NA,"MIROC5",5,NA,1586.25036070565
+"New Mexico","NM","AsphaltRoads",NA,NA,"CanESM2",1,NA,195.901261690194
+"New Mexico","NM","AsphaltRoads",NA,NA,"CanESM2",2,NA,631.906566507452
+"New Mexico","NM","AsphaltRoads",NA,NA,"CanESM2",3,NA,1082.1016473707
+"New Mexico","NM","AsphaltRoads",NA,NA,"CanESM2",4,NA,1469.91245618408
+"New Mexico","NM","AsphaltRoads",NA,NA,"CanESM2",5,NA,1683.17618147673
+"New Mexico","NM","AsphaltRoads",NA,NA,"CanESM2",6,NA,1931.98386098482
+"Nevada","NV","AsphaltRoads",NA,NA,"CCSM4",1,NA,211.151763679331
+"Nevada","NV","AsphaltRoads",NA,NA,"CCSM4",2,NA,635.496854683022
+"Nevada","NV","AsphaltRoads",NA,NA,"CCSM4",3,NA,991.266036022802
+"Nevada","NV","AsphaltRoads",NA,NA,"CCSM4",4,NA,1211.33308251753
+"Nevada","NV","AsphaltRoads",NA,NA,"MIROC5",1,NA,260.123639269994
+"Nevada","NV","AsphaltRoads",NA,NA,"MIROC5",2,NA,516.389720695164
+"Nevada","NV","AsphaltRoads",NA,NA,"MIROC5",3,NA,597.587095709616
+"Nevada","NV","AsphaltRoads",NA,NA,"MIROC5",4,NA,844.642641805041
+"Nevada","NV","AsphaltRoads",NA,NA,"MIROC5",5,NA,1143.71250780089
+"Nevada","NV","AsphaltRoads",NA,NA,"CanESM2",1,NA,213.510417335305
+"Nevada","NV","AsphaltRoads",NA,NA,"CanESM2",2,NA,587.911614056971
+"Nevada","NV","AsphaltRoads",NA,NA,"CanESM2",3,NA,889.581825406397
+"Nevada","NV","AsphaltRoads",NA,NA,"CanESM2",4,NA,1325.54964090096
+"Nevada","NV","AsphaltRoads",NA,NA,"CanESM2",5,NA,1679.77570113876
+"Nevada","NV","AsphaltRoads",NA,NA,"CanESM2",6,NA,2093.03943808286
+"New York","NY","AsphaltRoads",NA,NA,"CCSM4",1,NA,354.455422187104
+"New York","NY","AsphaltRoads",NA,NA,"CCSM4",2,NA,703.041149227753
+"New York","NY","AsphaltRoads",NA,NA,"CCSM4",3,NA,1007.06093733639
+"New York","NY","AsphaltRoads",NA,NA,"CCSM4",4,NA,1420.37533363738
+"New York","NY","AsphaltRoads",NA,NA,"MIROC5",1,NA,333.605103234922
+"New York","NY","AsphaltRoads",NA,NA,"MIROC5",2,NA,637.990579261698
+"New York","NY","AsphaltRoads",NA,NA,"MIROC5",3,NA,673.35344290099
+"New York","NY","AsphaltRoads",NA,NA,"MIROC5",4,NA,850.224236029624
+"New York","NY","AsphaltRoads",NA,NA,"MIROC5",5,NA,1077.45769560588
+"New York","NY","AsphaltRoads",NA,NA,"CanESM2",1,NA,312.754784282739
+"New York","NY","AsphaltRoads",NA,NA,"CanESM2",2,NA,683.596709949701
+"New York","NY","AsphaltRoads",NA,NA,"CanESM2",3,NA,792.510100045121
+"New York","NY","AsphaltRoads",NA,NA,"CanESM2",4,NA,1215.75701176736
+"New York","NY","AsphaltRoads",NA,NA,"CanESM2",5,NA,1662.66180738061
+"New York","NY","AsphaltRoads",NA,NA,"CanESM2",6,NA,2184.05073559607
+"Ohio","OH","AsphaltRoads",NA,NA,"CCSM4",1,NA,87.7967568242822
+"Ohio","OH","AsphaltRoads",NA,NA,"CCSM4",2,NA,971.936738184052
+"Ohio","OH","AsphaltRoads",NA,NA,"CCSM4",3,NA,1734.65007213612
+"Ohio","OH","AsphaltRoads",NA,NA,"CCSM4",4,NA,1818.36518895
+"Ohio","OH","AsphaltRoads",NA,NA,"MIROC5",1,NA,12.79682820366
+"Ohio","OH","AsphaltRoads",NA,NA,"MIROC5",2,NA,227.195584765961
+"Ohio","OH","AsphaltRoads",NA,NA,"MIROC5",3,NA,802.933258437571
+"Ohio","OH","AsphaltRoads",NA,NA,"MIROC5",4,NA,1305.46342734174
+"Ohio","OH","AsphaltRoads",NA,NA,"MIROC5",5,NA,1677.10982839689
+"Ohio","OH","AsphaltRoads",NA,NA,"CanESM2",1,NA,94.6312746919476
+"Ohio","OH","AsphaltRoads",NA,NA,"CanESM2",2,NA,448.251287345272
+"Ohio","OH","AsphaltRoads",NA,NA,"CanESM2",3,NA,933.855171022854
+"Ohio","OH","AsphaltRoads",NA,NA,"CanESM2",4,NA,1392.29368132227
+"Ohio","OH","AsphaltRoads",NA,NA,"CanESM2",5,NA,1670.48171882212
+"Ohio","OH","AsphaltRoads",NA,NA,"CanESM2",6,NA,1995.03442923862
+"Oklahoma","OK","AsphaltRoads",NA,NA,"CCSM4",1,NA,319.096846166759
+"Oklahoma","OK","AsphaltRoads",NA,NA,"CCSM4",2,NA,1209.74739292532
+"Oklahoma","OK","AsphaltRoads",NA,NA,"CCSM4",3,NA,1792.00559170025
+"Oklahoma","OK","AsphaltRoads",NA,NA,"CCSM4",4,NA,1820.79711889158
+"Oklahoma","OK","AsphaltRoads",NA,NA,"MIROC5",1,NA,387.027994189718
+"Oklahoma","OK","AsphaltRoads",NA,NA,"MIROC5",2,NA,922.862699403926
+"Oklahoma","OK","AsphaltRoads",NA,NA,"MIROC5",3,NA,1481.55412858217
+"Oklahoma","OK","AsphaltRoads",NA,NA,"MIROC5",4,NA,1755.6652980586
+"Oklahoma","OK","AsphaltRoads",NA,NA,"MIROC5",5,NA,1817.35175850521
+"Oklahoma","OK","AsphaltRoads",NA,NA,"CanESM2",1,NA,530.81093133899
+"Oklahoma","OK","AsphaltRoads",NA,NA,"CanESM2",2,NA,1218.73110865501
+"Oklahoma","OK","AsphaltRoads",NA,NA,"CanESM2",3,NA,1513.31094486194
+"Oklahoma","OK","AsphaltRoads",NA,NA,"CanESM2",4,NA,1712.93749677581
+"Oklahoma","OK","AsphaltRoads",NA,NA,"CanESM2",5,NA,1787.52465079658
+"Oklahoma","OK","AsphaltRoads",NA,NA,"CanESM2",6,NA,1874.54299715415
+"Oregon","OR","AsphaltRoads",NA,NA,"CCSM4",1,NA,388.212551971005
+"Oregon","OR","AsphaltRoads",NA,NA,"CCSM4",2,NA,1027.92630953091
+"Oregon","OR","AsphaltRoads",NA,NA,"CCSM4",3,NA,1485.89563662454
+"Oregon","OR","AsphaltRoads",NA,NA,"CCSM4",4,NA,1762.36003910847
+"Oregon","OR","AsphaltRoads",NA,NA,"MIROC5",1,NA,363.519451417476
+"Oregon","OR","AsphaltRoads",NA,NA,"MIROC5",2,NA,735.213791537885
+"Oregon","OR","AsphaltRoads",NA,NA,"MIROC5",3,NA,887.122448573221
+"Oregon","OR","AsphaltRoads",NA,NA,"MIROC5",4,NA,1124.87249539581
+"Oregon","OR","AsphaltRoads",NA,NA,"MIROC5",5,NA,1370.15168806824
+"Oregon","OR","AsphaltRoads",NA,NA,"CanESM2",1,NA,241.740625287233
+"Oregon","OR","AsphaltRoads",NA,NA,"CanESM2",2,NA,812.299925496879
+"Oregon","OR","AsphaltRoads",NA,NA,"CanESM2",3,NA,1428.8349409764
+"Oregon","OR","AsphaltRoads",NA,NA,"CanESM2",4,NA,1822.68219400422
+"Oregon","OR","AsphaltRoads",NA,NA,"CanESM2",5,NA,1950.03928896907
+"Oregon","OR","AsphaltRoads",NA,NA,"CanESM2",6,NA,2098.62256642806
+"Pennsylvania","PA","AsphaltRoads",NA,NA,"CCSM4",1,NA,185.361148120842
+"Pennsylvania","PA","AsphaltRoads",NA,NA,"CCSM4",2,NA,723.774436547591
+"Pennsylvania","PA","AsphaltRoads",NA,NA,"CCSM4",3,NA,1272.90115372541
+"Pennsylvania","PA","AsphaltRoads",NA,NA,"CCSM4",4,NA,1626.47728763492
+"Pennsylvania","PA","AsphaltRoads",NA,NA,"MIROC5",1,NA,174.457551172557
+"Pennsylvania","PA","AsphaltRoads",NA,NA,"MIROC5",2,NA,407.364988953932
+"Pennsylvania","PA","AsphaltRoads",NA,NA,"MIROC5",3,NA,634.760050385863
+"Pennsylvania","PA","AsphaltRoads",NA,NA,"MIROC5",4,NA,1010.70183848439
+"Pennsylvania","PA","AsphaltRoads",NA,NA,"MIROC5",5,NA,1405.93377699687
+"Pennsylvania","PA","AsphaltRoads",NA,NA,"CanESM2",1,NA,229.756800662608
+"Pennsylvania","PA","AsphaltRoads",NA,NA,"CanESM2",2,NA,613.358901517278
+"Pennsylvania","PA","AsphaltRoads",NA,NA,"CanESM2",3,NA,901.818839377395
+"Pennsylvania","PA","AsphaltRoads",NA,NA,"CanESM2",4,NA,1324.10112567475
+"Pennsylvania","PA","AsphaltRoads",NA,NA,"CanESM2",5,NA,1669.30230402992
+"Pennsylvania","PA","AsphaltRoads",NA,NA,"CanESM2",6,NA,2072.03701211095
+"Rhode Island","RI","AsphaltRoads",NA,NA,"CCSM4",1,NA,308.176130633187
+"Rhode Island","RI","AsphaltRoads",NA,NA,"CCSM4",2,NA,543.840230529154
+"Rhode Island","RI","AsphaltRoads",NA,NA,"CCSM4",3,NA,787.390110848373
+"Rhode Island","RI","AsphaltRoads",NA,NA,"CCSM4",4,NA,1213.60240140701
+"Rhode Island","RI","AsphaltRoads",NA,NA,"MIROC5",1,NA,290.048122948882
+"Rhode Island","RI","AsphaltRoads",NA,NA,"MIROC5",2,NA,543.840230529154
+"Rhode Island","RI","AsphaltRoads",NA,NA,"MIROC5",3,NA,543.840230529154
+"Rhode Island","RI","AsphaltRoads",NA,NA,"MIROC5",4,NA,543.840230529154
+"Rhode Island","RI","AsphaltRoads",NA,NA,"MIROC5",5,NA,543.840230529154
+"Rhode Island","RI","AsphaltRoads",NA,NA,"CanESM2",1,NA,271.920115264577
+"Rhode Island","RI","AsphaltRoads",NA,NA,"CanESM2",2,NA,543.840230529154
+"Rhode Island","RI","AsphaltRoads",NA,NA,"CanESM2",3,NA,543.840230529154
+"Rhode Island","RI","AsphaltRoads",NA,NA,"CanESM2",4,NA,1053.52909652609
+"Rhode Island","RI","AsphaltRoads",NA,NA,"CanESM2",5,NA,1665.15573572242
+"Rhode Island","RI","AsphaltRoads",NA,NA,"CanESM2",6,NA,2378.72014811814
+"South Carolina","SC","AsphaltRoads",NA,NA,"CCSM4",1,NA,464.858289989781
+"South Carolina","SC","AsphaltRoads",NA,NA,"CCSM4",2,NA,842.604679228398
+"South Carolina","SC","AsphaltRoads",NA,NA,"CCSM4",3,NA,862.087884598439
+"South Carolina","SC","AsphaltRoads",NA,NA,"CCSM4",4,NA,862.087884598439
+"South Carolina","SC","AsphaltRoads",NA,NA,"MIROC5",1,NA,375.520500275728
+"South Carolina","SC","AsphaltRoads",NA,NA,"MIROC5",2,NA,731.799285241082
+"South Carolina","SC","AsphaltRoads",NA,NA,"MIROC5",3,NA,810.277935709345
+"South Carolina","SC","AsphaltRoads",NA,NA,"MIROC5",4,NA,849.091077624448
+"South Carolina","SC","AsphaltRoads",NA,NA,"MIROC5",5,NA,858.188842506242
+"South Carolina","SC","AsphaltRoads",NA,NA,"CanESM2",1,NA,421.296337068727
+"South Carolina","SC","AsphaltRoads",NA,NA,"CanESM2",2,NA,847.791396927049
+"South Carolina","SC","AsphaltRoads",NA,NA,"CanESM2",3,NA,857.539002157542
+"South Carolina","SC","AsphaltRoads",NA,NA,"CanESM2",4,NA,1160.53327684228
+"South Carolina","SC","AsphaltRoads",NA,NA,"CanESM2",5,NA,1518.66774753489
+"South Carolina","SC","AsphaltRoads",NA,NA,"CanESM2",6,NA,1936.49129667627
+"South Dakota","SD","AsphaltRoads",NA,NA,"CCSM4",1,NA,655.121383236614
+"South Dakota","SD","AsphaltRoads",NA,NA,"CCSM4",2,NA,1338.88226418114
+"South Dakota","SD","AsphaltRoads",NA,NA,"CCSM4",3,NA,1669.0299781363
+"South Dakota","SD","AsphaltRoads",NA,NA,"CCSM4",4,NA,1966.89786596764
+"South Dakota","SD","AsphaltRoads",NA,NA,"MIROC5",1,NA,606.347556454772
+"South Dakota","SD","AsphaltRoads",NA,NA,"MIROC5",2,NA,1204.92747034685
+"South Dakota","SD","AsphaltRoads",NA,NA,"MIROC5",3,NA,1397.66724266361
+"South Dakota","SD","AsphaltRoads",NA,NA,"MIROC5",4,NA,1638.23629378293
+"South Dakota","SD","AsphaltRoads",NA,NA,"MIROC5",5,NA,1863.92415542621
+"South Dakota","SD","AsphaltRoads",NA,NA,"CanESM2",1,NA,440.292237291461
+"South Dakota","SD","AsphaltRoads",NA,NA,"CanESM2",2,NA,1016.16341641252
+"South Dakota","SD","AsphaltRoads",NA,NA,"CanESM2",3,NA,1270.37393234303
+"South Dakota","SD","AsphaltRoads",NA,NA,"CanESM2",4,NA,1576.46909501245
+"South Dakota","SD","AsphaltRoads",NA,NA,"CanESM2",5,NA,1801.42540129469
+"South Dakota","SD","AsphaltRoads",NA,NA,"CanESM2",6,NA,2063.87442529063
+"Tennessee","TN","AsphaltRoads",NA,NA,"CCSM4",1,NA,866.791749289718
+"Tennessee","TN","AsphaltRoads",NA,NA,"CCSM4",2,NA,1659.65907133306
+"Tennessee","TN","AsphaltRoads",NA,NA,"CCSM4",3,NA,1792.72383112623
+"Tennessee","TN","AsphaltRoads",NA,NA,"CCSM4",4,NA,1826.4839714912
+"Tennessee","TN","AsphaltRoads",NA,NA,"MIROC5",1,NA,695.13615512727
+"Tennessee","TN","AsphaltRoads",NA,NA,"MIROC5",2,NA,1391.70141921885
+"Tennessee","TN","AsphaltRoads",NA,NA,"MIROC5",3,NA,1641.9446162253
+"Tennessee","TN","AsphaltRoads",NA,NA,"MIROC5",4,NA,1815.93277434915
+"Tennessee","TN","AsphaltRoads",NA,NA,"MIROC5",5,NA,1915.25835274235
+"Tennessee","TN","AsphaltRoads",NA,NA,"CanESM2",1,NA,787.19724176476
+"Tennessee","TN","AsphaltRoads",NA,NA,"CanESM2",2,NA,1626.56869306112
+"Tennessee","TN","AsphaltRoads",NA,NA,"CanESM2",3,NA,1724.39533593286
+"Tennessee","TN","AsphaltRoads",NA,NA,"CanESM2",4,NA,1847.9607779007
+"Tennessee","TN","AsphaltRoads",NA,NA,"CanESM2",5,NA,1941.45638825394
+"Tennessee","TN","AsphaltRoads",NA,NA,"CanESM2",6,NA,2050.53460033271
+"Texas","TX","AsphaltRoads",NA,NA,"CCSM4",1,NA,144.657145606425
+"Texas","TX","AsphaltRoads",NA,NA,"CCSM4",2,NA,552.774599663685
+"Texas","TX","AsphaltRoads",NA,NA,"CCSM4",3,NA,1026.82325380713
+"Texas","TX","AsphaltRoads",NA,NA,"CCSM4",4,NA,1400.8656826052
+"Texas","TX","AsphaltRoads",NA,NA,"MIROC5",1,NA,259.469011729649
+"Texas","TX","AsphaltRoads",NA,NA,"MIROC5",2,NA,570.173338537495
+"Texas","TX","AsphaltRoads",NA,NA,"MIROC5",3,NA,807.235339579971
+"Texas","TX","AsphaltRoads",NA,NA,"MIROC5",4,NA,1180.51536288181
+"Texas","TX","AsphaltRoads",NA,NA,"MIROC5",5,NA,1566.4481243152
+"Texas","TX","AsphaltRoads",NA,NA,"CanESM2",1,NA,239.548513705333
+"Texas","TX","AsphaltRoads",NA,NA,"CanESM2",2,NA,739.527513081048
+"Texas","TX","AsphaltRoads",NA,NA,"CanESM2",3,NA,1227.83467371301
+"Texas","TX","AsphaltRoads",NA,NA,"CanESM2",4,NA,1570.69048499984
+"Texas","TX","AsphaltRoads",NA,NA,"CanESM2",5,NA,1708.66544859012
+"Texas","TX","AsphaltRoads",NA,NA,"CanESM2",6,NA,1869.63623944546
+"Utah","UT","AsphaltRoads",NA,NA,"CCSM4",1,NA,538.003706779333
+"Utah","UT","AsphaltRoads",NA,NA,"CCSM4",2,NA,1140.92783892447
+"Utah","UT","AsphaltRoads",NA,NA,"CCSM4",3,NA,1414.7688783818
+"Utah","UT","AsphaltRoads",NA,NA,"CCSM4",4,NA,1600.74172526583
+"Utah","UT","AsphaltRoads",NA,NA,"MIROC5",1,NA,547.238191166632
+"Utah","UT","AsphaltRoads",NA,NA,"MIROC5",2,NA,1065.82939566221
+"Utah","UT","AsphaltRoads",NA,NA,"MIROC5",3,NA,1178.47645946573
+"Utah","UT","AsphaltRoads",NA,NA,"MIROC5",4,NA,1421.69571589374
+"Utah","UT","AsphaltRoads",NA,NA,"MIROC5",5,NA,1697.26495575916
+"Utah","UT","AsphaltRoads",NA,NA,"CanESM2",1,NA,465.57850218535
+"Utah","UT","AsphaltRoads",NA,NA,"CanESM2",2,NA,1064.99421041838
+"Utah","UT","AsphaltRoads",NA,NA,"CanESM2",3,NA,1315.93897175779
+"Utah","UT","AsphaltRoads",NA,NA,"CanESM2",4,NA,1630.91669918742
+"Utah","UT","AsphaltRoads",NA,NA,"CanESM2",5,NA,1868.36090575291
+"Utah","UT","AsphaltRoads",NA,NA,"CanESM2",6,NA,2145.37914674599
+"Virginia","VA","AsphaltRoads",NA,NA,"CCSM4",1,NA,440.770608940297
+"Virginia","VA","AsphaltRoads",NA,NA,"CCSM4",2,NA,1265.59470682069
+"Virginia","VA","AsphaltRoads",NA,NA,"CCSM4",3,NA,1730.94763229642
+"Virginia","VA","AsphaltRoads",NA,NA,"CCSM4",4,NA,1798.42628930652
+"Virginia","VA","AsphaltRoads",NA,NA,"MIROC5",1,NA,148.758867173077
+"Virginia","VA","AsphaltRoads",NA,NA,"MIROC5",2,NA,541.487959982777
+"Virginia","VA","AsphaltRoads",NA,NA,"MIROC5",3,NA,1285.42236474367
+"Virginia","VA","AsphaltRoads",NA,NA,"MIROC5",4,NA,1664.57331797048
+"Virginia","VA","AsphaltRoads",NA,NA,"MIROC5",5,NA,1766.52834856701
+"Virginia","VA","AsphaltRoads",NA,NA,"CanESM2",1,NA,695.07093385419
+"Virginia","VA","AsphaltRoads",NA,NA,"CanESM2",2,NA,1470.74094291127
+"Virginia","VA","AsphaltRoads",NA,NA,"CanESM2",3,NA,1621.86420891669
+"Virginia","VA","AsphaltRoads",NA,NA,"CanESM2",4,NA,1766.91429428629
+"Virginia","VA","AsphaltRoads",NA,NA,"CanESM2",5,NA,1856.34536776677
+"Virginia","VA","AsphaltRoads",NA,NA,"CanESM2",6,NA,1960.68162016066
+"Vermont","VT","AsphaltRoads",NA,NA,"CCSM4",1,NA,733.825810417477
+"Vermont","VT","AsphaltRoads",NA,NA,"CCSM4",2,NA,1294.98672426614
+"Vermont","VT","AsphaltRoads",NA,NA,"CCSM4",3,NA,1419.52865107047
+"Vermont","VT","AsphaltRoads",NA,NA,"CCSM4",4,NA,1637.47702297804
+"Vermont","VT","AsphaltRoads",NA,NA,"MIROC5",1,NA,690.659586275273
+"Vermont","VT","AsphaltRoads",NA,NA,"MIROC5",2,NA,1294.98672426614
+"Vermont","VT","AsphaltRoads",NA,NA,"MIROC5",3,NA,1294.98672426614
+"Vermont","VT","AsphaltRoads",NA,NA,"MIROC5",4,NA,1294.98672426614
+"Vermont","VT","AsphaltRoads",NA,NA,"MIROC5",5,NA,1294.98672426614
+"Vermont","VT","AsphaltRoads",NA,NA,"CanESM2",1,NA,647.493362133068
+"Vermont","VT","AsphaltRoads",NA,NA,"CanESM2",2,NA,1294.98672426614
+"Vermont","VT","AsphaltRoads",NA,NA,"CanESM2",3,NA,1294.98672426614
+"Vermont","VT","AsphaltRoads",NA,NA,"CanESM2",4,NA,1594.94723567307
+"Vermont","VT","AsphaltRoads",NA,NA,"CanESM2",5,NA,1954.8998493614
+"Vermont","VT","AsphaltRoads",NA,NA,"CanESM2",6,NA,2374.84456533111
+"Washington","WA","AsphaltRoads",NA,NA,"CCSM4",1,NA,847.320494379027
+"Washington","WA","AsphaltRoads",NA,NA,"CCSM4",2,NA,1576.78678472661
+"Washington","WA","AsphaltRoads",NA,NA,"CCSM4",3,NA,1770.1060080359
+"Washington","WA","AsphaltRoads",NA,NA,"CCSM4",4,NA,1983.59430886376
+"Washington","WA","AsphaltRoads",NA,NA,"MIROC5",1,NA,600.90569363287
+"Washington","WA","AsphaltRoads",NA,NA,"MIROC5",2,NA,1210.19370270631
+"Washington","WA","AsphaltRoads",NA,NA,"MIROC5",3,NA,1446.76436294957
+"Washington","WA","AsphaltRoads",NA,NA,"MIROC5",4,NA,1580.87804510865
+"Washington","WA","AsphaltRoads",NA,NA,"MIROC5",5,NA,1632.26117246171
+"Washington","WA","AsphaltRoads",NA,NA,"CanESM2",1,NA,644.056887440093
+"Washington","WA","AsphaltRoads",NA,NA,"CanESM2",2,NA,1437.82737586593
+"Washington","WA","AsphaltRoads",NA,NA,"CanESM2",3,NA,1718.5403777142
+"Washington","WA","AsphaltRoads",NA,NA,"CanESM2",4,NA,2010.04694818975
+"Washington","WA","AsphaltRoads",NA,NA,"CanESM2",5,NA,2202.65555172538
+"Washington","WA","AsphaltRoads",NA,NA,"CanESM2",6,NA,2427.36558918362
+"Wisconsin","WI","AsphaltRoads",NA,NA,"CCSM4",1,NA,263.690078578735
+"Wisconsin","WI","AsphaltRoads",NA,NA,"CCSM4",2,NA,934.752688384221
+"Wisconsin","WI","AsphaltRoads",NA,NA,"CCSM4",3,NA,1488.76783044098
+"Wisconsin","WI","AsphaltRoads",NA,NA,"CCSM4",4,NA,1739.49915640555
+"Wisconsin","WI","AsphaltRoads",NA,NA,"MIROC5",1,NA,248.178897485868
+"Wisconsin","WI","AsphaltRoads",NA,NA,"MIROC5",2,NA,552.290760768709
+"Wisconsin","WI","AsphaltRoads",NA,NA,"MIROC5",3,NA,798.664190053042
+"Wisconsin","WI","AsphaltRoads",NA,NA,"MIROC5",4,NA,1196.71222902318
+"Wisconsin","WI","AsphaltRoads",NA,NA,"MIROC5",5,NA,1611.95244787628
+"Wisconsin","WI","AsphaltRoads",NA,NA,"CanESM2",1,NA,232.667716393002
+"Wisconsin","WI","AsphaltRoads",NA,NA,"CanESM2",2,NA,498.210902939919
+"Wisconsin","WI","AsphaltRoads",NA,NA,"CanESM2",3,NA,559.85240947851
+"Wisconsin","WI","AsphaltRoads",NA,NA,"CanESM2",4,NA,1006.79280093635
+"Wisconsin","WI","AsphaltRoads",NA,NA,"CanESM2",5,NA,1508.60202702414
+"Wisconsin","WI","AsphaltRoads",NA,NA,"CanESM2",6,NA,2094.04612412657
+"West Virginia","WV","AsphaltRoads",NA,NA,"CCSM4",1,NA,178.691151815569
+"West Virginia","WV","AsphaltRoads",NA,NA,"CCSM4",2,NA,858.350780623453
+"West Virginia","WV","AsphaltRoads",NA,NA,"CCSM4",3,NA,1441.57992740673
+"West Virginia","WV","AsphaltRoads",NA,NA,"CCSM4",4,NA,1630.74158300826
+"West Virginia","WV","AsphaltRoads",NA,NA,"MIROC5",1,NA,98.2156153443975
+"West Virginia","WV","AsphaltRoads",NA,NA,"MIROC5",2,NA,276.62862286905
+"West Virginia","WV","AsphaltRoads",NA,NA,"MIROC5",3,NA,538.639264480912
+"West Virginia","WV","AsphaltRoads",NA,NA,"MIROC5",4,NA,927.804027900411
+"West Virginia","WV","AsphaltRoads",NA,NA,"MIROC5",5,NA,1321.59326799381
+"West Virginia","WV","AsphaltRoads",NA,NA,"CanESM2",1,NA,178.191607628458
+"West Virginia","WV","AsphaltRoads",NA,NA,"CanESM2",2,NA,522.090332833326
+"West Virginia","WV","AsphaltRoads",NA,NA,"CanESM2",3,NA,832.791178289096
+"West Virginia","WV","AsphaltRoads",NA,NA,"CanESM2",4,NA,1244.84165468689
+"West Virginia","WV","AsphaltRoads",NA,NA,"CanESM2",5,NA,1565.30975290901
+"West Virginia","WV","AsphaltRoads",NA,NA,"CanESM2",6,NA,1939.18920083482
+"Wyoming","WY","AsphaltRoads",NA,NA,"CCSM4",1,NA,600.890422349118
+"Wyoming","WY","AsphaltRoads",NA,NA,"CCSM4",2,NA,1262.04744847658
+"Wyoming","WY","AsphaltRoads",NA,NA,"CCSM4",3,NA,1550.99701805887
+"Wyoming","WY","AsphaltRoads",NA,NA,"CCSM4",4,NA,1747.87824326943
+"Wyoming","WY","AsphaltRoads",NA,NA,"MIROC5",1,NA,533.595753802095
+"Wyoming","WY","AsphaltRoads",NA,NA,"MIROC5",2,NA,1071.20265582848
+"Wyoming","WY","AsphaltRoads",NA,NA,"MIROC5",3,NA,1271.54940526889
+"Wyoming","WY","AsphaltRoads",NA,NA,"MIROC5",4,NA,1507.1423149145
+"Wyoming","WY","AsphaltRoads",NA,NA,"MIROC5",5,NA,1721.47837991741
+"Wyoming","WY","AsphaltRoads",NA,NA,"CanESM2",1,NA,431.62678175891
+"Wyoming","WY","AsphaltRoads",NA,NA,"CanESM2",2,NA,995.223092382285
+"Wyoming","WY","AsphaltRoads",NA,NA,"CanESM2",3,NA,1242.66595900316
+"Wyoming","WY","AsphaltRoads",NA,NA,"CanESM2",4,NA,1553.16679701346
+"Wyoming","WY","AsphaltRoads",NA,NA,"CanESM2",5,NA,1787.19979731814
+"Wyoming","WY","AsphaltRoads",NA,NA,"CanESM2",6,NA,2060.2382976736
