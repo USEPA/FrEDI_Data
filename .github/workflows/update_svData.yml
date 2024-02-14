@@ -25,6 +25,9 @@ on:
         options: 
         - no
         - yes
+      branch_name:
+        type: string
+        description: Which FrEDI Package branch do you want to use?
 
 jobs:
   compile_data:
@@ -59,7 +62,7 @@ jobs:
         run: |
           Rscript -e 'devtools::install_github( 
               repo         = "https://github.com/USEPA/FrEDI", 
-              ref          = "main", 
+              ref          =  "${{ github.event.inputs.branch_name }}", 
               subdir       = "FrEDI", 
               dependencies = FALSE,
               upgrade      = "never", 
@@ -69,16 +72,16 @@ jobs:
           
       - name: Configure SV data
         if: |
-          inputs.run_sv      == 'yes' ||
-          inputs.run_pop     == 'yes' ||
-          inputs.run_formats == 'yes'
+          ${{ inputs.run_sv }}      == 'true' ||
+          ${{ inputs.run_pop }}     == 'true' ||
+          ${{ inputs.run_formats }} == 'true'
         run: |
           Rscript -e '
             source("./scripts/update_svDataObjects.R")
             fpath1      <- getwd()
-            sv0         <- "${{ inputs.run_sv      }}" == "yes"
-            pop0        <- "${{ inputs.run_pop     }}" == "yes"
-            format0     <- "${{ inputs.run_formats }}" == "yes"
+            sv0         <- ifelse("${{ inputs.run_sv      }}" == "true",TRUE,FALSE)
+            pop0        <- ifelse("${{ inputs.run_pop     }}" == "true",TRUE, FALSE)
+            format0     <- ifelse("${{ inputs.run_formats }}" == "true",TRUE,FALSE)
             list1       <- update_svDataObjects(
               fpath0  = fpath1,
               sv      = sv0,
@@ -90,9 +93,9 @@ jobs:
             '
       - name: Commit results
         if: |
-          inputs.run_sv      == 'yes' ||
-          inputs.run_pop     == 'yes' ||
-          inputs.run_formats == 'yes'
+          ${{ inputs.run_sv }}      == 'true' ||
+          ${{ inputs.run_pop }}     == 'true' ||
+          ${{ inputs.run_formats }} == 'true'
         run: |
           git config --local core.autocrlf false
           git config --local user.email "${{ github.actor }}@users.noreply.github.com"

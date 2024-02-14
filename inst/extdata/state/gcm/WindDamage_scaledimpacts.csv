@@ -1,0 +1,521 @@
+"state","postal","sector","variant","impactType","model","modelUnitValue","impactYear","value"
+"Alabama","AL","WindDamage",NA,NA,"CCSM4",1,NA,8969606.59996217
+"Alabama","AL","WindDamage",NA,NA,"CCSM4",2,NA,22160204.541083
+"Alabama","AL","WindDamage",NA,NA,"CCSM4",3,NA,34295554.6469142
+"Alabama","AL","WindDamage",NA,NA,"CCSM4",4,NA,44848032.9998108
+"Alabama","AL","WindDamage",NA,NA,"CCSM4",5,NA,51179520.0115488
+"Alabama","AL","WindDamage",NA,NA,"HadGEM2-ES",1,NA,19080896.9845789
+"Alabama","AL","WindDamage",NA,NA,"HadGEM2-ES",2,NA,36041694.3042047
+"Alabama","AL","WindDamage",NA,NA,"HadGEM2-ES",3,NA,51942441.7913538
+"Alabama","AL","WindDamage",NA,NA,"HadGEM2-ES",4,NA,63602989.9485965
+"Alabama","AL","WindDamage",NA,NA,"HadGEM2-ES",5,NA,73143438.440886
+"Alabama","AL","WindDamage",NA,NA,"HadGEM2-ES",6,NA,86924086.2630819
+"Alabama","AL","WindDamage",NA,NA,"MIROC5",1,NA,18076745.1324708
+"Alabama","AL","WindDamage",NA,NA,"MIROC5",2,NA,34250674.9878393
+"Alabama","AL","WindDamage",NA,NA,"MIROC5",3,NA,50424604.8432079
+"Alabama","AL","WindDamage",NA,NA,"MIROC5",4,NA,65647127.0600254
+"Alabama","AL","WindDamage",NA,NA,"MIROC5",5,NA,79918241.6382918
+"Alabama","AL","WindDamage",NA,NA,"MIROC5",6,NA,97043579.1322115
+"Alabama","AL","WindDamage",NA,NA,"GFDL-CM3",1,NA,69344144.5674128
+"Alabama","AL","WindDamage",NA,NA,"GFDL-CM3",2,NA,161803003.99063
+"Alabama","AL","WindDamage",NA,NA,"GFDL-CM3",3,NA,240393034.500365
+"Alabama","AL","WindDamage",NA,NA,"GFDL-CM3",4,NA,305114236.096617
+"Alabama","AL","WindDamage",NA,NA,"GFDL-CM3",5,NA,351343665.808225
+"Alabama","AL","WindDamage",NA,NA,"GFDL-CM3",6,NA,425310753.346799
+"Alabama","AL","WindDamage",NA,NA,"MRI-CGCM3",1,NA,488401.010791351
+"Alabama","AL","WindDamage",NA,NA,"MRI-CGCM3",2,NA,774294.285400923
+"Alabama","AL","WindDamage",NA,NA,"MRI-CGCM3",3,NA,1048275.3402351
+"Connecticut","CT","WindDamage",NA,NA,"CCSM4",1,NA,-14355443.9098874
+"Connecticut","CT","WindDamage",NA,NA,"CCSM4",2,NA,-35466390.8361924
+"Connecticut","CT","WindDamage",NA,NA,"CCSM4",3,NA,-54888462.0083929
+"Connecticut","CT","WindDamage",NA,NA,"CCSM4",4,NA,-71777219.5494369
+"Connecticut","CT","WindDamage",NA,NA,"CCSM4",5,NA,-81910474.0740633
+"Connecticut","CT","WindDamage",NA,NA,"HadGEM2-ES",1,NA,844493.225326565
+"Connecticut","CT","WindDamage",NA,NA,"HadGEM2-ES",2,NA,1595153.87006129
+"Connecticut","CT","WindDamage",NA,NA,"HadGEM2-ES",3,NA,2298898.22450009
+"Connecticut","CT","WindDamage",NA,NA,"HadGEM2-ES",4,NA,2814977.41775522
+"Connecticut","CT","WindDamage",NA,NA,"HadGEM2-ES",5,NA,3237224.0304185
+"Connecticut","CT","WindDamage",NA,NA,"HadGEM2-ES",6,NA,3847135.80426546
+"Connecticut","CT","WindDamage",NA,NA,"MIROC5",1,NA,18467048.4850867
+"Connecticut","CT","WindDamage",NA,NA,"MIROC5",2,NA,34990197.1296379
+"Connecticut","CT","WindDamage",NA,NA,"MIROC5",3,NA,51513345.7741891
+"Connecticut","CT","WindDamage",NA,NA,"MIROC5",4,NA,67064544.4984727
+"Connecticut","CT","WindDamage",NA,NA,"MIROC5",5,NA,81643793.3024885
+"Connecticut","CT","WindDamage",NA,NA,"MIROC5",6,NA,99138891.8673074
+"Connecticut","CT","WindDamage",NA,NA,"GFDL-CM3",1,NA,177717669.531261
+"Connecticut","CT","WindDamage",NA,NA,"GFDL-CM3",2,NA,414674562.23961
+"Connecticut","CT","WindDamage",NA,NA,"GFDL-CM3",3,NA,616087921.041706
+"Connecticut","CT","WindDamage",NA,NA,"GFDL-CM3",4,NA,781957745.93755
+"Connecticut","CT","WindDamage",NA,NA,"GFDL-CM3",5,NA,900436192.291724
+"Connecticut","CT","WindDamage",NA,NA,"GFDL-CM3",6,NA,1090001706.4584
+"Connecticut","CT","WindDamage",NA,NA,"MRI-CGCM3",1,NA,-23693304.4576178
+"Connecticut","CT","WindDamage",NA,NA,"MRI-CGCM3",2,NA,-37562555.8474429
+"Connecticut","CT","WindDamage",NA,NA,"MRI-CGCM3",3,NA,-50853921.7626919
+"Delaware","DE","WindDamage",NA,NA,"CCSM4",1,NA,-526895.115465681
+"Delaware","DE","WindDamage",NA,NA,"CCSM4",2,NA,-1301740.87350345
+"Delaware","DE","WindDamage",NA,NA,"CCSM4",3,NA,-2014598.97089819
+"Delaware","DE","WindDamage",NA,NA,"CCSM4",4,NA,-2634475.57732841
+"Delaware","DE","WindDamage",NA,NA,"CCSM4",5,NA,-3006401.54118653
+"Delaware","DE","WindDamage",NA,NA,"HadGEM2-ES",1,NA,3527657.79488547
+"Delaware","DE","WindDamage",NA,NA,"HadGEM2-ES",2,NA,6663353.61256145
+"Delaware","DE","WindDamage",NA,NA,"HadGEM2-ES",3,NA,9603068.44163267
+"Delaware","DE","WindDamage",NA,NA,"HadGEM2-ES",4,NA,11758859.3162849
+"Delaware","DE","WindDamage",NA,NA,"HadGEM2-ES",5,NA,13522688.2137276
+"Delaware","DE","WindDamage",NA,NA,"HadGEM2-ES",6,NA,16070441.0655894
+"Delaware","DE","WindDamage",NA,NA,"MIROC5",1,NA,-922117.451284035
+"Delaware","DE","WindDamage",NA,NA,"MIROC5",2,NA,-1747169.90769607
+"Delaware","DE","WindDamage",NA,NA,"MIROC5",3,NA,-2572222.3641081
+"Delaware","DE","WindDamage",NA,NA,"MIROC5",4,NA,-3348742.32308413
+"Delaware","DE","WindDamage",NA,NA,"MIROC5",5,NA,-4076729.78462415
+"Delaware","DE","WindDamage",NA,NA,"MIROC5",6,NA,-4950314.73847219
+"Delaware","DE","WindDamage",NA,NA,"GFDL-CM3",1,NA,17631352.1463133
+"Delaware","DE","WindDamage",NA,NA,"GFDL-CM3",2,NA,41139821.674731
+"Delaware","DE","WindDamage",NA,NA,"GFDL-CM3",3,NA,61122020.7738861
+"Delaware","DE","WindDamage",NA,NA,"GFDL-CM3",4,NA,77577949.4437785
+"Delaware","DE","WindDamage",NA,NA,"GFDL-CM3",5,NA,89332184.2079874
+"Delaware","DE","WindDamage",NA,NA,"GFDL-CM3",6,NA,108138959.830722
+"Delaware","DE","WindDamage",NA,NA,"MRI-CGCM3",1,NA,-935183.188551504
+"Delaware","DE","WindDamage",NA,NA,"MRI-CGCM3",2,NA,-1482607.49404507
+"Delaware","DE","WindDamage",NA,NA,"MRI-CGCM3",3,NA,-2007222.4534764
+"District of Columbia","DC","WindDamage",NA,NA,"CCSM4",1,NA,491281.713812241
+"District of Columbia","DC","WindDamage",NA,NA,"CCSM4",2,NA,1213754.82235965
+"District of Columbia","DC","WindDamage",NA,NA,"CCSM4",3,NA,1878430.08222327
+"District of Columbia","DC","WindDamage",NA,NA,"CCSM4",4,NA,2456408.5690612
+"District of Columbia","DC","WindDamage",NA,NA,"CCSM4",5,NA,2803195.66116396
+"District of Columbia","DC","WindDamage",NA,NA,"HadGEM2-ES",1,NA,52123031.745174
+"District of Columbia","DC","WindDamage",NA,NA,"HadGEM2-ES",2,NA,98454615.518662
+"District of Columbia","DC","WindDamage",NA,NA,"HadGEM2-ES",3,NA,141890475.306307
+"District of Columbia","DC","WindDamage",NA,NA,"HadGEM2-ES",4,NA,173743439.15058
+"District of Columbia","DC","WindDamage",NA,NA,"HadGEM2-ES",5,NA,199804955.023167
+"District of Columbia","DC","WindDamage",NA,NA,"HadGEM2-ES",6,NA,237449366.839126
+"District of Columbia","DC","WindDamage",NA,NA,"MIROC5",1,NA,-5737566.7452039
+"District of Columbia","DC","WindDamage",NA,NA,"MIROC5",2,NA,-10871179.0961758
+"District of Columbia","DC","WindDamage",NA,NA,"MIROC5",3,NA,-16004791.4471477
+"District of Columbia","DC","WindDamage",NA,NA,"MIROC5",4,NA,-20836426.6010036
+"District of Columbia","DC","WindDamage",NA,NA,"MIROC5",5,NA,-25366084.5577436
+"District of Columbia","DC","WindDamage",NA,NA,"MIROC5",6,NA,-30801674.1058315
+"District of Columbia","DC","WindDamage",NA,NA,"GFDL-CM3",1,NA,317803019.314886
+"District of Columbia","DC","WindDamage",NA,NA,"GFDL-CM3",2,NA,741540378.401401
+"District of Columbia","DC","WindDamage",NA,NA,"GFDL-CM3",3,NA,1101717133.62494
+"District of Columbia","DC","WindDamage",NA,NA,"GFDL-CM3",4,NA,1398333284.9855
+"District of Columbia","DC","WindDamage",NA,NA,"GFDL-CM3",5,NA,1610201964.52876
+"District of Columbia","DC","WindDamage",NA,NA,"GFDL-CM3",6,NA,1949191851.79797
+"District of Columbia","DC","WindDamage",NA,NA,"MRI-CGCM3",1,NA,10822841.2773703
+"District of Columbia","DC","WindDamage",NA,NA,"MRI-CGCM3",2,NA,17158163.0007091
+"District of Columbia","DC","WindDamage",NA,NA,"MRI-CGCM3",3,NA,23229512.9855753
+"Florida","FL","WindDamage",NA,NA,"CCSM4",1,NA,696600846.981872
+"Florida","FL","WindDamage",NA,NA,"CCSM4",2,NA,1721013857.24933
+"Florida","FL","WindDamage",NA,NA,"CCSM4",3,NA,2663473826.69539
+"Florida","FL","WindDamage",NA,NA,"CCSM4",4,NA,3483004234.90936
+"Florida","FL","WindDamage",NA,NA,"CCSM4",5,NA,3974722479.83774
+"Florida","FL","WindDamage",NA,NA,"HadGEM2-ES",1,NA,1482737660.68345
+"Florida","FL","WindDamage",NA,NA,"HadGEM2-ES",2,NA,2800726692.40207
+"Florida","FL","WindDamage",NA,NA,"HadGEM2-ES",3,NA,4036341409.63827
+"Florida","FL","WindDamage",NA,NA,"HadGEM2-ES",4,NA,4942458868.94482
+"Florida","FL","WindDamage",NA,NA,"HadGEM2-ES",5,NA,5683827699.28655
+"Florida","FL","WindDamage",NA,NA,"HadGEM2-ES",6,NA,6754693787.55793
+"Florida","FL","WindDamage",NA,NA,"MIROC5",1,NA,1691156666.89436
+"Florida","FL","WindDamage",NA,NA,"MIROC5",2,NA,3204296842.53668
+"Florida","FL","WindDamage",NA,NA,"MIROC5",3,NA,4717437018.17901
+"Florida","FL","WindDamage",NA,NA,"MIROC5",4,NA,6141568948.19531
+"Florida","FL","WindDamage",NA,NA,"MIROC5",5,NA,7476692632.58559
+"Florida","FL","WindDamage",NA,NA,"MIROC5",6,NA,9078841053.85394
+"Florida","FL","WindDamage",NA,NA,"GFDL-CM3",1,NA,13527451544.8973
+"Florida","FL","WindDamage",NA,NA,"GFDL-CM3",2,NA,31564053604.7604
+"Florida","FL","WindDamage",NA,NA,"GFDL-CM3",3,NA,46895165355.644
+"Florida","FL","WindDamage",NA,NA,"GFDL-CM3",4,NA,59520786797.5482
+"Florida","FL","WindDamage",NA,NA,"GFDL-CM3",5,NA,68539087827.4798
+"Florida","FL","WindDamage",NA,NA,"GFDL-CM3",6,NA,82968369475.3702
+"Florida","FL","WindDamage",NA,NA,"MRI-CGCM3",1,NA,2198744756.11671
+"Florida","FL","WindDamage",NA,NA,"MRI-CGCM3",2,NA,3485814857.2582
+"Florida","FL","WindDamage",NA,NA,"MRI-CGCM3",3,NA,4719257037.5188
+"Georgia","GA","WindDamage",NA,NA,"CCSM4",1,NA,-12033037.374641
+"Georgia","GA","WindDamage",NA,NA,"CCSM4",2,NA,-29728680.5726425
+"Georgia","GA","WindDamage",NA,NA,"CCSM4",3,NA,-46008672.3148039
+"Georgia","GA","WindDamage",NA,NA,"CCSM4",4,NA,-60165186.8732051
+"Georgia","GA","WindDamage",NA,NA,"CCSM4",5,NA,-68659095.6082459
+"Georgia","GA","WindDamage",NA,NA,"HadGEM2-ES",1,NA,35657727.8180238
+"Georgia","GA","WindDamage",NA,NA,"HadGEM2-ES",2,NA,67353485.8784893
+"Georgia","GA","WindDamage",NA,NA,"HadGEM2-ES",3,NA,97068259.0601758
+"Georgia","GA","WindDamage",NA,NA,"HadGEM2-ES",4,NA,118859092.726746
+"Georgia","GA","WindDamage",NA,NA,"HadGEM2-ES",5,NA,136687956.635758
+"Georgia","GA","WindDamage",NA,NA,"HadGEM2-ES",6,NA,162440760.059886
+"Georgia","GA","WindDamage",NA,NA,"MIROC5",1,NA,37783280.8230335
+"Georgia","GA","WindDamage",NA,NA,"MIROC5",2,NA,71589374.1910108
+"Georgia","GA","WindDamage",NA,NA,"MIROC5",3,NA,105395467.558988
+"Georgia","GA","WindDamage",NA,NA,"MIROC5",4,NA,137212967.199437
+"Georgia","GA","WindDamage",NA,NA,"MIROC5",5,NA,167041873.112359
+"Georgia","GA","WindDamage",NA,NA,"MIROC5",6,NA,202836560.207864
+"Georgia","GA","WindDamage",NA,NA,"GFDL-CM3",1,NA,317691294.282042
+"Georgia","GA","WindDamage",NA,NA,"GFDL-CM3",2,NA,741279686.658098
+"Georgia","GA","WindDamage",NA,NA,"GFDL-CM3",3,NA,1101329820.17775
+"Georgia","GA","WindDamage",NA,NA,"GFDL-CM3",4,NA,1397841694.84099
+"Georgia","GA","WindDamage",NA,NA,"GFDL-CM3",5,NA,1609635891.02901
+"Georgia","GA","WindDamage",NA,NA,"GFDL-CM3",6,NA,1948506604.92986
+"Georgia","GA","WindDamage",NA,NA,"MRI-CGCM3",1,NA,-1017286.98380584
+"Georgia","GA","WindDamage",NA,NA,"MRI-CGCM3",2,NA,-1612772.04749706
+"Georgia","GA","WindDamage",NA,NA,"MRI-CGCM3",3,NA,-2183445.23353448
+"Louisiana","LA","WindDamage",NA,NA,"CCSM4",1,NA,195748307.033174
+"Louisiana","LA","WindDamage",NA,NA,"CCSM4",2,NA,483613464.4349
+"Louisiana","LA","WindDamage",NA,NA,"CCSM4",3,NA,748449409.244489
+"Louisiana","LA","WindDamage",NA,NA,"CCSM4",4,NA,978741535.16587
+"Louisiana","LA","WindDamage",NA,NA,"CCSM4",5,NA,1116916810.7187
+"Louisiana","LA","WindDamage",NA,NA,"HadGEM2-ES",1,NA,240607149.85263
+"Louisiana","LA","WindDamage",NA,NA,"HadGEM2-ES",2,NA,454480171.943856
+"Louisiana","LA","WindDamage",NA,NA,"HadGEM2-ES",3,NA,654986130.154381
+"Louisiana","LA","WindDamage",NA,NA,"HadGEM2-ES",4,NA,802023832.842099
+"Louisiana","LA","WindDamage",NA,NA,"HadGEM2-ES",5,NA,922327407.768413
+"Louisiana","LA","WindDamage",NA,NA,"HadGEM2-ES",6,NA,1096099238.21753
+"Louisiana","LA","WindDamage",NA,NA,"MIROC5",1,NA,459617378.537365
+"Louisiana","LA","WindDamage",NA,NA,"MIROC5",2,NA,870853980.386586
+"Louisiana","LA","WindDamage",NA,NA,"MIROC5",3,NA,1282090582.23581
+"Louisiana","LA","WindDamage",NA,NA,"MIROC5",4,NA,1669136795.74096
+"Louisiana","LA","WindDamage",NA,NA,"MIROC5",5,NA,2031992620.90203
+"Louisiana","LA","WindDamage",NA,NA,"MIROC5",6,NA,2467419611.09533
+"Louisiana","LA","WindDamage",NA,NA,"GFDL-CM3",1,NA,1379986817.08086
+"Louisiana","LA","WindDamage",NA,NA,"GFDL-CM3",2,NA,3219969239.85535
+"Louisiana","LA","WindDamage",NA,NA,"GFDL-CM3",3,NA,4783954299.21366
+"Louisiana","LA","WindDamage",NA,NA,"GFDL-CM3",4,NA,6071941995.1558
+"Louisiana","LA","WindDamage",NA,NA,"GFDL-CM3",5,NA,6991933206.54304
+"Louisiana","LA","WindDamage",NA,NA,"GFDL-CM3",6,NA,8463919144.76263
+"Louisiana","LA","WindDamage",NA,NA,"MRI-CGCM3",1,NA,88457096.5343124
+"Louisiana","LA","WindDamage",NA,NA,"MRI-CGCM3",2,NA,140236860.359276
+"Louisiana","LA","WindDamage",NA,NA,"MRI-CGCM3",3,NA,189859134.024866
+"Maine","ME","WindDamage",NA,NA,"CCSM4",1,NA,-699279.818734545
+"Maine","ME","WindDamage",NA,NA,"CCSM4",2,NA,-1727632.49334417
+"Maine","ME","WindDamage",NA,NA,"CCSM4",3,NA,-2673716.95398502
+"Maine","ME","WindDamage",NA,NA,"CCSM4",4,NA,-3496399.09367272
+"Maine","ME","WindDamage",NA,NA,"CCSM4",5,NA,-3990008.37748534
+"Maine","ME","WindDamage",NA,NA,"HadGEM2-ES",1,NA,1677204.55011124
+"Maine","ME","WindDamage",NA,NA,"HadGEM2-ES",2,NA,3168053.03909901
+"Maine","ME","WindDamage",NA,NA,"HadGEM2-ES",3,NA,4565723.49752504
+"Maine","ME","WindDamage",NA,NA,"HadGEM2-ES",4,NA,5590681.83370413
+"Maine","ME","WindDamage",NA,NA,"HadGEM2-ES",5,NA,6429284.10875975
+"Maine","ME","WindDamage",NA,NA,"HadGEM2-ES",6,NA,7640598.50606231
+"Maine","ME","WindDamage",NA,NA,"MIROC5",1,NA,13551903.568527
+"Maine","ME","WindDamage",NA,NA,"MIROC5",2,NA,25677290.9719458
+"Maine","ME","WindDamage",NA,NA,"MIROC5",3,NA,37802678.3753647
+"Maine","ME","WindDamage",NA,NA,"MIROC5",4,NA,49214807.6962295
+"Maine","ME","WindDamage",NA,NA,"MIROC5",5,NA,59913678.9345403
+"Maine","ME","WindDamage",NA,NA,"MIROC5",6,NA,72752324.4205132
+"Maine","ME","WindDamage",NA,NA,"GFDL-CM3",1,NA,85679968.7758603
+"Maine","ME","WindDamage",NA,NA,"GFDL-CM3",2,NA,199919927.143674
+"Maine","ME","WindDamage",NA,NA,"GFDL-CM3",3,NA,297023891.756316
+"Maine","ME","WindDamage",NA,NA,"GFDL-CM3",4,NA,376991862.613785
+"Maine","ME","WindDamage",NA,NA,"GFDL-CM3",5,NA,434111841.797692
+"Maine","ME","WindDamage",NA,NA,"GFDL-CM3",6,NA,525503808.491943
+"Maine","ME","WindDamage",NA,NA,"MRI-CGCM3",1,NA,-3053688.14432764
+"Maine","ME","WindDamage",NA,NA,"MRI-CGCM3",2,NA,-4841212.91173895
+"Maine","ME","WindDamage",NA,NA,"MRI-CGCM3",3,NA,-6554257.48050811
+"Maryland","MD","WindDamage",NA,NA,"CCSM4",1,NA,-35312187.0551156
+"Maryland","MD","WindDamage",NA,NA,"CCSM4",2,NA,-87241873.9008739
+"Maryland","MD","WindDamage",NA,NA,"CCSM4",3,NA,-135017185.798972
+"Maryland","MD","WindDamage",NA,NA,"CCSM4",4,NA,-176560935.275578
+"Maryland","MD","WindDamage",NA,NA,"CCSM4",5,NA,-201487184.961542
+"Maryland","MD","WindDamage",NA,NA,"HadGEM2-ES",1,NA,207473426.941362
+"Maryland","MD","WindDamage",NA,NA,"HadGEM2-ES",2,NA,391894250.889239
+"Maryland","MD","WindDamage",NA,NA,"HadGEM2-ES",3,NA,564788773.340375
+"Maryland","MD","WindDamage",NA,NA,"HadGEM2-ES",4,NA,691578089.80454
+"Maryland","MD","WindDamage",NA,NA,"HadGEM2-ES",5,NA,795314803.275221
+"Maryland","MD","WindDamage",NA,NA,"HadGEM2-ES",6,NA,945156722.732872
+"Maryland","MD","WindDamage",NA,NA,"MIROC5",1,NA,-44348462.2452983
+"Maryland","MD","WindDamage",NA,NA,"MIROC5",2,NA,-84028665.3068811
+"Maryland","MD","WindDamage",NA,NA,"MIROC5",3,NA,-123708868.368464
+"Maryland","MD","WindDamage",NA,NA,"MIROC5",4,NA,-161054941.838189
+"Maryland","MD","WindDamage",NA,NA,"MIROC5",5,NA,-196066885.716056
+"Maryland","MD","WindDamage",NA,NA,"MIROC5",6,NA,-238081218.369496
+"Maryland","MD","WindDamage",NA,NA,"GFDL-CM3",1,NA,914447856.784954
+"Maryland","MD","WindDamage",NA,NA,"GFDL-CM3",2,NA,2133711665.83156
+"Maryland","MD","WindDamage",NA,NA,"GFDL-CM3",3,NA,3170085903.52117
+"Maryland","MD","WindDamage",NA,NA,"GFDL-CM3",4,NA,4023570569.8538
+"Maryland","MD","WindDamage",NA,NA,"GFDL-CM3",5,NA,4633202474.3771
+"Maryland","MD","WindDamage",NA,NA,"GFDL-CM3",6,NA,5608613521.61438
+"Maryland","MD","WindDamage",NA,NA,"MRI-CGCM3",1,NA,-57660057.9837796
+"Maryland","MD","WindDamage",NA,NA,"MRI-CGCM3",2,NA,-91412287.0474555
+"Maryland","MD","WindDamage",NA,NA,"MRI-CGCM3",3,NA,-123758173.233478
+"Massachusetts","MA","WindDamage",NA,NA,"CCSM4",1,NA,-70679473.7018897
+"Massachusetts","MA","WindDamage",NA,NA,"CCSM4",2,NA,-174619876.204669
+"Massachusetts","MA","WindDamage",NA,NA,"CCSM4",3,NA,-270245046.507225
+"Massachusetts","MA","WindDamage",NA,NA,"CCSM4",4,NA,-353397368.509448
+"Massachusetts","MA","WindDamage",NA,NA,"CCSM4",5,NA,-403288761.710782
+"Massachusetts","MA","WindDamage",NA,NA,"HadGEM2-ES",1,NA,160665916.745665
+"Massachusetts","MA","WindDamage",NA,NA,"HadGEM2-ES",2,NA,303480064.964034
+"Massachusetts","MA","WindDamage",NA,NA,"HadGEM2-ES",3,NA,437368328.918754
+"Massachusetts","MA","WindDamage",NA,NA,"HadGEM2-ES",4,NA,535553055.818883
+"Massachusetts","MA","WindDamage",NA,NA,"HadGEM2-ES",5,NA,615886014.191715
+"Massachusetts","MA","WindDamage",NA,NA,"HadGEM2-ES",6,NA,731922509.61914
+"Massachusetts","MA","WindDamage",NA,NA,"MIROC5",1,NA,313462833.55915
+"Massachusetts","MA","WindDamage",NA,NA,"MIROC5",2,NA,593929579.375232
+"Massachusetts","MA","WindDamage",NA,NA,"MIROC5",3,NA,874396325.191314
+"Massachusetts","MA","WindDamage",NA,NA,"MIROC5",4,NA,1138365027.13586
+"Massachusetts","MA","WindDamage",NA,NA,"MIROC5",5,NA,1385835685.20887
+"Massachusetts","MA","WindDamage",NA,NA,"MIROC5",6,NA,1682800474.89649
+"Massachusetts","MA","WindDamage",NA,NA,"GFDL-CM3",1,NA,1658039671.80559
+"Massachusetts","MA","WindDamage",NA,NA,"GFDL-CM3",2,NA,3868759234.21305
+"Massachusetts","MA","WindDamage",NA,NA,"GFDL-CM3",3,NA,5747870862.25938
+"Massachusetts","MA","WindDamage",NA,NA,"GFDL-CM3",4,NA,7295374555.9446
+"Massachusetts","MA","WindDamage",NA,NA,"GFDL-CM3",5,NA,8400734337.14833
+"Massachusetts","MA","WindDamage",NA,NA,"GFDL-CM3",6,NA,10169309987.0743
+"Massachusetts","MA","WindDamage",NA,NA,"MRI-CGCM3",1,NA,-143653722.053047
+"Massachusetts","MA","WindDamage",NA,NA,"MRI-CGCM3",2,NA,-227743705.693856
+"Massachusetts","MA","WindDamage",NA,NA,"MRI-CGCM3",3,NA,-308329940.016297
+"Mississippi","MS","WindDamage",NA,NA,"CCSM4",1,NA,43938768.785678
+"Mississippi","MS","WindDamage",NA,NA,"CCSM4",2,NA,108554605.235204
+"Mississippi","MS","WindDamage",NA,NA,"CCSM4",3,NA,168001174.768769
+"Mississippi","MS","WindDamage",NA,NA,"CCSM4",4,NA,219693843.92839
+"Mississippi","MS","WindDamage",NA,NA,"CCSM4",5,NA,250709445.424163
+"Mississippi","MS","WindDamage",NA,NA,"HadGEM2-ES",1,NA,63519479.0633185
+"Mississippi","MS","WindDamage",NA,NA,"HadGEM2-ES",2,NA,119981238.230713
+"Mississippi","MS","WindDamage",NA,NA,"HadGEM2-ES",3,NA,172914137.450145
+"Mississippi","MS","WindDamage",NA,NA,"HadGEM2-ES",4,NA,211731596.877728
+"Mississippi","MS","WindDamage",NA,NA,"HadGEM2-ES",5,NA,243491336.409387
+"Mississippi","MS","WindDamage",NA,NA,"HadGEM2-ES",6,NA,289366515.732895
+"Mississippi","MS","WindDamage",NA,NA,"MIROC5",1,NA,88600511.5091066
+"Mississippi","MS","WindDamage",NA,NA,"MIROC5",2,NA,167874653.385676
+"Mississippi","MS","WindDamage",NA,NA,"MIROC5",3,NA,247148795.262245
+"Mississippi","MS","WindDamage",NA,NA,"MIROC5",4,NA,321759752.322545
+"Mississippi","MS","WindDamage",NA,NA,"MIROC5",5,NA,391707524.566577
+"Mississippi","MS","WindDamage",NA,NA,"MIROC5",6,NA,475644851.259415
+"Mississippi","MS","WindDamage",NA,NA,"GFDL-CM3",1,NA,310298846.446838
+"Mississippi","MS","WindDamage",NA,NA,"GFDL-CM3",2,NA,724030641.70929
+"Mississippi","MS","WindDamage",NA,NA,"GFDL-CM3",3,NA,1075702667.68237
+"Mississippi","MS","WindDamage",NA,NA,"GFDL-CM3",4,NA,1365314924.36609
+"Mississippi","MS","WindDamage",NA,NA,"GFDL-CM3",5,NA,1572180821.99731
+"Mississippi","MS","WindDamage",NA,NA,"GFDL-CM3",6,NA,1903166258.20728
+"Mississippi","MS","WindDamage",NA,NA,"MRI-CGCM3",1,NA,6092949.64906647
+"Mississippi","MS","WindDamage",NA,NA,"MRI-CGCM3",2,NA,9659554.32169075
+"Mississippi","MS","WindDamage",NA,NA,"MRI-CGCM3",3,NA,13077550.466289
+"New Hampshire","NH","WindDamage",NA,NA,"CCSM4",1,NA,-78872252.9246972
+"New Hampshire","NH","WindDamage",NA,NA,"CCSM4",2,NA,-194860860.166899
+"New Hampshire","NH","WindDamage",NA,NA,"CCSM4",3,NA,-301570378.829725
+"New Hampshire","NH","WindDamage",NA,NA,"CCSM4",4,NA,-394361264.623486
+"New Hampshire","NH","WindDamage",NA,NA,"CCSM4",5,NA,-450035796.099743
+"New Hampshire","NH","WindDamage",NA,NA,"HadGEM2-ES",1,NA,-59801071.988747
+"New Hampshire","NH","WindDamage",NA,NA,"HadGEM2-ES",2,NA,-112957580.423189
+"New Hampshire","NH","WindDamage",NA,NA,"HadGEM2-ES",3,NA,-162791807.080478
+"New Hampshire","NH","WindDamage",NA,NA,"HadGEM2-ES",4,NA,-199336906.629157
+"New Hampshire","NH","WindDamage",NA,NA,"HadGEM2-ES",5,NA,-229237442.62353
+"New Hampshire","NH","WindDamage",NA,NA,"HadGEM2-ES",6,NA,-272427105.726514
+"New Hampshire","NH","WindDamage",NA,NA,"MIROC5",1,NA,368749740.120368
+"New Hampshire","NH","WindDamage",NA,NA,"MIROC5",2,NA,698683718.122802
+"New Hampshire","NH","WindDamage",NA,NA,"MIROC5",3,NA,1028617696.12524
+"New Hampshire","NH","WindDamage",NA,NA,"MIROC5",4,NA,1339143793.0687
+"New Hampshire","NH","WindDamage",NA,NA,"MIROC5",5,NA,1630262008.9532
+"New Hampshire","NH","WindDamage",NA,NA,"MIROC5",6,NA,1979603868.0146
+"New Hampshire","NH","WindDamage",NA,NA,"GFDL-CM3",1,NA,561851674.20818
+"New Hampshire","NH","WindDamage",NA,NA,"GFDL-CM3",2,NA,1310987239.81909
+"New Hampshire","NH","WindDamage",NA,NA,"GFDL-CM3",3,NA,1947752470.58836
+"New Hampshire","NH","WindDamage",NA,NA,"GFDL-CM3",4,NA,2472147366.51599
+"New Hampshire","NH","WindDamage",NA,NA,"GFDL-CM3",5,NA,2846715149.32145
+"New Hampshire","NH","WindDamage",NA,NA,"GFDL-CM3",6,NA,3446023601.81017
+"New Hampshire","NH","WindDamage",NA,NA,"MRI-CGCM3",1,NA,-166418013.675742
+"New Hampshire","NH","WindDamage",NA,NA,"MRI-CGCM3",2,NA,-263833436.3152
+"New Hampshire","NH","WindDamage",NA,NA,"MRI-CGCM3",3,NA,-357189883.011348
+"New Jersey","NJ","WindDamage",NA,NA,"CCSM4",1,NA,-30431928.1732817
+"New Jersey","NJ","WindDamage",NA,NA,"CCSM4",2,NA,-75184763.7222253
+"New Jersey","NJ","WindDamage",NA,NA,"CCSM4",3,NA,-116357372.427253
+"New Jersey","NJ","WindDamage",NA,NA,"CCSM4",4,NA,-152159640.866408
+"New Jersey","NJ","WindDamage",NA,NA,"CCSM4",5,NA,-173641001.929901
+"New Jersey","NJ","WindDamage",NA,NA,"HadGEM2-ES",1,NA,110785709.765792
+"New Jersey","NJ","WindDamage",NA,NA,"HadGEM2-ES",2,NA,209261896.224274
+"New Jersey","NJ","WindDamage",NA,NA,"HadGEM2-ES",3,NA,301583321.029101
+"New Jersey","NJ","WindDamage",NA,NA,"HadGEM2-ES",4,NA,369285699.219308
+"New Jersey","NJ","WindDamage",NA,NA,"HadGEM2-ES",5,NA,424678554.102204
+"New Jersey","NJ","WindDamage",NA,NA,"HadGEM2-ES",6,NA,504690455.599721
+"New Jersey","NJ","WindDamage",NA,NA,"MIROC5",1,NA,84728324.3665572
+"New Jersey","NJ","WindDamage",NA,NA,"MIROC5",2,NA,160537877.747161
+"New Jersey","NJ","WindDamage",NA,NA,"MIROC5",3,NA,236347431.127765
+"New Jersey","NJ","WindDamage",NA,NA,"MIROC5",4,NA,307697599.015392
+"New Jersey","NJ","WindDamage",NA,NA,"MIROC5",5,NA,374588381.410042
+"New Jersey","NJ","WindDamage",NA,NA,"MIROC5",6,NA,454857320.283623
+"New Jersey","NJ","WindDamage",NA,NA,"GFDL-CM3",1,NA,567640787.767798
+"New Jersey","NJ","WindDamage",NA,NA,"GFDL-CM3",2,NA,1324495171.45819
+"New Jersey","NJ","WindDamage",NA,NA,"GFDL-CM3",3,NA,1967821397.59503
+"New Jersey","NJ","WindDamage",NA,NA,"GFDL-CM3",4,NA,2497619466.17831
+"New Jersey","NJ","WindDamage",NA,NA,"GFDL-CM3",5,NA,2876046658.02351
+"New Jersey","NJ","WindDamage",NA,NA,"GFDL-CM3",6,NA,3481530164.97583
+"New Jersey","NJ","WindDamage",NA,NA,"MRI-CGCM3",1,NA,10792897.4814219
+"New Jersey","NJ","WindDamage",NA,NA,"MRI-CGCM3",2,NA,17110691.1290835
+"New Jersey","NJ","WindDamage",NA,NA,"MRI-CGCM3",3,NA,23165243.3747592
+"New York","NY","WindDamage",NA,NA,"CCSM4",1,NA,-79844603.0797235
+"New York","NY","WindDamage",NA,NA,"CCSM4",2,NA,-197263137.020493
+"New York","NY","WindDamage",NA,NA,"CCSM4",3,NA,-305288188.246002
+"New York","NY","WindDamage",NA,NA,"CCSM4",4,NA,-399223015.398618
+"New York","NY","WindDamage",NA,NA,"CCSM4",5,NA,-455583911.690187
+"New York","NY","WindDamage",NA,NA,"HadGEM2-ES",1,NA,193018493.715386
+"New York","NY","WindDamage",NA,NA,"HadGEM2-ES",2,NA,364590488.129063
+"New York","NY","WindDamage",NA,NA,"HadGEM2-ES",3,NA,525439232.891885
+"New York","NY","WindDamage",NA,NA,"HadGEM2-ES",4,NA,643394979.051288
+"New York","NY","WindDamage",NA,NA,"HadGEM2-ES",5,NA,739904225.908981
+"New York","NY","WindDamage",NA,NA,"HadGEM2-ES",6,NA,879306471.370093
+"New York","NY","WindDamage",NA,NA,"MIROC5",1,NA,221658807.680882
+"New York","NY","WindDamage",NA,NA,"MIROC5",2,NA,419985109.290092
+"New York","NY","WindDamage",NA,NA,"MIROC5",3,NA,618311410.899302
+"New York","NY","WindDamage",NA,NA,"MIROC5",4,NA,804971459.472676
+"New York","NY","WindDamage",NA,NA,"MIROC5",5,NA,979965255.010214
+"New York","NY","WindDamage",NA,NA,"MIROC5",6,NA,1189957809.65526
+"New York","NY","WindDamage",NA,NA,"GFDL-CM3",1,NA,1335310063.91281
+"New York","NY","WindDamage",NA,NA,"GFDL-CM3",2,NA,3115723482.46321
+"New York","NY","WindDamage",NA,NA,"GFDL-CM3",3,NA,4629074888.23106
+"New York","NY","WindDamage",NA,NA,"GFDL-CM3",4,NA,5875364281.21635
+"New York","NY","WindDamage",NA,NA,"GFDL-CM3",5,NA,6765570990.49155
+"New York","NY","WindDamage",NA,NA,"GFDL-CM3",6,NA,8189901725.33188
+"New York","NY","WindDamage",NA,NA,"MRI-CGCM3",1,NA,-15314699.4030375
+"New York","NY","WindDamage",NA,NA,"MRI-CGCM3",2,NA,-24279401.4926204
+"New York","NY","WindDamage",NA,NA,"MRI-CGCM3",3,NA,-32870574.3284707
+"North Carolina","NC","WindDamage",NA,NA,"CCSM4",1,NA,-9593708.4010077
+"North Carolina","NC","WindDamage",NA,NA,"CCSM4",2,NA,-23702103.108372
+"North Carolina","NC","WindDamage",NA,NA,"CCSM4",3,NA,-36681826.2391471
+"North Carolina","NC","WindDamage",NA,NA,"CCSM4",4,NA,-47968542.0050385
+"North Carolina","NC","WindDamage",NA,NA,"CCSM4",5,NA,-54740571.4645733
+"North Carolina","NC","WindDamage",NA,NA,"HadGEM2-ES",1,NA,41413850.92955
+"North Carolina","NC","WindDamage",NA,NA,"HadGEM2-ES",2,NA,78226162.8669278
+"North Carolina","NC","WindDamage",NA,NA,"HadGEM2-ES",3,NA,112737705.30822
+"North Carolina","NC","WindDamage",NA,NA,"HadGEM2-ES",4,NA,138046169.765167
+"North Carolina","NC","WindDamage",NA,NA,"HadGEM2-ES",5,NA,158753095.229942
+"North Carolina","NC","WindDamage",NA,NA,"HadGEM2-ES",6,NA,188663098.679061
+"North Carolina","NC","WindDamage",NA,NA,"MIROC5",1,NA,-31558245.6176373
+"North Carolina","NC","WindDamage",NA,NA,"MIROC5",2,NA,-59794570.6439443
+"North Carolina","NC","WindDamage",NA,NA,"MIROC5",3,NA,-88030895.6702513
+"North Carolina","NC","WindDamage",NA,NA,"MIROC5",4,NA,-114606260.400893
+"North Carolina","NC","WindDamage",NA,NA,"MIROC5",5,NA,-139520664.83587
+"North Carolina","NC","WindDamage",NA,NA,"MIROC5",6,NA,-169417950.157842
+"North Carolina","NC","WindDamage",NA,NA,"GFDL-CM3",1,NA,736251886.506774
+"North Carolina","NC","WindDamage",NA,NA,"GFDL-CM3",2,NA,1717921068.51581
+"North Carolina","NC","WindDamage",NA,NA,"GFDL-CM3",3,NA,2552339873.22348
+"North Carolina","NC","WindDamage",NA,NA,"GFDL-CM3",4,NA,3239508300.6298
+"North Carolina","NC","WindDamage",NA,NA,"GFDL-CM3",5,NA,3730342891.63432
+"North Carolina","NC","WindDamage",NA,NA,"GFDL-CM3",6,NA,4515678237.24155
+"North Carolina","NC","WindDamage",NA,NA,"MRI-CGCM3",1,NA,-156259226.457316
+"North Carolina","NC","WindDamage",NA,NA,"MRI-CGCM3",2,NA,-247728041.944526
+"North Carolina","NC","WindDamage",NA,NA,"MRI-CGCM3",3,NA,-335385656.786435
+"Pennsylvania","PA","WindDamage",NA,NA,"CCSM4",1,NA,-7409059.21679061
+"Pennsylvania","PA","WindDamage",NA,NA,"CCSM4",2,NA,-18304734.5356003
+"Pennsylvania","PA","WindDamage",NA,NA,"CCSM4",3,NA,-28328755.8289053
+"Pennsylvania","PA","WindDamage",NA,NA,"CCSM4",4,NA,-37045296.083953
+"Pennsylvania","PA","WindDamage",NA,NA,"CCSM4",5,NA,-42275220.2369817
+"Pennsylvania","PA","WindDamage",NA,NA,"HadGEM2-ES",1,NA,40685605.5892904
+"Pennsylvania","PA","WindDamage",NA,NA,"HadGEM2-ES",2,NA,76850588.3353263
+"Pennsylvania","PA","WindDamage",NA,NA,"HadGEM2-ES",3,NA,110755259.659735
+"Pennsylvania","PA","WindDamage",NA,NA,"HadGEM2-ES",4,NA,135618685.297635
+"Pennsylvania","PA","WindDamage",NA,NA,"HadGEM2-ES",5,NA,155961488.09228
+"Pennsylvania","PA","WindDamage",NA,NA,"HadGEM2-ES",6,NA,185345536.573434
+"Pennsylvania","PA","WindDamage",NA,NA,"MIROC5",1,NA,-9029960.16404891
+"Pennsylvania","PA","WindDamage",NA,NA,"MIROC5",2,NA,-17109398.2055664
+"Pennsylvania","PA","WindDamage",NA,NA,"MIROC5",3,NA,-25188836.2470838
+"Pennsylvania","PA","WindDamage",NA,NA,"MIROC5",4,NA,-32793013.2273355
+"Pennsylvania","PA","WindDamage",NA,NA,"MIROC5",5,NA,-39921929.1463215
+"Pennsylvania","PA","WindDamage",NA,NA,"MIROC5",6,NA,-48476628.2491047
+"Pennsylvania","PA","WindDamage",NA,NA,"GFDL-CM3",1,NA,103364136.822338
+"Pennsylvania","PA","WindDamage",NA,NA,"GFDL-CM3",2,NA,241182985.918789
+"Pennsylvania","PA","WindDamage",NA,NA,"GFDL-CM3",3,NA,358329007.650772
+"Pennsylvania","PA","WindDamage",NA,NA,"GFDL-CM3",4,NA,454802202.018287
+"Pennsylvania","PA","WindDamage",NA,NA,"GFDL-CM3",5,NA,523711626.566513
+"Pennsylvania","PA","WindDamage",NA,NA,"GFDL-CM3",6,NA,633966705.843673
+"Pennsylvania","PA","WindDamage",NA,NA,"MRI-CGCM3",1,NA,4580627.47708949
+"Pennsylvania","PA","WindDamage",NA,NA,"MRI-CGCM3",2,NA,7261970.39050772
+"Pennsylvania","PA","WindDamage",NA,NA,"MRI-CGCM3",3,NA,9831590.68253353
+"Rhode Island","RI","WindDamage",NA,NA,"CCSM4",1,NA,-18831708.0602346
+"Rhode Island","RI","WindDamage",NA,NA,"CCSM4",2,NA,-46525396.384109
+"Rhode Island","RI","WindDamage",NA,NA,"CCSM4",3,NA,-72003589.6420735
+"Rhode Island","RI","WindDamage",NA,NA,"CCSM4",4,NA,-94158540.301173
+"Rhode Island","RI","WindDamage",NA,NA,"CCSM4",5,NA,-107451510.696633
+"Rhode Island","RI","WindDamage",NA,NA,"HadGEM2-ES",1,NA,48716995.164167
+"Rhode Island","RI","WindDamage",NA,NA,"HadGEM2-ES",2,NA,92020990.8656488
+"Rhode Island","RI","WindDamage",NA,NA,"HadGEM2-ES",3,NA,132618486.835788
+"Rhode Island","RI","WindDamage",NA,NA,"HadGEM2-ES",4,NA,162389983.880557
+"Rhode Island","RI","WindDamage",NA,NA,"HadGEM2-ES",5,NA,186748481.46264
+"Rhode Island","RI","WindDamage",NA,NA,"HadGEM2-ES",6,NA,221932977.970094
+"Rhode Island","RI","WindDamage",NA,NA,"MIROC5",1,NA,83484596.9701172
+"Rhode Island","RI","WindDamage",NA,NA,"MIROC5",2,NA,158181341.62759
+"Rhode Island","RI","WindDamage",NA,NA,"MIROC5",3,NA,232878086.285064
+"Rhode Island","RI","WindDamage",NA,NA,"MIROC5",4,NA,303180904.786215
+"Rhode Island","RI","WindDamage",NA,NA,"MIROC5",5,NA,369089797.131044
+"Rhode Island","RI","WindDamage",NA,NA,"MIROC5",6,NA,448180467.94484
+"Rhode Island","RI","WindDamage",NA,NA,"GFDL-CM3",1,NA,448728075.779103
+"Rhode Island","RI","WindDamage",NA,NA,"GFDL-CM3",2,NA,1047032176.81791
+"Rhode Island","RI","WindDamage",NA,NA,"GFDL-CM3",3,NA,1555590662.70089
+"Rhode Island","RI","WindDamage",NA,NA,"GFDL-CM3",4,NA,1974403533.42805
+"Rhode Island","RI","WindDamage",NA,NA,"GFDL-CM3",5,NA,2273555583.94746
+"Rhode Island","RI","WindDamage",NA,NA,"GFDL-CM3",6,NA,2752198864.7785
+"Rhode Island","RI","WindDamage",NA,NA,"MRI-CGCM3",1,NA,-32996334.8018431
+"Rhode Island","RI","WindDamage",NA,NA,"MRI-CGCM3",2,NA,-52311262.4907268
+"Rhode Island","RI","WindDamage",NA,NA,"MRI-CGCM3",3,NA,-70821401.525907
+"South Carolina","SC","WindDamage",NA,NA,"CCSM4",1,NA,-41722038.6130784
+"South Carolina","SC","WindDamage",NA,NA,"CCSM4",2,NA,-103077977.749958
+"South Carolina","SC","WindDamage",NA,NA,"CCSM4",3,NA,-159525441.755888
+"South Carolina","SC","WindDamage",NA,NA,"CCSM4",4,NA,-208610193.065392
+"South Carolina","SC","WindDamage",NA,NA,"CCSM4",5,NA,-238061043.851094
+"South Carolina","SC","WindDamage",NA,NA,"HadGEM2-ES",1,NA,-50233276.6599524
+"South Carolina","SC","WindDamage",NA,NA,"HadGEM2-ES",2,NA,-94885078.1354656
+"South Carolina","SC","WindDamage",NA,NA,"HadGEM2-ES",3,NA,-136746142.018759
+"South Carolina","SC","WindDamage",NA,NA,"HadGEM2-ES",4,NA,-167444255.533175
+"South Carolina","SC","WindDamage",NA,NA,"HadGEM2-ES",5,NA,-192560893.863151
+"South Carolina","SC","WindDamage",NA,NA,"HadGEM2-ES",6,NA,-228840482.562005
+"South Carolina","SC","WindDamage",NA,NA,"MIROC5",1,NA,-65310872.8006343
+"South Carolina","SC","WindDamage",NA,NA,"MIROC5",2,NA,-123746916.885412
+"South Carolina","SC","WindDamage",NA,NA,"MIROC5",3,NA,-182182960.97019
+"South Carolina","SC","WindDamage",NA,NA,"MIROC5",4,NA,-237181590.69704
+"South Carolina","SC","WindDamage",NA,NA,"MIROC5",5,NA,-288742806.065962
+"South Carolina","SC","WindDamage",NA,NA,"MIROC5",6,NA,-350616264.508668
+"South Carolina","SC","WindDamage",NA,NA,"GFDL-CM3",1,NA,202395802.313176
+"South Carolina","SC","WindDamage",NA,NA,"GFDL-CM3",2,NA,472256872.064077
+"South Carolina","SC","WindDamage",NA,NA,"GFDL-CM3",3,NA,701638781.352342
+"South Carolina","SC","WindDamage",NA,NA,"GFDL-CM3",4,NA,890541530.177973
+"South Carolina","SC","WindDamage",NA,NA,"GFDL-CM3",5,NA,1025472065.05342
+"South Carolina","SC","WindDamage",NA,NA,"GFDL-CM3",6,NA,1241360920.85414
+"South Carolina","SC","WindDamage",NA,NA,"MRI-CGCM3",1,NA,-151809079.011795
+"South Carolina","SC","WindDamage",NA,NA,"MRI-CGCM3",2,NA,-240672930.14065
+"South Carolina","SC","WindDamage",NA,NA,"MRI-CGCM3",3,NA,-325834120.805803
+"Texas","TX","WindDamage",NA,NA,"CCSM4",1,NA,563168842.992695
+"Texas","TX","WindDamage",NA,NA,"CCSM4",2,NA,1391358317.98195
+"Texas","TX","WindDamage",NA,NA,"CCSM4",3,NA,2153292634.97207
+"Texas","TX","WindDamage",NA,NA,"CCSM4",4,NA,2815844214.96347
+"Texas","TX","WindDamage",NA,NA,"CCSM4",5,NA,3213375162.95832
+"Texas","TX","WindDamage",NA,NA,"HadGEM2-ES",1,NA,1067294078.23248
+"Texas","TX","WindDamage",NA,NA,"HadGEM2-ES",2,NA,2015999925.55024
+"Texas","TX","WindDamage",NA,NA,"HadGEM2-ES",3,NA,2905411657.41064
+"Texas","TX","WindDamage",NA,NA,"HadGEM2-ES",4,NA,3557646927.44161
+"Texas","TX","WindDamage",NA,NA,"HadGEM2-ES",5,NA,4091293966.55785
+"Texas","TX","WindDamage",NA,NA,"HadGEM2-ES",6,NA,4862117467.50353
+"Texas","TX","WindDamage",NA,NA,"MIROC5",1,NA,2565404785.41534
+"Texas","TX","WindDamage",NA,NA,"MIROC5",2,NA,4860766961.83959
+"Texas","TX","WindDamage",NA,NA,"MIROC5",3,NA,7156129138.26385
+"Texas","TX","WindDamage",NA,NA,"MIROC5",4,NA,9316470010.19255
+"Texas","TX","WindDamage",NA,NA,"MIROC5",5,NA,11341789577.6257
+"Texas","TX","WindDamage",NA,NA,"MIROC5",6,NA,13772173058.5455
+"Texas","TX","WindDamage",NA,NA,"GFDL-CM3",1,NA,7119241166.56072
+"Texas","TX","WindDamage",NA,NA,"GFDL-CM3",2,NA,16611562721.975
+"Texas","TX","WindDamage",NA,NA,"GFDL-CM3",3,NA,24680036044.0772
+"Texas","TX","WindDamage",NA,NA,"GFDL-CM3",4,NA,31324661132.8672
+"Texas","TX","WindDamage",NA,NA,"GFDL-CM3",5,NA,36070821910.5743
+"Texas","TX","WindDamage",NA,NA,"GFDL-CM3",6,NA,43664679154.9058
+"Texas","TX","WindDamage",NA,NA,"MRI-CGCM3",1,NA,3499350039.70095
+"Texas","TX","WindDamage",NA,NA,"MRI-CGCM3",2,NA,5547750062.94054
+"Texas","TX","WindDamage",NA,NA,"MRI-CGCM3",3,NA,7510800085.21181
+"Virginia","VA","WindDamage",NA,NA,"CCSM4",1,NA,17143622.6879694
+"Virginia","VA","WindDamage",NA,NA,"CCSM4",2,NA,42354832.5232186
+"Virginia","VA","WindDamage",NA,NA,"CCSM4",3,NA,65549145.5716478
+"Virginia","VA","WindDamage",NA,NA,"CCSM4",4,NA,85718113.4398471
+"Virginia","VA","WindDamage",NA,NA,"CCSM4",5,NA,97819494.1607667
+"Virginia","VA","WindDamage",NA,NA,"HadGEM2-ES",1,NA,71887407.4280297
+"Virginia","VA","WindDamage",NA,NA,"HadGEM2-ES",2,NA,135787325.141834
+"Virginia","VA","WindDamage",NA,NA,"HadGEM2-ES",3,NA,195693497.998525
+"Virginia","VA","WindDamage",NA,NA,"HadGEM2-ES",4,NA,239624691.426766
+"Virginia","VA","WindDamage",NA,NA,"HadGEM2-ES",5,NA,275568395.14078
+"Virginia","VA","WindDamage",NA,NA,"HadGEM2-ES",6,NA,327487078.283246
+"Virginia","VA","WindDamage",NA,NA,"MIROC5",1,NA,28668270.3298829
+"Virginia","VA","WindDamage",NA,NA,"MIROC5",2,NA,54318827.9934624
+"Virginia","VA","WindDamage",NA,NA,"MIROC5",3,NA,79969385.6570418
+"Virginia","VA","WindDamage",NA,NA,"MIROC5",4,NA,104111086.98747
+"Virginia","VA","WindDamage",NA,NA,"MIROC5",5,NA,126743931.984746
+"Virginia","VA","WindDamage",NA,NA,"MIROC5",6,NA,153903345.981477
+"Virginia","VA","WindDamage",NA,NA,"GFDL-CM3",1,NA,1196542009.67601
+"Virginia","VA","WindDamage",NA,NA,"GFDL-CM3",2,NA,2791931355.9107
+"Virginia","VA","WindDamage",NA,NA,"GFDL-CM3",3,NA,4148012300.21018
+"Virginia","VA","WindDamage",NA,NA,"GFDL-CM3",4,NA,5264784842.57446
+"Virginia","VA","WindDamage",NA,NA,"GFDL-CM3",5,NA,6062479515.6918
+"Virginia","VA","WindDamage",NA,NA,"GFDL-CM3",6,NA,7338790992.67954
+"Virginia","VA","WindDamage",NA,NA,"MRI-CGCM3",1,NA,-20443023.345901
+"Virginia","VA","WindDamage",NA,NA,"MRI-CGCM3",2,NA,-32409671.1581358
+"Virginia","VA","WindDamage",NA,NA,"MRI-CGCM3",3,NA,-43877708.6448607
