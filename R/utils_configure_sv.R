@@ -854,7 +854,8 @@ get_svImpactsList <- function(
         lm_i      <- lm(yIn~xIn, data=df_ref_i)
         # df_ref_i |> print()
         ### Extend values
-        x_new_i   <- seq(xIn_max + extend_h$unitScale, extend_h$to, extend_h$unitScale)
+        # x_new_i   <- seq(xIn_max + extend_h$unitScale, extend_h$to, extend_h$unitScale)
+        x_new_i   <- c(xIn_max + extend_h$unitScale, extend_h$to)
         y_new_i   <- x_new_i * lm_i$coefficients[2] + lm_i$coefficients[1]
         df_new_i  <- tibble(xIn = x_new_i, yIn = y_new_i)
         # df_new_i |> print()
