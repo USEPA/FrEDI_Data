@@ -797,18 +797,15 @@ make_scaled_impact_plots <- function(
     types_x   <- df_types |> filter(model_type==.x)
     sectors_x <- types_x[["sector"]]
     ### Get X column
-    xCol_x    <- (tolower(.x) == "gcm") |> ifelse("driverValue", "year")
+    xCol_x    <- ((.x |> tolower()) == "gcm") |> ifelse("driverValue", "year")
     # df_types |> glimpse()
     pList_x   <- list(x1=types_x[["sector"]], x2=types_x[["impactYear"]])
     ### Iterate over list
-    list_x    <- pList_x %>% pmap(function(x1, x2){
+    list_x    <- pList_x |> pmap(function(x1, x2){
       x1 |> paste0("_", x2) |> print()
       df_y   <- df0  |> filter(sector == x1)
       df_y   <- df_y |> filter(impactYear %in% x2)
-      # df_y |> glimpse()
-      # ### Group values
-      # groups0   <- c("sector", "variant", "impactType", "impactYear", "region", "model", xCol_x)
-      # df_y      <- df_y |> group_by_at(.vars=c(groups0))
+
       ### Make plots
       plot_y <- df_y |> create_scaledImpact_plots(
         sector    = x1,
@@ -888,10 +885,10 @@ save_scaled_impact_figures <- function(
     createDir = TRUE ### Whether to create directory if it doesn't exist
 ){
   ### Get from FrEDI Namespace
-  check_and_create_path <- utils::getFromNamespace("check_and_create_path", "FrEDI")
-  save_image            <- utils::getFromNamespace("save_image", "FrEDI")
+  # check_and_create_path <- utils::getFromNamespace("check_and_create_path", "FrEDI")
+  # save_image            <- utils::getFromNamespace("save_image", "FrEDI")
   ### Create directory if it doesn't exist
-  fdir      <- fpath; rm("fpath")
+  fdir      <- fpath; rm(fpath)
   # fdir      <- fdir |> file.path(byState |> ifelse("images-state", "images"))
   # fdir      <- fdir |> file.path(byState |> ifelse("images-state", "images"))
   fdir      <- fdir |> file.path("images")
@@ -922,14 +919,10 @@ save_scaled_impact_figures <- function(
     # df0 |> glimpse()
     
     ### Unique sector values
-    # c_types   <- (df_x |> filter(!is.na(scaled_impacts)))[["impactType"]] |> unique()
-    # c_regions <- (df_x |> filter(!is.na(scaled_impacts)))[["region"    ]] |> unique()
-    # c_states  <- (df_x |> filter(!is.na(scaled_impacts)))[["state"     ]] |> unique()
-    # c_models  <- (df_x |> filter(!is.na(scaled_impacts)))[["model"     ]] |> unique()
     c_types   <- df_x[["impactType"]] |> unique()
     c_regions <- df_x[["region"    ]] |> unique()
     c_states  <- df_x[["state"     ]] |> unique()
-    c_models  <- (df_x |> filter(!is.na(scaled_impacts)))[["model"     ]] |> unique()
+    c_models  <- (df_x |> filter(!is.na(scaled_impacts)))[["model"]] |> unique()
     # c_years |> print(); c_types |> print(); c_vars |> print();
     
     ### Number of values
@@ -948,9 +941,7 @@ save_scaled_impact_figures <- function(
     ### Functions for plot height & width
     # fun_plot_width   <- function(nvars =1){1.5 + 3.3 * nvars}
     fun_plot_width   <- function(nvars =1){1.5 + 2.0 * nvars}
-    # fun_plot_height1 <- function(nvars =1, ntypes=1){1.5 + 2.0 * nvars}
-    # fun_plot_height2 <- function(nvars =1, height=fun_plot_height1()){3 + height * nvars}
-    # fun_plot_height2 <- function(nvars =1, height=fun_plot_height1()){3 + height * nvars}
+
     fun_plot_height1 <- function(nvars =1, ntypes=1){
       scale0 <- case_when(
         nvars   == 1 ~ 3.0,
