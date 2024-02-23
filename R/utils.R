@@ -341,7 +341,8 @@ get_impactFunctions <- function(
       ### Get linear trend
       lm_i     <- lm(yIn~xIn, data=df_ref_i)
       ### Extend values
-      df_new_i <- tibble(xIn = seq(xIn_max + unitScale, extend_to, unitScale))
+      # df_new_i <- tibble(xIn = seq(xIn_max + unitScale, extend_to, unitScale))
+      df_new_i <- tibble(xIn = c(xIn_max + unitScale, extend_to))
       df_new_i <- df_new_i |> mutate(yIn = xIn * lm_i$coefficients[2] + lm_i$coefficients[1])
       ### Bind the new observations with the other observations
       df_i     <- df_i |> rbind(df_new_i)
