@@ -1,4 +1,5 @@
-## Function to check if column has at least one non NA value
+
+### Function to check if column has at least one non NA value
 has_nonNA_values_df <- function(x) {
   ### Check whether values in x are NA
   x <- x |> is.na()
@@ -119,8 +120,8 @@ get_region_plotInfo <- function(
   list0  <- list()
   
   ###### Get from FrEDI Namespace ######
-  fun_limitsByGroup <- utils::getFromNamespace("fun_limitsByGroup", "FrEDI")
-  get_column_values <- utils::getFromNamespace("get_column_values", "FrEDI")
+  # fun_limitsByGroup <- utils::getFromNamespace("fun_limitsByGroup", "FrEDI")
+  # get_column_values <- utils::getFromNamespace("get_column_values", "FrEDI")
   
   ###### Grouping Columns ######
   ### Add state to grouping
@@ -287,7 +288,7 @@ create_scaledImpact_plot <- function(
   if(print_msg){ "Running create_scaledImpact_plot()..." |> message()}
   
   ###### Get from FrEDI Namespace ######
-  get_colScale <- utils::getFromNamespace("get_colScale", "FrEDI")
+  # get_colScale <- utils::getFromNamespace("get_colScale", "FrEDI")
   
   ###### Data ######
   df0        <- data |> filter(sector     == sector0)
@@ -424,40 +425,27 @@ create_scaledImpact_plot <- function(
   if(do_slr){df_points0 <- df0 |> filter(year %in% x_breaks)}
   else      {df_points0 <- df0}
   
-  ###### ** Initialize plot ######
+  ###### ** Initialize plot
   ### Initialize plot
   plot0  <- ggplot()
   
   ### Check if the plot needs to be made
   allNA  <- df0[[yCol]] |> is.na() |> all()
   doPlot <- !allNA
-  
   if(doPlot){
-    
     ### Determine the columns to use
-    # if(byState){
-    #   plot0  <- df0 |> ggplot(aes(x=.data[[xCol]], y=.data[[yCol]], color=.data[["state"]], group=interaction(sector, variant, impactType, impactYear, region, state, model)))
-    # } else{
-    #   plot0  <- df0 |> ggplot(aes(x=.data[[xCol]], y=.data[[yCol]], color=.data[["region"]], group=interaction(sector, variant, impactType, impactYear, region, model)))
-    # }
-    if(byState){
-      regCol0   <- c("state")
-      stateCol0 <- c("state")
-    } else{
-      regCol0   <- c("region")
-      stateCol0 <- c()
-    } ### End else (byState)
+    if(byState) {regCol0   <- c("state" ); stateCol0 <- c("state")} 
+    else        {regCol0   <- c("region"); stateCol0 <- c()}
     group0 <- c("sector", "variant", "impactType", "impactYear", "region") |> c(stateCol0) |> c("model")
     
-    ###### ** Add geoms ######
+    ###### ** Add geoms
     if(do_slr){
       ### Factor model
-      lvls0  <- df0[["driverValue"]] |> unique() |> sort(decreasing = T)
-      lvls0  <- lvls0 |> paste("cm")
-      df0    <- df0 |> mutate(model = model |> factor(levels = lvls0))
-      rm(lvls0)
+      # lvls0  <- df0[["driverValue"]] |> unique() |> sort(decreasing = T)
+      # lvls0  <- lvls0 |> paste("cm")
+      # df0    <- df0 |> mutate(model = model |> factor(levels = lvls0))
+      # rm(lvls0)
       ### Points data
-      # plot0  <- df0 |> ggplot(aes(x=.data[[xCol]], y=.data[[yCol]], color=.data[[regCol0]], group=interaction(!!!syms(group0))))
       plot0  <- df0 |> ggplot()
       plot0  <- plot0 + geom_line(
         data  = df0, 
@@ -466,23 +454,25 @@ create_scaledImpact_plot <- function(
           y     = .data[[yCol]], 
           color = .data[[regCol0]], 
           group = interaction(!!!syms(group0)), 
-          shape = .data[["variant"]]
+          linetype = .data[["variant"]]
         ), ### End aes
         alpha = 0.65
       ) ### End geom_line
-      # plot0  <- plot0 + geom_point(data=df_points0, aes(x=.data[[xCol]], y=.data[[yCol]], color=.data[[regCol0]], group=interaction(!!!syms(group0)), shape=.data[[regCol0]]), alpha=0.65)
+      
+      ### Add points
       plot0  <- plot0 + geom_point(
         data  = df_points0, 
         aes(
           x     = .data[[xCol]], 
           y     = .data[[yCol]], 
           color = .data[[regCol0]], 
-          group = interaction(!!!syms(group0)), 
+          # group = interaction(!!!syms(group0))
+          group = interaction(!!!syms(group0)),
           shape = .data[["variant"]]
         ), ### End aes
         alpha = 0.65
       ) ### End geom_point
-      rm(df0_2)
+      # rm(df0_2)
     } else{
       ### Separate GCM values
       ### Plot these values as lines
@@ -508,35 +498,34 @@ create_scaledImpact_plot <- function(
           x        = .data[[xCol]], 
           y        = .data[[yCol]], 
           color    = .data[[regCol0]], 
-          group    = interaction(!!!syms(group0)), 
+          # group    = interaction(!!!syms(group0))
+          group    = interaction(!!!syms(group0)),
           shape   = .data[["variant"]]
         ), ### End aes
         alpha=0.65 
       ) ### End geom_line
     }
     
-    
     ###### * Add geoms
     # plot0  <- plot0 + geom_line(aes(linetype = .data[["variant"]]), alpha=0.5)
     
-    ###### ** Add facet_grid ######
+    ###### ** Add facet_grid
     plot0  <- plot0 + facet_grid(model~.data[[regCol0]])
     # plot0 |> print()
     
-    ###### ** Adjust legend title ######
+    ###### ** Adjust legend title
     if(hasLgdPos){plot0 <- plot0 + guides(color = guide_legend(title.position = lgdPos))}
     plot0  <- plot0 + theme(legend.direction = "vertical", legend.box = "vertical")
     
-    ###### ** Add and title ######
+    ###### ** Add and title
     plot0  <- plot0 + ggtitle(title0)
     
-    ###### ** Add scales ######
+    ###### ** Add scales
     plot0  <- plot0 + scale_x_continuous(xTitle, breaks=x_breaks, limits=x_limits)
     plot0  <- plot0 + scale_y_continuous(y_label)
     plot0  <- plot0 + scale_linetype_discrete("Variant")
     plot0  <- plot0 + scale_shape_discrete("Variant")
     plot0  <- plot0 + scale_color_discrete("Region")
-    
     
   } ### End if(doPlot)
   
@@ -546,9 +535,11 @@ create_scaledImpact_plot <- function(
   plot0  <- plot0 + theme(axis.title.x  = element_text(hjust = 0.5, size=9))
   plot0  <- plot0 + theme(axis.title.y  = element_text(hjust = 0.5, size=9))
   plot0  <- plot0 + theme(legend.position = "bottom")
-  
 
   if(do_slr){plot0 <- plot0 + theme(axis.text.x = element_text(angle=90))}
+  
+  ###### Control Guides
+  plot0  <- plot0 + theme(legend.position = "bottom")
   
   ###### ** Add themes & margins ######
   ### Theme
@@ -575,6 +566,9 @@ create_scaledImpact_plot <- function(
   plot0  <- plot0 + guides(linetype        = guide_legend(ncol=nLgdCols, order = 1))
   plot0  <- plot0 + guides(color           = guide_legend(ncol=nLgdCols, order = 2))
   plot0  <- plot0 + theme(legend.box.just  = "left")
+  plot0  <- plot0 + theme(legend.box       = "vertical")
+  # plot0     <- plot0 + theme(legend.direction = "vertical")
+  plot0  <- plot0 + theme(legend.position = "bottom")
   plot0  <- plot0 + theme(legend.title     = element_text(size=10))
   plot0  <- plot0 + theme(legend.text      = element_text(size=9 ))
   plot0  <- plot0 + theme(legend.spacing.y = unit(0.05, "cm"))
@@ -622,7 +616,7 @@ create_scaledImpact_plots <- function(
   # modelType |> print(); do_gcm |> print(); do_slr |> print()
   
   ###### Get from FrEDI Namespace ######
-  get_colScale <- utils::getFromNamespace("get_colScale", "FrEDI")
+  # get_colScale <- utils::getFromNamespace("get_colScale", "FrEDI")
   
   ###### Format Data ######
   ### Filter to sector and convert to data frame
@@ -766,6 +760,15 @@ create_scaledImpact_plots <- function(
     df0      <- df0 |> mutate_at(c(col_i), factor, levels=levels_i)
     rm(i, col_i, cCol_i, levels_i)
   } ### End for(i in df_iter |> row_number())
+  
+  ### Factor models
+  if(do_slr){
+    labs0   <- c(30, 50, 100, 150, 200, 250) |> paste0(" cm")
+    # lvls0   <- 1:(labs0 |> length())
+    df0     <- df0 |> mutate(model = model |> factor(levels=labs0))
+  } ### End if(do_slr)
+  
+  
   ### Convert maxUnitValue to numeric
   df0     <- df0 |> mutate_at(c("maxUnitValue"), as.character)
   df0     <- df0 |> mutate_at(c("maxUnitValue"), as.numeric  )
@@ -886,7 +889,7 @@ create_scaledImpact_plots <- function(
           silent    = silent,
           options   = plotOpts0
         )
-        plot_k |> print()
+        # plot_k |> print()
         
         ###### Annotate Plots ######
         ### Labels on top
