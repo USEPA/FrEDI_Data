@@ -44,7 +44,6 @@ frediData_config$maxYear <- 2300
 
 
 
-
 ###### Config List for ciraTempBin ######
 fredi_config <- frediData_config
 ###### List of Messages ######
@@ -86,11 +85,9 @@ fredi_config$list_years       <- seq(fredi_config$minYear, fredi_config$maxYear,
 ###### Default values ######
 ### Base year, discount rate
 ### Types of aggregation
-fredi_config$baseYear0     <- 2010
-fredi_config$rate0         <- 0.3
-fredi_config$discountRate0 <- 0.03
-fredi_config$aggList0      <- c("national", "model", "impactYear", "impactType")
-fredi_config$groupLevels0  <- c("sector", "adaptation", "impactYear", "impactType", "modelType", "model", "region")
+fredi_config$elasticity0  <- 1
+fredi_config$aggList0     <- c("national", "modelaverage", "impactyear", "impacttype")
+fredi_config$groupLevels0 <- c("sector", "adaptation", "impactYear", "impactType", "modelType", "model", "region", "state", "postal")
   
 ###### temps2slr constants ######
 fredi_config$temps2slr <- list(

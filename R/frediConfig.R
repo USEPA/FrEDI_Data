@@ -31,6 +31,7 @@ frediConfig <- function(outPath){
   ### Minimum Years
   minYear          <- 2010
   maxYear          <- 2090
+  elasticity       <- 1
   # maxYear          <- 2100
 
   ### Add items to a list and return the list
@@ -38,7 +39,8 @@ frediConfig <- function(outPath){
     messages_data    = messages_data,
     messages_fredi   = messages_fredi,
     ### Types of aggregation for temperature binning
-    aggList0         = c("national", "model", "impactYear", "impactType"),
+    aggList0         = c("national", "modelaverage", "impactyear", "impacttype"),
+    elasticity0      = elasticity, 
     ### Minimum and Maximum Years
     minYear          = minYear,
     maxYear          = maxYear,
@@ -49,10 +51,9 @@ frediConfig <- function(outPath){
     list_years_by10  = seq(minYear, maxYear, 10), ### Sequence for tick marks
     list_years_by20  = seq(minYear, maxYear, 20), ### Years by 20
     ### Groups for plotting
-    groupLevels0     = c("sector", "adaptation", "impactYear", "impactType", "modelType", "model", "region"),
+    groupLevels0     = c("sector", "adaptation", "impactYear", "impactType", "modelType", "model", "region", "state", "postal"),
     ### Values to use in discounting
-    baseYear0        = 2010,
-    rate0            = 0.03
+    baseYear0        = 2010
   )
 
   ### List to return
