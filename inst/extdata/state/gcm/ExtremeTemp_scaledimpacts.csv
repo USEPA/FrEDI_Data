@@ -3130,6 +3130,37 @@
 "Wisconsin","WI","ExtremeTemp","CanESM2","6",2010,"hot","No Adaptation",8.11464521883689e-05
 "Wisconsin","WI","ExtremeTemp","GFDL-CM3","6",2010,"hot","No Adaptation",0.000110809014177124
 "Wisconsin","WI","ExtremeTemp","HadGEM2-ES","6",2010,"hot","No Adaptation",9.84281187383388e-05
+"Alabama","AL","ExtremeTemp","CCSM4","1",2090,"cold","Adaptation",-8.56103121107604e-07
+"Alabama","AL","ExtremeTemp","CanESM2","1",2090,"cold","Adaptation",-5.88570895761477e-07
+"Alabama","AL","ExtremeTemp","GFDL-CM3","1",2090,"cold","Adaptation",-6.77748304210186e-07
+"Alabama","AL","ExtremeTemp","GISS-E2-R","1",2090,"cold","Adaptation",-1.16822405067808e-06
+"Alabama","AL","ExtremeTemp","HadGEM2-ES","1",2090,"cold","Adaptation",-4.54804783088414e-07
+"Alabama","AL","ExtremeTemp","MIROC5","1",2090,"cold","Adaptation",-5.43982191537123e-07
+"Alabama","AL","ExtremeTemp","CCSM4","2",2090,"cold","Adaptation",-7.66925712658894e-07
+"Alabama","AL","ExtremeTemp","CanESM2","2",2090,"cold","Adaptation",-5.43982191537123e-07
+"Alabama","AL","ExtremeTemp","GFDL-CM3","2",2090,"cold","Adaptation",-8.11514416883249e-07
+"Alabama","AL","ExtremeTemp","GISS-E2-R","2",2090,"cold","Adaptation",-1.3465788675755e-06
+"Alabama","AL","ExtremeTemp","HadGEM2-ES","2",2090,"cold","Adaptation",-5.43982191537123e-07
+"Alabama","AL","ExtremeTemp","MIROC5","2",2090,"cold","Adaptation",-8.11514416883249e-07
+"Alabama","AL","ExtremeTemp","CCSM4","3",2090,"cold","Adaptation",-9.89869233780666e-07
+"Alabama","AL","ExtremeTemp","CanESM2","3",2090,"cold","Adaptation",-1.07904664222937e-06
+"Alabama","AL","ExtremeTemp","GFDL-CM3","3",2090,"cold","Adaptation",-9.00691825331957e-07
+"Alabama","AL","ExtremeTemp","GISS-E2-R","3",2090,"cold","Adaptation",-1.30199016335115e-06
+"Alabama","AL","ExtremeTemp","HadGEM2-ES","3",2090,"cold","Adaptation",-1.12363534645373e-06
+"Alabama","AL","ExtremeTemp","MIROC5","3",2090,"cold","Adaptation",-1.30199016335115e-06
+"Alabama","AL","ExtremeTemp","CCSM4","4",2090,"cold","Adaptation",-1.3465788675755e-06
+"Alabama","AL","ExtremeTemp","CanESM2","4",2090,"cold","Adaptation",-9.45280529556312e-07
+"Alabama","AL","ExtremeTemp","GFDL-CM3","4",2090,"cold","Adaptation",-1.30199016335115e-06
+"Alabama","AL","ExtremeTemp","HadGEM2-ES","4",2090,"cold","Adaptation",-9.45280529556312e-07
+"Alabama","AL","ExtremeTemp","MIROC5","4",2090,"cold","Adaptation",-1.3465788675755e-06
+"Alabama","AL","ExtremeTemp","CCSM4","5",2090,"cold","Adaptation",-1.12363534645373e-06
+"Alabama","AL","ExtremeTemp","CanESM2","5",2090,"cold","Adaptation",-1.3465788675755e-06
+"Alabama","AL","ExtremeTemp","GFDL-CM3","5",2090,"cold","Adaptation",-1.25740145912679e-06
+"Alabama","AL","ExtremeTemp","HadGEM2-ES","5",2090,"cold","Adaptation",-1.30199016335115e-06
+"Alabama","AL","ExtremeTemp","MIROC5","5",2090,"cold","Adaptation",-1.56952238869727e-06
+"Alabama","AL","ExtremeTemp","CanESM2","6",2090,"cold","Adaptation",-1.16822405067808e-06
+"Alabama","AL","ExtremeTemp","GFDL-CM3","6",2090,"cold","Adaptation",-1.52493368447292e-06
+"Alabama","AL","ExtremeTemp","HadGEM2-ES","6",2090,"cold","Adaptation",-1.30199016335115e-06
 "Alabama","AL","ExtremeTemp","CCSM4","1",2090,"hot","Adaptation",0
 "Alabama","AL","ExtremeTemp","CanESM2","1",2090,"hot","Adaptation",0
 "Alabama","AL","ExtremeTemp","GFDL-CM3","1",2090,"hot","Adaptation",0
@@ -3161,37 +3192,6 @@
 "Alabama","AL","ExtremeTemp","CanESM2","6",2090,"hot","Adaptation",3.48802393793572e-05
 "Alabama","AL","ExtremeTemp","GFDL-CM3","6",2090,"hot","Adaptation",1.6602993944574e-05
 "Alabama","AL","ExtremeTemp","HadGEM2-ES","6",2090,"hot","Adaptation",6.68305386508484e-05
-"Alabama","AL","ExtremeTemp","CCSM4","1",2090,"Adaptation","No Adaptation",-8.56103121107604e-07
-"Alabama","AL","ExtremeTemp","CanESM2","1",2090,"Adaptation","No Adaptation",-5.88570895761477e-07
-"Alabama","AL","ExtremeTemp","GFDL-CM3","1",2090,"Adaptation","No Adaptation",-6.77748304210186e-07
-"Alabama","AL","ExtremeTemp","GISS-E2-R","1",2090,"Adaptation","No Adaptation",-1.16822405067808e-06
-"Alabama","AL","ExtremeTemp","HadGEM2-ES","1",2090,"Adaptation","No Adaptation",-4.54804783088414e-07
-"Alabama","AL","ExtremeTemp","MIROC5","1",2090,"Adaptation","No Adaptation",-5.43982191537123e-07
-"Alabama","AL","ExtremeTemp","CCSM4","2",2090,"Adaptation","No Adaptation",-7.66925712658894e-07
-"Alabama","AL","ExtremeTemp","CanESM2","2",2090,"Adaptation","No Adaptation",-5.43982191537123e-07
-"Alabama","AL","ExtremeTemp","GFDL-CM3","2",2090,"Adaptation","No Adaptation",-8.11514416883249e-07
-"Alabama","AL","ExtremeTemp","GISS-E2-R","2",2090,"Adaptation","No Adaptation",-1.3465788675755e-06
-"Alabama","AL","ExtremeTemp","HadGEM2-ES","2",2090,"Adaptation","No Adaptation",-5.43982191537123e-07
-"Alabama","AL","ExtremeTemp","MIROC5","2",2090,"Adaptation","No Adaptation",-8.11514416883249e-07
-"Alabama","AL","ExtremeTemp","CCSM4","3",2090,"Adaptation","No Adaptation",-9.89869233780666e-07
-"Alabama","AL","ExtremeTemp","CanESM2","3",2090,"Adaptation","No Adaptation",-1.07904664222937e-06
-"Alabama","AL","ExtremeTemp","GFDL-CM3","3",2090,"Adaptation","No Adaptation",-9.00691825331957e-07
-"Alabama","AL","ExtremeTemp","GISS-E2-R","3",2090,"Adaptation","No Adaptation",-1.30199016335115e-06
-"Alabama","AL","ExtremeTemp","HadGEM2-ES","3",2090,"Adaptation","No Adaptation",-1.12363534645373e-06
-"Alabama","AL","ExtremeTemp","MIROC5","3",2090,"Adaptation","No Adaptation",-1.30199016335115e-06
-"Alabama","AL","ExtremeTemp","CCSM4","4",2090,"Adaptation","No Adaptation",-1.3465788675755e-06
-"Alabama","AL","ExtremeTemp","CanESM2","4",2090,"Adaptation","No Adaptation",-9.45280529556312e-07
-"Alabama","AL","ExtremeTemp","GFDL-CM3","4",2090,"Adaptation","No Adaptation",-1.30199016335115e-06
-"Alabama","AL","ExtremeTemp","HadGEM2-ES","4",2090,"Adaptation","No Adaptation",-9.45280529556312e-07
-"Alabama","AL","ExtremeTemp","MIROC5","4",2090,"Adaptation","No Adaptation",-1.3465788675755e-06
-"Alabama","AL","ExtremeTemp","CCSM4","5",2090,"Adaptation","No Adaptation",-1.12363534645373e-06
-"Alabama","AL","ExtremeTemp","CanESM2","5",2090,"Adaptation","No Adaptation",-1.3465788675755e-06
-"Alabama","AL","ExtremeTemp","GFDL-CM3","5",2090,"Adaptation","No Adaptation",-1.25740145912679e-06
-"Alabama","AL","ExtremeTemp","HadGEM2-ES","5",2090,"Adaptation","No Adaptation",-1.30199016335115e-06
-"Alabama","AL","ExtremeTemp","MIROC5","5",2090,"Adaptation","No Adaptation",-1.56952238869727e-06
-"Alabama","AL","ExtremeTemp","CanESM2","6",2090,"Adaptation","No Adaptation",-1.16822405067808e-06
-"Alabama","AL","ExtremeTemp","GFDL-CM3","6",2090,"Adaptation","No Adaptation",-1.52493368447292e-06
-"Alabama","AL","ExtremeTemp","HadGEM2-ES","6",2090,"Adaptation","No Adaptation",-1.30199016335115e-06
 "Alabama","AL","ExtremeTemp","CCSM4","1",2090,"cold","No Adaptation",-8.56103121107604e-07
 "Alabama","AL","ExtremeTemp","CanESM2","1",2090,"cold","No Adaptation",-5.88570895761477e-07
 "Alabama","AL","ExtremeTemp","GFDL-CM3","1",2090,"cold","No Adaptation",-6.77748304210186e-07
@@ -3316,6 +3316,37 @@
 "Arizona","AZ","ExtremeTemp","CanESM2","6",2090,"hot","No Adaptation",7.09604227637472e-05
 "Arizona","AZ","ExtremeTemp","GFDL-CM3","6",2090,"hot","No Adaptation",6.26857579126434e-05
 "Arizona","AZ","ExtremeTemp","HadGEM2-ES","6",2090,"hot","No Adaptation",3.36209976231412e-05
+"California","CA","ExtremeTemp","CCSM4","1",2090,"cold","Adaptation",1.31198607812144e-07
+"California","CA","ExtremeTemp","CanESM2","1",2090,"cold","Adaptation",-5.17076866083149e-07
+"California","CA","ExtremeTemp","GFDL-CM3","1",2090,"cold","Adaptation",-1.157634774813e-07
+"California","CA","ExtremeTemp","GISS-E2-R","1",2090,"cold","Adaptation",-4.86206605421468e-07
+"California","CA","ExtremeTemp","HadGEM2-ES","1",2090,"cold","Adaptation",3.85878258271027e-08
+"California","CA","ExtremeTemp","MIROC5","1",2090,"cold","Adaptation",7.71756516542215e-09
+"California","CA","ExtremeTemp","CCSM4","2",2090,"cold","Adaptation",-5.4794712674483e-07
+"California","CA","ExtremeTemp","CanESM2","2",2090,"cold","Adaptation",-6.40557908729872e-07
+"California","CA","ExtremeTemp","GFDL-CM3","2",2090,"cold","Adaptation",-2.08374259466342e-07
+"California","CA","ExtremeTemp","GISS-E2-R","2",2090,"cold","Adaptation",-5.40229561579389e-08
+"California","CA","ExtremeTemp","HadGEM2-ES","2",2090,"cold","Adaptation",-5.17076866083149e-07
+"California","CA","ExtremeTemp","MIROC5","2",2090,"cold","Adaptation",-2.70114780789707e-07
+"California","CA","ExtremeTemp","CCSM4","3",2090,"cold","Adaptation",-7.33168690714914e-07
+"California","CA","ExtremeTemp","CanESM2","3",2090,"cold","Adaptation",-7.02298430053234e-07
+"California","CA","ExtremeTemp","GFDL-CM3","3",2090,"cold","Adaptation",-5.78817387406511e-07
+"California","CA","ExtremeTemp","GISS-E2-R","3",2090,"cold","Adaptation",-5.17076866083149e-07
+"California","CA","ExtremeTemp","HadGEM2-ES","3",2090,"cold","Adaptation",-3.00985041451387e-07
+"California","CA","ExtremeTemp","MIROC5","3",2090,"cold","Adaptation",-5.17076866083149e-07
+"California","CA","ExtremeTemp","CCSM4","4",2090,"cold","Adaptation",-7.64038951376595e-07
+"California","CA","ExtremeTemp","CanESM2","4",2090,"cold","Adaptation",-7.64038951376595e-07
+"California","CA","ExtremeTemp","GFDL-CM3","4",2090,"cold","Adaptation",-7.02298430053234e-07
+"California","CA","ExtremeTemp","HadGEM2-ES","4",2090,"cold","Adaptation",-6.71428169391553e-07
+"California","CA","ExtremeTemp","MIROC5","4",2090,"cold","Adaptation",-7.02298430053234e-07
+"California","CA","ExtremeTemp","CCSM4","5",2090,"cold","Adaptation",-7.33168690714914e-07
+"California","CA","ExtremeTemp","CanESM2","5",2090,"cold","Adaptation",-7.64038951376595e-07
+"California","CA","ExtremeTemp","GFDL-CM3","5",2090,"cold","Adaptation",-7.33168690714914e-07
+"California","CA","ExtremeTemp","HadGEM2-ES","5",2090,"cold","Adaptation",-6.71428169391553e-07
+"California","CA","ExtremeTemp","MIROC5","5",2090,"cold","Adaptation",-5.78817387406511e-07
+"California","CA","ExtremeTemp","CanESM2","6",2090,"cold","Adaptation",-7.64038951376595e-07
+"California","CA","ExtremeTemp","GFDL-CM3","6",2090,"cold","Adaptation",-7.02298430053234e-07
+"California","CA","ExtremeTemp","HadGEM2-ES","6",2090,"cold","Adaptation",-7.64038951376595e-07
 "California","CA","ExtremeTemp","CCSM4","1",2090,"hot","Adaptation",0
 "California","CA","ExtremeTemp","CanESM2","1",2090,"hot","Adaptation",1.7615118665227e-08
 "California","CA","ExtremeTemp","GFDL-CM3","1",2090,"hot","Adaptation",7.05192831841837e-08
@@ -3347,37 +3378,6 @@
 "California","CA","ExtremeTemp","CanESM2","6",2090,"hot","Adaptation",1.70931340428305e-06
 "California","CA","ExtremeTemp","GFDL-CM3","6",2090,"hot","Adaptation",4.21142476554787e-06
 "California","CA","ExtremeTemp","HadGEM2-ES","6",2090,"hot","Adaptation",3.52478798874368e-07
-"California","CA","ExtremeTemp","CCSM4","1",2090,"Adaptation","No Adaptation",1.31198607812144e-07
-"California","CA","ExtremeTemp","CanESM2","1",2090,"Adaptation","No Adaptation",-5.17076866083149e-07
-"California","CA","ExtremeTemp","GFDL-CM3","1",2090,"Adaptation","No Adaptation",-1.157634774813e-07
-"California","CA","ExtremeTemp","GISS-E2-R","1",2090,"Adaptation","No Adaptation",-4.86206605421468e-07
-"California","CA","ExtremeTemp","HadGEM2-ES","1",2090,"Adaptation","No Adaptation",3.85878258271027e-08
-"California","CA","ExtremeTemp","MIROC5","1",2090,"Adaptation","No Adaptation",7.71756516542215e-09
-"California","CA","ExtremeTemp","CCSM4","2",2090,"Adaptation","No Adaptation",-5.4794712674483e-07
-"California","CA","ExtremeTemp","CanESM2","2",2090,"Adaptation","No Adaptation",-6.40557908729872e-07
-"California","CA","ExtremeTemp","GFDL-CM3","2",2090,"Adaptation","No Adaptation",-2.08374259466342e-07
-"California","CA","ExtremeTemp","GISS-E2-R","2",2090,"Adaptation","No Adaptation",-5.40229561579389e-08
-"California","CA","ExtremeTemp","HadGEM2-ES","2",2090,"Adaptation","No Adaptation",-5.17076866083149e-07
-"California","CA","ExtremeTemp","MIROC5","2",2090,"Adaptation","No Adaptation",-2.70114780789707e-07
-"California","CA","ExtremeTemp","CCSM4","3",2090,"Adaptation","No Adaptation",-7.33168690714914e-07
-"California","CA","ExtremeTemp","CanESM2","3",2090,"Adaptation","No Adaptation",-7.02298430053234e-07
-"California","CA","ExtremeTemp","GFDL-CM3","3",2090,"Adaptation","No Adaptation",-5.78817387406511e-07
-"California","CA","ExtremeTemp","GISS-E2-R","3",2090,"Adaptation","No Adaptation",-5.17076866083149e-07
-"California","CA","ExtremeTemp","HadGEM2-ES","3",2090,"Adaptation","No Adaptation",-3.00985041451387e-07
-"California","CA","ExtremeTemp","MIROC5","3",2090,"Adaptation","No Adaptation",-5.17076866083149e-07
-"California","CA","ExtremeTemp","CCSM4","4",2090,"Adaptation","No Adaptation",-7.64038951376595e-07
-"California","CA","ExtremeTemp","CanESM2","4",2090,"Adaptation","No Adaptation",-7.64038951376595e-07
-"California","CA","ExtremeTemp","GFDL-CM3","4",2090,"Adaptation","No Adaptation",-7.02298430053234e-07
-"California","CA","ExtremeTemp","HadGEM2-ES","4",2090,"Adaptation","No Adaptation",-6.71428169391553e-07
-"California","CA","ExtremeTemp","MIROC5","4",2090,"Adaptation","No Adaptation",-7.02298430053234e-07
-"California","CA","ExtremeTemp","CCSM4","5",2090,"Adaptation","No Adaptation",-7.33168690714914e-07
-"California","CA","ExtremeTemp","CanESM2","5",2090,"Adaptation","No Adaptation",-7.64038951376595e-07
-"California","CA","ExtremeTemp","GFDL-CM3","5",2090,"Adaptation","No Adaptation",-7.33168690714914e-07
-"California","CA","ExtremeTemp","HadGEM2-ES","5",2090,"Adaptation","No Adaptation",-6.71428169391553e-07
-"California","CA","ExtremeTemp","MIROC5","5",2090,"Adaptation","No Adaptation",-5.78817387406511e-07
-"California","CA","ExtremeTemp","CanESM2","6",2090,"Adaptation","No Adaptation",-7.64038951376595e-07
-"California","CA","ExtremeTemp","GFDL-CM3","6",2090,"Adaptation","No Adaptation",-7.02298430053234e-07
-"California","CA","ExtremeTemp","HadGEM2-ES","6",2090,"Adaptation","No Adaptation",-7.64038951376595e-07
 "California","CA","ExtremeTemp","CCSM4","1",2090,"cold","No Adaptation",1.31198607812144e-07
 "California","CA","ExtremeTemp","CanESM2","1",2090,"cold","No Adaptation",-5.17076866083149e-07
 "California","CA","ExtremeTemp","GFDL-CM3","1",2090,"cold","No Adaptation",-1.157634774813e-07
@@ -3440,37 +3440,37 @@
 "California","CA","ExtremeTemp","CanESM2","6",2090,"hot","No Adaptation",8.63283649459373e-05
 "California","CA","ExtremeTemp","GFDL-CM3","6",2090,"hot","No Adaptation",7.55704795913802e-05
 "California","CA","ExtremeTemp","HadGEM2-ES","6",2090,"hot","No Adaptation",4.7061906100463e-05
-"Colorado","CO","ExtremeTemp","CCSM4","1",2090,"Adaptation","No Adaptation",-2.35406958042077e-07
-"Colorado","CO","ExtremeTemp","CanESM2","1",2090,"Adaptation","No Adaptation",-7.7028956462718e-08
-"Colorado","CO","ExtremeTemp","GFDL-CM3","1",2090,"Adaptation","No Adaptation",4.43690111290901e-08
-"Colorado","CO","ExtremeTemp","GISS-E2-R","1",2090,"Adaptation","No Adaptation",-4.1065668151055e-07
-"Colorado","CO","ExtremeTemp","HadGEM2-ES","1",2090,"Adaptation","No Adaptation",1.00335649889802e-07
-"Colorado","CO","ExtremeTemp","MIROC5","1",2090,"Adaptation","No Adaptation",-3.90801848074934e-07
-"Colorado","CO","ExtremeTemp","CCSM4","2",2090,"Adaptation","No Adaptation",-4.22683887631941e-07
-"Colorado","CO","ExtremeTemp","CanESM2","2",2090,"Adaptation","No Adaptation",-3.57734577981339e-07
-"Colorado","CO","ExtremeTemp","GFDL-CM3","2",2090,"Adaptation","No Adaptation",-2.7354308536845e-07
-"Colorado","CO","ExtremeTemp","GISS-E2-R","2",2090,"Adaptation","No Adaptation",-3.94010350849648e-07
-"Colorado","CO","ExtremeTemp","HadGEM2-ES","2",2090,"Adaptation","No Adaptation",-3.65336814067354e-07
-"Colorado","CO","ExtremeTemp","MIROC5","2",2090,"Adaptation","No Adaptation",-3.3505955077928e-07
-"Colorado","CO","ExtremeTemp","CCSM4","3",2090,"Adaptation","No Adaptation",-3.5010110517125e-07
-"Colorado","CO","ExtremeTemp","CanESM2","3",2090,"Adaptation","No Adaptation",-4.46963691102932e-07
-"Colorado","CO","ExtremeTemp","GFDL-CM3","3",2090,"Adaptation","No Adaptation",-3.94715661732046e-07
-"Colorado","CO","ExtremeTemp","GISS-E2-R","3",2090,"Adaptation","No Adaptation",-4.94848174123439e-07
-"Colorado","CO","ExtremeTemp","HadGEM2-ES","3",2090,"Adaptation","No Adaptation",-1.52401745728929e-07
-"Colorado","CO","ExtremeTemp","MIROC5","3",2090,"Adaptation","No Adaptation",-4.57386120955391e-07
-"Colorado","CO","ExtremeTemp","CCSM4","4",2090,"Adaptation","No Adaptation",-6.0165327025339e-07
-"Colorado","CO","ExtremeTemp","CanESM2","4",2090,"Adaptation","No Adaptation",-4.87664434006616e-07
-"Colorado","CO","ExtremeTemp","GFDL-CM3","4",2090,"Adaptation","No Adaptation",-4.56906201301201e-07
-"Colorado","CO","ExtremeTemp","HadGEM2-ES","4",2090,"Adaptation","No Adaptation",-4.27108857667317e-07
-"Colorado","CO","ExtremeTemp","MIROC5","4",2090,"Adaptation","No Adaptation",-5.23971443598999e-07
-"Colorado","CO","ExtremeTemp","CCSM4","5",2090,"Adaptation","No Adaptation",-2.79797173137816e-07
-"Colorado","CO","ExtremeTemp","CanESM2","5",2090,"Adaptation","No Adaptation",-6.24778030148716e-07
-"Colorado","CO","ExtremeTemp","GFDL-CM3","5",2090,"Adaptation","No Adaptation",-4.37501100558853e-07
-"Colorado","CO","ExtremeTemp","HadGEM2-ES","5",2090,"Adaptation","No Adaptation",-3.67197168525419e-07
-"Colorado","CO","ExtremeTemp","MIROC5","5",2090,"Adaptation","No Adaptation",-3.86408114763633e-07
-"Colorado","CO","ExtremeTemp","CanESM2","6",2090,"Adaptation","No Adaptation",-5.78528510358065e-07
-"Colorado","CO","ExtremeTemp","GFDL-CM3","6",2090,"Adaptation","No Adaptation",-4.17360501973182e-07
-"Colorado","CO","ExtremeTemp","HadGEM2-ES","6",2090,"Adaptation","No Adaptation",-6.0165327025339e-07
+"Colorado","CO","ExtremeTemp","CCSM4","1",2090,"cold","Adaptation",-2.35406958042077e-07
+"Colorado","CO","ExtremeTemp","CanESM2","1",2090,"cold","Adaptation",-7.7028956462718e-08
+"Colorado","CO","ExtremeTemp","GFDL-CM3","1",2090,"cold","Adaptation",4.43690111290901e-08
+"Colorado","CO","ExtremeTemp","GISS-E2-R","1",2090,"cold","Adaptation",-4.1065668151055e-07
+"Colorado","CO","ExtremeTemp","HadGEM2-ES","1",2090,"cold","Adaptation",1.00335649889802e-07
+"Colorado","CO","ExtremeTemp","MIROC5","1",2090,"cold","Adaptation",-3.90801848074934e-07
+"Colorado","CO","ExtremeTemp","CCSM4","2",2090,"cold","Adaptation",-4.22683887631941e-07
+"Colorado","CO","ExtremeTemp","CanESM2","2",2090,"cold","Adaptation",-3.57734577981339e-07
+"Colorado","CO","ExtremeTemp","GFDL-CM3","2",2090,"cold","Adaptation",-2.7354308536845e-07
+"Colorado","CO","ExtremeTemp","GISS-E2-R","2",2090,"cold","Adaptation",-3.94010350849648e-07
+"Colorado","CO","ExtremeTemp","HadGEM2-ES","2",2090,"cold","Adaptation",-3.65336814067354e-07
+"Colorado","CO","ExtremeTemp","MIROC5","2",2090,"cold","Adaptation",-3.3505955077928e-07
+"Colorado","CO","ExtremeTemp","CCSM4","3",2090,"cold","Adaptation",-3.5010110517125e-07
+"Colorado","CO","ExtremeTemp","CanESM2","3",2090,"cold","Adaptation",-4.46963691102932e-07
+"Colorado","CO","ExtremeTemp","GFDL-CM3","3",2090,"cold","Adaptation",-3.94715661732046e-07
+"Colorado","CO","ExtremeTemp","GISS-E2-R","3",2090,"cold","Adaptation",-4.94848174123439e-07
+"Colorado","CO","ExtremeTemp","HadGEM2-ES","3",2090,"cold","Adaptation",-1.52401745728929e-07
+"Colorado","CO","ExtremeTemp","MIROC5","3",2090,"cold","Adaptation",-4.57386120955391e-07
+"Colorado","CO","ExtremeTemp","CCSM4","4",2090,"cold","Adaptation",-6.0165327025339e-07
+"Colorado","CO","ExtremeTemp","CanESM2","4",2090,"cold","Adaptation",-4.87664434006616e-07
+"Colorado","CO","ExtremeTemp","GFDL-CM3","4",2090,"cold","Adaptation",-4.56906201301201e-07
+"Colorado","CO","ExtremeTemp","HadGEM2-ES","4",2090,"cold","Adaptation",-4.27108857667317e-07
+"Colorado","CO","ExtremeTemp","MIROC5","4",2090,"cold","Adaptation",-5.23971443598999e-07
+"Colorado","CO","ExtremeTemp","CCSM4","5",2090,"cold","Adaptation",-2.79797173137816e-07
+"Colorado","CO","ExtremeTemp","CanESM2","5",2090,"cold","Adaptation",-6.24778030148716e-07
+"Colorado","CO","ExtremeTemp","GFDL-CM3","5",2090,"cold","Adaptation",-4.37501100558853e-07
+"Colorado","CO","ExtremeTemp","HadGEM2-ES","5",2090,"cold","Adaptation",-3.67197168525419e-07
+"Colorado","CO","ExtremeTemp","MIROC5","5",2090,"cold","Adaptation",-3.86408114763633e-07
+"Colorado","CO","ExtremeTemp","CanESM2","6",2090,"cold","Adaptation",-5.78528510358065e-07
+"Colorado","CO","ExtremeTemp","GFDL-CM3","6",2090,"cold","Adaptation",-4.17360501973182e-07
+"Colorado","CO","ExtremeTemp","HadGEM2-ES","6",2090,"cold","Adaptation",-6.0165327025339e-07
 "Colorado","CO","ExtremeTemp","CCSM4","1",2090,"cold","No Adaptation",-2.35406958042077e-07
 "Colorado","CO","ExtremeTemp","CanESM2","1",2090,"cold","No Adaptation",-7.7028956462718e-08
 "Colorado","CO","ExtremeTemp","GFDL-CM3","1",2090,"cold","No Adaptation",4.43690111290901e-08
@@ -3502,6 +3502,37 @@
 "Colorado","CO","ExtremeTemp","CanESM2","6",2090,"cold","No Adaptation",-5.78528510358065e-07
 "Colorado","CO","ExtremeTemp","GFDL-CM3","6",2090,"cold","No Adaptation",-4.17360501973182e-07
 "Colorado","CO","ExtremeTemp","HadGEM2-ES","6",2090,"cold","No Adaptation",-6.0165327025339e-07
+"Connecticut","CT","ExtremeTemp","CCSM4","1",2090,"cold","Adaptation",-7.4962152398195e-07
+"Connecticut","CT","ExtremeTemp","CanESM2","1",2090,"cold","Adaptation",-8.31771827979972e-07
+"Connecticut","CT","ExtremeTemp","GFDL-CM3","1",2090,"cold","Adaptation",-8.31771827979972e-07
+"Connecticut","CT","ExtremeTemp","GISS-E2-R","1",2090,"cold","Adaptation",-9.96072435976016e-07
+"Connecticut","CT","ExtremeTemp","HadGEM2-ES","1",2090,"cold","Adaptation",-9.96072435976016e-07
+"Connecticut","CT","ExtremeTemp","MIROC5","1",2090,"cold","Adaptation",-4.62095459988873e-07
+"Connecticut","CT","ExtremeTemp","CCSM4","2",2090,"cold","Adaptation",-1.07822273997404e-06
+"Connecticut","CT","ExtremeTemp","CanESM2","2",2090,"cold","Adaptation",-1.07822273997404e-06
+"Connecticut","CT","ExtremeTemp","GFDL-CM3","2",2090,"cold","Adaptation",-8.31771827979972e-07
+"Connecticut","CT","ExtremeTemp","GISS-E2-R","2",2090,"cold","Adaptation",-1.16037304397206e-06
+"Connecticut","CT","ExtremeTemp","HadGEM2-ES","2",2090,"cold","Adaptation",-1.11929789197305e-06
+"Connecticut","CT","ExtremeTemp","MIROC5","2",2090,"cold","Adaptation",-1.16037304397206e-06
+"Connecticut","CT","ExtremeTemp","CCSM4","3",2090,"cold","Adaptation",-1.07822273997404e-06
+"Connecticut","CT","ExtremeTemp","CanESM2","3",2090,"cold","Adaptation",-1.16037304397206e-06
+"Connecticut","CT","ExtremeTemp","GFDL-CM3","3",2090,"cold","Adaptation",-9.54997283977005e-07
+"Connecticut","CT","ExtremeTemp","GISS-E2-R","3",2090,"cold","Adaptation",-9.54997283977005e-07
+"Connecticut","CT","ExtremeTemp","HadGEM2-ES","3",2090,"cold","Adaptation",-1.16037304397206e-06
+"Connecticut","CT","ExtremeTemp","MIROC5","3",2090,"cold","Adaptation",-1.24252334797008e-06
+"Connecticut","CT","ExtremeTemp","CCSM4","4",2090,"cold","Adaptation",-1.24252334797008e-06
+"Connecticut","CT","ExtremeTemp","CanESM2","4",2090,"cold","Adaptation",-1.16037304397206e-06
+"Connecticut","CT","ExtremeTemp","GFDL-CM3","4",2090,"cold","Adaptation",-1.24252334797008e-06
+"Connecticut","CT","ExtremeTemp","HadGEM2-ES","4",2090,"cold","Adaptation",-1.16037304397206e-06
+"Connecticut","CT","ExtremeTemp","MIROC5","4",2090,"cold","Adaptation",-1.24252334797008e-06
+"Connecticut","CT","ExtremeTemp","CCSM4","5",2090,"cold","Adaptation",-1.24252334797008e-06
+"Connecticut","CT","ExtremeTemp","CanESM2","5",2090,"cold","Adaptation",-1.24252334797008e-06
+"Connecticut","CT","ExtremeTemp","GFDL-CM3","5",2090,"cold","Adaptation",-1.24252334797008e-06
+"Connecticut","CT","ExtremeTemp","HadGEM2-ES","5",2090,"cold","Adaptation",-1.24252334797008e-06
+"Connecticut","CT","ExtremeTemp","MIROC5","5",2090,"cold","Adaptation",-1.24252334797008e-06
+"Connecticut","CT","ExtremeTemp","CanESM2","6",2090,"cold","Adaptation",-1.24252334797008e-06
+"Connecticut","CT","ExtremeTemp","GFDL-CM3","6",2090,"cold","Adaptation",-1.24252334797008e-06
+"Connecticut","CT","ExtremeTemp","HadGEM2-ES","6",2090,"cold","Adaptation",-1.24252334797008e-06
 "Connecticut","CT","ExtremeTemp","CCSM4","1",2090,"hot","Adaptation",0
 "Connecticut","CT","ExtremeTemp","CanESM2","1",2090,"hot","Adaptation",0
 "Connecticut","CT","ExtremeTemp","GFDL-CM3","1",2090,"hot","Adaptation",0
@@ -3533,37 +3564,6 @@
 "Connecticut","CT","ExtremeTemp","CanESM2","6",2090,"hot","Adaptation",3.53774925748743e-06
 "Connecticut","CT","ExtremeTemp","GFDL-CM3","6",2090,"hot","Adaptation",1.80547203485565e-05
 "Connecticut","CT","ExtremeTemp","HadGEM2-ES","6",2090,"hot","Adaptation",7.68545528350719e-06
-"Connecticut","CT","ExtremeTemp","CCSM4","1",2090,"Adaptation","No Adaptation",-7.4962152398195e-07
-"Connecticut","CT","ExtremeTemp","CanESM2","1",2090,"Adaptation","No Adaptation",-8.31771827979972e-07
-"Connecticut","CT","ExtremeTemp","GFDL-CM3","1",2090,"Adaptation","No Adaptation",-8.31771827979972e-07
-"Connecticut","CT","ExtremeTemp","GISS-E2-R","1",2090,"Adaptation","No Adaptation",-9.96072435976016e-07
-"Connecticut","CT","ExtremeTemp","HadGEM2-ES","1",2090,"Adaptation","No Adaptation",-9.96072435976016e-07
-"Connecticut","CT","ExtremeTemp","MIROC5","1",2090,"Adaptation","No Adaptation",-4.62095459988873e-07
-"Connecticut","CT","ExtremeTemp","CCSM4","2",2090,"Adaptation","No Adaptation",-1.07822273997404e-06
-"Connecticut","CT","ExtremeTemp","CanESM2","2",2090,"Adaptation","No Adaptation",-1.07822273997404e-06
-"Connecticut","CT","ExtremeTemp","GFDL-CM3","2",2090,"Adaptation","No Adaptation",-8.31771827979972e-07
-"Connecticut","CT","ExtremeTemp","GISS-E2-R","2",2090,"Adaptation","No Adaptation",-1.16037304397206e-06
-"Connecticut","CT","ExtremeTemp","HadGEM2-ES","2",2090,"Adaptation","No Adaptation",-1.11929789197305e-06
-"Connecticut","CT","ExtremeTemp","MIROC5","2",2090,"Adaptation","No Adaptation",-1.16037304397206e-06
-"Connecticut","CT","ExtremeTemp","CCSM4","3",2090,"Adaptation","No Adaptation",-1.07822273997404e-06
-"Connecticut","CT","ExtremeTemp","CanESM2","3",2090,"Adaptation","No Adaptation",-1.16037304397206e-06
-"Connecticut","CT","ExtremeTemp","GFDL-CM3","3",2090,"Adaptation","No Adaptation",-9.54997283977005e-07
-"Connecticut","CT","ExtremeTemp","GISS-E2-R","3",2090,"Adaptation","No Adaptation",-9.54997283977005e-07
-"Connecticut","CT","ExtremeTemp","HadGEM2-ES","3",2090,"Adaptation","No Adaptation",-1.16037304397206e-06
-"Connecticut","CT","ExtremeTemp","MIROC5","3",2090,"Adaptation","No Adaptation",-1.24252334797008e-06
-"Connecticut","CT","ExtremeTemp","CCSM4","4",2090,"Adaptation","No Adaptation",-1.24252334797008e-06
-"Connecticut","CT","ExtremeTemp","CanESM2","4",2090,"Adaptation","No Adaptation",-1.16037304397206e-06
-"Connecticut","CT","ExtremeTemp","GFDL-CM3","4",2090,"Adaptation","No Adaptation",-1.24252334797008e-06
-"Connecticut","CT","ExtremeTemp","HadGEM2-ES","4",2090,"Adaptation","No Adaptation",-1.16037304397206e-06
-"Connecticut","CT","ExtremeTemp","MIROC5","4",2090,"Adaptation","No Adaptation",-1.24252334797008e-06
-"Connecticut","CT","ExtremeTemp","CCSM4","5",2090,"Adaptation","No Adaptation",-1.24252334797008e-06
-"Connecticut","CT","ExtremeTemp","CanESM2","5",2090,"Adaptation","No Adaptation",-1.24252334797008e-06
-"Connecticut","CT","ExtremeTemp","GFDL-CM3","5",2090,"Adaptation","No Adaptation",-1.24252334797008e-06
-"Connecticut","CT","ExtremeTemp","HadGEM2-ES","5",2090,"Adaptation","No Adaptation",-1.24252334797008e-06
-"Connecticut","CT","ExtremeTemp","MIROC5","5",2090,"Adaptation","No Adaptation",-1.24252334797008e-06
-"Connecticut","CT","ExtremeTemp","CanESM2","6",2090,"Adaptation","No Adaptation",-1.24252334797008e-06
-"Connecticut","CT","ExtremeTemp","GFDL-CM3","6",2090,"Adaptation","No Adaptation",-1.24252334797008e-06
-"Connecticut","CT","ExtremeTemp","HadGEM2-ES","6",2090,"Adaptation","No Adaptation",-1.24252334797008e-06
 "Connecticut","CT","ExtremeTemp","CCSM4","1",2090,"cold","No Adaptation",-7.4962152398195e-07
 "Connecticut","CT","ExtremeTemp","CanESM2","1",2090,"cold","No Adaptation",-8.31771827979972e-07
 "Connecticut","CT","ExtremeTemp","GFDL-CM3","1",2090,"cold","No Adaptation",-8.31771827979972e-07
@@ -3626,6 +3626,37 @@
 "Connecticut","CT","ExtremeTemp","CanESM2","6",2090,"hot","No Adaptation",9.29607631869433e-05
 "Connecticut","CT","ExtremeTemp","GFDL-CM3","6",2090,"hot","No Adaptation",0.000103813670322295
 "Connecticut","CT","ExtremeTemp","HadGEM2-ES","6",2090,"hot","No Adaptation",8.92183814161323e-05
+"District of Columbia","DC","ExtremeTemp","CCSM4","1",2090,"cold","Adaptation",-5.78252847661253e-07
+"District of Columbia","DC","ExtremeTemp","CanESM2","1",2090,"cold","Adaptation",-9.15426519766942e-07
+"District of Columbia","DC","ExtremeTemp","GFDL-CM3","1",2090,"cold","Adaptation",-8.81709152556374e-07
+"District of Columbia","DC","ExtremeTemp","GISS-E2-R","1",2090,"cold","Adaptation",-1.25260019187263e-06
+"District of Columbia","DC","ExtremeTemp","HadGEM2-ES","1",2090,"cold","Adaptation",-1.11773072303036e-06
+"District of Columbia","DC","ExtremeTemp","MIROC5","1",2090,"cold","Adaptation",-5.44535480450684e-07
+"District of Columbia","DC","ExtremeTemp","CCSM4","2",2090,"cold","Adaptation",-9.15426519766942e-07
+"District of Columbia","DC","ExtremeTemp","CanESM2","2",2090,"cold","Adaptation",-1.08401335581979e-06
+"District of Columbia","DC","ExtremeTemp","GFDL-CM3","2",2090,"cold","Adaptation",-1.21888282466206e-06
+"District of Columbia","DC","ExtremeTemp","GISS-E2-R","2",2090,"cold","Adaptation",-1.18516545745149e-06
+"District of Columbia","DC","ExtremeTemp","HadGEM2-ES","2",2090,"cold","Adaptation",-1.21888282466206e-06
+"District of Columbia","DC","ExtremeTemp","MIROC5","2",2090,"cold","Adaptation",-1.21888282466206e-06
+"District of Columbia","DC","ExtremeTemp","CCSM4","3",2090,"cold","Adaptation",-1.21888282466206e-06
+"District of Columbia","DC","ExtremeTemp","CanESM2","3",2090,"cold","Adaptation",-1.21888282466206e-06
+"District of Columbia","DC","ExtremeTemp","GFDL-CM3","3",2090,"cold","Adaptation",-1.18516545745149e-06
+"District of Columbia","DC","ExtremeTemp","GISS-E2-R","3",2090,"cold","Adaptation",-1.32003492629377e-06
+"District of Columbia","DC","ExtremeTemp","HadGEM2-ES","3",2090,"cold","Adaptation",-1.32003492629377e-06
+"District of Columbia","DC","ExtremeTemp","MIROC5","3",2090,"cold","Adaptation",-1.32003492629377e-06
+"District of Columbia","DC","ExtremeTemp","CCSM4","4",2090,"cold","Adaptation",-1.2863175590832e-06
+"District of Columbia","DC","ExtremeTemp","CanESM2","4",2090,"cold","Adaptation",-9.49143886977512e-07
+"District of Columbia","DC","ExtremeTemp","GFDL-CM3","4",2090,"cold","Adaptation",-1.25260019187263e-06
+"District of Columbia","DC","ExtremeTemp","HadGEM2-ES","4",2090,"cold","Adaptation",-1.25260019187263e-06
+"District of Columbia","DC","ExtremeTemp","MIROC5","4",2090,"cold","Adaptation",-1.32003492629377e-06
+"District of Columbia","DC","ExtremeTemp","CCSM4","5",2090,"cold","Adaptation",-1.2863175590832e-06
+"District of Columbia","DC","ExtremeTemp","CanESM2","5",2090,"cold","Adaptation",-1.32003492629377e-06
+"District of Columbia","DC","ExtremeTemp","GFDL-CM3","5",2090,"cold","Adaptation",-1.35375229350434e-06
+"District of Columbia","DC","ExtremeTemp","HadGEM2-ES","5",2090,"cold","Adaptation",-1.32003492629377e-06
+"District of Columbia","DC","ExtremeTemp","MIROC5","5",2090,"cold","Adaptation",-1.35375229350434e-06
+"District of Columbia","DC","ExtremeTemp","CanESM2","6",2090,"cold","Adaptation",-1.2863175590832e-06
+"District of Columbia","DC","ExtremeTemp","GFDL-CM3","6",2090,"cold","Adaptation",-1.35375229350434e-06
+"District of Columbia","DC","ExtremeTemp","HadGEM2-ES","6",2090,"cold","Adaptation",-1.35375229350434e-06
 "District of Columbia","DC","ExtremeTemp","CCSM4","1",2090,"hot","Adaptation",-1.74161218576803e-07
 "District of Columbia","DC","ExtremeTemp","CanESM2","1",2090,"hot","Adaptation",7.75809064569395e-07
 "District of Columbia","DC","ExtremeTemp","GFDL-CM3","1",2090,"hot","Adaptation",8.81361318252306e-07
@@ -3657,37 +3688,6 @@
 "District of Columbia","DC","ExtremeTemp","CanESM2","6",2090,"hot","Adaptation",8.08899696098988e-05
 "District of Columbia","DC","ExtremeTemp","GFDL-CM3","6",2090,"hot","Adaptation",6.84348036753153e-05
 "District of Columbia","DC","ExtremeTemp","HadGEM2-ES","6",2090,"hot","Adaptation",6.36849522595844e-05
-"District of Columbia","DC","ExtremeTemp","CCSM4","1",2090,"Adaptation","No Adaptation",-5.78252847661253e-07
-"District of Columbia","DC","ExtremeTemp","CanESM2","1",2090,"Adaptation","No Adaptation",-9.15426519766942e-07
-"District of Columbia","DC","ExtremeTemp","GFDL-CM3","1",2090,"Adaptation","No Adaptation",-8.81709152556374e-07
-"District of Columbia","DC","ExtremeTemp","GISS-E2-R","1",2090,"Adaptation","No Adaptation",-1.25260019187263e-06
-"District of Columbia","DC","ExtremeTemp","HadGEM2-ES","1",2090,"Adaptation","No Adaptation",-1.11773072303036e-06
-"District of Columbia","DC","ExtremeTemp","MIROC5","1",2090,"Adaptation","No Adaptation",-5.44535480450684e-07
-"District of Columbia","DC","ExtremeTemp","CCSM4","2",2090,"Adaptation","No Adaptation",-9.15426519766942e-07
-"District of Columbia","DC","ExtremeTemp","CanESM2","2",2090,"Adaptation","No Adaptation",-1.08401335581979e-06
-"District of Columbia","DC","ExtremeTemp","GFDL-CM3","2",2090,"Adaptation","No Adaptation",-1.21888282466206e-06
-"District of Columbia","DC","ExtremeTemp","GISS-E2-R","2",2090,"Adaptation","No Adaptation",-1.18516545745149e-06
-"District of Columbia","DC","ExtremeTemp","HadGEM2-ES","2",2090,"Adaptation","No Adaptation",-1.21888282466206e-06
-"District of Columbia","DC","ExtremeTemp","MIROC5","2",2090,"Adaptation","No Adaptation",-1.21888282466206e-06
-"District of Columbia","DC","ExtremeTemp","CCSM4","3",2090,"Adaptation","No Adaptation",-1.21888282466206e-06
-"District of Columbia","DC","ExtremeTemp","CanESM2","3",2090,"Adaptation","No Adaptation",-1.21888282466206e-06
-"District of Columbia","DC","ExtremeTemp","GFDL-CM3","3",2090,"Adaptation","No Adaptation",-1.18516545745149e-06
-"District of Columbia","DC","ExtremeTemp","GISS-E2-R","3",2090,"Adaptation","No Adaptation",-1.32003492629377e-06
-"District of Columbia","DC","ExtremeTemp","HadGEM2-ES","3",2090,"Adaptation","No Adaptation",-1.32003492629377e-06
-"District of Columbia","DC","ExtremeTemp","MIROC5","3",2090,"Adaptation","No Adaptation",-1.32003492629377e-06
-"District of Columbia","DC","ExtremeTemp","CCSM4","4",2090,"Adaptation","No Adaptation",-1.2863175590832e-06
-"District of Columbia","DC","ExtremeTemp","CanESM2","4",2090,"Adaptation","No Adaptation",-9.49143886977512e-07
-"District of Columbia","DC","ExtremeTemp","GFDL-CM3","4",2090,"Adaptation","No Adaptation",-1.25260019187263e-06
-"District of Columbia","DC","ExtremeTemp","HadGEM2-ES","4",2090,"Adaptation","No Adaptation",-1.25260019187263e-06
-"District of Columbia","DC","ExtremeTemp","MIROC5","4",2090,"Adaptation","No Adaptation",-1.32003492629377e-06
-"District of Columbia","DC","ExtremeTemp","CCSM4","5",2090,"Adaptation","No Adaptation",-1.2863175590832e-06
-"District of Columbia","DC","ExtremeTemp","CanESM2","5",2090,"Adaptation","No Adaptation",-1.32003492629377e-06
-"District of Columbia","DC","ExtremeTemp","GFDL-CM3","5",2090,"Adaptation","No Adaptation",-1.35375229350434e-06
-"District of Columbia","DC","ExtremeTemp","HadGEM2-ES","5",2090,"Adaptation","No Adaptation",-1.32003492629377e-06
-"District of Columbia","DC","ExtremeTemp","MIROC5","5",2090,"Adaptation","No Adaptation",-1.35375229350434e-06
-"District of Columbia","DC","ExtremeTemp","CanESM2","6",2090,"Adaptation","No Adaptation",-1.2863175590832e-06
-"District of Columbia","DC","ExtremeTemp","GFDL-CM3","6",2090,"Adaptation","No Adaptation",-1.35375229350434e-06
-"District of Columbia","DC","ExtremeTemp","HadGEM2-ES","6",2090,"Adaptation","No Adaptation",-1.35375229350434e-06
 "District of Columbia","DC","ExtremeTemp","CCSM4","1",2090,"cold","No Adaptation",-5.78252847661253e-07
 "District of Columbia","DC","ExtremeTemp","CanESM2","1",2090,"cold","No Adaptation",-9.15426519766942e-07
 "District of Columbia","DC","ExtremeTemp","GFDL-CM3","1",2090,"cold","No Adaptation",-8.81709152556374e-07
@@ -3843,6 +3843,37 @@
 "Georgia","GA","ExtremeTemp","CanESM2","6",2090,"hot","No Adaptation",7.8676140911647e-05
 "Georgia","GA","ExtremeTemp","GFDL-CM3","6",2090,"hot","No Adaptation",8.11594743088266e-05
 "Georgia","GA","ExtremeTemp","HadGEM2-ES","6",2090,"hot","No Adaptation",9.3658919074631e-05
+"Illinois","IL","ExtremeTemp","CCSM4","1",2090,"cold","Adaptation",-4.14178313415524e-07
+"Illinois","IL","ExtremeTemp","CanESM2","1",2090,"cold","Adaptation",-9.31098534034863e-08
+"Illinois","IL","ExtremeTemp","GFDL-CM3","1",2090,"cold","Adaptation",-4.14178313415524e-07
+"Illinois","IL","ExtremeTemp","GISS-E2-R","1",2090,"cold","Adaptation",-8.63674157432376e-07
+"Illinois","IL","ExtremeTemp","HadGEM2-ES","1",2090,"cold","Adaptation",-3.49964621413117e-07
+"Illinois","IL","ExtremeTemp","MIROC5","1",2090,"cold","Adaptation",6.74243766025277e-08
+"Illinois","IL","ExtremeTemp","CCSM4","2",2090,"cold","Adaptation",-4.78392005417931e-07
+"Illinois","IL","ExtremeTemp","CanESM2","2",2090,"cold","Adaptation",-5.42605697420339e-07
+"Illinois","IL","ExtremeTemp","GFDL-CM3","2",2090,"cold","Adaptation",-7.3524677342756e-07
+"Illinois","IL","ExtremeTemp","GISS-E2-R","2",2090,"cold","Adaptation",-7.3524677342756e-07
+"Illinois","IL","ExtremeTemp","HadGEM2-ES","2",2090,"cold","Adaptation",-5.74712543421542e-07
+"Illinois","IL","ExtremeTemp","MIROC5","2",2090,"cold","Adaptation",-2.85750929410708e-07
+"Illinois","IL","ExtremeTemp","CCSM4","3",2090,"cold","Adaptation",-7.03139927426357e-07
+"Illinois","IL","ExtremeTemp","CanESM2","3",2090,"cold","Adaptation",-7.99460465429968e-07
+"Illinois","IL","ExtremeTemp","GFDL-CM3","3",2090,"cold","Adaptation",-5.10498851419134e-07
+"Illinois","IL","ExtremeTemp","GISS-E2-R","3",2090,"cold","Adaptation",-7.67353619428765e-07
+"Illinois","IL","ExtremeTemp","HadGEM2-ES","3",2090,"cold","Adaptation",-7.3524677342756e-07
+"Illinois","IL","ExtremeTemp","MIROC5","3",2090,"cold","Adaptation",-6.3892623542395e-07
+"Illinois","IL","ExtremeTemp","CCSM4","4",2090,"cold","Adaptation",-1.02420838743839e-06
+"Illinois","IL","ExtremeTemp","CanESM2","4",2090,"cold","Adaptation",-4.46285159416727e-07
+"Illinois","IL","ExtremeTemp","GFDL-CM3","4",2090,"cold","Adaptation",-8.31567311431172e-07
+"Illinois","IL","ExtremeTemp","HadGEM2-ES","4",2090,"cold","Adaptation",-9.27887849434783e-07
+"Illinois","IL","ExtremeTemp","MIROC5","4",2090,"cold","Adaptation",-8.63674157432376e-07
+"Illinois","IL","ExtremeTemp","CCSM4","5",2090,"cold","Adaptation",-9.9210154143719e-07
+"Illinois","IL","ExtremeTemp","CanESM2","5",2090,"cold","Adaptation",-1.02420838743839e-06
+"Illinois","IL","ExtremeTemp","GFDL-CM3","5",2090,"cold","Adaptation",-1.02420838743839e-06
+"Illinois","IL","ExtremeTemp","HadGEM2-ES","5",2090,"cold","Adaptation",-1.02420838743839e-06
+"Illinois","IL","ExtremeTemp","MIROC5","5",2090,"cold","Adaptation",-1.02420838743839e-06
+"Illinois","IL","ExtremeTemp","CanESM2","6",2090,"cold","Adaptation",-9.9210154143719e-07
+"Illinois","IL","ExtremeTemp","GFDL-CM3","6",2090,"cold","Adaptation",-1.02420838743839e-06
+"Illinois","IL","ExtremeTemp","HadGEM2-ES","6",2090,"cold","Adaptation",-1.02420838743839e-06
 "Illinois","IL","ExtremeTemp","CCSM4","1",2090,"hot","Adaptation",-5.55977580995389e-08
 "Illinois","IL","ExtremeTemp","CanESM2","1",2090,"hot","Adaptation",5.50923239349975e-07
 "Illinois","IL","ExtremeTemp","GFDL-CM3","1",2090,"hot","Adaptation",1.15744423679948e-06
@@ -3874,37 +3905,6 @@
 "Illinois","IL","ExtremeTemp","CanESM2","6",2090,"hot","Adaptation",1.35911246845145e-05
 "Illinois","IL","ExtremeTemp","GFDL-CM3","6",2090,"hot","Adaptation",2.64291524638626e-05
 "Illinois","IL","ExtremeTemp","HadGEM2-ES","6",2090,"hot","Adaptation",3.04726257801926e-05
-"Illinois","IL","ExtremeTemp","CCSM4","1",2090,"Adaptation","No Adaptation",-4.14178313415524e-07
-"Illinois","IL","ExtremeTemp","CanESM2","1",2090,"Adaptation","No Adaptation",-9.31098534034863e-08
-"Illinois","IL","ExtremeTemp","GFDL-CM3","1",2090,"Adaptation","No Adaptation",-4.14178313415524e-07
-"Illinois","IL","ExtremeTemp","GISS-E2-R","1",2090,"Adaptation","No Adaptation",-8.63674157432376e-07
-"Illinois","IL","ExtremeTemp","HadGEM2-ES","1",2090,"Adaptation","No Adaptation",-3.49964621413117e-07
-"Illinois","IL","ExtremeTemp","MIROC5","1",2090,"Adaptation","No Adaptation",6.74243766025277e-08
-"Illinois","IL","ExtremeTemp","CCSM4","2",2090,"Adaptation","No Adaptation",-4.78392005417931e-07
-"Illinois","IL","ExtremeTemp","CanESM2","2",2090,"Adaptation","No Adaptation",-5.42605697420339e-07
-"Illinois","IL","ExtremeTemp","GFDL-CM3","2",2090,"Adaptation","No Adaptation",-7.3524677342756e-07
-"Illinois","IL","ExtremeTemp","GISS-E2-R","2",2090,"Adaptation","No Adaptation",-7.3524677342756e-07
-"Illinois","IL","ExtremeTemp","HadGEM2-ES","2",2090,"Adaptation","No Adaptation",-5.74712543421542e-07
-"Illinois","IL","ExtremeTemp","MIROC5","2",2090,"Adaptation","No Adaptation",-2.85750929410708e-07
-"Illinois","IL","ExtremeTemp","CCSM4","3",2090,"Adaptation","No Adaptation",-7.03139927426357e-07
-"Illinois","IL","ExtremeTemp","CanESM2","3",2090,"Adaptation","No Adaptation",-7.99460465429968e-07
-"Illinois","IL","ExtremeTemp","GFDL-CM3","3",2090,"Adaptation","No Adaptation",-5.10498851419134e-07
-"Illinois","IL","ExtremeTemp","GISS-E2-R","3",2090,"Adaptation","No Adaptation",-7.67353619428765e-07
-"Illinois","IL","ExtremeTemp","HadGEM2-ES","3",2090,"Adaptation","No Adaptation",-7.3524677342756e-07
-"Illinois","IL","ExtremeTemp","MIROC5","3",2090,"Adaptation","No Adaptation",-6.3892623542395e-07
-"Illinois","IL","ExtremeTemp","CCSM4","4",2090,"Adaptation","No Adaptation",-1.02420838743839e-06
-"Illinois","IL","ExtremeTemp","CanESM2","4",2090,"Adaptation","No Adaptation",-4.46285159416727e-07
-"Illinois","IL","ExtremeTemp","GFDL-CM3","4",2090,"Adaptation","No Adaptation",-8.31567311431172e-07
-"Illinois","IL","ExtremeTemp","HadGEM2-ES","4",2090,"Adaptation","No Adaptation",-9.27887849434783e-07
-"Illinois","IL","ExtremeTemp","MIROC5","4",2090,"Adaptation","No Adaptation",-8.63674157432376e-07
-"Illinois","IL","ExtremeTemp","CCSM4","5",2090,"Adaptation","No Adaptation",-9.9210154143719e-07
-"Illinois","IL","ExtremeTemp","CanESM2","5",2090,"Adaptation","No Adaptation",-1.02420838743839e-06
-"Illinois","IL","ExtremeTemp","GFDL-CM3","5",2090,"Adaptation","No Adaptation",-1.02420838743839e-06
-"Illinois","IL","ExtremeTemp","HadGEM2-ES","5",2090,"Adaptation","No Adaptation",-1.02420838743839e-06
-"Illinois","IL","ExtremeTemp","MIROC5","5",2090,"Adaptation","No Adaptation",-1.02420838743839e-06
-"Illinois","IL","ExtremeTemp","CanESM2","6",2090,"Adaptation","No Adaptation",-9.9210154143719e-07
-"Illinois","IL","ExtremeTemp","GFDL-CM3","6",2090,"Adaptation","No Adaptation",-1.02420838743839e-06
-"Illinois","IL","ExtremeTemp","HadGEM2-ES","6",2090,"Adaptation","No Adaptation",-1.02420838743839e-06
 "Illinois","IL","ExtremeTemp","CCSM4","1",2090,"cold","No Adaptation",-4.14178313415524e-07
 "Illinois","IL","ExtremeTemp","CanESM2","1",2090,"cold","No Adaptation",-9.31098534034863e-08
 "Illinois","IL","ExtremeTemp","GFDL-CM3","1",2090,"cold","No Adaptation",-4.14178313415524e-07
@@ -3967,6 +3967,37 @@
 "Illinois","IL","ExtremeTemp","CanESM2","6",2090,"hot","No Adaptation",0.000102396801164547
 "Illinois","IL","ExtremeTemp","GFDL-CM3","6",2090,"hot","No Adaptation",0.000133453492753864
 "Illinois","IL","ExtremeTemp","HadGEM2-ES","6",2090,"hot","No Adaptation",0.000129300563064595
+"Indiana","IN","ExtremeTemp","CCSM4","1",2090,"cold","Adaptation",-4.0172770822842e-07
+"Indiana","IN","ExtremeTemp","CanESM2","1",2090,"cold","Adaptation",5.47810511220585e-08
+"Indiana","IN","ExtremeTemp","GFDL-CM3","1",2090,"cold","Adaptation",-7.21283839773756e-07
+"Indiana","IN","ExtremeTemp","GISS-E2-R","1",2090,"cold","Adaptation",-7.66934715708805e-07
+"Indiana","IN","ExtremeTemp","HadGEM2-ES","1",2090,"cold","Adaptation",-2.19124204488229e-07
+"Indiana","IN","ExtremeTemp","MIROC5","1",2090,"cold","Adaptation",-2.19124204488229e-07
+"Indiana","IN","ExtremeTemp","CCSM4","2",2090,"cold","Adaptation",-5.38680336033564e-07
+"Indiana","IN","ExtremeTemp","CanESM2","2",2090,"cold","Adaptation",-6.2998208790366e-07
+"Indiana","IN","ExtremeTemp","GFDL-CM3","2",2090,"cold","Adaptation",-9.03887343513948e-07
+"Indiana","IN","ExtremeTemp","GISS-E2-R","2",2090,"cold","Adaptation",-8.58236467578901e-07
+"Indiana","IN","ExtremeTemp","HadGEM2-ES","2",2090,"cold","Adaptation",-7.66934715708805e-07
+"Indiana","IN","ExtremeTemp","MIROC5","2",2090,"cold","Adaptation",-7.21283839773756e-07
+"Indiana","IN","ExtremeTemp","CCSM4","3",2090,"cold","Adaptation",-8.58236467578901e-07
+"Indiana","IN","ExtremeTemp","CanESM2","3",2090,"cold","Adaptation",-8.58236467578901e-07
+"Indiana","IN","ExtremeTemp","GFDL-CM3","3",2090,"cold","Adaptation",-7.21283839773756e-07
+"Indiana","IN","ExtremeTemp","GISS-E2-R","3",2090,"cold","Adaptation",-6.2998208790366e-07
+"Indiana","IN","ExtremeTemp","HadGEM2-ES","3",2090,"cold","Adaptation",-7.21283839773756e-07
+"Indiana","IN","ExtremeTemp","MIROC5","3",2090,"cold","Adaptation",-7.21283839773756e-07
+"Indiana","IN","ExtremeTemp","CCSM4","4",2090,"cold","Adaptation",-6.75632963838708e-07
+"Indiana","IN","ExtremeTemp","CanESM2","4",2090,"cold","Adaptation",-6.75632963838708e-07
+"Indiana","IN","ExtremeTemp","GFDL-CM3","4",2090,"cold","Adaptation",-8.12585591643852e-07
+"Indiana","IN","ExtremeTemp","HadGEM2-ES","4",2090,"cold","Adaptation",-6.75632963838708e-07
+"Indiana","IN","ExtremeTemp","MIROC5","4",2090,"cold","Adaptation",-8.58236467578901e-07
+"Indiana","IN","ExtremeTemp","CCSM4","5",2090,"cold","Adaptation",-8.58236467578901e-07
+"Indiana","IN","ExtremeTemp","CanESM2","5",2090,"cold","Adaptation",-9.03887343513948e-07
+"Indiana","IN","ExtremeTemp","GFDL-CM3","5",2090,"cold","Adaptation",-8.12585591643852e-07
+"Indiana","IN","ExtremeTemp","HadGEM2-ES","5",2090,"cold","Adaptation",-8.58236467578901e-07
+"Indiana","IN","ExtremeTemp","MIROC5","5",2090,"cold","Adaptation",-8.58236467578901e-07
+"Indiana","IN","ExtremeTemp","CanESM2","6",2090,"cold","Adaptation",-9.03887343513948e-07
+"Indiana","IN","ExtremeTemp","GFDL-CM3","6",2090,"cold","Adaptation",-9.03887343513948e-07
+"Indiana","IN","ExtremeTemp","HadGEM2-ES","6",2090,"cold","Adaptation",-9.03887343513948e-07
 "Indiana","IN","ExtremeTemp","CCSM4","1",2090,"hot","Adaptation",1.43256880340636e-07
 "Indiana","IN","ExtremeTemp","CanESM2","1",2090,"hot","Adaptation",0
 "Indiana","IN","ExtremeTemp","GFDL-CM3","1",2090,"hot","Adaptation",1.43256880340636e-07
@@ -3998,37 +4029,6 @@
 "Indiana","IN","ExtremeTemp","CanESM2","6",2090,"hot","Adaptation",1.71908256408763e-05
 "Indiana","IN","ExtremeTemp","GFDL-CM3","6",2090,"hot","Adaptation",3.76765595295873e-05
 "Indiana","IN","ExtremeTemp","HadGEM2-ES","6",2090,"hot","Adaptation",6.53251374353301e-05
-"Indiana","IN","ExtremeTemp","CCSM4","1",2090,"Adaptation","No Adaptation",-4.0172770822842e-07
-"Indiana","IN","ExtremeTemp","CanESM2","1",2090,"Adaptation","No Adaptation",5.47810511220585e-08
-"Indiana","IN","ExtremeTemp","GFDL-CM3","1",2090,"Adaptation","No Adaptation",-7.21283839773756e-07
-"Indiana","IN","ExtremeTemp","GISS-E2-R","1",2090,"Adaptation","No Adaptation",-7.66934715708805e-07
-"Indiana","IN","ExtremeTemp","HadGEM2-ES","1",2090,"Adaptation","No Adaptation",-2.19124204488229e-07
-"Indiana","IN","ExtremeTemp","MIROC5","1",2090,"Adaptation","No Adaptation",-2.19124204488229e-07
-"Indiana","IN","ExtremeTemp","CCSM4","2",2090,"Adaptation","No Adaptation",-5.38680336033564e-07
-"Indiana","IN","ExtremeTemp","CanESM2","2",2090,"Adaptation","No Adaptation",-6.2998208790366e-07
-"Indiana","IN","ExtremeTemp","GFDL-CM3","2",2090,"Adaptation","No Adaptation",-9.03887343513948e-07
-"Indiana","IN","ExtremeTemp","GISS-E2-R","2",2090,"Adaptation","No Adaptation",-8.58236467578901e-07
-"Indiana","IN","ExtremeTemp","HadGEM2-ES","2",2090,"Adaptation","No Adaptation",-7.66934715708805e-07
-"Indiana","IN","ExtremeTemp","MIROC5","2",2090,"Adaptation","No Adaptation",-7.21283839773756e-07
-"Indiana","IN","ExtremeTemp","CCSM4","3",2090,"Adaptation","No Adaptation",-8.58236467578901e-07
-"Indiana","IN","ExtremeTemp","CanESM2","3",2090,"Adaptation","No Adaptation",-8.58236467578901e-07
-"Indiana","IN","ExtremeTemp","GFDL-CM3","3",2090,"Adaptation","No Adaptation",-7.21283839773756e-07
-"Indiana","IN","ExtremeTemp","GISS-E2-R","3",2090,"Adaptation","No Adaptation",-6.2998208790366e-07
-"Indiana","IN","ExtremeTemp","HadGEM2-ES","3",2090,"Adaptation","No Adaptation",-7.21283839773756e-07
-"Indiana","IN","ExtremeTemp","MIROC5","3",2090,"Adaptation","No Adaptation",-7.21283839773756e-07
-"Indiana","IN","ExtremeTemp","CCSM4","4",2090,"Adaptation","No Adaptation",-6.75632963838708e-07
-"Indiana","IN","ExtremeTemp","CanESM2","4",2090,"Adaptation","No Adaptation",-6.75632963838708e-07
-"Indiana","IN","ExtremeTemp","GFDL-CM3","4",2090,"Adaptation","No Adaptation",-8.12585591643852e-07
-"Indiana","IN","ExtremeTemp","HadGEM2-ES","4",2090,"Adaptation","No Adaptation",-6.75632963838708e-07
-"Indiana","IN","ExtremeTemp","MIROC5","4",2090,"Adaptation","No Adaptation",-8.58236467578901e-07
-"Indiana","IN","ExtremeTemp","CCSM4","5",2090,"Adaptation","No Adaptation",-8.58236467578901e-07
-"Indiana","IN","ExtremeTemp","CanESM2","5",2090,"Adaptation","No Adaptation",-9.03887343513948e-07
-"Indiana","IN","ExtremeTemp","GFDL-CM3","5",2090,"Adaptation","No Adaptation",-8.12585591643852e-07
-"Indiana","IN","ExtremeTemp","HadGEM2-ES","5",2090,"Adaptation","No Adaptation",-8.58236467578901e-07
-"Indiana","IN","ExtremeTemp","MIROC5","5",2090,"Adaptation","No Adaptation",-8.58236467578901e-07
-"Indiana","IN","ExtremeTemp","CanESM2","6",2090,"Adaptation","No Adaptation",-9.03887343513948e-07
-"Indiana","IN","ExtremeTemp","GFDL-CM3","6",2090,"Adaptation","No Adaptation",-9.03887343513948e-07
-"Indiana","IN","ExtremeTemp","HadGEM2-ES","6",2090,"Adaptation","No Adaptation",-9.03887343513948e-07
 "Indiana","IN","ExtremeTemp","CCSM4","1",2090,"cold","No Adaptation",-4.0172770822842e-07
 "Indiana","IN","ExtremeTemp","CanESM2","1",2090,"cold","No Adaptation",5.47810511220585e-08
 "Indiana","IN","ExtremeTemp","GFDL-CM3","1",2090,"cold","No Adaptation",-7.21283839773756e-07
@@ -4060,6 +4060,37 @@
 "Indiana","IN","ExtremeTemp","CanESM2","6",2090,"cold","No Adaptation",-9.03887343513948e-07
 "Indiana","IN","ExtremeTemp","GFDL-CM3","6",2090,"cold","No Adaptation",-9.03887343513948e-07
 "Indiana","IN","ExtremeTemp","HadGEM2-ES","6",2090,"cold","No Adaptation",-9.03887343513948e-07
+"Kansas","KS","ExtremeTemp","CCSM4","1",2090,"cold","Adaptation",-2.5755773917957e-07
+"Kansas","KS","ExtremeTemp","CanESM2","1",2090,"cold","Adaptation",-2.8915991576602e-07
+"Kansas","KS","ExtremeTemp","GFDL-CM3","1",2090,"cold","Adaptation",-3.2076209235247e-07
+"Kansas","KS","ExtremeTemp","GISS-E2-R","1",2090,"cold","Adaptation",-5.41977328457623e-07
+"Kansas","KS","ExtremeTemp","HadGEM2-ES","1",2090,"cold","Adaptation",-6.79446796608676e-08
+"Kansas","KS","ExtremeTemp","MIROC5","1",2090,"cold","Adaptation",-2.25955562593119e-07
+"Kansas","KS","ExtremeTemp","CCSM4","2",2090,"cold","Adaptation",-3.2076209235247e-07
+"Kansas","KS","ExtremeTemp","CanESM2","2",2090,"cold","Adaptation",-5.73579505044073e-07
+"Kansas","KS","ExtremeTemp","GFDL-CM3","2",2090,"cold","Adaptation",-5.41977328457623e-07
+"Kansas","KS","ExtremeTemp","GISS-E2-R","2",2090,"cold","Adaptation",-5.41977328457623e-07
+"Kansas","KS","ExtremeTemp","HadGEM2-ES","2",2090,"cold","Adaptation",-3.2076209235247e-07
+"Kansas","KS","ExtremeTemp","MIROC5","2",2090,"cold","Adaptation",-1.62751209420219e-07
+"Kansas","KS","ExtremeTemp","CCSM4","3",2090,"cold","Adaptation",-5.41977328457623e-07
+"Kansas","KS","ExtremeTemp","CanESM2","3",2090,"cold","Adaptation",-5.73579505044073e-07
+"Kansas","KS","ExtremeTemp","GFDL-CM3","3",2090,"cold","Adaptation",-4.15568622111822e-07
+"Kansas","KS","ExtremeTemp","GISS-E2-R","3",2090,"cold","Adaptation",-4.15568622111822e-07
+"Kansas","KS","ExtremeTemp","HadGEM2-ES","3",2090,"cold","Adaptation",-5.41977328457623e-07
+"Kansas","KS","ExtremeTemp","MIROC5","3",2090,"cold","Adaptation",-3.83966445525372e-07
+"Kansas","KS","ExtremeTemp","CCSM4","4",2090,"cold","Adaptation",-5.73579505044073e-07
+"Kansas","KS","ExtremeTemp","CanESM2","4",2090,"cold","Adaptation",-5.73579505044073e-07
+"Kansas","KS","ExtremeTemp","GFDL-CM3","4",2090,"cold","Adaptation",-5.41977328457623e-07
+"Kansas","KS","ExtremeTemp","HadGEM2-ES","4",2090,"cold","Adaptation",-4.15568622111822e-07
+"Kansas","KS","ExtremeTemp","MIROC5","4",2090,"cold","Adaptation",-5.41977328457623e-07
+"Kansas","KS","ExtremeTemp","CCSM4","5",2090,"cold","Adaptation",-5.73579505044073e-07
+"Kansas","KS","ExtremeTemp","CanESM2","5",2090,"cold","Adaptation",-5.73579505044073e-07
+"Kansas","KS","ExtremeTemp","GFDL-CM3","5",2090,"cold","Adaptation",-5.41977328457623e-07
+"Kansas","KS","ExtremeTemp","HadGEM2-ES","5",2090,"cold","Adaptation",-5.73579505044073e-07
+"Kansas","KS","ExtremeTemp","MIROC5","5",2090,"cold","Adaptation",-5.73579505044073e-07
+"Kansas","KS","ExtremeTemp","CanESM2","6",2090,"cold","Adaptation",-5.73579505044073e-07
+"Kansas","KS","ExtremeTemp","GFDL-CM3","6",2090,"cold","Adaptation",-5.73579505044073e-07
+"Kansas","KS","ExtremeTemp","HadGEM2-ES","6",2090,"cold","Adaptation",-5.73579505044073e-07
 "Kansas","KS","ExtremeTemp","CCSM4","1",2090,"hot","Adaptation",4.98981150829971e-07
 "Kansas","KS","ExtremeTemp","CanESM2","1",2090,"hot","Adaptation",2.62230519691495e-06
 "Kansas","KS","ExtremeTemp","GFDL-CM3","1",2090,"hot","Adaptation",4.63946304069569e-06
@@ -4091,37 +4122,6 @@
 "Kansas","KS","ExtremeTemp","CanESM2","6",2090,"hot","Adaptation",4.53011185232229e-05
 "Kansas","KS","ExtremeTemp","GFDL-CM3","6",2090,"hot","Adaptation",5.9421223429688e-05
 "Kansas","KS","ExtremeTemp","HadGEM2-ES","6",2090,"hot","Adaptation",6.29247081057283e-05
-"Kansas","KS","ExtremeTemp","CCSM4","1",2090,"Adaptation","No Adaptation",-2.5755773917957e-07
-"Kansas","KS","ExtremeTemp","CanESM2","1",2090,"Adaptation","No Adaptation",-2.8915991576602e-07
-"Kansas","KS","ExtremeTemp","GFDL-CM3","1",2090,"Adaptation","No Adaptation",-3.2076209235247e-07
-"Kansas","KS","ExtremeTemp","GISS-E2-R","1",2090,"Adaptation","No Adaptation",-5.41977328457623e-07
-"Kansas","KS","ExtremeTemp","HadGEM2-ES","1",2090,"Adaptation","No Adaptation",-6.79446796608676e-08
-"Kansas","KS","ExtremeTemp","MIROC5","1",2090,"Adaptation","No Adaptation",-2.25955562593119e-07
-"Kansas","KS","ExtremeTemp","CCSM4","2",2090,"Adaptation","No Adaptation",-3.2076209235247e-07
-"Kansas","KS","ExtremeTemp","CanESM2","2",2090,"Adaptation","No Adaptation",-5.73579505044073e-07
-"Kansas","KS","ExtremeTemp","GFDL-CM3","2",2090,"Adaptation","No Adaptation",-5.41977328457623e-07
-"Kansas","KS","ExtremeTemp","GISS-E2-R","2",2090,"Adaptation","No Adaptation",-5.41977328457623e-07
-"Kansas","KS","ExtremeTemp","HadGEM2-ES","2",2090,"Adaptation","No Adaptation",-3.2076209235247e-07
-"Kansas","KS","ExtremeTemp","MIROC5","2",2090,"Adaptation","No Adaptation",-1.62751209420219e-07
-"Kansas","KS","ExtremeTemp","CCSM4","3",2090,"Adaptation","No Adaptation",-5.41977328457623e-07
-"Kansas","KS","ExtremeTemp","CanESM2","3",2090,"Adaptation","No Adaptation",-5.73579505044073e-07
-"Kansas","KS","ExtremeTemp","GFDL-CM3","3",2090,"Adaptation","No Adaptation",-4.15568622111822e-07
-"Kansas","KS","ExtremeTemp","GISS-E2-R","3",2090,"Adaptation","No Adaptation",-4.15568622111822e-07
-"Kansas","KS","ExtremeTemp","HadGEM2-ES","3",2090,"Adaptation","No Adaptation",-5.41977328457623e-07
-"Kansas","KS","ExtremeTemp","MIROC5","3",2090,"Adaptation","No Adaptation",-3.83966445525372e-07
-"Kansas","KS","ExtremeTemp","CCSM4","4",2090,"Adaptation","No Adaptation",-5.73579505044073e-07
-"Kansas","KS","ExtremeTemp","CanESM2","4",2090,"Adaptation","No Adaptation",-5.73579505044073e-07
-"Kansas","KS","ExtremeTemp","GFDL-CM3","4",2090,"Adaptation","No Adaptation",-5.41977328457623e-07
-"Kansas","KS","ExtremeTemp","HadGEM2-ES","4",2090,"Adaptation","No Adaptation",-4.15568622111822e-07
-"Kansas","KS","ExtremeTemp","MIROC5","4",2090,"Adaptation","No Adaptation",-5.41977328457623e-07
-"Kansas","KS","ExtremeTemp","CCSM4","5",2090,"Adaptation","No Adaptation",-5.73579505044073e-07
-"Kansas","KS","ExtremeTemp","CanESM2","5",2090,"Adaptation","No Adaptation",-5.73579505044073e-07
-"Kansas","KS","ExtremeTemp","GFDL-CM3","5",2090,"Adaptation","No Adaptation",-5.41977328457623e-07
-"Kansas","KS","ExtremeTemp","HadGEM2-ES","5",2090,"Adaptation","No Adaptation",-5.73579505044073e-07
-"Kansas","KS","ExtremeTemp","MIROC5","5",2090,"Adaptation","No Adaptation",-5.73579505044073e-07
-"Kansas","KS","ExtremeTemp","CanESM2","6",2090,"Adaptation","No Adaptation",-5.73579505044073e-07
-"Kansas","KS","ExtremeTemp","GFDL-CM3","6",2090,"Adaptation","No Adaptation",-5.73579505044073e-07
-"Kansas","KS","ExtremeTemp","HadGEM2-ES","6",2090,"Adaptation","No Adaptation",-5.73579505044073e-07
 "Kansas","KS","ExtremeTemp","CCSM4","1",2090,"cold","No Adaptation",-2.5755773917957e-07
 "Kansas","KS","ExtremeTemp","CanESM2","1",2090,"cold","No Adaptation",-2.8915991576602e-07
 "Kansas","KS","ExtremeTemp","GFDL-CM3","1",2090,"cold","No Adaptation",-3.2076209235247e-07
@@ -4184,6 +4184,37 @@
 "Kansas","KS","ExtremeTemp","CanESM2","6",2090,"hot","No Adaptation",8.66987867372366e-05
 "Kansas","KS","ExtremeTemp","GFDL-CM3","6",2090,"hot","No Adaptation",9.48949284216038e-05
 "Kansas","KS","ExtremeTemp","HadGEM2-ES","6",2090,"hot","No Adaptation",9.54413378672283e-05
+"Louisiana","LA","ExtremeTemp","CCSM4","1",2090,"cold","Adaptation",-6.44474933262292e-07
+"Louisiana","LA","ExtremeTemp","CanESM2","1",2090,"cold","Adaptation",4.22808395707114e-07
+"Louisiana","LA","ExtremeTemp","GFDL-CM3","1",2090,"cold","Adaptation",-3.57129421616682e-07
+"Louisiana","LA","ExtremeTemp","GISS-E2-R","1",2090,"cold","Adaptation",-6.85524292068808e-07
+"Louisiana","LA","ExtremeTemp","HadGEM2-ES","1",2090,"cold","Adaptation",2.58610960481052e-07
+"Louisiana","LA","ExtremeTemp","MIROC5","1",2090,"cold","Adaptation",-4.80277498036229e-07
+"Louisiana","LA","ExtremeTemp","CCSM4","2",2090,"cold","Adaptation",-4.80277498036229e-07
+"Louisiana","LA","ExtremeTemp","CanESM2","2",2090,"cold","Adaptation",1.35462884061507e-07
+"Louisiana","LA","ExtremeTemp","GFDL-CM3","2",2090,"cold","Adaptation",-5.21326856842744e-07
+"Louisiana","LA","ExtremeTemp","GISS-E2-R","2",2090,"cold","Adaptation",-8.49721727294871e-07
+"Louisiana","LA","ExtremeTemp","HadGEM2-ES","2",2090,"cold","Adaptation",-3.98178780423197e-07
+"Louisiana","LA","ExtremeTemp","MIROC5","2",2090,"cold","Adaptation",-2.75030704003651e-07
+"Louisiana","LA","ExtremeTemp","CCSM4","3",2090,"cold","Adaptation",-3.98178780423197e-07
+"Louisiana","LA","ExtremeTemp","CanESM2","3",2090,"cold","Adaptation",-6.03425574455776e-07
+"Louisiana","LA","ExtremeTemp","GFDL-CM3","3",2090,"cold","Adaptation",-1.5188262758411e-07
+"Louisiana","LA","ExtremeTemp","GISS-E2-R","3",2090,"cold","Adaptation",-6.85524292068808e-07
+"Louisiana","LA","ExtremeTemp","HadGEM2-ES","3",2090,"cold","Adaptation",-6.03425574455776e-07
+"Louisiana","LA","ExtremeTemp","MIROC5","3",2090,"cold","Adaptation",-5.62376215649261e-07
+"Louisiana","LA","ExtremeTemp","CCSM4","4",2090,"cold","Adaptation",-8.49721727294871e-07
+"Louisiana","LA","ExtremeTemp","CanESM2","4",2090,"cold","Adaptation",-6.03425574455776e-07
+"Louisiana","LA","ExtremeTemp","GFDL-CM3","4",2090,"cold","Adaptation",-6.03425574455776e-07
+"Louisiana","LA","ExtremeTemp","HadGEM2-ES","4",2090,"cold","Adaptation",-7.67623009681839e-07
+"Louisiana","LA","ExtremeTemp","MIROC5","4",2090,"cold","Adaptation",-7.67623009681839e-07
+"Louisiana","LA","ExtremeTemp","CCSM4","5",2090,"cold","Adaptation",-8.90771086101387e-07
+"Louisiana","LA","ExtremeTemp","CanESM2","5",2090,"cold","Adaptation",-1.05496852132745e-06
+"Louisiana","LA","ExtremeTemp","GFDL-CM3","5",2090,"cold","Adaptation",-9.31820444907902e-07
+"Louisiana","LA","ExtremeTemp","HadGEM2-ES","5",2090,"cold","Adaptation",-9.31820444907902e-07
+"Louisiana","LA","ExtremeTemp","MIROC5","5",2090,"cold","Adaptation",-1.178116597747e-06
+"Louisiana","LA","ExtremeTemp","CanESM2","6",2090,"cold","Adaptation",-9.31820444907902e-07
+"Louisiana","LA","ExtremeTemp","GFDL-CM3","6",2090,"cold","Adaptation",-1.05496852132745e-06
+"Louisiana","LA","ExtremeTemp","HadGEM2-ES","6",2090,"cold","Adaptation",-1.178116597747e-06
 "Louisiana","LA","ExtremeTemp","CCSM4","1",2090,"hot","Adaptation",6.19076145688898e-07
 "Louisiana","LA","ExtremeTemp","CanESM2","1",2090,"hot","Adaptation",4.28299619160278e-06
 "Louisiana","LA","ExtremeTemp","GFDL-CM3","1",2090,"hot","Adaptation",3.27225962721275e-06
@@ -4215,37 +4246,6 @@
 "Louisiana","LA","ExtremeTemp","CanESM2","6",2090,"hot","Adaptation",6.97281887358577e-05
 "Louisiana","LA","ExtremeTemp","GFDL-CM3","6",2090,"hot","Adaptation",0.000137321196479441
 "Louisiana","LA","ExtremeTemp","HadGEM2-ES","6",2090,"hot","Adaptation",0.000117485491403287
-"Louisiana","LA","ExtremeTemp","CCSM4","1",2090,"Adaptation","No Adaptation",-6.44474933262292e-07
-"Louisiana","LA","ExtremeTemp","CanESM2","1",2090,"Adaptation","No Adaptation",4.22808395707114e-07
-"Louisiana","LA","ExtremeTemp","GFDL-CM3","1",2090,"Adaptation","No Adaptation",-3.57129421616682e-07
-"Louisiana","LA","ExtremeTemp","GISS-E2-R","1",2090,"Adaptation","No Adaptation",-6.85524292068808e-07
-"Louisiana","LA","ExtremeTemp","HadGEM2-ES","1",2090,"Adaptation","No Adaptation",2.58610960481052e-07
-"Louisiana","LA","ExtremeTemp","MIROC5","1",2090,"Adaptation","No Adaptation",-4.80277498036229e-07
-"Louisiana","LA","ExtremeTemp","CCSM4","2",2090,"Adaptation","No Adaptation",-4.80277498036229e-07
-"Louisiana","LA","ExtremeTemp","CanESM2","2",2090,"Adaptation","No Adaptation",1.35462884061507e-07
-"Louisiana","LA","ExtremeTemp","GFDL-CM3","2",2090,"Adaptation","No Adaptation",-5.21326856842744e-07
-"Louisiana","LA","ExtremeTemp","GISS-E2-R","2",2090,"Adaptation","No Adaptation",-8.49721727294871e-07
-"Louisiana","LA","ExtremeTemp","HadGEM2-ES","2",2090,"Adaptation","No Adaptation",-3.98178780423197e-07
-"Louisiana","LA","ExtremeTemp","MIROC5","2",2090,"Adaptation","No Adaptation",-2.75030704003651e-07
-"Louisiana","LA","ExtremeTemp","CCSM4","3",2090,"Adaptation","No Adaptation",-3.98178780423197e-07
-"Louisiana","LA","ExtremeTemp","CanESM2","3",2090,"Adaptation","No Adaptation",-6.03425574455776e-07
-"Louisiana","LA","ExtremeTemp","GFDL-CM3","3",2090,"Adaptation","No Adaptation",-1.5188262758411e-07
-"Louisiana","LA","ExtremeTemp","GISS-E2-R","3",2090,"Adaptation","No Adaptation",-6.85524292068808e-07
-"Louisiana","LA","ExtremeTemp","HadGEM2-ES","3",2090,"Adaptation","No Adaptation",-6.03425574455776e-07
-"Louisiana","LA","ExtremeTemp","MIROC5","3",2090,"Adaptation","No Adaptation",-5.62376215649261e-07
-"Louisiana","LA","ExtremeTemp","CCSM4","4",2090,"Adaptation","No Adaptation",-8.49721727294871e-07
-"Louisiana","LA","ExtremeTemp","CanESM2","4",2090,"Adaptation","No Adaptation",-6.03425574455776e-07
-"Louisiana","LA","ExtremeTemp","GFDL-CM3","4",2090,"Adaptation","No Adaptation",-6.03425574455776e-07
-"Louisiana","LA","ExtremeTemp","HadGEM2-ES","4",2090,"Adaptation","No Adaptation",-7.67623009681839e-07
-"Louisiana","LA","ExtremeTemp","MIROC5","4",2090,"Adaptation","No Adaptation",-7.67623009681839e-07
-"Louisiana","LA","ExtremeTemp","CCSM4","5",2090,"Adaptation","No Adaptation",-8.90771086101387e-07
-"Louisiana","LA","ExtremeTemp","CanESM2","5",2090,"Adaptation","No Adaptation",-1.05496852132745e-06
-"Louisiana","LA","ExtremeTemp","GFDL-CM3","5",2090,"Adaptation","No Adaptation",-9.31820444907902e-07
-"Louisiana","LA","ExtremeTemp","HadGEM2-ES","5",2090,"Adaptation","No Adaptation",-9.31820444907902e-07
-"Louisiana","LA","ExtremeTemp","MIROC5","5",2090,"Adaptation","No Adaptation",-1.178116597747e-06
-"Louisiana","LA","ExtremeTemp","CanESM2","6",2090,"Adaptation","No Adaptation",-9.31820444907902e-07
-"Louisiana","LA","ExtremeTemp","GFDL-CM3","6",2090,"Adaptation","No Adaptation",-1.05496852132745e-06
-"Louisiana","LA","ExtremeTemp","HadGEM2-ES","6",2090,"Adaptation","No Adaptation",-1.178116597747e-06
 "Louisiana","LA","ExtremeTemp","CCSM4","1",2090,"cold","No Adaptation",-6.44474933262292e-07
 "Louisiana","LA","ExtremeTemp","CanESM2","1",2090,"cold","No Adaptation",4.22808395707114e-07
 "Louisiana","LA","ExtremeTemp","GFDL-CM3","1",2090,"cold","No Adaptation",-3.57129421616682e-07
@@ -4370,6 +4370,37 @@
 "Massachusetts","MA","ExtremeTemp","CanESM2","6",2090,"hot","No Adaptation",8.84019108941689e-05
 "Massachusetts","MA","ExtremeTemp","GFDL-CM3","6",2090,"hot","No Adaptation",7.82988353634068e-05
 "Massachusetts","MA","ExtremeTemp","HadGEM2-ES","6",2090,"hot","No Adaptation",6.80847370246143e-05
+"Maryland","MD","ExtremeTemp","CCSM4","1",2090,"cold","Adaptation",-3.46142865245596e-07
+"Maryland","MD","ExtremeTemp","CanESM2","1",2090,"cold","Adaptation",-8.43593689550642e-07
+"Maryland","MD","ExtremeTemp","GFDL-CM3","1",2090,"cold","Adaptation",-7.60685218833134e-07
+"Maryland","MD","ExtremeTemp","GISS-E2-R","1",2090,"cold","Adaptation",-1.21668180777943e-06
+"Maryland","MD","ExtremeTemp","HadGEM2-ES","1",2090,"cold","Adaptation",-1.00941063098566e-06
+"Maryland","MD","ExtremeTemp","MIROC5","1",2090,"cold","Adaptation",-5.53414042039368e-07
+"Maryland","MD","ExtremeTemp","CCSM4","2",2090,"cold","Adaptation",-8.85047924909396e-07
+"Maryland","MD","ExtremeTemp","CanESM2","2",2090,"cold","Adaptation",-1.09231910170317e-06
+"Maryland","MD","ExtremeTemp","GFDL-CM3","2",2090,"cold","Adaptation",-1.25813604313818e-06
+"Maryland","MD","ExtremeTemp","GISS-E2-R","2",2090,"cold","Adaptation",-1.21668180777943e-06
+"Maryland","MD","ExtremeTemp","HadGEM2-ES","2",2090,"cold","Adaptation",-1.17522757242068e-06
+"Maryland","MD","ExtremeTemp","MIROC5","2",2090,"cold","Adaptation",-1.21668180777943e-06
+"Maryland","MD","ExtremeTemp","CCSM4","3",2090,"cold","Adaptation",-1.05086486634441e-06
+"Maryland","MD","ExtremeTemp","CanESM2","3",2090,"cold","Adaptation",-1.09231910170317e-06
+"Maryland","MD","ExtremeTemp","GFDL-CM3","3",2090,"cold","Adaptation",-1.17522757242068e-06
+"Maryland","MD","ExtremeTemp","GISS-E2-R","3",2090,"cold","Adaptation",-1.25813604313818e-06
+"Maryland","MD","ExtremeTemp","HadGEM2-ES","3",2090,"cold","Adaptation",-1.25813604313818e-06
+"Maryland","MD","ExtremeTemp","MIROC5","3",2090,"cold","Adaptation",-1.29959027849694e-06
+"Maryland","MD","ExtremeTemp","CCSM4","4",2090,"cold","Adaptation",-1.21668180777943e-06
+"Maryland","MD","ExtremeTemp","CanESM2","4",2090,"cold","Adaptation",-9.67956395626905e-07
+"Maryland","MD","ExtremeTemp","GFDL-CM3","4",2090,"cold","Adaptation",-1.29959027849694e-06
+"Maryland","MD","ExtremeTemp","HadGEM2-ES","4",2090,"cold","Adaptation",-1.13377333706192e-06
+"Maryland","MD","ExtremeTemp","MIROC5","4",2090,"cold","Adaptation",-1.29959027849694e-06
+"Maryland","MD","ExtremeTemp","CCSM4","5",2090,"cold","Adaptation",-1.21668180777943e-06
+"Maryland","MD","ExtremeTemp","CanESM2","5",2090,"cold","Adaptation",-1.25813604313818e-06
+"Maryland","MD","ExtremeTemp","GFDL-CM3","5",2090,"cold","Adaptation",-1.29959027849694e-06
+"Maryland","MD","ExtremeTemp","HadGEM2-ES","5",2090,"cold","Adaptation",-1.29959027849694e-06
+"Maryland","MD","ExtremeTemp","MIROC5","5",2090,"cold","Adaptation",-1.29959027849694e-06
+"Maryland","MD","ExtremeTemp","CanESM2","6",2090,"cold","Adaptation",-1.25813604313818e-06
+"Maryland","MD","ExtremeTemp","GFDL-CM3","6",2090,"cold","Adaptation",-1.29959027849694e-06
+"Maryland","MD","ExtremeTemp","HadGEM2-ES","6",2090,"cold","Adaptation",-1.29959027849694e-06
 "Maryland","MD","ExtremeTemp","CCSM4","1",2090,"hot","Adaptation",0
 "Maryland","MD","ExtremeTemp","CanESM2","1",2090,"hot","Adaptation",2.60855868743751e-07
 "Maryland","MD","ExtremeTemp","GFDL-CM3","1",2090,"hot","Adaptation",5.21711737487502e-07
@@ -4401,37 +4432,6 @@
 "Maryland","MD","ExtremeTemp","CanESM2","6",2090,"hot","Adaptation",4.12152272615126e-05
 "Maryland","MD","ExtremeTemp","GFDL-CM3","6",2090,"hot","Adaptation",4.81279077832221e-05
 "Maryland","MD","ExtremeTemp","HadGEM2-ES","6",2090,"hot","Adaptation",5.02147547331721e-05
-"Maryland","MD","ExtremeTemp","CCSM4","1",2090,"Adaptation","No Adaptation",-3.46142865245596e-07
-"Maryland","MD","ExtremeTemp","CanESM2","1",2090,"Adaptation","No Adaptation",-8.43593689550642e-07
-"Maryland","MD","ExtremeTemp","GFDL-CM3","1",2090,"Adaptation","No Adaptation",-7.60685218833134e-07
-"Maryland","MD","ExtremeTemp","GISS-E2-R","1",2090,"Adaptation","No Adaptation",-1.21668180777943e-06
-"Maryland","MD","ExtremeTemp","HadGEM2-ES","1",2090,"Adaptation","No Adaptation",-1.00941063098566e-06
-"Maryland","MD","ExtremeTemp","MIROC5","1",2090,"Adaptation","No Adaptation",-5.53414042039368e-07
-"Maryland","MD","ExtremeTemp","CCSM4","2",2090,"Adaptation","No Adaptation",-8.85047924909396e-07
-"Maryland","MD","ExtremeTemp","CanESM2","2",2090,"Adaptation","No Adaptation",-1.09231910170317e-06
-"Maryland","MD","ExtremeTemp","GFDL-CM3","2",2090,"Adaptation","No Adaptation",-1.25813604313818e-06
-"Maryland","MD","ExtremeTemp","GISS-E2-R","2",2090,"Adaptation","No Adaptation",-1.21668180777943e-06
-"Maryland","MD","ExtremeTemp","HadGEM2-ES","2",2090,"Adaptation","No Adaptation",-1.17522757242068e-06
-"Maryland","MD","ExtremeTemp","MIROC5","2",2090,"Adaptation","No Adaptation",-1.21668180777943e-06
-"Maryland","MD","ExtremeTemp","CCSM4","3",2090,"Adaptation","No Adaptation",-1.05086486634441e-06
-"Maryland","MD","ExtremeTemp","CanESM2","3",2090,"Adaptation","No Adaptation",-1.09231910170317e-06
-"Maryland","MD","ExtremeTemp","GFDL-CM3","3",2090,"Adaptation","No Adaptation",-1.17522757242068e-06
-"Maryland","MD","ExtremeTemp","GISS-E2-R","3",2090,"Adaptation","No Adaptation",-1.25813604313818e-06
-"Maryland","MD","ExtremeTemp","HadGEM2-ES","3",2090,"Adaptation","No Adaptation",-1.25813604313818e-06
-"Maryland","MD","ExtremeTemp","MIROC5","3",2090,"Adaptation","No Adaptation",-1.29959027849694e-06
-"Maryland","MD","ExtremeTemp","CCSM4","4",2090,"Adaptation","No Adaptation",-1.21668180777943e-06
-"Maryland","MD","ExtremeTemp","CanESM2","4",2090,"Adaptation","No Adaptation",-9.67956395626905e-07
-"Maryland","MD","ExtremeTemp","GFDL-CM3","4",2090,"Adaptation","No Adaptation",-1.29959027849694e-06
-"Maryland","MD","ExtremeTemp","HadGEM2-ES","4",2090,"Adaptation","No Adaptation",-1.13377333706192e-06
-"Maryland","MD","ExtremeTemp","MIROC5","4",2090,"Adaptation","No Adaptation",-1.29959027849694e-06
-"Maryland","MD","ExtremeTemp","CCSM4","5",2090,"Adaptation","No Adaptation",-1.21668180777943e-06
-"Maryland","MD","ExtremeTemp","CanESM2","5",2090,"Adaptation","No Adaptation",-1.25813604313818e-06
-"Maryland","MD","ExtremeTemp","GFDL-CM3","5",2090,"Adaptation","No Adaptation",-1.29959027849694e-06
-"Maryland","MD","ExtremeTemp","HadGEM2-ES","5",2090,"Adaptation","No Adaptation",-1.29959027849694e-06
-"Maryland","MD","ExtremeTemp","MIROC5","5",2090,"Adaptation","No Adaptation",-1.29959027849694e-06
-"Maryland","MD","ExtremeTemp","CanESM2","6",2090,"Adaptation","No Adaptation",-1.25813604313818e-06
-"Maryland","MD","ExtremeTemp","GFDL-CM3","6",2090,"Adaptation","No Adaptation",-1.29959027849694e-06
-"Maryland","MD","ExtremeTemp","HadGEM2-ES","6",2090,"Adaptation","No Adaptation",-1.29959027849694e-06
 "Maryland","MD","ExtremeTemp","CCSM4","1",2090,"cold","No Adaptation",-3.46142865245596e-07
 "Maryland","MD","ExtremeTemp","CanESM2","1",2090,"cold","No Adaptation",-8.43593689550642e-07
 "Maryland","MD","ExtremeTemp","GFDL-CM3","1",2090,"cold","No Adaptation",-7.60685218833134e-07
@@ -4494,6 +4494,37 @@
 "Maryland","MD","ExtremeTemp","CanESM2","6",2090,"hot","No Adaptation",0.000133791824025699
 "Maryland","MD","ExtremeTemp","GFDL-CM3","6",2090,"hot","No Adaptation",0.000122233743989766
 "Maryland","MD","ExtremeTemp","HadGEM2-ES","6",2090,"hot","No Adaptation",0.00011603184738512
+"Michigan","MI","ExtremeTemp","CCSM4","1",2090,"cold","Adaptation",-6.76313083118643e-07
+"Michigan","MI","ExtremeTemp","CanESM2","1",2090,"cold","Adaptation",-2.19087336784913e-07
+"Michigan","MI","ExtremeTemp","GFDL-CM3","1",2090,"cold","Adaptation",-6.38210937590833e-07
+"Michigan","MI","ExtremeTemp","GISS-E2-R","1",2090,"cold","Adaptation",-7.14415228646454e-07
+"Michigan","MI","ExtremeTemp","HadGEM2-ES","1",2090,"cold","Adaptation",-6.38210937590833e-07
+"Michigan","MI","ExtremeTemp","MIROC5","1",2090,"cold","Adaptation",-3.33393773368346e-07
+"Michigan","MI","ExtremeTemp","CCSM4","2",2090,"cold","Adaptation",-6.38210937590833e-07
+"Michigan","MI","ExtremeTemp","CanESM2","2",2090,"cold","Adaptation",-7.52517374174265e-07
+"Michigan","MI","ExtremeTemp","GFDL-CM3","2",2090,"cold","Adaptation",-8.28721665229887e-07
+"Michigan","MI","ExtremeTemp","GISS-E2-R","2",2090,"cold","Adaptation",-9.43028101813319e-07
+"Michigan","MI","ExtremeTemp","HadGEM2-ES","2",2090,"cold","Adaptation",-7.14415228646454e-07
+"Michigan","MI","ExtremeTemp","MIROC5","2",2090,"cold","Adaptation",-9.43028101813319e-07
+"Michigan","MI","ExtremeTemp","CCSM4","3",2090,"cold","Adaptation",-9.43028101813319e-07
+"Michigan","MI","ExtremeTemp","CanESM2","3",2090,"cold","Adaptation",-8.66823810757697e-07
+"Michigan","MI","ExtremeTemp","GFDL-CM3","3",2090,"cold","Adaptation",-9.04925956285508e-07
+"Michigan","MI","ExtremeTemp","GISS-E2-R","3",2090,"cold","Adaptation",-8.66823810757697e-07
+"Michigan","MI","ExtremeTemp","HadGEM2-ES","3",2090,"cold","Adaptation",-7.90619519702076e-07
+"Michigan","MI","ExtremeTemp","MIROC5","3",2090,"cold","Adaptation",-8.28721665229887e-07
+"Michigan","MI","ExtremeTemp","CCSM4","4",2090,"cold","Adaptation",-9.43028101813319e-07
+"Michigan","MI","ExtremeTemp","CanESM2","4",2090,"cold","Adaptation",-8.28721665229887e-07
+"Michigan","MI","ExtremeTemp","GFDL-CM3","4",2090,"cold","Adaptation",-9.04925956285508e-07
+"Michigan","MI","ExtremeTemp","HadGEM2-ES","4",2090,"cold","Adaptation",-8.66823810757697e-07
+"Michigan","MI","ExtremeTemp","MIROC5","4",2090,"cold","Adaptation",-9.43028101813319e-07
+"Michigan","MI","ExtremeTemp","CCSM4","5",2090,"cold","Adaptation",-9.43028101813319e-07
+"Michigan","MI","ExtremeTemp","CanESM2","5",2090,"cold","Adaptation",-9.43028101813319e-07
+"Michigan","MI","ExtremeTemp","GFDL-CM3","5",2090,"cold","Adaptation",-9.43028101813319e-07
+"Michigan","MI","ExtremeTemp","HadGEM2-ES","5",2090,"cold","Adaptation",-9.43028101813319e-07
+"Michigan","MI","ExtremeTemp","MIROC5","5",2090,"cold","Adaptation",-9.04925956285508e-07
+"Michigan","MI","ExtremeTemp","CanESM2","6",2090,"cold","Adaptation",-9.43028101813319e-07
+"Michigan","MI","ExtremeTemp","GFDL-CM3","6",2090,"cold","Adaptation",-9.43028101813319e-07
+"Michigan","MI","ExtremeTemp","HadGEM2-ES","6",2090,"cold","Adaptation",-9.43028101813319e-07
 "Michigan","MI","ExtremeTemp","CCSM4","1",2090,"hot","Adaptation",1.23634823123307e-07
 "Michigan","MI","ExtremeTemp","CanESM2","1",2090,"hot","Adaptation",0
 "Michigan","MI","ExtremeTemp","GFDL-CM3","1",2090,"hot","Adaptation",0
@@ -4525,37 +4556,6 @@
 "Michigan","MI","ExtremeTemp","CanESM2","6",2090,"hot","Adaptation",8.15989832613825e-06
 "Michigan","MI","ExtremeTemp","GFDL-CM3","6",2090,"hot","Adaptation",1.28580216048239e-05
 "Michigan","MI","ExtremeTemp","HadGEM2-ES","6",2090,"hot","Adaptation",1.35998305435638e-05
-"Michigan","MI","ExtremeTemp","CCSM4","1",2090,"Adaptation","No Adaptation",-6.76313083118643e-07
-"Michigan","MI","ExtremeTemp","CanESM2","1",2090,"Adaptation","No Adaptation",-2.19087336784913e-07
-"Michigan","MI","ExtremeTemp","GFDL-CM3","1",2090,"Adaptation","No Adaptation",-6.38210937590833e-07
-"Michigan","MI","ExtremeTemp","GISS-E2-R","1",2090,"Adaptation","No Adaptation",-7.14415228646454e-07
-"Michigan","MI","ExtremeTemp","HadGEM2-ES","1",2090,"Adaptation","No Adaptation",-6.38210937590833e-07
-"Michigan","MI","ExtremeTemp","MIROC5","1",2090,"Adaptation","No Adaptation",-3.33393773368346e-07
-"Michigan","MI","ExtremeTemp","CCSM4","2",2090,"Adaptation","No Adaptation",-6.38210937590833e-07
-"Michigan","MI","ExtremeTemp","CanESM2","2",2090,"Adaptation","No Adaptation",-7.52517374174265e-07
-"Michigan","MI","ExtremeTemp","GFDL-CM3","2",2090,"Adaptation","No Adaptation",-8.28721665229887e-07
-"Michigan","MI","ExtremeTemp","GISS-E2-R","2",2090,"Adaptation","No Adaptation",-9.43028101813319e-07
-"Michigan","MI","ExtremeTemp","HadGEM2-ES","2",2090,"Adaptation","No Adaptation",-7.14415228646454e-07
-"Michigan","MI","ExtremeTemp","MIROC5","2",2090,"Adaptation","No Adaptation",-9.43028101813319e-07
-"Michigan","MI","ExtremeTemp","CCSM4","3",2090,"Adaptation","No Adaptation",-9.43028101813319e-07
-"Michigan","MI","ExtremeTemp","CanESM2","3",2090,"Adaptation","No Adaptation",-8.66823810757697e-07
-"Michigan","MI","ExtremeTemp","GFDL-CM3","3",2090,"Adaptation","No Adaptation",-9.04925956285508e-07
-"Michigan","MI","ExtremeTemp","GISS-E2-R","3",2090,"Adaptation","No Adaptation",-8.66823810757697e-07
-"Michigan","MI","ExtremeTemp","HadGEM2-ES","3",2090,"Adaptation","No Adaptation",-7.90619519702076e-07
-"Michigan","MI","ExtremeTemp","MIROC5","3",2090,"Adaptation","No Adaptation",-8.28721665229887e-07
-"Michigan","MI","ExtremeTemp","CCSM4","4",2090,"Adaptation","No Adaptation",-9.43028101813319e-07
-"Michigan","MI","ExtremeTemp","CanESM2","4",2090,"Adaptation","No Adaptation",-8.28721665229887e-07
-"Michigan","MI","ExtremeTemp","GFDL-CM3","4",2090,"Adaptation","No Adaptation",-9.04925956285508e-07
-"Michigan","MI","ExtremeTemp","HadGEM2-ES","4",2090,"Adaptation","No Adaptation",-8.66823810757697e-07
-"Michigan","MI","ExtremeTemp","MIROC5","4",2090,"Adaptation","No Adaptation",-9.43028101813319e-07
-"Michigan","MI","ExtremeTemp","CCSM4","5",2090,"Adaptation","No Adaptation",-9.43028101813319e-07
-"Michigan","MI","ExtremeTemp","CanESM2","5",2090,"Adaptation","No Adaptation",-9.43028101813319e-07
-"Michigan","MI","ExtremeTemp","GFDL-CM3","5",2090,"Adaptation","No Adaptation",-9.43028101813319e-07
-"Michigan","MI","ExtremeTemp","HadGEM2-ES","5",2090,"Adaptation","No Adaptation",-9.43028101813319e-07
-"Michigan","MI","ExtremeTemp","MIROC5","5",2090,"Adaptation","No Adaptation",-9.04925956285508e-07
-"Michigan","MI","ExtremeTemp","CanESM2","6",2090,"Adaptation","No Adaptation",-9.43028101813319e-07
-"Michigan","MI","ExtremeTemp","GFDL-CM3","6",2090,"Adaptation","No Adaptation",-9.43028101813319e-07
-"Michigan","MI","ExtremeTemp","HadGEM2-ES","6",2090,"Adaptation","No Adaptation",-9.43028101813319e-07
 "Michigan","MI","ExtremeTemp","CCSM4","1",2090,"cold","No Adaptation",-6.76313083118643e-07
 "Michigan","MI","ExtremeTemp","CanESM2","1",2090,"cold","No Adaptation",-2.19087336784913e-07
 "Michigan","MI","ExtremeTemp","GFDL-CM3","1",2090,"cold","No Adaptation",-6.38210937590833e-07
@@ -4618,6 +4618,37 @@
 "Michigan","MI","ExtremeTemp","CanESM2","6",2090,"hot","No Adaptation",9.62746939642344e-05
 "Michigan","MI","ExtremeTemp","GFDL-CM3","6",2090,"hot","No Adaptation",0.000100677731537114
 "Michigan","MI","ExtremeTemp","HadGEM2-ES","6",2090,"hot","No Adaptation",9.17198275095316e-05
+"Minnesota","MN","ExtremeTemp","CCSM4","1",2090,"cold","Adaptation",-3.58329772328178e-07
+"Minnesota","MN","ExtremeTemp","CanESM2","1",2090,"cold","Adaptation",-9.09194944713278e-08
+"Minnesota","MN","ExtremeTemp","GFDL-CM3","1",2090,"cold","Adaptation",-3.58329772328178e-07
+"Minnesota","MN","ExtremeTemp","GISS-E2-R","1",2090,"cold","Adaptation",-6.79222105756399e-07
+"Minnesota","MN","ExtremeTemp","HadGEM2-ES","1",2090,"cold","Adaptation",-4.11811827899548e-07
+"Minnesota","MN","ExtremeTemp","MIROC5","1",2090,"cold","Adaptation",-1.44401550042697e-07
+"Minnesota","MN","ExtremeTemp","CCSM4","2",2090,"cold","Adaptation",-2.24624633399752e-07
+"Minnesota","MN","ExtremeTemp","CanESM2","2",2090,"cold","Adaptation",-6.79222105756399e-07
+"Minnesota","MN","ExtremeTemp","GFDL-CM3","2",2090,"cold","Adaptation",-5.18775939042288e-07
+"Minnesota","MN","ExtremeTemp","GISS-E2-R","2",2090,"cold","Adaptation",-6.25740050185029e-07
+"Minnesota","MN","ExtremeTemp","HadGEM2-ES","2",2090,"cold","Adaptation",-5.72257994613659e-07
+"Minnesota","MN","ExtremeTemp","MIROC5","2",2090,"cold","Adaptation",-4.92034911256603e-07
+"Minnesota","MN","ExtremeTemp","CCSM4","3",2090,"cold","Adaptation",-6.25740050185029e-07
+"Minnesota","MN","ExtremeTemp","CanESM2","3",2090,"cold","Adaptation",-6.79222105756399e-07
+"Minnesota","MN","ExtremeTemp","GFDL-CM3","3",2090,"cold","Adaptation",-5.98999022399344e-07
+"Minnesota","MN","ExtremeTemp","GISS-E2-R","3",2090,"cold","Adaptation",-6.79222105756399e-07
+"Minnesota","MN","ExtremeTemp","HadGEM2-ES","3",2090,"cold","Adaptation",-5.18775939042288e-07
+"Minnesota","MN","ExtremeTemp","MIROC5","3",2090,"cold","Adaptation",-5.72257994613659e-07
+"Minnesota","MN","ExtremeTemp","CCSM4","4",2090,"cold","Adaptation",-7.05963133542084e-07
+"Minnesota","MN","ExtremeTemp","CanESM2","4",2090,"cold","Adaptation",-6.79222105756399e-07
+"Minnesota","MN","ExtremeTemp","GFDL-CM3","4",2090,"cold","Adaptation",-6.79222105756399e-07
+"Minnesota","MN","ExtremeTemp","HadGEM2-ES","4",2090,"cold","Adaptation",-6.79222105756399e-07
+"Minnesota","MN","ExtremeTemp","MIROC5","4",2090,"cold","Adaptation",-6.25740050185029e-07
+"Minnesota","MN","ExtremeTemp","CCSM4","5",2090,"cold","Adaptation",-7.05963133542084e-07
+"Minnesota","MN","ExtremeTemp","CanESM2","5",2090,"cold","Adaptation",-7.05963133542084e-07
+"Minnesota","MN","ExtremeTemp","GFDL-CM3","5",2090,"cold","Adaptation",-7.05963133542084e-07
+"Minnesota","MN","ExtremeTemp","HadGEM2-ES","5",2090,"cold","Adaptation",-7.05963133542084e-07
+"Minnesota","MN","ExtremeTemp","MIROC5","5",2090,"cold","Adaptation",-6.79222105756399e-07
+"Minnesota","MN","ExtremeTemp","CanESM2","6",2090,"cold","Adaptation",-7.05963133542084e-07
+"Minnesota","MN","ExtremeTemp","GFDL-CM3","6",2090,"cold","Adaptation",-7.05963133542084e-07
+"Minnesota","MN","ExtremeTemp","HadGEM2-ES","6",2090,"cold","Adaptation",-7.05963133542084e-07
 "Minnesota","MN","ExtremeTemp","CCSM4","1",2090,"hot","Adaptation",8.37425369670906e-08
 "Minnesota","MN","ExtremeTemp","CanESM2","1",2090,"hot","Adaptation",6.69940295736726e-07
 "Minnesota","MN","ExtremeTemp","GFDL-CM3","1",2090,"hot","Adaptation",3.34970147868363e-07
@@ -4649,37 +4680,6 @@
 "Minnesota","MN","ExtremeTemp","CanESM2","6",2090,"hot","Adaptation",1.09702723426889e-05
 "Minnesota","MN","ExtremeTemp","GFDL-CM3","6",2090,"hot","Adaptation",1.88420708175954e-05
 "Minnesota","MN","ExtremeTemp","HadGEM2-ES","6",2090,"hot","Adaptation",2.35316528877525e-05
-"Minnesota","MN","ExtremeTemp","CCSM4","1",2090,"Adaptation","No Adaptation",-3.58329772328178e-07
-"Minnesota","MN","ExtremeTemp","CanESM2","1",2090,"Adaptation","No Adaptation",-9.09194944713278e-08
-"Minnesota","MN","ExtremeTemp","GFDL-CM3","1",2090,"Adaptation","No Adaptation",-3.58329772328178e-07
-"Minnesota","MN","ExtremeTemp","GISS-E2-R","1",2090,"Adaptation","No Adaptation",-6.79222105756399e-07
-"Minnesota","MN","ExtremeTemp","HadGEM2-ES","1",2090,"Adaptation","No Adaptation",-4.11811827899548e-07
-"Minnesota","MN","ExtremeTemp","MIROC5","1",2090,"Adaptation","No Adaptation",-1.44401550042697e-07
-"Minnesota","MN","ExtremeTemp","CCSM4","2",2090,"Adaptation","No Adaptation",-2.24624633399752e-07
-"Minnesota","MN","ExtremeTemp","CanESM2","2",2090,"Adaptation","No Adaptation",-6.79222105756399e-07
-"Minnesota","MN","ExtremeTemp","GFDL-CM3","2",2090,"Adaptation","No Adaptation",-5.18775939042288e-07
-"Minnesota","MN","ExtremeTemp","GISS-E2-R","2",2090,"Adaptation","No Adaptation",-6.25740050185029e-07
-"Minnesota","MN","ExtremeTemp","HadGEM2-ES","2",2090,"Adaptation","No Adaptation",-5.72257994613659e-07
-"Minnesota","MN","ExtremeTemp","MIROC5","2",2090,"Adaptation","No Adaptation",-4.92034911256603e-07
-"Minnesota","MN","ExtremeTemp","CCSM4","3",2090,"Adaptation","No Adaptation",-6.25740050185029e-07
-"Minnesota","MN","ExtremeTemp","CanESM2","3",2090,"Adaptation","No Adaptation",-6.79222105756399e-07
-"Minnesota","MN","ExtremeTemp","GFDL-CM3","3",2090,"Adaptation","No Adaptation",-5.98999022399344e-07
-"Minnesota","MN","ExtremeTemp","GISS-E2-R","3",2090,"Adaptation","No Adaptation",-6.79222105756399e-07
-"Minnesota","MN","ExtremeTemp","HadGEM2-ES","3",2090,"Adaptation","No Adaptation",-5.18775939042288e-07
-"Minnesota","MN","ExtremeTemp","MIROC5","3",2090,"Adaptation","No Adaptation",-5.72257994613659e-07
-"Minnesota","MN","ExtremeTemp","CCSM4","4",2090,"Adaptation","No Adaptation",-7.05963133542084e-07
-"Minnesota","MN","ExtremeTemp","CanESM2","4",2090,"Adaptation","No Adaptation",-6.79222105756399e-07
-"Minnesota","MN","ExtremeTemp","GFDL-CM3","4",2090,"Adaptation","No Adaptation",-6.79222105756399e-07
-"Minnesota","MN","ExtremeTemp","HadGEM2-ES","4",2090,"Adaptation","No Adaptation",-6.79222105756399e-07
-"Minnesota","MN","ExtremeTemp","MIROC5","4",2090,"Adaptation","No Adaptation",-6.25740050185029e-07
-"Minnesota","MN","ExtremeTemp","CCSM4","5",2090,"Adaptation","No Adaptation",-7.05963133542084e-07
-"Minnesota","MN","ExtremeTemp","CanESM2","5",2090,"Adaptation","No Adaptation",-7.05963133542084e-07
-"Minnesota","MN","ExtremeTemp","GFDL-CM3","5",2090,"Adaptation","No Adaptation",-7.05963133542084e-07
-"Minnesota","MN","ExtremeTemp","HadGEM2-ES","5",2090,"Adaptation","No Adaptation",-7.05963133542084e-07
-"Minnesota","MN","ExtremeTemp","MIROC5","5",2090,"Adaptation","No Adaptation",-6.79222105756399e-07
-"Minnesota","MN","ExtremeTemp","CanESM2","6",2090,"Adaptation","No Adaptation",-7.05963133542084e-07
-"Minnesota","MN","ExtremeTemp","GFDL-CM3","6",2090,"Adaptation","No Adaptation",-7.05963133542084e-07
-"Minnesota","MN","ExtremeTemp","HadGEM2-ES","6",2090,"Adaptation","No Adaptation",-7.05963133542084e-07
 "Minnesota","MN","ExtremeTemp","CCSM4","1",2090,"cold","No Adaptation",-3.58329772328178e-07
 "Minnesota","MN","ExtremeTemp","CanESM2","1",2090,"cold","No Adaptation",-9.09194944713278e-08
 "Minnesota","MN","ExtremeTemp","GFDL-CM3","1",2090,"cold","No Adaptation",-3.58329772328178e-07
@@ -4742,6 +4742,37 @@
 "Minnesota","MN","ExtremeTemp","CanESM2","6",2090,"hot","No Adaptation",7.4653967942278e-05
 "Minnesota","MN","ExtremeTemp","GFDL-CM3","6",2090,"hot","No Adaptation",6.79215112649847e-05
 "Minnesota","MN","ExtremeTemp","HadGEM2-ES","6",2090,"hot","No Adaptation",7.03451956688101e-05
+"Missouri","MO","ExtremeTemp","CCSM4","1",2090,"cold","Adaptation",-6.4728193580302e-07
+"Missouri","MO","ExtremeTemp","CanESM2","1",2090,"cold","Adaptation",-9.36855433399133e-08
+"Missouri","MO","ExtremeTemp","GFDL-CM3","1",2090,"cold","Adaptation",-6.89866273684798e-07
+"Missouri","MO","ExtremeTemp","GISS-E2-R","1",2090,"cold","Adaptation",-9.45372300975464e-07
+"Missouri","MO","ExtremeTemp","HadGEM2-ES","1",2090,"cold","Adaptation",-1.7885421910347e-07
+"Missouri","MO","ExtremeTemp","MIROC5","1",2090,"cold","Adaptation",-1.7885421910347e-07
+"Missouri","MO","ExtremeTemp","CCSM4","2",2090,"cold","Adaptation",-6.04697597921243e-07
+"Missouri","MO","ExtremeTemp","CanESM2","2",2090,"cold","Adaptation",-6.89866273684798e-07
+"Missouri","MO","ExtremeTemp","GFDL-CM3","2",2090,"cold","Adaptation",-9.02787963093686e-07
+"Missouri","MO","ExtremeTemp","GISS-E2-R","2",2090,"cold","Adaptation",-9.45372300975464e-07
+"Missouri","MO","ExtremeTemp","HadGEM2-ES","2",2090,"cold","Adaptation",-4.76944584275909e-07
+"Missouri","MO","ExtremeTemp","MIROC5","2",2090,"cold","Adaptation",-4.76944584275909e-07
+"Missouri","MO","ExtremeTemp","CCSM4","3",2090,"cold","Adaptation",-9.02787963093686e-07
+"Missouri","MO","ExtremeTemp","CanESM2","3",2090,"cold","Adaptation",-1.03054097673902e-06
+"Missouri","MO","ExtremeTemp","GFDL-CM3","3",2090,"cold","Adaptation",-3.06607232748804e-07
+"Missouri","MO","ExtremeTemp","GISS-E2-R","3",2090,"cold","Adaptation",-7.75034949448353e-07
+"Missouri","MO","ExtremeTemp","HadGEM2-ES","3",2090,"cold","Adaptation",-8.60203625211909e-07
+"Missouri","MO","ExtremeTemp","MIROC5","3",2090,"cold","Adaptation",-7.32450611566576e-07
+"Missouri","MO","ExtremeTemp","CCSM4","4",2090,"cold","Adaptation",-9.45372300975464e-07
+"Missouri","MO","ExtremeTemp","CanESM2","4",2090,"cold","Adaptation",-8.60203625211909e-07
+"Missouri","MO","ExtremeTemp","GFDL-CM3","4",2090,"cold","Adaptation",-6.04697597921243e-07
+"Missouri","MO","ExtremeTemp","HadGEM2-ES","4",2090,"cold","Adaptation",-6.04697597921243e-07
+"Missouri","MO","ExtremeTemp","MIROC5","4",2090,"cold","Adaptation",-9.87956638857242e-07
+"Missouri","MO","ExtremeTemp","CCSM4","5",2090,"cold","Adaptation",-1.03054097673902e-06
+"Missouri","MO","ExtremeTemp","CanESM2","5",2090,"cold","Adaptation",-1.03054097673902e-06
+"Missouri","MO","ExtremeTemp","GFDL-CM3","5",2090,"cold","Adaptation",-9.45372300975464e-07
+"Missouri","MO","ExtremeTemp","HadGEM2-ES","5",2090,"cold","Adaptation",-9.87956638857242e-07
+"Missouri","MO","ExtremeTemp","MIROC5","5",2090,"cold","Adaptation",-9.87956638857242e-07
+"Missouri","MO","ExtremeTemp","CanESM2","6",2090,"cold","Adaptation",-9.87956638857242e-07
+"Missouri","MO","ExtremeTemp","GFDL-CM3","6",2090,"cold","Adaptation",-9.45372300975464e-07
+"Missouri","MO","ExtremeTemp","HadGEM2-ES","6",2090,"cold","Adaptation",-1.03054097673902e-06
 "Missouri","MO","ExtremeTemp","CCSM4","1",2090,"hot","Adaptation",2.1935402736976e-07
 "Missouri","MO","ExtremeTemp","CanESM2","1",2090,"hot","Adaptation",1.38064005462143e-06
 "Missouri","MO","ExtremeTemp","GFDL-CM3","1",2090,"hot","Adaptation",2.79998964348458e-06
@@ -4773,37 +4804,6 @@
 "Missouri","MO","ExtremeTemp","CanESM2","6",2090,"hot","Adaptation",5.27352888153064e-05
 "Missouri","MO","ExtremeTemp","GFDL-CM3","6",2090,"hot","Adaptation",7.15739288129442e-05
 "Missouri","MO","ExtremeTemp","HadGEM2-ES","6",2090,"hot","Adaptation",8.71867742904392e-05
-"Missouri","MO","ExtremeTemp","CCSM4","1",2090,"Adaptation","No Adaptation",-6.4728193580302e-07
-"Missouri","MO","ExtremeTemp","CanESM2","1",2090,"Adaptation","No Adaptation",-9.36855433399133e-08
-"Missouri","MO","ExtremeTemp","GFDL-CM3","1",2090,"Adaptation","No Adaptation",-6.89866273684798e-07
-"Missouri","MO","ExtremeTemp","GISS-E2-R","1",2090,"Adaptation","No Adaptation",-9.45372300975464e-07
-"Missouri","MO","ExtremeTemp","HadGEM2-ES","1",2090,"Adaptation","No Adaptation",-1.7885421910347e-07
-"Missouri","MO","ExtremeTemp","MIROC5","1",2090,"Adaptation","No Adaptation",-1.7885421910347e-07
-"Missouri","MO","ExtremeTemp","CCSM4","2",2090,"Adaptation","No Adaptation",-6.04697597921243e-07
-"Missouri","MO","ExtremeTemp","CanESM2","2",2090,"Adaptation","No Adaptation",-6.89866273684798e-07
-"Missouri","MO","ExtremeTemp","GFDL-CM3","2",2090,"Adaptation","No Adaptation",-9.02787963093686e-07
-"Missouri","MO","ExtremeTemp","GISS-E2-R","2",2090,"Adaptation","No Adaptation",-9.45372300975464e-07
-"Missouri","MO","ExtremeTemp","HadGEM2-ES","2",2090,"Adaptation","No Adaptation",-4.76944584275909e-07
-"Missouri","MO","ExtremeTemp","MIROC5","2",2090,"Adaptation","No Adaptation",-4.76944584275909e-07
-"Missouri","MO","ExtremeTemp","CCSM4","3",2090,"Adaptation","No Adaptation",-9.02787963093686e-07
-"Missouri","MO","ExtremeTemp","CanESM2","3",2090,"Adaptation","No Adaptation",-1.03054097673902e-06
-"Missouri","MO","ExtremeTemp","GFDL-CM3","3",2090,"Adaptation","No Adaptation",-3.06607232748804e-07
-"Missouri","MO","ExtremeTemp","GISS-E2-R","3",2090,"Adaptation","No Adaptation",-7.75034949448353e-07
-"Missouri","MO","ExtremeTemp","HadGEM2-ES","3",2090,"Adaptation","No Adaptation",-8.60203625211909e-07
-"Missouri","MO","ExtremeTemp","MIROC5","3",2090,"Adaptation","No Adaptation",-7.32450611566576e-07
-"Missouri","MO","ExtremeTemp","CCSM4","4",2090,"Adaptation","No Adaptation",-9.45372300975464e-07
-"Missouri","MO","ExtremeTemp","CanESM2","4",2090,"Adaptation","No Adaptation",-8.60203625211909e-07
-"Missouri","MO","ExtremeTemp","GFDL-CM3","4",2090,"Adaptation","No Adaptation",-6.04697597921243e-07
-"Missouri","MO","ExtremeTemp","HadGEM2-ES","4",2090,"Adaptation","No Adaptation",-6.04697597921243e-07
-"Missouri","MO","ExtremeTemp","MIROC5","4",2090,"Adaptation","No Adaptation",-9.87956638857242e-07
-"Missouri","MO","ExtremeTemp","CCSM4","5",2090,"Adaptation","No Adaptation",-1.03054097673902e-06
-"Missouri","MO","ExtremeTemp","CanESM2","5",2090,"Adaptation","No Adaptation",-1.03054097673902e-06
-"Missouri","MO","ExtremeTemp","GFDL-CM3","5",2090,"Adaptation","No Adaptation",-9.45372300975464e-07
-"Missouri","MO","ExtremeTemp","HadGEM2-ES","5",2090,"Adaptation","No Adaptation",-9.87956638857242e-07
-"Missouri","MO","ExtremeTemp","MIROC5","5",2090,"Adaptation","No Adaptation",-9.87956638857242e-07
-"Missouri","MO","ExtremeTemp","CanESM2","6",2090,"Adaptation","No Adaptation",-9.87956638857242e-07
-"Missouri","MO","ExtremeTemp","GFDL-CM3","6",2090,"Adaptation","No Adaptation",-9.45372300975464e-07
-"Missouri","MO","ExtremeTemp","HadGEM2-ES","6",2090,"Adaptation","No Adaptation",-1.03054097673902e-06
 "Missouri","MO","ExtremeTemp","CCSM4","1",2090,"cold","No Adaptation",-6.4728193580302e-07
 "Missouri","MO","ExtremeTemp","CanESM2","1",2090,"cold","No Adaptation",-9.36855433399133e-08
 "Missouri","MO","ExtremeTemp","GFDL-CM3","1",2090,"cold","No Adaptation",-6.89866273684798e-07
@@ -4835,6 +4835,37 @@
 "Missouri","MO","ExtremeTemp","CanESM2","6",2090,"cold","No Adaptation",-9.87956638857242e-07
 "Missouri","MO","ExtremeTemp","GFDL-CM3","6",2090,"cold","No Adaptation",-9.45372300975464e-07
 "Missouri","MO","ExtremeTemp","HadGEM2-ES","6",2090,"cold","No Adaptation",-1.03054097673902e-06
+"North Carolina","NC","ExtremeTemp","CCSM4","1",2090,"cold","Adaptation",-2.90807562798697e-07
+"North Carolina","NC","ExtremeTemp","CanESM2","1",2090,"cold","Adaptation",-3.40130883103825e-07
+"North Carolina","NC","ExtremeTemp","GFDL-CM3","1",2090,"cold","Adaptation",-4.54661529179875e-07
+"North Carolina","NC","ExtremeTemp","GISS-E2-R","1",2090,"cold","Adaptation",-6.57639891023607e-07
+"North Carolina","NC","ExtremeTemp","HadGEM2-ES","1",2090,"cold","Adaptation",-4.07790337051735e-07
+"North Carolina","NC","ExtremeTemp","MIROC5","1",2090,"cold","Adaptation",-2.15401312185199e-07
+"North Carolina","NC","ExtremeTemp","CCSM4","2",2090,"cold","Adaptation",-6.60092019200596e-07
+"North Carolina","NC","ExtremeTemp","CanESM2","2",2090,"cold","Adaptation",-4.77901919176635e-07
+"North Carolina","NC","ExtremeTemp","GFDL-CM3","2",2090,"cold","Adaptation",-6.34009088892227e-07
+"North Carolina","NC","ExtremeTemp","GISS-E2-R","2",2090,"cold","Adaptation",-7.69327996788047e-07
+"North Carolina","NC","ExtremeTemp","HadGEM2-ES","2",2090,"cold","Adaptation",-5.24773111304774e-07
+"North Carolina","NC","ExtremeTemp","MIROC5","2",2090,"cold","Adaptation",-5.22320983127785e-07
+"North Carolina","NC","ExtremeTemp","CCSM4","3",2090,"cold","Adaptation",-7.97863055273405e-07
+"North Carolina","NC","ExtremeTemp","CanESM2","3",2090,"cold","Adaptation",-7.69327996788047e-07
+"North Carolina","NC","ExtremeTemp","GFDL-CM3","3",2090,"cold","Adaptation",-7.95410927096416e-07
+"North Carolina","NC","ExtremeTemp","GISS-E2-R","3",2090,"cold","Adaptation",-6.34009088892227e-07
+"North Carolina","NC","ExtremeTemp","HadGEM2-ES","3",2090,"cold","Adaptation",-8.13747060739198e-07
+"North Carolina","NC","ExtremeTemp","MIROC5","3",2090,"cold","Adaptation",-8.23945985581774e-07
+"North Carolina","NC","ExtremeTemp","CCSM4","4",2090,"cold","Adaptation",-9.17688369838053e-07
+"North Carolina","NC","ExtremeTemp","CanESM2","4",2090,"cold","Adaptation",-6.05474030406869e-07
+"North Carolina","NC","ExtremeTemp","GFDL-CM3","4",2090,"cold","Adaptation",-9.33181963169226e-07
+"North Carolina","NC","ExtremeTemp","HadGEM2-ES","4",2090,"cold","Adaptation",-9.17688369838053e-07
+"North Carolina","NC","ExtremeTemp","MIROC5","4",2090,"cold","Adaptation",-8.83858642864097e-07
+"North Carolina","NC","ExtremeTemp","CCSM4","5",2090,"cold","Adaptation",-9.17688369838053e-07
+"North Carolina","NC","ExtremeTemp","CanESM2","5",2090,"cold","Adaptation",-9.12393701349455e-07
+"North Carolina","NC","ExtremeTemp","GFDL-CM3","5",2090,"cold","Adaptation",-9.59264893477594e-07
+"North Carolina","NC","ExtremeTemp","HadGEM2-ES","5",2090,"cold","Adaptation",-9.93094620451549e-07
+"North Carolina","NC","ExtremeTemp","MIROC5","5",2090,"cold","Adaptation",-9.93094620451549e-07
+"North Carolina","NC","ExtremeTemp","CanESM2","6",2090,"cold","Adaptation",-7.82369461942232e-07
+"North Carolina","NC","ExtremeTemp","GFDL-CM3","6",2090,"cold","Adaptation",-9.93094620451549e-07
+"North Carolina","NC","ExtremeTemp","HadGEM2-ES","6",2090,"cold","Adaptation",-9.59264893477594e-07
 "North Carolina","NC","ExtremeTemp","CCSM4","1",2090,"hot","Adaptation",0
 "North Carolina","NC","ExtremeTemp","CanESM2","1",2090,"hot","Adaptation",6.44698227901174e-08
 "North Carolina","NC","ExtremeTemp","GFDL-CM3","1",2090,"hot","Adaptation",1.93409468370353e-07
@@ -4866,37 +4897,6 @@
 "North Carolina","NC","ExtremeTemp","CanESM2","6",2090,"hot","Adaptation",3.00949755445645e-05
 "North Carolina","NC","ExtremeTemp","GFDL-CM3","6",2090,"hot","Adaptation",3.53968571848285e-05
 "North Carolina","NC","ExtremeTemp","HadGEM2-ES","6",2090,"hot","Adaptation",5.40516501177442e-05
-"North Carolina","NC","ExtremeTemp","CCSM4","1",2090,"Adaptation","No Adaptation",-2.90807562798697e-07
-"North Carolina","NC","ExtremeTemp","CanESM2","1",2090,"Adaptation","No Adaptation",-3.40130883103825e-07
-"North Carolina","NC","ExtremeTemp","GFDL-CM3","1",2090,"Adaptation","No Adaptation",-4.54661529179875e-07
-"North Carolina","NC","ExtremeTemp","GISS-E2-R","1",2090,"Adaptation","No Adaptation",-6.57639891023607e-07
-"North Carolina","NC","ExtremeTemp","HadGEM2-ES","1",2090,"Adaptation","No Adaptation",-4.07790337051735e-07
-"North Carolina","NC","ExtremeTemp","MIROC5","1",2090,"Adaptation","No Adaptation",-2.15401312185199e-07
-"North Carolina","NC","ExtremeTemp","CCSM4","2",2090,"Adaptation","No Adaptation",-6.60092019200596e-07
-"North Carolina","NC","ExtremeTemp","CanESM2","2",2090,"Adaptation","No Adaptation",-4.77901919176635e-07
-"North Carolina","NC","ExtremeTemp","GFDL-CM3","2",2090,"Adaptation","No Adaptation",-6.34009088892227e-07
-"North Carolina","NC","ExtremeTemp","GISS-E2-R","2",2090,"Adaptation","No Adaptation",-7.69327996788047e-07
-"North Carolina","NC","ExtremeTemp","HadGEM2-ES","2",2090,"Adaptation","No Adaptation",-5.24773111304774e-07
-"North Carolina","NC","ExtremeTemp","MIROC5","2",2090,"Adaptation","No Adaptation",-5.22320983127785e-07
-"North Carolina","NC","ExtremeTemp","CCSM4","3",2090,"Adaptation","No Adaptation",-7.97863055273405e-07
-"North Carolina","NC","ExtremeTemp","CanESM2","3",2090,"Adaptation","No Adaptation",-7.69327996788047e-07
-"North Carolina","NC","ExtremeTemp","GFDL-CM3","3",2090,"Adaptation","No Adaptation",-7.95410927096416e-07
-"North Carolina","NC","ExtremeTemp","GISS-E2-R","3",2090,"Adaptation","No Adaptation",-6.34009088892227e-07
-"North Carolina","NC","ExtremeTemp","HadGEM2-ES","3",2090,"Adaptation","No Adaptation",-8.13747060739198e-07
-"North Carolina","NC","ExtremeTemp","MIROC5","3",2090,"Adaptation","No Adaptation",-8.23945985581774e-07
-"North Carolina","NC","ExtremeTemp","CCSM4","4",2090,"Adaptation","No Adaptation",-9.17688369838053e-07
-"North Carolina","NC","ExtremeTemp","CanESM2","4",2090,"Adaptation","No Adaptation",-6.05474030406869e-07
-"North Carolina","NC","ExtremeTemp","GFDL-CM3","4",2090,"Adaptation","No Adaptation",-9.33181963169226e-07
-"North Carolina","NC","ExtremeTemp","HadGEM2-ES","4",2090,"Adaptation","No Adaptation",-9.17688369838053e-07
-"North Carolina","NC","ExtremeTemp","MIROC5","4",2090,"Adaptation","No Adaptation",-8.83858642864097e-07
-"North Carolina","NC","ExtremeTemp","CCSM4","5",2090,"Adaptation","No Adaptation",-9.17688369838053e-07
-"North Carolina","NC","ExtremeTemp","CanESM2","5",2090,"Adaptation","No Adaptation",-9.12393701349455e-07
-"North Carolina","NC","ExtremeTemp","GFDL-CM3","5",2090,"Adaptation","No Adaptation",-9.59264893477594e-07
-"North Carolina","NC","ExtremeTemp","HadGEM2-ES","5",2090,"Adaptation","No Adaptation",-9.93094620451549e-07
-"North Carolina","NC","ExtremeTemp","MIROC5","5",2090,"Adaptation","No Adaptation",-9.93094620451549e-07
-"North Carolina","NC","ExtremeTemp","CanESM2","6",2090,"Adaptation","No Adaptation",-7.82369461942232e-07
-"North Carolina","NC","ExtremeTemp","GFDL-CM3","6",2090,"Adaptation","No Adaptation",-9.93094620451549e-07
-"North Carolina","NC","ExtremeTemp","HadGEM2-ES","6",2090,"Adaptation","No Adaptation",-9.59264893477594e-07
 "North Carolina","NC","ExtremeTemp","CCSM4","1",2090,"cold","No Adaptation",-2.90807562798697e-07
 "North Carolina","NC","ExtremeTemp","CanESM2","1",2090,"cold","No Adaptation",-3.40130883103825e-07
 "North Carolina","NC","ExtremeTemp","GFDL-CM3","1",2090,"cold","No Adaptation",-4.54661529179875e-07
@@ -4959,6 +4959,37 @@
 "North Carolina","NC","ExtremeTemp","CanESM2","6",2090,"hot","No Adaptation",0.000111558810203058
 "North Carolina","NC","ExtremeTemp","GFDL-CM3","6",2090,"hot","No Adaptation",9.93203826312126e-05
 "North Carolina","NC","ExtremeTemp","HadGEM2-ES","6",2090,"hot","No Adaptation",0.000113085296790716
+"New Jersey","NJ","ExtremeTemp","CCSM4","1",2090,"cold","Adaptation",-1.91492200558868e-07
+"New Jersey","NJ","ExtremeTemp","CanESM2","1",2090,"cold","Adaptation",-7.17730308964925e-07
+"New Jersey","NJ","ExtremeTemp","GFDL-CM3","1",2090,"cold","Adaptation",-9.51613912700951e-07
+"New Jersey","NJ","ExtremeTemp","GISS-E2-R","1",2090,"cold","Adaptation",-1.06855571456896e-06
+"New Jersey","NJ","ExtremeTemp","HadGEM2-ES","1",2090,"cold","Adaptation",-9.51613912700951e-07
+"New Jersey","NJ","ExtremeTemp","MIROC5","1",2090,"cold","Adaptation",-4.54611254761896e-07
+"New Jersey","NJ","ExtremeTemp","CCSM4","2",2090,"cold","Adaptation",-1.01008481363496e-06
+"New Jersey","NJ","ExtremeTemp","CanESM2","2",2090,"cold","Adaptation",-9.22378462233948e-07
+"New Jersey","NJ","ExtremeTemp","GFDL-CM3","2",2090,"cold","Adaptation",-1.01008481363496e-06
+"New Jersey","NJ","ExtremeTemp","GISS-E2-R","2",2090,"cold","Adaptation",-1.12702661550297e-06
+"New Jersey","NJ","ExtremeTemp","HadGEM2-ES","2",2090,"cold","Adaptation",-9.51613912700951e-07
+"New Jersey","NJ","ExtremeTemp","MIROC5","2",2090,"cold","Adaptation",-1.21473296690398e-06
+"New Jersey","NJ","ExtremeTemp","CCSM4","3",2090,"cold","Adaptation",-1.06855571456896e-06
+"New Jersey","NJ","ExtremeTemp","CanESM2","3",2090,"cold","Adaptation",-1.06855571456896e-06
+"New Jersey","NJ","ExtremeTemp","GFDL-CM3","3",2090,"cold","Adaptation",-9.51613912700951e-07
+"New Jersey","NJ","ExtremeTemp","GISS-E2-R","3",2090,"cold","Adaptation",-1.30243931830499e-06
+"New Jersey","NJ","ExtremeTemp","HadGEM2-ES","3",2090,"cold","Adaptation",-1.15626206596997e-06
+"New Jersey","NJ","ExtremeTemp","MIROC5","3",2090,"cold","Adaptation",-1.21473296690398e-06
+"New Jersey","NJ","ExtremeTemp","CCSM4","4",2090,"cold","Adaptation",-1.24396841737098e-06
+"New Jersey","NJ","ExtremeTemp","CanESM2","4",2090,"cold","Adaptation",-1.03932026410196e-06
+"New Jersey","NJ","ExtremeTemp","GFDL-CM3","4",2090,"cold","Adaptation",-1.27320386783799e-06
+"New Jersey","NJ","ExtremeTemp","HadGEM2-ES","4",2090,"cold","Adaptation",-1.15626206596997e-06
+"New Jersey","NJ","ExtremeTemp","MIROC5","4",2090,"cold","Adaptation",-1.30243931830499e-06
+"New Jersey","NJ","ExtremeTemp","CCSM4","5",2090,"cold","Adaptation",-1.30243931830499e-06
+"New Jersey","NJ","ExtremeTemp","CanESM2","5",2090,"cold","Adaptation",-1.30243931830499e-06
+"New Jersey","NJ","ExtremeTemp","GFDL-CM3","5",2090,"cold","Adaptation",-1.30243931830499e-06
+"New Jersey","NJ","ExtremeTemp","HadGEM2-ES","5",2090,"cold","Adaptation",-1.30243931830499e-06
+"New Jersey","NJ","ExtremeTemp","MIROC5","5",2090,"cold","Adaptation",-1.30243931830499e-06
+"New Jersey","NJ","ExtremeTemp","CanESM2","6",2090,"cold","Adaptation",-1.30243931830499e-06
+"New Jersey","NJ","ExtremeTemp","GFDL-CM3","6",2090,"cold","Adaptation",-1.30243931830499e-06
+"New Jersey","NJ","ExtremeTemp","HadGEM2-ES","6",2090,"cold","Adaptation",-1.30243931830499e-06
 "New Jersey","NJ","ExtremeTemp","CCSM4","1",2090,"hot","Adaptation",2.81001666805312e-07
 "New Jersey","NJ","ExtremeTemp","CanESM2","1",2090,"hot","Adaptation",1.33810317526335e-08
 "New Jersey","NJ","ExtremeTemp","GFDL-CM3","1",2090,"hot","Adaptation",5.48622301857983e-07
@@ -4990,37 +5021,6 @@
 "New Jersey","NJ","ExtremeTemp","CanESM2","6",2090,"hot","Adaptation",2.88272027390909e-05
 "New Jersey","NJ","ExtremeTemp","GFDL-CM3","6",2090,"hot","Adaptation",4.57765096257604e-05
 "New Jersey","NJ","ExtremeTemp","HadGEM2-ES","6",2090,"hot","Adaptation",3.32875466566355e-05
-"New Jersey","NJ","ExtremeTemp","CCSM4","1",2090,"Adaptation","No Adaptation",-1.91492200558868e-07
-"New Jersey","NJ","ExtremeTemp","CanESM2","1",2090,"Adaptation","No Adaptation",-7.17730308964925e-07
-"New Jersey","NJ","ExtremeTemp","GFDL-CM3","1",2090,"Adaptation","No Adaptation",-9.51613912700951e-07
-"New Jersey","NJ","ExtremeTemp","GISS-E2-R","1",2090,"Adaptation","No Adaptation",-1.06855571456896e-06
-"New Jersey","NJ","ExtremeTemp","HadGEM2-ES","1",2090,"Adaptation","No Adaptation",-9.51613912700951e-07
-"New Jersey","NJ","ExtremeTemp","MIROC5","1",2090,"Adaptation","No Adaptation",-4.54611254761896e-07
-"New Jersey","NJ","ExtremeTemp","CCSM4","2",2090,"Adaptation","No Adaptation",-1.01008481363496e-06
-"New Jersey","NJ","ExtremeTemp","CanESM2","2",2090,"Adaptation","No Adaptation",-9.22378462233948e-07
-"New Jersey","NJ","ExtremeTemp","GFDL-CM3","2",2090,"Adaptation","No Adaptation",-1.01008481363496e-06
-"New Jersey","NJ","ExtremeTemp","GISS-E2-R","2",2090,"Adaptation","No Adaptation",-1.12702661550297e-06
-"New Jersey","NJ","ExtremeTemp","HadGEM2-ES","2",2090,"Adaptation","No Adaptation",-9.51613912700951e-07
-"New Jersey","NJ","ExtremeTemp","MIROC5","2",2090,"Adaptation","No Adaptation",-1.21473296690398e-06
-"New Jersey","NJ","ExtremeTemp","CCSM4","3",2090,"Adaptation","No Adaptation",-1.06855571456896e-06
-"New Jersey","NJ","ExtremeTemp","CanESM2","3",2090,"Adaptation","No Adaptation",-1.06855571456896e-06
-"New Jersey","NJ","ExtremeTemp","GFDL-CM3","3",2090,"Adaptation","No Adaptation",-9.51613912700951e-07
-"New Jersey","NJ","ExtremeTemp","GISS-E2-R","3",2090,"Adaptation","No Adaptation",-1.30243931830499e-06
-"New Jersey","NJ","ExtremeTemp","HadGEM2-ES","3",2090,"Adaptation","No Adaptation",-1.15626206596997e-06
-"New Jersey","NJ","ExtremeTemp","MIROC5","3",2090,"Adaptation","No Adaptation",-1.21473296690398e-06
-"New Jersey","NJ","ExtremeTemp","CCSM4","4",2090,"Adaptation","No Adaptation",-1.24396841737098e-06
-"New Jersey","NJ","ExtremeTemp","CanESM2","4",2090,"Adaptation","No Adaptation",-1.03932026410196e-06
-"New Jersey","NJ","ExtremeTemp","GFDL-CM3","4",2090,"Adaptation","No Adaptation",-1.27320386783799e-06
-"New Jersey","NJ","ExtremeTemp","HadGEM2-ES","4",2090,"Adaptation","No Adaptation",-1.15626206596997e-06
-"New Jersey","NJ","ExtremeTemp","MIROC5","4",2090,"Adaptation","No Adaptation",-1.30243931830499e-06
-"New Jersey","NJ","ExtremeTemp","CCSM4","5",2090,"Adaptation","No Adaptation",-1.30243931830499e-06
-"New Jersey","NJ","ExtremeTemp","CanESM2","5",2090,"Adaptation","No Adaptation",-1.30243931830499e-06
-"New Jersey","NJ","ExtremeTemp","GFDL-CM3","5",2090,"Adaptation","No Adaptation",-1.30243931830499e-06
-"New Jersey","NJ","ExtremeTemp","HadGEM2-ES","5",2090,"Adaptation","No Adaptation",-1.30243931830499e-06
-"New Jersey","NJ","ExtremeTemp","MIROC5","5",2090,"Adaptation","No Adaptation",-1.30243931830499e-06
-"New Jersey","NJ","ExtremeTemp","CanESM2","6",2090,"Adaptation","No Adaptation",-1.30243931830499e-06
-"New Jersey","NJ","ExtremeTemp","GFDL-CM3","6",2090,"Adaptation","No Adaptation",-1.30243931830499e-06
-"New Jersey","NJ","ExtremeTemp","HadGEM2-ES","6",2090,"Adaptation","No Adaptation",-1.30243931830499e-06
 "New Jersey","NJ","ExtremeTemp","CCSM4","1",2090,"cold","No Adaptation",-1.91492200558868e-07
 "New Jersey","NJ","ExtremeTemp","CanESM2","1",2090,"cold","No Adaptation",-7.17730308964925e-07
 "New Jersey","NJ","ExtremeTemp","GFDL-CM3","1",2090,"cold","No Adaptation",-9.51613912700951e-07
@@ -5145,6 +5145,37 @@
 "New Mexico","NM","ExtremeTemp","CanESM2","6",2090,"hot","No Adaptation",0.000100551718873381
 "New Mexico","NM","ExtremeTemp","GFDL-CM3","6",2090,"hot","No Adaptation",8.91092828372602e-05
 "New Mexico","NM","ExtremeTemp","HadGEM2-ES","6",2090,"hot","No Adaptation",8.5959988515392e-05
+"New York","NY","ExtremeTemp","CCSM4","1",2090,"cold","Adaptation",-2.31741137391398e-07
+"New York","NY","ExtremeTemp","CanESM2","1",2090,"cold","Adaptation",-6.48354418095023e-07
+"New York","NY","ExtremeTemp","GFDL-CM3","1",2090,"cold","Adaptation",-7.78546068314908e-07
+"New York","NY","ExtremeTemp","GISS-E2-R","1",2090,"cold","Adaptation",-8.56661058446839e-07
+"New York","NY","ExtremeTemp","HadGEM2-ES","1",2090,"cold","Adaptation",-8.82699388490816e-07
+"New York","NY","ExtremeTemp","MIROC5","1",2090,"cold","Adaptation",-2.57779467435374e-07
+"New York","NY","ExtremeTemp","CCSM4","2",2090,"cold","Adaptation",-8.56661058446839e-07
+"New York","NY","ExtremeTemp","CanESM2","2",2090,"cold","Adaptation",-7.78546068314908e-07
+"New York","NY","ExtremeTemp","GFDL-CM3","2",2090,"cold","Adaptation",-8.56661058446839e-07
+"New York","NY","ExtremeTemp","GISS-E2-R","2",2090,"cold","Adaptation",-1.03892936875468e-06
+"New York","NY","ExtremeTemp","HadGEM2-ES","2",2090,"cold","Adaptation",-6.74392748139e-07
+"New York","NY","ExtremeTemp","MIROC5","2",2090,"cold","Adaptation",-1.0128910387107e-06
+"New York","NY","ExtremeTemp","CCSM4","3",2090,"cold","Adaptation",-9.3477604857877e-07
+"New York","NY","ExtremeTemp","CanESM2","3",2090,"cold","Adaptation",-9.08737718534793e-07
+"New York","NY","ExtremeTemp","GFDL-CM3","3",2090,"cold","Adaptation",-9.08737718534793e-07
+"New York","NY","ExtremeTemp","GISS-E2-R","3",2090,"cold","Adaptation",-1.11704435888661e-06
+"New York","NY","ExtremeTemp","HadGEM2-ES","3",2090,"cold","Adaptation",-9.86852708666724e-07
+"New York","NY","ExtremeTemp","MIROC5","3",2090,"cold","Adaptation",-1.03892936875468e-06
+"New York","NY","ExtremeTemp","CCSM4","4",2090,"cold","Adaptation",-1.11704435888661e-06
+"New York","NY","ExtremeTemp","CanESM2","4",2090,"cold","Adaptation",-8.56661058446839e-07
+"New York","NY","ExtremeTemp","GFDL-CM3","4",2090,"cold","Adaptation",-1.11704435888661e-06
+"New York","NY","ExtremeTemp","HadGEM2-ES","4",2090,"cold","Adaptation",-1.0128910387107e-06
+"New York","NY","ExtremeTemp","MIROC5","4",2090,"cold","Adaptation",-1.11704435888661e-06
+"New York","NY","ExtremeTemp","CCSM4","5",2090,"cold","Adaptation",-1.11704435888661e-06
+"New York","NY","ExtremeTemp","CanESM2","5",2090,"cold","Adaptation",-1.11704435888661e-06
+"New York","NY","ExtremeTemp","GFDL-CM3","5",2090,"cold","Adaptation",-1.11704435888661e-06
+"New York","NY","ExtremeTemp","HadGEM2-ES","5",2090,"cold","Adaptation",-1.11704435888661e-06
+"New York","NY","ExtremeTemp","MIROC5","5",2090,"cold","Adaptation",-1.11704435888661e-06
+"New York","NY","ExtremeTemp","CanESM2","6",2090,"cold","Adaptation",-1.11704435888661e-06
+"New York","NY","ExtremeTemp","GFDL-CM3","6",2090,"cold","Adaptation",-1.11704435888661e-06
+"New York","NY","ExtremeTemp","HadGEM2-ES","6",2090,"cold","Adaptation",-1.11704435888661e-06
 "New York","NY","ExtremeTemp","CCSM4","1",2090,"hot","Adaptation",7.75003039436519e-07
 "New York","NY","ExtremeTemp","CanESM2","1",2090,"hot","Adaptation",4.93183752368694e-07
 "New York","NY","ExtremeTemp","GFDL-CM3","1",2090,"hot","Adaptation",1.52652113828405e-06
@@ -5176,37 +5207,6 @@
 "New York","NY","ExtremeTemp","CanESM2","6",2090,"hot","Adaptation",4.45509322973054e-05
 "New York","NY","ExtremeTemp","GFDL-CM3","6",2090,"hot","Adaptation",5.98631135613238e-05
 "New York","NY","ExtremeTemp","HadGEM2-ES","6",2090,"hot","Adaptation",4.64297275444242e-05
-"New York","NY","ExtremeTemp","CCSM4","1",2090,"Adaptation","No Adaptation",-2.31741137391398e-07
-"New York","NY","ExtremeTemp","CanESM2","1",2090,"Adaptation","No Adaptation",-6.48354418095023e-07
-"New York","NY","ExtremeTemp","GFDL-CM3","1",2090,"Adaptation","No Adaptation",-7.78546068314908e-07
-"New York","NY","ExtremeTemp","GISS-E2-R","1",2090,"Adaptation","No Adaptation",-8.56661058446839e-07
-"New York","NY","ExtremeTemp","HadGEM2-ES","1",2090,"Adaptation","No Adaptation",-8.82699388490816e-07
-"New York","NY","ExtremeTemp","MIROC5","1",2090,"Adaptation","No Adaptation",-2.57779467435374e-07
-"New York","NY","ExtremeTemp","CCSM4","2",2090,"Adaptation","No Adaptation",-8.56661058446839e-07
-"New York","NY","ExtremeTemp","CanESM2","2",2090,"Adaptation","No Adaptation",-7.78546068314908e-07
-"New York","NY","ExtremeTemp","GFDL-CM3","2",2090,"Adaptation","No Adaptation",-8.56661058446839e-07
-"New York","NY","ExtremeTemp","GISS-E2-R","2",2090,"Adaptation","No Adaptation",-1.03892936875468e-06
-"New York","NY","ExtremeTemp","HadGEM2-ES","2",2090,"Adaptation","No Adaptation",-6.74392748139e-07
-"New York","NY","ExtremeTemp","MIROC5","2",2090,"Adaptation","No Adaptation",-1.0128910387107e-06
-"New York","NY","ExtremeTemp","CCSM4","3",2090,"Adaptation","No Adaptation",-9.3477604857877e-07
-"New York","NY","ExtremeTemp","CanESM2","3",2090,"Adaptation","No Adaptation",-9.08737718534793e-07
-"New York","NY","ExtremeTemp","GFDL-CM3","3",2090,"Adaptation","No Adaptation",-9.08737718534793e-07
-"New York","NY","ExtremeTemp","GISS-E2-R","3",2090,"Adaptation","No Adaptation",-1.11704435888661e-06
-"New York","NY","ExtremeTemp","HadGEM2-ES","3",2090,"Adaptation","No Adaptation",-9.86852708666724e-07
-"New York","NY","ExtremeTemp","MIROC5","3",2090,"Adaptation","No Adaptation",-1.03892936875468e-06
-"New York","NY","ExtremeTemp","CCSM4","4",2090,"Adaptation","No Adaptation",-1.11704435888661e-06
-"New York","NY","ExtremeTemp","CanESM2","4",2090,"Adaptation","No Adaptation",-8.56661058446839e-07
-"New York","NY","ExtremeTemp","GFDL-CM3","4",2090,"Adaptation","No Adaptation",-1.11704435888661e-06
-"New York","NY","ExtremeTemp","HadGEM2-ES","4",2090,"Adaptation","No Adaptation",-1.0128910387107e-06
-"New York","NY","ExtremeTemp","MIROC5","4",2090,"Adaptation","No Adaptation",-1.11704435888661e-06
-"New York","NY","ExtremeTemp","CCSM4","5",2090,"Adaptation","No Adaptation",-1.11704435888661e-06
-"New York","NY","ExtremeTemp","CanESM2","5",2090,"Adaptation","No Adaptation",-1.11704435888661e-06
-"New York","NY","ExtremeTemp","GFDL-CM3","5",2090,"Adaptation","No Adaptation",-1.11704435888661e-06
-"New York","NY","ExtremeTemp","HadGEM2-ES","5",2090,"Adaptation","No Adaptation",-1.11704435888661e-06
-"New York","NY","ExtremeTemp","MIROC5","5",2090,"Adaptation","No Adaptation",-1.11704435888661e-06
-"New York","NY","ExtremeTemp","CanESM2","6",2090,"Adaptation","No Adaptation",-1.11704435888661e-06
-"New York","NY","ExtremeTemp","GFDL-CM3","6",2090,"Adaptation","No Adaptation",-1.11704435888661e-06
-"New York","NY","ExtremeTemp","HadGEM2-ES","6",2090,"Adaptation","No Adaptation",-1.11704435888661e-06
 "New York","NY","ExtremeTemp","CCSM4","1",2090,"cold","No Adaptation",-2.31741137391398e-07
 "New York","NY","ExtremeTemp","CanESM2","1",2090,"cold","No Adaptation",-6.48354418095023e-07
 "New York","NY","ExtremeTemp","GFDL-CM3","1",2090,"cold","No Adaptation",-7.78546068314908e-07
@@ -5269,6 +5269,37 @@
 "New York","NY","ExtremeTemp","CanESM2","6",2090,"hot","No Adaptation",0.000109559676695047
 "New York","NY","ExtremeTemp","GFDL-CM3","6",2090,"hot","No Adaptation",0.000111895557429751
 "New York","NY","ExtremeTemp","HadGEM2-ES","6",2090,"hot","No Adaptation",9.77428682724297e-05
+"Ohio","OH","ExtremeTemp","CCSM4","1",2090,"cold","Adaptation",-3.9839727773694e-07
+"Ohio","OH","ExtremeTemp","CanESM2","1",2090,"cold","Adaptation",-3.93017866420198e-07
+"Ohio","OH","ExtremeTemp","GFDL-CM3","1",2090,"cold","Adaptation",-6.10049319023015e-07
+"Ohio","OH","ExtremeTemp","GISS-E2-R","1",2090,"cold","Adaptation",-8.73186521601979e-07
+"Ohio","OH","ExtremeTemp","HadGEM2-ES","1",2090,"cold","Adaptation",-6.58220336113366e-07
+"Ohio","OH","ExtremeTemp","MIROC5","1",2090,"cold","Adaptation",-2.61094574796111e-07
+"Ohio","OH","ExtremeTemp","CCSM4","2",2090,"cold","Adaptation",-6.90306184459282e-07
+"Ohio","OH","ExtremeTemp","CanESM2","2",2090,"cold","Adaptation",-7.84329851313766e-07
+"Ohio","OH","ExtremeTemp","GFDL-CM3","2",2090,"cold","Adaptation",-8.9826577970722e-07
+"Ohio","OH","ExtremeTemp","GISS-E2-R","2",2090,"cold","Adaptation",-1.00007113650325e-06
+"Ohio","OH","ExtremeTemp","HadGEM2-ES","2",2090,"cold","Adaptation",-7.95601017675787e-07
+"Ohio","OH","ExtremeTemp","MIROC5","2",2090,"cold","Adaptation",-6.97594117175158e-07
+"Ohio","OH","ExtremeTemp","CCSM4","3",2090,"cold","Adaptation",-9.03460807909162e-07
+"Ohio","OH","ExtremeTemp","CanESM2","3",2090,"cold","Adaptation",-8.93507840596146e-07
+"Ohio","OH","ExtremeTemp","GFDL-CM3","3",2090,"cold","Adaptation",-7.40042384525232e-07
+"Ohio","OH","ExtremeTemp","GISS-E2-R","3",2090,"cold","Adaptation",-9.41453789110155e-07
+"Ohio","OH","ExtremeTemp","HadGEM2-ES","3",2090,"cold","Adaptation",-9.52837292642375e-07
+"Ohio","OH","ExtremeTemp","MIROC5","3",2090,"cold","Adaptation",-8.64283669552099e-07
+"Ohio","OH","ExtremeTemp","CCSM4","4",2090,"cold","Adaptation",-9.55008570013845e-07
+"Ohio","OH","ExtremeTemp","CanESM2","4",2090,"cold","Adaptation",-9.01177193367493e-07
+"Ohio","OH","ExtremeTemp","GFDL-CM3","4",2090,"cold","Adaptation",-8.47839179710869e-07
+"Ohio","OH","ExtremeTemp","HadGEM2-ES","4",2090,"cold","Adaptation",-7.8724126497404e-07
+"Ohio","OH","ExtremeTemp","MIROC5","4",2090,"cold","Adaptation",-1.00914299385813e-06
+"Ohio","OH","ExtremeTemp","CCSM4","5",2090,"cold","Adaptation",-1.04702996480186e-06
+"Ohio","OH","ExtremeTemp","CanESM2","5",2090,"cold","Adaptation",-1.01692468379968e-06
+"Ohio","OH","ExtremeTemp","GFDL-CM3","5",2090,"cold","Adaptation",-1.02629958835249e-06
+"Ohio","OH","ExtremeTemp","HadGEM2-ES","5",2090,"cold","Adaptation",-1.02629958835249e-06
+"Ohio","OH","ExtremeTemp","MIROC5","5",2090,"cold","Adaptation",-9.88412617408765e-07
+"Ohio","OH","ExtremeTemp","CanESM2","6",2090,"cold","Adaptation",-9.83823683602693e-07
+"Ohio","OH","ExtremeTemp","GFDL-CM3","6",2090,"cold","Adaptation",-1.03795810744698e-06
+"Ohio","OH","ExtremeTemp","HadGEM2-ES","6",2090,"cold","Adaptation",-1.04702996480186e-06
 "Ohio","OH","ExtremeTemp","CCSM4","1",2090,"hot","Adaptation",0
 "Ohio","OH","ExtremeTemp","CanESM2","1",2090,"hot","Adaptation",0
 "Ohio","OH","ExtremeTemp","GFDL-CM3","1",2090,"hot","Adaptation",0
@@ -5300,37 +5331,6 @@
 "Ohio","OH","ExtremeTemp","CanESM2","6",2090,"hot","Adaptation",9.94677077673134e-06
 "Ohio","OH","ExtremeTemp","GFDL-CM3","6",2090,"hot","Adaptation",2.15044817947402e-05
 "Ohio","OH","ExtremeTemp","HadGEM2-ES","6",2090,"hot","Adaptation",4.09701319071115e-05
-"Ohio","OH","ExtremeTemp","CCSM4","1",2090,"Adaptation","No Adaptation",-3.9839727773694e-07
-"Ohio","OH","ExtremeTemp","CanESM2","1",2090,"Adaptation","No Adaptation",-3.93017866420198e-07
-"Ohio","OH","ExtremeTemp","GFDL-CM3","1",2090,"Adaptation","No Adaptation",-6.10049319023015e-07
-"Ohio","OH","ExtremeTemp","GISS-E2-R","1",2090,"Adaptation","No Adaptation",-8.73186521601979e-07
-"Ohio","OH","ExtremeTemp","HadGEM2-ES","1",2090,"Adaptation","No Adaptation",-6.58220336113366e-07
-"Ohio","OH","ExtremeTemp","MIROC5","1",2090,"Adaptation","No Adaptation",-2.61094574796111e-07
-"Ohio","OH","ExtremeTemp","CCSM4","2",2090,"Adaptation","No Adaptation",-6.90306184459282e-07
-"Ohio","OH","ExtremeTemp","CanESM2","2",2090,"Adaptation","No Adaptation",-7.84329851313766e-07
-"Ohio","OH","ExtremeTemp","GFDL-CM3","2",2090,"Adaptation","No Adaptation",-8.9826577970722e-07
-"Ohio","OH","ExtremeTemp","GISS-E2-R","2",2090,"Adaptation","No Adaptation",-1.00007113650325e-06
-"Ohio","OH","ExtremeTemp","HadGEM2-ES","2",2090,"Adaptation","No Adaptation",-7.95601017675787e-07
-"Ohio","OH","ExtremeTemp","MIROC5","2",2090,"Adaptation","No Adaptation",-6.97594117175158e-07
-"Ohio","OH","ExtremeTemp","CCSM4","3",2090,"Adaptation","No Adaptation",-9.03460807909162e-07
-"Ohio","OH","ExtremeTemp","CanESM2","3",2090,"Adaptation","No Adaptation",-8.93507840596146e-07
-"Ohio","OH","ExtremeTemp","GFDL-CM3","3",2090,"Adaptation","No Adaptation",-7.40042384525232e-07
-"Ohio","OH","ExtremeTemp","GISS-E2-R","3",2090,"Adaptation","No Adaptation",-9.41453789110155e-07
-"Ohio","OH","ExtremeTemp","HadGEM2-ES","3",2090,"Adaptation","No Adaptation",-9.52837292642375e-07
-"Ohio","OH","ExtremeTemp","MIROC5","3",2090,"Adaptation","No Adaptation",-8.64283669552099e-07
-"Ohio","OH","ExtremeTemp","CCSM4","4",2090,"Adaptation","No Adaptation",-9.55008570013845e-07
-"Ohio","OH","ExtremeTemp","CanESM2","4",2090,"Adaptation","No Adaptation",-9.01177193367493e-07
-"Ohio","OH","ExtremeTemp","GFDL-CM3","4",2090,"Adaptation","No Adaptation",-8.47839179710869e-07
-"Ohio","OH","ExtremeTemp","HadGEM2-ES","4",2090,"Adaptation","No Adaptation",-7.8724126497404e-07
-"Ohio","OH","ExtremeTemp","MIROC5","4",2090,"Adaptation","No Adaptation",-1.00914299385813e-06
-"Ohio","OH","ExtremeTemp","CCSM4","5",2090,"Adaptation","No Adaptation",-1.04702996480186e-06
-"Ohio","OH","ExtremeTemp","CanESM2","5",2090,"Adaptation","No Adaptation",-1.01692468379968e-06
-"Ohio","OH","ExtremeTemp","GFDL-CM3","5",2090,"Adaptation","No Adaptation",-1.02629958835249e-06
-"Ohio","OH","ExtremeTemp","HadGEM2-ES","5",2090,"Adaptation","No Adaptation",-1.02629958835249e-06
-"Ohio","OH","ExtremeTemp","MIROC5","5",2090,"Adaptation","No Adaptation",-9.88412617408765e-07
-"Ohio","OH","ExtremeTemp","CanESM2","6",2090,"Adaptation","No Adaptation",-9.83823683602693e-07
-"Ohio","OH","ExtremeTemp","GFDL-CM3","6",2090,"Adaptation","No Adaptation",-1.03795810744698e-06
-"Ohio","OH","ExtremeTemp","HadGEM2-ES","6",2090,"Adaptation","No Adaptation",-1.04702996480186e-06
 "Ohio","OH","ExtremeTemp","CCSM4","1",2090,"cold","No Adaptation",-3.9839727773694e-07
 "Ohio","OH","ExtremeTemp","CanESM2","1",2090,"cold","No Adaptation",-3.93017866420198e-07
 "Ohio","OH","ExtremeTemp","GFDL-CM3","1",2090,"cold","No Adaptation",-6.10049319023015e-07
@@ -5393,6 +5393,37 @@
 "Ohio","OH","ExtremeTemp","CanESM2","6",2090,"hot","No Adaptation",0.000103212805178318
 "Ohio","OH","ExtremeTemp","GFDL-CM3","6",2090,"hot","No Adaptation",0.000114401554193724
 "Ohio","OH","ExtremeTemp","HadGEM2-ES","6",2090,"hot","No Adaptation",0.000111044901410043
+"Oklahoma","OK","ExtremeTemp","CCSM4","1",2090,"cold","Adaptation",-3.47968642610339e-07
+"Oklahoma","OK","ExtremeTemp","CanESM2","1",2090,"cold","Adaptation",-1.88300211503546e-07
+"Oklahoma","OK","ExtremeTemp","GFDL-CM3","1",2090,"cold","Adaptation",-3.23762997513819e-07
+"Oklahoma","OK","ExtremeTemp","GISS-E2-R","1",2090,"cold","Adaptation",-6.72191047108353e-07
+"Oklahoma","OK","ExtremeTemp","HadGEM2-ES","1",2090,"cold","Adaptation",5.31512388920229e-07
+"Oklahoma","OK","ExtremeTemp","MIROC5","1",2090,"cold","Adaptation",-2.53644349947872e-07
+"Oklahoma","OK","ExtremeTemp","CCSM4","2",2090,"cold","Adaptation",-8.29472223654336e-07
+"Oklahoma","OK","ExtremeTemp","CanESM2","2",2090,"cold","Adaptation",-6.21392502354501e-07
+"Oklahoma","OK","ExtremeTemp","GFDL-CM3","2",2090,"cold","Adaptation",-6.25028900777119e-07
+"Oklahoma","OK","ExtremeTemp","GISS-E2-R","2",2090,"cold","Adaptation",-5.74230356023267e-07
+"Oklahoma","OK","ExtremeTemp","HadGEM2-ES","2",2090,"cold","Adaptation",-7.70430705897949e-08
+"Oklahoma","OK","ExtremeTemp","MIROC5","2",2090,"cold","Adaptation",-3.35921336643482e-07
+"Oklahoma","OK","ExtremeTemp","CCSM4","3",2090,"cold","Adaptation",-7.97993781712578e-07
+"Oklahoma","OK","ExtremeTemp","CanESM2","3",2090,"cold","Adaptation",-8.05266578557815e-07
+"Oklahoma","OK","ExtremeTemp","GFDL-CM3","3",2090,"cold","Adaptation",-3.62514236300814e-07
+"Oklahoma","OK","ExtremeTemp","GISS-E2-R","3",2090,"cold","Adaptation",-7.69013627494437e-07
+"Oklahoma","OK","ExtremeTemp","HadGEM2-ES","3",2090,"cold","Adaptation",-6.4923454587364e-07
+"Oklahoma","OK","ExtremeTemp","MIROC5","3",2090,"cold","Adaptation",-5.77866754445885e-07
+"Oklahoma","OK","ExtremeTemp","CCSM4","4",2090,"cold","Adaptation",-1.13312538147845e-06
+"Oklahoma","OK","ExtremeTemp","CanESM2","4",2090,"cold","Adaptation",-7.84697331883912e-07
+"Oklahoma","OK","ExtremeTemp","GFDL-CM3","4",2090,"cold","Adaptation",-5.6695755917803e-07
+"Oklahoma","OK","ExtremeTemp","HadGEM2-ES","4",2090,"cold","Adaptation",-7.58104432226582e-07
+"Oklahoma","OK","ExtremeTemp","MIROC5","4",2090,"cold","Adaptation",-8.36745020499573e-07
+"Oklahoma","OK","ExtremeTemp","CCSM4","5",2090,"cold","Adaptation",-1.01698269828027e-06
+"Oklahoma","OK","ExtremeTemp","CanESM2","5",2090,"cold","Adaptation",-1.07869043830198e-06
+"Oklahoma","OK","ExtremeTemp","GFDL-CM3","5",2090,"cold","Adaptation",-6.96396692204874e-07
+"Oklahoma","OK","ExtremeTemp","HadGEM2-ES","5",2090,"cold","Adaptation",-1.00732264687422e-06
+"Oklahoma","OK","ExtremeTemp","MIROC5","5",2090,"cold","Adaptation",-8.57314267173476e-07
+"Oklahoma","OK","ExtremeTemp","CanESM2","6",2090,"cold","Adaptation",-9.2868205860123e-07
+"Oklahoma","OK","ExtremeTemp","GFDL-CM3","6",2090,"cold","Adaptation",-7.50831635381344e-07
+"Oklahoma","OK","ExtremeTemp","HadGEM2-ES","6",2090,"cold","Adaptation",-1.11619253322716e-06
 "Oklahoma","OK","ExtremeTemp","CCSM4","1",2090,"hot","Adaptation",3.59917306885423e-06
 "Oklahoma","OK","ExtremeTemp","CanESM2","1",2090,"hot","Adaptation",2.35112925227286e-06
 "Oklahoma","OK","ExtremeTemp","GFDL-CM3","1",2090,"hot","Adaptation",8.8415922995639e-06
@@ -5424,37 +5455,6 @@
 "Oklahoma","OK","ExtremeTemp","CanESM2","6",2090,"hot","Adaptation",6.11393628712165e-05
 "Oklahoma","OK","ExtremeTemp","GFDL-CM3","6",2090,"hot","Adaptation",8.30430365517879e-05
 "Oklahoma","OK","ExtremeTemp","HadGEM2-ES","6",2090,"hot","Adaptation",5.80173194277919e-05
-"Oklahoma","OK","ExtremeTemp","CCSM4","1",2090,"Adaptation","No Adaptation",-3.47968642610339e-07
-"Oklahoma","OK","ExtremeTemp","CanESM2","1",2090,"Adaptation","No Adaptation",-1.88300211503546e-07
-"Oklahoma","OK","ExtremeTemp","GFDL-CM3","1",2090,"Adaptation","No Adaptation",-3.23762997513819e-07
-"Oklahoma","OK","ExtremeTemp","GISS-E2-R","1",2090,"Adaptation","No Adaptation",-6.72191047108353e-07
-"Oklahoma","OK","ExtremeTemp","HadGEM2-ES","1",2090,"Adaptation","No Adaptation",5.31512388920229e-07
-"Oklahoma","OK","ExtremeTemp","MIROC5","1",2090,"Adaptation","No Adaptation",-2.53644349947872e-07
-"Oklahoma","OK","ExtremeTemp","CCSM4","2",2090,"Adaptation","No Adaptation",-8.29472223654336e-07
-"Oklahoma","OK","ExtremeTemp","CanESM2","2",2090,"Adaptation","No Adaptation",-6.21392502354501e-07
-"Oklahoma","OK","ExtremeTemp","GFDL-CM3","2",2090,"Adaptation","No Adaptation",-6.25028900777119e-07
-"Oklahoma","OK","ExtremeTemp","GISS-E2-R","2",2090,"Adaptation","No Adaptation",-5.74230356023267e-07
-"Oklahoma","OK","ExtremeTemp","HadGEM2-ES","2",2090,"Adaptation","No Adaptation",-7.70430705897949e-08
-"Oklahoma","OK","ExtremeTemp","MIROC5","2",2090,"Adaptation","No Adaptation",-3.35921336643482e-07
-"Oklahoma","OK","ExtremeTemp","CCSM4","3",2090,"Adaptation","No Adaptation",-7.97993781712578e-07
-"Oklahoma","OK","ExtremeTemp","CanESM2","3",2090,"Adaptation","No Adaptation",-8.05266578557815e-07
-"Oklahoma","OK","ExtremeTemp","GFDL-CM3","3",2090,"Adaptation","No Adaptation",-3.62514236300814e-07
-"Oklahoma","OK","ExtremeTemp","GISS-E2-R","3",2090,"Adaptation","No Adaptation",-7.69013627494437e-07
-"Oklahoma","OK","ExtremeTemp","HadGEM2-ES","3",2090,"Adaptation","No Adaptation",-6.4923454587364e-07
-"Oklahoma","OK","ExtremeTemp","MIROC5","3",2090,"Adaptation","No Adaptation",-5.77866754445885e-07
-"Oklahoma","OK","ExtremeTemp","CCSM4","4",2090,"Adaptation","No Adaptation",-1.13312538147845e-06
-"Oklahoma","OK","ExtremeTemp","CanESM2","4",2090,"Adaptation","No Adaptation",-7.84697331883912e-07
-"Oklahoma","OK","ExtremeTemp","GFDL-CM3","4",2090,"Adaptation","No Adaptation",-5.6695755917803e-07
-"Oklahoma","OK","ExtremeTemp","HadGEM2-ES","4",2090,"Adaptation","No Adaptation",-7.58104432226582e-07
-"Oklahoma","OK","ExtremeTemp","MIROC5","4",2090,"Adaptation","No Adaptation",-8.36745020499573e-07
-"Oklahoma","OK","ExtremeTemp","CCSM4","5",2090,"Adaptation","No Adaptation",-1.01698269828027e-06
-"Oklahoma","OK","ExtremeTemp","CanESM2","5",2090,"Adaptation","No Adaptation",-1.07869043830198e-06
-"Oklahoma","OK","ExtremeTemp","GFDL-CM3","5",2090,"Adaptation","No Adaptation",-6.96396692204874e-07
-"Oklahoma","OK","ExtremeTemp","HadGEM2-ES","5",2090,"Adaptation","No Adaptation",-1.00732264687422e-06
-"Oklahoma","OK","ExtremeTemp","MIROC5","5",2090,"Adaptation","No Adaptation",-8.57314267173476e-07
-"Oklahoma","OK","ExtremeTemp","CanESM2","6",2090,"Adaptation","No Adaptation",-9.2868205860123e-07
-"Oklahoma","OK","ExtremeTemp","GFDL-CM3","6",2090,"Adaptation","No Adaptation",-7.50831635381344e-07
-"Oklahoma","OK","ExtremeTemp","HadGEM2-ES","6",2090,"Adaptation","No Adaptation",-1.11619253322716e-06
 "Oklahoma","OK","ExtremeTemp","CCSM4","1",2090,"cold","No Adaptation",-3.47968642610339e-07
 "Oklahoma","OK","ExtremeTemp","CanESM2","1",2090,"cold","No Adaptation",-1.88300211503546e-07
 "Oklahoma","OK","ExtremeTemp","GFDL-CM3","1",2090,"cold","No Adaptation",-3.23762997513819e-07
@@ -5517,37 +5517,37 @@
 "Oklahoma","OK","ExtremeTemp","CanESM2","6",2090,"hot","No Adaptation",9.52793089799399e-05
 "Oklahoma","OK","ExtremeTemp","GFDL-CM3","6",2090,"hot","No Adaptation",0.000104091655066008
 "Oklahoma","OK","ExtremeTemp","HadGEM2-ES","6",2090,"hot","No Adaptation",8.36782457780272e-05
-"Oregon","OR","ExtremeTemp","CCSM4","1",2090,"Adaptation","No Adaptation",1.48602654744413e-07
-"Oregon","OR","ExtremeTemp","CanESM2","1",2090,"Adaptation","No Adaptation",-6.95730610848837e-07
-"Oregon","OR","ExtremeTemp","GFDL-CM3","1",2090,"Adaptation","No Adaptation",1.14829324120684e-07
-"Oregon","OR","ExtremeTemp","GISS-E2-R","1",2090,"Adaptation","No Adaptation",-3.91770635235266e-07
-"Oregon","OR","ExtremeTemp","HadGEM2-ES","1",2090,"Adaptation","No Adaptation",-8.78106596216958e-08
-"Oregon","OR","ExtremeTemp","MIROC5","1",2090,"Adaptation","No Adaptation",1.35093322494942e-08
-"Oregon","OR","ExtremeTemp","CCSM4","2",2090,"Adaptation","No Adaptation",-3.57997304611538e-07
-"Oregon","OR","ExtremeTemp","CanESM2","2",2090,"Adaptation","No Adaptation",-6.28183949601376e-07
-"Oregon","OR","ExtremeTemp","GFDL-CM3","2",2090,"Adaptation","No Adaptation",-5.40373289979674e-08
-"Oregon","OR","ExtremeTemp","GISS-E2-R","2",2090,"Adaptation","No Adaptation",5.20109291605444e-07
-"Oregon","OR","ExtremeTemp","HadGEM2-ES","2",2090,"Adaptation","No Adaptation",-3.57997304611538e-07
-"Oregon","OR","ExtremeTemp","MIROC5","2",2090,"Adaptation","No Adaptation",4.72826628732226e-08
-"Oregon","OR","ExtremeTemp","CCSM4","3",2090,"Adaptation","No Adaptation",-6.61957280225107e-07
-"Oregon","OR","ExtremeTemp","CanESM2","3",2090,"Adaptation","No Adaptation",-8.64597263967488e-07
-"Oregon","OR","ExtremeTemp","GFDL-CM3","3",2090,"Adaptation","No Adaptation",-5.26863957730186e-07
-"Oregon","OR","ExtremeTemp","GISS-E2-R","3",2090,"Adaptation","No Adaptation",-4.25543965858999e-07
-"Oregon","OR","ExtremeTemp","HadGEM2-ES","3",2090,"Adaptation","No Adaptation",-2.90450643364076e-07
-"Oregon","OR","ExtremeTemp","MIROC5","3",2090,"Adaptation","No Adaptation",-3.24223973987809e-07
-"Oregon","OR","ExtremeTemp","CCSM4","4",2090,"Adaptation","No Adaptation",-6.61957280225107e-07
-"Oregon","OR","ExtremeTemp","CanESM2","4",2090,"Adaptation","No Adaptation",-8.64597263967488e-07
-"Oregon","OR","ExtremeTemp","GFDL-CM3","4",2090,"Adaptation","No Adaptation",-6.95730610848837e-07
-"Oregon","OR","ExtremeTemp","HadGEM2-ES","4",2090,"Adaptation","No Adaptation",-7.29503941472567e-07
-"Oregon","OR","ExtremeTemp","MIROC5","4",2090,"Adaptation","No Adaptation",-4.59317296482728e-07
-"Oregon","OR","ExtremeTemp","CCSM4","5",2090,"Adaptation","No Adaptation",-7.97050602720027e-07
-"Oregon","OR","ExtremeTemp","CanESM2","5",2090,"Adaptation","No Adaptation",-9.65917255838678e-07
-"Oregon","OR","ExtremeTemp","GFDL-CM3","5",2090,"Adaptation","No Adaptation",-4.59317296482728e-07
-"Oregon","OR","ExtremeTemp","HadGEM2-ES","5",2090,"Adaptation","No Adaptation",-7.63277272096297e-07
-"Oregon","OR","ExtremeTemp","MIROC5","5",2090,"Adaptation","No Adaptation",-4.25543965858999e-07
-"Oregon","OR","ExtremeTemp","CanESM2","6",2090,"Adaptation","No Adaptation",-9.65917255838678e-07
-"Oregon","OR","ExtremeTemp","GFDL-CM3","6",2090,"Adaptation","No Adaptation",-5.26863957730186e-07
-"Oregon","OR","ExtremeTemp","HadGEM2-ES","6",2090,"Adaptation","No Adaptation",-8.30823933343757e-07
+"Oregon","OR","ExtremeTemp","CCSM4","1",2090,"cold","Adaptation",1.48602654744413e-07
+"Oregon","OR","ExtremeTemp","CanESM2","1",2090,"cold","Adaptation",-6.95730610848837e-07
+"Oregon","OR","ExtremeTemp","GFDL-CM3","1",2090,"cold","Adaptation",1.14829324120684e-07
+"Oregon","OR","ExtremeTemp","GISS-E2-R","1",2090,"cold","Adaptation",-3.91770635235266e-07
+"Oregon","OR","ExtremeTemp","HadGEM2-ES","1",2090,"cold","Adaptation",-8.78106596216958e-08
+"Oregon","OR","ExtremeTemp","MIROC5","1",2090,"cold","Adaptation",1.35093322494942e-08
+"Oregon","OR","ExtremeTemp","CCSM4","2",2090,"cold","Adaptation",-3.57997304611538e-07
+"Oregon","OR","ExtremeTemp","CanESM2","2",2090,"cold","Adaptation",-6.28183949601376e-07
+"Oregon","OR","ExtremeTemp","GFDL-CM3","2",2090,"cold","Adaptation",-5.40373289979674e-08
+"Oregon","OR","ExtremeTemp","GISS-E2-R","2",2090,"cold","Adaptation",5.20109291605444e-07
+"Oregon","OR","ExtremeTemp","HadGEM2-ES","2",2090,"cold","Adaptation",-3.57997304611538e-07
+"Oregon","OR","ExtremeTemp","MIROC5","2",2090,"cold","Adaptation",4.72826628732226e-08
+"Oregon","OR","ExtremeTemp","CCSM4","3",2090,"cold","Adaptation",-6.61957280225107e-07
+"Oregon","OR","ExtremeTemp","CanESM2","3",2090,"cold","Adaptation",-8.64597263967488e-07
+"Oregon","OR","ExtremeTemp","GFDL-CM3","3",2090,"cold","Adaptation",-5.26863957730186e-07
+"Oregon","OR","ExtremeTemp","GISS-E2-R","3",2090,"cold","Adaptation",-4.25543965858999e-07
+"Oregon","OR","ExtremeTemp","HadGEM2-ES","3",2090,"cold","Adaptation",-2.90450643364076e-07
+"Oregon","OR","ExtremeTemp","MIROC5","3",2090,"cold","Adaptation",-3.24223973987809e-07
+"Oregon","OR","ExtremeTemp","CCSM4","4",2090,"cold","Adaptation",-6.61957280225107e-07
+"Oregon","OR","ExtremeTemp","CanESM2","4",2090,"cold","Adaptation",-8.64597263967488e-07
+"Oregon","OR","ExtremeTemp","GFDL-CM3","4",2090,"cold","Adaptation",-6.95730610848837e-07
+"Oregon","OR","ExtremeTemp","HadGEM2-ES","4",2090,"cold","Adaptation",-7.29503941472567e-07
+"Oregon","OR","ExtremeTemp","MIROC5","4",2090,"cold","Adaptation",-4.59317296482728e-07
+"Oregon","OR","ExtremeTemp","CCSM4","5",2090,"cold","Adaptation",-7.97050602720027e-07
+"Oregon","OR","ExtremeTemp","CanESM2","5",2090,"cold","Adaptation",-9.65917255838678e-07
+"Oregon","OR","ExtremeTemp","GFDL-CM3","5",2090,"cold","Adaptation",-4.59317296482728e-07
+"Oregon","OR","ExtremeTemp","HadGEM2-ES","5",2090,"cold","Adaptation",-7.63277272096297e-07
+"Oregon","OR","ExtremeTemp","MIROC5","5",2090,"cold","Adaptation",-4.25543965858999e-07
+"Oregon","OR","ExtremeTemp","CanESM2","6",2090,"cold","Adaptation",-9.65917255838678e-07
+"Oregon","OR","ExtremeTemp","GFDL-CM3","6",2090,"cold","Adaptation",-5.26863957730186e-07
+"Oregon","OR","ExtremeTemp","HadGEM2-ES","6",2090,"cold","Adaptation",-8.30823933343757e-07
 "Oregon","OR","ExtremeTemp","CCSM4","1",2090,"cold","No Adaptation",1.48602654744413e-07
 "Oregon","OR","ExtremeTemp","CanESM2","1",2090,"cold","No Adaptation",-6.95730610848837e-07
 "Oregon","OR","ExtremeTemp","GFDL-CM3","1",2090,"cold","No Adaptation",1.14829324120684e-07
@@ -5579,6 +5579,37 @@
 "Oregon","OR","ExtremeTemp","CanESM2","6",2090,"cold","No Adaptation",-9.65917255838678e-07
 "Oregon","OR","ExtremeTemp","GFDL-CM3","6",2090,"cold","No Adaptation",-5.26863957730186e-07
 "Oregon","OR","ExtremeTemp","HadGEM2-ES","6",2090,"cold","No Adaptation",-8.30823933343757e-07
+"Pennsylvania","PA","ExtremeTemp","CCSM4","1",2090,"cold","Adaptation",-5.19396387477854e-07
+"Pennsylvania","PA","ExtremeTemp","CanESM2","1",2090,"cold","Adaptation",-8.60027666564579e-07
+"Pennsylvania","PA","ExtremeTemp","GFDL-CM3","1",2090,"cold","Adaptation",-1.10916835999779e-06
+"Pennsylvania","PA","ExtremeTemp","GISS-E2-R","1",2090,"cold","Adaptation",-1.38666313434223e-06
+"Pennsylvania","PA","ExtremeTemp","HadGEM2-ES","1",2090,"cold","Adaptation",-1.17646299063596e-06
+"Pennsylvania","PA","ExtremeTemp","MIROC5","1",2090,"cold","Adaptation",-6.10886973131368e-07
+"Pennsylvania","PA","ExtremeTemp","CCSM4","2",2090,"cold","Adaptation",-1.20481707154718e-06
+"Pennsylvania","PA","ExtremeTemp","CanESM2","2",2090,"cold","Adaptation",-1.19952383713932e-06
+"Pennsylvania","PA","ExtremeTemp","GFDL-CM3","2",2090,"cold","Adaptation",-1.36662530522276e-06
+"Pennsylvania","PA","ExtremeTemp","GISS-E2-R","2",2090,"cold","Adaptation",-1.45811589087628e-06
+"Pennsylvania","PA","ExtremeTemp","HadGEM2-ES","2",2090,"cold","Adaptation",-1.41085908935757e-06
+"Pennsylvania","PA","ExtremeTemp","MIROC5","2",2090,"cold","Adaptation",-1.33411309841566e-06
+"Pennsylvania","PA","ExtremeTemp","CCSM4","3",2090,"cold","Adaptation",-1.26266034188161e-06
+"Pennsylvania","PA","ExtremeTemp","CanESM2","3",2090,"cold","Adaptation",-1.24678063865803e-06
+"Pennsylvania","PA","ExtremeTemp","GFDL-CM3","3",2090,"cold","Adaptation",-1.30991714340032e-06
+"Pennsylvania","PA","ExtremeTemp","GISS-E2-R","3",2090,"cold","Adaptation",-1.44866453057253e-06
+"Pennsylvania","PA","ExtremeTemp","HadGEM2-ES","3",2090,"cold","Adaptation",-1.3435644587194e-06
+"Pennsylvania","PA","ExtremeTemp","MIROC5","3",2090,"cold","Adaptation",-1.40556585494971e-06
+"Pennsylvania","PA","ExtremeTemp","CCSM4","4",2090,"cold","Adaptation",-1.47701861148376e-06
+"Pennsylvania","PA","ExtremeTemp","CanESM2","4",2090,"cold","Adaptation",-1.2036819630352e-06
+"Pennsylvania","PA","ExtremeTemp","GFDL-CM3","4",2090,"cold","Adaptation",-1.47286048558788e-06
+"Pennsylvania","PA","ExtremeTemp","HadGEM2-ES","4",2090,"cold","Adaptation",-1.30991714340032e-06
+"Pennsylvania","PA","ExtremeTemp","MIROC5","4",2090,"cold","Adaptation",-1.53486188181819e-06
+"Pennsylvania","PA","ExtremeTemp","CCSM4","5",2090,"cold","Adaptation",-1.53486188181819e-06
+"Pennsylvania","PA","ExtremeTemp","CanESM2","5",2090,"cold","Adaptation",-1.51066592680284e-06
+"Pennsylvania","PA","ExtremeTemp","GFDL-CM3","5",2090,"cold","Adaptation",-1.54431324212193e-06
+"Pennsylvania","PA","ExtremeTemp","HadGEM2-ES","5",2090,"cold","Adaptation",-1.5012145664991e-06
+"Pennsylvania","PA","ExtremeTemp","MIROC5","5",2090,"cold","Adaptation",-1.52541052151444e-06
+"Pennsylvania","PA","ExtremeTemp","CanESM2","6",2090,"cold","Adaptation",-1.53486188181819e-06
+"Pennsylvania","PA","ExtremeTemp","GFDL-CM3","6",2090,"cold","Adaptation",-1.54431324212193e-06
+"Pennsylvania","PA","ExtremeTemp","HadGEM2-ES","6",2090,"cold","Adaptation",-1.53486188181819e-06
 "Pennsylvania","PA","ExtremeTemp","CCSM4","1",2090,"hot","Adaptation",7.63581795970058e-08
 "Pennsylvania","PA","ExtremeTemp","CanESM2","1",2090,"hot","Adaptation",2.50383824021324e-07
 "Pennsylvania","PA","ExtremeTemp","GFDL-CM3","1",2090,"hot","Adaptation",4.5477878240608e-07
@@ -5610,37 +5641,6 @@
 "Pennsylvania","PA","ExtremeTemp","CanESM2","6",2090,"hot","Adaptation",4.12912962989255e-05
 "Pennsylvania","PA","ExtremeTemp","GFDL-CM3","6",2090,"hot","Adaptation",5.48463778124458e-05
 "Pennsylvania","PA","ExtremeTemp","HadGEM2-ES","6",2090,"hot","Adaptation",4.63981243310643e-05
-"Pennsylvania","PA","ExtremeTemp","CCSM4","1",2090,"Adaptation","No Adaptation",-5.19396387477854e-07
-"Pennsylvania","PA","ExtremeTemp","CanESM2","1",2090,"Adaptation","No Adaptation",-8.60027666564579e-07
-"Pennsylvania","PA","ExtremeTemp","GFDL-CM3","1",2090,"Adaptation","No Adaptation",-1.10916835999779e-06
-"Pennsylvania","PA","ExtremeTemp","GISS-E2-R","1",2090,"Adaptation","No Adaptation",-1.38666313434223e-06
-"Pennsylvania","PA","ExtremeTemp","HadGEM2-ES","1",2090,"Adaptation","No Adaptation",-1.17646299063596e-06
-"Pennsylvania","PA","ExtremeTemp","MIROC5","1",2090,"Adaptation","No Adaptation",-6.10886973131368e-07
-"Pennsylvania","PA","ExtremeTemp","CCSM4","2",2090,"Adaptation","No Adaptation",-1.20481707154718e-06
-"Pennsylvania","PA","ExtremeTemp","CanESM2","2",2090,"Adaptation","No Adaptation",-1.19952383713932e-06
-"Pennsylvania","PA","ExtremeTemp","GFDL-CM3","2",2090,"Adaptation","No Adaptation",-1.36662530522276e-06
-"Pennsylvania","PA","ExtremeTemp","GISS-E2-R","2",2090,"Adaptation","No Adaptation",-1.45811589087628e-06
-"Pennsylvania","PA","ExtremeTemp","HadGEM2-ES","2",2090,"Adaptation","No Adaptation",-1.41085908935757e-06
-"Pennsylvania","PA","ExtremeTemp","MIROC5","2",2090,"Adaptation","No Adaptation",-1.33411309841566e-06
-"Pennsylvania","PA","ExtremeTemp","CCSM4","3",2090,"Adaptation","No Adaptation",-1.26266034188161e-06
-"Pennsylvania","PA","ExtremeTemp","CanESM2","3",2090,"Adaptation","No Adaptation",-1.24678063865803e-06
-"Pennsylvania","PA","ExtremeTemp","GFDL-CM3","3",2090,"Adaptation","No Adaptation",-1.30991714340032e-06
-"Pennsylvania","PA","ExtremeTemp","GISS-E2-R","3",2090,"Adaptation","No Adaptation",-1.44866453057253e-06
-"Pennsylvania","PA","ExtremeTemp","HadGEM2-ES","3",2090,"Adaptation","No Adaptation",-1.3435644587194e-06
-"Pennsylvania","PA","ExtremeTemp","MIROC5","3",2090,"Adaptation","No Adaptation",-1.40556585494971e-06
-"Pennsylvania","PA","ExtremeTemp","CCSM4","4",2090,"Adaptation","No Adaptation",-1.47701861148376e-06
-"Pennsylvania","PA","ExtremeTemp","CanESM2","4",2090,"Adaptation","No Adaptation",-1.2036819630352e-06
-"Pennsylvania","PA","ExtremeTemp","GFDL-CM3","4",2090,"Adaptation","No Adaptation",-1.47286048558788e-06
-"Pennsylvania","PA","ExtremeTemp","HadGEM2-ES","4",2090,"Adaptation","No Adaptation",-1.30991714340032e-06
-"Pennsylvania","PA","ExtremeTemp","MIROC5","4",2090,"Adaptation","No Adaptation",-1.53486188181819e-06
-"Pennsylvania","PA","ExtremeTemp","CCSM4","5",2090,"Adaptation","No Adaptation",-1.53486188181819e-06
-"Pennsylvania","PA","ExtremeTemp","CanESM2","5",2090,"Adaptation","No Adaptation",-1.51066592680284e-06
-"Pennsylvania","PA","ExtremeTemp","GFDL-CM3","5",2090,"Adaptation","No Adaptation",-1.54431324212193e-06
-"Pennsylvania","PA","ExtremeTemp","HadGEM2-ES","5",2090,"Adaptation","No Adaptation",-1.5012145664991e-06
-"Pennsylvania","PA","ExtremeTemp","MIROC5","5",2090,"Adaptation","No Adaptation",-1.52541052151444e-06
-"Pennsylvania","PA","ExtremeTemp","CanESM2","6",2090,"Adaptation","No Adaptation",-1.53486188181819e-06
-"Pennsylvania","PA","ExtremeTemp","GFDL-CM3","6",2090,"Adaptation","No Adaptation",-1.54431324212193e-06
-"Pennsylvania","PA","ExtremeTemp","HadGEM2-ES","6",2090,"Adaptation","No Adaptation",-1.53486188181819e-06
 "Pennsylvania","PA","ExtremeTemp","CCSM4","1",2090,"cold","No Adaptation",-5.19396387477854e-07
 "Pennsylvania","PA","ExtremeTemp","CanESM2","1",2090,"cold","No Adaptation",-8.60027666564579e-07
 "Pennsylvania","PA","ExtremeTemp","GFDL-CM3","1",2090,"cold","No Adaptation",-1.10916835999779e-06
@@ -5703,6 +5703,37 @@
 "Pennsylvania","PA","ExtremeTemp","CanESM2","6",2090,"hot","No Adaptation",0.000126607477720845
 "Pennsylvania","PA","ExtremeTemp","GFDL-CM3","6",2090,"hot","No Adaptation",0.00012618621328834
 "Pennsylvania","PA","ExtremeTemp","HadGEM2-ES","6",2090,"hot","No Adaptation",0.000110870748626147
+"Tennessee","TN","ExtremeTemp","CCSM4","1",2090,"cold","Adaptation",-3.64375844491855e-07
+"Tennessee","TN","ExtremeTemp","CanESM2","1",2090,"cold","Adaptation",-2.3596144995728e-07
+"Tennessee","TN","ExtremeTemp","GFDL-CM3","1",2090,"cold","Adaptation",-5.89101034927359e-07
+"Tennessee","TN","ExtremeTemp","GISS-E2-R","1",2090,"cold","Adaptation",-7.49619028095577e-07
+"Tennessee","TN","ExtremeTemp","HadGEM2-ES","1",2090,"cold","Adaptation",-4.60686640392786e-07
+"Tennessee","TN","ExtremeTemp","MIROC5","1",2090,"cold","Adaptation",-2.03857851323636e-07
+"Tennessee","TN","ExtremeTemp","CCSM4","2",2090,"cold","Adaptation",-6.21204633561003e-07
+"Tennessee","TN","ExtremeTemp","CanESM2","2",2090,"cold","Adaptation",-5.24893837660072e-07
+"Tennessee","TN","ExtremeTemp","GFDL-CM3","2",2090,"cold","Adaptation",-6.53308232194647e-07
+"Tennessee","TN","ExtremeTemp","GISS-E2-R","2",2090,"cold","Adaptation",-8.13826225362864e-07
+"Tennessee","TN","ExtremeTemp","HadGEM2-ES","2",2090,"cold","Adaptation",-6.21204633561003e-07
+"Tennessee","TN","ExtremeTemp","MIROC5","2",2090,"cold","Adaptation",-5.24893837660072e-07
+"Tennessee","TN","ExtremeTemp","CCSM4","3",2090,"cold","Adaptation",-4.60686640392786e-07
+"Tennessee","TN","ExtremeTemp","CanESM2","3",2090,"cold","Adaptation",-8.13826225362864e-07
+"Tennessee","TN","ExtremeTemp","GFDL-CM3","3",2090,"cold","Adaptation",-4.28583041759142e-07
+"Tennessee","TN","ExtremeTemp","GISS-E2-R","3",2090,"cold","Adaptation",-7.8172262672922e-07
+"Tennessee","TN","ExtremeTemp","HadGEM2-ES","3",2090,"cold","Adaptation",-8.78033422630151e-07
+"Tennessee","TN","ExtremeTemp","MIROC5","3",2090,"cold","Adaptation",-6.21204633561003e-07
+"Tennessee","TN","ExtremeTemp","CCSM4","4",2090,"cold","Adaptation",-9.74344218531082e-07
+"Tennessee","TN","ExtremeTemp","CanESM2","4",2090,"cold","Adaptation",-5.56997436293716e-07
+"Tennessee","TN","ExtremeTemp","GFDL-CM3","4",2090,"cold","Adaptation",-4.60686640392786e-07
+"Tennessee","TN","ExtremeTemp","HadGEM2-ES","4",2090,"cold","Adaptation",-5.24893837660072e-07
+"Tennessee","TN","ExtremeTemp","MIROC5","4",2090,"cold","Adaptation",-8.45929823996508e-07
+"Tennessee","TN","ExtremeTemp","CCSM4","5",2090,"cold","Adaptation",-7.49619028095577e-07
+"Tennessee","TN","ExtremeTemp","CanESM2","5",2090,"cold","Adaptation",-9.42240619897438e-07
+"Tennessee","TN","ExtremeTemp","GFDL-CM3","5",2090,"cold","Adaptation",-7.8172262672922e-07
+"Tennessee","TN","ExtremeTemp","HadGEM2-ES","5",2090,"cold","Adaptation",-9.42240619897438e-07
+"Tennessee","TN","ExtremeTemp","MIROC5","5",2090,"cold","Adaptation",-9.74344218531082e-07
+"Tennessee","TN","ExtremeTemp","CanESM2","6",2090,"cold","Adaptation",-8.78033422630151e-07
+"Tennessee","TN","ExtremeTemp","GFDL-CM3","6",2090,"cold","Adaptation",-9.42240619897438e-07
+"Tennessee","TN","ExtremeTemp","HadGEM2-ES","6",2090,"cold","Adaptation",-9.10137021263794e-07
 "Tennessee","TN","ExtremeTemp","CCSM4","1",2090,"hot","Adaptation",0
 "Tennessee","TN","ExtremeTemp","CanESM2","1",2090,"hot","Adaptation",1.99763413609722e-07
 "Tennessee","TN","ExtremeTemp","GFDL-CM3","1",2090,"hot","Adaptation",0
@@ -5734,37 +5765,6 @@
 "Tennessee","TN","ExtremeTemp","CanESM2","6",2090,"hot","Adaptation",4.40478327009438e-05
 "Tennessee","TN","ExtremeTemp","GFDL-CM3","6",2090,"hot","Adaptation",4.27493705124807e-05
 "Tennessee","TN","ExtremeTemp","HadGEM2-ES","6",2090,"hot","Adaptation",6.76199155068913e-05
-"Tennessee","TN","ExtremeTemp","CCSM4","1",2090,"Adaptation","No Adaptation",-3.64375844491855e-07
-"Tennessee","TN","ExtremeTemp","CanESM2","1",2090,"Adaptation","No Adaptation",-2.3596144995728e-07
-"Tennessee","TN","ExtremeTemp","GFDL-CM3","1",2090,"Adaptation","No Adaptation",-5.89101034927359e-07
-"Tennessee","TN","ExtremeTemp","GISS-E2-R","1",2090,"Adaptation","No Adaptation",-7.49619028095577e-07
-"Tennessee","TN","ExtremeTemp","HadGEM2-ES","1",2090,"Adaptation","No Adaptation",-4.60686640392786e-07
-"Tennessee","TN","ExtremeTemp","MIROC5","1",2090,"Adaptation","No Adaptation",-2.03857851323636e-07
-"Tennessee","TN","ExtremeTemp","CCSM4","2",2090,"Adaptation","No Adaptation",-6.21204633561003e-07
-"Tennessee","TN","ExtremeTemp","CanESM2","2",2090,"Adaptation","No Adaptation",-5.24893837660072e-07
-"Tennessee","TN","ExtremeTemp","GFDL-CM3","2",2090,"Adaptation","No Adaptation",-6.53308232194647e-07
-"Tennessee","TN","ExtremeTemp","GISS-E2-R","2",2090,"Adaptation","No Adaptation",-8.13826225362864e-07
-"Tennessee","TN","ExtremeTemp","HadGEM2-ES","2",2090,"Adaptation","No Adaptation",-6.21204633561003e-07
-"Tennessee","TN","ExtremeTemp","MIROC5","2",2090,"Adaptation","No Adaptation",-5.24893837660072e-07
-"Tennessee","TN","ExtremeTemp","CCSM4","3",2090,"Adaptation","No Adaptation",-4.60686640392786e-07
-"Tennessee","TN","ExtremeTemp","CanESM2","3",2090,"Adaptation","No Adaptation",-8.13826225362864e-07
-"Tennessee","TN","ExtremeTemp","GFDL-CM3","3",2090,"Adaptation","No Adaptation",-4.28583041759142e-07
-"Tennessee","TN","ExtremeTemp","GISS-E2-R","3",2090,"Adaptation","No Adaptation",-7.8172262672922e-07
-"Tennessee","TN","ExtremeTemp","HadGEM2-ES","3",2090,"Adaptation","No Adaptation",-8.78033422630151e-07
-"Tennessee","TN","ExtremeTemp","MIROC5","3",2090,"Adaptation","No Adaptation",-6.21204633561003e-07
-"Tennessee","TN","ExtremeTemp","CCSM4","4",2090,"Adaptation","No Adaptation",-9.74344218531082e-07
-"Tennessee","TN","ExtremeTemp","CanESM2","4",2090,"Adaptation","No Adaptation",-5.56997436293716e-07
-"Tennessee","TN","ExtremeTemp","GFDL-CM3","4",2090,"Adaptation","No Adaptation",-4.60686640392786e-07
-"Tennessee","TN","ExtremeTemp","HadGEM2-ES","4",2090,"Adaptation","No Adaptation",-5.24893837660072e-07
-"Tennessee","TN","ExtremeTemp","MIROC5","4",2090,"Adaptation","No Adaptation",-8.45929823996508e-07
-"Tennessee","TN","ExtremeTemp","CCSM4","5",2090,"Adaptation","No Adaptation",-7.49619028095577e-07
-"Tennessee","TN","ExtremeTemp","CanESM2","5",2090,"Adaptation","No Adaptation",-9.42240619897438e-07
-"Tennessee","TN","ExtremeTemp","GFDL-CM3","5",2090,"Adaptation","No Adaptation",-7.8172262672922e-07
-"Tennessee","TN","ExtremeTemp","HadGEM2-ES","5",2090,"Adaptation","No Adaptation",-9.42240619897438e-07
-"Tennessee","TN","ExtremeTemp","MIROC5","5",2090,"Adaptation","No Adaptation",-9.74344218531082e-07
-"Tennessee","TN","ExtremeTemp","CanESM2","6",2090,"Adaptation","No Adaptation",-8.78033422630151e-07
-"Tennessee","TN","ExtremeTemp","GFDL-CM3","6",2090,"Adaptation","No Adaptation",-9.42240619897438e-07
-"Tennessee","TN","ExtremeTemp","HadGEM2-ES","6",2090,"Adaptation","No Adaptation",-9.10137021263794e-07
 "Tennessee","TN","ExtremeTemp","CCSM4","1",2090,"cold","No Adaptation",-3.64375844491855e-07
 "Tennessee","TN","ExtremeTemp","CanESM2","1",2090,"cold","No Adaptation",-2.3596144995728e-07
 "Tennessee","TN","ExtremeTemp","GFDL-CM3","1",2090,"cold","No Adaptation",-5.89101034927359e-07
@@ -5827,6 +5827,37 @@
 "Tennessee","TN","ExtremeTemp","CanESM2","6",2090,"hot","No Adaptation",0.000100579236084924
 "Tennessee","TN","ExtremeTemp","GFDL-CM3","6",2090,"hot","No Adaptation",9.47406776173009e-05
 "Tennessee","TN","ExtremeTemp","HadGEM2-ES","6",2090,"hot","No Adaptation",0.000109437738587524
+"Texas","TX","ExtremeTemp","CCSM4","1",2090,"cold","Adaptation",-4.04207976900035e-07
+"Texas","TX","ExtremeTemp","CanESM2","1",2090,"cold","Adaptation",-2.23412076689156e-07
+"Texas","TX","ExtremeTemp","GFDL-CM3","1",2090,"cold","Adaptation",9.03979501054469e-09
+"Texas","TX","ExtremeTemp","GISS-E2-R","1",2090,"cold","Adaptation",-4.55863948388857e-07
+"Texas","TX","ExtremeTemp","HadGEM2-ES","1",2090,"cold","Adaptation",1.12351737988189e-07
+"Texas","TX","ExtremeTemp","MIROC5","1",2090,"cold","Adaptation",-4.04207976900035e-07
+"Texas","TX","ExtremeTemp","CCSM4","2",2090,"cold","Adaptation",-3.26724019666801e-07
+"Texas","TX","ExtremeTemp","CanESM2","2",2090,"cold","Adaptation",-1.45928119455923e-07
+"Texas","TX","ExtremeTemp","GFDL-CM3","2",2090,"cold","Adaptation",-4.30035962644446e-07
+"Texas","TX","ExtremeTemp","GISS-E2-R","2",2090,"cold","Adaptation",-5.3334790562209e-07
+"Texas","TX","ExtremeTemp","HadGEM2-ES","2",2090,"cold","Adaptation",-3.52552005411212e-07
+"Texas","TX","ExtremeTemp","MIROC5","2",2090,"cold","Adaptation",-2.23412076689156e-07
+"Texas","TX","ExtremeTemp","CCSM4","3",2090,"cold","Adaptation",-4.04207976900035e-07
+"Texas","TX","ExtremeTemp","CanESM2","3",2090,"cold","Adaptation",-4.55863948388857e-07
+"Texas","TX","ExtremeTemp","GFDL-CM3","3",2090,"cold","Adaptation",-1.97584090944745e-07
+"Texas","TX","ExtremeTemp","GISS-E2-R","3",2090,"cold","Adaptation",-3.26724019666801e-07
+"Texas","TX","ExtremeTemp","HadGEM2-ES","3",2090,"cold","Adaptation",-4.55863948388857e-07
+"Texas","TX","ExtremeTemp","MIROC5","3",2090,"cold","Adaptation",-3.78379991155624e-07
+"Texas","TX","ExtremeTemp","CCSM4","4",2090,"cold","Adaptation",-5.3334790562209e-07
+"Texas","TX","ExtremeTemp","CanESM2","4",2090,"cold","Adaptation",-3.78379991155624e-07
+"Texas","TX","ExtremeTemp","GFDL-CM3","4",2090,"cold","Adaptation",-3.26724019666801e-07
+"Texas","TX","ExtremeTemp","HadGEM2-ES","4",2090,"cold","Adaptation",-4.04207976900035e-07
+"Texas","TX","ExtremeTemp","MIROC5","4",2090,"cold","Adaptation",-4.55863948388857e-07
+"Texas","TX","ExtremeTemp","CCSM4","5",2090,"cold","Adaptation",-4.81691934133268e-07
+"Texas","TX","ExtremeTemp","CanESM2","5",2090,"cold","Adaptation",-5.59175891366501e-07
+"Texas","TX","ExtremeTemp","GFDL-CM3","5",2090,"cold","Adaptation",-4.81691934133268e-07
+"Texas","TX","ExtremeTemp","HadGEM2-ES","5",2090,"cold","Adaptation",-5.3334790562209e-07
+"Texas","TX","ExtremeTemp","MIROC5","5",2090,"cold","Adaptation",-5.85003877110912e-07
+"Texas","TX","ExtremeTemp","CanESM2","6",2090,"cold","Adaptation",-4.55863948388857e-07
+"Texas","TX","ExtremeTemp","GFDL-CM3","6",2090,"cold","Adaptation",-4.55863948388857e-07
+"Texas","TX","ExtremeTemp","HadGEM2-ES","6",2090,"cold","Adaptation",-5.59175891366501e-07
 "Texas","TX","ExtremeTemp","CCSM4","1",2090,"hot","Adaptation",4.97030558484914e-07
 "Texas","TX","ExtremeTemp","CanESM2","1",2090,"hot","Adaptation",1.57526355233027e-06
 "Texas","TX","ExtremeTemp","GFDL-CM3","1",2090,"hot","Adaptation",1.47279247435428e-06
@@ -5858,37 +5889,6 @@
 "Texas","TX","ExtremeTemp","CanESM2","6",2090,"hot","Adaptation",7.0454249072535e-05
 "Texas","TX","ExtremeTemp","GFDL-CM3","6",2090,"hot","Adaptation",8.15170419221057e-05
 "Texas","TX","ExtremeTemp","HadGEM2-ES","6",2090,"hot","Adaptation",6.09417357569111e-05
-"Texas","TX","ExtremeTemp","CCSM4","1",2090,"Adaptation","No Adaptation",-4.04207976900035e-07
-"Texas","TX","ExtremeTemp","CanESM2","1",2090,"Adaptation","No Adaptation",-2.23412076689156e-07
-"Texas","TX","ExtremeTemp","GFDL-CM3","1",2090,"Adaptation","No Adaptation",9.03979501054469e-09
-"Texas","TX","ExtremeTemp","GISS-E2-R","1",2090,"Adaptation","No Adaptation",-4.55863948388857e-07
-"Texas","TX","ExtremeTemp","HadGEM2-ES","1",2090,"Adaptation","No Adaptation",1.12351737988189e-07
-"Texas","TX","ExtremeTemp","MIROC5","1",2090,"Adaptation","No Adaptation",-4.04207976900035e-07
-"Texas","TX","ExtremeTemp","CCSM4","2",2090,"Adaptation","No Adaptation",-3.26724019666801e-07
-"Texas","TX","ExtremeTemp","CanESM2","2",2090,"Adaptation","No Adaptation",-1.45928119455923e-07
-"Texas","TX","ExtremeTemp","GFDL-CM3","2",2090,"Adaptation","No Adaptation",-4.30035962644446e-07
-"Texas","TX","ExtremeTemp","GISS-E2-R","2",2090,"Adaptation","No Adaptation",-5.3334790562209e-07
-"Texas","TX","ExtremeTemp","HadGEM2-ES","2",2090,"Adaptation","No Adaptation",-3.52552005411212e-07
-"Texas","TX","ExtremeTemp","MIROC5","2",2090,"Adaptation","No Adaptation",-2.23412076689156e-07
-"Texas","TX","ExtremeTemp","CCSM4","3",2090,"Adaptation","No Adaptation",-4.04207976900035e-07
-"Texas","TX","ExtremeTemp","CanESM2","3",2090,"Adaptation","No Adaptation",-4.55863948388857e-07
-"Texas","TX","ExtremeTemp","GFDL-CM3","3",2090,"Adaptation","No Adaptation",-1.97584090944745e-07
-"Texas","TX","ExtremeTemp","GISS-E2-R","3",2090,"Adaptation","No Adaptation",-3.26724019666801e-07
-"Texas","TX","ExtremeTemp","HadGEM2-ES","3",2090,"Adaptation","No Adaptation",-4.55863948388857e-07
-"Texas","TX","ExtremeTemp","MIROC5","3",2090,"Adaptation","No Adaptation",-3.78379991155624e-07
-"Texas","TX","ExtremeTemp","CCSM4","4",2090,"Adaptation","No Adaptation",-5.3334790562209e-07
-"Texas","TX","ExtremeTemp","CanESM2","4",2090,"Adaptation","No Adaptation",-3.78379991155624e-07
-"Texas","TX","ExtremeTemp","GFDL-CM3","4",2090,"Adaptation","No Adaptation",-3.26724019666801e-07
-"Texas","TX","ExtremeTemp","HadGEM2-ES","4",2090,"Adaptation","No Adaptation",-4.04207976900035e-07
-"Texas","TX","ExtremeTemp","MIROC5","4",2090,"Adaptation","No Adaptation",-4.55863948388857e-07
-"Texas","TX","ExtremeTemp","CCSM4","5",2090,"Adaptation","No Adaptation",-4.81691934133268e-07
-"Texas","TX","ExtremeTemp","CanESM2","5",2090,"Adaptation","No Adaptation",-5.59175891366501e-07
-"Texas","TX","ExtremeTemp","GFDL-CM3","5",2090,"Adaptation","No Adaptation",-4.81691934133268e-07
-"Texas","TX","ExtremeTemp","HadGEM2-ES","5",2090,"Adaptation","No Adaptation",-5.3334790562209e-07
-"Texas","TX","ExtremeTemp","MIROC5","5",2090,"Adaptation","No Adaptation",-5.85003877110912e-07
-"Texas","TX","ExtremeTemp","CanESM2","6",2090,"Adaptation","No Adaptation",-4.55863948388857e-07
-"Texas","TX","ExtremeTemp","GFDL-CM3","6",2090,"Adaptation","No Adaptation",-4.55863948388857e-07
-"Texas","TX","ExtremeTemp","HadGEM2-ES","6",2090,"Adaptation","No Adaptation",-5.59175891366501e-07
 "Texas","TX","ExtremeTemp","CCSM4","1",2090,"cold","No Adaptation",-4.04207976900035e-07
 "Texas","TX","ExtremeTemp","CanESM2","1",2090,"cold","No Adaptation",-2.23412076689156e-07
 "Texas","TX","ExtremeTemp","GFDL-CM3","1",2090,"cold","No Adaptation",9.03979501054469e-09
@@ -5951,6 +5951,37 @@
 "Texas","TX","ExtremeTemp","CanESM2","6",2090,"hot","No Adaptation",7.97622735218729e-05
 "Texas","TX","ExtremeTemp","GFDL-CM3","6",2090,"hot","No Adaptation",8.63782719426341e-05
 "Texas","TX","ExtremeTemp","HadGEM2-ES","6",2090,"hot","No Adaptation",7.5619899988148e-05
+"Utah","UT","ExtremeTemp","CCSM4","1",2090,"cold","Adaptation",-2.59603178927371e-07
+"Utah","UT","ExtremeTemp","CanESM2","1",2090,"cold","Adaptation",1.01144095685972e-08
+"Utah","UT","ExtremeTemp","GFDL-CM3","1",2090,"cold","Adaptation",-2.14650247511376e-07
+"Utah","UT","ExtremeTemp","GISS-E2-R","1",2090,"cold","Adaptation",-3.48385218473997e-08
+"Utah","UT","ExtremeTemp","HadGEM2-ES","1",2090,"cold","Adaptation",3.24784929480563e-07
+"Utah","UT","ExtremeTemp","MIROC5","1",2090,"cold","Adaptation",-1.92173781803378e-07
+"Utah","UT","ExtremeTemp","CCSM4","2",2090,"cold","Adaptation",-5.74273698839336e-07
+"Utah","UT","ExtremeTemp","CanESM2","2",2090,"cold","Adaptation",-5.06844301715344e-07
+"Utah","UT","ExtremeTemp","GFDL-CM3","2",2090,"cold","Adaptation",-5.73149875553938e-08
+"Utah","UT","ExtremeTemp","GISS-E2-R","2",2090,"cold","Adaptation",7.75438066925881e-08
+"Utah","UT","ExtremeTemp","HadGEM2-ES","2",2090,"cold","Adaptation",-3.04556110343366e-07
+"Utah","UT","ExtremeTemp","MIROC5","2",2090,"cold","Adaptation",-3.04556110343366e-07
+"Utah","UT","ExtremeTemp","CCSM4","3",2090,"cold","Adaptation",-6.64179561671326e-07
+"Utah","UT","ExtremeTemp","CanESM2","3",2090,"cold","Adaptation",-4.61891370299349e-07
+"Utah","UT","ExtremeTemp","GFDL-CM3","3",2090,"cold","Adaptation",-5.29320767423341e-07
+"Utah","UT","ExtremeTemp","GISS-E2-R","3",2090,"cold","Adaptation",-3.71985507467359e-07
+"Utah","UT","ExtremeTemp","HadGEM2-ES","3",2090,"cold","Adaptation",-1.24744384679389e-07
+"Utah","UT","ExtremeTemp","MIROC5","3",2090,"cold","Adaptation",-5.29320767423341e-07
+"Utah","UT","ExtremeTemp","CCSM4","4",2090,"cold","Adaptation",-7.54085424503316e-07
+"Utah","UT","ExtremeTemp","CanESM2","4",2090,"cold","Adaptation",-6.86656027379324e-07
+"Utah","UT","ExtremeTemp","GFDL-CM3","4",2090,"cold","Adaptation",-6.64179561671326e-07
+"Utah","UT","ExtremeTemp","HadGEM2-ES","4",2090,"cold","Adaptation",-6.64179561671326e-07
+"Utah","UT","ExtremeTemp","MIROC5","4",2090,"cold","Adaptation",-7.31608958795318e-07
+"Utah","UT","ExtremeTemp","CCSM4","5",2090,"cold","Adaptation",-7.54085424503316e-07
+"Utah","UT","ExtremeTemp","CanESM2","5",2090,"cold","Adaptation",-7.54085424503316e-07
+"Utah","UT","ExtremeTemp","GFDL-CM3","5",2090,"cold","Adaptation",-7.09132493087321e-07
+"Utah","UT","ExtremeTemp","HadGEM2-ES","5",2090,"cold","Adaptation",-5.51797233131338e-07
+"Utah","UT","ExtremeTemp","MIROC5","5",2090,"cold","Adaptation",-5.74273698839336e-07
+"Utah","UT","ExtremeTemp","CanESM2","6",2090,"cold","Adaptation",-7.54085424503316e-07
+"Utah","UT","ExtremeTemp","GFDL-CM3","6",2090,"cold","Adaptation",-6.64179561671326e-07
+"Utah","UT","ExtremeTemp","HadGEM2-ES","6",2090,"cold","Adaptation",-7.54085424503316e-07
 "Utah","UT","ExtremeTemp","CCSM4","1",2090,"hot","Adaptation",0
 "Utah","UT","ExtremeTemp","CanESM2","1",2090,"hot","Adaptation",4.22397214797471e-07
 "Utah","UT","ExtremeTemp","GFDL-CM3","1",2090,"hot","Adaptation",1.40799071599157e-07
@@ -5982,37 +6013,6 @@
 "Utah","UT","ExtremeTemp","CanESM2","6",2090,"hot","Adaptation",5.5615633281667e-06
 "Utah","UT","ExtremeTemp","GFDL-CM3","6",2090,"hot","Adaptation",1.837427884369e-05
 "Utah","UT","ExtremeTemp","HadGEM2-ES","6",2090,"hot","Adaptation",1.04895308341372e-05
-"Utah","UT","ExtremeTemp","CCSM4","1",2090,"Adaptation","No Adaptation",-2.59603178927371e-07
-"Utah","UT","ExtremeTemp","CanESM2","1",2090,"Adaptation","No Adaptation",1.01144095685972e-08
-"Utah","UT","ExtremeTemp","GFDL-CM3","1",2090,"Adaptation","No Adaptation",-2.14650247511376e-07
-"Utah","UT","ExtremeTemp","GISS-E2-R","1",2090,"Adaptation","No Adaptation",-3.48385218473997e-08
-"Utah","UT","ExtremeTemp","HadGEM2-ES","1",2090,"Adaptation","No Adaptation",3.24784929480563e-07
-"Utah","UT","ExtremeTemp","MIROC5","1",2090,"Adaptation","No Adaptation",-1.92173781803378e-07
-"Utah","UT","ExtremeTemp","CCSM4","2",2090,"Adaptation","No Adaptation",-5.74273698839336e-07
-"Utah","UT","ExtremeTemp","CanESM2","2",2090,"Adaptation","No Adaptation",-5.06844301715344e-07
-"Utah","UT","ExtremeTemp","GFDL-CM3","2",2090,"Adaptation","No Adaptation",-5.73149875553938e-08
-"Utah","UT","ExtremeTemp","GISS-E2-R","2",2090,"Adaptation","No Adaptation",7.75438066925881e-08
-"Utah","UT","ExtremeTemp","HadGEM2-ES","2",2090,"Adaptation","No Adaptation",-3.04556110343366e-07
-"Utah","UT","ExtremeTemp","MIROC5","2",2090,"Adaptation","No Adaptation",-3.04556110343366e-07
-"Utah","UT","ExtremeTemp","CCSM4","3",2090,"Adaptation","No Adaptation",-6.64179561671326e-07
-"Utah","UT","ExtremeTemp","CanESM2","3",2090,"Adaptation","No Adaptation",-4.61891370299349e-07
-"Utah","UT","ExtremeTemp","GFDL-CM3","3",2090,"Adaptation","No Adaptation",-5.29320767423341e-07
-"Utah","UT","ExtremeTemp","GISS-E2-R","3",2090,"Adaptation","No Adaptation",-3.71985507467359e-07
-"Utah","UT","ExtremeTemp","HadGEM2-ES","3",2090,"Adaptation","No Adaptation",-1.24744384679389e-07
-"Utah","UT","ExtremeTemp","MIROC5","3",2090,"Adaptation","No Adaptation",-5.29320767423341e-07
-"Utah","UT","ExtremeTemp","CCSM4","4",2090,"Adaptation","No Adaptation",-7.54085424503316e-07
-"Utah","UT","ExtremeTemp","CanESM2","4",2090,"Adaptation","No Adaptation",-6.86656027379324e-07
-"Utah","UT","ExtremeTemp","GFDL-CM3","4",2090,"Adaptation","No Adaptation",-6.64179561671326e-07
-"Utah","UT","ExtremeTemp","HadGEM2-ES","4",2090,"Adaptation","No Adaptation",-6.64179561671326e-07
-"Utah","UT","ExtremeTemp","MIROC5","4",2090,"Adaptation","No Adaptation",-7.31608958795318e-07
-"Utah","UT","ExtremeTemp","CCSM4","5",2090,"Adaptation","No Adaptation",-7.54085424503316e-07
-"Utah","UT","ExtremeTemp","CanESM2","5",2090,"Adaptation","No Adaptation",-7.54085424503316e-07
-"Utah","UT","ExtremeTemp","GFDL-CM3","5",2090,"Adaptation","No Adaptation",-7.09132493087321e-07
-"Utah","UT","ExtremeTemp","HadGEM2-ES","5",2090,"Adaptation","No Adaptation",-5.51797233131338e-07
-"Utah","UT","ExtremeTemp","MIROC5","5",2090,"Adaptation","No Adaptation",-5.74273698839336e-07
-"Utah","UT","ExtremeTemp","CanESM2","6",2090,"Adaptation","No Adaptation",-7.54085424503316e-07
-"Utah","UT","ExtremeTemp","GFDL-CM3","6",2090,"Adaptation","No Adaptation",-6.64179561671326e-07
-"Utah","UT","ExtremeTemp","HadGEM2-ES","6",2090,"Adaptation","No Adaptation",-7.54085424503316e-07
 "Utah","UT","ExtremeTemp","CCSM4","1",2090,"cold","No Adaptation",-2.59603178927371e-07
 "Utah","UT","ExtremeTemp","CanESM2","1",2090,"cold","No Adaptation",1.01144095685972e-08
 "Utah","UT","ExtremeTemp","GFDL-CM3","1",2090,"cold","No Adaptation",-2.14650247511376e-07
@@ -6075,37 +6075,37 @@
 "Utah","UT","ExtremeTemp","CanESM2","6",2090,"hot","No Adaptation",3.58842970284953e-05
 "Utah","UT","ExtremeTemp","GFDL-CM3","6",2090,"hot","No Adaptation",4.99885338617376e-05
 "Utah","UT","ExtremeTemp","HadGEM2-ES","6",2090,"hot","No Adaptation",4.33262310359849e-05
-"Washington","WA","ExtremeTemp","CCSM4","1",2090,"Adaptation","No Adaptation",3.46257831626201e-07
-"Washington","WA","ExtremeTemp","CanESM2","1",2090,"Adaptation","No Adaptation",-3.46403141809074e-07
-"Washington","WA","ExtremeTemp","GFDL-CM3","1",2090,"Adaptation","No Adaptation",1.77064602525853e-08
-"Washington","WA","ExtremeTemp","GISS-E2-R","1",2090,"Adaptation","No Adaptation",-5.80342187043239e-07
-"Washington","WA","ExtremeTemp","HadGEM2-ES","1",2090,"Adaptation","No Adaptation",2.80567094117147e-07
-"Washington","WA","ExtremeTemp","MIROC5","1",2090,"Adaptation","No Adaptation",8.26706468472742e-08
-"Washington","WA","ExtremeTemp","CCSM4","2",2090,"Adaptation","No Adaptation",1.794864389071e-08
-"Washington","WA","ExtremeTemp","CanESM2","2",2090,"Adaptation","No Adaptation",-5.30444253859056e-07
-"Washington","WA","ExtremeTemp","GFDL-CM3","2",2090,"Adaptation","No Adaptation",1.56790995709181e-07
-"Washington","WA","ExtremeTemp","GISS-E2-R","2",2090,"Adaptation","No Adaptation",5.30783310952428e-07
-"Washington","WA","ExtremeTemp","HadGEM2-ES","2",2090,"Adaptation","No Adaptation",-2.7698196589984e-07
-"Washington","WA","ExtremeTemp","MIROC5","2",2090,"Adaptation","No Adaptation",1.47392649803835e-07
-"Washington","WA","ExtremeTemp","CCSM4","3",2090,"Adaptation","No Adaptation",-4.25464847261774e-07
-"Washington","WA","ExtremeTemp","CanESM2","3",2090,"Adaptation","No Adaptation",-7.29551619319542e-07
-"Washington","WA","ExtremeTemp","GFDL-CM3","3",2090,"Adaptation","No Adaptation",-3.46160958170953e-07
-"Washington","WA","ExtremeTemp","GISS-E2-R","3",2090,"Adaptation","No Adaptation",-2.76497598623595e-07
-"Washington","WA","ExtremeTemp","HadGEM2-ES","3",2090,"Adaptation","No Adaptation",-1.37413063167002e-07
-"Washington","WA","ExtremeTemp","MIROC5","3",2090,"Adaptation","No Adaptation",-2.46122908164466e-07
-"Washington","WA","ExtremeTemp","CCSM4","4",2090,"Adaptation","No Adaptation",-6.74954513182688e-07
-"Washington","WA","ExtremeTemp","CanESM2","4",2090,"Adaptation","No Adaptation",-6.59888259772185e-07
-"Washington","WA","ExtremeTemp","GFDL-CM3","4",2090,"Adaptation","No Adaptation",-4.15824317718309e-07
-"Washington","WA","ExtremeTemp","HadGEM2-ES","4",2090,"Adaptation","No Adaptation",-6.45306373637925e-07
-"Washington","WA","ExtremeTemp","MIROC5","4",2090,"Adaptation","No Adaptation",-6.09748142949879e-07
-"Washington","WA","ExtremeTemp","CCSM4","5",2090,"Adaptation","No Adaptation",-7.14485365909038e-07
-"Washington","WA","ExtremeTemp","CanESM2","5",2090,"Adaptation","No Adaptation",-7.84390909094519e-07
-"Washington","WA","ExtremeTemp","GFDL-CM3","5",2090,"Adaptation","No Adaptation",-4.15824317718309e-07
-"Washington","WA","ExtremeTemp","HadGEM2-ES","5",2090,"Adaptation","No Adaptation",-6.59888259772185e-07
-"Washington","WA","ExtremeTemp","MIROC5","5",2090,"Adaptation","No Adaptation",-4.45230273624949e-07
-"Washington","WA","ExtremeTemp","CanESM2","6",2090,"Adaptation","No Adaptation",-7.79449552503725e-07
-"Washington","WA","ExtremeTemp","GFDL-CM3","6",2090,"Adaptation","No Adaptation",-4.95612574085377e-07
-"Washington","WA","ExtremeTemp","HadGEM2-ES","6",2090,"Adaptation","No Adaptation",-5.15378000448552e-07
+"Washington","WA","ExtremeTemp","CCSM4","1",2090,"cold","Adaptation",3.46257831626201e-07
+"Washington","WA","ExtremeTemp","CanESM2","1",2090,"cold","Adaptation",-3.46403141809074e-07
+"Washington","WA","ExtremeTemp","GFDL-CM3","1",2090,"cold","Adaptation",1.77064602525853e-08
+"Washington","WA","ExtremeTemp","GISS-E2-R","1",2090,"cold","Adaptation",-5.80342187043239e-07
+"Washington","WA","ExtremeTemp","HadGEM2-ES","1",2090,"cold","Adaptation",2.80567094117147e-07
+"Washington","WA","ExtremeTemp","MIROC5","1",2090,"cold","Adaptation",8.26706468472742e-08
+"Washington","WA","ExtremeTemp","CCSM4","2",2090,"cold","Adaptation",1.794864389071e-08
+"Washington","WA","ExtremeTemp","CanESM2","2",2090,"cold","Adaptation",-5.30444253859056e-07
+"Washington","WA","ExtremeTemp","GFDL-CM3","2",2090,"cold","Adaptation",1.56790995709181e-07
+"Washington","WA","ExtremeTemp","GISS-E2-R","2",2090,"cold","Adaptation",5.30783310952428e-07
+"Washington","WA","ExtremeTemp","HadGEM2-ES","2",2090,"cold","Adaptation",-2.7698196589984e-07
+"Washington","WA","ExtremeTemp","MIROC5","2",2090,"cold","Adaptation",1.47392649803835e-07
+"Washington","WA","ExtremeTemp","CCSM4","3",2090,"cold","Adaptation",-4.25464847261774e-07
+"Washington","WA","ExtremeTemp","CanESM2","3",2090,"cold","Adaptation",-7.29551619319542e-07
+"Washington","WA","ExtremeTemp","GFDL-CM3","3",2090,"cold","Adaptation",-3.46160958170953e-07
+"Washington","WA","ExtremeTemp","GISS-E2-R","3",2090,"cold","Adaptation",-2.76497598623595e-07
+"Washington","WA","ExtremeTemp","HadGEM2-ES","3",2090,"cold","Adaptation",-1.37413063167002e-07
+"Washington","WA","ExtremeTemp","MIROC5","3",2090,"cold","Adaptation",-2.46122908164466e-07
+"Washington","WA","ExtremeTemp","CCSM4","4",2090,"cold","Adaptation",-6.74954513182688e-07
+"Washington","WA","ExtremeTemp","CanESM2","4",2090,"cold","Adaptation",-6.59888259772185e-07
+"Washington","WA","ExtremeTemp","GFDL-CM3","4",2090,"cold","Adaptation",-4.15824317718309e-07
+"Washington","WA","ExtremeTemp","HadGEM2-ES","4",2090,"cold","Adaptation",-6.45306373637925e-07
+"Washington","WA","ExtremeTemp","MIROC5","4",2090,"cold","Adaptation",-6.09748142949879e-07
+"Washington","WA","ExtremeTemp","CCSM4","5",2090,"cold","Adaptation",-7.14485365909038e-07
+"Washington","WA","ExtremeTemp","CanESM2","5",2090,"cold","Adaptation",-7.84390909094519e-07
+"Washington","WA","ExtremeTemp","GFDL-CM3","5",2090,"cold","Adaptation",-4.15824317718309e-07
+"Washington","WA","ExtremeTemp","HadGEM2-ES","5",2090,"cold","Adaptation",-6.59888259772185e-07
+"Washington","WA","ExtremeTemp","MIROC5","5",2090,"cold","Adaptation",-4.45230273624949e-07
+"Washington","WA","ExtremeTemp","CanESM2","6",2090,"cold","Adaptation",-7.79449552503725e-07
+"Washington","WA","ExtremeTemp","GFDL-CM3","6",2090,"cold","Adaptation",-4.95612574085377e-07
+"Washington","WA","ExtremeTemp","HadGEM2-ES","6",2090,"cold","Adaptation",-5.15378000448552e-07
 "Washington","WA","ExtremeTemp","CCSM4","1",2090,"cold","No Adaptation",3.46257831626201e-07
 "Washington","WA","ExtremeTemp","CanESM2","1",2090,"cold","No Adaptation",-3.46403141809074e-07
 "Washington","WA","ExtremeTemp","GFDL-CM3","1",2090,"cold","No Adaptation",1.77064602525853e-08
@@ -6137,6 +6137,37 @@
 "Washington","WA","ExtremeTemp","CanESM2","6",2090,"cold","No Adaptation",-7.79449552503725e-07
 "Washington","WA","ExtremeTemp","GFDL-CM3","6",2090,"cold","No Adaptation",-4.95612574085377e-07
 "Washington","WA","ExtremeTemp","HadGEM2-ES","6",2090,"cold","No Adaptation",-5.15378000448552e-07
+"Wisconsin","WI","ExtremeTemp","CCSM4","1",2090,"cold","Adaptation",-2.01856432856965e-07
+"Wisconsin","WI","ExtremeTemp","CanESM2","1",2090,"cold","Adaptation",-1.49523283597732e-08
+"Wisconsin","WI","ExtremeTemp","GFDL-CM3","1",2090,"cold","Adaptation",-4.63522179153025e-07
+"Wisconsin","WI","ExtremeTemp","GISS-E2-R","1",2090,"cold","Adaptation",-7.99949567247965e-07
+"Wisconsin","WI","ExtremeTemp","HadGEM2-ES","1",2090,"cold","Adaptation",-2.76618074655836e-07
+"Wisconsin","WI","ExtremeTemp","MIROC5","1",2090,"cold","Adaptation",3.9623670153404e-07
+"Wisconsin","WI","ExtremeTemp","CCSM4","2",2090,"cold","Adaptation",-4.63522179153025e-07
+"Wisconsin","WI","ExtremeTemp","CanESM2","2",2090,"cold","Adaptation",-5.00903000052463e-07
+"Wisconsin","WI","ExtremeTemp","GFDL-CM3","2",2090,"cold","Adaptation",-5.75664641851339e-07
+"Wisconsin","WI","ExtremeTemp","GISS-E2-R","2",2090,"cold","Adaptation",-7.2518792544909e-07
+"Wisconsin","WI","ExtremeTemp","HadGEM2-ES","2",2090,"cold","Adaptation",-5.75664641851339e-07
+"Wisconsin","WI","ExtremeTemp","MIROC5","2",2090,"cold","Adaptation",-3.51379716454712e-07
+"Wisconsin","WI","ExtremeTemp","CCSM4","3",2090,"cold","Adaptation",-6.50426283650214e-07
+"Wisconsin","WI","ExtremeTemp","CanESM2","3",2090,"cold","Adaptation",-5.75664641851339e-07
+"Wisconsin","WI","ExtremeTemp","GFDL-CM3","3",2090,"cold","Adaptation",-4.26141358253588e-07
+"Wisconsin","WI","ExtremeTemp","GISS-E2-R","3",2090,"cold","Adaptation",-6.50426283650214e-07
+"Wisconsin","WI","ExtremeTemp","HadGEM2-ES","3",2090,"cold","Adaptation",-7.2518792544909e-07
+"Wisconsin","WI","ExtremeTemp","MIROC5","3",2090,"cold","Adaptation",-7.62568746348528e-07
+"Wisconsin","WI","ExtremeTemp","CCSM4","4",2090,"cold","Adaptation",-9.12092029946278e-07
+"Wisconsin","WI","ExtremeTemp","CanESM2","4",2090,"cold","Adaptation",-2.39237253756398e-07
+"Wisconsin","WI","ExtremeTemp","GFDL-CM3","4",2090,"cold","Adaptation",-9.12092029946278e-07
+"Wisconsin","WI","ExtremeTemp","HadGEM2-ES","4",2090,"cold","Adaptation",-7.99949567247965e-07
+"Wisconsin","WI","ExtremeTemp","MIROC5","4",2090,"cold","Adaptation",-7.62568746348528e-07
+"Wisconsin","WI","ExtremeTemp","CCSM4","5",2090,"cold","Adaptation",-8.74711209046841e-07
+"Wisconsin","WI","ExtremeTemp","CanESM2","5",2090,"cold","Adaptation",-9.49472850845716e-07
+"Wisconsin","WI","ExtremeTemp","GFDL-CM3","5",2090,"cold","Adaptation",-9.86853671745154e-07
+"Wisconsin","WI","ExtremeTemp","HadGEM2-ES","5",2090,"cold","Adaptation",-9.49472850845716e-07
+"Wisconsin","WI","ExtremeTemp","MIROC5","5",2090,"cold","Adaptation",-9.12092029946278e-07
+"Wisconsin","WI","ExtremeTemp","CanESM2","6",2090,"cold","Adaptation",-8.74711209046841e-07
+"Wisconsin","WI","ExtremeTemp","GFDL-CM3","6",2090,"cold","Adaptation",-9.86853671745154e-07
+"Wisconsin","WI","ExtremeTemp","HadGEM2-ES","6",2090,"cold","Adaptation",-9.86853671745154e-07
 "Wisconsin","WI","ExtremeTemp","CCSM4","1",2090,"hot","Adaptation",-6.3090066260939e-08
 "Wisconsin","WI","ExtremeTemp","CanESM2","1",2090,"hot","Adaptation",-6.3090066260939e-08
 "Wisconsin","WI","ExtremeTemp","GFDL-CM3","1",2090,"hot","Adaptation",1.66328356506112e-07
@@ -6168,37 +6199,6 @@
 "Wisconsin","WI","ExtremeTemp","CanESM2","6",2090,"hot","Adaptation",1.1293121860708e-05
 "Wisconsin","WI","ExtremeTemp","GFDL-CM3","6",2090,"hot","Adaptation",3.36614180804955e-05
 "Wisconsin","WI","ExtremeTemp","HadGEM2-ES","6",2090,"hot","Adaptation",2.86142127796204e-05
-"Wisconsin","WI","ExtremeTemp","CCSM4","1",2090,"Adaptation","No Adaptation",-2.01856432856965e-07
-"Wisconsin","WI","ExtremeTemp","CanESM2","1",2090,"Adaptation","No Adaptation",-1.49523283597732e-08
-"Wisconsin","WI","ExtremeTemp","GFDL-CM3","1",2090,"Adaptation","No Adaptation",-4.63522179153025e-07
-"Wisconsin","WI","ExtremeTemp","GISS-E2-R","1",2090,"Adaptation","No Adaptation",-7.99949567247965e-07
-"Wisconsin","WI","ExtremeTemp","HadGEM2-ES","1",2090,"Adaptation","No Adaptation",-2.76618074655836e-07
-"Wisconsin","WI","ExtremeTemp","MIROC5","1",2090,"Adaptation","No Adaptation",3.9623670153404e-07
-"Wisconsin","WI","ExtremeTemp","CCSM4","2",2090,"Adaptation","No Adaptation",-4.63522179153025e-07
-"Wisconsin","WI","ExtremeTemp","CanESM2","2",2090,"Adaptation","No Adaptation",-5.00903000052463e-07
-"Wisconsin","WI","ExtremeTemp","GFDL-CM3","2",2090,"Adaptation","No Adaptation",-5.75664641851339e-07
-"Wisconsin","WI","ExtremeTemp","GISS-E2-R","2",2090,"Adaptation","No Adaptation",-7.2518792544909e-07
-"Wisconsin","WI","ExtremeTemp","HadGEM2-ES","2",2090,"Adaptation","No Adaptation",-5.75664641851339e-07
-"Wisconsin","WI","ExtremeTemp","MIROC5","2",2090,"Adaptation","No Adaptation",-3.51379716454712e-07
-"Wisconsin","WI","ExtremeTemp","CCSM4","3",2090,"Adaptation","No Adaptation",-6.50426283650214e-07
-"Wisconsin","WI","ExtremeTemp","CanESM2","3",2090,"Adaptation","No Adaptation",-5.75664641851339e-07
-"Wisconsin","WI","ExtremeTemp","GFDL-CM3","3",2090,"Adaptation","No Adaptation",-4.26141358253588e-07
-"Wisconsin","WI","ExtremeTemp","GISS-E2-R","3",2090,"Adaptation","No Adaptation",-6.50426283650214e-07
-"Wisconsin","WI","ExtremeTemp","HadGEM2-ES","3",2090,"Adaptation","No Adaptation",-7.2518792544909e-07
-"Wisconsin","WI","ExtremeTemp","MIROC5","3",2090,"Adaptation","No Adaptation",-7.62568746348528e-07
-"Wisconsin","WI","ExtremeTemp","CCSM4","4",2090,"Adaptation","No Adaptation",-9.12092029946278e-07
-"Wisconsin","WI","ExtremeTemp","CanESM2","4",2090,"Adaptation","No Adaptation",-2.39237253756398e-07
-"Wisconsin","WI","ExtremeTemp","GFDL-CM3","4",2090,"Adaptation","No Adaptation",-9.12092029946278e-07
-"Wisconsin","WI","ExtremeTemp","HadGEM2-ES","4",2090,"Adaptation","No Adaptation",-7.99949567247965e-07
-"Wisconsin","WI","ExtremeTemp","MIROC5","4",2090,"Adaptation","No Adaptation",-7.62568746348528e-07
-"Wisconsin","WI","ExtremeTemp","CCSM4","5",2090,"Adaptation","No Adaptation",-8.74711209046841e-07
-"Wisconsin","WI","ExtremeTemp","CanESM2","5",2090,"Adaptation","No Adaptation",-9.49472850845716e-07
-"Wisconsin","WI","ExtremeTemp","GFDL-CM3","5",2090,"Adaptation","No Adaptation",-9.86853671745154e-07
-"Wisconsin","WI","ExtremeTemp","HadGEM2-ES","5",2090,"Adaptation","No Adaptation",-9.49472850845716e-07
-"Wisconsin","WI","ExtremeTemp","MIROC5","5",2090,"Adaptation","No Adaptation",-9.12092029946278e-07
-"Wisconsin","WI","ExtremeTemp","CanESM2","6",2090,"Adaptation","No Adaptation",-8.74711209046841e-07
-"Wisconsin","WI","ExtremeTemp","GFDL-CM3","6",2090,"Adaptation","No Adaptation",-9.86853671745154e-07
-"Wisconsin","WI","ExtremeTemp","HadGEM2-ES","6",2090,"Adaptation","No Adaptation",-9.86853671745154e-07
 "Wisconsin","WI","ExtremeTemp","CCSM4","1",2090,"cold","No Adaptation",-2.01856432856965e-07
 "Wisconsin","WI","ExtremeTemp","CanESM2","1",2090,"cold","No Adaptation",-1.49523283597732e-08
 "Wisconsin","WI","ExtremeTemp","GFDL-CM3","1",2090,"cold","No Adaptation",-4.63522179153025e-07
