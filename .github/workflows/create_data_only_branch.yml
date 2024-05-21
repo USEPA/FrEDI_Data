@@ -1,7 +1,7 @@
 # https://itecnote.com/tecnote/git-create-a-new-branch-with-only-a-specified-directory-and-its-history-then-push-to-new-repository/
 ## Create a new branch iwth just one specified directory
 
-name: Create Data Only Branch
+name: 4. Create Data Only Branch for FrEDI
 
 on: 
   workflow_dispatch:
