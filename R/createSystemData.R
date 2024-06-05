@@ -143,6 +143,15 @@ createSystemData <- function(
   rDataList[["national_pop_default"]] <- df_national
   # df_national |> names |> print
   
+  ### Calculate population ratios for nation to region and region to state
+  df_popRatios <- pop_default |>
+    left_join(df_regPop, by = c("region", "year")) |>
+    left_join(df_national, by = "year") |>
+    mutate(region_to_state = state_pop / reg_pop,
+           conus_to_region = reg_pop / national_pop) |>
+    select(-c(state_pop, reg_pop, national_pop))
+  rDataList[["df_popRatios"]] <- df_popRatios
+
   ### Default scenario: Join national GDP with national population by year
   ### Default scenario: Join national values with regional population by year
   ### Calculate GDP per capita and add to list
