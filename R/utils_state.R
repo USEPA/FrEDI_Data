@@ -61,7 +61,7 @@ loadStateScalars <- function(
 ###### loadStateData ######
 ### Load state scalar and scaled impacts data from a specified directory.
 loadStateData <- function(
-    fpath   = "." |> file.path("inst", "extdata", "state"), ### File path to directory with containing other state-level data
+    fpath         = "." |> file.path("inst", "extdata", "state"), ### File path to directory with containing other state-level data
     popDir        = "scenarios",                  ### Directory name in fpath containing population info
     popFile       = "State ICLUS Population.csv", ### File name of file with state-level population scenarios
     popRatiosFile = "state_population_ratios.csv" ### File name of file with state-level population ratios

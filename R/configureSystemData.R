@@ -41,21 +41,21 @@ configureSystemData <- function(
   (!silent) |> ifelse("\n", "") |> paste0(msg1, "Loading region-level data...") |> message()
   loadReg0      <- loadData( 
     fileDir   = fileDir,   ### Path to project
-    fileName  = fileName,  ### name of excel file with config information
+    fileName  = fileName,  ### Name of excel file with config information
     sheetName = sheetName, ### Sheet with info about tables in config file
     byState   = FALSE,
     silent    = silent
-  )
+  ) ### End loadData
   
   ### Load state data
   (!silent) |> ifelse("\n", "") |> paste0(msg1, "Loading state-level data...") |> message()
   loadState0    <- loadData(
     fileDir   = fileDir,   ### Path to project
-    fileName  = fileName,  ### name of excel file with config information
+    fileName  = fileName,  ### Name of excel file with config information
     sheetName = sheetName, ### Sheet with info about tables in config file
     byState   = TRUE,
     silent    = silent
-  )
+  ) ### End loadData
   
   
   ###### 2. Reshape Loaded Data ######

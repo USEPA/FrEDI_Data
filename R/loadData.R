@@ -91,7 +91,8 @@ loadData <- function(
     state_sectors <- state_sectors[["sector_id" ]] |> unique()
     ### Load state data
     state_fpath   <- fileDir     |> file.path("state")
-    state_data    <- state_fpath |> loadStateData(sectors = state_sectors)
+    state_data    <- state_fpath |> loadStateData()
+    # state_data    <- state_fpath |> loadStateData(sectors = state_sectors)
     ### Replace region values with state data
     dataList[["data_scaledImpacts"]] <- state_data[["df_gcmStateImpacts"]]
     dataList[["slrImpacts"        ]] <- state_data[["df_slrStateImpacts"]]
