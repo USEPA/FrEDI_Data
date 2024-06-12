@@ -14,10 +14,10 @@ reshapeData <- function(
 ) {
   ###### Assign Objects ######
   ### Assign tables in dataList to object in local environment
-  listNames <- dataList |> names()
+  # listNames <- dataList |> names()
   # listNames |> print()
   # for(name_i in listNames) {name_i |> assign(dataList[[name_i]])}
-  listNames |> list2env()
+  dataList |> list2env()
   
   
   ###### By State  ######
