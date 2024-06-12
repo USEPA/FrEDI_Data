@@ -4,9 +4,8 @@
 ###### loadStateImpacts ######
 ### Load state scaled impact data from a specified directory.
 loadStateImpacts <- function(
-    fpath   = "." |> file.path("inst", "extdata", "state"), # file path to directory with slr and gcm folders containing scaled impacts
-    type    = "gcm" ### Or SLR
-    # sectors = c() # list of sectors with state-level data available
+    fpath   = "." |> file.path("inst", "extdata", "state"), ### file path to directory with state-level slr and gcm scaled impact data
+    type    = "gcm" ### Or slr
 ){
   ### Do GCM
   type          <- type |> tolower()
@@ -44,7 +43,7 @@ loadStateImpacts <- function(
 ###### loadStateScalars ######
 ### Load state scalar data from a specified directory.
 loadStateScalars <- function(
-    fpath = "." |> file.path("inst", "extdata", "state", "scalars") # file path to directory with scalars folder containing scalars
+    fpath = "." |> file.path("inst", "extdata", "state", "scalars") ### File path to directory with state-level scalar data
 ){
   ### File names
   fnames     <- fpath |> file.path("scalars") |> list.files(full.names=T)
@@ -62,24 +61,29 @@ loadStateScalars <- function(
 ###### loadStateData ######
 ### Load state scalar and scaled impacts data from a specified directory.
 loadStateData <- function(
-    fpath   = "." |> file.path("inst", "extdata", "state"), # file path to directory with folders containing data
-    sectors = c()
+    fpath   = "." |> file.path("inst", "extdata", "state"), ### File path to directory with containing other state-level data
+    popDir        = "scenarios",                  ### Directory name in fpath containing population info
+    popFile       = "State ICLUS Population.csv", ### File name of file with state-level population scenarios
+    popRatiosFile = "state_population_ratios.csv" ### File name of file with state-level population ratios
 ){
   ### Load scalars
   scalars        <- fpath |> loadStateScalars()
-  ### Load population
-  popPath        <- fpath |> file.path("scenarios", "State ICLUS Population.csv")
-  state_pop      <- popPath |> read.csv()
+  ### Load population, population ratios
+  popPath        <- fpath |> file.path(popDir, popFile)
+  ratiosPath     <- fpath |> file.path(popDir, popRatiosFile)
+  state_pop      <- popPath    |> read.csv() |> as_tibble()
+  state_ratios   <- ratiosPath |> read.csv() |> as_tibble()
   ### Load impacts
   gcm_impacts    <- fpath |> loadStateImpacts(type="gcm")
   slr_impacts    <- fpath |> loadStateImpacts(type="slr")
   ### Add to list
-  state_data     <- list(
-    df_stateScalars    = scalars,
-    df_gcmStateImpacts = gcm_impacts,
-    df_slrStateImpacts = slr_impacts,
-    df_statePop        = state_pop
-  )
+  state_data     <- list()
+  state_data[["df_stateScalars"   ]] <- scalars
+  state_data[["df_gcmStateImpacts"]] <- gcm_impacts
+  state_data[["df_slrStateImpacts"]] <- slr_impacts
+  state_data[["df_statePop"       ]] <- state_pop
+  state_data[["df_popRatios"      ]] <- state_pop
+    
   ### Return
   return(state_data)
 }
@@ -91,7 +95,6 @@ updateStateScalars <- function(
     regList0    ### List of loaded & reshaped region data
 ){
   ### - Format regional scalars
-  # states0      <- reshapeList0[["co_states"      ]] |> select(c("region", "state", "postal"))
   scalars0      <- stateList0[["scalarDataframe"]]
   scalars1      <- regList0  [["scalarDataframe"]]
   ### - Format data
@@ -151,7 +154,6 @@ combineReshapedLists <- function(
     return(df_state)
   }) |> set_names(colsCombine0)
   ### - Format regional scalars
-  # states0      <- reshapeList0[["co_states"      ]] |> select(c("region", "state", "postal"))
   listCombine0  <- listCombine0 |> c(listOther0)
   ### Return
   return(listCombine0)
