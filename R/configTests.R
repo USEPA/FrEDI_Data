@@ -80,7 +80,7 @@ dataInfo_test <- function(
   df_info   <- df_info |> mutate(passed   = case_when((itemClass == "list") ~ T, (has_dups == T | na_flag == T) ~ F, (has_dups == F & na_flag == F) ~ T))
   ### Mutate logicals to numeric
   mutate0   <- c("has_dups", "passed")
-  df_info   <- df_info |> mutate_at(.c(mutate0), as.numeric)
+  df_info   <- df_info |> mutate_at(c(mutate0), as.numeric)
   ### Remove intermediates
   rm(except0, mutate0)
   
