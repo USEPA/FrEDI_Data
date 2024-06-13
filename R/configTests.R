@@ -715,7 +715,7 @@ make_scaled_impact_plots <- function(
   
   ### Get iteration list
   df_types   <- df0 |> 
-    group_by_at(.c("sector", "impactYear", "model_type")) |> 
+    group_by_at(c("sector", "impactYear", "model_type")) |> 
     summarize(n=n(), .groups="drop") |> select(-c("n")) |>
     mutate(label = sector |> paste0("_", impactYear))
   # df_types |> glimpse()
