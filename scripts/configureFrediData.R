@@ -52,7 +52,7 @@ configureFrediData <- function(
     outPath    = dataOutDir |> file.path("tmp_sysdata.rda"),
     reshape    = reshape,
     extend_all = T,
-    return = T
+    return     = T
   ) ### End configureSystemData
   ### Add to return list
   returnList[["systemDataList"]] <- list_systemData0

@@ -40,7 +40,7 @@ createSystemData <- function(
   if(msgUser) {msg0(1) |> paste0("Loading config info from '", configFile, "'...") |> message()}
   configFile |> source()
   # for(name_i in fredi_config |> names()) {name_i |> assign(fredi_config[[name_i]]); rm(name_i)}
-  fredi_config |> list2env()
+  fredi_config |> list2env(envir = environment())
   
   
   ###### Import Functions to Namespace ######
@@ -64,7 +64,7 @@ createSystemData <- function(
   rDataList    <- rDataList |> c(loadDataList)
   if(msgUser) {msg0(1) |> paste0(messages_data[["loadInputs"]]$success) |> message()}
   # for(name_i in loadDataList |> names()) {name_i |> assign(loadDataList[[name_i]]); rm(name_i)}
-  loadDataList |> list2env()
+  loadDataList |> list2env(envir = environment())
   
   
   ###### Sector Info ######

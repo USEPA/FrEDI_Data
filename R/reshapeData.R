@@ -17,8 +17,7 @@ reshapeData <- function(
   # listNames <- dataList |> names()
   # listNames |> print()
   # for(name_i in listNames) {name_i |> assign(dataList[[name_i]])}
-  dataList |> list2env()
-  
+  dataList |> list2env(envir = environment())
   
   ###### By State  ######
   ### Region and state level columns to use
@@ -161,7 +160,7 @@ reshapeData <- function(
     # co_statePopRatios  <- co_defaultScenario |> select(all_of(select1))
     # ### Update in list, drop intermediate values
     # dataList[["co_statePopRatios"]] <- co_statePopRatios
-    # rm(mutate0, str0, join0, mutate1, co_statePopRatios) 
+    rm(mutate0, str0, join0, mutate1)
     
     ### Join with GDP default scenario & relocate names
     join0              <- c("year")
@@ -170,8 +169,6 @@ reshapeData <- function(
     co_defaultScenario <- co_defaultScenario |> left_join(gdp_default, by=c(join0))
     co_defaultScenario <- co_defaultScenario |> relocate(c("gdp_usd"), .after="state_pop")
     rm(join0, select2)
-    ### Drop values
-    rm(select0, select1)
   } else{
     ### Pivot longer
     co_defaultScenario <- co_defaultScenario |> pivot_longer(
@@ -257,7 +254,6 @@ reshapeData <- function(
   # filter0 |> print(); data_scaledImpacts$model |> unique() |> print()
   data_scaledImpacts <- data_scaledImpacts |> filter(model  %in% filter0)
   data_scaledImpacts <- data_scaledImpacts |> filter(sector %in% filter1)
-  rm(filter0, filter1)
   ### Update in list, drop intermediate values
   dataList[["data_scaledImpacts"]] <- data_scaledImpacts
   rm(filter0, filter1)
