@@ -19,6 +19,16 @@ reshapeData <- function(
   # for(name_i in listNames) {name_i |> assign(dataList[[name_i]])}
   dataList |> list2env(envir = environment())
   
+  ### Ensure all dataframes are tibbles
+  names0   <- dataList |> names()
+  for(name_i in names0) {
+    data_i <- dataList[[name_i]]
+    isDf_i <- data_i |> is.data.frame()
+    if(isDf_i) data_i <- data_i |> as_tibble()
+    dataList[[name_i]] <- data_i
+    rm(name_i, data_i, isDf_i)
+  } ### End for(name_i in names0) 
+  
   ###### By State  ######
   ### Region and state level columns to use
   if(byState){stateCols0 <- c("state", "postal")} else{stateCols0 <- c()}
@@ -44,6 +54,7 @@ reshapeData <- function(
   ### No changes to variants
   ### No changes to model types
   ### No changes to input scenario info
+  
   
   
   ###### ** 3. Impact Years ######
