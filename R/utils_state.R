@@ -82,7 +82,7 @@ loadStateData <- function(
   state_data[["df_gcmStateImpacts"]] <- gcm_impacts
   state_data[["df_slrStateImpacts"]] <- slr_impacts
   state_data[["df_statePop"       ]] <- state_pop
-  state_data[["df_popRatios"      ]] <- state_pop
+  state_data[["df_popRatios"      ]] <- state_ratios
     
   ### Return
   return(state_data)

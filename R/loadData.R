@@ -94,10 +94,11 @@ loadData <- function(
     state_data    <- state_fpath |> loadStateData()
     # state_data    <- state_fpath |> loadStateData(sectors = state_sectors)
     ### Replace region values with state data
+    dataList[["co_defaultScenario"]] <- state_data[["df_statePop"       ]]
+    dataList[["df_popRatios"      ]] <- state_data[["df_popRatios"      ]]
     dataList[["data_scaledImpacts"]] <- state_data[["df_gcmStateImpacts"]]
     dataList[["slrImpacts"        ]] <- state_data[["df_slrStateImpacts"]]
     dataList[["scalarDataframe"   ]] <- state_data[["df_stateScalars"   ]]
-    dataList[["co_defaultScenario"]] <- state_data[["df_statePop"       ]]
   } ### End if(byState)
   
   ###### Return ######
