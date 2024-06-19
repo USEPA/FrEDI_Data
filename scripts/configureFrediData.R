@@ -7,35 +7,36 @@ require(tidyverse)
 require(openxlsx)
 require(FrEDI)
 require(devtools)
-# require(devtools)
 
 configureFrediData <- function(
-    projectDir = ".",
-    save       = FALSE,
-    byState    = TRUE,
-    #update_sv  = TRUE,
-    reshape    = TRUE
+    projectDir = ".",   ### Directory in which to find the FrEDI_Data project/package
+    save       = FALSE, ### Whether to save the data
+    byState    = TRUE,  ### Whether to do test on a state-level...deprecated
+    reshape    = TRUE   ### Whether to include reshaped data in outputs (e.g., for testing)
 ){
-  
   ###### Set Arguments ######
   ###### Parameters for saving tests
   save_test   <- save
   
-  ###### Return List ######
+  
+  ###### Initialize Return List ######
   returnList  <- list()
+  
   
   ###### Set Paths ######
   ###### Project path
   # projectDir  <- "."
   projectDir  <- projectDir
-  ###### Data input path and file name
+  ### Path and file name for data inputs
   dataInDir   <- projectDir |> file.path("inst", "extdata")
   dataInName  <- "FrEDI_config" |> paste0(".xlsx")
   dataInPath  <- dataInDir |> file.path(dataInName)
-  ###### Data output path and file name
+  ### Path and file name for saving outputs
   dataOutDir  <- projectDir |> file.path("data")
   dataOutName <- "sysdata"  |> paste0(".rda")
   dataOutPath <- dataOutDir |> file.path(dataOutName)
+  ### Path for saving test outputs
+  testOutDir  <- projectDir |> file.path("data_tests")
   
   
   ###### 0. Load FrEDI Data Code ###### 
@@ -51,11 +52,11 @@ configureFrediData <- function(
     outPath    = dataOutDir |> file.path("tmp_sysdata.rda"),
     reshape    = reshape,
     extend_all = T,
-    return = T
+    return     = T
   ) ### End configureSystemData
-  
   ### Add to return list
   returnList[["systemDataList"]] <- list_systemData0
+  
   
   ###### 2. Run General Tests on Data ######
   ### Run general tests
@@ -66,52 +67,25 @@ configureFrediData <- function(
     overwrite      = TRUE,
     xlsxName       = "generalConfig_testResults.xlsx",
     fredi_config   = fredi_config
-  )
-  
-  
+  ) ### End general_config_test
   ### Add to return list
   returnList[["generalConfigTests"]] <- test_general_config
   
-  # ###### 3. Drop Reshaped Data ######
-  # rDataList    <- list_systemData0[["rDataList"]]
-  # drop0        <- c("rsData_reg", "rsData_state")
-  # inDrop0      <- (rDataList |> names()) %in% drop0
-  # rDataList    <- rDataList[!inDrop0]
-  # ### Update list
-  # list_systemData0[["rDataList"]] <- rDataList
-  # ### Save list
-  # sysDataFile  <- dataOutDir |> file.path("tmp_sysdata.rda")
-  # save(fredi_config, rDataList, file=sysDataFile)
-  
-  ###### 4. Add SV Data ######
-  ### Update system data: Added in another step
-  # if(update_sv){
-  #   update_sysdata(
-  #     save    = TRUE,
-  #     outPath = dataOutDir
-  #   ) ### End update_sysdata
-  # } ### End if(update_sv)
   
   ###### 5. Create Images of Scaled Impacts ######
   ### Test create results
   testResults  <- list_systemData0 |> get_fredi_sectorOptions_results(); testResults |> glimpse()
-  
   ### Test region plot info
-  testIter0    <- testResults |> get_region_plotInfo(); #testIter0$sectorInfo |> glimpse()
-  ### Test make plots
+  testIter0    <- testResults |> get_region_plotInfo(); 
+  # testIter0$sectorInfo |> glimpse()
+  ### Make scaled impact plots 
   testPlots0   <- testResults |> make_scaled_impact_plots()
-  ### General tests
+  ### Add to return list
   returnList[["testPlots0"]] <- testPlots0
+  ### Save plots
+  testPlots1   <- testPlots0 |> save_scaled_impact_figures(df0=testResults, modelType="GCM", fpath=testOutDir)
+  testPlots2   <- testPlots0 |> save_scaled_impact_figures(df0=testResults, modelType="SLR", fpath=testOutDir)
   
-  ### Test save plots
-  testPlots1   <- testPlots0  |> save_scaled_impact_figures(df0=testResults, modelType="GCM", fpath=projectDir |> file.path("data_tests"))
-  testPlots2   <- testPlots0  |> save_scaled_impact_figures(df0=testResults, modelType="SLR", fpath=projectDir |> file.path("data_tests"))
-  
-  # ### Test get plots
-  # testPlots    <- list_systemData0 |> get_scaled_impact_plots(save=T)
-  # ### Test get plots
-  # testPlots    <- list_systemData0 |> get_scaled_impact_plots(save=T)
-  # 
   
   ###### Return ######
   return(returnList)
