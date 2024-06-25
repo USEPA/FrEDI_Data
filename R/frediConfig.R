@@ -30,7 +30,7 @@ frediConfig <- function(outPath){
 
   ### Minimum Years
   minYear          <- 2010
-  maxYear          <- 2090
+  maxYear          <- 2100
   elasticity       <- 1
   # maxYear          <- 2100
 
