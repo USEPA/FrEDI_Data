@@ -296,7 +296,7 @@ get_svPopList <- function(
   msg1 <- msg0 |> paste0("\t")
 
   ###### Constants ######
-  c_intYears <- seq(2000, 2090, by=5) ### years for interpolating
+  c_intYears <- seq(2000, 2100, by=5) ### years for interpolating
 
   ###### Check for Data ######
   ### Check if there is a data file and if not, exit
