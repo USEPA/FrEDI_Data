@@ -1,4 +1,77 @@
 ####### FrEDI Data Utilities 
+###### Function to get years from data
+### Get a sequence from a set of years
+get_years_fromData <- function(years0, by=1){
+  min0 <- years0 |> min(na.rm=T)
+  max0 <- years0 |> max(na.rm=T)
+  yrs0 <- min0 |> seq(max0, by=by)
+  return(yrs0)
+}
+
+###### Format GCAM scenarios
+format_gcamData <- function(
+    df0 ### Original GCAM data
+){
+  ### Select values
+  select0 <- c("year", "temp_C_global", "scenario", "model")
+  df0     <- df0 |> select(all_of(df0))
+  rm(select0)
+  
+  ### Calculate
+  # df0 |> glimpse()
+  df0     <- df0 |> filter_all(any_vars(!(. |> is.na())))
+  # df0 |> glimpse()
+  
+  ### Calculate temp_C_conus
+  scen0   <- df0 |> pull(scenario) |> unique()
+  # scen0 |> print()
+  df0     <- list(scen_i=scen0, df0_i=scen0 |> map(function(scen_i){df0 |> filter(scenario == scen_i)})) |>
+    scen0 |> map(function(scen_i, df0_i){
+    df0_i |> format_gcamData_byScenario()
+  }) |> bind_rows()
+  # df0 |> glimpse()
+  
+  ### Select values
+  select0 <- c("year", "temp_C_global", "temp_C_global", "slr_cm", "scenario", "model")
+  df0     <- df0 |> select(all_of(select0))
+  rm(select0)
+  
+  ### Return
+  return(df0)
+}
+
+###### Format GCAM scenario
+format_gcamData_byScenario <- function(
+    df0 ### Original GCAM data, filtered to a specific scenario
+){
+  ### Calculate
+  # df0 |> glimpse()
+  
+  ### Years
+  years0 <- df0 |> pull(year) |> get_years_fromData()
+  
+  ### Interpolate temperatures by year
+  df0    <- df0 |> mutate(region = "NationalTotal") 
+  df0    <- df0 |> interpolate_annual(years=list_years, column="temp_C_global", rule=2:2)
+  df0    <- df0 |> select(-c("region"))
+  # df0_i |> glimpse()
+
+  ### Calculate CONUS temperatures and move before global temps
+  df0    <- df0 |> mutate(temp_C_conus = temp_C_global |> convertTemps(from="global"))
+  df0    <- df0 |> relocate(c("temp_C_conus"), .before("temp_C_global"))
+  
+  ### Then, calculate SLR heights
+  df1    <- FrEDI::temps2slr(temps=df0 |> pull(temp_C_global), years=df0 |> pull(year))
+  df0    <- df0 |> left_join(df1_i, by=c("year"))
+  # df0 |> glimpse()
+
+  ### Select values  
+  df0   <- df0 |> select(c("year", "temp_C_conus", "temp_C_global", "slr_cm", "scenario", "model"))
+  
+  ### Return
+  return(df0)
+}
+
 ####### extend_data 
 extend_data <- function(
     df0, ### Data frame to extend
@@ -201,23 +274,20 @@ fun_slrConfigExtremes <- function(
 fun_formatScalars <- function(
     data_x,  ### rDataList$scalarDataframe
     info_x,  ### rDataList$co_scalarInfo
-    years_x, ### rDataList$list_years
-    byState = FALSE ### If breakdown is by state
+    years_x  ### rDataList$list_years
 ){
   ### By state
-  if(byState){stateCols0 <- c("state", "postal")} else{stateCols0 <- c()}
+  stateCols0 <- c("state", "postal")
   
   ### Join info
   join0    <- c("scalarName", "scalarType")
   select0  <- join0  |> c("national_or_regional", "constant_or_dynamic")
-  select1  <- join0  |> c("region") |> c(stateCols0) |> c("byState", "year", "value")
+  select1  <- join0  |> c("region") |> c(stateCols0) |> c("year", "value")
   info_x   <- info_x |> select(all_of(select0))
   data_x   <- data_x |> select(all_of(select1))
   data_x   <- data_x |> left_join(info_x, by=c(join0))
   
   ### Get unique names & types
-  # group0  <- select1 |> (function(x){x[!(x %in% c("year", "value"))]})()
-  # group0  <- group0  |> c("national_or_regional", "constant_or_dynamic")
   group0  <- select0 |> c("byState")
   dfNames <- data_x  |>
     group_by_at(c(group0)) |>
