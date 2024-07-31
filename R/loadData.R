@@ -1,106 +1,120 @@
 ### Last updated: 2022.01.10
 ### 2022.01.10: Added SLR sectors
 ### This function loads the data from a directory specified by the user. There is a default directory structure it will try to load from.
-loadData <- function(
-    fileDir   = "." |> file.path("inst", "extdata"), ### Path to project
-    fileName  = "FrEDI_config.xlsx", ### Name of Excel file with config information
-    sheetName = "tableNames",        ### Sheet containing table with info about tables
-    byState   = FALSE,               ### Whether to run by state (deprecated...)
-    silent    = FALSE                ### Level of messaging
+loadFrediData <- function(
+    mainDir     = "." |> file.path("inst", "extdata"),  ### Path to directory containing configuration data
+    frediDir    = mainDir  |> file.path("fredi"),        ### Path to Excel config file, relative to mainDir
+    scalarDir   = frediDir |> file.path("scalars"),     ### Path to directory with scalars, relative to mainDir
+    gcmDir      = frediDir |> file.path("gcm"),         ### Path to directory with GCM impacts, relative to mainDir
+    slrDir      = frediDir |> file.path("slr"),         ### Path to directory with SLR impacts, relative to mainDir
+    scenarioDir = mainDir  |> file.path("scenarios"),    ### Path to scenarios, relative to mainDir
+    ### Files
+    configFile  = "FrEDI_config.xlsx",                  ### Name of Excel file with config information, relative to frediDir
+    configSheet = "tableNames",                         ### Name of sheet in configFile containing table with info about tables
+    gcamFile    = "Hector_v5.3_GCAM" |> paste0(".csv"), ### File in scenarioDir containing temperature scenarios
+    gdpFile     = "EPPA_v6_GDP"      |> paste0(".csv"), ### File in scenarioDir containing GDP scenarios
+    popFile     = "ICLUS_State_Population"  |> paste0(".csv"), ### File in scenarioDir containing population scenarios
+    ### Other args
+    ratiosFile  = "state_population_ratios" |> paste0(".csv"), ### File in scenarioDir containing population ratios
+    silent      = FALSE, ### Level of messaging
+    msg0        = "\t\t"   ### Message index
 ) {
-  # getwd() |> print()
+  ###### Messaging ######
+  msg1          <- msg0 |> paste("\t")  
+  if (!silent) paste0(msg0, "In loadFrediData:", "\n") |> message()
   
-  ###### File Path ######
-  filePath      <- fileDir |> file.path(fileName)
+  ###### File Paths ######
+  ### Directories for scalars, GCM scaled impacts, and SLR scaled impacts
+  scalarDir     <- frediDir |> file.path("scalars")
+  gcmDir        <- frediDir |> file.path("gcm")
+  slrDir        <- frediDir |> file.path("slr")
+  
+  ### File names for scalars, GCM scaled impacts, and SLR scaled impacts
+  scalarFiles   <- scalarDir |> list.files()
+  gcmFiles      <- gcmDir    |> list.files()
+  slrFiles      <- slrDir    |> list.files()
+  
+  ### File paths for scalars, GCM scaled impacts, and SLR scaled impacts
+  scalarPath    <- frediDir |> file.path(scalarFiles)
+  gcmPath       <- frediDir |> file.path(gcmFiles   )
+  slrPath       <- frediDir |> file.path(slrFiles   )
+  
+  ###### Initialize List ######
+  dataList      <- list()
+  
   
   ###### Load Table of Tables ######
   ### Load table with names of data tables
-  # filePath |> print()
-  df_tableNames <- openxlsx::read.xlsx(
-    xlsxFile = filePath,
-    sheet    = sheetName,
-    rowNames = T,
-    startRow = 2
-  ) ### End read.xlsx
-  
-  ### Filter to those for importing and replace NA values in some columns
-  mutate0       <- c("excludeCol_ids", "Notes")
-  df_tableNames <- df_tableNames |> filter(Import == 1)
-  df_tableNames <- df_tableNames |> mutate_at(c(mutate0), replace_na, "")
-  rm(mutate0)
-  
-  ### Number of data tables
-  ndataTables   <- df_tableNames |> nrow()
-  
-  ###### Load Each Table ######
-  ### Iterate over the list of data tables: import them and add them to the list of tables
-  ### Initialize the list
-  dataList      <- list()
-  tableNames    <- df_tableNames[["Table.Name"]]
-  
-  for (i in 1:ndataTables) {
-    tableName_i <- tableNames[i]
-    ### Message the user
-    if (!silent) message("\t\t", "Importing table '", tableName_i, "' from Excel...")
-    ### Subset table info
-    tableInfo_i <- df_tableNames[i, ]
-    ### Read in the table
-    table_i     <- openxlsx::read.xlsx(
-      xlsxFile = filePath,
-      colNames = T,
-      rowNames = T,
-      sheet = tableInfo_i$Worksheet,
-      cols  = tableInfo_i$id_colIndex + 0:tableInfo_i$num_tableCols,
-      rows  = tableInfo_i$Header.Row  + 0:tableInfo_i$Number.of.Data.Rows,
-      na.strings = ""
-    ) ### End read.xlsx
-    
-    ### Exclude some columns
-    ### Columns to exclude by splitting values in `excludeCol_ids` then adjust for row ID in Excel
-    ### Exclude the relevant columns
-    # tableInfo_i$excludeCol_ids |> print
-    excludeIds_i  <- tableInfo_i[["excludeCol_ids"]]
-    doExclude_i   <- !(excludeIds_i == "")
-    if (doExclude_i) {
-      excludeCols_i <- excludeIds_i |> str_split(", ") |> unlist() |> as.numeric()
-      excludeCols_i <- excludeCols_i - 1
-      table_i       <- table_i |> select(-c(all_of(excludeCols_i)))
-      rm(excludeCols_i)
-    } ### End if (doExclude_i) 
-    rm(excludeIds_i, doExclude_i)
-    
-    ### Add the table to the list
-    dataList[[tableName_i]] <- table_i
-    
-    ### Remove intermediate values
-    rm(table_i, tableInfo_i, tableName_i, i)
-  } ### End for (i in 1:ndataTables)
+  # frediFile |> print()
+  if (!silent) paste0(msg1, "Loading configuration data and controls...") |> message()
+  listFrEDI     <- loadFrediConfig(
+    configDir   = frediDir,    ### Path to Excel config file relative to mainDir
+    configFile  = configFile,  ### Name of Excel file with config information, relative to frediDir
+    configSheet = configSheet, ### Name of sheet in configFile containing table with info about tables
+    silent      = silent,      ### Level of messaging
+    msg0        = msg1
+  ) ### End loadFrediConfig
+  ### Add to dataList
+  dataList[["frediData"]] <- listFrEDI
+  rm(listFrEDI)
+ 
 
-  ###### Set Aside GDP Default ######
-  ### Default scenario
-  select0       <- c("year", "gdp_usd")
-  gdp_default   <- dataList[["co_defaultScenario"]]
-  gdp_default   <- gdp_default |> select(all_of(select0))
-  dataList[["gdp_default"]] <- gdp_default
-  rm(select0)
+  ###### Load Default Scenarios & Pop Ratios ######
+  if (!silent) paste0(msg1, "Loading scenario data...") |> message()
+  listDefaults  <- loadScenarioData(
+    scenarioDir = scenarioDir, ### Path to Excel config file relative to mainDir
+    gcamFile    = gcamFile,    ### File in scenarioDir containing temperature scenarios
+    gdpFile     = gdpFile,     ### File in scenarioDir containing GDP scenarios
+    popFile     = popFile,     ### File in scenarioDir containing population scenarios
+    ratiosFile  = ratiosFile,  ### File in scenarioDir containing population ratios
+    silent      = silent,      ### Level of messaging
+    msg0        = msg1
+  ) ### End loadFrediConfig
+  ### Add to dataList
+  listDefaults  <- list(data = listDefaults)
+  dataList[["scenarioData"]] <- listDefaults
+  rm(listDefaults)
+  
+ 
+  ###### Load Scalars & Scaled Impacts ######
+  ### Load scalars
+  if (!silent) paste0(msg1, "Loading scalars...") |> message()
+  data_scalars    <- scalarDir |> loadFrediScalars()
+  
+  ### Load GCM scaled impacts
+  if (!silent) paste0(msg1, "Loading GCM scaled impacts...") |> message()
+  data_gcmImpacts <- gcmDir |> loadFrediImpacts(type="gcm")
+  
+  ### Load SLR scaled impacts
+  if (!silent) paste0(msg1, "Loading SLR scaled impacts...") |> message()
+  data_slrImpacts <- slrDir |> loadFrediImpacts(type="slr")
+  
+  ### Create a list
+  listState       <- list()
+  listState[["scalars"   ]] <- data_scalars
+  listState[["gcmImpacts"]] <- data_gcmImpacts
+  listState[["slrImpacts"]] <- data_slrImpacts
+  rm(data_scalars, data_gcmImpacts, data_slrImpacts)
+  
+  ### Add to dataList
+  listState       <- list(data = listState)
+  dataList[["stateData"]] <- listState
+  rm(listState)
   
   ###### Load State Data ######
-  if (byState) {
-    ### State sectors
-    state_sectors <- dataList     [["co_sectors"]] |> filter(byState == 1)
-    state_sectors <- state_sectors[["sector_id" ]] |> unique()
-    ### Load state data
-    state_fpath   <- fileDir     |> file.path("state")
-    state_data    <- state_fpath |> loadStateData()
-    # state_data    <- state_fpath |> loadStateData(sectors = state_sectors)
-    ### Replace region values with state data
-    dataList[["co_defaultScenario"]] <- state_data[["df_statePop"       ]]
-    dataList[["df_popRatios"      ]] <- state_data[["df_popRatios"      ]]
-    dataList[["data_scaledImpacts"]] <- state_data[["df_gcmStateImpacts"]]
-    dataList[["slrImpacts"        ]] <- state_data[["df_slrStateImpacts"]]
-    dataList[["scalarDataframe"   ]] <- state_data[["df_stateScalars"   ]]
-  } ### End if(byState)
+  # ### State sectors
+  # sectors0      <- dataList[["co_sectors"]] |> pull(sector_id) |> unique()
+  # ### Load state data
+  # state_fpath   <- frediDir     |> file.path("state")
+  # state_data    <- state_fpath |> loadStateData()
+  # ### Load state data
+  # dataList[["co_defaultScenario"]] <- state_data[["df_statePop"       ]]
+  # dataList[["df_popRatios"      ]] <- state_data[["df_popRatios"      ]]
+  # dataList[["data_scaledImpacts"]] <- state_data[["df_gcmStateImpacts"]]
+  # dataList[["slrImpacts"        ]] <- state_data[["df_slrStateImpacts"]]
+  # dataList[["scalarDataframe"   ]] <- state_data[["df_stateScalars"   ]]
   
   ###### Return ######
+  if (!silent) paste0("\n") |> message()
   return(dataList)
 }

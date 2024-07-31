@@ -25,10 +25,11 @@ format_gcamData <- function(
   ### Calculate temp_C_conus
   scen0   <- df0 |> pull(scenario) |> unique()
   # scen0 |> print()
-  df0     <- list(scen_i=scen0, df0_i=scen0 |> map(function(scen_i){df0 |> filter(scenario == scen_i)})) |>
-    scen0 |> map(function(scen_i, df0_i){
+  list0   <- list(scen_i=scen0, df0_i=scen0 |> map(function(scen_i){df0 |> filter(scenario == scen_i)}))
+  df0     <- list0 |> pmap(function(scen_i, df0_i){
     df0_i |> format_gcamData_byScenario()
   }) |> bind_rows()
+  rm(list0)
   # df0 |> glimpse()
   
   ### Select values

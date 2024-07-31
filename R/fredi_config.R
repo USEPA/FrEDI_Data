@@ -1,9 +1,9 @@
 ### This file contains hard coded values for constants used throughout the temperature binning process
 ###### Config List for createSystemData ######
-fredi_config <- function(
-    minYear0=2010, 
-    maxYear0=2100, 
-    npdYear0=2300
+frediConfig <- function(
+    minYear0 = 2010, 
+    maxYear0 = 2100, 
+    npdYear0 = 2300
 ){
   ###### Constants ######
   ###### Named constant values that are used frequently in the model

@@ -1,14 +1,14 @@
 configureSystemData <- function(
-    fileDir    = "." |> file.path("inst", "extdata"),         ### Path to project
-    fileName   = "FrEDI_config.xlsx",                         ### Name of excel file with config information
-    sheetName  = "tableNames",                                ### Sheet with table info
-    configPath = "." |> file.path("R", "fredi_config.R"),     ### Path to config file
-    outPath    = "." |> file.path("data", "tmp_sysdata.rda"), ### Where to save data
-    extend_all = FALSE,  ### Whether to extend all GCM model observations to maximum range
-    reshape    = TRUE,   ### Whether to include reshapeData items in data list (for testing)
-    silent     = TRUE,   ### Level of messaging 
-    return     = TRUE,   ### Whether to return the data list
-    save       = FALSE   ### Whether to save the file
+    fileDir     = "." |> file.path("inst", "extdata"),         ### Path to project
+    configFile  = "FrEDI_config.xlsx",                         ### Name of excel file with config information
+    configSheet = "tableNames",                                ### Sheet with table info
+    # configPath  = "." |> file.path("R", "fredi_config.R"),     ### Path to config file
+    outPath     = "." |> file.path("data", "tmp_sysdata.rda"), ### Where to save data
+    extend_all  = FALSE,  ### Whether to extend all GCM model observations to maximum range
+    reshape     = TRUE,   ### Whether to include reshapeData items in data list (for testing)
+    silent      = TRUE,   ### Level of messaging 
+    return      = TRUE,   ### Whether to return the data list
+    save        = FALSE   ### Whether to save the file
 ){
   ### Messages
   "Running configureSystemData()..." |> message()
@@ -34,41 +34,39 @@ configureSystemData <- function(
   } ### End if(reshape)
   
   ###### Message User ######
-  (!silent) |> ifelse("\n", "") |> paste0(msg0, "Creating FrEDI data...") |> message()
+  # (!silent) |> paste0(msg0, "Creating FrEDI data...") |> message()
   
   ###### 1. Load Excel Data ######
-  ### Load region data
-  (!silent) |> ifelse("\n", "") |> paste0(msg1, "Loading region-level data...") |> message()
-  loadReg0      <- loadData(
-    fileDir   = fileDir,   ### Path to project
-    fileName  = fileName,  ### Name of excel file with config information
-    sheetName = sheetName, ### Sheet with info about tables in config file
-    byState   = FALSE,
-    silent    = silent
-  ) ### End loadData
+  # ### Load region data
+  # (!silent) |> ifelse("\n", "") |> paste0(msg1, "Loading region-level data...") |> message()
+  # loadReg0      <- loadData(
+  #   fileDir   = fileDir,   ### Path to project
+  #   fileName  = fileName,  ### Name of excel file with config information
+  #   sheetName = sheetName, ### Sheet with info about tables in config file
+  #   byState   = FALSE,
+  #   silent    = silent
+  # ) ### End loadData
   
   ### Load state data
-  (!silent) |> ifelse("\n", "") |> paste0(msg1, "Loading state-level data...") |> message()
-  loadState0    <- loadData(
-    fileDir   = fileDir,   ### Path to project
-    fileName  = fileName,  ### Name of excel file with config information
-    sheetName = sheetName, ### Sheet with info about tables in config file
-    byState   = TRUE,
-    silent    = silent
+  (!silent) |> paste0(msg0, "Loading data...") |> message()
+  loadState0    <- fileDir |> loadFrediData(
+    configFile  = configFile,  ### Name of excel file with config information
+    configSheet = configSheet, ### Sheet with info about tables in config file
+    silent      = silent
   ) ### End loadData
   
   
   ###### 2. Reshape Loaded Data ######
-  ### Reshape region data
-  (!silent) |> ifelse("\n", "") |> paste0(msg1, "Reshaping region-level data...") |> message()
-  reshapeReg0   <- loadReg0|> reshapeData(byState=F, silent=silent)
-  if(reshape){
-    rDataList[["rsData_reg"]] <- reshapeReg0
-  } ### End if(reshape)
-  rm(loadReg0)
+  # ### Reshape region data
+  # (!silent) |> ifelse("\n", "") |> paste0(msg1, "Reshaping region-level data...") |> message()
+  # reshapeReg0   <- loadReg0|> reshapeData(byState=F, silent=silent)
+  # if(reshape){
+  #   rDataList[["rsData_reg"]] <- reshapeReg0
+  # } ### End if(reshape)
+  # rm(loadReg0)
   
   ### Reshape state data
-  (!silent) |> ifelse("\n", "") |> paste0(msg1, "Reshaping state-level data...") |> message()
+  (!silent) |> paste0(msg0, "Reshaping state-level data...") |> message()
   reshapeState0 <- loadState0 |> reshapeData(byState=T, silent=silent)
   if(reshape){ 
     rDataList[["rsData_state"]] <- reshapeState0
@@ -76,26 +74,25 @@ configureSystemData <- function(
   rm(loadState0)
   
   ###### 3. Combine Reshaped Data ######
-  ### Names of objects to combine from reshaped data
-  (!silent) |> ifelse("\n", "") |> paste0(msg1, "Combining region- & state-level data...") |> message()
-  colsReshape0  <- c("scalarDataframe", "data_scaledImpacts", "slrImpacts")
-  listReshape0  <- reshapeReg0 |> combineReshapedLists(stateList0=reshapeState0)
-  rm(reshapeReg0, reshapeState0)
+  # ### Names of objects to combine from reshaped data
+  # (!silent) |> ifelse("\n", "") |> paste0(msg1, "Combining region- & state-level data...") |> message()
+  # colsReshape0  <- c("scalarDataframe", "data_scaledImpacts", "slrImpacts")
+  # listReshape0  <- reshapeReg0 |> combineReshapedLists(stateList0=reshapeState0)
+  # rm(reshapeReg0, reshapeState0)
   
   ###### 4. Configure Data ######
   ### Names of objects to combine from reshaped data
-  (!silent) |> ifelse("\n", "") |> paste0(msg1, "Configuring data...") |> message()
+  (!silent) |> paste0(msg0, "Configuring data...") |> message()
   sysDataList0  <- listReshape0 |> createSystemData(byState=T, extend_all=extend_all, save=F, silent=silent)
   rm(listReshape0)
   
   ###### 5. FrEDI Data  ######
   ### List of data that is the same for both state & region and not modified in configuration steps
   frediNames0   <- c("fredi_config") |>
-    c("co_sectors", "co_sectorsRef", "co_stateSectors") |> 
+    c("co_sectors", "co_sectorsRef") |> 
     c("co_variants", "co_impactTypes", "co_impactYears", "co_impactYearLevels") |> 
-    c("co_regions", "co_states", "co_models", "co_modelTypes", "co_inputScenarioInfo") |>
+    c("co_regions", "co_states", "co_models", "co_modelTypes", "co_inputInfo") |>
     c("co_econMultipliers", "co_scalarInfo", "co_slrScalars") |>
-    c("co_defaultTemps", "temp_default", "slr_default", "gdp_default", "co_defaultScenario") |> 
     c("slr_cm") |> 
     c("testDev")
   ### Update objects
@@ -108,10 +105,12 @@ configureSystemData <- function(
   rm(frediNames0, frediList0, sysDataList0)
   
   ###### Drop Reshaped Data Objects ######
-  drop0         <- c("rsData_reg", "rsData_state")
-  inDrop0       <- (rDataList |> names()) %in% drop0
-  returnList    <- rDataList
-  rDataList     <- rDataList[!inDrop0]
+  if(!reshape) {
+    drop0         <- c("rsData_reg", "rsData_state")
+    inDrop0       <- (rDataList |> names()) %in% drop0
+    returnList    <- rDataList
+    rDataList     <- rDataList[!inDrop0]
+  } ### End if(!reshape) 
   
   ###### Save to File ######
   ### Save R Data objects

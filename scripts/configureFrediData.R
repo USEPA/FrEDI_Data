@@ -28,7 +28,7 @@ configureFrediData <- function(
   # projectDir  <- "."
   projectDir  <- projectDir
   ### Path and file name for data inputs
-  dataInDir   <- projectDir |> file.path("inst", "extdata")
+  dataInDir   <- projectDir |> file.path("inst", "extdata", "fredi")
   dataInName  <- "FrEDI_config" |> paste0(".xlsx")
   dataInPath  <- dataInDir |> file.path(dataInName)
   ### Path and file name for saving outputs
