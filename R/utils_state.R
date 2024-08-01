@@ -11,13 +11,16 @@ loadFrediImpacts <- function(
   type          <- type |> tolower()
   do_gcm        <- "gcm" %in% type
   ### Column names
+  valCol        <- do_gcm |> ifelse("modelUnitValue", "year")
+  sumCols       <- c(valCol) |> c("value")
   mainCols      <- c("sector", "variant", "impactType", "impactYear", "state", "postal", "model")
-  gcm_cols      <- c("modelUnitValue", "value")
-  slr_cols      <- c("year", "value")
-  if(do_gcm){sumCols <- gcm_cols} else{sumCols <- slr_cols}
+  mainCols      <- mainCols |> c(sumCols)
+  
   ### Get files:
   fpath         <- fpath |> file.path(type)
   fPaths        <- fpath |> list.files(full.names=T)
+  # fPaths |> head() |> print() 
+  # fPaths |> file.exists() |> head() |> print()
   ### Impacts data
   df_impacts    <- fPaths |> map(function(
     file_i, 
@@ -46,7 +49,9 @@ loadFrediScalars <- function(
     fpath = "." |> file.path("inst", "extdata", "fredi", "scalars") ### File path to directory with state-level scalar data
 ){
   ### File names
-  fnames     <- fpath |> file.path("scalars") |> list.files(full.names=T)
+  fnames     <- fpath |> list.files(full.names=T)
+  # fnames |> head() |> print() 
+  # fnames |> file.exists() |> head() |> print()
   scalarData <- fnames |> map(function(file_i){
     cols0 <- c("state", "postal", "scalarName", "year", "value")
     df0   <- file_i |> read.csv() |> as_tibble()

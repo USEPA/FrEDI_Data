@@ -13,11 +13,11 @@ configureSystemData <- function(
   ### Messages
   "Running configureSystemData()..." |> message()
   msg0 <- "\t"
-  msg1 <- "\t" |> rep(2) |> paste0(collapse="")
+  msg1 <- msg0 |> rep(2) |> paste0(collapse="")
+  msg2 <- msg0 |> rep(3) |> paste0(collapse="")
   
   ###### Create File Paths ######
   ### Output file
-  outPath       <- if (is.null(outPath)) {"." |> file.path("data", "tmp_sysdata.rda")} else {outPath}
   sysDataFile   <- outPath |> basename()
   sysDataPath   <- outPath |> dirname()
   sysDataFile   <- sysDataPath |> file.path(sysDataFile)
@@ -28,7 +28,7 @@ configureSystemData <- function(
   rDataList[["frediData"]] <- list(name="frediData", data=list())
   rDataList[["stateData"]] <- list(name="stateData", data=list())
   
-  if(reshape){ 
+  if(reshape) { 
     # rDataList[["rsData_reg"  ]] <- list(name="rsData_reg"  , data=list())
     rDataList[["rsData_state"]] <- list(name="rsData_state", data=list())
   } ### End if(reshape)
@@ -48,11 +48,12 @@ configureSystemData <- function(
   # ) ### End loadData
   
   ### Load state data
-  (!silent) |> paste0(msg0, "Loading data...") |> message()
+  if(!silent) paste0(msg0, "Loading data...") |> message()
   loadState0    <- fileDir |> loadFrediData(
     configFile  = configFile,  ### Name of excel file with config information
     configSheet = configSheet, ### Sheet with info about tables in config file
-    silent      = silent
+    silent      = silent,
+    msg0        = msg1
   ) ### End loadData
   
   
@@ -66,8 +67,9 @@ configureSystemData <- function(
   # rm(loadReg0)
   
   ### Reshape state data
-  (!silent) |> paste0(msg0, "Reshaping state-level data...") |> message()
-  reshapeState0 <- loadState0 |> reshapeData(byState=T, silent=silent)
+  if(!silent) paste0(msg0, "Reshaping data...") |> message()
+  # reshapeState0 <- loadState0 |> reshapeData(byState=T, silent=silent)
+  reshapeState0 <- loadState0 |> reshapeFrediData(silent=silent, msg0=msg1)
   if(reshape){ 
     rDataList[["rsData_state"]] <- reshapeState0
   } ### End if(reshape)
@@ -81,28 +83,28 @@ configureSystemData <- function(
   # rm(reshapeReg0, reshapeState0)
   
   ###### 4. Configure Data ######
-  ### Names of objects to combine from reshaped data
-  (!silent) |> paste0(msg0, "Configuring data...") |> message()
-  sysDataList0  <- listReshape0 |> createSystemData(byState=T, extend_all=extend_all, save=F, silent=silent)
-  rm(listReshape0)
+  # ### Names of objects to combine from reshaped data
+  # (!silent) |> paste0(msg0, "Configuring data...") |> message()
+  # sysDataList0  <- listReshape0 |> createSystemData(byState=T, extend_all=extend_all, save=F, silent=silent)
+  # rm(listReshape0)
   
   ###### 5. FrEDI Data  ######
   ### List of data that is the same for both state & region and not modified in configuration steps
-  frediNames0   <- c("fredi_config") |>
-    c("co_sectors", "co_sectorsRef") |> 
-    c("co_variants", "co_impactTypes", "co_impactYears", "co_impactYearLevels") |> 
-    c("co_regions", "co_states", "co_models", "co_modelTypes", "co_inputInfo") |>
-    c("co_econMultipliers", "co_scalarInfo", "co_slrScalars") |>
-    c("slr_cm") |> 
-    c("testDev")
-  ### Update objects
-  # sysDataList0 |> names() |> print()
-  frediList0    <- sysDataList0 |> (function(x){x[  names(x) %in% frediNames0 ]})()
-  sysDataList0  <- sysDataList0 |> (function(x){x[!(names(x) %in% frediNames0)]})()
-  ### Update in list
-  rDataList[["frediData"]][["data"]] <- frediList0
-  rDataList[["stateData"]][["data"]] <- sysDataList0
-  rm(frediNames0, frediList0, sysDataList0)
+  # frediNames0   <- c("fredi_config") |>
+  #   c("co_sectors", "co_sectorsRef") |> 
+  #   c("co_variants", "co_impactTypes", "co_impactYears", "co_impactYearLevels") |> 
+  #   c("co_regions", "co_states", "co_models", "co_modelTypes", "co_inputInfo") |>
+  #   c("co_econMultipliers", "co_scalarInfo", "co_slrScalars") |>
+  #   c("slr_cm") |> 
+  #   c("testDev")
+  # ### Update objects
+  # # sysDataList0 |> names() |> print()
+  # frediList0    <- sysDataList0 |> (function(x){x[  names(x) %in% frediNames0 ]})()
+  # sysDataList0  <- sysDataList0 |> (function(x){x[!(names(x) %in% frediNames0)]})()
+  # ### Update in list
+  # rDataList[["frediData"]][["data"]] <- frediList0
+  # rDataList[["stateData"]][["data"]] <- sysDataList0
+  # rm(frediNames0, frediList0, sysDataList0)
   
   ###### Drop Reshaped Data Objects ######
   if(!reshape) {

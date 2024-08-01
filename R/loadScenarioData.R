@@ -10,7 +10,7 @@ loadScenarioData <- function(
 ) {
   ###### Messaging ######
   msg1          <- msg0 |> paste("\t")  
-  if (!silent) paste0(msg0, "In loadScenarioData:", "\n") |> message()
+  if (!silent) paste0(msg0, "In loadScenarioData:") |> message()
   
   ###### File Paths ######
   ### Scenarios list

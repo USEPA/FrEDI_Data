@@ -17,36 +17,37 @@ reshapeData <- function(
   # listNames <- dataList |> names()
   # listNames |> print()
   # for(name_i in listNames) {name_i |> assign(dataList[[name_i]])}
-  dataList |> list2env(envir = environment())
+  # dataList |> list2env(envir = environment())
   
   ### Ensure all dataframes are tibbles
   names0   <- dataList |> names()
-  for(name_i in names0) {
-    data_i <- dataList[[name_i]]
-    isDf_i <- data_i |> is.data.frame()
-    if(isDf_i) data_i <- data_i |> as_tibble()
-    dataList[[name_i]] <- data_i
-    rm(name_i, data_i, isDf_i)
-  } ### End for(name_i in names0) 
+  for(list_i in listNames) { for(name_j in list_i) { name_j |> assign(list_i[[name_j]]); rm(name_j)}; rm(list_i) }
+  # for(name_i in names0) {
+  #   data_i <- dataList[[name_i]]
+  #   isDf_i <- data_i |> is.data.frame()
+  #   if(isDf_i) data_i <- data_i |> as_tibble()
+  #   dataList[[name_i]] <- data_i
+  #   rm(name_i, data_i, isDf_i)
+  # } ### End for(name_i in names0) 
   
   ###### By State  ######
   ### Region and state level columns to use
-  if(byState){stateCols0 <- c("state", "postal")} else{stateCols0 <- c()}
+  # if(byState){stateCols0 <- c("state", "postal")} else{stateCols0 <- c()}
+  stateCols0 <- c("state", "postal")
   
   
   ###### Modify Tables and Update in List ######
   ###### ** 1. Sectors     ######
   ### Filter to those tables to include
   ### Make a copy of the sectors list to include variants
-  ### Drop variant column from `co_sectors`
   drop0           <- c("include", "variants", "impactYears", "impactTypes")
-  co_stateSectors <- co_sectors |> filter(byState == 1)
   co_sectorsRef   <- co_sectors
   co_sectors      <- co_sectors |> select(-all_of(drop0))
   ### Update values in list, drop intermediate variables
   dataList[["co_sectors"     ]] <- co_sectors
   dataList[["co_sectorsRef"  ]] <- co_sectorsRef
-  dataList[["co_stateSectors"]] <- co_stateSectors
+  # co_stateSectors <- co_sectors |> filter(byState == 1)
+  # dataList[["co_stateSectors"]] <- co_stateSectors
   rm(drop0)
   
   
@@ -122,14 +123,14 @@ reshapeData <- function(
   ###### ** 7. df_sectorsInfo ######
   ### Join with co_variants, co_impactTypes, co_impactYears
   join0   <- c("sector_id")
-  drop0   <- c("variant_id_excel", "variant_label")
-  drop1   <- c("impactYear_label", "impactYear_excel")
-  drop2   <- c("impactType_id_excel", "impactType_label", "impactType_description")
+  drop0   <- c("variant_label")
+  drop1   <- c("impactType_label", "impactType_description")
+  drop2   <- c("impactYear_label")
   df_sectorsInfo <- co_sectors     |> left_join(co_variants    |> select(-all_of(drop0)), by=c(join0))
-  df_sectorsInfo <- df_sectorsInfo |> left_join(co_impactTypes |> select(-all_of(drop2)), by=c(join0), relationship = "many-to-many")
-  df_sectorsInfo <- df_sectorsInfo |> left_join(co_impactYears |> select(-all_of(drop1)), by=c(join0), relationship = "many-to-many")
+  df_sectorsInfo <- df_sectorsInfo |> left_join(co_impactTypes |> select(-all_of(drop1)), by=c(join0), relationship = "many-to-many")
+  df_sectorsInfo <- df_sectorsInfo |> left_join(co_impactYears |> select(-all_of(drop2)), by=c(join0), relationship = "many-to-many")
   ### Rename values
-  rename0 <- c("sector", "variant", "impactYear", "impactType") |> paste("id", sep = "_")
+  rename0 <- c("sector", "variant", "impactYear", "impactType") |> paste("_id")
   rename1 <- gsub("_id", "", c(rename0))
   df_sectorsInfo <- df_sectorsInfo |> rename_at(c(rename0), ~rename1) 
   ### Update in list, drop intermediate values

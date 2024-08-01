@@ -8,7 +8,7 @@ loadFrediConfig <- function(
 ) {
   ###### Messaging ######
   msg1          <- msg0 |> paste("\t")  
-  if (!silent) paste0(msg0, "In loadFrediConfig:", "\n") |> message()
+  if (!silent) paste0(msg0, "In loadFrediConfig:") |> message()
   
   ###### File Paths ######
   ### Config file

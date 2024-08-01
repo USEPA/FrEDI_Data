@@ -21,24 +21,23 @@ loadFrediData <- function(
 ) {
   ###### Messaging ######
   msg1          <- msg0 |> paste("\t")  
-  if (!silent) paste0(msg0, "In loadFrediData:", "\n") |> message()
+  if (!silent) paste0(msg0, "In loadFrediData:") |> message()
   
   ###### File Paths ######
   ### Directories for scalars, GCM scaled impacts, and SLR scaled impacts
   scalarDir     <- frediDir |> file.path("scalars")
-  gcmDir        <- frediDir |> file.path("gcm")
-  slrDir        <- frediDir |> file.path("slr")
+  impactDir     <- frediDir
   
   ### File names for scalars, GCM scaled impacts, and SLR scaled impacts
   scalarFiles   <- scalarDir |> list.files()
-  gcmFiles      <- gcmDir    |> list.files()
-  slrFiles      <- slrDir    |> list.files()
-  
-  ### File paths for scalars, GCM scaled impacts, and SLR scaled impacts
-  scalarPath    <- frediDir |> file.path(scalarFiles)
-  gcmPath       <- frediDir |> file.path(gcmFiles   )
-  slrPath       <- frediDir |> file.path(slrFiles   )
-  
+  # # gcmFiles      <- impactDir |> list.files()
+  # # slrFiles      <- impactDir |> list.files()
+  # 
+  # ### File paths for scalars, GCM scaled impacts, and SLR scaled impacts
+  # scalarPath    <- frediDir |> file.path(scalarFiles)
+  # gcmPath       <- frediDir |> file.path(gcmFiles   )
+  # slrPath       <- frediDir |> file.path(slrFiles   )
+
   ###### Initialize List ######
   dataList      <- list()
   
@@ -83,11 +82,11 @@ loadFrediData <- function(
   
   ### Load GCM scaled impacts
   if (!silent) paste0(msg1, "Loading GCM scaled impacts...") |> message()
-  data_gcmImpacts <- gcmDir |> loadFrediImpacts(type="gcm")
+  data_gcmImpacts <- impactDir |> loadFrediImpacts(type="gcm")
   
   ### Load SLR scaled impacts
   if (!silent) paste0(msg1, "Loading SLR scaled impacts...") |> message()
-  data_slrImpacts <- slrDir |> loadFrediImpacts(type="slr")
+  data_slrImpacts <- impactDir |> loadFrediImpacts(type="slr")
   
   ### Create a list
   listState       <- list()
