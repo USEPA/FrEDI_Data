@@ -10,7 +10,7 @@ frediConfig <- function(
   ### Millions, billions
   # fredi_config[["k_million"]] <- 10**6
   # fredi_config[["k_billion"]] <- 10**9
-  
+  list0 <- list()
   
   ###### Data Years ######
   ### Min year, max year

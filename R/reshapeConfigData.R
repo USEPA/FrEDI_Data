@@ -15,7 +15,7 @@ reshapeConfigData <- function(
   ###### Messaging ######
   msg1          <- msg0 |> paste("\t")  
   if (!silent) paste0(msg0, "In reshapeConfigData:") |> message()
-  
+  if (!silent) paste0(msg1, "Reshaping data from FrEDI config file...") |> message()
   
   ###### Assign Objects ######
   # dataList0 <- dataList
@@ -137,24 +137,33 @@ reshapeConfigData <- function(
     ### Gather slr_cm columns
     df0    <- df0 |> pivot_longer(
       cols      = -all_of(cols0), 
-      names_to  = "model",
+      names_to  = "model_id",
       values_to = "driverValue"
     ) ### End pivot_longer
     
     ### Add model type
     df0    <- df0 |> mutate(model_type = "slr")
     
-    ### Zero out values
-    df0_0cm <- df0     |> filter(model == "30cm")
-    df0_0cm <- df0_0cm |> mutate(model   = "0cm")
+    ### Zero out values and bind with other values
+    df0_0cm <- df0     |> filter(model_id == "30cm")
+    df0_0cm <- df0_0cm |> mutate(model_id = "0cm")
     df0_0cm <- df0_0cm |> mutate(driverValue = 0)
-    df0_0cm <- df0_0cm |> rbind(df0)
+    df0     <- df0     |> filter(model_id != "0cm")
+    df0     <- df0_0cm |> rbind(df0)
+    rm(df0_0cm)
+    
+    ### Add model type
+    drop0   <- c("model_type")
+    df0     <- df0 |> select(-any_of(drop0))
+    df0     <- df0 |> mutate(modelType = "slr" |> as.character())
+    
+    ### Arrange
+    cols0   <- c("model_id", "year")
+    df0     <- df0 |> arrange_at(vars(cols0))
     
     ### Return
     return(df0)
   })()
-  
-  
   ### Update in data list, drop intermediate values
   # slr_cm |> names() |> print()
   dataList[["slr_cm"]] <- slr_cm
@@ -165,6 +174,7 @@ reshapeConfigData <- function(
   ### Return the list of dataframes
   # dataList0[["frediData"]] <- dataList
   # return(dataList0)
-  if (!silent) paste0("\n") |> message()
+  # if (!silent) paste0("\n") |> message()
+  # dataList |> names() |> print()
   return(dataList)
 }

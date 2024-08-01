@@ -280,7 +280,7 @@ reshapeData <- function(
     names_to  = "model",
     values_to = "driverValue"
   ) ### End pivot_longer
-
+  
   ### Standardize model names
   levels0 <- co_models[["model_dot"]]
   labels0 <- co_models[["modelType"]]
@@ -375,18 +375,18 @@ reshapeData <- function(
   # rm("data_scaledImpacts", "slrImpacts")
   
   list_scaledImpacts <- list_scaledImpacts |> map(function(list_i) {
-      ## Data frame
-      name_i  <- list_i[["name"]]
-      df_i    <- list_i[["data"]]
-      do_gcm  <- name_i == "gcm"
-      doDot0  <- name_i == "data_scaledImpacts"
-      
-      ### Replace NA values in impactYear, impactType
-      mutate0 <- c("impactType", "impactYear")
-      df_i    <- df_i |> mutate_at(c(mutate0), as.character)
-      df_i    <- df_i |> mutate(impactType = impactType |> as.character() |> replace_na("NA"))
-      df_i    <- df_i |> mutate(impactYear = impactYear |> as.character() |> replace_na("N/A"))
-
+    ## Data frame
+    name_i  <- list_i[["name"]]
+    df_i    <- list_i[["data"]]
+    do_gcm  <- name_i == "gcm"
+    doDot0  <- name_i == "data_scaledImpacts"
+    
+    ### Replace NA values in impactYear, impactType
+    mutate0 <- c("impactType", "impactYear")
+    df_i    <- df_i |> mutate_at(c(mutate0), as.character)
+    df_i    <- df_i |> mutate(impactType = impactType |> as.character() |> replace_na("NA"))
+    df_i    <- df_i |> mutate(impactYear = impactYear |> as.character() |> replace_na("N/A"))
+    
       ### Refactor variants (by sector, variant)
       levels0 <- co_variants[["sector_id" ]] |> paste(co_variants[["variant_id_excel"]], sep = "_")
       labels0 <- co_variants[["variant_id"]]

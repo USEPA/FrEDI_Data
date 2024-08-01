@@ -19,71 +19,60 @@ reshapeFrediData <- function(
   ###### Assign Objects ######
   ### Assign tables in dataList to object in local environment
   frediData <- dataList[["frediData"]]
-  stateData <- dataList[["stateData"]][["data"]]
+  stateData <- dataList[["stateData"]]
   # stateData |> names() |> print()
   # stateData[["scalars"]] |> glimpse()
   # stateData[["gcmImpacts"]] |> glimpse()
   # stateData[["slrImpacts"]] |> glimpse()
   
-  # listNames <- dataList |> names()
-  # listNames |> print()
-  # for(name_i in listNames) {name_i |> assign(dataList[[name_i]])}
-  # dataList |> list2env(envir = environment())
-  
-  ### Ensure all dataframes are tibbles
-  # names0   <- dataList |> names()
-  # for(list_i in listNames) { for(name_j in list_i) { name_j |> assign(list_i[[name_j]]); rm(name_j)}; rm(list_i) }
-  # # for(name_i in names0) {
-  # #   data_i <- dataList[[name_i]]
-  # #   isDf_i <- data_i |> is.data.frame()
-  # #   if(isDf_i) data_i <- data_i |> as_tibble()
-  # #   dataList[[name_i]] <- data_i
-  # #   rm(name_i, data_i, isDf_i)
-  # # } ### End for(name_i in names0) 
   
   ###### FrEDI Data  ######
   ### Control Tables
   frediData  <- frediData |> reshapeConfigData(silent=silent, msg0=msg1)
   dataList[["frediData"]] <- frediData
+  # dataList[["frediData"]] |> names() |> print()
   
   ###### Scalar Data  ######
   ### Reshape scalar data
   # stateData |> names() |> print()
-  scalarData <- stateData[["scalars"]]
+  scalarData <- stateData[["scalarData"]]
   # scalarData |> glimpse()
   scalarData <- scalarData |> reshapeScalarData(
     frediData = frediData, 
     silent    = silent, 
     msg0      = msg1
   ) ### End reshapeScalarData
-  stateData[["scalars"]] <- scalarData
+  stateData[["scalarData"]] <- scalarData
   
   ###### GCM Scaled Impacts  ######
   ### Reshape scalar data
-  gcmData <- stateData[["gcmImpacts"]]
-  gcmData <- gcmData |> reshapeScaledImpactsData(
+  gcmData <- stateData[["gcmImpData"]]
+  gcmData <- gcmData |> reshapeScaledImpacts(
     frediData = frediData, 
     type0     = "gcm",
     silent    = silent, 
     msg0      = msg1
   ) ### End reshapeScalarData
-  stateData[["gcmImpacts"]] <- gcmData
+  stateData[["gcmImpData"]] <- gcmData
   
   
   ###### SLR Scaled Impacts  ######
   ### Reshape scalar data
-  slrData <- stateData[["slrImpacts"]]
-  slrData <- slrData |> reshapeScaledImpactsData(
+  slrData <- stateData[["slrImpData"]]
+  slrData <- slrData |> reshapeScaledImpacts(
     frediData = frediData, 
     type0     = "slr",
-    silent    = silent
+    silent    = silent, 
+    msg0      = msg1
   ) ### End reshapeScalarData
-  stateData[["slrImpacts"]] <- slrData
+  stateData[["slrImpData"]] <- slrData
   
   ### Update data in list
-  dataList[["stateData"]][["data"]] <- stateData
+  dataList[["stateData"]] <- stateData
   
   ###### Return ######
   ### Return the list of dataframes
+  if(!silent) paste0("\n") |> message()
+  # dataList[["frediData"]] |> names() |> print()
   return(dataList)
 }

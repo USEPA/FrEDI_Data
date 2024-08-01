@@ -27,20 +27,16 @@ loadFrediData <- function(
   ### Directories for scalars, GCM scaled impacts, and SLR scaled impacts
   scalarDir     <- frediDir |> file.path("scalars")
   impactDir     <- frediDir
-  
-  ### File names for scalars, GCM scaled impacts, and SLR scaled impacts
-  scalarFiles   <- scalarDir |> list.files()
-  # # gcmFiles      <- impactDir |> list.files()
-  # # slrFiles      <- impactDir |> list.files()
-  # 
-  # ### File paths for scalars, GCM scaled impacts, and SLR scaled impacts
-  # scalarPath    <- frediDir |> file.path(scalarFiles)
-  # gcmPath       <- frediDir |> file.path(gcmFiles   )
-  # slrPath       <- frediDir |> file.path(slrFiles   )
 
   ###### Initialize List ######
   dataList      <- list()
   
+  ###### Get Config Information ######
+  ### Get config info, add data to list, assign objects to environment
+  # if(msgUser) {msg0(1) |> paste0("Loading config info from '", configFile, "'...") |> message()}
+  # fredi_config <- frediConfig()
+  # dataList[["fredi_config"]] <- fredi_config
+  # for(name_i in fredi_config |> names()) {name_i |> assign(fredi_config[[name_i]]); rm(name_i)}
   
   ###### Load Table of Tables ######
   ### Load table with names of data tables
@@ -70,7 +66,6 @@ loadFrediData <- function(
     msg0        = msg1
   ) ### End loadFrediConfig
   ### Add to dataList
-  listDefaults  <- list(data = listDefaults)
   dataList[["scenarioData"]] <- listDefaults
   rm(listDefaults)
   
@@ -90,13 +85,12 @@ loadFrediData <- function(
   
   ### Create a list
   listState       <- list()
-  listState[["scalars"   ]] <- data_scalars
-  listState[["gcmImpacts"]] <- data_gcmImpacts
-  listState[["slrImpacts"]] <- data_slrImpacts
+  listState[["scalarData"]] <- data_scalars
+  listState[["gcmImpData"]] <- data_gcmImpacts
+  listState[["slrImpData"]] <- data_slrImpacts
   rm(data_scalars, data_gcmImpacts, data_slrImpacts)
   
   ### Add to dataList
-  listState       <- list(data = listState)
   dataList[["stateData"]] <- listState
   rm(listState)
   

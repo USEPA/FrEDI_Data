@@ -7,7 +7,7 @@
 #' @export
 #'
 #' @examples
-reshapeScaledImpactsData <- function(
+reshapeScaledImpacts <- function(
     impacts    = NULL,   ### Tibble with scalars data
     frediData  = NULL,   ### List of data (e.g., as returned from FrEDI_Data::loadData())
     type0      = "gcm",  ### Model type
@@ -16,7 +16,8 @@ reshapeScaledImpactsData <- function(
 ) {
   ###### Messaging ######
   msg1          <- msg0 |> paste("\t")  
-  if (!silent) paste0(msg0, "In reshapeScaledImpactsData:") |> message()
+  if (!silent) paste0(msg0, "In reshapeScaledImpacts:") |> message()
+  if (!silent) paste0(msg1, "Reshaping ", type0 |> toupper(), " scaled impacts...") |> message()
   
   ###### Assign Objects ######
   ### Assign tables in dataList to object in local environment
@@ -103,18 +104,19 @@ reshapeScaledImpactsData <- function(
   ### Add model type
   drop0   <- c("model_type")
   impacts <- impacts |> select(-any_of(drop0))
-  impacts <- impacts |> mutate(modelType = type0)
+  impacts <- impacts |> mutate(modelType = type0 |> as.character())
   
   
-  ### Select columns
+  ##### Select columns ######
   col0    <- do_gcm |> ifelse("modelUnitValue", "year")
   cols0   <- c("sector", "variant", "impactType", "impactYear", "modelType", "model", "model_id")
-  cols0   <- cols0  |> c("region") |> c(stateCols0) |> c(col0) |> c("scaled_impacts")
-  impacts <- impacts |> select(all_of(cols0))
-  
+  cols0   <- cols0 |> c("region") |> c(stateCols0) |> c(col0)
+  select0 <- cols0 |> c("scaled_impacts")
+  impacts <- impacts |> select(all_of(select0))
+  impacts <- impacts |> arrange_at(vars(cols0))
   
   ###### Return ######
   ### Return the list of dataframes
-  if (!silent) paste0("\n") |> message()
+  # if (!silent) paste0("\n") |> message()
   return(impacts)
 }

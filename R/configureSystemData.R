@@ -25,68 +25,52 @@ configureSystemData <- function(
   ###### Initialize Object List ######
   ### Initialize list of objects to return
   rDataList     <- list()
-  rDataList[["frediData"]] <- list(name="frediData", data=list())
-  rDataList[["stateData"]] <- list(name="stateData", data=list())
-  
-  if(reshape) { 
-    # rDataList[["rsData_reg"  ]] <- list(name="rsData_reg"  , data=list())
-    rDataList[["rsData_state"]] <- list(name="rsData_state", data=list())
-  } ### End if(reshape)
-  
-  ###### Message User ######
-  # (!silent) |> paste0(msg0, "Creating FrEDI data...") |> message()
+  rDataList[["frediData"   ]] <- list(name="frediData", data=list())
+  rDataList[["scenarioData"]] <- list(name="frediData", data=list())
+  rDataList[["stateData"   ]] <- list(name="stateData", data=list())
+
   
   ###### 1. Load Excel Data ######
-  # ### Load region data
-  # (!silent) |> ifelse("\n", "") |> paste0(msg1, "Loading region-level data...") |> message()
-  # loadReg0      <- loadData(
-  #   fileDir   = fileDir,   ### Path to project
-  #   fileName  = fileName,  ### Name of excel file with config information
-  #   sheetName = sheetName, ### Sheet with info about tables in config file
-  #   byState   = FALSE,
-  #   silent    = silent
-  # ) ### End loadData
-  
   ### Load state data
   if(!silent) paste0(msg0, "Loading data...") |> message()
-  loadState0    <- fileDir |> loadFrediData(
+  loadData0     <- fileDir |> loadFrediData(
     configFile  = configFile,  ### Name of excel file with config information
     configSheet = configSheet, ### Sheet with info about tables in config file
     silent      = silent,
     msg0        = msg1
   ) ### End loadData
-  
+  ### Update data in list
+  rDataList[["frediData"   ]] <- loadData0[["frediData"   ]]
+  rDataList[["scenarioData"]] <- loadData0[["scenarioData"]]
+  rDataList[["stateData"   ]] <- loadData0[["stateData"   ]]
+  # loadData0[["frediData"   ]] |> names() |> print()
+  # loadData0[["stateData"]][["slrImpData"]] |> names() |> print()
   
   ###### 2. Reshape Loaded Data ######
-  # ### Reshape region data
-  # (!silent) |> ifelse("\n", "") |> paste0(msg1, "Reshaping region-level data...") |> message()
-  # reshapeReg0   <- loadReg0|> reshapeData(byState=F, silent=silent)
-  # if(reshape){
-  #   rDataList[["rsData_reg"]] <- reshapeReg0
-  # } ### End if(reshape)
-  # rm(loadReg0)
-  
   ### Reshape state data
   if(!silent) paste0(msg0, "Reshaping data...") |> message()
-  # reshapeState0 <- loadState0 |> reshapeData(byState=T, silent=silent)
-  reshapeState0 <- loadState0 |> reshapeFrediData(silent=silent, msg0=msg1)
+  reshapeData0  <- loadData0 |> reshapeFrediData(silent=silent, msg0=msg1)
+  rm(loadData0)
+  ### If reshape, save the reshaped data separately
   if(reshape){ 
-    rDataList[["rsData_state"]] <- reshapeState0
+    rDataList[["rsData"]] <- reshapeData0
+  } else{
+    rDataList[["rsData"]] <- list(name="rsData", data=list())
   } ### End if(reshape)
-  rm(loadState0)
+  ### Update data in list
+  rDataList[["frediData"   ]] <- reshapeData0[["frediData"   ]]
+  rDataList[["scenarioData"]] <- reshapeData0[["scenarioData"]]
+  rDataList[["stateData"   ]] <- reshapeData0[["stateData"   ]]
+  # return(rDataList)
+  # reshapeData0[["frediData"]] |> names() |> print()
+  # reshapeData0[["stateData"]][["slrImpData"]] |> names() |> print()
   
-  ###### 3. Combine Reshaped Data ######
-  # ### Names of objects to combine from reshaped data
-  # (!silent) |> ifelse("\n", "") |> paste0(msg1, "Combining region- & state-level data...") |> message()
-  # colsReshape0  <- c("scalarDataframe", "data_scaledImpacts", "slrImpacts")
-  # listReshape0  <- reshapeReg0 |> combineReshapedLists(stateList0=reshapeState0)
-  # rm(reshapeReg0, reshapeState0)
   
   ###### 4. Configure Data ######
-  # ### Names of objects to combine from reshaped data
-  # (!silent) |> paste0(msg0, "Configuring data...") |> message()
-  # sysDataList0  <- listReshape0 |> createSystemData(byState=T, extend_all=extend_all, save=F, silent=silent)
-  # rm(listReshape0)
+  ### Names of objects to combine from reshaped data
+  if(!silent) paste0(msg0, "Configuring data...") |> message()
+  sysDataList0  <- reshapeData0 |> createSystemData(extend_all=extend_all, save=F, silent=silent)
+  # rm(reshapeData0)
   
   ###### 5. FrEDI Data  ######
   ### List of data that is the same for both state & region and not modified in configuration steps
@@ -108,9 +92,9 @@ configureSystemData <- function(
   
   ###### Drop Reshaped Data Objects ######
   if(!reshape) {
-    drop0         <- c("rsData_reg", "rsData_state")
+    drop0         <- c("rsData")
     inDrop0       <- (rDataList |> names()) %in% drop0
-    returnList    <- rDataList
+    rDataList     <- rDataList
     rDataList     <- rDataList[!inDrop0]
   } ### End if(!reshape) 
   
@@ -123,7 +107,7 @@ configureSystemData <- function(
   if(save) {
     msg0 |> paste0("Saving results to ", sysDataPath, "...") |> message()
     outPathExists <- sysDataPath |> dir.exists()
-    fredi_config  <- rDataList[["frediData"]][["data"]][["fredi_config"]]
+    fredi_config  <- rDataList[["frediData"]][["fredi_config"]]
     if(outPathExists){ 
       save(fredi_config, rDataList, file=sysDataFile)
     } else{
@@ -134,5 +118,5 @@ configureSystemData <- function(
   
   ###### Return ######
   "...Finished running configureSystemData()." |> message()
-  return(returnList)
+  return(rDataList)
 }

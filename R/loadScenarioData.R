@@ -34,7 +34,7 @@ loadScenarioData <- function(
   ### Iterate over list to get data
   dataList      <- listPaths |> map(function(file_i){
     file_i |> read.csv() |> as_tibble()
-  }) |> set_names(scenarioNames)
+  }) |> set_names(scenarioNames |> paste0("Data"))
   
   
   ###### Return ######

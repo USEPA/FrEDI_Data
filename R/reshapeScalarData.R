@@ -15,7 +15,8 @@ reshapeScalarData <- function(
 ) {
   ###### Messaging ######
   msg1          <- msg0 |> paste("\t")  
-  if (!silent) paste0(msg0, "In reshapeScalarData:") |> message()
+  if (!silent) paste0(msg0, "In reshapeScalarData:"   ) |> message()
+  if (!silent) paste0(msg1, "Reshaping scalar data...") |> message()
   
   ###### Assign Objects ######
   ### Assign tables in dataList to object in local environment
@@ -35,6 +36,17 @@ reshapeScalarData <- function(
   scalarData <- scalarData |> left_join(co_states |> select(all_of(select0)), by=c(join0))
   rm(select0, join0)
   
+  ### Replace data with NA values
+  # scalarData <- scalarData |> mutate(region = region |> replace_na("National"))
+  # scalarData <- scalarData |> mutate(state  = state  |> replace_na("All"))
+  # scalarData <- scalarData |> mutate(postal = postal |> replace_na("US"))
+  scalarData <- scalarData |> mutate(state  = state  |> na_if("National Total"))
+  scalarData <- scalarData |> mutate(region = region |> replace_na("National"))
+  # scalarData <- scalarData |> mutate(state  = state  |> replace_na("All"))
+  # scalarData <- scalarData |> mutate(postal = postal |> replace_na("US"))
+  scalarData <- scalarData |> mutate(state  = state  |> replace_na("N/A"))
+  scalarData <- scalarData |> mutate(postal = postal |> replace_na("N/A"))
+  
   ### Join scalar data frame with scalar info
   select0    <- c("scalarName", "scalarLabel", "scalarType")
   join0      <- c("scalarName")
@@ -47,9 +59,10 @@ reshapeScalarData <- function(
   scalarData <- scalarData |> mutate(region = region |> str_replace(" ", ""))
   scalarData <- scalarData |> select(all_of(select0))
   rm(select0)
+  # scalarData |> names() |> print()
   
   ###### Return ######
   ### Return the list of dataframes
-  if (!silent) paste0("\n") |> message()
+  # if (!silent) paste0("\n") |> message()
   return(scalarData)
 }
