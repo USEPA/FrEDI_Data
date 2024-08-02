@@ -25,9 +25,9 @@ configureSystemData <- function(
   ###### Initialize Object List ######
   ### Initialize list of objects to return
   rDataList     <- list()
-  rDataList[["frediData"   ]] <- list(name="frediData", data=list())
-  rDataList[["scenarioData"]] <- list(name="frediData", data=list())
-  rDataList[["stateData"   ]] <- list(name="stateData", data=list())
+  rDataList[["frediData"   ]] <- list(name="frediData"   , data=list())
+  rDataList[["stateData"   ]] <- list(name="stateData"   , data=list())
+  rDataList[["scenarioData"]] <- list(name="scenarioData", data=list())
 
   
   ###### 1. Load Excel Data ######
@@ -41,8 +41,8 @@ configureSystemData <- function(
   ) ### End loadData
   ### Update data in list
   rDataList[["frediData"   ]] <- loadData0[["frediData"   ]]
-  rDataList[["scenarioData"]] <- loadData0[["scenarioData"]]
   rDataList[["stateData"   ]] <- loadData0[["stateData"   ]]
+  rDataList[["scenarioData"]] <- loadData0[["scenarioData"]]
   # loadData0[["frediData"   ]] |> names() |> print()
   # loadData0[["stateData"]][["slrImpData"]] |> names() |> print()
   
@@ -59,11 +59,9 @@ configureSystemData <- function(
   } ### End if(reshape)
   ### Update data in list
   rDataList[["frediData"   ]] <- reshapeData0[["frediData"   ]]
-  rDataList[["scenarioData"]] <- reshapeData0[["scenarioData"]]
   rDataList[["stateData"   ]] <- reshapeData0[["stateData"   ]]
+  rDataList[["scenarioData"]] <- reshapeData0[["scenarioData"]]
   # return(rDataList)
-  # reshapeData0[["frediData"]] |> names() |> print()
-  # reshapeData0[["stateData"]][["slrImpData"]] |> names() |> print()
   
   
   ###### 4. Configure Data ######
@@ -74,9 +72,8 @@ configureSystemData <- function(
   ### Update data in list
   rDataList[["fredi_config"]] <- sysDataList0[["fredi_config"]]
   rDataList[["frediData"   ]] <- sysDataList0[["frediData"   ]]
-  rDataList[["scenarioData"]] <- sysDataList0[["scenarioData"]]
   rDataList[["stateData"   ]] <- sysDataList0[["stateData"   ]]
-  
+  rDataList[["scenarioData"]] <- sysDataList0[["scenarioData"]]
   
   
   ###### 6. Drop Reshaped Data Objects ######
