@@ -70,27 +70,11 @@ configureSystemData <- function(
   ### Names of objects to combine from reshaped data
   if(!silent) paste0(msg0, "Configuring data...") |> message()
   sysDataList0  <- reshapeData0 |> createSystemData(extend_all=extend_all, save=F, silent=silent)
-  # rm(reshapeData0)
+  rm(reshapeData0)
   
-  ###### 5. FrEDI Data  ######
-  ### List of data that is the same for both state & region and not modified in configuration steps
-  # frediNames0   <- c("fredi_config") |>
-  #   c("co_sectors", "co_sectorsRef") |> 
-  #   c("co_variants", "co_impactTypes", "co_impactYears", "co_impactYearLevels") |> 
-  #   c("co_regions", "co_states", "co_models", "co_modelTypes", "co_inputInfo") |>
-  #   c("co_econMultipliers", "co_scalarInfo", "co_slrScalars") |>
-  #   c("slr_cm") |> 
-  #   c("testDev")
-  # ### Update objects
-  # # sysDataList0 |> names() |> print()
-  # frediList0    <- sysDataList0 |> (function(x){x[  names(x) %in% frediNames0 ]})()
-  # sysDataList0  <- sysDataList0 |> (function(x){x[!(names(x) %in% frediNames0)]})()
-  # ### Update in list
-  # rDataList[["frediData"]][["data"]] <- frediList0
-  # rDataList[["stateData"]][["data"]] <- sysDataList0
-  # rm(frediNames0, frediList0, sysDataList0)
   
-  ###### Drop Reshaped Data Objects ######
+  
+  ###### 6. Drop Reshaped Data Objects ######
   if(!reshape) {
     drop0         <- c("rsData")
     inDrop0       <- (rDataList |> names()) %in% drop0

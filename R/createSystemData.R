@@ -232,6 +232,11 @@ createSystemData <- function(
   ### Message the user
   if(msgUser) {msg0(1) |> paste0(messages_data[["interpFuns"]]$success) |> message()}
   
+  ###### Drop Data  ######
+  ### Drop data sets that are no longer needed
+  drop0         <- c("scalarData", "gcmImpData", "slrImpData")
+  stateData     <- stateData |> (function(list0, x=drop0){list0[!((list0 |> names()) %in% x)]})()
+  
   ###### Update Data List ######
   rDataList[["frediData"    ]] <- frediData
   rDataList[["stateData"    ]] <- stateData
