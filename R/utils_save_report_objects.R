@@ -107,7 +107,7 @@ fun_appx_plot_height <- function(ntypes=1, nrows=1){
 save_appendix_figures <- function(
     plotList,
     df0,      ### Dataframe used to create plots
-    modelType = "GCM", ### Or SLR
+    type0 = "GCM", ### Or SLR
     fpath     = ".",
     device    = "pdf",
     res       = 200,
@@ -119,8 +119,9 @@ save_appendix_figures <- function(
   fdir      <- fdir |> file.path("images")
   created0  <- fdir |> check_and_create_path(createDir=createDir)
   ### Prepare data
-  df0       <- df0  |> filter(model_type %in% modelType)
-  list0     <- plotList[[modelType]]
+  # df0       <- df0  |> filter(model_type %in% type0)
+  df0       <- df0  |> filter(modelType %in% type0)
+  list0     <- plotList[[type0]]
   ### Unique values
   names0    <- list0  |> names()
   sectors0  <- names0 |> map(function(.x){str_split(string=.x, pattern="_")[[1]][1]}) |> unlist() |> unique()
