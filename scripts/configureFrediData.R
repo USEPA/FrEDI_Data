@@ -55,18 +55,16 @@ configureFrediData <- function(
     return     = T
   ) ### End configureSystemData
   ### Add to return list
-  returnList[["systemDataList"]] <- list_systemData0
+  # returnList[["systemDataList"]] <- list_systemData0
   
   
   ###### 2. Run General Tests on Data ######
   ### Run general tests
   test_general_config <- general_config_test(
     configuredData = list_systemData0,
-    byState        = byState,
     save           = save,
     overwrite      = TRUE,
-    xlsxName       = "generalConfig_testResults.xlsx",
-    fredi_config   = fredi_config
+    xlsxName       = "generalConfig_testResults.xlsx"
   ) ### End general_config_test
   ### Add to return list
   returnList[["generalConfigTests"]] <- test_general_config
@@ -75,9 +73,9 @@ configureFrediData <- function(
   ###### 5. Create Images of Scaled Impacts ######
   ### Test create results
   testResults  <- list_systemData0 |> get_fredi_sectorOptions_results(); testResults |> glimpse()
-  ### Test region plot info
-  testIter0    <- testResults |> get_region_plotInfo(); 
-  # testIter0$sectorInfo |> glimpse()
+  # ### Test region plot info
+  # testIter0    <- testResults |> get_region_plotInfo(); 
+  # # testIter0$sectorInfo |> glimpse()
   ### Make scaled impact plots 
   testPlots0   <- testResults |> make_scaled_impact_plots()
   ### Add to return list

@@ -40,9 +40,7 @@ reshapeFrediData <- function(
     silent    = silent, 
     msg0      = msg1
   ) ### End reshapeScalarData
-  # scenarios[["popRatiosData"]] |> dim() |> print()
   dataList[["scenarioData"]] <- scenarios
-  # stateData[["scenarioData"]][["popRatiosData"]] |> dim() |> print()
   
   ###### Scalar Data  ######
   ### Reshape scalar data
@@ -80,8 +78,6 @@ reshapeFrediData <- function(
   
   ### Update data in list
   dataList[["stateData"]] <- stateData
-  # stateData[["scenarioData"]][["popRatiosData"]] |> dim() |> print()
-  # dataList[["stateData"]][["scenarioData"]][["popRatiosData"]] |> dim() |> print()
   
   ###### Return ######
   ### Return the list of dataframes
