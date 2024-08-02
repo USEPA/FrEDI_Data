@@ -71,6 +71,11 @@ configureSystemData <- function(
   if(!silent) paste0(msg0, "Configuring data...") |> message()
   sysDataList0  <- reshapeData0 |> createSystemData(extend_all=extend_all, save=F, silent=silent)
   rm(reshapeData0)
+  ### Update data in list
+  rDataList[["fredi_config"]] <- sysDataList0[["fredi_config"]]
+  rDataList[["frediData"   ]] <- sysDataList0[["frediData"   ]]
+  rDataList[["scenarioData"]] <- sysDataList0[["scenarioData"]]
+  rDataList[["stateData"   ]] <- sysDataList0[["stateData"   ]]
   
   
   

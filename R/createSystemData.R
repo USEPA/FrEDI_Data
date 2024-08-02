@@ -238,10 +238,10 @@ createSystemData <- function(
   stateData     <- stateData |> (function(list0, x=drop0){list0[!((list0 |> names()) %in% x)]})()
   
   ###### Update Data List ######
-  rDataList[["frediData"    ]] <- frediData
-  rDataList[["stateData"    ]] <- stateData
-  rDataList[["scenariosData"]] <- scenarios
-  
+  rDataList[["frediData"   ]] <- frediData
+  rDataList[["stateData"   ]] <- stateData
+  rDataList[["scenarioData"]] <- scenarios
+  # scenarios |> names() |> print()
   
   ###### Return ######
   if(msgUser){msg0(1) |> paste0("...Finished running createSystemData()", ".") |> message()}
