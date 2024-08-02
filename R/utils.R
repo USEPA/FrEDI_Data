@@ -126,7 +126,7 @@ format_gcamData <- function(
   # df0 |> glimpse()
   
   ### Select values
-  select0 <- c("year", "temp_C_global", "temp_C_global", "slr_cm", "scenario", "model")
+  select0 <- c("year", "temp_C_global", "temp_C_conus", "slr_cm", "scenario", "model")
   df0     <- df0 |> select(all_of(select0))
   rm(select0)
   
