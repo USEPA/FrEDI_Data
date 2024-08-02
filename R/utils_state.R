@@ -1,7 +1,7 @@
 ###### Overview ######
 ### This file contains helper functions for FrEDI's state-level functionality.
 
-###### loadStateImpacts ######
+###### loadFrediImpacts ######
 ### Load state scaled impact data from a specified directory.
 loadFrediImpacts <- function(
     fpath   = "." |> file.path("inst", "extdata", "fredi"), ### file path to directory with state-level slr and gcm scaled impact data
@@ -43,7 +43,7 @@ loadFrediImpacts <- function(
 }
 
 
-###### loadStateScalars ######
+###### loadFrediScalars ######
 ### Load state scalar data from a specified directory.
 loadFrediScalars <- function(
     fpath = "." |> file.path("inst", "extdata", "fredi", "scalars") ### File path to directory with state-level scalar data

@@ -2,6 +2,7 @@
 #'
 #' @param dataList Outputs from `loadData`
 #' @param silent Indicate level of messaging
+#' @param msg0 Initial messaging prefix
 #'
 #' @return
 #' @export
@@ -20,6 +21,7 @@ reshapeFrediData <- function(
   ### Assign tables in dataList to object in local environment
   frediData <- dataList[["frediData"]]
   stateData <- dataList[["stateData"]]
+  scenarios <- dataList[["scenarioData"]]
   # stateData |> names() |> print()
   # stateData[["scalars"]] |> glimpse()
   # stateData[["gcmImpacts"]] |> glimpse()
@@ -31,6 +33,14 @@ reshapeFrediData <- function(
   frediData  <- frediData |> reshapeConfigData(silent=silent, msg0=msg1)
   dataList[["frediData"]] <- frediData
   # dataList[["frediData"]] |> names() |> print()
+  
+  ###### Scenarios Data  ######
+  ### Reshape scenario data
+  scenarios <- scenarios |> reshapeScenarioData(
+    silent    = silent, 
+    msg0      = msg1
+  ) ### End reshapeScalarData
+  stateData[["scenarioData"]] <- scenarios
   
   ###### Scalar Data  ######
   ### Reshape scalar data

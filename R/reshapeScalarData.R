@@ -1,16 +1,18 @@
-#' reshapeData
+#' reshapeScalarData
 #'
-#' @param dataList Outputs from `loadData`
+#' @param scalarData Tibble with scalars data (as output from `loadFrediScalars`)
+#' @param frediData  List of FrEDI configuration data (as output from `loadFrediData`)
 #' @param silent Indicate level of messaging
+#' @param msg0 Prefix for messaging
 #'
 #' @return
 #' @export
 #'
 #' @examples
 reshapeScalarData <- function(
-    scalarData = NULL,   ### Tibble with scalars data
-    frediData  = NULL,   ### List of data (e.g., as returned from FrEDI_Data::loadData())
-    silent     = TRUE,   ### Level of messaging
+    scalarData = NULL, ### Tibble with scalars data
+    frediData  = NULL, ### List of FrEDI configuration data
+    silent     = TRUE, ### Level of messaging
     msg0     = "\t"    ### Prefix for messaging
 ) {
   ###### Messaging ######
