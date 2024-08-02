@@ -533,7 +533,7 @@ get_impactFunctions <- function(
   # df0 |> glimpse(); c(groupCol, xCol, yCol) |> print()
   df0      <- df0 |> group_by_at(vars(groupCol))
   df0      <- df0 |> arrange_at (vars(groupCol))
-  groups0  <- df0 |> group_keys()
+  groups0  <- df0 |> group_keys() |> pull(all_of(groupCol))
   nGroups0 <- groups0 |> length()
   # groups0 |> head() |> print()
   
@@ -565,8 +565,10 @@ get_impactFunctions <- function(
   }) |> bind_rows()
   
   ###### Get Impact Functions ######
+  df0      <- df0 |> ungroup()
   df0      <- df0 |> group_by_at(vars(groupCol))
   df0      <- df0 |> arrange_at (vars(groupCol))
+  groups0  <- df0 |> group_keys() |> pull(all_of(groupCol))
   list0    <- df0 |> group_map(function(.x, .y){
     ### Unique group
     # .x |> glimpse(); .y |> pull(all_of(groupCol)) |> print()
@@ -581,7 +583,9 @@ get_impactFunctions <- function(
     
     ### Return
     return(fun_i)
-  }) |> set_names(groups0) ### End group map
+  }) |> set_names(groups0)
+  # list0 |> names() |> head() |> print()
+  # list0    <- df0 |> set_names(groups0) ### End group map
   
   ### Get list names, which might differ from the groups
   # list0 |> names() |> head() |> print()
