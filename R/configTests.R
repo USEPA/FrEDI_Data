@@ -291,6 +291,7 @@ general_config_test <- function(
           names0 <- list0 |> names()
           list0  <- list(name0_i = names0, list0_i = list0)
           df0    <- list0 |> pmap(function(name0_i, list0_i){
+            name0_i |> print()
             df0_i <- list0_i |> dataInfo_test(save=F, return=T)
             df0_i <- df0_i |> mutate(listName = name0_i)
             return(df0_i)
@@ -655,8 +656,8 @@ get_fredi_sectorOptions_results <- function(
     # slrImp |> glimpse(); df_slr |> glimpse()
     
     ### Join df_slr with impacts
-    slrImp     <- slrImp |> select(-c("model"))
-    slrImp     <- slrImp |> rename_at(c("model_id"), ~c("model"))
+    # slrImp     <- slrImp |> select(-c("model"))
+    # slrImp     <- slrImp |> rename_at(c("model_id"), ~c("model"))
     join0      <- c("sector", "variant", "impactType", "impactYear", "region") |> c(stateCols) |> c("modelType", "model") |> unique()
     df_slr     <- df_slr |> left_join(slrImp, by=c(join0))
     rm(join0, slrImp)
