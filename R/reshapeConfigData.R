@@ -44,10 +44,20 @@ reshapeConfigData <- function(
   rm(drop0)
   
   
+  
   ###### ** 2. Misc ######
   ### No changes to variants
   ### No changes to model types
   ### No changes to input scenario info
+  
+  
+  
+  ###### ** 3. Variants ######
+  # ### Change NA to "NA"
+  # mutate0     <- c(variant)
+  # co_variants <- co_variants |> mutate_at(c(mutate0), replace_na, "NA")
+  # ### Update in list, drop intermediate values
+  # dataList[["co_variants"]] <- co_variants
   
   
   
@@ -110,10 +120,10 @@ reshapeConfigData <- function(
   
   
 
-  ###### ** 5. co_models ######
+  ###### ** 5. Models & Model Types ######
   ### Combine with model types and update data list
   join0          <- c("modelType")
-  co_models      <- co_models     |> left_join(co_modelTypes, by = join_by(modelType == modelType_id)) 
+  co_models      <- co_models |> left_join(co_modelTypes, by = join_by(modelType == modelType_id)) 
   # co_models |> glimpse
   ### Update in list, drop intermediate values
   dataList[["co_models"]] <- co_models
@@ -121,23 +131,200 @@ reshapeConfigData <- function(
   
   
   
-  ###### ** 6. co_regions ######
+  ###### ** 6. Regions & States ######
   ### Combine and add to data list...also a copy with info on national data
   ### Update in list
-  co_regions <- co_regions |> mutate(region = region_id)
-  dataList[["co_regions"]] <- co_regions
+  # co_regions <- co_regions |> mutate(region = region_id)
+  # dataList[["co_regions"]] <- co_regions
+  co_states  <- co_states  |> mutate(region = region |> str_replace(" ", ""))
+  dataList[["co_states"]]
+  
+  ###### ** 7. co_sectorsInfo ######
+  # # ### Join with co_variants, co_impactTypes, co_impactYears
+  # # join0   <- c("sector_id")
+  # # drop0   <- c("variant_label")
+  # # drop1   <- c("impactType_label", "impactType_description")
+  # # drop2   <- c("impactYear_label")
+  # # co_sectorsInfo <- co_sectors     |> left_join(co_variants    |> select(-all_of(drop0)), by=c(join0))
+  # # co_sectorsInfo <- co_sectorsInfo |> left_join(co_impactTypes |> select(-all_of(drop1)), by=c(join0), relationship = "many-to-many")
+  # # co_sectorsInfo <- co_sectorsInfo |> left_join(co_impactYears |> select(-all_of(drop2)), by=c(join0), relationship = "many-to-many")
+  # # ### Rename values
+  # # co_sectorsInfo |> glimpse()
+  # # rename0 <- c("sector", "variant", "impactYear", "impactType") |> paste0("_id")
+  # # rename1 <- rename0 |> str_replace("_id", "")
+  # # co_sectorsInfo <- co_sectorsInfo |> rename_at(c(rename0), ~rename1) 
+  # # ### Update in list, drop intermediate values
+  # # # co_sectorsInfo |> glimpse()
+  # # dataList[["co_sectorsInfo"]] <- co_sectorsInfo
+  # # rm(join0, drop0, drop1, drop2, rename0, rename1)
+  # co_sectorsInfo <- co_sectors |> (function(df0){
+  #   ### Mutate data
+  #   renameAt0   <- c("modelType_id")
+  #   renameTo0   <- c("modelType")
+  #   select0     <- c("model_id", "model_label", "modelType")
+  #   co_modTypes <- co_modelTypes |> rename_at(c(renameAt0), ~c(renameTo0))
+  #   co_models   <- co_models     |> select(all_of(select0))
+  #   rm(renameAt0, renameTo0, select0)
+  #   ### Join with co_variants, co_impactTypes, co_impactYears
+  #   join0   <- c("sector_id")
+  #   join1   <- c("modelType")
+  #   df0     <- df0 |> left_join(co_variants, by=c(join0))
+  #   df0     <- df0 |> left_join(co_impactTypes, by=c(join0), relationship="many-to-many")
+  #   df0     <- df0 |> left_join(co_impactYears, by=c(join0), relationship="many-to-many")
+  #   # df0 |> glimpse(); co_modelTypes |> glimpse()
+  #   df0     <- df0 |> left_join(co_modelTypes |> rename(modelType=modelType_id) , by=c(join1), relationship="many-to-many")
+  #   df0     <- df0 |> left_join(co_models, by=c(join1), relationship="many-to-many")
+  #   rm(join0, join1)
+  #   ### Rename values
+  #   # df0 |> glimpse()
+  #   rename0  <- c("sector", "variant", "impactYear", "impactType") |> c("model")
+  #   renameAt <- rename0 |> paste0("_id")
+  #   renameTo <- rename0
+  #   df0      <- df0 |> rename_at(c(renameAt), ~renameTo)
+  #   ### Return
+  #   return(df0)
+  # })()
+  co_sectorsInfo <- co_sectors |> pull(sector_id) |> (function(
+    sectors0,  ### Sector IDs
+    addRegions = TRUE, ### Whether to include regions & states
+    addModels  = TRUE, ### Whether to include models
+    colTypes   = c("ids", "labels", "extra") ### Types of columns to include: IDs, labels, or extra. If only labels, will return labels without the "_label"
+  ){
+    ### Get objects from FrEDI
+    # co_sectors  <- "co_sectors"     |> get_frediDataObj("frediData")
+    # co_variants <- "co_variants"    |> get_frediDataObj("frediData")
+    # co_impTypes <- "co_impactTypes" |> get_frediDataObj("frediData")
+    # co_impYears <- "co_impactYears" |> get_frediDataObj("frediData")
+    # co_regions  <- "co_regions"     |> get_frediDataObj("frediData")
+    # co_states   <- "co_states"      |> get_frediDataObj("frediData")
+    # co_modTypes <- "co_modelTypes"  |> get_frediDataObj("frediData")
+    # co_models   <- "co_models"      |> get_frediDataObj("frediData")
+    
+    ### Conditionals
+    colTypes    <- colTypes |> tolower()
+    doIds       <- "ids"    %in% colTypes
+    doLabs      <- "labels" %in% colTypes
+    doExtra     <- "extra"  %in% colTypes
+    onlyLabs    <- !doIds
+    
+    ### Initialize some values as empty vectors
+    ### Adjust values in vectors depending on conditionals
+    colsReg0    <- c()
+    colsMod0    <- c()
+    if(addRegions) colsReg0 <- c("region", "state", "postal")
+    if(addModels ) colsMod0 <- c("model")
+    
+    ### Column names
+    colsData0   <- c("sector", "variant", "impactType", "impactYear") |> c(colsReg0) |> c("modelType") |> c(colsMod0)
+    colsIds0    <- colsData0 |> get_matches(y=c("modelType", "state", "postal"), matches=FALSE) |> paste0("_id")
+    colsLabs0   <- colsData0 |> get_matches(y=c("modelType", "state", "postal"), matches=FALSE) |> paste0("_label")
+    colsVars    <- c("sectorprimary", "includeaggregate", "damageAdjName")
+    colsTypes   <- c("impactType_description", "physicalmeasure") |>
+      c(c("physScalar", "physAdj", "econScalar", "econMultiplier") |> paste0("Name")) |>
+      c("c0", "c1", "exp0", "year0")
+    colsMods0   <- c("maxUnitValue", "inputName") |>
+      c("model" |> paste0(c("UnitDesc", "Unit_id", "Unit_label"))) |>
+      c("model" |> paste0(c("UnitScale", "RefYear", "MaxOutput", "MaxExtrap")))
+    colsMods0   <- colsMods0 |> get_matches(y=c("model" |> paste0(c("UnitScale", "RefYear", "MaxOutput", "MaxExtrap"))), matches=F)
+    colsOth0    <- c()
+    
+    ### Add additional columns
+    if(doExtra) {
+      colsOth0 <- c(colsVars, colsTypes, colsMods0)
+      if(addModels) colsOth0 <- colsOth0 |> c("maxUnitValue")
+    } ### if(doAll)
+    
+    
+    ### Filter data
+    hasSectors  <- sectors0 |> length()
+    if(hasSectors) co_sectors <- co_sectors |> filter(sector_id %in% sectors0)
+    
+    ### Rename columns
+    renameAt0   <- c("modelType")
+    co_modTypes <- co_modelTypes |> rename_at(c(renameAt0 |> paste0("_id")), ~c(renameAt0))
+    rm(renameAt0)
+    
+    ### Join with co_variants, co_impactTypes, co_impactYears
+    join0   <- c("sector_id")
+    join1   <- c("modelType")
+    df0     <- co_sectors |> left_join(co_variants, by=c(join0))
+    df0     <- df0        |> left_join(co_impactTypes, by=c(join0), relationship="many-to-many")
+    df0     <- df0        |> left_join(co_impactYears, by=c(join0), relationship="many-to-many")
+    df0     <- df0        |> left_join(co_modTypes, by=c(join1), relationship="many-to-many")
+    rm(join0, join1)
+    
+    ### Join with co_regions and co_states if addStates
+    if(addRegions) {
+      ### Rename column in states
+      ### Join states with regions
+      ### Join data with states
+      join0     <- c("region_id")
+      join1     <- c("joinCol")
+      renameAt0 <- c("region")
+      co_states <- co_states |> rename_at(c(renameAt0), ~c(renameAt0 |> paste0("_id")))
+      co_states <- co_states |> left_join(co_regions, by=c(join0))
+      co_states <- co_states |> mutate(joinCol = 1)
+      df0       <- df0       |> mutate(joinCol = 1)
+      df0       <- df0       |> left_join(co_states, by=c(join1), relationship="many-to-many")
+      df0       <- df0       |> select(-all_of(join1))
+      rm(renameAt0, join0, join1)
+    } ### End if(addModels)
+    
+    ### Join with co_models if addModels
+    if(addModels) {
+      # join0     <- c("modelType")
+      join0     <- df0 |> names() |> get_matches(y=co_models |> names())
+      df0       <- df0 |> left_join(co_models, by=c(join0), relationship="many-to-many")
+      rm(join0)
+    } ### End if(addModels)
+    
+    ### Rename values
+    # df0 |> glimpse()
+    # renameTo <- c("sector", "variant", "impactYear", "impactType") |> c(colsReg0) |> c(colsMod0)
+    renameTo0 <- colsData0 |> get_matches(y=c("modelType", "state", "postal"), matches=FALSE)
+    renameAt0 <- renameTo0 |> paste0("_id")
+    df0       <- df0       |> rename_at(c(renameAt0), ~renameTo0)
+    
+    ### Select values
+    select0   <- c()
+    names0    <- df0 |> names()
+    if(doIds  ) select0 <- select0 |> c(colsData0) |> unique()
+    if(doLabs ) select0 <- select0 |> c(colsLabs0) |> unique()
+    if(doExtra) select0 <- select0 |> c(colsOth0 ) |> unique()
+    df0       <- df0 |> select(all_of(select0))
+    
+    ### Arrange values
+    arrange0  <- c()
+    if     (doIds ) arrange0 <- c(colsData0)
+    else if(doLabs) arrange0 <- c(colsLabs0)
+    df0       <- df0 |> arrange_at(c(arrange0))
+    
+    ### Rename columns
+    if(onlyLabs) {
+      renameAt0 <- colsLabs0
+      renameTo0 <- colsData0
+      df0       <- df0 |> rename_at(c(renameAt0), ~renameTo0)
+      rm(rename0, renameAt, renameTo)
+    } ### End if(onlyLabs)
+    
+    ### Return
+    return(df0)
+  })()
+  ### Update in list, drop intermediate values
+  # co_sectorsInfo |> glimpse()
+  dataList[["co_sectorsInfo"]] <- co_sectorsInfo
+  # rm(rename0, renameAt, renameTo)
   
   
   
-  ###### ** 7. SLR Scenario Info ######
+  ###### ** 8. SLR Scenario Info ######
   ### Gather slr_cm columns
   # slr_cm |> names() |> print()
-  idCols0 <- c("year")
-  slr_cm  <- slr_cm |> (function(df0, df1=co_models, cols0=idCols0){
+  slr_cm  <- slr_cm |> (function(df0, df1=co_models, cols0=c("year")){
     ### Gather slr_cm columns
     df0    <- df0 |> pivot_longer(
       cols      = -all_of(cols0), 
-      names_to  = "model_id",
+      names_to  = "model",
       values_to = "driverValue"
     ) ### End pivot_longer
     
@@ -145,10 +332,10 @@ reshapeConfigData <- function(
     df0    <- df0 |> mutate(model_type = "slr")
     
     ### Zero out values and bind with other values
-    df0_0cm <- df0     |> filter(model_id == "30cm")
-    df0_0cm <- df0_0cm |> mutate(model_id = "0cm")
+    df0_0cm <- df0     |> filter(model == "30cm")
+    df0_0cm <- df0_0cm |> mutate(model = "0cm")
     df0_0cm <- df0_0cm |> mutate(driverValue = 0)
-    df0     <- df0     |> filter(model_id != "0cm")
+    df0     <- df0     |> filter(model != "0cm")
     df0     <- df0_0cm |> rbind(df0)
     rm(df0_0cm)
     
@@ -158,7 +345,7 @@ reshapeConfigData <- function(
     df0     <- df0 |> mutate(modelType = "slr" |> as.character())
     
     ### Arrange
-    cols0   <- c("model_id", "year")
+    cols0   <- c("model", "year")
     df0     <- df0 |> arrange_at(vars(cols0))
     
     ### Return
@@ -167,7 +354,6 @@ reshapeConfigData <- function(
   ### Update in data list, drop intermediate values
   # slr_cm |> names() |> print()
   dataList[["slr_cm"]] <- slr_cm
-  rm(idCols0)
   # dataList |> names() |> print()
   
   ###### Return ######
