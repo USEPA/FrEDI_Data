@@ -61,8 +61,6 @@ createSystemData <- function(
   # frediNames |> print(); scenarioNames |> print(); stateNames |> print()
   ### Assign objects
   for(name_i in frediNames   ){ name_i |> assign(frediData   [[name_i]]); rm(name_i) }
-  # for(name_i in stateNames   ){ name_i |> assign(stateData   [[name_i]]); rm(name_i) }
-  # for(name_i in scenarioNames){ name_i |> assign(scenarioData[[name_i]]); rm(name_i) }
 
   
   
@@ -116,41 +114,10 @@ createSystemData <- function(
 
   ### Default socioeconomic scenario:
   ### Use to assess default scalars but don't add to list
+  pop_default <- pop_default |> mutate(region = region |> str_replace(" ", ""))
   df_national <- gdp_default |> create_nationalScenario(pop0=pop_default)
   # df_national |> names() |> print()
   rm(gdp_default, pop_default)
-  
-
-  ###### Extreme SLR Scenarios ######
-  # ### replace NA values and convert to character
-  # # slr_cm |> names() |> print(); slrImpacts |> names() |> print(); 
-  # mutate0     <- c("model_type")
-  # string0     <- c("slr")
-  # ### Replace NA values
-  # slr_cm      <- slr_cm     |> mutate_at(vars(mutate0), replace_na, string0)
-  # slrImpacts  <- slrImpacts |> mutate_at(vars(mutate0), replace_na, string0)
-  # ### Convert to character
-  # slr_cm      <- slr_cm     |> mutate_at(vars(mutate0), as.character)
-  # slrImpacts  <- slrImpacts |> mutate_at(vars(mutate0), as.character)
-  ### Create data for extreme values above 250cm
-  if(msgUser) {msg0(lvl0 + 3) |> paste0("Creating extreme SLR impact values...") |> message()}
-  slrImpacts  <- stateData[["slrImpData"]]
-  slrExtremes <- fun_slrConfigExtremes(slr_x=slr_cm, imp_x=slrImpacts)
-  # return(rDataList)
-  
-  
-  ###### Interpolate SLR Scenarios ######
-  ### Extend SLR Heights, Impacts, and Extremes
-  if(msgUser) {msg0(lvl0 + 3) |> paste0("Extending SLR values...") |> message()}
-  slr_cm       <- slr_cm      |> extend_slr()
-  slrImpacts   <- slrImpacts  |> extend_slr()
-  slrExtremes  <- slrExtremes |> extend_slr()
-  ### Update in data list and remove objects
-  frediData[["slr_cm"     ]] <- slr_cm
-  stateData[["slrImpacts" ]] <- slrImpacts
-  stateData[["slrExtremes"]] <- slrExtremes
-  rm(slr_cm, slrImpacts, slrExtremes)
-  # return(list(frediData=frediData, stateData=stateData))
   
   
   
@@ -174,35 +141,90 @@ createSystemData <- function(
   rm(df_scalars, df_national)
   # return(stateData)
   
+
   
+  ###### Format SLR Data ######
+  if(msgUser) {msg0(lvl0 + 3) |> paste0("Formatting SLR data...") |> message()}
+  ### Standardize SLR scenario info
+  if(msgUser) {msg0(lvl0 + 4) |> paste0("Standardizing SLR scaled impacts...") |> message()}
+  slrImpData  <- stateData[["slrImpData"]]
+  slrImpData  <- slrImpData |> standardize_scaledImpacts(
+    df1  = co_sectorsInfo, 
+    xCol = "year"
+  ) ### End standardize_scaledImpacts
+  ### Update list
+  slrImpData  <- stateData[["slrImpData"]]
   
-  
-  ###### Get Scenario Info for Scaled Impacts  ######
-  if(msgUser) {msg0(lvl0 + 3) |> paste0("Getting scenario IDs...") |> message()}
-  ### Add a column with a scenario id
-  # data_scaledImpacts |> glimpse()
-  # gcmImpacts |> glimpse()
-  gcmImpacts   <- stateData[["gcmImpData"]]
-  includeCols  <- c("region") |> c(stateCols0) |> c("model_id")
-  gcmImpacts   <- gcmImpacts |> get_scenario_id(include=includeCols) |> ungroup()
-  ### Get list of scenarios for scenarios with at least some non-NA values
-  gcmGroupList <- gcmImpacts |> filter(!(scaled_impacts |> is.na())) |> pull(scenario_id) |> unique()
-  # c_scenariosList
-  ### Add information on non-missing scenarios to scaled impacts data
-  gcmImpacts   <- gcmImpacts |> mutate(hasScenario = (scenario_id %in% gcmGroupList))
-  ### Update in data list
-  # stateData[["gcmImpacts"]] <- gcmImpacts
-  # rm(gcmGroupList)
+  ### Create data for extreme values above 250cm
+  if(msgUser) {msg0(lvl0 + 4) |> paste0("Creating extreme SLR impact values...") |> message()}
+  slrExtremes <- fun_slrConfigExtremes(slr_x=slr_cm, imp_x=slrImpData)
   # return(rDataList)
   
+  ### Extend/Interpolate SLR Heights, Impacts, and Extremes
+  if(msgUser) {msg0(lvl0 + 4) |> paste0("Extending SLR values...") |> message()}
+  slr_cm       <- slr_cm      |> extend_slr()
+  slrImpacts   <- slrImpData  |> extend_slr()
+  slrExtremes  <- slrExtremes |> extend_slr()
   
-  ###### Get Interpolation Functions for Scenarios ######
+  ### Add other values back into slrImpacts
+  include0     <- c("region") |> c(stateCols0) |> c("model")
+  slrImpacts   <- slrImpacts  |> get_scenario_id(include=include0) |> ungroup()
+  # slrExtremes  <- slrExtremes |> get_scenario_id(include=include0) |> ungroup()
+  
+  groups0      <- slrImpacts  |> filter(!(scaled_impacts |> is.na())) |> pull(scenario_id) |> unique()
+  slrImpacts   <- slrImpacts  |> mutate(hasScenario = scenario_id %in% groups0)
+  # slrExtremes  <- slrExtremes |> mutate(hasScenario = scenario_id %in% groups0)
+  rm(include0, groups0)
+  
+  ### Update in data list and remove objects
+  frediData[["slr_cm"     ]] <- slr_cm
+  stateData[["slrImpacts" ]] <- slrImpacts
+  stateData[["slrExtremes"]] <- slrExtremes
+  rm(slr_cm, slrImpacts, slrExtremes)
+  # return(list(frediData=frediData, stateData=stateData))
+  
+  
+  
+  ###### Format GCM Data  ######
+  if(msgUser) {msg0(lvl0 + 3) |> paste0("Formatting GCM data...") |> message()}
+  ### Standardize GCM scaled impacts data
+  if(msgUser) {msg0(lvl0 + 4) |> paste0("Standardizing GCM scaled impacts...") |> message()}
+  gcmImpData  <- stateData[["gcmImpData"]]
+  gcmImpData  <- gcmImpData |> standardize_scaledImpacts(
+    df1  = co_sectorsInfo, 
+    xCol = "modelUnitValue"
+  ) ### End standardize_scaledImpacts
+  ### Update in data list
+  stateData[["gcmImpData"]] <- gcmImpData
+  # if(msgUser) {msg0(lvl0 + 3) |> paste0("Getting scenario IDs...") |> message()}
+  # ### Add a column with a scenario id
+  # # data_scaledImpacts |> glimpse()
+  # # gcmImpacts |> glimpse()
+  # gcmImpData   <- stateData[["gcmImpData"]]
+  # includeCols  <- c("region") |> c(stateCols0) |> c("model")
+  # gcmImpData   <- gcmImpData |> get_scenario_id(include=includeCols) |> ungroup()
+  # ### Get list of scenarios for scenarios with at least some non-NA values
+  # gcmGroupList <- gcmImpData |> filter(!(scaled_impacts |> is.na())) |> pull(scenario_id) |> unique()
+  # # c_scenariosList
+  # ### Add information on non-missing scenarios to scaled impacts data
+  # gcmImpData   <- gcmImpData |> mutate(hasScenario = (scenario_id %in% gcmGroupList))
+  # ### Update in data list
+  # stateData[["gcmImpData"]] <- gcmImpData
+  # rm(gcmGroupList)
+  # # return(rDataList)
+  
+  
+  
+  ### Get Interpolation Functions for Scenarios
   ### Iterate over sectors to get interpolation functions with fun_getImpactFunctions()
   ### fun_getImpactFunctions depends on the function fun_tempImpactFunction()
-  if(msgUser) {msg0(lvl0 + 3) |> paste0("Creating list of impact functions...") |> message()}
-  gcmNoImpacts  <- gcmImpacts |> filter(!hasScenario)
-  gcmImpacts    <- gcmImpacts |> filter( hasScenario)
+  if(msgUser) {msg0(lvl0 + 4) |> paste0("Creating list of impact functions...") |> message()}
+  # gcmImpData |> pull(region) |> unique() |> print()
+  # gcmImpData |> glimpse()
+  gcmNoImpacts  <- gcmImpData |> filter(hasScenario != 1)
+  gcmImpacts    <- gcmImpData |> filter(hasScenario == 1)
   gcmImpacts    <- gcmImpacts |> filter(!(scaled_impacts |> is.na())) 
+  rm(gcmImpData)
   
   ### Max output value, maximum extrapolation value, unit scale, extend type
   df_gcm        <- co_modelTypes |> filter(modelType_id=="gcm")
@@ -239,6 +261,7 @@ createSystemData <- function(
   # stateData     <- stateData |> (function(list0, x=drop0){list0[!((list0 |> names()) %in% x)]})()
   
   ###### Update Data List ######
+  if(msgUser) {msg0(lvl0 + 2) |> paste0("Updating data in lists...") |> message()}
   rDataList[["frediData"   ]] <- frediData
   rDataList[["stateData"   ]] <- stateData
   rDataList[["scenarioData"]] <- scenarios
