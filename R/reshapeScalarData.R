@@ -42,12 +42,15 @@ reshapeScalarData <- function(
   # scalarData <- scalarData |> mutate(region = region |> replace_na("National"))
   # scalarData <- scalarData |> mutate(state  = state  |> replace_na("All"))
   # scalarData <- scalarData |> mutate(postal = postal |> replace_na("US"))
+  scalarData <- scalarData |> mutate(region = region |> str_replace("\\.", ""))
+  scalarData <- scalarData |> mutate(region = region |> str_replace(" ", ""))
   scalarData <- scalarData |> mutate(state  = state  |> na_if("National Total"))
   scalarData <- scalarData |> mutate(region = region |> replace_na("National"))
   # scalarData <- scalarData |> mutate(state  = state  |> replace_na("All"))
   # scalarData <- scalarData |> mutate(postal = postal |> replace_na("US"))
   scalarData <- scalarData |> mutate(state  = state  |> replace_na("N/A"))
   scalarData <- scalarData |> mutate(postal = postal |> replace_na("N/A"))
+  
   
   ### Join scalar data frame with scalar info
   select0    <- c("scalarName", "scalarLabel", "scalarType")
@@ -58,7 +61,6 @@ reshapeScalarData <- function(
   
   ### Standardize region name, then select columns
   select0    <- c("scalarType", "scalarLabel", "scalarName", "region") |> c(stateCols0) |> c("year", "value")
-  scalarData <- scalarData |> mutate(region = region |> str_replace(" ", ""))
   scalarData <- scalarData |> select(all_of(select0))
   rm(select0)
   # scalarData |> names() |> print()
