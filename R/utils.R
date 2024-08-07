@@ -17,7 +17,7 @@ interpolate_gdp <- function(df0){
   ### Select columns
   select0 <- c("year", "gdp_usd")
   df0     <- df0 |> select(all_of(select0))
-  ### Get years 
+  ### Get years
   years0  <- df0 |> pull(year) |> get_years_fromData()
   ### Add region="NationalTotal"
   df0     <- df0 |> mutate(region = "NationalTotal")
@@ -40,7 +40,7 @@ interpolate_pop <- function(df0){
   ### Select column
   select0 <- c("region", "state", "postal", "year", "pop")
   df0     <- df0 |> select(all_of(select0))
-  ### Get years 
+  ### Get years
   years0  <- df0 |> pull(year) |> get_years_fromData()
   ### Interpolate annual
   sum0    <- c("pop")
@@ -58,8 +58,8 @@ calc_nationalPop <- function(df0){
   ### Summarize population over states and regions
   group0   <- c("year")
   sum0     <- c("pop")
-  df0      <- df0 |> 
-    group_by_at (vars(group0)) |> 
+  df0      <- df0 |>
+    group_by_at (vars(group0)) |>
     summarize_at(vars(sum0), sum, na.rm=T) |> ungroup()
   ### Rename values
   renameAt <- sum0
@@ -95,10 +95,6 @@ create_nationalScenario <- function(gdp0, pop0, natPop0=NULL){
   ### Return
   return(nat0)
 }
-
-
-
-
 
 
 ###### Format GCAM scenarios
@@ -168,6 +164,58 @@ format_gcamData_byScenario <- function(
   return(df0)
 }
 
+
+standardize_scaledImpacts <- function(
+    df0, ### Tibble of scaled impacts data, e.g.: stateData$slrImpData
+    df1, ### Tibble of sector group data, e.g.: frediData$co_sectorsInfo
+    xCol = "year"
+){
+  # df0 |> glimpse()
+  sectors0 <- df0 |> pull(sector) |> unique()
+  cols0    <- c("sector", "variant", "impactType", "impactYear", "modelType", "model") |> c(xCol)
+  
+  ### Filter to options
+  select0  <- c("modelType") |> c(xCol)
+  df2      <- df0 |> select(all_of(select0)) |> distinct()
+  rm(select0)
+  
+  ### Drop fips
+  select0  <- c("fips")
+  # sectors0 |> print(); df1 |> pull(sector) |> unique() |> print()
+  df1      <- df1 |> filter(sector %in% sectors0)
+  df1      <- df1 |> select(-any_of(select0))
+  names1   <- df1 |> names()
+  rm(select0)
+  # df1 |> glimpse()
+  
+  ### Get values to join
+  join0    <- c("modelType")
+  df2      <- df1 |> left_join(df2, by=c(join0), relationship="many-to-many")
+  rm(join0)
+  # df2 |> glimpse()
+  # return(df2)
+  
+  ### Join with data
+  # join0    <- cols0 |> c(names1)
+  join0    <- c("sector", "variant", "impactType", "impactYear", "region", "state", "postal", "modelType", "model") |> c(xCol)
+  df0      <- df2 |> left_join(df0, by=join0, relationship="many-to-many")
+  df0      <- df0 |> arrange_at(c(join0))
+  rm(join0)
+  
+  ### Add scenario value
+  include0 <- c("region") |> c("state", "postal") |> c("model")
+  df0      <- df0 |> get_scenario_id(include=include0) |> ungroup()
+  
+  ### Figure out if there are scenarios present
+  # hasScen0 <- df0 |> filter_if(vars("scaled_impacts"), ~ !(. |> is.na())) |> pull(scenario_id) |> unique()
+  hasScen0 <- df0 |> filter(!(scaled_impacts |> is.na())) |> pull(scenario_id) |> unique()
+  df0      <- df0 |> mutate(hasScenario = (scenario_id %in% hasScen0) |> as.numeric())
+  
+  ### Return
+  return(df0)
+}
+
+
 ####### extend_data 
 extend_data <- function(
     df0,          ### Data frame to extend
@@ -182,7 +230,7 @@ extend_data <- function(
   df1    <- df0 |> filter(year==from0) |> select(-c("year"))
   df1    <- df1 |> cross_join(years0)
   ### Bind back in
-  df0    <- df0 |> filter(year< from0)
+  df0    <- df0 |> filter(year < from0)
   df0    <- df0 |> rbind(df1)
   ### Return
   return(df0)
@@ -199,14 +247,15 @@ extend_slr   <- function(
   maxYear_x <- x$year |> max()
   newYears  <- (maxYear_x + 1):newMax_x
   ### Format Dataframes
-  x_nu <- tibble(year = newYears) |> mutate(joinCol = 1)
-  x_up <- x |> filter(year == maxYear_x) |> mutate(joinCol = 1) |> select(-c("year"))
-  x_lo <- x |> filter(year <= maxYear_x)
-  rm("x")
+  x_nu      <- tibble(year = newYears) |> mutate(joinCol = 1)
+  x_up      <- x |> filter(year == maxYear_x) |> mutate(joinCol = 1) |> select(-c("year"))
+  x_lo      <- x |> filter(year <= maxYear_x)
+  rm(x)
   ### Join data
-  x_up <- x_up |> left_join(x_nu, by = c("joinCol")) |> select(-c("joinCol"))
-  x    <- x_lo |> rbind(x_up)
-  rm("x_nu", "x_up", "x_lo")
+  join0     <- c("joinCol")
+  x_up      <- x_up |> left_join(x_nu, by=c(join0)) |> select(-all_of(join0))
+  x         <- x_lo |> rbind(x_up)
+  rm(x_nu, x_up, x_lo)
   # ### Arrange and standardize model type
   # x  <- x |> arrange_at(c(arrange_x)) |> mutate(modelType = "slr")
   ### Return
@@ -224,7 +273,7 @@ get_slrMaxValues <- function(
   ### Columns
   # data_x |> glimpse(); data_y |> glimpse()
   yearCol0   <- c("year")
-  modCols0   <- c("model", "model_id", "modelType")
+  modCols0   <- c("model", "modelType")
   arrange0   <- c("driverValue")  |> c(modCols0) |> c(yearCol0)
   impCols0   <- data_y |> names() |> (function(x){x[!(x %in% arrange0)]})()
   impCols0   <- impCols0 |> c(yearCol0)
@@ -240,7 +289,7 @@ get_slrMaxValues <- function(
   ### Driver values:
   ### - Get driver values and then unique driver values
   ### - Figure out which the last values belong to
-  vals_i    <- dfx_i[["driverValue"]] |> unique() |> sort(decreasing=TRUE)
+  vals_i    <- dfx_i |> pull(driverValue) |> unique() |> sort(decreasing=TRUE)
   ### Add value
   addVal_i  <- vals_i |> length() == 1
   if(addVal_i){vals_i <- vals_i |> rep(2)}
@@ -289,7 +338,7 @@ fun_slrConfigExtremes <- function(
   # slr_x |> glimpse(); imp_x |> glimpse()
   ### Columns
   yearCol0 <- c("year")
-  modCols0 <- c("model", "model_id", "modelType")
+  modCols0 <- c("model", "modelType")
   # exCols0  <- modCols0 |> c("scaled_impacts", "model_cm") |> c(yearCol0)
   exCols0  <- modCols0 |> c("scaled_impacts", "model_cm") |> c(yearCol0)
   impCols0 <- imp_x    |> names() |> (function(x){x[!(x %in% exCols0)]})()
@@ -297,8 +346,8 @@ fun_slrConfigExtremes <- function(
   # slr_x |> glimpse(); imp_x |> glimpse()
   ### Prepare data
   ### SLR Heights: slr_df; SLR Impacts: imp_df
-  slr_df   <- slr_x  |> mutate(model_cm = model_id |> fun_slrModel2Height(include="values"))
-  imp_df   <- imp_x  |> mutate(model_cm = model_id |> fun_slrModel2Height(include="values"))
+  slr_df   <- slr_x  |> mutate(model_cm = model |> fun_slrModel2Height(include="values"))
+  imp_df   <- imp_x  |> mutate(model_cm = model |> fun_slrModel2Height(include="values"))
   rm(slr_x, imp_x)
   # slr_df |> head() |> glimpse(); imp_df |> head() |> glimpse()
   
@@ -727,7 +776,7 @@ get_impactFunctions <- function(
 ###### fun_slrModel2Height
 ### Helper function to convert SLR model to height in cm
 fun_slrModel2Height <- function(
-    col_x,    ### column "model_id"
+    col_x,    ### column "model"
     include   = c("factor", "values"),
     valType   = c("numeric", "character", "factor"),
     labelType = c("numeric", "character") ### Used for factor or label
