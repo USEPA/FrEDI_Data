@@ -144,7 +144,7 @@ format_gcamData_byScenario <- function(
   
   ### Interpolate temperatures by year
   df0    <- df0 |> mutate(region = "NationalTotal") 
-  df0    <- df0 |> interpolate_annual(years=years0, column="temp_C_global", rule=2:2)
+  df0    <- df0 |> interpolate_annual(years=years0, column="temp_C_global", rule=1)
   df0    <- df0 |> select(-c("region"))
   # df0_i |> glimpse()
 
@@ -472,10 +472,9 @@ fun_formatScalars <- function(
     data_i    <- data_i |> interpolate_annual(
       years   = years_x,
       column  = "value",
-      rule    = 1:2,
+      rule    = 2:2,
       method  = method_i,
       byState = TRUE
-      # byState = byState_i
     ) ### End interpolate_annual
     ### Return
     return(data_i)
