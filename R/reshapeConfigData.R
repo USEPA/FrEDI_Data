@@ -137,7 +137,7 @@ reshapeConfigData <- function(
   # co_regions <- co_regions |> mutate(region = region_id)
   # dataList[["co_regions"]] <- co_regions
   co_states  <- co_states |> mutate(region = region |> str_replace(" ", ""))
-  co_states  <- co_states |> mutate(region = region |> str_replace(".", ""))
+  co_states  <- co_states |> mutate(region = region |> str_replace("\\.", ""))
   dataList[["co_states"]] <- co_states
   
   ###### ** 7. co_sectorsInfo ######
