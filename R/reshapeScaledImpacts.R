@@ -27,6 +27,7 @@ reshapeScaledImpacts <- function(
   co_sectors <- frediData[["co_sectors"]] |> filter((modelType |> tolower()) == type0)
   co_models  <- frediData[["co_models" ]] |> filter((modelType |> tolower()) == type0)
   co_states  <- frediData[["co_states" ]]
+  # impacts |> pull(model) |> unique() |> print()
   
   # impacts |> names() |> print()
   # co_sectors |> names() |> print()
@@ -43,6 +44,8 @@ reshapeScaledImpacts <- function(
   select0 <- "region" |> c(stateCols0)
   after0  <- c("value")
   join0   <- stateCols0
+  # impacts <- impacts |> mutate(region = region |> str_replace("\\.", ""))
+  # impacts <- impacts |> mutate(region = region |> str_replace(" ", ""))
   impacts <- impacts |> left_join(co_states |> select(all_of(select0)), by=c(join0))
   impacts <- impacts |> relocate(all_of(after0), .after=all_of(select0))
   rm(select0, after0, join0)
@@ -52,11 +55,18 @@ reshapeScaledImpacts <- function(
   rename0 <- c("region", "value")
   # rename1 <- c("region_id", "scaled_impacts")
   rename1 <- c("region", "scaled_impacts")
-  impacts <- impacts |> mutate_at(c(mutate0), function(x){gsub(" ", "", x)})
+  impacts <- impacts |> mutate_at(c(mutate0), function(x){x |> str_replace(" ", "")})
+  impacts <- impacts |> mutate_at(c(mutate0), function(x){x |> str_replace("\\.", "")})
   impacts <- impacts |> rename_at(c(rename0), ~rename1)
   rm(mutate0, rename0, rename1)
   
+  
   ###### Filter to Models & Sectors ######
+  ### Mutate special characters in model
+  mutate0 <- c("model")
+  impacts <- impacts |> mutate_at(c(mutate0), function(x){x |> str_replace(" ", "")})
+  impacts <- impacts |> mutate_at(c(mutate0), function(x){x |> str_replace("\\.", "")})
+  impacts <- impacts |> mutate_at(c(mutate0), function(x){x |> str_replace("\\-", "")})
   ### Filter to specific models and sectors
   filter0 <- co_models  |> pull(model_id ) |> unique()
   filter1 <- co_sectors |> pull(sector_id) |> unique()
@@ -88,21 +98,29 @@ reshapeScaledImpacts <- function(
   ### Replace NA values in impactYear, impactType
   mutate0 <- c("variant", "impactType", "impactYear", "model")
   impacts <- impacts |> mutate_at(c(mutate0), as.character)
+  impacts <- impacts |> mutate(variant    = variant    |> as.character() |> replace_na("NA"))
   impacts <- impacts |> mutate(impactType = impactType |> as.character() |> replace_na("NA"))
   impacts <- impacts |> mutate(impactYear = impactYear |> as.character() |> replace_na("NA"))
   
   ### Standardize models
-  if(do_gcm) {
-    levels0 <- co_models |> pull(model_label) |> unique()
-    labels0 <- co_models |> pull(model_id   ) |> unique()
-    impacts <- impacts   |> mutate(model_id = model |> factor(levels0, labels0) |> as.character())
-  } else if(do_slr) {
-    levels0 <- co_models |> pull(model_id   ) |> unique()
-    labels0 <- co_models |> pull(model_label) |> unique()
-    impacts <- impacts   |> mutate(model_id = model)
-    impacts <- impacts   |> mutate(model    = model |> factor(levels0, labels0) |> as.character())
-  } ### End if(do_gcm)
-  rm(levels0, labels0)
+  # if(do_gcm) {
+  #   levels0 <- co_models |> pull(model_label) |> unique()
+  #   labels0 <- co_models |> pull(model_id   ) |> unique()
+  #   impacts |> pull(model) |> unique() |> print(); levels0 |> print(); labels0 |> print();
+  #   # impacts <- impacts   |> mutate(model_id = model |> factor(levels0, labels0) |> as.character())
+  #   impacts <- impacts   |> mutate(model_id = model |> as.character() |> factor(levels0, labels0) |> as.character())
+  #   rm(levels0, labels0)
+  # } ### End if(do_gcm)
+  # # else if(do_slr) {
+  # #   # levels0 <- co_models |> pull(model_id   ) |> unique()
+  # #   # labels0 <- co_models |> pull(model_label) |> unique()
+  # #   # impacts <- impacts   |> mutate(model_id = model)
+  # #   # impacts <- impacts   |> mutate(model    = model |> factor(levels0, labels0) |> as.character())
+  # # } ### End if(do_gcm)
+  # # # levels0 |> print()
+  # impacts |> select(model, model_id) |> distinct() |> print()
+  # impacts |> pull(model) |> unique() |> print()
+
   
   ### Add model type
   drop0   <- c("model_type")
@@ -112,7 +130,7 @@ reshapeScaledImpacts <- function(
   
   ##### Select columns ######
   col0    <- do_gcm |> ifelse("modelUnitValue", "year")
-  cols0   <- c("sector", "variant", "impactType", "impactYear", "modelType", "model", "model_id")
+  cols0   <- c("sector", "variant", "impactType", "impactYear", "modelType", "model")
   cols0   <- cols0 |> c("region") |> c(stateCols0) |> c(col0)
   select0 <- cols0 |> c("scaled_impacts")
   impacts <- impacts |> select(all_of(select0))
