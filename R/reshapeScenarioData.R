@@ -25,12 +25,18 @@ reshapeScenarioData <- function(
   popData    <- scenarioData[["popData"      ]]
   ratiosData <- scenarioData[["popRatiosData"]]
   # ratiosData |> glimpse()
+  
   ### Replace data with NA values
   gcamData   <- gcamData   |> distinct()
   gdpData    <- gdpData    |> distinct()
   popData    <- popData    |> distinct()
   ratiosData <- ratiosData |> distinct()
   # ratiosData |> glimpse()
+  
+  ### Format data
+  popData    <- popData    |> mutate(region = region |> str_replace("\\.", " "))
+  ratiosData <- ratiosData |> mutate(region = region |> str_replace("\\.", " "))
+  
   ### Update in List
   scenarioData[["gcamData"     ]] <- gcamData
   scenarioData[["gdpData"      ]] <- gdpData
