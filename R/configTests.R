@@ -658,7 +658,11 @@ get_fredi_sectorOptions_results <- function(
     ### Join df_slr with impacts
     # slrImp     <- slrImp |> select(-c("model"))
     # slrImp     <- slrImp |> rename_at(c("model_id"), ~c("model"))
-    join0      <- c("sector", "variant", "impactType", "impactYear", "region") |> c(stateCols) |> c("modelType", "model") |> unique()
+    join0      <- c("sector", "variant", "impactType", "impactYear") |> 
+      c("region", stateCols) |> 
+      c("modelType", "model") |> 
+      unique()
+    slrImp     <- slrImp |> select(-c("scenario_id", "hasScenario"))
     df_slr     <- df_slr |> left_join(slrImp, by=c(join0))
     rm(join0, slrImp)
     
@@ -666,12 +670,14 @@ get_fredi_sectorOptions_results <- function(
     df_slr     <- df_slr |> mutate(driverValue=model |> str_replace("cm", "") |> as.numeric())
     # df_slr |> glimpse()
     
-    ### Relocate columns
-    select0    <- c("scenario_id")
-    df_slr     <- df_slr |> relocate(all_of(select0))
+    # # ### Relocate columns
+    # select0    <- c("scenario_id")
+    # df_slr     <- df_slr |> get_scenario_id(include=c("region", stateCols, "model"))
+    # df_slr     <- df_slr |> relocate(all_of(select0))
     
     ### Bind with initial results
     df0        <- df0 |> rbind(df_slr)
+    # df0 |> glimpse()
     rm(df_slr)
   } ### End if(do_slr)
   
@@ -697,7 +703,7 @@ get_fredi_sectorOptions_results <- function(
     ) ### End pivot_longer
     rm(keyCols0)
     
-    ### Join with df_gcm
+    # ### Join with df_gcm
     # df_vals |> names() |> print(); df_gcm |> names() |> print()
     join0      <- c("scenario_id")
     select0    <- join0
@@ -709,6 +715,7 @@ get_fredi_sectorOptions_results <- function(
     df_gcm     <- df_gcm |> mutate(year = year |> as.numeric())
     ### Bind with initial results
     # df0 |> names() |> print(); df_gcm |> names() |> print()
+    # select0    <- df_gcm |> names() |> (function(x, y=df0 |> names()){x[x %in% y]})()
     df0        <- df0 |> rbind(df_gcm)
     rm(df_gcm)
   } ### End if(do_gcm)
