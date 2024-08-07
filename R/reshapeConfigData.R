@@ -136,54 +136,12 @@ reshapeConfigData <- function(
   ### Update in list
   # co_regions <- co_regions |> mutate(region = region_id)
   # dataList[["co_regions"]] <- co_regions
-  co_states  <- co_states  |> mutate(region = region |> str_replace(" ", ""))
-  dataList[["co_states"]]
+  co_states  <- co_states |> mutate(region = region |> str_replace(" ", ""))
+  co_states  <- co_states |> mutate(region = region |> str_replace(".", ""))
+  dataList[["co_states"]] <- co_states
   
   ###### ** 7. co_sectorsInfo ######
-  # # ### Join with co_variants, co_impactTypes, co_impactYears
-  # # join0   <- c("sector_id")
-  # # drop0   <- c("variant_label")
-  # # drop1   <- c("impactType_label", "impactType_description")
-  # # drop2   <- c("impactYear_label")
-  # # co_sectorsInfo <- co_sectors     |> left_join(co_variants    |> select(-all_of(drop0)), by=c(join0))
-  # # co_sectorsInfo <- co_sectorsInfo |> left_join(co_impactTypes |> select(-all_of(drop1)), by=c(join0), relationship = "many-to-many")
-  # # co_sectorsInfo <- co_sectorsInfo |> left_join(co_impactYears |> select(-all_of(drop2)), by=c(join0), relationship = "many-to-many")
-  # # ### Rename values
-  # # co_sectorsInfo |> glimpse()
-  # # rename0 <- c("sector", "variant", "impactYear", "impactType") |> paste0("_id")
-  # # rename1 <- rename0 |> str_replace("_id", "")
-  # # co_sectorsInfo <- co_sectorsInfo |> rename_at(c(rename0), ~rename1) 
-  # # ### Update in list, drop intermediate values
-  # # # co_sectorsInfo |> glimpse()
-  # # dataList[["co_sectorsInfo"]] <- co_sectorsInfo
-  # # rm(join0, drop0, drop1, drop2, rename0, rename1)
-  # co_sectorsInfo <- co_sectors |> (function(df0){
-  #   ### Mutate data
-  #   renameAt0   <- c("modelType_id")
-  #   renameTo0   <- c("modelType")
-  #   select0     <- c("model_id", "model_label", "modelType")
-  #   co_modTypes <- co_modelTypes |> rename_at(c(renameAt0), ~c(renameTo0))
-  #   co_models   <- co_models     |> select(all_of(select0))
-  #   rm(renameAt0, renameTo0, select0)
-  #   ### Join with co_variants, co_impactTypes, co_impactYears
-  #   join0   <- c("sector_id")
-  #   join1   <- c("modelType")
-  #   df0     <- df0 |> left_join(co_variants, by=c(join0))
-  #   df0     <- df0 |> left_join(co_impactTypes, by=c(join0), relationship="many-to-many")
-  #   df0     <- df0 |> left_join(co_impactYears, by=c(join0), relationship="many-to-many")
-  #   # df0 |> glimpse(); co_modelTypes |> glimpse()
-  #   df0     <- df0 |> left_join(co_modelTypes |> rename(modelType=modelType_id) , by=c(join1), relationship="many-to-many")
-  #   df0     <- df0 |> left_join(co_models, by=c(join1), relationship="many-to-many")
-  #   rm(join0, join1)
-  #   ### Rename values
-  #   # df0 |> glimpse()
-  #   rename0  <- c("sector", "variant", "impactYear", "impactType") |> c("model")
-  #   renameAt <- rename0 |> paste0("_id")
-  #   renameTo <- rename0
-  #   df0      <- df0 |> rename_at(c(renameAt), ~renameTo)
-  #   ### Return
-  #   return(df0)
-  # })()
+  ### Combine sectors with co_variants, co_impactTypes, co_impactYears to get group options
   co_sectorsInfo <- co_sectors |> pull(sector_id) |> (function(
     sectors0,  ### Sector IDs
     addRegions = TRUE, ### Whether to include regions & states
@@ -230,7 +188,7 @@ reshapeConfigData <- function(
     
     ### Add additional columns
     if(doExtra) {
-      colsOth0 <- c(colsVars, colsTypes, colsMods0)
+      colsOth0 <- c(colsVars, colsTypes)
       if(addModels) colsOth0 <- colsOth0 |> c("maxUnitValue")
     } ### if(doAll)
     
@@ -247,10 +205,10 @@ reshapeConfigData <- function(
     ### Join with co_variants, co_impactTypes, co_impactYears
     join0   <- c("sector_id")
     join1   <- c("modelType")
-    df0     <- co_sectors |> left_join(co_variants, by=c(join0))
+    df0     <- co_sectors |> left_join(co_variants   , by=c(join0))
     df0     <- df0        |> left_join(co_impactTypes, by=c(join0), relationship="many-to-many")
     df0     <- df0        |> left_join(co_impactYears, by=c(join0), relationship="many-to-many")
-    df0     <- df0        |> left_join(co_modTypes, by=c(join1), relationship="many-to-many")
+    df0     <- df0        |> left_join(co_modTypes   , by=c(join1), relationship="many-to-many")
     rm(join0, join1)
     
     ### Join with co_regions and co_states if addStates
