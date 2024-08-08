@@ -44,8 +44,8 @@ reshapeScaledImpacts <- function(
   select0 <- "region" |> c(stateCols0)
   after0  <- c("value")
   join0   <- stateCols0
-  # impacts <- impacts |> mutate(region = region |> str_replace("\\.", ""))
-  # impacts <- impacts |> mutate(region = region |> str_replace(" ", ""))
+  # impacts <- impacts |> mutate(region = region |> str_replace_all("\\.", ""))
+  # impacts <- impacts |> mutate(region = region |> str_replace_all(" ", ""))
   impacts <- impacts |> left_join(co_states |> select(all_of(select0)), by=c(join0))
   impacts <- impacts |> relocate(all_of(after0), .after=all_of(select0))
   rm(select0, after0, join0)
@@ -55,8 +55,8 @@ reshapeScaledImpacts <- function(
   rename0 <- c("region", "value")
   # rename1 <- c("region_id", "scaled_impacts")
   rename1 <- c("region", "scaled_impacts")
-  impacts <- impacts |> mutate_at(c(mutate0), function(x){x |> str_replace(" ", "")})
-  impacts <- impacts |> mutate_at(c(mutate0), function(x){x |> str_replace("\\.", "")})
+  impacts <- impacts |> mutate_at(c(mutate0), function(x){x |> str_replace_all(" ", "")})
+  impacts <- impacts |> mutate_at(c(mutate0), function(x){x |> str_replace_all("\\.", "")})
   impacts <- impacts |> rename_at(c(rename0), ~rename1)
   rm(mutate0, rename0, rename1)
   
@@ -64,13 +64,14 @@ reshapeScaledImpacts <- function(
   ###### Filter to Models & Sectors ######
   ### Mutate special characters in model
   mutate0 <- c("model")
-  impacts <- impacts |> mutate_at(c(mutate0), function(x){x |> str_replace(" ", "")})
-  impacts <- impacts |> mutate_at(c(mutate0), function(x){x |> str_replace("\\.", "")})
-  impacts <- impacts |> mutate_at(c(mutate0), function(x){x |> str_replace("\\-", "")})
+  impacts <- impacts |> mutate_at(c(mutate0), function(x){x |> str_replace_all(" ", "")})
+  impacts <- impacts |> mutate_at(c(mutate0), function(x){x |> str_replace_all("\\.", "")})
+  impacts <- impacts |> mutate_at(c(mutate0), function(x){x |> str_replace_all("\\-", "")})
   ### Filter to specific models and sectors
   filter0 <- co_models  |> pull(model_id ) |> unique()
   filter1 <- co_sectors |> pull(sector_id) |> unique()
   # impacts |> glimpse()
+  # impacts$model |> unique() |> sort() |> print(); filter0 |> sort() |> print()
   # filter0 |> print(); impacts |> pull(model) |> unique() |> print()
   impacts <- impacts |> filter(model  %in% filter0)
   impacts <- impacts |> filter(sector %in% filter1)
@@ -86,13 +87,6 @@ reshapeScaledImpacts <- function(
     impacts  <- impacts  |> filter(model != "0cm")
     impacts  <- impacts0 |> rbind(impacts)
   } ### End if do_slr
-  
-  ###### Rename column ######
-  # if(do_gcm) {
-  #   rename0  <- c("modelType")
-  #   renameTo <- c("model_type")
-  #   impacts  <- impacts   |> rename_at(c(rename0), ~renameTo)
-  # }
  
   ###### Adjust values ######
   ### Replace NA values in impactYear, impactType
@@ -101,25 +95,6 @@ reshapeScaledImpacts <- function(
   impacts <- impacts |> mutate(variant    = variant    |> as.character() |> replace_na("NA"))
   impacts <- impacts |> mutate(impactType = impactType |> as.character() |> replace_na("NA"))
   impacts <- impacts |> mutate(impactYear = impactYear |> as.character() |> replace_na("NA"))
-  
-  ### Standardize models
-  # if(do_gcm) {
-  #   levels0 <- co_models |> pull(model_label) |> unique()
-  #   labels0 <- co_models |> pull(model_id   ) |> unique()
-  #   impacts |> pull(model) |> unique() |> print(); levels0 |> print(); labels0 |> print();
-  #   # impacts <- impacts   |> mutate(model_id = model |> factor(levels0, labels0) |> as.character())
-  #   impacts <- impacts   |> mutate(model_id = model |> as.character() |> factor(levels0, labels0) |> as.character())
-  #   rm(levels0, labels0)
-  # } ### End if(do_gcm)
-  # # else if(do_slr) {
-  # #   # levels0 <- co_models |> pull(model_id   ) |> unique()
-  # #   # labels0 <- co_models |> pull(model_label) |> unique()
-  # #   # impacts <- impacts   |> mutate(model_id = model)
-  # #   # impacts <- impacts   |> mutate(model    = model |> factor(levels0, labels0) |> as.character())
-  # # } ### End if(do_gcm)
-  # # # levels0 |> print()
-  # impacts |> select(model, model_id) |> distinct() |> print()
-  # impacts |> pull(model) |> unique() |> print()
 
   
   ### Add model type

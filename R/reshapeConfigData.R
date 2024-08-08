@@ -136,8 +136,8 @@ reshapeConfigData <- function(
   ### Update in list
   # co_regions <- co_regions |> mutate(region = region_id)
   # dataList[["co_regions"]] <- co_regions
-  co_states  <- co_states |> mutate(region = region |> str_replace(" ", ""))
-  co_states  <- co_states |> mutate(region = region |> str_replace("\\.", ""))
+  co_states  <- co_states |> mutate(region = region |> str_replace_all(" ", ""))
+  co_states  <- co_states |> mutate(region = region |> str_replace_all("\\.", ""))
   dataList[["co_states"]] <- co_states
   
   ###### ** 7. co_sectorsInfo ######
@@ -148,6 +148,8 @@ reshapeConfigData <- function(
     addModels  = TRUE, ### Whether to include models
     colTypes   = c("ids", "labels", "extra") ### Types of columns to include: IDs, labels, or extra. If only labels, will return labels without the "_label"
   ){
+    ### Get functions from FrEDI
+    get_matches <- utils::getFromNamespace("get_matches", "FrEDI")
     ### Get objects from FrEDI
     # co_sectors  <- "co_sectors"     |> get_frediDataObj("frediData")
     # co_variants <- "co_variants"    |> get_frediDataObj("frediData")
@@ -176,6 +178,8 @@ reshapeConfigData <- function(
     colsData0   <- c("sector", "variant", "impactType", "impactYear") |> c(colsReg0) |> c("modelType") |> c(colsMod0)
     colsIds0    <- colsData0 |> get_matches(y=c("modelType", "state", "postal"), matches=FALSE) |> paste0("_id")
     colsLabs0   <- colsData0 |> get_matches(y=c("modelType", "state", "postal"), matches=FALSE) |> paste0("_label")
+    # colsIds0    <- colsData0[!(colsData0 %in% c("modelType", "state", "postal"))] |> paste0("_id")
+    # colsLabs0   <- colsData0[!(colsData0 %in% c("modelType", "state", "postal"))] |> paste0("_label")
     colsVars    <- c("sectorprimary", "includeaggregate", "damageAdjName")
     colsTypes   <- c("impactType_description", "physicalmeasure") |>
       c(c("physScalar", "physAdj", "econScalar", "econMultiplier") |> paste0("Name")) |>
@@ -184,6 +188,7 @@ reshapeConfigData <- function(
       c("model" |> paste0(c("UnitDesc", "Unit_id", "Unit_label"))) |>
       c("model" |> paste0(c("UnitScale", "RefYear", "MaxOutput", "MaxExtrap")))
     colsMods0   <- colsMods0 |> get_matches(y=c("model" |> paste0(c("UnitScale", "RefYear", "MaxOutput", "MaxExtrap"))), matches=F)
+    # colsMods0   <- colsMods0[!(colsMods0 %in% c("model" |> paste0(c("UnitScale", "RefYear", "MaxOutput", "MaxExtrap"))))]
     colsOth0    <- c()
     
     ### Add additional columns
@@ -232,6 +237,7 @@ reshapeConfigData <- function(
     if(addModels) {
       # join0     <- c("modelType")
       join0     <- df0 |> names() |> get_matches(y=co_models |> names())
+      # join0     <- (df0 |> names())[(df0 |> names()) %in% (co_models |> names())]
       df0       <- df0 |> left_join(co_models, by=c(join0), relationship="many-to-many")
       rm(join0)
     } ### End if(addModels)
@@ -240,6 +246,7 @@ reshapeConfigData <- function(
     # df0 |> glimpse()
     # renameTo <- c("sector", "variant", "impactYear", "impactType") |> c(colsReg0) |> c(colsMod0)
     renameTo0 <- colsData0 |> get_matches(y=c("modelType", "state", "postal"), matches=FALSE)
+    # renameTo0 <- colsData0[!(colsData0 %in% c("modelType", "state", "postal"))]
     renameAt0 <- renameTo0 |> paste0("_id")
     df0       <- df0       |> rename_at(c(renameAt0), ~renameTo0)
     

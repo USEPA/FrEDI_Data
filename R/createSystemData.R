@@ -25,7 +25,7 @@ createSystemData <- function(
   temps2slr          <- utils::getFromNamespace("temps2slr"         , "FrEDI")
   interpolate_annual <- utils::getFromNamespace("interpolate_annual", "FrEDI")
   match_scalarValues <- utils::getFromNamespace("match_scalarValues", "FrEDI")
-  # update_popScalars  <- utils::getFromNamespace("update_popScalars" , "FrEDI")
+  update_popScalars  <- utils::getFromNamespace("update_popScalars" , "FrEDI")
   get_scenario_id    <- utils::getFromNamespace("get_scenario_id"   , "FrEDI")
   # get_uniqueValues   <- utils::getFromNamespace("get_uniqueValues"  , "FrEDI")
   
@@ -114,7 +114,7 @@ createSystemData <- function(
 
   ### Default socioeconomic scenario:
   ### Use to assess default scalars but don't add to list
-  pop_default <- pop_default |> mutate(region = region |> str_replace(" ", ""))
+  pop_default <- pop_default |> mutate(region = region |> str_replace_all(" ", ""))
   df_national <- gdp_default |> create_nationalScenario(pop0=pop_default)
   # df_national |> names() |> print()
   rm(gdp_default, pop_default)
@@ -196,22 +196,6 @@ createSystemData <- function(
   ) ### End standardize_scaledImpacts
   ### Update in data list
   stateData[["gcmImpData"]] <- gcmImpData
-  # if(msgUser) {msg0(lvl0 + 3) |> paste0("Getting scenario IDs...") |> message()}
-  # ### Add a column with a scenario id
-  # # data_scaledImpacts |> glimpse()
-  # # gcmImpacts |> glimpse()
-  # gcmImpData   <- stateData[["gcmImpData"]]
-  # includeCols  <- c("region") |> c(stateCols0) |> c("model")
-  # gcmImpData   <- gcmImpData |> get_scenario_id(include=includeCols) |> ungroup()
-  # ### Get list of scenarios for scenarios with at least some non-NA values
-  # gcmGroupList <- gcmImpData |> filter(!(scaled_impacts |> is.na())) |> pull(scenario_id) |> unique()
-  # # c_scenariosList
-  # ### Add information on non-missing scenarios to scaled impacts data
-  # gcmImpData   <- gcmImpData |> mutate(hasScenario = (scenario_id %in% gcmGroupList))
-  # ### Update in data list
-  # stateData[["gcmImpData"]] <- gcmImpData
-  # rm(gcmGroupList)
-  # # return(rDataList)
   
   
   
