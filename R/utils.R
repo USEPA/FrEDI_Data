@@ -502,7 +502,7 @@ extrapolate_impFunction <- function(
     # extrapolate = TRUE,
     extend_from = NULL,  ### Maximum value for model type to extend from, if not missing
     extend_to   = NULL,  ### Extend last points for x
-    # unitScale   = NULL   ### Scale between values,  
+    unitScale   = 0.5,   ### Scale between values,
     extend_all  = FALSE  ### Whether to extend all models or just those that go to the max model value
 ){
   ### Filter out NA values
@@ -543,8 +543,8 @@ extrapolate_impFunction <- function(
     # df0 |> tail(2) |> print()
     ### Get linear trend
     lm_ex    <- lm(yIn~xIn, data=df0 |> tail(2))
-    slope0   <- lm_ex$coefficients[2]
-    inter0   <- lm_ex$coefficients[1]
+    slope0   <- lm_ex$coefficients[[2]]
+    inter0   <- lm_ex$coefficients[[1]]
     ### Extend values, then bind with earlier observations
     df_new   <- tibble(xIn = xOut) |> mutate(yIn = inter0 + xIn * slope0)
     df0      <- df0 |> rbind(df_new)
@@ -553,6 +553,17 @@ extrapolate_impFunction <- function(
     # yMaxNew  <- df0$yIn[df0$xIn == extend_to]
   } ### End if(extrapolate)
   
+  # ### Then, interpolate over the range
+  # xIn0      <- df0  |> pull(xIn)
+  # yIn0      <- df0  |> pull(yIn)
+  # range0    <- xIn0 |> range()
+  # xOut0     <- range0[1] |> seq(range0[2], by=unitScale)
+  # # xIn0 |> print(); yIn0 |> print(); xOut0 |> print()
+  # df0       <- approx(x=xIn0, y=yIn0, xout=xOut0, rule=1)
+  # df0       <- df0 |> as_tibble()
+  # 
+  # renameAt  <- c("x", "y")
+  # ### Rename columns and bind
   ### Rename columns and bind
   renameAt  <- c("xIn", "yIn")
   renameTo  <- c(xCol, yCol)
