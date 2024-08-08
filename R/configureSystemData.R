@@ -45,6 +45,7 @@ configureSystemData <- function(
   rDataList[["scenarioData"]] <- loadData0[["scenarioData"]]
   # loadData0[["frediData"   ]] |> names() |> print()
   # loadData0[["stateData"]][["slrImpData"]] |> names() |> print()
+  # return(rDataList)
   
   ###### 2. Reshape Loaded Data ######
   ### Reshape state data
@@ -95,7 +96,8 @@ configureSystemData <- function(
     outPathExists <- sysDataPath |> dir.exists()
     fredi_config  <- rDataList[["frediData"]][["fredi_config"]]
     if(outPathExists){ 
-      save(fredi_config, rDataList, file=sysDataFile)
+      # save(fredi_config, rDataList, file=sysDataFile)
+      save(rDataList, file=sysDataFile)
     } else{
       paste0(msg0, "Warning: outPath = ", sysDataPath, "doesn't exist!") |> message()
       paste0(msg0, msg0, "Exiting without saving...") |> message()
