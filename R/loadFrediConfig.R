@@ -12,9 +12,8 @@ loadFrediConfig <- function(
   
   ###### File Paths ######
   ### Config file
-  configDir |> c(configFile) |> print(); configDir |> list.files() |> print()
   configPath    <- configDir |> file.path(configFile)
-  
+  configDir |> c(configFile) |> print(); configDir |> list.files() |> print(); configSheet |> priint()
   
   ###### Load Table of Tables ######
   ### Load table with names of data tables

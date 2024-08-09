@@ -3,11 +3,6 @@
 ### This function loads the data from a directory specified by the user. There is a default directory structure it will try to load from.
 loadFrediData <- function(
     mainDir     = "." |> file.path("inst", "extdata"),  ### Path to directory containing configuration data
-    frediDir    = mainDir  |> file.path("fredi"),        ### Path to Excel config file, relative to mainDir
-    scalarDir   = frediDir |> file.path("scalars"),     ### Path to directory with scalars, relative to mainDir
-    gcmDir      = frediDir |> file.path("gcm"),         ### Path to directory with GCM impacts, relative to mainDir
-    slrDir      = frediDir |> file.path("slr"),         ### Path to directory with SLR impacts, relative to mainDir
-    scenarioDir = mainDir  |> file.path("scenarios"),    ### Path to scenarios, relative to mainDir
     ### Files
     configFile  = "FrEDI_config.xlsx",                  ### Name of Excel file with config information, relative to frediDir
     configSheet = "tableNames",                         ### Name of sheet in configFile containing table with info about tables
@@ -25,6 +20,8 @@ loadFrediData <- function(
   
   ###### File Paths ######
   ### Directories for scalars, GCM scaled impacts, and SLR scaled impacts
+  frediDir      <- mainDir  |> file.path("fredi")      ### Path to Excel config file, relative to mainDir
+  scenarioDir   <- mainDir  |> file.path("scenarios")    ### Path to scenarios, relative to mainDir
   scalarDir     <- frediDir |> file.path("scalars")
   impactDir     <- frediDir
 

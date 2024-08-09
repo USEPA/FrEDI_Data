@@ -33,11 +33,6 @@ configureSystemData <- function(
   ### Load state data
   if(!silent) paste0(msg0, "Loading data...") |> message()
   loadData0     <- fileDir |> loadFrediData(
-    frediDir    = fileDir |> file.path("fredi"),        
-    scalarDir   = fileDir |> file.path("fredi") |> file.path("scalars"), 
-    gcmDir      = fileDir |> file.path("fredi") |> file.path("gcm"),     
-    slrDir      = fileDir |> file.path("fredi") |> file.path("slr"),     
-    scenarioDir = fileDir  |> file.path("scenarios"),    ### Path to scenarios, relative to mainDir
     configFile  = configFile,  ### Name of excel file with config information
     configSheet = configSheet, ### Sheet with info about tables in config file
     silent      = silent,
