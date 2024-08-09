@@ -1,8 +1,8 @@
 configureSystemData <- function(
-    fileDir     = "." |> file.path("inst", "extdata"),         ### Path to project
-    configFile  = "FrEDI_config.xlsx",                         ### Name of excel file with config information
-    configSheet = "tableNames",                                ### Sheet with table info
-    outPath     = "." |> file.path("data", "tmp_sysdata.rda"), ### Where to save data
+    fileDir     = "." |> file.path("inst", "extdata"), ### Path to project
+    configFile  = "FrEDI_config.xlsx",                          ### Name of excel file with config information
+    configSheet = "tableNames",                                 ### Sheet with table info
+    outPath     = "." |> file.path("data", "tmp_sysdata.rda"),  ### Where to save data
     extend_all  = FALSE,  ### Whether to extend all GCM model observations to maximum range
     reshape     = TRUE,   ### Whether to include reshapeData items in data list (for testing)
     silent      = TRUE,   ### Level of messaging 
@@ -33,6 +33,11 @@ configureSystemData <- function(
   ### Load state data
   if(!silent) paste0(msg0, "Loading data...") |> message()
   loadData0     <- fileDir |> loadFrediData(
+    frediDir    = fileDir |> file.path("fredi"),        
+    scalarDir   = fileDir |> file.path("fredi") |> file.path("scalars"), 
+    gcmDir      = fileDir |> file.path("fredi") |> file.path("gcm"),     
+    slrDir      = fileDir |> file.path("fredi") |> file.path("slr"),     
+    scenarioDir = fileDir  |> file.path("scenarios"),    ### Path to scenarios, relative to mainDir
     configFile  = configFile,  ### Name of excel file with config information
     configSheet = configSheet, ### Sheet with info about tables in config file
     silent      = silent,

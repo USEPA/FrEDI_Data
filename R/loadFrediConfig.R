@@ -12,6 +12,7 @@ loadFrediConfig <- function(
   
   ###### File Paths ######
   ### Config file
+  configDir |> c(configFile) |> print(); configDir |> list.files() |> print()
   configPath    <- configDir |> file.path(configFile)
   
   
@@ -26,8 +27,8 @@ loadFrediConfig <- function(
   
   ### Filter to those for importing and replace NA values in some columns
   mutate0       <- c("excludeCol_ids", "Notes")
-  df_tables <- df_tables |> filter(Import == 1)
-  df_tables <- df_tables |> mutate_at(c(mutate0), replace_na, "")
+  df_tables     <- df_tables |> filter(Import == 1)
+  df_tables     <- df_tables |> mutate_at(c(mutate0), replace_na, "")
   rm(mutate0)
   
   ### Number of data tables
