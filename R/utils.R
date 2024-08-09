@@ -526,9 +526,9 @@ extrapolate_impFunction <- function(
   extendAt  <- extend_from |> as.character() |> as.numeric()
   extendTo  <- extend_to   |> as.character() |> as.numeric()
   
-  ### Arrange by y values
+  ### Arrange by x values
   ### - Get maximum value
-  df0       <- df0 |> arrange_at(vars("yIn"))
+  df0       <- df0 |> arrange_at(vars("xIn"))
   xIn_max   <- df0 |> pull(xIn) |> max()
   # xOut_min  <- xIn_max + unitScale
   xOut_max  <- extendTo
