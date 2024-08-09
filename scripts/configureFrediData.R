@@ -42,17 +42,17 @@ configureFrediData <- function(
   ### Load FrEDI Data Code
   projectDir |> devtools::load_all()
   
-  
   ###### 1. Configure Data ######
-  list_systemData0 <- dataInDir |> configureSystemData(
-    fileDir    = dataInDir, 
-    configFile = dataInName, 
-    save       = T, 
-    silent     = T, 
-    outPath    = dataOutDir |> file.path("tmp_sysdata.rda"),
-    reshape    = reshape,
-    extend_all = T,
-    return     = T
+  list_systemData0 <- configureSystemData(
+    fileDir     = dataInDir, 
+    configFile  = dataInName, 
+    configSheet = "tableNames",
+    extend_all  = T,
+    silent      = T,
+    save        = T, 
+    outPath     = dataOutDir |> file.path("tmp_sysdata.rda"),
+    reshape     = reshape,
+    return      = T
   ) ### End configureSystemData
   ### Add to return list
   # returnList[["systemDataList"]] <- list_systemData0
