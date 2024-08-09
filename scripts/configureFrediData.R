@@ -11,7 +11,6 @@ require(devtools)
 configureFrediData <- function(
     projectDir = ".",   ### Directory in which to find the FrEDI_Data project/package
     save       = FALSE, ### Whether to save the data
-    byState    = TRUE,  ### Whether to do test on a state-level...deprecated
     reshape    = TRUE   ### Whether to include reshaped data in outputs (e.g., for testing)
 ){
   ###### Set Arguments ######
@@ -46,7 +45,8 @@ configureFrediData <- function(
   
   ###### 1. Configure Data ######
   list_systemData0 <- dataInDir |> configureSystemData(
-    fileName   = dataInName, 
+    fileDir    = dataInDir, 
+    configFile = dataInName, 
     save       = T, 
     silent     = T, 
     outPath    = dataOutDir |> file.path("tmp_sysdata.rda"),

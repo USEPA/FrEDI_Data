@@ -2,7 +2,6 @@ configureSystemData <- function(
     fileDir     = "." |> file.path("inst", "extdata"),         ### Path to project
     configFile  = "FrEDI_config.xlsx",                         ### Name of excel file with config information
     configSheet = "tableNames",                                ### Sheet with table info
-    # configPath  = "." |> file.path("R", "fredi_config.R"),     ### Path to config file
     outPath     = "." |> file.path("data", "tmp_sysdata.rda"), ### Where to save data
     extend_all  = FALSE,  ### Whether to extend all GCM model observations to maximum range
     reshape     = TRUE,   ### Whether to include reshapeData items in data list (for testing)
