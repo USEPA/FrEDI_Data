@@ -110,7 +110,7 @@ listLoad |> names()
 # }} ### End for loop
 
 
-######## Initialize Lists to Save ######
+###### Initialize Lists to Save ######
 # listSave    <- list()
 listMethane <- list()
 listData    <- list()
@@ -119,59 +119,83 @@ listData    <- list()
 listMethane[["original"]] <- listLoad() 
 
 
-######## Coffiecients ########
+###### Coffiecients ######
 ### Lists of coefficients
-list_coefficients <- list()
-
-######## ** Mortality ########
-### Mortality coefficients (from RFF)... may be a time dependent function
-list_coefficients[["Mortality"]][["intercept0"]] <- 0
-list_coefficients[["Mortality"]][["slope0"    ]] <- 1
-### Function of mortality as a function of population
-calc_mortality <- function(
-    pop0, 
-    slope0     = list_coefficients[["Mortality"]][["slope0"    ]], 
-    intercept0 = list_coefficients[["Mortality"]][["intercept0"]]
+list_coefficients <- list() |> (function(
+    list0
 ){
-  pop0 <- pop0 * slope0 + intercept0
-  return(pop0)
-}
-### Add to list
-list_coefficients[["Mortality"]][["fun0"]] <- calc_mortality
-
-######## ** Methane ########
-### CH4, in pptv 
-list_coefficients[["CH4"]][["base0"     ]] <- 100
-
-######## ** NOx ########
-### NOx
-list_coefficients[["NOx"]][["base0"     ]] <- 10.528
-list_coefficients[["NOx"]][["slope0"    ]] <- -0.49
-list_coefficients[["NOx"]][["intercept0"]] <- -1.12
-list_coefficients[["NOx"]][["adj0"      ]] <- 1e3/556
-### Function of NOx in Mt per year
-calc_NOx_factor <- function(
+  ###### Initial List ######
+  list0   <- list()
+  
+  ###### ** Other ######
+  listOth <- list()
+  listOth[["minYear0"]] <- 2020
+  listOth[["maxYear0"]] <- 2100
+  
+  ###### ** Mortality ######
+  ### Initialize list
+  listM   <- list()
+  ### Mortality coefficients (from RFF)... may be a time dependent function
+  listM[["intercept0"]] <- 0
+  listM[["slope0"    ]] <- 1
+  ### Function of mortality as a function of population
+  calc_mortality <- function(
+    pop0, 
+    slope0     = listM[["slope0"    ]], 
+    intercept0 = listM[["intercept0"]]
+  ){
+    pop0 <- pop0 * slope0 + intercept0
+    return(pop0)
+  }; listM[["fun0"]] <- calc_mortality
+  ### Update in list
+  list0[["Mortality"]] <- listM
+  
+  ###### ** Methane ######
+  ### CH4, in pptv 
+  ### Initialize list
+  listCH4   <- list()
+  ### Add coefficients
+  listCH4[["base0"]] <- 100
+  ### Update in list
+  list0[["CH4"]] <- listCH4
+  
+  ###### ** NOx ######
+  ### Initialize list
+  listNOx   <- list()
+  ### NOx coefficients
+  listNOx[["base0"     ]] <- 10.528
+  listNOx[["slope0"    ]] <- -0.49
+  listNOx[["intercept0"]] <- -1.12
+  listNOx[["adj0"      ]] <- 1e3/556
+  ### Function of NOx in Mt per year
+  calc_NOx_factor <- function(
     nox0, 
     slope0     = -0.49, 
     intercept0 = -1.12,
     adj0       = 1e3/556
-){
-  nox0 <- nox0 |> log() 
-  nox0 <- nox0 * slope0 + intercept0
-  nox0 <- nox0 * adj0
-  return(nox0)
-}
-### Add to list
-list_coefficients[["NOx"]][["fun0"]] <- calc_NOx_factor
-### Get NOx factor
-list_coefficients[["NOx"]][["NOxFactor0"]] <- list_coefficients[["NOx"]][["base0"]] |> calc_NOx_factor()
+  ){
+    nox0 <- nox0 |> log() 
+    nox0 <- nox0 * slope0 + intercept0
+    nox0 <- nox0 * adj0
+    return(nox0)
+  }
+  ### Add to list
+  listNOx[["fun0"]] <- calc_NOx_factor
+  ### Get NOx factor
+  listNOx[["NOxFactor0"]] <- listNOx[["base0"]] |> calc_NOx_factor()
+  ### Update in list
+  list0[["NOx"]] <- listNOx
+  
+  ###### Return ######
+  return(list0)
+})()
 
 ### Update list
 listData[["coefficients"]] <- list_coefficients
 
 
-######## Reshape ID/Crosswalk Tables ######
-######## ** Sectors, Variants, Impact Types ########
+###### Reshape ID/Crosswalk Tables ######
+###### ** Sectors, Variants, Impact Types ######
 ### Get new sectors, variants, impact types, impact years
 # rDataList$frediData$data$co_sectors |> glimpse()
 # me_sectors   <- rDataList$frediData$data$co_sectors |> (function(df0){
@@ -198,7 +222,7 @@ listData[["coefficients"]] <- list_coefficients
 
 
 
-######## ** Regions & States ########
+###### ** Regions & States ######
 ### Get new regions
 me_regions  <- rDataList$frediData$co_regions |> (function(df0){
   ### Glimpse
@@ -271,7 +295,7 @@ listLoad$pop$data$pop |> pull(State_FIPS) |> unique() |> length()
 
 
 
-######## ** Models ########
+###### ** Models ######
 ### Get new models and model types
 me_models   <- rDataList$frediData$co_models |> (function(
     df0,
@@ -307,8 +331,8 @@ me_models   <- rDataList$frediData$co_models |> (function(
 listData[["me_models"]] <- me_models
 
 
-######## Reshape Base Data ########
-######## ** Base Population ########
+###### Reshape Base Data ######
+###### ** Base Population ######
 ### Reshape base population data (from BenMAP runs):
 ### - Change names c("Year", "State_FIPS", "Population") to c("year", "fips", "pop")
 ### - Join with co_states by "fips":
@@ -341,7 +365,7 @@ base_state_pop$base_year |> range(); base_state_pop |> pull(fips) |> unique() |>
 
 
 
-######## ** RFF Population & Mortality ########
+###### ** RFF Population & Mortality ######
 ### Reshape population & mortality data (from RFF runs):
 listLoad$pop$data$rff |> glimpse()
 rff_nat_pop     <- listLoad$pop$data$rff |> (function(df0, df1=me_states){
@@ -369,7 +393,7 @@ listData[["rff_nat_pop"]] <- rff_nat_pop
 
 
 
-######## ** Ozone Response ########
+###### ** Ozone Response ######
 ### National O3 reshaping
 listLoad$o3$data$o3Nat |> glimpse()
 
@@ -464,7 +488,7 @@ listData[["base_state_o3"]] <- base_state_o3
 
 
 
-######## ** State Excess Mortality ########
+###### ** State Excess Mortality ######
 ### State Excess Mortality reshaping
 ### Model	ModelYear	State_FIPS	State_Results |> rename to: c(model_str, refYear, fips, excess_mortality)
 listLoad$mort$data$mortXm |> glimpse(); listLoad$mort$data$mortXm$ModelYear |> range()
@@ -512,7 +536,7 @@ listData[["base_state_xMort"]] <- base_state_xMort
 
 
 
-######## ** IF Mortality Rate Scalar ########
+###### ** IF Mortality Rate Scalar ######
 listLoad$mort$data$mortScalar |> glimpse(); listLoad$mort$data$mortScalar$Years |> range()
 nat_ifScalar <- listLoad$mort$data$mortScalar |> (function(df0){
   ### Glimpse data
@@ -535,7 +559,7 @@ listData[["nat_ifScalar"]] <- nat_ifScalar
 
 
 
-######## Calculate RR Scalar ########
+###### Calculate RR Scalar ######
 base_state_pop |> glimpse()
 base_state_o3 |> glimpse()
 base_state_xMort |> glimpse()
@@ -583,7 +607,7 @@ listData[["state_rrScalar"]] <- state_rrScalar
 
 
 
-######## Update Data in List ########
+###### Update Data in List ######
 # listMethane[["package"]] <- listData
 # rDataList[["methane"]] <- listMethane
 saveFile   <- projDir |> file.path("data", "methane.rda")
@@ -591,7 +615,7 @@ save(listMethane, file=saveFile)
 
 
 
-######## Calculate refRespMortRate ########
+###### Calculate refRespMortRate ######
 ### Test calculation of respiratory mortality rate
 # respMortRate0 <- df_pop0 |> (function(
 #     df0, 
