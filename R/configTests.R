@@ -845,8 +845,8 @@ get_scaled_impact_plots <- function(
   ### Save results
   if(save){
     "Saving plots..." |> message()
-    save_gcm <- plots0 |> save_scaled_impact_figures(df0=results0, modelType="GCM", fpath=fpath)
-    save_slr <- plots0 |> save_scaled_impact_figures(df0=results0, modelType="SLR", fpath=fpath)
+    save_gcm <- plots0 |> save_scaled_impact_figures(df0=results0, type0="GCM", fpath=fpath)
+    save_slr <- plots0 |> save_scaled_impact_figures(df0=results0, type0="SLR", fpath=fpath)
   } ### End if save
   
   ### Return plot list

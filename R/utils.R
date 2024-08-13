@@ -170,6 +170,10 @@ standardize_scaledImpacts <- function(
     df1, ### Tibble of sector group data, e.g.: frediData$co_sectorsInfo
     xCol = "year"
 ){
+  ### Load functions from FrEDI
+  get_scenario_id <- utils::getFromNamespace("get_scenario_id", "FrEDI")
+  
+  ### Values
   # df0 |> glimpse()
   sectors0 <- df0 |> pull(sector) |> unique()
   cols0    <- c("sector", "variant", "impactType", "impactYear", "modelType", "model") |> c(xCol)

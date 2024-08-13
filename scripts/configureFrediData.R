@@ -27,7 +27,7 @@ configureFrediData <- function(
   # projectDir  <- "."
   projectDir  <- projectDir
   ### Path and file name for data inputs
-  dataInDir   <- projectDir |> file.path("inst", "extdata", "fredi")
+  dataInDir   <- projectDir |> file.path("inst", "extdata")
   dataInName  <- "FrEDI_config" |> paste0(".xlsx")
   dataInPath  <- dataInDir |> file.path(dataInName)
   ### Path and file name for saving outputs
@@ -42,17 +42,17 @@ configureFrediData <- function(
   ### Load FrEDI Data Code
   projectDir |> devtools::load_all()
   
-  
   ###### 1. Configure Data ######
-  list_systemData0 <- dataInDir |> configureSystemData(
-    fileDir    = dataInDir, 
-    configFile = dataInName, 
-    save       = T, 
-    silent     = T, 
-    outPath    = dataOutDir |> file.path("tmp_sysdata.rda"),
-    reshape    = reshape,
-    extend_all = T,
-    return     = T
+  list_systemData0 <- configureSystemData(
+    fileDir     = dataInDir, 
+    configFile  = dataInName, 
+    configSheet = "tableNames",
+    extend_all  = T,
+    silent      = T,
+    save        = T, 
+    outPath     = dataOutDir |> file.path("tmp_sysdata.rda"),
+    reshape     = reshape,
+    return      = T
   ) ### End configureSystemData
   ### Add to return list
   # returnList[["systemDataList"]] <- list_systemData0
@@ -81,8 +81,8 @@ configureFrediData <- function(
   ### Add to return list
   returnList[["testPlots0"]] <- testPlots0
   ### Save plots
-  testPlots1   <- testPlots0 |> save_scaled_impact_figures(df0=testResults, modelType="GCM", fpath=testOutDir)
-  testPlots2   <- testPlots0 |> save_scaled_impact_figures(df0=testResults, modelType="SLR", fpath=testOutDir)
+  testPlots1   <- testPlots0 |> save_scaled_impact_figures(df0=testResults, type0="GCM", fpath=testOutDir)
+  testPlots2   <- testPlots0 |> save_scaled_impact_figures(df0=testResults, type0="SLR", fpath=testOutDir)
   
   
   ###### Return ######
