@@ -50,7 +50,7 @@ listLoad1 <- listLoad0 |>
     if        (doPop ) {
       # list0[[type0]] <- files0
       base0     <- files0 |> (function(x, strx="State"){x[x |> str_detect(strx)]})()
-      rff0       <- files0 |> (function(x, strx="RFF"  ){x[x |> str_detect(strx)]})()
+      rff0       <- files0 |> (function(x, strx="RFF" ){x[x |> str_detect(strx)]})()
       hasBase0  <- base0  |> length()
       hasRff0   <- rff0   |> length()
       if(hasBase0) {list0[["base"]] <- base0}
@@ -847,7 +847,7 @@ o3_default <- ch4_default |> (function(
   
   ### Calculate NOx ratio, then O3 response
   df0   <- df0 |> mutate(nox_factor0 = noxAdj0)
-  df0   <- df0 |> mutate(nox_factor  = NOx |> get_NOx_factor())
+  df0   <- df0 |> mutate(nox_factor  = NOx |> calc_NOx_factor())
   df0   <- df0 |> mutate(nox_ratio   = nox_factor / nox_factor0)
   df0   <- df0 |> mutate(o3_response = delta_ch4 * nox_ratio * state_o3response )
   
@@ -861,7 +861,7 @@ listData[["o3_default"]] <- o3_default
 ###### Update Data in List & Save List ######
 listMethane[["package"]] <- listData
 # rDataList[["methane"]] <- listMethane
-saveFile   <- projDir |> file.path("data", "listmMethane.rda")
+saveFile   <- projDir |> file.path("data", "listMethane.rda")
 save(listMethane, file=saveFile)
 
 
