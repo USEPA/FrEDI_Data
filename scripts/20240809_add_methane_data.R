@@ -1,6 +1,7 @@
 ###### Packages ######
 require(tidyverse)
 require(devtools)
+require(zoo)
 # require(FrEDI)
 
 ###### File Paths ######
@@ -49,7 +50,7 @@ listLoad1 <- listLoad0 |>
     if        (doPop ) {
       # list0[[type0]] <- files0
       base0     <- files0 |> (function(x, strx="State"){x[x |> str_detect(strx)]})()
-      rff       <- files0 |> (function(x, strx="RFF"  ){x[x |> str_detect(strx)]})()
+      rff0       <- files0 |> (function(x, strx="RFF"  ){x[x |> str_detect(strx)]})()
       hasBase0  <- base0  |> length()
       hasRff0   <- rff0   |> length()
       if(hasBase0) {list0[["base"]] <- base0}
@@ -116,7 +117,7 @@ listMethane <- list()
 listData    <- list()
 
 ### add data to list
-listMethane[["original"]] <- listLoad() 
+listMethane[["original"]] <- listLoad
 
 
 
@@ -470,9 +471,9 @@ co_states   <- rDataList$frediData$co_states |> (function(df0){
 listData[["co_states"]] <- co_states
 
 ### Check that all states and regions are present in population data
-listLoad$pop$data$pop |> pull(State_FIPS) |> unique() |> length()
-((listLoad$pop$data$pop |> pull(State_FIPS) |> unique()) %in% (co_states$fips |> unique())) |> all()
-((co_states$fips |> unique()) %in% (listLoad$pop$data$pop |> pull(State_FIPS) |> unique())) |> all()
+listLoad$pop$data$popBase |> pull(State_FIPS) |> unique() |> length()
+((listLoad$pop$data$popBase |> pull(State_FIPS) |> unique()) %in% (co_states$fips |> unique())) |> all()
+((co_states$fips |> unique()) %in% (listLoad$pop$data$popBase |> pull(State_FIPS) |> unique())) |> all()
 
 # ### Reshape other population data
 # df_ratios   <- rDataList$stateData$data$df_popRatios |> 
@@ -539,8 +540,8 @@ listData[["co_models"]] <- co_models
 ###   - Note: may need to first edit co_states and co_regions to add in Alaska and HI...
 ###   - Refer to rDataList$scenarioData$popRatioData to get regions, states, and FIPS
 ### Check that pop dataframe has the same values as the FrEDI default scenario
-listLoad$pop$data$base |> glimpse()
-base_state_pop     <- listLoad$pop$data$base |> (function(df0, df1=co_states){
+listLoad$pop$data$popBase |> glimpse()
+base_state_pop     <- listLoad$pop$data$popBase|> (function(df0, df1=co_states){
     ### Rename values
     renameAt0 <- c("Year", "State_FIPS", "Population")
     renameTo0 <- c("base_year", "fips", "base_state_pop")
@@ -567,26 +568,27 @@ base_state_pop$base_year |> range(); base_state_pop |> pull(fips) |> unique() |>
 
 ###### ** RFF Population & Mortality ######
 ### Reshape population & mortality data (from RFF runs):
-listLoad$pop$data$rff |> glimpse()
-rff_nat_pop     <- listLoad$pop$data$rff |> (function(df0, df1=co_states){
+listLoad$pop$data$popRff |> glimpse()
+rff_nat_pop     <- listLoad$pop$data$popRff |> (function(df0){
   ### Rename values
-  renameAt0 <- c("Year", "State_FIPS", "Population")
-  renameTo0 <- c("base_year", "fips", "base_state_pop")
+  renameAt0 <- c("Year","pop","mortality","mort_rate","mortality_intercept","mortality_slope")
+  renameTo0 <- c("base_year", "base_rff_pop","base_rff_mort","base_rff_mort_rate","mort_intercept","mort_slope")
   df0       <- df0 |> rename_at(c(renameAt0), ~renameTo0)
   
-  ### Join with states
-  drop0     <- c("us_area")
-  join0     <- c("fips")
-  df1       <- df1 |> select(-any_of(drop0))
-  df0       <- df1 |> left_join(df0, by=join0)
-  rm(drop0, join0)
+  ### Convert to every year and linearly interpolate
+  minYear <- df0$base_year |> min()
+  maxYear <- df0$base_year |> max()
+  years <- seq(minYear,maxYear)
   
-  ### Select
-  arrange0  <- c("region", "state", "fips")
-  df0       <- df0 |> arrange_at(c(arrange0))
+  df1 <- tibble(base_year = years) |>
+      left_join(df0) |>
+        mutate(
+          across(names(df0),\(x) na.approx(x,na.rm =FALSE))
+      )
+  
   
   ### Return
-  return(df0)
+  return(df1)
 })(); rff_nat_pop |> glimpse()
 listData[["rff_nat_pop"]] <- rff_nat_pop
 
@@ -810,7 +812,7 @@ listData[["state_rrScalar"]] <- state_rrScalar
 ###### Update Data in List ######
 # listMethane[["package"]] <- listData
 # rDataList[["methane"]] <- listMethane
-saveFile   <- projDir |> file.path("data", "methane.rda")
+saveFile   <- projDir |> file.path("data", "listmMethane.rda")
 save(listMethane, file=saveFile)
 
 
