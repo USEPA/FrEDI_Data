@@ -50,7 +50,7 @@ listLoad1 <- listLoad0 |>
     if        (doPop ) {
       # list0[[type0]] <- files0
       base0     <- files0 |> (function(x, strx="State"){x[x |> str_detect(strx)]})()
-      rff0       <- files0 |> (function(x, strx="RFF" ){x[x |> str_detect(strx)]})()
+      rff0      <- files0 |> (function(x, strx="RFF" ){x[x |> str_detect(strx)]})()
       hasBase0  <- base0  |> length()
       hasRff0   <- rff0   |> length()
       if(hasBase0) {list0[["base"]] <- base0}
