@@ -49,7 +49,7 @@ listLoad1 <- listLoad0 |>
     if        (doPop ) {
       # list0[[type0]] <- files0
       base0     <- files0 |> (function(x, strx="State"){x[x |> str_detect(strx)]})()
-      rff       <- files0 |> (function(x, strx="RFF"  ){x[x |> str_detect(strx)]})()
+      rff0      <- files0 |> (function(x, strx="RFF"  ){x[x |> str_detect(strx)]})()
       hasBase0  <- base0  |> length()
       hasRff0   <- rff0   |> length()
       if(hasBase0) {list0[["base"]] <- base0}
@@ -84,7 +84,8 @@ listLoad  <- listLoad1 |>
     ### Add list names
     # names0 <- lists0 |> names()
     dfNew0 <- tibble(type = type0, objName = lists0 |> names()) |> 
-      mutate(dfName = (type==objName) |> ifelse(type, type |> paste0(objName |> str_to_title()))) |>
+      # mutate(dfName = (type==objName) |> ifelse(type, type |> paste0(objName |> str_to_title()))) |>
+      mutate(dfName = type |> paste0(objName |> str_to_title())) |>
       mutate(fName  = lists0 |> unlist())
     list0[["info"]] <- dfNew0
     
@@ -104,13 +105,14 @@ listLoad  <- listLoad1 |>
   }) |> set_names(listLoad1 |> names())
 
 listLoad |> names()
+# listLoad$pop$data |> names()
 # # listLoad$pop$data |> names()
 # for(name_i in listLoad |> names()) { for(name_j in listLoad[[name_i]][["data"]] |> names()) {
 #   name_j |> assign(listLoad[[name_i]][["data"]][[name_j]])
 # }} ### End for loop
 
 
-###### Initialize Lists to Save ######
+###### Initialize Lists ######
 # listSave    <- list()
 listMethane <- list()
 listData    <- list()
@@ -132,13 +134,12 @@ list_coefficients <- list() |> (function(
   listOth <- list()
   listOth[["minYear0"]] <- 2020
   listOth[["maxYear0"]] <- 2100
-  listOth[["vsl_adj0"]] <- rDataList$scenarioData$pop_default |> glimpse()
-  rDataList$scenarioData$gdp_default |> glimpse()
-  rDataList$scenarioData$pop_default |> (function(
+  listOth[["vsl_adj0"]] <- rDataList$scenarioData$pop_default |> (function(
     df0, 
     df1   = rDataList$scenarioData$gdp_default,
     year0 = 2010
   ){
+    # df0 |> glimpse(); df1 |> glimpse()
     ### Filter data
     df0   <- df0 |> filter(!(year |> str_detect("Nation")))
     df0   <- df0 |> filter(year %in% year0)
@@ -162,7 +163,8 @@ list_coefficients <- list() |> (function(
     ### Return
     return(df0)
   })()
-    
+  ### Update in list
+  list0 <- list0 |> c(listOth)
   
   ###### ** Mortality ######
   ### Initialize list
@@ -221,199 +223,11 @@ list_coefficients <- list() |> (function(
   ###### Return ######
   return(list0)
 })()
-
 ### Update list
 listData[["coefficients"]] <- list_coefficients
 
 
 ###### Reshape ID/Crosswalk Tables ######
-###### ** Sectors, Variants, Impact Types ######
-### Get new sectors, variants, impact types, impact years
-rDataList$frediData$co_sectors |> glimpse()
-co_sectors   <- rDataList$frediData$co_sectors |> (function(df0){
-  ### Glimpse
-  # df0 |> glimpse()
-  
-  ### Create new values to bind
-  df1       <- tibble(sector_id = "Methane") |> 
-    mutate(sector_label = sector_id) |>
-    mutate(modelType    = "gcm")
-
-  ### Filter to no values
-  ### Bind new values to other values
-  df0       <- df0 |> filter(modelType %in% "GCM")
-  df0       <- df0 |> rbind(df1)
-
-  ### Return
-  return(df0)
-})(); co_sectors |> glimpse()
-listData[["co_sectors"]] <- co_sectors
-
-# co_sectors   <- rDataList$frediData$co_sectorsInfo |> (function(df0){
-#   ### Glimpse
-#   # df0 |> glimpse()
-#   
-#   ### Create new values to bind
-#   df1       <- tibble(sector = "Methane") |> 
-#     mutate(variant      = "NA") |>
-#     mutate(impactType   = "NA") |>
-#     mutate(impactYear   = "NA") |>
-#     mutate(modelTyp     = "gcm") |>
-#     mutate(sector_label = "NA")
-#   
-#   ### Filter to no values
-#   ### Bind new values to other values
-#   df0       <- df0 |> filter(modelType %in% "GCM")
-#   df0       <- df0 |> rbind(df1)
-#   
-#   ### Return
-#   return(df0)
-# })(); co_sectors |> glimpse()
-# listData[["co_sectors"]] <- co_sectors
-
-### Variants
-rDataList$frediData$co_variants |> glimpse()
-co_variants   <- rDataList$frediData$co_variants |> (function(df0){
-  ### Glimpse
-  # df0 |> glimpse()
-  
-  ### Create new values to bind
-  df1       <- tibble(sector_id = "Methane") |> 
-    mutate(variant_label = sector_id) |>
-    mutate(variant_id    = "Methane") |> 
-    # mutate(sectorprimary = 1) |> 
-    # mutate(includeaggregate = 1) |> 
-    mutate(damageAdjName = "none")
-  
-  ### Filter to no values
-  ### Bind new values to other values
-  df0       <- df0 |> filter(sector_id %in% "GCM")
-  df0       <- df0 |> rbind(df1)
-  
-  ### Return
-  return(df0)
-})(); co_variants |> glimpse()
-listData[["co_variants"]] <- co_variants
-
-
-### Impact Types
-rDataList$frediData$co_impactTypes |> glimpse()
-co_impactTypes   <- rDataList$frediData$co_impactTypes |> (function(df0){
-  ### Glimpse
-  # df0 |> glimpse()
-  
-  ### Create new values to bind
-  df1       <- tibble(sector_id = "Methane") |> 
-    mutate(impactType_label = "Excess Mortality") |>
-    mutate(impactType_id    = "xMort") |> 
-    mutate(impactType_description = "Excess Mortality") |>
-    mutate(physicalmeasure = "Excess Mortality") |>
-    mutate(physScalarName  = "none") |>
-    mutate(physAdjName     = "none")
-  
-  ### Get Valuation info and bind to df1
-  join0      <- c("sector_id")
-  select0    <- join0 |> c("econScalarName", "econMultiplierName", "c0", "c1", "exp0", "year0")
-  df2        <- df0 |> 
-    mutate(sector_id = "Methane") |>
-    mutate(year0     = "2020") |>
-    filter(econScalarName      == "vsl_usd"   ) |>
-    filter(econMultiplierName  == "gdp_percap") |>
-    select(all_of(select0)) |>
-    distinct()
-  df1        <- df1 |> left_join(df2, by=c(join0))
-  rm(select0, join0)
-  
-  
-  ### Filter to no values
-  ### Bind new values to other values
-  df0       <- df0 |> filter(sector_id %in% "GCM")
-  df0       <- df0 |> rbind(df1)
-  
-  ### Return
-  return(df0)
-})(); co_impactTypes |> glimpse()
-listData[["co_impactTypes"]] <- co_impactTypes
-
-
-### Impact Types
-rDataList$frediData$co_impactYears |> glimpse()
-co_impactYears   <- rDataList$frediData$co_impactYears |> (function(df0){
-  ### Glimpse
-  # df0 |> glimpse()
-  
-  ### Create new values to bind
-  df1       <- tibble(sector_id = "Methane") |> 
-    mutate(impactYear_id    = "NA") |> 
-    mutate(impactYear_label = "N/A")
-  
-  ### Filter to no values
-  ### Bind new values to other values
-  df0       <- df0 |> filter(sector_id %in% "GCM")
-  df0       <- df0 |> rbind(df1)
-  
-  ### Return
-  return(df0)
-})(); co_impactYears |> glimpse()
-listData[["co_impactYears"]] <- co_impactYears
-
-
-### Model Types
-rDataList$frediData$co_modelTypes |> glimpse()
-co_modelTypes   <- rDataList$frediData$co_modelTypes |> (function(df0){
-  ### Glimpse
-  # df0 |> glimpse()
-  
-  ### Create new values to bind
-  df1       <- tibble(modelType_id = "gcm") |> 
-    mutate(inputName       = "methane") |> 
-    mutate(modelType_label = "GCM") |> 
-    mutate(modelUnitDesc   = "Ozone Response") |> 
-    mutate(modelUnit_id    = "pptv/pptb") |> 
-    mutate(modelUnit_label = "pptv/pptb") |> 
-    mutate(modelType_id    = "gcm")
-  
-  ### Filter to no values
-  ### Bind new values to other values
-  select0   <- df1 |> names()
-  df0       <- df0 |> select(all_of(select0))
-  df0       <- df0 |> filter(inputName %in% "GCM")
-  df0       <- df0 |> rbind(df1)
-  
-  ### Return
-  return(df0)
-})(); co_modelTypes |> glimpse()
-listData[["co_modelTypes"]] <- co_modelTypes
-
-
-### Input Info
-rDataList$frediData$co_inputInfo |> glimpse()
-co_inputInfo   <- rDataList$frediData$co_inputInfo |> (function(df0){
-  ### Glimpse
-  # df0 |> glimpse()
-  
-  ### Create new values to bind 
-  df1       <- tibble(inputName = c("ch4", "nox", "o3")) |> 
-    mutate(inputType       = c("methane", "nox", "ozone")) |> 
-    mutate(inputDesc       = c("Methane", "NOx", "Ozone Response")) |> 
-    mutate(inputUnit       = c("ppbv"   , "Mt" , "pptv/ppbv")) |> 
-    mutate(inputMin        = NA) |> 
-    mutate(inputMax        = NA) |> 
-    mutate(valueCol        = c("CH4_ppbv", "NOx_Mt", "O3_pptv_per_ppbv")) |> 
-    mutate(region          = c(0, 0, 1))
-  
-  ### Filter to no values
-  ### Bind new values to other values
-  filter0   <- c("gdp", "pop")
-  df0       <- df0 |> filter(inputName %in% c(filter0))
-  df0       <- df0 |> rbind(df1)
-  
-  ### Return
-  return(df0)
-})(); co_inputInfo |> glimpse()
-listData[["co_inputInfo"]] <- co_inputInfo
-
-
 ###### ** Regions & States ######
 ### Get new regions
 rDataList$frediData$co_regions |> glimpse()
@@ -462,6 +276,7 @@ co_states   <- rDataList$frediData$co_states |> (function(df0){
   ### Bind values and arrange
   arrange0  <- c("us_area", "region", "state")
   df0       <- df0 |> rbind(df1)
+  df0       <- df0 |> relocate(c("region"))
   df0       <- df0 |> arrange_at(c(arrange0))
   
   ### Return
@@ -474,21 +289,37 @@ listLoad$pop$data$pop |> pull(State_FIPS) |> unique() |> length()
 ((listLoad$pop$data$pop |> pull(State_FIPS) |> unique()) %in% (co_states$fips |> unique())) |> all()
 ((co_states$fips |> unique()) %in% (listLoad$pop$data$pop |> pull(State_FIPS) |> unique())) |> all()
 
-# ### Reshape other population data
-# df_ratios   <- rDataList$stateData$data$df_popRatios |> 
-#   (function(df0){
-#     ### Glimpse
-#     df0 |> glimpse()
-#     ### Rename values
-#     renameAt0 <- c("Year", "State_FIPS", "Population")
-#     renameTo0 <- c("year", "fips", "pop0")
-#     df0       <- df0 |> rename_at(c(renameAt0), ~renameTo0)
-#   })(); df_ratios |> glimpse()
-# 
-# defPop      <- rDataList$stateData$data$pop_default |> filter(year <= 2100) 
 
 
-###### ** Models ######
+
+###### ** Model Types and Models ######
+### Model Types
+rDataList$frediData$co_modelTypes |> glimpse()
+co_modelTypes   <- rDataList$frediData$co_modelTypes |> (function(df0){
+  ### Glimpse
+  # df0 |> glimpse()
+  
+  ### Create new values to bind
+  df1       <- tibble(modelType_id = "gcm") |> 
+    mutate(inputName       = "methane") |> 
+    mutate(modelType_label = "GCM") |> 
+    mutate(modelUnitDesc   = "Ozone Response") |> 
+    mutate(modelUnit_id    = "pptv/pptb") |> 
+    mutate(modelUnit_label = "pptv/pptb") |> 
+    mutate(modelType_id    = "gcm")
+  
+  ### Filter to no values
+  ### Bind new values to other values
+  select0   <- df1 |> names()
+  df0       <- df0 |> select(all_of(select0))
+  df0       <- df0 |> filter(inputName %in% "GCM")
+  df0       <- df0 |> rbind(df1)
+  
+  ### Return
+  return(df0)
+})(); co_modelTypes |> glimpse()
+listData[["co_modelTypes"]] <- co_modelTypes
+
 ### Get new models and model types
 rDataList$frediData$co_models |> glimpse()
 co_models   <- rDataList$frediData$co_models |> (function(
@@ -526,7 +357,171 @@ listData[["co_models"]] <- co_models
 
 
 
-###### ** Sectors Info ######
+
+###### ** Input Info ######
+### Input Info
+rDataList$frediData$co_inputInfo |> glimpse()
+co_inputInfo   <- rDataList$frediData$co_inputInfo |> (function(df0){
+  ### Glimpse
+  # df0 |> glimpse()
+
+  ### Create new values to bind
+  df1       <- tibble(inputName = c("ch4", "nox", "o3")) |>
+    mutate(inputType       = c("methane", "nox", "ozone")) |>
+    mutate(inputDesc       = c("Methane", "NOx", "Ozone Response")) |>
+    mutate(inputUnit       = c("ppbv"   , "Mt" , "pptv/ppbv")) |>
+    mutate(inputMin        = NA) |>
+    mutate(inputMax        = NA) |>
+    mutate(valueCol        = c("CH4_ppbv", "NOx_Mt", "O3_pptv_per_ppbv")) |>
+    mutate(region          = c(0, 0, 1))
+
+  ### Filter to no values
+  ### Bind new values to other values
+  filter0   <- c("gdp", "pop")
+  df0       <- df0 |> filter(inputName %in% c(filter0))
+  df0       <- df0 |> rbind(df1)
+
+  ### Return
+  return(df0)
+})(); co_inputInfo |> glimpse()
+listData[["co_inputInfo"]] <- co_inputInfo
+
+
+
+
+###### ** Sectors, Variants, Impact Types ######
+# ### Get new sectors, variants, impact types, impact years
+# rDataList$frediData$co_sectors |> glimpse()
+# co_sectors   <- rDataList$frediData$co_sectors |> (function(df0){
+#   ### Glimpse
+#   # df0 |> glimpse()
+#   
+#   ### Create new values to bind
+#   df1       <- tibble(sector_id = "Methane") |> 
+#     mutate(sector_label = sector_id) |>
+#     mutate(modelType    = "gcm")
+#   
+#   ### Filter to no values
+#   ### Bind new values to other values
+#   df0       <- df0 |> filter(modelType %in% "GCM")
+#   df0       <- df0 |> rbind(df1)
+#   
+#   ### Return
+#   return(df0)
+# })(); co_sectors |> glimpse()
+# listData[["co_sectors"]] <- co_sectors
+# 
+# # co_sectors   <- rDataList$frediData$co_sectorsInfo |> (function(df0){
+# #   ### Glimpse
+# #   # df0 |> glimpse()
+# #   
+# #   ### Create new values to bind
+# #   df1       <- tibble(sector = "Methane") |> 
+# #     mutate(variant      = "NA") |>
+# #     mutate(impactType   = "NA") |>
+# #     mutate(impactYear   = "NA") |>
+# #     mutate(modelTyp     = "gcm") |>
+# #     mutate(sector_label = "NA")
+# #   
+# #   ### Filter to no values
+# #   ### Bind new values to other values
+# #   df0       <- df0 |> filter(modelType %in% "GCM")
+# #   df0       <- df0 |> rbind(df1)
+# #   
+# #   ### Return
+# #   return(df0)
+# # })(); co_sectors |> glimpse()
+# # listData[["co_sectors"]] <- co_sectors
+# 
+# ### Variants
+# rDataList$frediData$co_variants |> glimpse()
+# co_variants   <- rDataList$frediData$co_variants |> (function(df0){
+#   ### Glimpse
+#   # df0 |> glimpse()
+#   
+#   ### Create new values to bind
+#   df1       <- tibble(sector_id = "Methane") |> 
+#     mutate(variant_label = sector_id) |>
+#     mutate(variant_id    = "Methane") |> 
+#     # mutate(sectorprimary = 1) |> 
+#     # mutate(includeaggregate = 1) |> 
+#     mutate(damageAdjName = "none")
+#   
+#   ### Filter to no values
+#   ### Bind new values to other values
+#   df0       <- df0 |> filter(sector_id %in% "GCM")
+#   df0       <- df0 |> rbind(df1)
+#   
+#   ### Return
+#   return(df0)
+# })(); co_variants |> glimpse()
+# listData[["co_variants"]] <- co_variants
+# 
+# 
+# ### Impact Types
+# rDataList$frediData$co_impactTypes |> glimpse()
+# co_impactTypes   <- rDataList$frediData$co_impactTypes |> (function(df0){
+#   ### Glimpse
+#   # df0 |> glimpse()
+#   
+#   ### Create new values to bind
+#   df1       <- tibble(sector_id = "Methane") |> 
+#     mutate(impactType_label = "Excess Mortality") |>
+#     mutate(impactType_id    = "xMort") |> 
+#     mutate(impactType_description = "Excess Mortality") |>
+#     mutate(physicalmeasure = "Excess Mortality") |>
+#     mutate(physScalarName  = "none") |>
+#     mutate(physAdjName     = "none")
+#   
+#   ### Get Valuation info and bind to df1
+#   join0      <- c("sector_id")
+#   select0    <- join0 |> c("econScalarName", "econMultiplierName", "c0", "c1", "exp0", "year0")
+#   df2        <- df0 |> 
+#     mutate(sector_id = "Methane") |>
+#     mutate(year0     = "2020") |>
+#     filter(econScalarName      == "vsl_usd"   ) |>
+#     filter(econMultiplierName  == "gdp_percap") |>
+#     select(all_of(select0)) |>
+#     distinct()
+#   df1        <- df1 |> left_join(df2, by=c(join0))
+#   rm(select0, join0)
+#   
+#   
+#   ### Filter to no values
+#   ### Bind new values to other values
+#   df0       <- df0 |> filter(sector_id %in% "GCM")
+#   df0       <- df0 |> rbind(df1)
+#   
+#   ### Return
+#   return(df0)
+# })(); co_impactTypes |> glimpse()
+# listData[["co_impactTypes"]] <- co_impactTypes
+# 
+# 
+# ### Impact Types
+# rDataList$frediData$co_impactYears |> glimpse()
+# co_impactYears   <- rDataList$frediData$co_impactYears |> (function(df0){
+#   ### Glimpse
+#   # df0 |> glimpse()
+#   
+#   ### Create new values to bind
+#   df1       <- tibble(sector_id = "Methane") |> 
+#     mutate(impactYear_id    = "NA") |> 
+#     mutate(impactYear_label = "N/A")
+#   
+#   ### Filter to no values
+#   ### Bind new values to other values
+#   df0       <- df0 |> filter(sector_id %in% "GCM")
+#   df0       <- df0 |> rbind(df1)
+#   
+#   ### Return
+#   return(df0)
+# })(); co_impactYears |> glimpse()
+# listData[["co_impactYears"]] <- co_impactYears
+# 
+# 
+# 
+# ###### ** Sectors Info
 # ### Get new regions
 # rDataList$frediData$co_sectorsInfo |> glimpse()
 
@@ -539,8 +534,8 @@ listData[["co_models"]] <- co_models
 ###   - Note: may need to first edit co_states and co_regions to add in Alaska and HI...
 ###   - Refer to rDataList$scenarioData$popRatioData to get regions, states, and FIPS
 ### Check that pop dataframe has the same values as the FrEDI default scenario
-listLoad$pop$data$base |> glimpse()
-base_state_pop     <- listLoad$pop$data$base |> (function(df0, df1=co_states){
+listLoad$pop$data$popBase |> glimpse()
+base_state_pop     <- listLoad$pop$data$popBase |> (function(df0, df1=co_states){
     ### Rename values
     renameAt0 <- c("Year", "State_FIPS", "Population")
     renameTo0 <- c("base_year", "fips", "base_state_pop")
@@ -568,7 +563,7 @@ base_state_pop$base_year |> range(); base_state_pop |> pull(fips) |> unique() |>
 ###### ** RFF Population & Mortality ######
 ### Reshape population & mortality data (from RFF runs):
 listLoad$pop$data$rff |> glimpse()
-rff_nat_pop     <- listLoad$pop$data$rff |> (function(df0, df1=co_states){
+rff_nat_pop     <- listLoad$pop$data$popRff |> (function(df0, df1=co_states){
   ### Rename values
   renameAt0 <- c("Year", "State_FIPS", "Population")
   renameTo0 <- c("base_year", "fips", "base_state_pop")
@@ -598,7 +593,7 @@ listData[["rff_nat_pop"]] <- rff_nat_pop
 listLoad$o3$data$o3Nat |> glimpse()
 
 ### Use units pptv to ppbv
-base_nat_o3  <- listLoad$o3$data$o3Nat |> (function(
+nat_o3  <- listLoad$o3$data$o3Nat |> (function(
     df0, 
     df1    = co_models, 
     mRate0 = listLoad$mort$data$mortBase |> pull(MortalityIncidence),
@@ -611,7 +606,7 @@ base_nat_o3  <- listLoad$o3$data$o3Nat |> (function(
   
   ### Rename values
   renameAt0 <- c("Model", "OzoneResponse.ppt.ppb.", "DeltaOzone")
-  renameTo0 <- c("model_str", "base_nat_o3response", "base_nat_deltaO3")
+  renameTo0 <- c("model_str", "nat_o3response", "nat_deltaO3")
   df0       <- df0 |> rename_at(c(renameAt0), ~renameTo0)
   rm(renameAt0, renameTo0)
   
@@ -624,11 +619,11 @@ base_nat_o3  <- listLoad$o3$data$o3Nat |> (function(
   rm(select0, join0)
   
   ### Base CH4 and NOx concentrations
-  df0       <- df0   |> mutate(base_nat_CH4 = ch4_0)
-  df0       <- df0   |> mutate(base_nat_NOX = nox_0)
+  df0       <- df0   |> mutate(nat_CH4 = ch4_0)
+  df0       <- df0   |> mutate(nat_NOX = nox_0)
   
   ### Base mortality incidence
-  df0       <- df0   |> mutate(base_nat_rmRate = mRate0)
+  df0       <- df0   |> mutate(nat_rmRate = mRate0)
   
   ### Select and arrange
   drop0     <- c("OzoneResponse.ppb.ppb.")
@@ -638,8 +633,8 @@ base_nat_o3  <- listLoad$o3$data$o3Nat |> (function(
   
   ### Return
   return(df0)
-})(); base_nat_o3 |> glimpse()
-listData[["base_nat_o3"]] <- base_nat_o3
+})(); nat_o3 |> glimpse()
+listData[["nat_o3"]] <- nat_o3
 
 ### State Ozone Reshaping
 ### - Drop Ozone PPT/PPB
@@ -648,14 +643,13 @@ listData[["base_nat_o3"]] <- base_nat_o3
 ###   - Mutate co_models: add column "model_str" by using mutate(model_str = model_id |> str_match(pattern=o3State$Model |> unique() |> paste(collapse="|")) |> as.list() |> unlist())
 ###   - Joining with co_models by "model_str"
 listLoad$o3$data$o3State |> glimpse()
-
-base_state_o3    <- listLoad$o3$data$o3State |> (function(df0, df1=co_states, df2=base_nat_o3){
+state_o3    <- listLoad$o3$data$o3State |> (function(df0, df1=co_states, df2=nat_o3){
   ### Glimpse data
   # df0 |> glimpse()
   
   ### Rename values
   renameAt0 <- c("State_FIPS", "Model", "OzoneResponse.ppt.ppb.", "DeltaOzone")
-  renameTo0 <- c("fips", "model_str", "base_state_o3response", "base_state_deltaO3")
+  renameTo0 <- c("fips", "model_str", "state_o3response", "state_deltaO3")
   df0       <- df0 |> rename_at(c(renameAt0), ~renameTo0)
   rm(renameAt0, renameTo0)
   
@@ -682,8 +676,8 @@ base_state_o3    <- listLoad$o3$data$o3State |> (function(df0, df1=co_states, df
 
   ### Return
   return(df0)
-})(); base_state_o3 |> glimpse()
-listData[["base_state_o3"]] <- base_state_o3
+})(); state_o3 |> glimpse()
+listData[["state_o3"]] <- state_o3
 
 
 
@@ -692,7 +686,7 @@ listData[["base_state_o3"]] <- base_state_o3
 ### State Excess Mortality reshaping
 ### Model	ModelYear	State_FIPS	State_Results |> rename to: c(model_str, refYear, fips, excess_mortality)
 listLoad$mort$data$mortXm |> glimpse(); listLoad$mort$data$mortXm$ModelYear |> range()
-base_state_xMort    <- listLoad$mort$data$mortXm |> (function(df0, df1=co_states, df2=co_models){
+state_xMort    <- listLoad$mort$data$mortXm |> (function(df0, df1=co_states, df2=co_models){
   ### Glimpse data
   # df0 |> glimpse()
   
@@ -730,8 +724,8 @@ base_state_xMort    <- listLoad$mort$data$mortXm |> (function(df0, df1=co_states
   
   ### Return
   return(df0)
-})(); base_state_xMort |> glimpse()
-listData[["base_state_xMort"]] <- base_state_xMort
+})(); state_xMort |> glimpse()
+listData[["state_xMort"]] <- state_xMort
 
 
 
@@ -760,25 +754,16 @@ listData[["nat_ifScalar"]] <- nat_ifScalar
 
 
 ###### Calculate RR Scalar ######
-base_state_pop |> glimpse()
-base_state_o3 |> glimpse()
-base_state_xMort |> glimpse()
-nat_ifScalar |> glimpse()
+base_state_pop |> glimpse(); state_o3 |> glimpse()
+state_xMort |> glimpse(); nat_ifScalar |> glimpse()
 state_rrScalar <- base_state_pop |> (function(
     df0, 
-    o3_0 = base_state_o3, 
-    xm_0 = base_state_xMort,
+    o3_0 = state_o3, 
+    xm_0 = state_xMort,
     if_0 = nat_ifScalar
 ){
   ### Glimpse data
   # df0 |> glimpse()
-  
-  ### Rename values
-  # renameAt0 <- c("Years", "Region", "RespScalar")
-  # renameTo0 <- c("year", "nation_fips", "ifScalar")
-  # df0       <- df0 |> rename_at(c(renameAt0), ~renameTo0)
-  # # df0       <- df0 |> relocate(c("year"), .after=c("nation_fips"))
-  # rm(renameAt0, renameTo0)
   
   ### Join O3 response and excess mortality data
   join0     <- c("region", "state", "postal", "fips") |> c("model", "model_str")  
@@ -793,7 +778,7 @@ state_rrScalar <- base_state_pop |> (function(
   rm(join0, move0)
   
   ### Calculate rr Scalar
-  df0       <- df0 |> mutate(base_state_rrScalar = base_state_pop * base_nat_rmRate * base_state_deltaO3)
+  df0       <- df0 |> mutate(state_rrScalar = base_state_pop * nat_rmRate * state_deltaO3)
   
   ### Return
   return(df0)
@@ -803,12 +788,73 @@ listData[["state_rrScalar"]] <- state_rrScalar
 
 
 
+###### ** Default Scenarios ######
+### Methane
+ch4_default <- list_coefficients$minYear0 |> (function(
+    minYr0, 
+    maxYr0 = list_coefficients$maxYear0,
+    ch4_0  = list_coefficients$CH4$base0
+){
+  ### Make tibble, add value, return
+  df0 <- tibble(year = minYr0 |> seq(maxYr0, by=1))
+  df0 <- df0 |> mutate(delta_ch4 = ch4_0)
+  return(df0)
+})(); ch4_default |> glimpse()
+listData[["ch4_default"]] <- ch4_default
+
+
+### NOx
+nox_default <- list_coefficients$minYear0 |> (function(
+    minYr0, 
+    maxYr0 = list_coefficients$maxYear0,
+    nox_0  = list_coefficients$NOx$base0
+){
+  ### Make tibble, add value, return
+  df0 <- tibble(year = minYr0 |> seq(maxYr0, by=1))
+  df0 <- df0 |> mutate(NOx = nox_0)
+  return(df0)
+})(); nox_default |> glimpse()
+listData[["nox_default"]] <- nox_default
+
+### O3 response default
+state_o3 |> glimpse()
+o3_default <- ch4_default |> (function(
+    df0,
+    df1     = nox_default,
+    df2     = state_o3,
+    noxAdj0 = list_coefficients$NOx$NOxFactor0
+){
+  ### Join methane and NOx
+  join0 <- c("year")
+  # move0 <- c("region")
+  df0   <- df0 |> left_join(df1, by=c(join0))
+  rm(join0)
+  
+  ### Join with state O3 response
+  join0 <- c("modelType")
+  move0 <- c("region", "state", "postal", "fips", "model", "model_str")
+  df0   <- df0 |> mutate(modelType = "gcm")
+  df2   <- df2 |> mutate(modelType = "gcm")
+  df0   <- df0 |> left_join(df2, by=c(join0), relationship="many-to-many")
+  df0   <- df0 |> relocate(all_of(move0))
+  df0   <- df0 |> select(-any_of(join0))
+  rm(join0)
+  
+  ### Calculate NOx ratio, then O3 response
+  df0   <- df0 |> mutate(nox_factor0 = noxAdj0)
+  df0   <- df0 |> mutate(nox_factor  = NOx |> get_NOx_factor())
+  df0   <- df0 |> mutate(nox_ratio   = nox_factor / nox_factor0)
+  df0   <- df0 |> mutate(o3_response = delta_ch4 * nox_ratio * state_o3response )
+  
+  ### Return
+  return(df0)
+})(); o3_default |> glimpse()
+listData[["o3_default"]] <- o3_default
 
 
 
-
-###### Update Data in List ######
-# listMethane[["package"]] <- listData
+###### Update Data in List & Save List ######
+listMethane[["package"]] <- listData
 # rDataList[["methane"]] <- listMethane
 saveFile   <- projDir |> file.path("data", "methane.rda")
 save(listMethane, file=saveFile)
