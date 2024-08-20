@@ -1016,11 +1016,11 @@ listScenarios[["o3_default"]] <- o3_default
 
 ###### Update Data in List & Save List ######
 # saveFile   <- projDir |> file.path("data", "listMethane.rda")
-saveFile   <- projDir |> file.path("data", "sysdata.rds")
+saveFile   <- projDir |> file.path("data", "sysdata.rda")
 listMethane[["package"     ]] <- listData
 listMethane[["scenarioData"]] <- listScenarios
 rDataList  <- rDataList |> (function(list0, names0="listMethane"){list0[!((list0 |> names()) %in% names0)]})()
-save(rDataList, listMethane, file=saveFile)
+save(rDataList, listMethane, svDataList, svPopList, format_styles, file=saveFile)
 
 
 
