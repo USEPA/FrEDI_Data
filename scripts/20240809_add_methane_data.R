@@ -23,9 +23,10 @@ loadFiles <- dataFiles |> (function(x, str0="County"){x[!(x |> str_detect(str0))
 popFiles  <- loadFiles |> (function(x, str0="pop"  ){x[x |> tolower() |> str_detect(str0)]})(); popFiles
 o3Files   <- loadFiles |> (function(x, str0="ozone"){x[x |> tolower() |> str_detect(str0)]})(); o3Files
 mortFiles <- loadFiles |> (function(x, str0="mort" ){x[x |> tolower() |> str_detect(str0)]})(); mortFiles
+ch4Files <- loadFiles |> (function(x, str0="ch4" ){x[x |> tolower() |> str_detect(str0)]})(); ch4Files
 
-loadTypes <- c("pop", "o3", "mort")
-dfLoad    <- tibble(prefix0 = loadTypes) |> mutate(str0 = c("pop", "oz", "mort"))
+loadTypes <- c("pop", "o3", "mort","ch4")
+dfLoad    <- tibble(prefix0 = loadTypes) |> mutate(str0 = c("pop", "oz", "mort","ch4"))
 
 ###### Load Lists ######
 ###### ** List of File Names ######
@@ -46,6 +47,7 @@ listLoad1 <- listLoad0 |>
     doPop    <- "pop"  %in% type0
     doO3     <- "o3"   %in% type0
     doMort   <- "mort" %in% type0
+    doch4    <- "ch4"  %in% type0
     ### Initialize list
     type0 |> print(); files0 |> print()
     list0    <- list()
@@ -77,7 +79,11 @@ listLoad1 <- listLoad0 |>
       if(hasBase0  ) {list0[["base"  ]] <- base0  }
       if(hasXm0    ) {list0[["xm"    ]] <- xm0    }
       if(hasScalar0) {list0[["scalar"]] <- scalar0}
-    } ### End if (doPop )
+    } else if (doch4) { 
+      ssp2450      <- files0  |> (function(x, strx="ssp245"  ){x[x |> str_detect(strx)]})()
+      hasssp2450   <- ssp2450   |> length()
+      if(hasssp2450  ) {list0[["ssp245"  ]] <- ssp2450  }
+      }### End if (doPop )
     return(list0)
   }) |> set_names(dfLoad |> pull(prefix0))
 # listLoad1$pop |> names()
@@ -661,8 +667,8 @@ listLoad$pop$data$popRff  |> glimpse()
 rff_nat_pop     <- listLoad$pop$data$popRff |> (function(df0, df1=nat_ifScalar){
   ### Rename values
   idCols0   <- c("Year")
-  sumCols0  <- c("pop", "mortality", "mort_rate", "mortality_intercept", "mortality_slope", "mort_rate_intercept", "mort_rate_slope")
-  sumCols1  <- c("Pop", "Mort", "Mrate", "Mort_intercept", "Mort_slope", "Mrate_intercept", "Mrate_slope")
+  sumCols0  <- c("pop", "mortality", "mort_rate", "mort_rate_intercept", "mort_rate_slope")
+  sumCols1  <- c("Pop", "Mort", "Mrate", "Mrate_intercept", "Mrate_slope")
   renameAt0 <- c(idCols0) |> c(sumCols0)
   # renameTo0 <- c("base_year", "base_rff_pop", "base_rff_mort", "base_rff_mort_rate", "mort_intercept", "mort_slope")
   renameTo0 <- c("year") |> c("rff" |> paste0(sumCols1))
@@ -930,13 +936,14 @@ listScenarios[["pop_default"]] <- pop_default
 
 ###### ** Methane ######
 ### Default methane scenario
-ch4_default <- list_coefficients$minYear0:list_coefficients$maxYear0 |> (function(
-    years0, 
-    ch4_0  = list_coefficients$CH4$base0
+listLoad$ch4$data$ch4Ssp245  |> glimpse()
+
+ch4_default <- listLoad$ch4$data$ch4Ssp245 |> (function(
+    df0
 ){
-  ### Make tibble, add value, return
-  df0 <- tibble(year = years0)
-  df0 <- df0 |> mutate(CH4_ppbv = ch4_0)
+  ### Filter to 2100
+  df0 <- df0 |> filter(year <= 2100)
+  df0 <- df0 |> rename("CH4_ppbv" =  ch4_ppb)
   return(df0)
 })(); ch4_default |> glimpse()
 listScenarios[["ch4_default"]] <- ch4_default
