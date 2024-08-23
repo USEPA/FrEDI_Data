@@ -23,9 +23,10 @@ loadFiles <- dataFiles |> (function(x, str0="County"){x[!(x |> str_detect(str0))
 popFiles  <- loadFiles |> (function(x, str0="pop"  ){x[x |> tolower() |> str_detect(str0)]})(); popFiles
 o3Files   <- loadFiles |> (function(x, str0="ozone"){x[x |> tolower() |> str_detect(str0)]})(); o3Files
 mortFiles <- loadFiles |> (function(x, str0="mort" ){x[x |> tolower() |> str_detect(str0)]})(); mortFiles
+ch4Files  <- loadFiles |> (function(x, str0="ch4"  ){x[x |> tolower() |> str_detect(str0)]})(); ch4Files
 
-loadTypes <- c("pop", "o3", "mort")
-dfLoad    <- tibble(prefix0 = loadTypes) |> mutate(str0 = c("pop", "oz", "mort"))
+loadTypes <- c("pop", "o3", "mort","ch4")
+dfLoad    <- tibble(prefix0 = loadTypes) |> mutate(str0 = c("pop", "oz", "mort","ch4"))
 
 ###### Load Lists ######
 ###### ** List of File Names ######
@@ -46,6 +47,7 @@ listLoad1 <- listLoad0 |>
     doPop    <- "pop"  %in% type0
     doO3     <- "o3"   %in% type0
     doMort   <- "mort" %in% type0
+    doch4    <- "ch4"  %in% type0
     ### Initialize list
     type0 |> print(); files0 |> print()
     list0    <- list()
@@ -77,7 +79,11 @@ listLoad1 <- listLoad0 |>
       if(hasBase0  ) {list0[["base"  ]] <- base0  }
       if(hasXm0    ) {list0[["xm"    ]] <- xm0    }
       if(hasScalar0) {list0[["scalar"]] <- scalar0}
-    } ### End if (doPop )
+    } else if (doch4) { 
+      ssp2450      <- files0  |> (function(x, strx="ssp245"  ){x[x |> str_detect(strx)]})()
+      hasssp2450   <- ssp2450   |> length()
+      if(hasssp2450  ) {list0[["ssp245"  ]] <- ssp2450  }
+      }### End if (doPop )
     return(list0)
   }) |> set_names(dfLoad |> pull(prefix0))
 # listLoad1$pop |> names()
@@ -661,8 +667,8 @@ listLoad$pop$data$popRff  |> glimpse()
 rff_nat_pop     <- listLoad$pop$data$popRff |> (function(df0, df1=nat_ifScalar){
   ### Rename values
   idCols0   <- c("Year")
-  sumCols0  <- c("pop", "mortality", "mort_rate", "mortality_intercept", "mortality_slope", "mort_rate_intercept", "mort_rate_slope")
-  sumCols1  <- c("Pop", "Mort", "Mrate", "Mort_intercept", "Mort_slope", "Mrate_intercept", "Mrate_slope")
+  sumCols0  <- c("pop", "mortality", "mort_rate", "mort_rate_intercept", "mort_rate_slope")
+  sumCols1  <- c("Pop", "Mort", "Mrate", "Mrate_intercept", "Mrate_slope")
   renameAt0 <- c(idCols0) |> c(sumCols0)
   # renameTo0 <- c("base_year", "base_rff_pop", "base_rff_mort", "base_rff_mort_rate", "mort_intercept", "mort_slope")
   renameTo0 <- c("year") |> c("rff" |> paste0(sumCols1))
@@ -716,8 +722,8 @@ calc_mortality <- function(
   ### Calculate intermediate populations
   # df0   <- df0 |> mutate(delta_rffPop = national_pop - rffPop)
   # df0   <- df0 |> mutate(rffFactor    = delta_rffPop * rffMrate_slope + rffMrate_intercept)
-  df0   <- df0 |> mutate(delta_rffPop = !!sym(pCol0) - rffPop)
-  df0   <- df0 |> mutate(rffFactor    = delta_rffPop * !!sym(sCol0) + !!sym(iCol0))
+  df0   <- df0 |> mutate(logPop       = (!!sym(pCol0)) |> log())
+  df0   <- df0 |> mutate(rffFactor    = logPop       * !!sym(sCol0) + !!sym(iCol0))
   df0   <- df0 |> mutate(respMrate    = rffFactor    * ifRespScalar)
   ### Return data
   return(df0)
@@ -730,30 +736,30 @@ listData$coefficients[["Mortality"]][["fun0"]] <- calc_mortality
 ###### ** Ozone Response ######
 ### National O3 reshaping
 listLoad$o3$data$o3Nat |> glimpse()
-
 ### Use units pptv to ppbv
 nat_o3  <- listLoad$o3$data$o3Nat |> (function(
     df0, 
     df1    = co_models, 
     mRate0 = listLoad$mort$data$mortBase |> pull(MortalityIncidence),
-    ch4_0  = 100, ### pptv2ppbv
-    nox_0  = 10.528
-    
+    ch4_0  = listData$coefficients$CH4$base0, ### pptbv
+    nox_0  = listData$coefficients$NOx$base0  ### Mt
+    # ch4_0  = 100, ### pptbv
+    # nox_0  = 10.528
 ){
   ### Glimpse data
   # df0 |> glimpse()
   
   ### Rename values
   renameAt0 <- c("Model", "OzoneResponse.ppt.ppb.", "DeltaOzone")
-  renameTo0 <- c("model_str", "nat_o3response_pptv_per_ppbv", "base_nat_deltaO3_ppt")
+  renameTo0 <- c("model_str", "nat_o3response_pptv_per_ppbv", "base_nat_deltaO3_pptv")
   df0       <- df0 |> rename_at(c(renameAt0), ~renameTo0)
   rm(renameAt0, renameTo0)
   
   ### Join values with models
-  select0   <- c("model", "model_str")
+  select0   <- c("model", "model_label", "model_str")
   join0     <- c("model_str")
   df0       <- df0 |> left_join(df1 |> select(all_of(select0)), by=join0)
-  df0       <- df0 |> relocate(c("model"), .before=c("model_str"))
+  df0       <- df0 |> relocate(c("model", "model_label"), .before=c("model_str"))
   df0       <- df0 |> filter(!(model |> is.na()))
   rm(select0, join0)
   
@@ -788,7 +794,7 @@ state_o3    <- listLoad$o3$data$o3State |> (function(df0, df1=co_states, df2=nat
   
   ### Rename values
   renameAt0 <- c("State_FIPS", "Model", "OzoneResponse.ppt.ppb.", "DeltaOzone")
-  renameTo0 <- c("fips", "model_str", "state_o3response_pptv_per_ppbv", "base_state_deltaO3_ppt")
+  renameTo0 <- c("fips", "model_str", "state_o3response_pptv_per_ppbv", "base_state_deltaO3_pptv")
   df0       <- df0 |> rename_at(c(renameAt0), ~renameTo0)
   rm(renameAt0, renameTo0)
   
@@ -802,7 +808,7 @@ state_o3    <- listLoad$o3$data$o3State |> (function(df0, df1=co_states, df2=nat
   
   ### Join values with national values
   join0     <- c("model_str")
-  move0     <- c("model", "model_str")
+  move0     <- c("model", "model_label", "model_str")
   df0       <- df0 |> left_join(df2, by=join0)
   df0       <- df0 |> relocate(all_of(move0), .after=c("fips"))
   df0       <- df0 |> filter(!(model |> is.na()))
@@ -869,11 +875,6 @@ listData[["state_xMort"]] <- state_xMort
 
 
 
-
-
-
-
-
 ###### ** Calculate RR Scalar ######
 base_state_pop |> glimpse(); state_o3 |> glimpse(); state_xMort |> glimpse(); 
 state_rrScalar <- base_state_pop |> (function(
@@ -892,13 +893,13 @@ state_rrScalar <- base_state_pop |> (function(
   
   ### Join population data with O3 response and excess mortality data
   join0     <- c("region", "state", "postal") |> c("base_year")
-  move0     <- c("model")
+  move0     <- c("model", "model_label")
   df0       <- df0 |> left_join(o3_0, by=c(join0), relationship="many-to-many")
   df0       <- df0 |> relocate(all_of(move0), .after=c("postal"))
   rm(join0, move0, o3_0)
   
   ### Calculate rr Scalar
-  df0       <- df0 |> mutate(state_rrScalar   = base_state_pop * base_respMrate * base_state_deltaO3_ppt)
+  df0       <- df0 |> mutate(state_rrScalar   = base_state_pop * base_respMrate * base_state_deltaO3_pptv)
   df0       <- df0 |> mutate(state_mortScalar = base_state_exMort / state_rrScalar)
   
   ### Return
@@ -930,13 +931,24 @@ listScenarios[["pop_default"]] <- pop_default
 
 ###### ** Methane ######
 ### Default methane scenario
-ch4_default <- list_coefficients$minYear0:list_coefficients$maxYear0 |> (function(
-    years0, 
-    ch4_0  = list_coefficients$CH4$base0
+listLoad$ch4$data$ch4Ssp245  |> glimpse()
+ch4_default <- listLoad$ch4$data$ch4Ssp245 |> (function(
+    df0,
+    minYr0 = listData$coefficients$minYear0,
+    maxYr0 = listData$coefficients$maxYear0
 ){
-  ### Make tibble, add value, return
-  df0 <- tibble(year = years0)
-  df0 <- df0 |> mutate(CH4_ppbv = ch4_0)
+  ### Years 
+  yrs0      <- minYr0:maxYr0
+  df1       <- tibble(year=yrs0)
+  ### Rename columns
+  # df0       <- df0 |> rename("CH4_ppbv" =  ch4_ppb)
+  renameAt0 <- c("ch4_ppb")
+  renameTo0 <- c("CH4_ppbv")
+  df0       <- df0 |> rename_at(c(renameAt0), ~renameTo0)
+  ### Filter to 2100
+  join0     <- c("year")
+  df0       <- df1 |> left_join(df0, by=join0)
+  ### Return
   return(df0)
 })(); ch4_default |> glimpse()
 listScenarios[["ch4_default"]] <- ch4_default
@@ -966,50 +978,56 @@ o3_default <- ch4_default |> (function(
     fun0    = list_coefficients$NOx$fun0
 ){
   ### Join methane and NOx
-  join0 <- c("year")
-  df0   <- df0 |> left_join(df1, by=c(join0))
+  join0     <- c("year")
+  df0       <- df0 |> left_join(df1, by=c(join0))
   rm(join0)
   
   ### Join with state O3 response
-  drop0 <- c("model_str")
-  join0 <- c("modelType")
-  move0 <- c("region", "state", "postal", "model")
-  df0   <- df0 |> mutate(modelType = "gcm")
-  df2   <- df2 |> mutate(modelType = "gcm")
-  df2   <- df2 |> select(-any_of(drop0))
-  df0   <- df0 |> left_join(df2, by=c(join0), relationship="many-to-many")
-  df0   <- df0 |> relocate(all_of(move0))
-  df0   <- df0 |> select(-any_of(join0))
+  drop0     <- c("model_str")
+  join0     <- c("modelType")
+  move0     <- c("region", "state", "postal", "model", "model_label")
+  df0       <- df0 |> mutate(modelType = "gcm")
+  df2       <- df2 |> mutate(modelType = "gcm")
+  df2       <- df2 |> select(-any_of(drop0))
+  df0       <- df0 |> left_join(df2, by=c(join0), relationship="many-to-many")
+  df0       <- df0 |> relocate(all_of(move0))
+  df0       <- df0 |> select(-any_of(join0))
   rm(join0)
-  
+
   ### Get information on region
-  ### - Join with region
+  ### - Join with region and standardize region
   join0     <- c("region")
   # df3 |> glimpse(); df0 |> glimpse()
-  # df3$region |> unique() |> print(); df0$region |> unique() |> print()
+  df3$region |> unique() |> print(); df0$region |> unique() |> print()
   df0       <- df3 |> left_join(df0, by=join0)
-  
+  # df0       <- df0 |> mutate()
+
   ### Drop region, rename values
-  renameAt0 <- c(join0)  |> paste0("_label")
-  renameTo0 <- c(join0)
-  drop0     <- c(join0)  |> c("us_area", "fips")
+  # renameAt0 <- c(join0)  |> paste0("_label")
+  # renameTo0 <- c(join0)
+  renameTo0 <- c("region", "model")
+  renameAt0 <- c(renameTo0)  |> paste0("_label")
+  drop0     <- c(join0) |> c(renameTo0) |> c("us_area", "fips")
   df0       <- df0 |> select(-any_of(drop0))
   df0       <- df0 |> rename_at(c(renameAt0), ~renameTo0)
   df0       <- df0 |> relocate(c("model"), .before=c("year"))
-  
+
   ### Calculate NOx ratio, then O3 response
   ### calc_NOx_factor
   # df0 |> glimpse()
-  df0   <- df0 |> mutate(nox_factor0 = noxAdj0)
-  df0   <- df0 |> mutate(nox_factor  = NOx_Mt |> fun0())
-  df0   <- df0 |> mutate(nox_ratio   = nox_factor / nox_factor0)
-  df0   <- df0 |> mutate(O3_pptv     = CH4_ppbv * nox_ratio * state_o3response_pptv_per_ppbv )
+  df0       <- df0 |> mutate(nox_factor0 = noxAdj0)
+  df0       <- df0 |> mutate(nox_factor  = NOx_Mt |> fun0())
+  df0       <- df0 |> mutate(nox_ratio   = nox_factor / nox_factor0)
+  df0       <- df0 |> mutate(O3_pptv     = CH4_ppbv * nox_ratio * state_o3response_pptv_per_ppbv )
+  
+  ### Arrange
+  arrange0  <- c("region", "state", "model", "year")
+  df0       <- df0 |> arrange_at(c(arrange0))
   
   ### Return
   return(df0)
 })(); o3_default |> glimpse()
-o3_default$region |> unique()
-o3_default$model |> unique()
+o3_default$region |> unique(); o3_default$model |> unique()
 listScenarios[["o3_default"]] <- o3_default
 
 
