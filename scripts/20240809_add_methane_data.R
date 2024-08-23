@@ -940,8 +940,8 @@ listLoad$ch4$data$ch4Ssp245  |> glimpse()
 ch4_default <- listLoad$ch4$data$ch4Ssp245 |> (function(
     df0
 ){
-  ### Filter to 2100
-  df0 <- df0 |> filter(year <= 2100)
+  ### Filter to 2020 - 2100
+  df0 <- df0 |> filter(year >=  2020 & year <= 2100)
   df0 <- df0 |> rename("CH4_ppbv" =  ch4_ppb)
   return(df0)
 })(); ch4_default |> glimpse()
