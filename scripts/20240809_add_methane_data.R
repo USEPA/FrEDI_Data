@@ -722,8 +722,8 @@ calc_mortality <- function(
   ### Calculate intermediate populations
   # df0   <- df0 |> mutate(delta_rffPop = national_pop - rffPop)
   # df0   <- df0 |> mutate(rffFactor    = delta_rffPop * rffMrate_slope + rffMrate_intercept)
-  df0   <- df0 |> mutate(delta_rffPop = !!sym(pCol0) - rffPop)
-  df0   <- df0 |> mutate(rffFactor    = delta_rffPop * !!sym(sCol0) + !!sym(iCol0))
+  df0   <- df0 |> mutate(logPop       = (!!sym(pCol0)) |> log())
+  df0   <- df0 |> mutate(rffFactor    = logPop       * !!sym(sCol0) + !!sym(iCol0))
   df0   <- df0 |> mutate(respMrate    = rffFactor    * ifRespScalar)
   ### Return data
   return(df0)
@@ -937,7 +937,6 @@ listScenarios[["pop_default"]] <- pop_default
 ###### ** Methane ######
 ### Default methane scenario
 listLoad$ch4$data$ch4Ssp245  |> glimpse()
-
 ch4_default <- listLoad$ch4$data$ch4Ssp245 |> (function(
     df0
 ){
