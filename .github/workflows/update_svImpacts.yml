@@ -27,7 +27,7 @@ jobs:
     name: Process Data
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       
       - name: Send sector selection
         run: |
@@ -46,6 +46,8 @@ jobs:
             any::ggpubr
             any::openxlsx
             any::devtools
+            any::admisc
+            any::zoo
       
       - name: Install FrEDI
         run: |
@@ -79,7 +81,7 @@ jobs:
           git config --local core.autocrlf false
           git config --local user.email "${{ github.actor }}@users.noreply.github.com"
           git config --local user.name  "${{ github.actor }}"
-          git add data/sv/impactsLists/**.rds
+          git add data/sv/impactsLists/**.rd*
           git pull origin ${{ github.head_ref }} --autostash --rebase -X ours
           git commit -a -m "Updated SV FrEDI impact lists for ${{ github.event.inputs.svSectors }}"
           git push
