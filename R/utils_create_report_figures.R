@@ -49,7 +49,7 @@ sum_with_na <- function(
   ### Check for NA values
   df0    <- df0 |> mutate(is_NA = df0[[col0]] |> is.na())
   # df0    <- df0 |> select(-c(all_of(col0)))
-
+  
   ### Summarize by impact type
   group0 <- group0 |> c(threshCol) |> unique()
   sum0   <- c(col0, "is_NA")
@@ -57,14 +57,14 @@ sum_with_na <- function(
     group_by_at (.vars = c(group0)) |>
     summarize_at(.vars = c(sum0), sum, na.rm = T) |>
     ungroup()
-
+  
   ### Check NA values
   df0    <- df0 |> mutate(is_NA = case_when(
     is_NA <  df0[[threshCol]] ~ 1,
     is_NA == df0[[threshCol]] ~ NA,
     .default = NA
   ))
-
+  
   ### Multiply column
   df0[[col0]] <- df0[[col0]] * df0[["is_NA"]]
   # df0    <- df0 |> rename_at(.vars=c("yCol"), ~c(col0))
@@ -137,7 +137,7 @@ create_constant_temp_scenario <- function(
   df1   <- df1 |> mutate(temp_C  = temp0)
   df0   <- df0 |> rbind(df1)
   rm(df1)
-
+  
   ### Get other temp types and rename
   if(isConus){
     df0   <- df0 |> mutate(temp_C_global = temp_C |> FrEDI::convertTemps(from="conus"))
@@ -185,7 +185,7 @@ get_scenario_inputsList <- function(
   doTemp0 <- (cTemp0 %in% names0) |> all()
   doTemp1 <- (cTemp1 %in% names0) |> all()
   doTemp  <- doTemp0 | doTemp1
-
+  
   doSlr   <- (cSlr %in% names0) |> all()
   doGdp   <- (cGdp %in% names0) |> all()
   doPop   <- (cPop %in% names0) |> all()
@@ -200,25 +200,25 @@ get_scenario_inputsList <- function(
     list0[["tempInput"]] <- temp0
     rm("temp0")
   } ### End if(doTemp)
-
+  
   if(doSlr){
     slr0   <- df0 |> select(all_of(cSlr))
     list0[["slrInput"]] <- slr0
     rm("slr0")
   } ### End if(doSlr)
-
+  
   if(doGdp){
     gdp0   <- df0 |> select(all_of(cGdp))
     list0[["gdpInput"]] <- gdp0
     rm("gdp0")
   } ### End if(doGdp)
-
+  
   if(doPop){
     pop0   <- df0 |> select(all_of(cPop))
     list0[["popInput"]] <- pop0
     rm("pop0")
   } ### End if(doPop)
-
+  
   ### Return
   return(list0)
 } ### End get_scenario_inputsList
@@ -260,7 +260,8 @@ agg_fredi_scenario <- function(
   ### Run FrEDI
   group0  <- c("sector", "variant", "impactType", "impactYear")
   group0  <- group0 |> c("region", stateCols)
-  group0  <- group0 |> c("model_type", "model")
+  # group0  <- group0 |> c("model_type", "model")
+  group0  <- group0 |> c("modelType", "model")
   group0  <- group0 |> c("sectorprimary", "includeaggregate")
   group0  <- group0 |> c(drop0)
   df0     <- df0 |> FrEDI::aggregate_impacts(aggLevels = aggLevels, groupByCols = group0)
@@ -293,7 +294,7 @@ run_scenario <- function(
     ) ### End run_fredi_scenario
   } ### End if(fredi)
   # "got here1" |> print(); df_x0 |> glimpse()
-
+  
   ### Aggregate FrEDI
   agg0      <- !("none" %in% aggLevels)
   # agg0 |> print()
@@ -306,11 +307,11 @@ run_scenario <- function(
     ) ### End run_fredi_scenario
   } ### End if(agg0)
   # "got here2" |> print(); df_x0 |> glimpse()
-
+  
   ### Format other values
   mutate0   <- c("temp_C_conus", "temp_C_global", "slr_cm")
   df_x0     <- df_x0 |> mutate_at(vars(mutate0), as.numeric)
-
+  
   ### Return
   return(df_x0)
 } ### End function run_scenario
@@ -329,7 +330,7 @@ run_scenarios <- function(
   ### Unique scenarios
   scenarios0 <- df0[[col0]] |> unique()
   nScenarios <- scenarios0 |> length()
-
+  
   ### Iterate over the scenarios
   list0  <- scenarios0 |> map(function(.x){
     paste0("Running scenario ", which(scenarios0 == .x), "/" , nScenarios, "...") |> message()
@@ -347,7 +348,7 @@ run_scenarios <- function(
   ### Bind values into a list
   # df0    <- list0 %>% (function(x){do.call(rbind, x)})
   df0    <- list0 |> bind_rows()
-
+  
   ### Return
   return(df0)
 } ### End run_scenarios
@@ -377,7 +378,8 @@ sum_impacts_byDoW <- function(
   scenarios0 <- scenarios; rm("scenarios")
   df0        <- df0 |> filter(scenario   %in% scenarios0)
   ### Filter to appropriate models
-  df0        <- df0 |> filter(model_type %in% models)
+  # df0        <- df0 |> filter(model_type %in% models)
+  df0        <- df0 |> filter(modelType %in% models)
   ### Filter to appropriate impact years
   years0     <- impactYears
   df0        <- df0 |> filter(impactYear %in% years0)
@@ -411,7 +413,7 @@ sum_impacts_byDoW <- function(
   ### Select columns
   # select0    <- c("sector", "region", "model_type", "model", "summaryYear", "driverValue", "annual_impacts", adjCol) |> unique()
   # df0        <- df0 |> relocate(c(all_of(select0)))
-
+  
   ### Glimpse results
   # df0 %>% glimpse
   ### Return
@@ -442,7 +444,7 @@ sum_impacts_byDoW_years <- function(
   if(primary){df0 <- df0 |> filter(sectorprimary   ==1)}
   ### Run scenarios
   nYears <- years |> length()
-
+  
   ### Get list
   list0   <- years |> map(function(.x){
     paste0("Summarizing values for ", which(years == .x), "/" , nYears, " years...") |> message()
@@ -476,10 +478,10 @@ sum_impacts_byDoW_years <- function(
 get_fig7_slrDataObj <- function(
     drivers=TRUE, ### Whether to return drivers
     impacts=TRUE  ### Whether to return impacts
-    ){
+){
   ###### Initialize Return List ######
   list0     <- list()
-
+  
   ###### Get Data Objects from FrEDI ######
   ### Sector Info
   ### Variant Info
@@ -487,17 +489,17 @@ get_fig7_slrDataObj <- function(
   dfSectors <- "co_sectors"  |> get_frediDataObj()
   dfVariant <- "co_variants" |> get_frediDataObj()
   slrRef    <- "co_models"   |> get_frediDataObj()
-
+  
   ### SLR Driver values
   ### SLR Scaled impct values
   if(drivers){slrCm  <- "slr_cm"     |> get_frediDataObj()}
   if(impacts){slrImp <- "slrImpacts" |> get_frediDataObj(listSub="stateData")}
-
+  
   ###### SLR Models ######
   ### Format SLR Models
   slrRef    <- slrRef |> filter(modelType=="slr")
   slrRef    <- slrRef |> rename_at(vars("model_label"), ~c("model"))
-
+  
   ###### Levels & Labels ######
   ### Initial levels & labels
   slrLevels <- slrRef[["model_dot"]]
@@ -510,7 +512,7 @@ get_fig7_slrDataObj <- function(
   ### Vector of model labels and number of models
   c_slrs    <- slrLabels
   n_slrs    <- c_slrs |> length()
-
+  
   ###### Sectors Data ######
   ### Format Sectors data
   select0   <- c("sector_id", "sector_label", "modelType")
@@ -522,7 +524,7 @@ get_fig7_slrDataObj <- function(
   dfSectors <- dfSectors |> filter(tolower(model_type)=="slr")
   dfSectors <- dfSectors |> mutate_at(.vars=c(mutate0), as.character)
   rm(select0, rename0, rename1, mutate0)
-
+  
   ###### Variants Data ######
   ### Format Variants data
   select0   <- c("sector_id", "variant_id", "variant_label", "sectorprimary", "includeaggregate")
@@ -531,11 +533,11 @@ get_fig7_slrDataObj <- function(
   dfVariant <- dfVariant |> select(c(all_of(select0)))
   dfVariant <- dfVariant |> rename_at(.vars=c(rename0), ~c(rename1))
   rm(select0, rename0, rename1)
-
+  
   ###### Sector-Variant Data ######
   ### Create Sector-Variant data
   dfSectVar <- dfSectors |> left_join(dfVariant, by=c("sector_id"))
-
+  
   ###### SLR Driver values ######
   if(drivers){
     ### Format SLR Driver values
@@ -545,7 +547,7 @@ get_fig7_slrDataObj <- function(
     slrCm     <- slrCm |> select(c(all_of(select0)))
     slrCm     <- slrCm |> rename_at(.vars=c(rename0), ~c(rename1))
     rm(select0, rename0, rename1)
-
+    
     ### Add values for 0cm, 300 cm
     slrCm     <- slrCm  %>% (function(y){
       y    <- y |> mutate(model = model |> as.character())
@@ -553,19 +555,19 @@ get_fig7_slrDataObj <- function(
       y    <- y |> rbind(y300)
       return(y)
     })
-
+    
     ### Mutate labels & levels
     slrCm     <- slrCm |> mutate(model = model |> factor(levels=slrLevels, labels=slrLabels))
-
+    
     ### Arrange values
     arrange0  <- c("model", "year")
     slrCm     <- slrCm |> arrange_at(.vars=c(arrange0))
     rm(arrange0)
-
+    
     ### Add to list
     list0     <- list0 |> c(list(slrCm=slrCm))
   } ### End if(drivers)
-
+  
   ###### SLR Impacts Data ######
   if(impacts){
     ### Format the impacts
@@ -575,30 +577,30 @@ get_fig7_slrDataObj <- function(
     slrImp    <- slrImp |> rename_at(.vars=c(rename0), ~c(rename1))
     slrImp    <- slrImp |> select(-c(all_of(drop0)))
     rm(rename0, rename1, drop0)
-
+    
     ### Adjust names
     exclude0  <- c("year", "annual_impacts")
     mutate0   <- slrImp |> names() %>% (function(y1, y2=exclude0){y1[!(y1 %in% y2)]})
     slrImp    <- slrImp |> mutate_at(.vars=c(mutate0), as.character)
     slrImp    <- slrImp |> mutate(model = model |> factor(levels=slrLevels, labels=slrLabels))
     rm("exclude0", "mutate0")
-
+    
     ### Join with sector-variant data
     drop0     <- c("sector_id", "variant_id")
     join0     <- c(drop0, "model_type")
     slrImp    <- slrImp |> left_join(dfSectVar, by=c(join0))
     slrImp    <- slrImp |> select(-c(all_of(drop0)))
     rm(join0, drop0)
-
+    
     ### Mutate other columns
     slrImp    <- slrImp |> mutate(region     = gsub("\\.", " ", region))
     slrImp    <- slrImp |> mutate(impactType = "N/A")
     slrImp    <- slrImp |> mutate(impactYear = "Interpolation")
     slrImp    <- slrImp |> mutate(model_type = model_type |> toupper())
-
+    
     ### Replace missing values
     slrImp    <- slrImp |> mutate(annual_impacts = annual_impacts |> replace_na(0))
-
+    
     ### Mutate specific values
     slrImp    <- slrImp %>% (function(y){
       yLo   <- y |> filter(model=="30 cm" ) |> mutate(annual_impacts=0) |> mutate(model="0 cm")
@@ -606,20 +608,20 @@ get_fig7_slrDataObj <- function(
       y     <- yLo |> rbind(y) |> rbind(yHi)
       return(y)
     })
-
+    
     ### Mutate labels & levels
     slrImp    <- slrImp |> mutate(model = model |> as.character())
     slrImp    <- slrImp |> mutate(model = model |> factor(levels=slrLabels, labels=slrLabels))
-
+    
     ### Arrange values
     arrange0  <- c("sector", "variant", "impactType", "impactYear", "region", "model_type", "model", "year")
     slrImp    <- slrImp |> arrange_at(.vars=c(arrange0))
     rm(arrange0)
-
+    
     ### Add to list
     list0     <- list0 |> c(list(slrImp=slrImp))
   } ### End if impacts
-
+  
   ###### Return ######
   ### Add to list
   return(list0)
@@ -645,27 +647,27 @@ get_fig7_slrImpacts <- function(
   ### - Combine CIRA impacts and SLR trajectories
   modelLabels     <- slrDrivers[["model"]] |> levels() |> as.character()
   modelHeights    <- modelLabels |> map(function(.x){str_split(string=.x, pattern="\\s")[[1]][1]}) |> unlist() |> as.numeric()
-
+  
   ###### Format data ######
   ### Add variables for plotting with plot_DOW_byModelType
   # slrImpacts      <- slrImpacts |> mutate(impactYear = "Interpolation")
-
+  
   ### Filter to includeaggregate==1,
   if(aggOnly){slrImpacts <- slrImpacts |> filter(includeaggregate==1)}
-
+  
   ### Filter to primary==1
   primary <- !bySector
   if(aggOnly){slrImpacts <- slrImpacts |> filter(sectorprimary==1)}
-
+  
   ### Filter to appropriate categories and years
   if(!bySector){slrImpacts <- slrImpacts |> filter(year %in% years)}
   slrImpacts      <- slrImpacts |> filter(model %in% modelLabels)
-
+  
   ### Filter to national totals or calculate national totals
   slrImpacts      <- slrImpacts |> filter(region!="National Total")
   c_regions       <- slrImpacts[["region"]] |> unique()
   n_regions       <- c_regions |> length()
-
+  
   ### Change column names
   rename0         <- "model"
   rename1         <- "SLR_scenario"
@@ -673,11 +675,11 @@ get_fig7_slrImpacts <- function(
   slrImpacts      <- slrImpacts |> rename_at(.vars=c(rename0), ~c(rename1))
   slrImpacts      <- slrImpacts |> mutate(model = year |> factor())
   rm(rename0, rename1)
-
+  
   ### Initialize totals
   slrTotals       <- slrImpacts
   rm(slrImpacts)
-
+  
   ###### Summarize Impact Types ######
   ### Summarize over impact types
   if(!bySector){
@@ -688,12 +690,12 @@ get_fig7_slrImpacts <- function(
       summarize(n=n(), .groups="keep") |>
       ungroup()
     # n_impTypes     <- count_impTypes[["n"]] |> max()
-
+    
     ### Join counts with totals
     join0           <- group0
     slrTotals       <- slrTotals |> left_join(count_impTypes, by = c(join0))
     rm(join0, count_impTypes)
-
+    
     ### Summarize
     # sum0            <- c("annual_impacts", "is_NA")
     # sum0            <- c(sumCol, "is_NA")
@@ -704,11 +706,11 @@ get_fig7_slrImpacts <- function(
       threshCol = "n", ### Threshold to check against
       drop0     = TRUE         ###
     ) %>% select(-c("n"))
-
+    
     slrTotals       <- slrTotals |> mutate(impactType = "All")
     # slrTotals |> names() |> print()
   }
-
+  
   ###### National Totals ######
   ### Calculate national totals
   group0          <- c("sector", "variant", "impactType", "impactYear", "model_type", "SLR_scenario", "model", "year")
@@ -722,22 +724,22 @@ get_fig7_slrImpacts <- function(
     threshCol = "threshold", ### Threshold to check against
     drop0     = TRUE         ###
   ) %>% select(-c("threshold"))
-
+  
   slrTotals       <- slrTotals |> mutate(region = "National Total")
   # slrTotals |> names() |> print()
-
+  
   ######  #####Adjust Values ######
   ### Adjust values
   # slrTotals[[adjCol]] <- slrTotals[["annual_impacts"]] * adjVal
   slrTotals[[adjCol]] <- slrTotals[[sumCol]] * adjVal
-
+  
   # ### Add additional values & drop columns
   # drop0           <- c("variant", "impactType", "impactYear")
   # slrTotals       <- slrTotals |> mutate(region = "National Total")
   # # slrTotals       <- slrTotals |> mutate(impactType = "All")
   # slrTotals       <- slrTotals |> select(-c(all_of(drop0)))
   # rm(drop0)
-
+  
   ###### Format Results ######
   ### Join with driver info
   rename0         <- c("slr_cm"     , "year")
@@ -751,14 +753,14 @@ get_fig7_slrImpacts <- function(
   slrTotals       <- slrTotals |> rename_at(.vars=c(rename0), ~c(rename1))
   slrTotals       <- slrTotals |> relocate(c(all_of(select0)))
   rm(rename0, rename1, join0)
-
+  
   ### Adjust column names if bySector
   if(bySector){
     slrTotals       <- slrTotals |> mutate(model=SLR_scenario)
     slrTotals       <- slrTotals |> rename(year=summaryYear)
     slrTotals       <- slrTotals |> select(-c("SLR_scenario"))
   }
-
+  
   slrTotals |> glimpse() #|> print()
   ### Return
   return(slrTotals)
@@ -789,13 +791,13 @@ plot_DoW_by_modelYear <- function(
   ### Model Type Checks
   do_gcm     <- "gcm" == tolower(type0)
   do_slr     <- "slr" == tolower(type0)
-
+  
   ###### Filter Data ######
   ### Filter to model type
   # df0        <- df0 |> filter(summaryYear==year0)
   if(do_gcm){df0 <- df0 |> filter(summaryYear==year0)}
   df0        <- df0 |> filter(model_type ==type0)
-
+  
   ### Plot by model type
   plot0      <- df0 |> plot_DOW_byModelType(
     modelType = type0,
@@ -805,7 +807,7 @@ plot_DoW_by_modelYear <- function(
     options   = options,
     silent    = silent
   ) ### End plot_DOW_byModelType
-
+  
   ### Return
   return(plot0)
 } ### End plot_DoW_by_modelYear
@@ -856,7 +858,7 @@ plot_DoW <- function(
   } ### if(do_slr)
   # "got here" |> print()
   # df_types |> glimpse()
-
+  
   ### Initialize list to iterate over
   pList0     <- list(x1=df_types[["type"]], x2=df_types[["year"]])
   ### Initialize list
@@ -873,17 +875,17 @@ plot_DoW <- function(
       options    = options,
       silent     = silent
     ) ### End plot_DoW_by_modelYear
-
+    
     # plot_y |> print()
     ### Return
     return(plot_y)
   })
-
+  
   ### Add list names
   # list0 |> print()
   labels0    <- df_types[["label"]]
   list0      <- list0 |> set_names(labels0)
-
+  
   ### Return
   return(list0)
 } ### End plot_DoW
@@ -916,13 +918,13 @@ plot_DoW_by_sector <- function(
   ### For GCMs
   if(do_gcm){
     df_gcm   <- "GCM" |> map(function(.x, years0=years){
-        # df0 |> glimpse()
-        df1      <- df0 |> filter(model_type=="GCM")
-        sectors0 <- df1[["sector"]] |> unique()
-        df_x     <- sectors0 |> map(function(.y){tibble(type=.x, sector=.y, year=years, label=.y |> paste0("_", years))})
-        df_x     <- df_x |> bind_rows()
-        return(df_x)
-      })
+      # df0 |> glimpse()
+      df1      <- df0 |> filter(model_type=="GCM")
+      sectors0 <- df1[["sector"]] |> unique()
+      df_x     <- sectors0 |> map(function(.y){tibble(type=.x, sector=.y, year=years, label=.y |> paste0("_", years))})
+      df_x     <- df_x |> bind_rows()
+      return(df_x)
+    })
     df_gcm   <- df_gcm |> bind_rows()
     df_types <- df_types |> rbind(df_gcm)
     rm(df_gcm)
@@ -934,7 +936,7 @@ plot_DoW_by_sector <- function(
     df_types <- df_types |> rbind(df_slr)
     rm(df_slr, sectors0)
   } ### End if(do_slr)
-
+  
   ### Get list
   list0    <- models |> map(function(.x){
     paste0("Creating plots for model type ", .x, "...") |> message()
@@ -944,7 +946,7 @@ plot_DoW_by_sector <- function(
     sectors_x <- types_x[["sector"]]
     # df_types |> glimpse()
     pList_x   <- list(x1=types_x[["sector"]], x2=types_x[["year"]])
-
+    
     list_x    <- pList_x %>% pmap(function(x1, x2){
       x1 |> paste0("_", x2) |> print()
       df_y   <- df0  |> filter(sector == x1)
@@ -956,7 +958,7 @@ plot_DoW_by_sector <- function(
         #"look here" %>% print()
         #df_y |> glimpse()
       } ### End if(do_gcm)
-
+      
       plot_y <- df_y |> plot_DOW_byImpactTypes(
         sector    = x1,
         modelType = models,
@@ -994,31 +996,31 @@ plot_slr_scenarios <- function(
   years0     <- seq(2000, 2300, by=25)
   slrDrivers <- slrDrivers |> filter(!(model %in% c("0 cm", "300 cm")))
   dfPoints   <- slrDrivers |> filter(year %in% years0)
-
-
+  
+  
   plot0      <- slrDrivers |> ggplot() +
     geom_line(aes(x=year, y=slr_cm, color = model)) +
     geom_point(data=dfPoints, aes(x=year, y=slr_cm, color = model, shape=model))
-
+  
   plot0      <- plot0 +
     scale_color_discrete(subTitle0) +
     scale_shape_discrete(subTitle0) +
     theme(legend.position = "bottom")
-
+  
   plot0      <- plot0 +
     scale_x_continuous("Year") +
     scale_y_continuous("GMSL (cm)")
-
+  
   # plot0      <- plot0 +
   #   theme(panel.background = element_rect(fill="white")) +
   #   theme(panel.grid       = element_line(color="lightgrey")) +
   #   theme(axis.line        = element_line(color="darkgrey"))
-
+  
   plot0      <- plot0 +
     ggtitle(title0, subTitle0) +
     theme(plot.title       = element_text(hjust = 0.5, size=14)) +
     theme(plot.subtitle    = element_text(hjust = 0.5, size=11))
-
+  
   ### Return
   return(plot0)
 } ### End plot_slr_scenarios
@@ -1028,7 +1030,7 @@ create_default_tablePlot <- function(x=1){
   ### Run FrEDI
   results0 <- FrEDI::run_fredi()
   # results0 |> glimpse()
-
+  
   ### Filter to values used to report
   results0   <- results0 |>
     filter(model %in% c("Interpolation", "Average")) |>
@@ -1036,13 +1038,13 @@ create_default_tablePlot <- function(x=1){
     filter(sectorprimary == 1) |>
     filter(region == "National Total")
   results0 |> glimpse()
-
+  
   ### Summarize results for specific years
   table0   <- results0 |>
     filter(year %in% seq(2010, 2090, by=10)) |>
     select(c("sector", "variant", "year", "annual_impacts")) |>
     spread(key="year", value="annual_impacts")
-
+  
   ### Summarize results over all years
   totals0  <- results0 |>
     group_by_at(.vars=c("sector")) |>
@@ -1051,14 +1053,14 @@ create_default_tablePlot <- function(x=1){
   totals0  <- totals0|>
     arrange_at(.vars=c("annual_impacts")) |>
     mutate(order=row_number())
-
+  
   ### Factor results
   results0        <- results0 |> mutate(sector_order  = sector |> factor(levels=totals0[["sector"]]))
   results0        <- results0 |> mutate(sector_factor = sector |> factor(levels=totals0[["sector"]]))
   ### Arrange
   arrange0 <- c("sector_factor", "variant",  "year")
   results0        <- results0 |> arrange_at(.vars=c(arrange0))
-
+  
   ### Create plot
   plot0    <- results0 |>
     ggplot(aes(x=year, y=annual_impacts/10**12)) +
@@ -1068,7 +1070,7 @@ create_default_tablePlot <- function(x=1){
     scale_x_continuous("Year", breaks=seq(2010, 2090, by=20)) +
     guides(color=guide_legend(ncol=2), fill=guide_legend(ncol=2)) +
     theme(legend.position = "bottom")
-
+  
   ### Create list
   returnList <- list()
   returnList[["table" ]] <- table0

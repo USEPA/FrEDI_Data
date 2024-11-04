@@ -11,7 +11,6 @@ require(devtools)
 configureFrediData <- function(
     projectDir = ".",   ### Directory in which to find the FrEDI_Data project/package
     save       = FALSE, ### Whether to save the data
-    byState    = TRUE,  ### Whether to do test on a state-level...deprecated
     reshape    = TRUE   ### Whether to include reshaped data in outputs (e.g., for testing)
 ){
   ###### Set Arguments ######
@@ -43,30 +42,29 @@ configureFrediData <- function(
   ### Load FrEDI Data Code
   projectDir |> devtools::load_all()
   
-  
   ###### 1. Configure Data ######
-  list_systemData0 <- dataInDir |> configureSystemData(
-    fileName   = dataInName, 
-    save       = T, 
-    silent     = T, 
-    outPath    = dataOutDir |> file.path("tmp_sysdata.rda"),
-    reshape    = reshape,
-    extend_all = T,
-    return     = T
+  list_systemData0 <- configureSystemData(
+    fileDir     = dataInDir, 
+    configFile  = dataInName, 
+    configSheet = "tableNames",
+    extend_all  = T,
+    silent      = T,
+    save        = T, 
+    outPath     = dataOutDir |> file.path("tmp_sysdata.rda"),
+    reshape     = reshape,
+    return      = T
   ) ### End configureSystemData
   ### Add to return list
-  returnList[["systemDataList"]] <- list_systemData0
+  # returnList[["systemDataList"]] <- list_systemData0
   
   
   ###### 2. Run General Tests on Data ######
   ### Run general tests
   test_general_config <- general_config_test(
     configuredData = list_systemData0,
-    byState        = byState,
     save           = save,
     overwrite      = TRUE,
-    xlsxName       = "generalConfig_testResults.xlsx",
-    fredi_config   = fredi_config
+    xlsxName       = "generalConfig_testResults.xlsx"
   ) ### End general_config_test
   ### Add to return list
   returnList[["generalConfigTests"]] <- test_general_config
@@ -75,16 +73,16 @@ configureFrediData <- function(
   ###### 5. Create Images of Scaled Impacts ######
   ### Test create results
   testResults  <- list_systemData0 |> get_fredi_sectorOptions_results(); testResults |> glimpse()
-  ### Test region plot info
-  testIter0    <- testResults |> get_region_plotInfo(); 
-  # testIter0$sectorInfo |> glimpse()
+  # ### Test region plot info
+  # testIter0    <- testResults |> get_region_plotInfo(); 
+  # # testIter0$sectorInfo |> glimpse()
   ### Make scaled impact plots 
   testPlots0   <- testResults |> make_scaled_impact_plots()
   ### Add to return list
   returnList[["testPlots0"]] <- testPlots0
   ### Save plots
-  testPlots1   <- testPlots0 |> save_scaled_impact_figures(df0=testResults, modelType="GCM", fpath=testOutDir)
-  testPlots2   <- testPlots0 |> save_scaled_impact_figures(df0=testResults, modelType="SLR", fpath=testOutDir)
+  testPlots1   <- testPlots0 |> save_scaled_impact_figures(df0=testResults, type0="GCM", fpath=testOutDir)
+  testPlots2   <- testPlots0 |> save_scaled_impact_figures(df0=testResults, type0="SLR", fpath=testOutDir)
   
   
   ###### Return ######

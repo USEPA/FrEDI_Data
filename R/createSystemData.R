@@ -4,292 +4,255 @@
 createSystemData <- function(
     dataList    = list(), ### List of data created by reshapeData
     outPath     = "." |> file.path("data", "sysdata.rda"),
-    configPath  = "." |> file.path("R"   , "fredi_config.R"), ### Path to config file
-    byState     = FALSE,  ### Whether to run the function for state-level data (deprecated...remove in future updates)
     extend_all  = FALSE,  ### Whether to extend all GCM model observations to maximum range
     silent      = FALSE,  ### Level of messaging 
     return      = TRUE,   ### Whether to return the data list
-    save        = FALSE   ### Whether to save the file
+    save        = FALSE,  ### Whether to save the file
+    msg0        = "\t"    ### Prefix for messaging
 ){
   ###### Set up the environment ######
   ### Level of messaging (default is to message the user) and save behavior
   msgUser    <- !silent
+  lvl0       <- msg0 |> str_count(pattern="\\t")
   msg0       <- function(lvl0=1){"\t" |> rep(lvl0) |> paste(collapse="")}
-  if(msgUser) {msg0() |> paste0("Running createSystemData()...") |> message()}
+  if(msgUser) {msg0(lvl0=lvl0 + 1) |> paste0("Running createSystemData()...") |> message()}
+  
+  # dataList |> names() |> print()
+  # dataList[["frediData"   ]] |> names() |> print()
+  
+  ###### Import Functions to Namespace ######
+  convertTemps       <- utils::getFromNamespace("convertTemps"      , "FrEDI")
+  temps2slr          <- utils::getFromNamespace("temps2slr"         , "FrEDI")
+  interpolate_annual <- utils::getFromNamespace("interpolate_annual", "FrEDI")
+  match_scalarValues <- utils::getFromNamespace("match_scalarValues", "FrEDI")
+  update_popScalars  <- utils::getFromNamespace("update_popScalars" , "FrEDI")
+  get_scenario_id    <- utils::getFromNamespace("get_scenario_id"   , "FrEDI")
+  # get_uniqueValues   <- utils::getFromNamespace("get_uniqueValues"  , "FrEDI")
   
   
   ###### Initialize Data List ######
   ### Initialize list of data to save
   rDataList  <- list()
-  
-  ### Add config to data list
-  rDataList[["fredi_config"]] <- fredi_config
-  
-  
-  ###### Create File Paths ######
-  ### Config file
-  configPath <- if (configPath |> is.null()) {"." |> file.path("R", "fredi_config.R")} else {configPath}
-  configFile <- configPath |> basename()
-  configPath <- configPath |> dirname()
-  configFile <- configPath |> file.path(configFile)
-  # configFile |> print()
-  
+  rDataList  <- rDataList |> c(dataList)
   
   ###### Configuration Data ######
-  ### Read in configuration data and assign data tables to objects in the list
-  if(msgUser) {msg0(1) |> paste0("Loading config info from '", configFile, "'...") |> message()}
-  configFile |> source()
-  # for(name_i in fredi_config |> names()) {name_i |> assign(fredi_config[[name_i]]); rm(name_i)}
-  fredi_config |> list2env(envir = environment())
-  
-  
-  ###### Import Functions to Namespace ######
-  get_scenario_id    <- utils::getFromNamespace("get_scenario_id"   , "FrEDI")
-  interpolate_annual <- utils::getFromNamespace("interpolate_annual", "FrEDI")
-  match_scalarValues <- utils::getFromNamespace("match_scalarValues", "FrEDI")
-  convertTemps       <- utils::getFromNamespace("convertTemps"      , "FrEDI")
-  temps2slr          <- utils::getFromNamespace("temps2slr"         , "FrEDI")
-  
-  
-  ###### By State ######
-  if(byState){stateCols0 <- c("state", "postal")} else{stateCols0 <- c()}
+  ### Get config info, add data to list, assign objects to environment
+  if(msgUser) {msg0(lvl0 + 2) |> paste0("Loading configuration info...") |> message()}
+  fredi_config <- frediConfig()
+  for(name_i in fredi_config |> names()) {name_i |> assign(fredi_config[[name_i]]); rm(name_i)}
+  rDataList[["fredi_config"]] <- fredi_config
+  # fredi_config |> list2env(envir = environment())
   
   
   ###### Assign Data Objects ###### 
   ###### This section reads in data from the data file and returns a list of tables
-  ###### Table names physScalars_table1, econScalars_table1, outputs_table1, co_sectors
-  ### Add loaded tables to data list
-  ### Load data from file
-  loadDataList <- dataList
-  rDataList    <- rDataList |> c(loadDataList)
-  if(msgUser) {msg0(1) |> paste0(messages_data[["loadInputs"]]$success) |> message()}
-  # for(name_i in loadDataList |> names()) {name_i |> assign(loadDataList[[name_i]]); rm(name_i)}
-  loadDataList |> list2env(envir = environment())
+  ### Add tables to data list
+  # if(msgUser) {msg0(1) |> paste0(messages_data[["loadInputs"]][["success"]]) |> message()}
+  if(msgUser) msg0(lvl0 + 2) |> paste0("Configuring data...") |> message()
+  # dataList |> list2env(envir = environment())
+  # dataList |> names() |> print()
+  frediData     <- dataList[["frediData"   ]]
+  scenarios     <- dataList[["scenarioData"]]
+  stateData     <- dataList[["stateData"   ]]
+  ### Data names
+  frediNames    <- frediData  |> names()
+  scenarioNames <- scenarios  |> names()
+  stateNames    <- stateData  |> names()
+  # frediNames |> print(); scenarioNames |> print(); stateNames |> print()
+  ### Assign objects
+  for(name_i in frediNames   ){ name_i |> assign(frediData   [[name_i]]); rm(name_i) }
+
   
+  
+  ###### State Columns ######
+  stateCols0  <- c("state", "postal")
+  popCol0     <- c("pop")
+  national0   <- c("NationalTotal")
+
   
   ###### Sector Info ######
   ### Exclude some sectors, get the number of sectors and sector info
   ### Sector info with additional sector info: df_sectorsInfo
   ### Sector info with models: df_sectorsModels
-  if(msgUser) {msg0(1) |> paste0("Configuring data...") |> message()}
-  sector_ids   <- if (byState) {co_stateSectors[["sector_id"]]} else {co_sectors[["sector_id"]]}
-  sector_ids   <- sector_ids |> unique()
-  num_sectors  <- sector_ids |> length()
+  # sector_ids   <- co_sectors |> pull() |> unique()
   
   
-  ###### Default Driver Scenarios ######
+  ###### GCAM Scenarios ######
   ### Get reference years and add to fredi_config
-  if(msgUser) {msg0(2) |> paste0("Creating driver scenarios...") |> message()}
-  refYear_temp <- (co_modelTypes |> filter(modelUnitType=="temperature")) |> pull(modelRefYear) |> unique()
-  refYear_slr  <- (co_modelTypes |> filter(modelUnitType=="slr"        )) |> pull(modelRefYear) |> unique()
-  fredi_config[["refYear_temp"]] <- refYear_temp
-  fredi_config[["refYear_slr" ]] <- refYear_slr
-  
+  if(msgUser) {msg0(lvl0 + 3) |> paste0("Formatting GCAM scenarios...") |> message()}
+  # co_modelTypes |> glimpse()
+  refYear0       <- co_modelTypes |> pull(modelRefYear) |> min()
   ### Default temperature scenario
   ### Columns, years for interpolation
-  tempCols     <- c("year", "temp_C_conus", "temp_C_global")
-  drop0        <- c("region")
-  years0       <- refYear_temp:maxYear
-  ### Zero out CONUS values for temperature at reference year and interpolate annual values
-  df_refTemp   <- tibble(year = refYear_temp, temp_C_conus = 0)
-  temp_default <- co_defaultTemps |> filter(year > refYear_temp) |> select(c("year", "temp_C_conus"))
-  temp_default <- df_refTemp      |> rbind(temp_default)
-  temp_default <- temp_default    |> interpolate_annual(years=years0, column="temp_C_conus", rule=1:2)
-  ### Calculate global temperatures and update in list
-  temp_default <- temp_default    |> mutate(temp_C_global = temp_C_conus |> convertTemps(from="conus"))
-  temp_default <- temp_default    |> select(-all_of(drop0))
+  gcamData       <- scenarios[["gcamData"]]
+  # gcamData |> glimpse()
+  gcam_scenarios <- gcamData       |> format_gcamData()
+  gcam_default   <- gcam_scenarios |> filter(year >= refYear0) |> filter(scenario == "ECS_3.0_REF")
   ### Add to list, remove intermediate values
-  # temp_default |> glimpse(); temp_default$year |> length() |> print()
-  rDataList[["temp_default"]] <- temp_default
-  rm(tempCols, drop0)
-  
-  ### Calculate annual values for SLR from global temperatures and add to list
-  ### Ref year not needed since temps2slr will zero out values
-  df_refSlr    <- tibble(year=refYear_slr, slr_cm=0)
-  slr_default  <- temps2slr(temps=temp_default[["temp_C_global"]], years=temp_default[["year"]])
-  ### Add to list, remove intermediate values
-  # slr_default |> names() |> print()
-  rDataList[["slr_default"]] <- slr_default
-  rm(temp_default, slr_default)
+  scenarios[["gcam_scenarios"]] <- gcam_scenarios
+  scenarios[["gcam_default"  ]] <- gcam_default
+  rm(refYear0, gcamData)
   
   
-  ###### Default Socioeconomic Scenario ######
-  if(msgUser) {msg0(2) |> paste0("Creating socioeconomic scenario...") |> message()}
-  ### Columns
-  nationalDot <- c("National.Total")
-  gdpCols     <- c("year", "gdp_usd")
-  group0      <- c("year")
-  drop0       <- c("region")
-  ### Population columns
-  popColName  <- byState |> ifelse("state_pop", "reg_pop")
-  popCols     <- c("year", "region") |> c(stateCols0) |> c(popColName)
+  ###### Socioeconomic Scenario ######
+  if(msgUser) {msg0(lvl0 + 3) |> paste0("Creating socioeconomic scenario...") |> message()}
   
   ### Interpolate annual values for GDP:
   ### Filter to first unique region
   ### Select GDP columns and add national total
-  # list_years |> print()
-  gdp_default <- gdp_default |> select(all_of(gdpCols)) |> mutate(region = nationalDot)
-  gdp_default <- gdp_default |> interpolate_annual(years=list_years, column="gdp_usd", rule=1:2)
-  gdp_default <- gdp_default |> select(-any_of(drop0))
-  # gdp_default$year |> unique() |> print()
-  rDataList[["gdp_default"]] <- gdp_default
+  gdpData     <- scenarios[["gdpData"]]
+  gdp_default <- gdpData |> interpolate_gdp()
+  scenarios[["gdp_default"]] <- gdp_default
+  rm(gdpData)
   
   ### Interpolate annual values for population and add to data list
-  pop_default <- co_defaultScenario |> select(all_of(popCols))
-  pop_default <- pop_default        |> interpolate_annual(years=list_years, column=popColName, rule=1:2, byState=byState)
-  rDataList[["pop_default"]] <- pop_default
+  popData     <- scenarios[["popData"]]
+  pop_default <- popData |> interpolate_pop()
+  scenarios[["pop_default"]] <- pop_default
+  rm(popData)
   # pop_default |> names() |> print()
-  
-  ### Calculate region population totals
-  if(byState){
-    df_regPop   <- pop_default |> 
-      group_by_at (c("year", "region")) |> 
-      summarize_at(c(popColName), sum, na.rm=T) |> ungroup()
-    df_regPop   <- df_regPop |> rename_at(c(popColName), ~c("reg_pop"))
-    rDataList[["df_regPop"]] <- df_regPop
-  } ### End if(byState)
-  
-  ### Calculate national population and add to data list
-  df_national <- pop_default |> 
-    group_by_at (c(group0)) |> 
-    summarize_at(c(popColName), sum, na.rm=T) |> ungroup()
-  df_national <- df_national |> rename_at(c(popColName), ~c("national_pop"))
-  rDataList[["national_pop_default"]] <- df_national
+
+  ### Default socioeconomic scenario:
+  ### Use to assess default scalars but don't add to list
+  pop_default <- pop_default |> mutate(region = region |> str_replace_all(" ", ""))
+  df_national <- gdp_default |> create_nationalScenario(pop0=pop_default)
   # df_national |> names() |> print()
-  
-  # ### Calculate population ratios for nation to region and region to state
-  # df_popRatios <- pop_default |>
-  #   left_join(df_regPop, by = c("region", "year")) |>
-  #   left_join(df_national, by = "year") |>
-  #   mutate(region_to_state = state_pop / reg_pop,
-  #          conus_to_region = reg_pop / national_pop) |>
-  #   select(-c(state_pop, reg_pop, national_pop))
-  # rDataList[["df_popRatios"]] <- df_popRatios
-
-  ### Default scenario: Join national GDP with national population by year
-  ### Default scenario: Join national values with regional population by year
-  ### Calculate GDP per capita and add to list
-  df_national <- gdp_default |> left_join(df_national, by=c(group0))
-  df_national <- df_national |> left_join(pop_default, by=c(group0))
-  df_national <- df_national |> mutate(gdp_percap = gdp_usd / national_pop)
-  ### Add to list, remove intermediate values
-  # df_defaultScenario |> names() |> print()
-  rDataList[["df_defaultScenario"]] <- df_national
-  rm(nationalDot, gdpCols, group0, drop0)
   rm(gdp_default, pop_default)
-  # return(rDataList)
-  
-
-  ###### Extreme SLR Scenarios ######
-  ### replace NA values and convert to character
-  # slr_cm |> names() |> print(); slrImpacts |> names() |> print(); 
-  mutate0     <- c("model_type")
-  string0     <- c("slr")
-  ### Replace NA values
-  slr_cm      <- slr_cm     |> mutate_at(.vars = c(mutate0), replace_na, string0)
-  # slrImpacts |> glimpse()
-  slrImpacts  <- slrImpacts |> mutate_at(.vars = c(mutate0), replace_na, string0)
-  ### Convert to character
-  slr_cm      <- slr_cm     |> mutate_at(.vars = c(mutate0), as.character)
-  slrImpacts  <- slrImpacts |> mutate_at(.vars = c(mutate0), as.character)
-  ### Create data for extreme values above 250cm
-  if(msgUser) {msg0(2) |> paste0("Creating extreme SLR impact values...") |> message()}
-  slrExtremes <- fun_slrConfigExtremes(
-    slr_x = slr_cm,    ### rDataList$slr_cm
-    imp_x = slrImpacts ### rDataList$slrImpacts
-  ) ### End fun_slrConfigExtremes
-  # return(rDataList)
   
   
-  ###### Interpolate SLR Scenarios ######
-  ### Extend SLR Heights, Impacts, and Extremes
-  c_cm         <- c("model", "year")
-  c_imp        <- c("sector", "variant", "impactType", "impactYear", "region")
-  if(byState){c_imp <- c_imp |>  c("state", "postal", "year")} else{ c_imp <- c_imp |> c("year")}
-  ### Extend values 
-  if(msgUser) {msg0(2) |> paste0("Extending SLR values...") |> message()}
-  slr_cm       <- slr_cm      |> extend_slr()
-  slrImpacts   <- slrImpacts  |> extend_slr()
-  slrExtremes  <- slrExtremes |> extend_slr()
-
-  ### Update in data list and remove objects
-  rDataList[["slr_cm"     ]] <- slr_cm
-  rDataList[["slrImpacts" ]] <- slrImpacts
-  rDataList[["slrExtremes"]] <- slrExtremes
-  rm(slr_cm, slrImpacts, slrExtremes); rm(c_cm, c_imp)
-  # return(rDataList)
   
-  ###### Format Scalar Tables ######
+  ###### Format Scalars ######
   ### Interpolate values to annual levels
-  if(msgUser) {msg0(2) |> paste0("Formatting scalars...") |> message()}
+  if(msgUser) {msg0(lvl0 + 3) |> paste0("Formatting scalars...") |> message()}
   # scalarDataframe |> names() |> print()
-  df_mainScalars <- fun_formatScalars(
-    data_x  = scalarDataframe, ### rDataList$scalarDataframe
-    info_x  = co_scalarInfo,   ### rDataList$co_scalarInfo
-    years_x = list_years,      ### rDataList$list_years
-    byState = byState
+  ### Get data
+  scalars    <- stateData[["scalarData"]]
+  ### df_mainScalars
+  df_scalars <- fun_formatScalars(
+    data_x  = scalars,          ### rDataList$scalarDataframe
+    info_x  = co_scalarInfo,    ### rDataList$co_scalarInfo
+    years_x = minYear0:npdYear0 ### rDataList$list_years
   ) ### End fun_formatScalars
   ### Add other info
-  update_popScalars <- utils::getFromNamespace("update_popScalars", "FrEDI")
-  df_mainScalars    <- df_mainScalars |> update_popScalars(df_national)
+  df_scalars <- df_scalars |> update_popScalars(df_national, popCol=popCol0)
+  # df_scalars <- df_scalars |> update_popScalars(df_national |> rename_at(vars("pop"), ~"state_pop"), popCol="state_pop")
+  ### Update list and remove objects
+  stateData[["df_scalars"]] <- df_scalars
+  rm(df_scalars, df_national)
+  # return(stateData)
+  
+
+  
+  ###### Format SLR Data ######
+  if(msgUser) {msg0(lvl0 + 3) |> paste0("Formatting SLR data...") |> message()}
+  ### Standardize SLR scenario info
+  if(msgUser) {msg0(lvl0 + 4) |> paste0("Standardizing SLR scaled impacts...") |> message()}
+  slrImpData  <- stateData[["slrImpData"]]
+  slrImpData  <- slrImpData |> standardize_scaledImpacts(
+    df1  = co_sectorsInfo, 
+    xCol = "year"
+  ) ### End standardize_scaledImpacts
   ### Update list
-  rDataList[["df_mainScalars"]] <- df_mainScalars
+  slrImpData  <- stateData[["slrImpData"]]
+  
+  ### Create data for extreme values above 250cm
+  if(msgUser) {msg0(lvl0 + 4) |> paste0("Creating extreme SLR impact values...") |> message()}
+  slrExtremes <- fun_slrConfigExtremes(slr_x=slr_cm, imp_x=slrImpData)
   # return(rDataList)
   
+  ### Extend/Interpolate SLR Heights, Impacts, and Extremes
+  if(msgUser) {msg0(lvl0 + 4) |> paste0("Extending SLR values...") |> message()}
+  slr_cm       <- slr_cm      |> extend_slr()
+  slrImpacts   <- slrImpData  |> extend_slr()
+  slrExtremes  <- slrExtremes |> extend_slr()
   
-  ###### Get Scenario Info for Scaled Impacts  ######
-  if(msgUser) {msg0(2) |> paste0("Getting scenario IDs...") |> message()}
-  ### Add a column with a scenario id
-  # data_scaledImpacts |> glimpse()
-  includeCols        <- c("region_dot") |> c(stateCols0) |> c("model_dot")
-  data_scaledImpacts <- data_scaledImpacts |> get_scenario_id(include=includeCols)
-  ### Get list of scenarios for scenarios with at least some non-NA values
-  c_scenariosList    <- data_scaledImpacts |> filter(!(scaledImpact |> is.na()))
-  get_uniqueValues   <- utils::getFromNamespace("get_uniqueValues", "FrEDI")
-  c_scenariosList    <- c_scenariosList    |> get_uniqueValues(column="scenario_id")
-  ### Add information on non-missing scenarios to scaled impacts data
-  data_scaledImpacts <- data_scaledImpacts |> mutate(hasScenario = (scenario_id %in% c_scenariosList))
-  # rm(c_scenariosList)
+  ### Add other values back into slrImpacts
+  include0     <- c("region") |> c(stateCols0) |> c("model")
+  slrImpacts   <- slrImpacts  |> get_scenario_id(include=include0) |> ungroup()
+  # slrExtremes  <- slrExtremes |> get_scenario_id(include=include0) |> ungroup()
+  
+  groups0      <- slrImpacts  |> filter(!(scaled_impacts |> is.na())) |> pull(scenario_id) |> unique()
+  slrImpacts   <- slrImpacts  |> mutate(hasScenario = scenario_id %in% groups0)
+  # slrExtremes  <- slrExtremes |> mutate(hasScenario = scenario_id %in% groups0)
+  rm(include0, groups0)
+  
+  ### Update in data list and remove objects
+  frediData[["slr_cm"     ]] <- slr_cm
+  stateData[["slrImpacts" ]] <- slrImpacts
+  stateData[["slrExtremes"]] <- slrExtremes
+  rm(slr_cm, slrImpacts, slrExtremes)
+  # return(list(frediData=frediData, stateData=stateData))
+  
+  
+  
+  ###### Format GCM Data  ######
+  if(msgUser) {msg0(lvl0 + 3) |> paste0("Formatting GCM data...") |> message()}
+  ### Standardize GCM scaled impacts data
+  if(msgUser) {msg0(lvl0 + 4) |> paste0("Standardizing GCM scaled impacts...") |> message()}
+  gcmImpData  <- stateData[["gcmImpData"]]
+  gcmImpData  <- gcmImpData |> standardize_scaledImpacts(
+    df1  = co_sectorsInfo, 
+    xCol = "modelUnitValue"
+  ) ### End standardize_scaledImpacts
   ### Update in data list
-  rDataList[["data_scaledImpacts"]] <- data_scaledImpacts
-  # return(rDataList)
+  stateData[["gcmImpData"]] <- gcmImpData
   
   
-  ###### Get Interpolation Functions for Scenarios ######
+  
+  ### Get Interpolation Functions for Scenarios
   ### Iterate over sectors to get interpolation functions with fun_getImpactFunctions()
   ### fun_getImpactFunctions depends on the function fun_tempImpactFunction()
-  if(msgUser) {msg0(2) |> paste0("Creating list of impact functions...") |> message()}
-  df_hasScenario <- data_scaledImpacts |> filter(hasScenario)
-  df_hasScenario <- df_hasScenario     |> ungroup()
-  c_modelTypes   <- c("gcm")
+  if(msgUser) {msg0(lvl0 + 4) |> paste0("Creating list of impact functions...") |> message()}
+  # gcmImpData |> pull(region) |> unique() |> print()
+  # gcmImpData |> glimpse()
+  gcmNoImpacts  <- gcmImpData |> filter(hasScenario != 1)
+  gcmImpacts    <- gcmImpData |> filter(hasScenario == 1)
+  gcmImpacts    <- gcmImpacts |> filter(!(scaled_impacts |> is.na())) 
+  rm(gcmImpData)
   
   ### Max output value, maximum extrapolation value, unit scale, extend type
-  df_gcm         <- (co_modelTypes |> filter(modelType_id==c_modelTypes))
-  maxOutput_gcm  <- df_gcm[["modelMaxOutput"]][1]
-  maxExtrap_gcm  <- df_gcm[["modelMaxExtrap"]][1]
-  unitScale_gcm  <- df_gcm[["modelUnitScale"]][1]
+  df_gcm        <- co_modelTypes |> filter(modelType_id=="gcm")
+  maxOutput_gcm <- df_gcm |> pull(modelMaxOutput)
+  maxExtrap_gcm <- df_gcm |> pull(modelMaxExtrap)
+  # unitScale_gcm  <- df_gcm |> pull(modelUnitScale)
   
   ### Get functions
-  functions_gcm  <- df_hasScenario |> get_impactFunctions(
+  gcmImpFuncs   <- gcmImpacts |> get_impactFunctions(
     groupCol    = "scenario_id",
     xCol        = "modelUnitValue",
-    yCol        = "scaledImpact",
-    extend_from = maxOutput_gcm,
-    extend_to   = maxExtrap_gcm,
+    yCol        = "scaled_impacts",
     extend_all  = extend_all,
-    unitScale   = unitScale_gcm
+    # unitScale   = unitScale_gcm,
+    extend_from = maxOutput_gcm,
+    extend_to   = maxExtrap_gcm
   ) ### get_impactFunctions
   
-  ### Add values to list and remove intermediate values
-  rDataList[["list_impactFunctions"]] <- functions_gcm
-  rm(c_modelTypes, maxOutput_gcm, maxExtrap_gcm, unitScale_gcm)
-  rm(df_gcm, df_hasScenario, functions_gcm)
-  ### Message the user
-  if(msgUser) {msg0(1) |> paste0(messages_data[["interpFuns"]]$success) |> message()}
+  ### Separate out impacts and bind with gcmNoImpacts
+  gcmImpacts    <- gcmImpFuncs[["df0"  ]]
+  gcmImpFuncs   <- gcmImpFuncs[["funs0"]]
   
+  ### Add values to list and remove intermediate values
+  ### list_impactFunctions
+  stateData[["gcmImpacts" ]] <- gcmImpacts
+  stateData[["gcmImpFuncs"]] <- gcmImpFuncs
+  rm(df_gcm, gcmImpacts, gcmImpFuncs)
+  ### Message the user
+  if(msgUser) {msg0(4) |> paste0(messages_data[["interpFuns"]]$success) |> message()}
+  
+  ###### Drop Data  ######
+  ### Drop data sets that are no longer needed
+  # drop0         <- c("scalarData", "gcmImpData", "slrImpData")
+  # stateData     <- stateData |> (function(list0, x=drop0){list0[!((list0 |> names()) %in% x)]})()
+  
+  ###### Update Data List ######
+  if(msgUser) {msg0(lvl0 + 2) |> paste0("Updating data in lists...") |> message()}
+  rDataList[["frediData"   ]] <- frediData
+  rDataList[["stateData"   ]] <- stateData
+  rDataList[["scenarioData"]] <- scenarios
+  # scenarios |> names() |> print()
   
   ###### Return ######
-  if(msgUser){msg0(1) |> paste0("...Finished running createSystemData()", ".") |> message()}
+  if(msgUser){paste0(msg0(lvl0 + 1), "...Finished running createSystemData()", ".", "\n") |> message()}
   return(rDataList)
 } ### End function
 

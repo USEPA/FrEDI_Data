@@ -15,10 +15,9 @@ dataInfo_test <- function(
     dataList = list(),
     outPath  = ".",
     csvName  = "dataInfo_test",
-    save     = TRUE, ### Whether to save results to file
-    return   = TRUE  ### Whether to return results
+    save     = TRUE,  ### Whether to save results to file
+    return   = TRUE   ### Whether to return results
 ) {
-  #dataList <- list_reshapeData 
   ###### List Info ######
   ### List names
   ### Length of list and list names
@@ -30,11 +29,8 @@ dataInfo_test <- function(
   ###### List Object Types ######
   ### Get info on object types and add names
   ### Simplify list of types
-  # cTypes    <- c("data.frame", "list", "character", "numeric")
-  listTypes <- listNames |> map(~ (dataList[[.]] |> class()))
-  ### Add names back to list
-  listTypes <- listTypes |> (function(x){names(x) <- listNames; return(x)})()
-  # listTypes[1] |> print()
+  # c("data.frame", "list", "character", "numeric")
+  listTypes <- listNames |> map(~ (dataList[[.]] |> class())) |> set_names(listNames)
   ### Simplify types
   listTypes <- listNames |> map(~ case_when(
     ("data.frame" %in% listTypes[[.]]) ~ "data.frame",
@@ -42,10 +38,7 @@ dataInfo_test <- function(
     ("character"  %in% listTypes[[.]]) ~ "character",
     ("numeric"    %in% listTypes[[.]]) ~ "numeric",
     TRUE ~ "N/A"
-  ))
-  ### Add names back to list
-  listTypes <- listTypes |> (function(x){names(x) <- listNames; return(x)})()
-  # c(length(listTypes), names(listTypes) |> length()) |> print()
+  )) |> set_names(listNames)
   
   ###### Initial Table Info ######
   ### Initialize table of info...make methods specific to class
@@ -53,31 +46,42 @@ dataInfo_test <- function(
   df_info   <- tibble(table = listNames)
   df_info   <- df_info |> mutate(itemClass = listTypes |> unlist())
   
-  ### Count number of columns in each table
-  ### Count number of rows in each table
-  ### Count number of distinct rows in each table
-  ### Count number of missing values
+  ### In each table, count number of: columns, rows, distinct rows, and 
+  ###   - Columns
+  ###   - Rows
+  ###   - Distinct rows
+  ###   - Number of columns with all missing values
   ### Expressions
-  num_cols    <- listNames |> map(~ .x |> fun_nCol(a=listTypes, b=dataList)) |> unlist()
-  num_rows    <- listNames |> map(~ .x |> fun_nRow(a=listTypes, b=dataList)) |> unlist()
-  unique_rows <- listNames |> map(~ .x |> fun_nUnq(a=listTypes, b=dataList)) |> unlist()
-  cols_wAllNA <- listNames |> map(~ .x |> fun_nNna(a=listTypes, b=dataList)) |> unlist()
+  nCols0    <- list(z=listNames, a=listTypes, b=dataList) |> pmap(fun_nCol ) |> unlist()
+  nRows0    <- list(z=listNames, a=listTypes, b=dataList) |> pmap(fun_nRow ) |> unlist()
+  unique0   <- list(z=listNames, a=listTypes, b=dataList) |> pmap(fun_nUnq ) |> unlist()
+  allNACols <- list(z=listNames, a=listTypes, b=dataList) |> pmap(fun_allNA) |> unlist()
+  # allNACols |> print()
   
   ### Add to df_info
-  df_info   <- df_info |> mutate(num_cols    = num_cols)
-  df_info   <- df_info |> mutate(num_rows    = num_rows)
-  df_info   <- df_info |> mutate(unique_rows = unique_rows)
-  df_info   <- df_info |> mutate(cols_wAllNA = cols_wAllNA)
+  df_info   <- df_info |> mutate(num_cols    = nCols0   )
+  df_info   <- df_info |> mutate(num_rows    = nRows0   )
+  df_info   <- df_info |> mutate(unique_rows = unique0  )
+  df_info   <- df_info |> mutate(cols_wAllNA = allNACols)
   
   ###### Check Tests ######
   ### Check number of columns with some non-missing values is equal to the number of columns
   df_info   <- df_info |> mutate(na_flag  = 1 * (cols_wAllNA > 0))
   #### Check if each table has duplicate values: Number of rows should equal number of unique rows
   ### List of tables to make exceptions for
-  except0   <- c("data_scaledImpacts")
-  df_info   <- df_info |> mutate(has_dups = case_when((itemClass == "list") ~ F, (num_rows == unique_rows) ~ F, (table %in% except0) ~ F))
+  # except0   <- c("data_scaledImpacts")
+  # except0   <- c("gcmImpacts")
+  except0   <- c()
+  df_info   <- df_info |> mutate(has_dups = case_when(
+    table %in% except0 ~ F,
+    .default = !(num_rows == unique_rows)
+  )) ### End mutate
   ### Check whether all tests are passed
-  df_info   <- df_info |> mutate(passed   = case_when((itemClass == "list") ~ T, (has_dups == T | na_flag == T) ~ F, (has_dups == F & na_flag == F) ~ T))
+  df_info   <- df_info |> mutate(passed = case_when(
+    # itemClass == "list" ~ T, 
+    has_dups == T | na_flag == T ~ F, 
+    has_dups == F & na_flag == F ~ T
+  ))
   ### Mutate logicals to numeric
   mutate0   <- c("has_dups", "passed")
   df_info   <- df_info |> mutate_at(c(mutate0), as.numeric)
@@ -91,7 +95,7 @@ dataInfo_test <- function(
   
   ### Message user
   "Checking tables..." |> message()
-  msg_flags <- ifelse(hasFlags, "Some tables don't pass", "All tables pass") |> paste0("...")
+  msg_flags <- hasFlags |> ifelse("Some tables don't pass", "All tables pass") |> paste0("...")
   "\t" |> paste0(msg_flags) |> message()
   rm(msg_flags)
   
@@ -144,6 +148,7 @@ add_gen_plot <- function(
 ){
   ### Info
   plotNames <- c("temp", "slr", "gdp", "pop")
+  doPop     <- "pop" %in% (plotName |> tolower())
   # plotNames <- plotsList |> names()
   
   ### Plot info
@@ -151,8 +156,14 @@ add_gen_plot <- function(
   fType0  <- "png"
   units0  <- "in"
   dpi0    <- 200
-  width0  <- 6.0
-  height0 <- 4.5
+  # width0  <- 6.0
+  # height0 <- 4.5
+  width0  <- 6.0 + (doPop |> ifelse(4, 0))
+  height0 <- 4.5 + (doPop |> ifelse(0, 0))
+  
+  
+  ### Adjust width and height for population
+  
   
   list0  <- plotsList[[plotName]]
   plot0  <- list0[["plot"]]
@@ -207,16 +218,17 @@ add_gen_plot <- function(
 ### Configuration Test
 general_config_test <- function(
     configuredData = NULL, ### List of configured data, e.g., as output from configureSystemData()
-    byState      = TRUE,  ### Whether to run results by state (deprecated)
+    # byState      = TRUE,  ### Whether to run results by state (deprecated)
     outPath      = ".",   ### Where to save results
     xlsxName     = "generalConfig_testResults.xlsx", ### File name for outputs
+    doPlots      = FALSE, ### Whether to create scaled impact plots
     return       = TRUE,  ### Whether to return results
     save         = TRUE,  ### Whether to save results to file
-    overwrite    = TRUE,  ### Whether to overwrite an existing file if saving
-    fredi_config = NULL   ### fredi_config list object
+    overwrite    = TRUE   ### Whether to overwrite an existing file if saving
+    # fredi_config = NULL   ### fredi_config list object
 ){
   ###### Create Workbook ######
-  if(save){
+  if(save) {
     outDir    <- outPath |> file.path("data_tests")
     outFile   <- outDir  |> file.path(xlsxName)
     ### Check if outDir exists and, if not, create one
@@ -227,6 +239,9 @@ general_config_test <- function(
     wbook0    <- createWorkbook()
   } ### End if(save)
   
+  ###### Assign Objects ######
+  configList0 <- configuredData[["fredi_config"]]
+  for(name_i in configList0 |> names()) {name_i |> assign(configList0[[name_i]]); rm(name_i)}
   
   ###### Initialize List ######
   ### Initialize list for saving values
@@ -251,9 +266,10 @@ general_config_test <- function(
   rshpExists  <- dataNames |> grepl("rsData", x = _) |> any()
   
   ### Breakout reshaped Data if it exists, then drop from list
-  rshp_state0 <- "rshpData_base_test_state"
-  rshpData    <- configuredData[["rsData_state"]]
-  configuredData[["rsData_state"]] <- NULL
+  rshpName0   <- "rshpData_base_test"
+  rshpData    <- configuredData[["rsData"]]
+  # configuredData[["rsData"]] <- NULL
+  configuredData <- configuredData |> (function(list0, x=c("rsData")){list0[!((list0 |> names()) %in% x)]})()
   
   ### If reshapedData exists, check if it's the correct class
   if(rshpExists) {
@@ -269,30 +285,29 @@ general_config_test <- function(
       } else {
         "Testing reshaped data ..." |> message()
         ### Get results, add results to list
-        rshpResults <- rshpData |> dataInfo_test(save=F, return=T)
-        saveList[[rshp_state0]] <- rshpResults
+        # rshpResults <- rshpData |> dataInfo_test(save=F, return=T)
+        # saveList[[rshpName0]] <- rshpResults
+        rshpResults <- rshpData |> (function(list0){
+          names0 <- list0 |> names()
+          list0  <- list(name0_i = names0, list0_i = list0)
+          df0    <- list0 |> pmap(function(name0_i, list0_i){
+            name0_i |> print()
+            df0_i <- list0_i |> dataInfo_test(save=F, return=T)
+            df0_i <- df0_i |> mutate(listName = name0_i)
+            return(df0_i)
+          }) ### End pmap
+          
+          ### Bind rows
+          df0    <- df0 |> bind_rows()
+          return(df0)
+        })()
+        saveList[[rshpName0]] <- rshpResults
       } ### End if(!is_list0)
       rm(class0, is_list0)
     } ### End if(!(rshpData |> is.null()))
   }  else {
-    reshape0 <- data.frame()
+    # rshpResults <- tibble()
   } ### End if(rshpExists)
-  
-  # ### If no reshapedData passed to argument, try to load from file
-  # else          {
-  #   expr0    <- reshapedFile |> read.csv()
-  #   reshape0 <- try(expr=expr0 |> eval, silent=T)
-  #   class0   <- reshape0 |> class()
-  #   is_df0   <- "data.frame" %in% class0
-  #   ### Exit if unsuccessful
-  #   if(!is_df0) {
-  #     "Could not load file at `reshapedFile=\`" |> paste0(reshapedFile, "\'`...") |> message()
-  #     "\t" |> paste0("Exiting", "...", "\n") |> message()
-  #   }
-  #   rm(expr0, class0, is_df0)
-  # } ### End else(has_data0)
-  # ### Remove intermediate objects
-  # rm(has_data0, has_file0)
   
   
   ###### Configured Data ######
@@ -300,7 +315,8 @@ general_config_test <- function(
   has_data0  <- !(configuredData |> is.null())
   ### If reshapedData exists, check if it's the correct class
   if(has_data0) {
-    class0   <- configuredData$frediData$data |> class()
+    # class0   <- configuredData$frediData$data |> class()
+    class0   <- configuredData$frediData |> class()
     is_list0 <- "list" %in% class0
     ### If configuredData is not a list, message the user
     if(!is_list0) {
@@ -308,29 +324,51 @@ general_config_test <- function(
       "\t" |> paste0("Exiting", "...", "\n") |> message()
       return()
     }  else {
-      configure0 <- configuredData$frediData$data |> dataInfo_test(save=F, return=T)
+      # configure0 <- configuredData$frediData$data |> dataInfo_test(save=F, return=T)
+      # configure0 <- configuredData$frediData |> dataInfo_test(save=F, return=T)
+      dataResults <- configuredData |> (function(list0){
+        names0 <- list0 |> names()
+        list0  <- list(name0_i = names0, list0_i = list0)
+        df0    <- list0 |> pmap(function(name0_i, list0_i){
+          # name0_i |> print()
+          df0_i <- list0_i |> dataInfo_test(save=F, return=T)
+          df0_i <- df0_i |> mutate(listName = name0_i)
+          return(df0_i)
+        }) ### End pmap
+        
+        ### Bind rows
+        df0    <- df0 |> bind_rows()
+        return(df0)
+      })()
     } ### End else(!is_list0)
     rm(class0, is_list0)
   } else {
-    configure0 <- data.frame()
+    # configure0 <- tibble()
+    dataResults <- tibble()
   } ### End if(has_reshape0)
   ### Add table to list
-  saveList[[cfigName0]] <- configure0
+  # saveList[[cfigName0]] <- configure0
+  saveList[[cfigName0]] <- dataResults
   
   
-  ###### Default Values ######
+  ###### Configuration Values ######
   ### Items from fredi_config:
-  listConfig0   <- fredi_config
-  c_defaults0   <- c("aggList0" , "minYear", "maxYear", "baseYear0", "rate0")
-  c_defaults1   <- c("aggLevels", "minYear", "maxYear", "baseYear" , "rate" )
-  n_defaults0   <- listConfig0 |> names()
-  w_defaults0   <- (n_defaults0 %in% c_defaults0) |> which()
-  ### Filter to specified items, update names
-  listConfig1   <- listConfig0[w_defaults0]
+  # listConfig0   <- configuredData[["fredi_config"]]
+  ### Drop messages from list
+  drop0         <- c("messages_data", "list_messages")
+  listConfig0   <- configList0 |> (function(list0, x=drop0){list0[!((list0 |> names()) %in% x)]})()
+  rm(drop0)
+  # ### 
+  # c_defaults0   <- c("aggList0" , "minYear0", "maxYear0")
+  # c_defaults1   <- c("aggLevels", "minYear", "maxYear")
+  # n_defaults0   <- listConfig0 |> names()
+  # w_defaults0   <- (n_defaults0 %in% c_defaults0) |> which()
+  # ### Filter to specified items, update names
+  # listConfig1   <- listConfig0[w_defaults0]
   ### Create table
-  defaultsList  <- listConfig1 |> names() |> map(function(
+  defaultsList  <- listConfig0 |> names() |> map(function(
     name_i,
-    list0 = listConfig1
+    list0 = listConfig0
   ){
     val0_i <- list0[[name_i]]
     type_i <- val0_i |> class() |> paste(collapse=", ")
@@ -339,8 +377,8 @@ general_config_test <- function(
     return(df_i)
   }) |> bind_rows()
   ### Update parameter names
-  defaultsList  <- defaultsList |> mutate(parameter=parameter |> factor(c_defaults0, c_defaults1))
-  defaultsList  <- defaultsList |> mutate(parameter=parameter |> as.character())
+  # defaultsList  <- defaultsList |> mutate(parameter=parameter |> factor(c_defaults0, c_defaults1))
+  # defaultsList  <- defaultsList |> mutate(parameter=parameter |> as.character())
   ### Add table to list
   saveList[[defParam0]] <- defaultsList
   
@@ -359,68 +397,80 @@ general_config_test <- function(
   
   ###### Default Plots ######
   ### Plot values
-  lab_tmp0  <- expression("CONUS Degrees of Warming ("~degree*C*")")
+  
   lab_yrs0  <- "Year"
   lim_yrs0  <- c(2000, 2300)
   brk_yrs0  <- seq(lim_yrs0[1], lim_yrs0[2], by=20)
   
   ### Temp plot
-  temp_plot <- configuredData$frediData$data[["temp_default"]] |>
-    ggplot() +
-    geom_line(aes(x = year, y = temp_C_conus)) +
-    scale_x_continuous(lab_yrs0, breaks=brk_yrs0, limits=lim_yrs0) +
-    scale_y_continuous(lab_tmp0) +
-    ggtitle("Default Temperature Scenario")
+  # configuredData$scenarioData |> names() |> print()
+  temp_plot <- configuredData$scenarioData[["gcam_default"]] |> (function(df0){
+    years0 <- df0 |> pull(year) |> get_years_fromData()
+    labYrs <- "Year"
+    limYrs <- years0 |> range()
+    brkYrs <- limYrs[1] |> seq(limYrs[2], by=20)
+    yLab0  <- expression("CONUS Degrees of Warming ("~degree*C*")")
+    p0     <- df0 |> ggplot() +
+      geom_line(aes(x = year, y = temp_C_conus)) +
+      scale_x_continuous(labYrs, breaks=brkYrs, limits=limYrs) +
+      scale_y_continuous(yLab0) +
+      ggtitle("Default Temperature Scenario")
+    return(p0)
+  })()
+    
   ### SLR plot
-  slr_plot  <- configuredData$frediData$data[["slr_default"]] |>
-    ggplot() +
-    geom_line(aes(x = year, y = slr_cm)) +
-    scale_x_continuous(lab_yrs0, breaks=brk_yrs0, limits=lim_yrs0) +
-    scale_y_continuous("SLR (cm)") +
-    ggtitle("Default SLR Scenario")
+  slr_plot  <- configuredData$scenarioData[["gcam_default"]] |> (function(df0){
+    years0 <- df0 |> pull(year) |> get_years_fromData()
+    labYrs <- "Year"
+    limYrs <- years0 |> range()
+    brkYrs <- limYrs[1] |> seq(limYrs[2], by=20)
+    p0     <- df0 |> ggplot() +
+      geom_line(aes(x = year, y = slr_cm)) +
+      scale_x_continuous(lab_yrs0, breaks=brkYrs, limits=limYrs) +
+      scale_y_continuous("SLR (cm)") +
+      ggtitle("Default SLR Scenario")
+    return(p0)
+  })()
+    
+    
   ### GDP Plot: Convert to Billions
-  # # if(byState){
-  #   gdp_plot <- configuredData$stateData$data[["df_defaultScenario"]] |>
-  #     mutate(gdp_usd = gdp_usd / 1e12) |>
-  #     ggplot() +
-  #     geom_line(aes(x = year, y = gdp_usd)) +
-  #     scale_x_continuous(lab_yrs0, breaks=brk_yrs0, limits=lim_yrs0) +
-  #     scale_y_continuous("U.S. National GDP (2015$, trillions)") +
-  #     ggtitle("Default GDP Scenario")
-  # # } else{
-  gdp_plot <- configuredData$frediData$data[["gdp_default"]] |>
-    mutate(gdp_usd = gdp_usd / 1e12) |>
-    ggplot() +
-    geom_line(aes(x = year, y = gdp_usd)) +
-    scale_x_continuous(lab_yrs0, breaks=brk_yrs0, limits=lim_yrs0) +
-    scale_y_continuous("U.S. National GDP (2015$, trillions)") +
-    ggtitle("Default GDP Scenario")
-  # }
+  gdp_plot <- configuredData$scenarioData[["gdp_default"]] |> (function(df0){
+    years0 <- df0 |> pull(year) |> get_years_fromData()
+    labYrs <- "Year"
+    limYrs <- years0 |> range()
+    brkYrs <- limYrs[1] |> seq(limYrs[2], by=20)
+    df0    <- df0 |> mutate(gdp_usd = gdp_usd / 1e12)
+    p0     <- df0 |> ggplot() +
+      geom_line(aes(x = year, y = gdp_usd)) +
+      scale_x_continuous(labYrs, breaks=brkYrs, limits=limYrs) +
+      scale_y_continuous("U.S. National GDP (2015$, trillions)") +
+      ggtitle("Default GDP Scenario")
+    return(p0)
+  })()
+    
   
   ### Pop plot 
-  # if(byState){
-    pop_plot <- configuredData$stateData$data$pop_default |>
-      mutate(state_pop = state_pop / 1e6) |>
-      ggplot() +
-      geom_line(aes(x = year, y = state_pop, color = state), alpha = 0.75) +
-      scale_x_continuous(lab_yrs0, breaks=brk_yrs0, limits=lim_yrs0) +
+  pop_plot <- configuredData$scenarioData[["pop_default"]] |> (function(df0){
+    years0 <- df0 |> pull(year) |> get_years_fromData()
+    labYrs <- "Year"
+    limYrs <- years0 |> range()
+    brkYrs <- limYrs[1] |> seq(limYrs[2], by=20)
+    
+    df0    <- df0 |> mutate(pop = pop / 1e6)
+    df1    <- df0 |> filter(year == 2050)
+    p0     <- df0 |> ggplot() +
+      geom_line(aes(x=year, y=pop, color=region, group=interaction(region, state)), alpha = 0.75) +
+      scale_x_continuous(labYrs, breaks=brkYrs, limits=limYrs) +
       scale_y_continuous("State Population (millions)") +
+      geom_text(data=df1, aes(x=year, y=pop, label=postal), stat="identity", alpha=0.6) +
+      facet_grid(.~region) +
       # theme(axis.text.x = element_text(angle=90)) +
       theme(legend.position = "bottom") +
       scale_color_discrete("State") +
       ggtitle("Default Population Scenario")
-  # } else{
-  #   pop_plot <- configuredData$frediData$data$pop_default |>
-  #     mutate(reg_pop = reg_pop / 1e6) |>
-  #     ggplot() +
-  #     geom_line(aes(x = year, y = reg_pop, color = region), alpha = 0.75) +
-  #     scale_x_continuous(lab_yrs0, breaks=brk_yrs0, limits=lim_yrs0) +
-  #     scale_y_continuous("Regional Population (millions)") +
-  #     # theme(axis.text.x = element_text(angle=90)) +
-  #     theme(legend.position = "bottom") +
-  #     scale_color_discrete("Region") +
-  #     ggtitle("Default Population Scenario")
-  # }
+    return(p0)
+  })()
+    
     
   ### Add plots to list
   listPlots[["temp"]] <- list(plot=temp_plot) |> c(listPlots[["temp"]])
@@ -451,19 +501,22 @@ general_config_test <- function(
   } ### End if(save)
   
   ###### Create Scaled Impact Results ######
-  ### Get results
-  scaledData  <- configuredData |> get_fredi_sectorOptions_results() 
-  scaledPlots <- configuredData |> get_scaled_impact_plots()
-  ### Save
-  if(save) {
-    wbook0 |> addWorksheet(sheetName = "scaledImpacts_data")
-    wbook0 |> writeDataTable(sheet = "scaledImpacts_data", scaledData)
-    rm(name_i)
-  } ### End if(save)
-  
-  ### Add to return list, drop intermediate objects
-  saveList[["scaledImpactsPlots"]] <- list(data=scaledData, plots=scaledPlots)
-  rm(scaledData, scaledPlots)
+  # ### Get results
+  if(doPlots) {
+    scaledData  <- configuredData |> get_fredi_sectorOptions_results()
+    scaledPlots <- configuredData |> get_scaled_impact_plots()
+    ### Save
+    if(save) {
+      wbook0 |> addWorksheet(sheetName = "scaledImpacts_data")
+      wbook0 |> writeDataTable(sheet = "scaledImpacts_data", scaledData)
+      rm(name_i)
+    } ### End if(save)
+
+    ### Add to return list, drop intermediate objects
+    saveList[["scaledImpactsPlots"]] <- list(data=scaledData, plots=scaledPlots)
+    rm(scaledData, scaledPlots)
+  } ### End if(doPlots)
+ 
   
   ###### Save Outputs ######
   ### Save the workbook, remove workbook
@@ -487,7 +540,7 @@ get_fredi_sectorOptions <- function(
     dataList ### Data list, rDataList produced by createSystemData
 ){
   ### Assign data objects
-  df_sect    <- dataList[["co_sectors"]]
+  df_sect    <- dataList[["co_sectors"    ]]
   df_vars    <- dataList[["co_variants"   ]]
   df_types   <- dataList[["co_impactTypes"]]
   df_years   <- dataList[["co_impactYears"]]
@@ -503,8 +556,8 @@ get_fredi_sectorOptions <- function(
   select0    <- c("sector_id", "variant_label", "variant_id")
   select1    <- c("sector_id", "impactType_label", "impactType_id")
   select2    <- c("sector_id", "impactYear_label", "impactYear_id")
-  select3    <- c("model_id", "model_dot", "model_label", "modelType", "maxUnitValue")
-  select4    <- c("region_label", "region_dot")
+  select3    <- c("model_id", "model_label", "modelType", "maxUnitValue")
+  select4    <- c("region_label", "region_id")
   select5    <- c("region") |> c(stateCols)
   ### - Select
   df_vars    <- df_vars    |> select(all_of(select0))
@@ -537,28 +590,28 @@ get_fredi_sectorOptions <- function(
   
   ### Summarize at region level if byState==FALSE
   group0     <- df_x |> names()
-  df_x       <- df_x |> mutate(state  = (byState == 1) |> ifelse(state , "N/A"))
-  df_x       <- df_x |> mutate(postal = (byState == 1) |> ifelse(postal, "N/A"))
   df_x       <- df_x |> group_by_at(c(group0)) |> summarize(n=n(), .groups="drop")
   df_x       <- df_x |> select(-c("n"))
   rm(group0)
   
   ### Get scenario ID
   get_scenario_id <- utils::getFromNamespace("get_scenario_id", "FrEDI")
-  rename0    <- c("sector_id", "variant_id", "impactType_id", "impactYear_id", "region_dot", "model_label", "modelType")
-  rename1    <- c("sector", "variant", "impactType", "impactYear", "region", "model", "model_type")
+  # rename0    <- c("sector_id", "variant_id", "impactType_id", "impactYear_id", "region_id", "model_label", "modelType")
+  # rename1    <- c("sector", "variant", "impactType", "impactYear", "region", "model", "modelType")
+  rename0    <- c("sector_id", "variant_id", "impactType_id", "impactYear_id", "region_id", "model_id")
+  rename1    <- c("sector", "variant", "impactType", "impactYear", "region", "model")
   include0   <- c("region") |> c(stateCols) |> c("model")
   df_x       <- df_x |> rename_at(c(rename0), ~c(rename1))
   df_x       <- df_x |> get_scenario_id(include=c(include0))
   rm(rename0, rename1, include0)
   
   ### Rename columns
-  rename0    <- c("sector", "variant", "impactType", "impactYear", "region")
-  rename1    <- c("sector_id", "variant_id", "impactType_id", "impactYear_id", "region_dot")
-  rename2    <- c("sector_label", "variant_label", "impactType_label", "impactYear_label", "region_label")
-  df_x       <- df_x |> rename_at(c(rename0), ~c(rename1))
-  df_x       <- df_x |> rename_at(c(rename2), ~c(rename0))
-  rm(rename0, rename1, rename2)
+  # rename0    <- c("sector", "variant", "impactType", "impactYear", "region")
+  # rename1    <- c("sector_id", "variant_id", "impactType_id", "impactYear_id", "region_id")
+  # rename2    <- c("sector_label", "variant_label", "impactType_label", "impactYear_label", "region_label")
+  # df_x       <- df_x |> rename_at(c(rename0), ~c(rename1))
+  # df_x       <- df_x |> rename_at(c(rename2), ~c(rename0))
+  # rm(rename0, rename1, rename2)
   
   ### Return
   return(df_x)
@@ -572,8 +625,8 @@ get_fredi_sectorOptions_results <- function(
 ){
   
   ###### Data Lists ######
-  frediData  <- dataList[["frediData"]][["data"]]
-  dataList   <- dataList[["stateData"]][["data"]]
+  frediData  <- dataList[["frediData"]]
+  dataList   <- dataList[["stateData"]]
   
   ### State Columns
   stateCols <- c("state", "postal")
@@ -584,8 +637,8 @@ get_fredi_sectorOptions_results <- function(
   
   ###### Split Data ######
   ### Split sectors by model type
-  df_gcm     <- df0 |> filter(model_type=="gcm")
-  df_slr     <- df0 |> filter(model_type=="slr")
+  df_gcm     <- df0 |> filter(modelType=="gcm")
+  df_slr     <- df0 |> filter(modelType=="slr")
   ### Number of sector options
   n_gcm      <- df_gcm |> nrow()
   n_slr      <- df_slr |> nrow()
@@ -600,35 +653,38 @@ get_fredi_sectorOptions_results <- function(
   if(do_slr){
     ### Load SLR data
     slrImp     <- dataList[["slrImpacts"]]
-    # slrImp |> glimpse(); 
+    # slrImp |> glimpse(); df_slr |> glimpse()
     
     ### Join df_slr with impacts
-    rename0    <- c("sector", "variant", "impactType", "impactYear", "region")
-    rename1    <- c("sector_id", "variant_id", "impactType_id", "impactYear_id", "region_dot")
-    join0      <- rename1 |> c(stateCols) |> c("model_dot", "model_type") |> c("byState")
-    slrImp     <- slrImp |> rename_at(c(rename0), ~c(rename1))
-    slrImp     <- slrImp |> select(-c("model"))
-    # slrImp |> glimpse(); df_slr |> glimpse()
+    # slrImp     <- slrImp |> select(-c("model"))
+    # slrImp     <- slrImp |> rename_at(c("model_id"), ~c("model"))
+    join0      <- c("sector", "variant", "impactType", "impactYear") |> 
+      c("region", stateCols) |> 
+      c("modelType", "model") |> 
+      unique()
+    slrImp     <- slrImp |> select(-c("scenario_id", "hasScenario"))
     df_slr     <- df_slr |> left_join(slrImp, by=c(join0))
     rm(join0, slrImp)
     
     ### Add driverValue
-    df_slr     <- df_slr |> mutate(driverValue=gsub("cm", "", model_dot) |> as.numeric())
+    df_slr     <- df_slr |> mutate(driverValue=model |> str_replace("cm", "") |> as.numeric())
     # df_slr |> glimpse()
     
-    ### Relocate columns
-    select0    <- c("scenario_id")
-    df_slr     <- df_slr |> relocate(all_of(select0))
+    # # ### Relocate columns
+    # select0    <- c("scenario_id")
+    # df_slr     <- df_slr |> get_scenario_id(include=c("region", stateCols, "model"))
+    # df_slr     <- df_slr |> relocate(all_of(select0))
     
     ### Bind with initial results
     df0        <- df0 |> rbind(df_slr)
+    # df0 |> glimpse()
     rm(df_slr)
   } ### End if(do_slr)
   
   ###### Do GCM Results ######
   if(do_gcm){
     ### Get function list
-    funList    <- dataList[["list_impactFunctions"]]
+    funList    <- dataList[["gcmImpFuncs"]]
     funNames   <- funList  |> names()
     nFunctions <- funNames |> length()
     
@@ -639,7 +695,7 @@ get_fredi_sectorOptions_results <- function(
     keyCols0   <- funNames
     df_temps   <- tibble(temp_C = -1:11)
     df_vals    <- df_temps |> map_df(~ funList |> map_df(exec,.x))
-    df_vals    <- df_vals  |> mutate(driverValue = df_temps[["temp_C"]])
+    df_vals    <- df_vals  |> mutate(driverValue = df_temps |> pull(temp_C))
     df_vals    <- df_vals |> pivot_longer(
       all_of(keyCols0), 
       names_to  = "scenario_id",
@@ -647,7 +703,7 @@ get_fredi_sectorOptions_results <- function(
     ) ### End pivot_longer
     rm(keyCols0)
     
-    ### Join with df_gcm
+    # ### Join with df_gcm
     # df_vals |> names() |> print(); df_gcm |> names() |> print()
     join0      <- c("scenario_id")
     select0    <- join0
@@ -655,18 +711,19 @@ get_fredi_sectorOptions_results <- function(
     df_gcm     <- df_gcm  |> relocate(all_of(select0))
     rm(df_vals, select0, join0)
     ### Add year
-    df_gcm     <- df_gcm |> mutate(year = impactYear |> na_if("N/A"))
+    df_gcm     <- df_gcm |> mutate(year = impactYear |> na_if("NA"))
     df_gcm     <- df_gcm |> mutate(year = year |> as.numeric())
     ### Bind with initial results
     # df0 |> names() |> print(); df_gcm |> names() |> print()
+    # select0    <- df_gcm |> names() |> (function(x, y=df0 |> names()){x[x %in% y]})()
     df0        <- df0 |> rbind(df_gcm)
     rm(df_gcm)
   } ### End if(do_gcm)
   
   ###### Add Model Type Info ######
   rename0    <- c("modelType_id", "modelUnit_label")
-  rename1    <- c("model_type", "modelUnit")
-  join0      <- c("model_type")
+  rename1    <- c("modelType", "modelUnit")
+  join0      <- c("modelType")
   df_mTypes  <- frediData[["co_modelTypes" ]]
   df_mTypes  <- df_mTypes  |> rename_at(c(rename0), ~c(rename1))
   df0        <- df0 |> left_join(df_mTypes, by=c(join0))
@@ -675,17 +732,16 @@ get_fredi_sectorOptions_results <- function(
   ###### Arrange ######
   ### Arrange and add scaled impacts to list of items to save
   arrange0   <- c("sector", "variant", "impactType", "impactYear")
-  arrange0   <- c("region") |> c(stateCols) |> c("model_type", "model")
+  arrange0   <- c("region") |> c(stateCols) |> c("modelType", "model")
   df0        <- df0 |> arrange_at(c(arrange0))
   rm(arrange0)
   
   ###### Select Columns ######
   select0    <- c("scenario_id", "sector", "variant", "impactType", "impactYear", "region") |> c(stateCols)
-  select0    <- select0 |> c("model_type", "model", "scaled_impacts", "modelUnit", "maxUnitValue", "driverValue", "year")
+  select0    <- select0 |> c("modelType", "model", "scaled_impacts", "modelUnit", "maxUnitValue", "driverValue", "year")
   mutate0    <- c("variant", "impactType", "impactYear")
-  df0        <- df0 |> mutate_at(c(mutate0), function(y){y |> na_if("N/A") |> replace_na("NA")})
   df0        <- df0 |> select(all_of(select0))
-  df0        <- df0 |> mutate(model_type = model_type |> toupper())
+  df0        <- df0 |> mutate(modelType = modelType |> toupper())
   
   ###### Return ######
   return(df0)
@@ -703,19 +759,20 @@ make_scaled_impact_plots <- function(
       margins    = c(0, 0, .15, 0),
       marginUnit = "cm",
       theme      = NULL
-    ) ### End list
+    ), ### End list
+    silent = TRUE
 ){
   ###### Get from FrEDI Namespace ######
   ### Other values
-  years      <- df0[["impactYear"]] |> unique()
-  models     <- df0[["model_type"]] |> unique()
+  years      <- df0 |> pull(impactYear) |> unique()
+  models     <- df0 |> pull(modelType) |> unique()
   ### Data frame to iterate over
   do_gcm     <- "gcm" %in% tolower(models)
   do_slr     <- "slr" %in% tolower(models)
   
   ### Get iteration list
   df_types   <- df0 |> 
-    group_by_at(c("sector", "impactYear", "model_type")) |> 
+    group_by_at(c("sector", "impactYear", "modelType")) |> 
     summarize(n=n(), .groups="drop") |> select(-c("n")) |>
     mutate(label = sector |> paste0("_", impactYear))
   # df_types |> glimpse()
@@ -724,10 +781,10 @@ make_scaled_impact_plots <- function(
   # models |> print()
   list0    <- models |> map(function(.x){
     paste0("Creating plots for model type ", .x, "...") |> message()
-    df_x      <- df0 |> filter(model_type %in% c(.x))
+    df_x      <- df0 |> filter(modelType %in% c(.x))
     # df_x |> glimpse()
     ### Sectors
-    types_x   <- df_types |> filter(model_type==.x)
+    types_x   <- df_types |> filter(modelType==.x)
     sectors_x <- types_x[["sector"]]
     ### Get X column
     xCol_x    <- ((.x |> tolower()) == "gcm") |> ifelse("driverValue", "year")
@@ -742,12 +799,12 @@ make_scaled_impact_plots <- function(
       ### Make plots
       plot_y <- df_y |> create_scaledImpact_plots(
         sector    = x1,
-        modelType = .x,
+        type0     = .x,
         yCol      = yCol,
         xCol      = xCol_x,
         colorCol  = colorCol,
         # byState   = byState,
-        silent    = TRUE,
+        silent    = silent,
         options   = options
       ) ### End create_scaledImpact_plots
       # plot_y |> names() |> print()
@@ -788,8 +845,8 @@ get_scaled_impact_plots <- function(
   ### Save results
   if(save){
     "Saving plots..." |> message()
-    save_gcm <- plots0 |> save_scaled_impact_figures(df0=results0, modelType="GCM", fpath=fpath)
-    save_slr <- plots0 |> save_scaled_impact_figures(df0=results0, modelType="SLR", fpath=fpath)
+    save_gcm <- plots0 |> save_scaled_impact_figures(df0=results0, type0="GCM", fpath=fpath)
+    save_slr <- plots0 |> save_scaled_impact_figures(df0=results0, type0="SLR", fpath=fpath)
   } ### End if save
   
   ### Return plot list
@@ -803,7 +860,7 @@ get_scaled_impact_plots <- function(
 save_scaled_impact_figures <- function(
     plotList, ### List of plots
     df0,      ### Dataframe used to create plots
-    modelType = "GCM", ### Or SLR
+    type0     = "GCM", ### Or SLR (model type)
     fpath     = ".",   ### Path to save files
     device    = "pdf", ### Type of image
     res       = 200,   ### If png, image resolution
@@ -818,8 +875,8 @@ save_scaled_impact_figures <- function(
   fdir      <- fdir |> file.path("images")
   created0  <- fdir |> check_and_create_path(createDir=createDir)
   ### Prepare data
-  df0       <- df0  |> filter(model_type %in% modelType)
-  list0     <- plotList[[modelType]]
+  df0       <- df0  |> filter(modelType %in% type0)
+  list0     <- plotList[[type0]]
   ### Unique values
   names0    <- list0  |> names()
   sectors0  <- names0 |> map(function(.x){str_split(string=.x, pattern="_")[[1]][1]}) |> unlist() |> unique()
@@ -846,7 +903,7 @@ save_scaled_impact_figures <- function(
     c_types   <- df_x[["impactType"]] |> unique()
     c_regions <- df_x[["region"    ]] |> unique()
     c_states  <- df_x[["state"     ]] |> unique()
-    c_models  <- (df_x |> filter(!is.na(scaled_impacts)))[["model"]] |> unique()
+    c_models  <- (df_x |> filter(!(scaled_impacts |> is.na())))[["model"]] |> unique()
     # c_years |> print(); c_types |> print(); c_vars |> print();
     
     ### Number of values
@@ -932,202 +989,202 @@ save_scaled_impact_figures <- function(
 #' @export
 #'
 #' @examples
-newSectors_config_test <- function(
-    newData     = NULL,  ### Data list with new data
-    refDataFile = "." |> file.path("data", "sysdata.rda"), ### Path to old data for comparison
-    outPath     = ".",     ### Path to save outputs
-    xslxName    = "newSectorsConfig_testResults.xlsx",     ### Name of test file
-    byState     = FALSE, ### Whether results are by state (deprecated)
-    return      = TRUE,  ### Whether to return results
-    save        = TRUE,  ### Whether to save results
-    overwrite   = TRUE   ### If save is true, whether to overwrite file
-){
-  ###### Create Workbook ######
-  if(save){
-    outDir    <- outPath |> file.path("data_tests")
-    outFile   <- outDir  |> file.path(xlsxName)
-    ### Check if outDir exists and, if not, create one
-    odExists  <- outDir  |> dir.exists()
-    if(!odExists){outDir |> dir.create(showWarnings = F)}
-    rm(odExists)
-    ### Create Excel workbook
-    wbook0    <- createWorkbook()
-  } ### End if(save)
-  
-  
-  ###### Initialize Save List ######
-  saveList  <- list()
-  
-  
-  ###### Data Names ######
-  ### Names of objects to save
-  c_config0 <- "tests"
-  c_diff0   <- "tests_diffs"
-  c_impact0 <- "scaledImpacts_values"
-  c_plots0  <- "scaledImpacts_plots"
-  
-  
-  ###### Load Reference Data ######
-  ### Load ref data
-  newEnv  <- new.env()
-  refDataFile |> load(verbose = F, envir=newEnv)
-  # ls(envir=newEnv) |> print()
-  refData <- "rDataList" |> get(envir=newEnv, inherits = F)
-  # ls() |> print(); refData() |> names() |> print()
-  refFunList <- refData[["list_impactFunctions"]]
-  rm(newEnv)
-  # return(refData)
-  
-  
-  ###### Format New Data ######
-  newFunList <- newData[["list_impactFunctions"]]
-  # return(refData)
-  
-  
-  ###### Table Info ######
-  ### Create table of status, rename and drop some columns
-  ### Mutate values for changes_expected
-  levels0   <- c("No", "Maybe", "Yes")
-  mutate0   <- c("changes_expected")
-  df_status <- newData[["testDev"]]
-  df_status <- df_status |> rename_at(c("Changes.if.new.sector.added"), ~mutate0)
-  df_status <- df_status |> mutate_at(c(mutate0), factor, levels=levels0)
-  rm(mutate0, levels0)
-  
-  
-  ###### Compare New & Ref Data ######
-  ###### ** Get Test Info ######
-  ### Get test info for new and old data
-  newTests  <- newData |> dataInfo_test(save=F, return=T)
-  refTests  <- newData |> dataInfo_test(save=F, return=T)
-  ### Select appropriate columns and join old and new test info
-  join0     <- c("table")
-  sum0      <- c("num_cols", "num_rows")
-  rename0   <- c("numCols" , "numRows" )
-  select0   <- join0 |> c("itemClass", sum0)
-  select1   <- join0 |> c(sum0)
-  suffix0   <- c("_new", "_ref")
-  ### Select columns
-  newTests  <- newTests |> select(all_of(select0))
-  refTests  <- refTests |> select(all_of(select1))
-  ### Rename columns
-  newTests  <- newTests |> rename_at(c(sum0), ~rename0)
-  refTests  <- refTests |> rename_at(c(sum0), ~rename0)
-  ### Join old and new
-  df_tests  <- newTests |> left_join(refTests, by=c(join0), suffix=suffix0)
-  rm(join0, sum0, select0, select1, rename0); rm(newTests, refTests)
-  
-  
-  ###### ** Join Tests and Test Info ######
-  ### Join df_tests with df_status
-  join0     <- c("Table.Name")
-  rename0   <- c("table")
-  ### Check number of rows before
-  dim0      <- c(nrow(df_status), nrow(df_tests))
-  ### Rename columns and join columns
-  df_tests  <- df_tests  |> rename_at(c(rename0), ~join0)
-  df_status <- df_status |> left_join(df_tests, by=c(join0))
-  ### Check number of rows before
-  dim1      <- c(nrow(df_status), nrow(df_tests))
-  all0      <- (dim1 == dim0) |> all()
-  rm(join0, rename0, all0); rm(df_tests)
-  
-  
-  ###### ** Compare Values ######
-  ### Could filter on `table_test` columns if different tests required in the future
-  ### When no changes are expected still get dimensions and check that values are identical
-  # df_status |> names() |> print()
-  df_status <- df_status |> mutate(sameDims = 1 * ((numCols_new == numCols_ref) & (numRows_new == numRows_ref)))
-  ### Check values
-  checkVals <- df_status |> nrow() |> seq_len() |> map(function(
-    i, 
-    df1 = newData, 
-    df2 = refData
-  ){
-    ### Names
-    name_i  <- df_status[["Table.Name"]][i]
-    df1_i   <- df1[[name_i]]
-    df2_i   <- df2[[name_i]]
-    
-    ### Check whether to check values
-    skip_i  <- ("list" %in% class(df1_i)) | df1_i |> is.null() | df2_i |> is.null()
-    check_i <- !skip_i
-    ### Initialize return value
-    y_i     <- NA
-    if(check_i) {y_i <- 1 * identical(df1_i, df2_i)}
-    return(y_i)
-  }) |> unlist()
-  # checkVals |> print()
-  df_status <- df_status |> mutate(sameVals = checkVals)
-  df_status <- df_status |> mutate(hasDiffs = 1 * (!sameDims | !sameVals))
-  rm(checkVals)
-  
-  
-  ###### ** Arrange Test Results ######
-  ### Arrange values and add to save list
-  arrange0  <- c("changes_expected", "hasDiffs", "sameDims", "sameVals", "Table.Name")
-  df_status <- df_status |> arrange_at(c(arrange0))
-  saveList[[c_config0]] <- df_status
-  rm(arrange0)
-  
-  
-  ###### Create Workbook ######
-  ### Create workbook if(save)
-  ### Add worksheet with test info
-  if(save){
-    wbook0  <- createWorkbook()
-    sheet0  <- c_config0
-    wbook0 |> addWorksheet(sheetName = sheet0)
-    wbook0 |> writeDataTable(sheet = sheet0, x = df_status)
-    rm(sheet0)
-  } ### End if(save)
-  
-  
-  ###### Print Test Results ######
-  ### Filter to tables with differences and add to list and workbook
-  df_diff <- df_status |> filter(hasDiffs == 1)
-  saveList[[c_diff0]] <- df_diff
-  # df_diff |> glimpse()
-  
-  ### Iterate over names of tables with differences:
-  ### - Add tables with differences to list
-  ### - Write tables with differences to xlsx workbook
-  names0  <- df_diff[["Table.Name"]]
-  names0 |> walk(function(
-    name_i,
-    new0=newData[[name_i]],
-    ref0=refData[[name_i]]
-  ){
-    ### Worksheet/list name
-    sheet0 <- name_i |> paste("diff", sep="_")
-    
-    ### Get difference
-    join0  <- new0 |> names() |> (function(y, z=ref0){y[(y %in% names(z))]})()
-    diff0  <- new0 |> anti_join(ref0, by=c(join0))
-    rm(join0)
-    
-    ### Add table to list
-    saveList[[sheet0]] <- diff0
-    
-    ### Add worksheet and write data table if(save)
-    if(save) {
-      wbook0 |> addWorksheet(sheetName = sheet0)
-      wbook0 |> writeDataTable(sheet = sheet0, diff0)
-    } ### End if(save)
-  }) ### End function(name_i), end walk
-  
-  
-  ###### Save Workbook ######
-  if(save){
-    "Saving new sector results" |> paste0("...") |> message()
-    wbook0  |> saveWorkbook(file=outFile, overwrite=overwrite)
-    rm(wbook0)
-  } ### End if(save)
-  
-  
-  ###### Return ######
-  if(return) return(saveList)
-} 
+# newSectors_config_test <- function(
+#     newData     = NULL,  ### Data list with new data
+#     refDataFile = "." |> file.path("data", "sysdata.rda"), ### Path to old data for comparison
+#     outPath     = ".",     ### Path to save outputs
+#     xslxName    = "newSectorsConfig_testResults.xlsx",     ### Name of test file
+#     byState     = FALSE, ### Whether results are by state (deprecated)
+#     return      = TRUE,  ### Whether to return results
+#     save        = TRUE,  ### Whether to save results
+#     overwrite   = TRUE   ### If save is true, whether to overwrite file
+# ){
+#   ###### Create Workbook ######
+#   if(save){
+#     outDir    <- outPath |> file.path("data_tests")
+#     outFile   <- outDir  |> file.path(xlsxName)
+#     ### Check if outDir exists and, if not, create one
+#     odExists  <- outDir  |> dir.exists()
+#     if(!odExists){outDir |> dir.create(showWarnings = F)}
+#     rm(odExists)
+#     ### Create Excel workbook
+#     wbook0    <- createWorkbook()
+#   } ### End if(save)
+#   
+#   
+#   ###### Initialize Save List ######
+#   saveList  <- list()
+#   
+#   
+#   ###### Data Names ######
+#   ### Names of objects to save
+#   c_config0 <- "tests"
+#   c_diff0   <- "tests_diffs"
+#   c_impact0 <- "scaledImpacts_values"
+#   c_plots0  <- "scaledImpacts_plots"
+#   
+#   
+#   ###### Load Reference Data ######
+#   ### Load ref data
+#   newEnv  <- new.env()
+#   refDataFile |> load(verbose = F, envir=newEnv)
+#   # ls(envir=newEnv) |> print()
+#   refData <- "rDataList" |> get(envir=newEnv, inherits = F)
+#   # ls() |> print(); refData() |> names() |> print()
+#   refFunList <- refData[["gcmImpFuncs"]]
+#   rm(newEnv)
+#   # return(refData)
+#   
+#   
+#   ###### Format New Data ######
+#   newFunList <- newData[["gcmImpFuncs"]]
+#   # return(refData)
+#   
+#   
+#   ###### Table Info ######
+#   ### Create table of status, rename and drop some columns
+#   ### Mutate values for changes_expected
+#   levels0   <- c("No", "Maybe", "Yes")
+#   mutate0   <- c("changes_expected")
+#   df_status <- newData[["testDev"]]
+#   df_status <- df_status |> rename_at(c("Changes.if.new.sector.added"), ~mutate0)
+#   df_status <- df_status |> mutate_at(c(mutate0), factor, levels=levels0)
+#   rm(mutate0, levels0)
+#   
+#   
+#   ###### Compare New & Ref Data ######
+#   ###### ** Get Test Info ######
+#   ### Get test info for new and old data
+#   newTests  <- newData |> dataInfo_test(save=F, return=T)
+#   refTests  <- newData |> dataInfo_test(save=F, return=T)
+#   ### Select appropriate columns and join old and new test info
+#   join0     <- c("table")
+#   sum0      <- c("num_cols", "num_rows")
+#   rename0   <- c("numCols" , "numRows" )
+#   select0   <- join0 |> c("itemClass", sum0)
+#   select1   <- join0 |> c(sum0)
+#   suffix0   <- c("_new", "_ref")
+#   ### Select columns
+#   newTests  <- newTests |> select(all_of(select0))
+#   refTests  <- refTests |> select(all_of(select1))
+#   ### Rename columns
+#   newTests  <- newTests |> rename_at(c(sum0), ~rename0)
+#   refTests  <- refTests |> rename_at(c(sum0), ~rename0)
+#   ### Join old and new
+#   df_tests  <- newTests |> left_join(refTests, by=c(join0), suffix=suffix0)
+#   rm(join0, sum0, select0, select1, rename0); rm(newTests, refTests)
+#   
+#   
+#   ###### ** Join Tests and Test Info ######
+#   ### Join df_tests with df_status
+#   join0     <- c("Table.Name")
+#   rename0   <- c("table")
+#   ### Check number of rows before
+#   dim0      <- c(nrow(df_status), nrow(df_tests))
+#   ### Rename columns and join columns
+#   df_tests  <- df_tests  |> rename_at(c(rename0), ~join0)
+#   df_status <- df_status |> left_join(df_tests, by=c(join0))
+#   ### Check number of rows before
+#   dim1      <- c(nrow(df_status), nrow(df_tests))
+#   all0      <- (dim1 == dim0) |> all()
+#   rm(join0, rename0, all0); rm(df_tests)
+#   
+#   
+#   ###### ** Compare Values ######
+#   ### Could filter on `table_test` columns if different tests required in the future
+#   ### When no changes are expected still get dimensions and check that values are identical
+#   # df_status |> names() |> print()
+#   df_status <- df_status |> mutate(sameDims = 1 * ((numCols_new == numCols_ref) & (numRows_new == numRows_ref)))
+#   ### Check values
+#   checkVals <- df_status |> nrow() |> seq_len() |> map(function(
+#     i, 
+#     df1 = newData, 
+#     df2 = refData
+#   ){
+#     ### Names
+#     name_i  <- df_status[["Table.Name"]][i]
+#     df1_i   <- df1[[name_i]]
+#     df2_i   <- df2[[name_i]]
+#     
+#     ### Check whether to check values
+#     skip_i  <- ("list" %in% class(df1_i)) | df1_i |> is.null() | df2_i |> is.null()
+#     check_i <- !skip_i
+#     ### Initialize return value
+#     y_i     <- NA
+#     if(check_i) {y_i <- 1 * identical(df1_i, df2_i)}
+#     return(y_i)
+#   }) |> unlist()
+#   # checkVals |> print()
+#   df_status <- df_status |> mutate(sameVals = checkVals)
+#   df_status <- df_status |> mutate(hasDiffs = 1 * (!sameDims | !sameVals))
+#   rm(checkVals)
+#   
+#   
+#   ###### ** Arrange Test Results ######
+#   ### Arrange values and add to save list
+#   arrange0  <- c("changes_expected", "hasDiffs", "sameDims", "sameVals", "Table.Name")
+#   df_status <- df_status |> arrange_at(c(arrange0))
+#   saveList[[c_config0]] <- df_status
+#   rm(arrange0)
+#   
+#   
+#   ###### Create Workbook ######
+#   ### Create workbook if(save)
+#   ### Add worksheet with test info
+#   if(save){
+#     wbook0  <- createWorkbook()
+#     sheet0  <- c_config0
+#     wbook0 |> addWorksheet(sheetName = sheet0)
+#     wbook0 |> writeDataTable(sheet = sheet0, x = df_status)
+#     rm(sheet0)
+#   } ### End if(save)
+#   
+#   
+#   ###### Print Test Results ######
+#   ### Filter to tables with differences and add to list and workbook
+#   df_diff <- df_status |> filter(hasDiffs == 1)
+#   saveList[[c_diff0]] <- df_diff
+#   # df_diff |> glimpse()
+#   
+#   ### Iterate over names of tables with differences:
+#   ### - Add tables with differences to list
+#   ### - Write tables with differences to xlsx workbook
+#   names0  <- df_diff[["Table.Name"]]
+#   names0 |> walk(function(
+#     name_i,
+#     new0=newData[[name_i]],
+#     ref0=refData[[name_i]]
+#   ){
+#     ### Worksheet/list name
+#     sheet0 <- name_i |> paste("diff", sep="_")
+#     
+#     ### Get difference
+#     join0  <- new0 |> names() |> (function(y, z=ref0){y[(y %in% names(z))]})()
+#     diff0  <- new0 |> anti_join(ref0, by=c(join0))
+#     rm(join0)
+#     
+#     ### Add table to list
+#     saveList[[sheet0]] <- diff0
+#     
+#     ### Add worksheet and write data table if(save)
+#     if(save) {
+#       wbook0 |> addWorksheet(sheetName = sheet0)
+#       wbook0 |> writeDataTable(sheet = sheet0, diff0)
+#     } ### End if(save)
+#   }) ### End function(name_i), end walk
+#   
+#   
+#   ###### Save Workbook ######
+#   if(save){
+#     "Saving new sector results" |> paste0("...") |> message()
+#     wbook0  |> saveWorkbook(file=outFile, overwrite=overwrite)
+#     rm(wbook0)
+#   } ### End if(save)
+#   
+#   
+#   ###### Return ######
+#   if(return) return(saveList)
+# } 
 ### End function
 
 
