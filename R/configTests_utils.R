@@ -129,7 +129,7 @@ get_region_plotInfo <- function(
     yCol      = "scaled_impacts",
     # groupCols = c("sector", "variant", "impactType", "impactYear", "region", "model"),
     groupCols = c("sector", "variant", "impactType", "impactYear", "region", "state", "postal", "model", "maxUnitValue"),
-    nCol      = 4,
+    nCol      = 4, ### Number of columns
     silent    = TRUE
 ){
   ###### Initialize Return List ######
