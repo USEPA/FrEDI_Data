@@ -49,7 +49,7 @@ jobs:
             devtools::install_github( 
               repo    = "https://github.com/USEPA/FrEDI", 
               ref     = "${{ github.event.inputs.branch_name }}", 
-              subdir  = "FrEDI", 
+              # subdir  = "FrEDI", 
               dependencies = FALSE,
               upgrade = "never", 
               force   = TRUE,
