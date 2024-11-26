@@ -31,12 +31,13 @@ configureSystemData <- function(
   
   ###### 1. Load Excel Data ######
   ### Load state data
-  if(!silent) paste0(msg0, "Loading data...") |> message()
+  # if(!silent) 
+  paste0(msg0, "Loading data...") |> message()
   loadData0     <- fileDir |> loadFrediData(
     configFile  = configFile,  ### Name of excel file with config information
     configSheet = configSheet, ### Sheet with info about tables in config file
     silent      = silent,
-    msg0        = msg1
+    msg0        = msg0
   ) ### End loadData
   ### Update data in list
   rDataList[["frediData"   ]] <- loadData0[["frediData"   ]]
@@ -48,8 +49,9 @@ configureSystemData <- function(
   
   ###### 2. Reshape Loaded Data ######
   ### Reshape state data
-  if(!silent) paste0(msg0, "Reshaping data...") |> message()
-  reshapeData0  <- loadData0 |> reshapeFrediData(silent=silent, msg0=msg1)
+  # if(!silent) 
+  paste0(msg0, "Reshaping data...") |> message()
+  reshapeData0  <- loadData0 |> reshapeFrediData(silent=silent, msg0=msg0)
   rm(loadData0)
   ### If reshape, save the reshaped data separately
   if(reshape){ 
@@ -66,8 +68,9 @@ configureSystemData <- function(
   
   ###### 4. Configure Data ######
   ### Names of objects to combine from reshaped data
-  if(!silent) paste0(msg0, "Configuring data...") |> message()
-  sysDataList0  <- reshapeData0 |> createSystemData(extend_all=extend_all, save=F, silent=silent)
+  # if(!silent) 
+  paste0(msg0, "Configuring data...") |> message()
+  sysDataList0  <- reshapeData0 |> createSystemData(extend_all=extend_all, save=F, silent=silent, msg0=msg0)
   rm(reshapeData0)
   ### Update data in list
   rDataList[["fredi_config"]] <- sysDataList0[["fredi_config"]]
