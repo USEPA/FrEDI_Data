@@ -641,151 +641,21 @@ get_impactFunctions <- function(
     ### Create a piece-wise linear interpolation function using approxfun and defaults
     ###    rule = 1 (Returns NA for x-values outside range)
     ###    ties = mean (take the average of multiple values)
-    # fun_i   <- approxfun(x=df_i$xIn, y=df_i$yIn, method="linear", rule=1)
     fun_i    <- approxfun(x=.x |> pull(all_of(xCol)), y=.x |> pull(all_of(yCol)), method="linear", rule=1)
     
     ### Return
     return(fun_i)
   }) |> set_names(groups0)
-  # list0 |> names() |> head() |> print()
-  # list0    <- df0 |> set_names(groups0) ### End group map
-  
-  ### Get list names, which might differ from the groups
-  # list0 |> names() |> head() |> print()
   
   ###### Return ######
   ### Create a list with the impact functions and data
-  list0   <- list(df0 = df0, funs0 = list0)
+  list0   <- list(df0=df0, funs0=list0)
+  gc()
   return(list0)
 }
 
 
 
-###### get_impactFunctions #######
-### Get Impact Functions (createSystemData)
-### This is used by createSystemData (see inst/extdata/createSystemData.R) to generate impact functions
-### This function can be run separately and its outputs saved as an R data object to facilitate computation time.
-# get_impactFunctions <- function(
-#     df0         = NULL, ### Data frame with scaled impacts data
-#     groupCol    = NULL, ### Which column to look for the scenario column name (default = temp_impact_scenario )
-#     xCol        = NULL, ### Which column to use for x (default = temp_C)
-#     yCol        = NULL, ### Which column to use for y
-#     xMin        = 0,    ### Minimum value for x
-#     yMin        = 0,    ### Value of y at minimum value of x 
-#     # extrapolate = FALSE, ### Whether to extrapolate by default
-#     # unitScale   = NULL,  ### Scale between values
-#     extend_from = NULL,  ### Maximum value for model type to extend from, if not missing
-#     extend_to   = NULL,  ### Extend last points for x
-#     extend_all  = FALSE  ### Whether to extend all models or just those that go to the max model value
-# ){
-#   ###### Group data
-#   renameAt <- c("groupCol", "xCol", "yCol")
-#   renameTo <- c("group_id", "xIn" , "yIn" )
-#   df0      <- df0 |> rename_at(vars(renameAt), ~renameTo)
-#   
-#   ###### Groups
-#   ### Create groups and get group keys
-#   df0      <-  df0 |> group_by(group_id)
-#   groups0  <- (df0 |> group_keys())$group_id |> unique()
-#   
-#   list0    <- df0 |> group_map(function(.x, .y, .keep=T){
-#     ### Unique group
-#     group_i <- .x[["groupCol"]] |> unique()
-#     ### Extrapolate values
-#     df_i    <- .x |> extrapolate_impFunction(
-#       xCol        = xCol, 
-#       yCol        = yCol, 
-#       xMin        = xMin, 
-#       yMin        = yMin, 
-#       extend_from = extend_from,
-#       extend_to   = extend_to,  
-#       extend_all  = extend_all  
-#     ) ### extrapolate_impFunction
-#     
-#     ### Approximation function
-#     ### Create a piece-wise linear interpolation function using approxfun and defaults
-#     ###    rule = 1 (Returns NA for x-values outside range)
-#     ###    ties = mean (take the average of multiple values)
-#     # fun_i <- approxfun(x = df_i$xIn, y = df_i$yIn, method = "linear", rule = 1)
-#     fun_i   <- approxfun(
-#       x = df_i$xIn,
-#       y = df_i$yIn,
-#       method = "linear",
-#       rule   = 1
-#     ) ### End approxfun
-#     
-#     ### Return df_i and fun_i
-#     list_i  <- list(df0=df_i, list0=list_i) 
-#     return(list_i)
-#   }) ### End group map
-#   
-#   ###### Generate list of impact functions
-#   ### Iterate over the groups
-#   # list0   <- df0 |> group_map(function(.x, .y, .keep=T){
-#   #   group_i     <- .x[["groupCol"]] |> unique()
-#   #   
-#   #   ###### Subset values
-#   #   ### Subset data to scenario name and exclude NA values, then add a zero value
-#   #   df_i        <- .x   |> select(xIn, yIn) |> filter(!is.na(yIn))
-#   #   df_i        <- df_0 |> rbind(df_i)
-#   #   
-#   #   ###### Information about Extrapolation values
-#   #   ### Length of df_i
-#   #   len_i       <- df_i |> nrow()
-#   #   # ### Extend values out to 10 degrees of warming
-#   #   xIn_max     <- df_i$xIn[len_i]
-#   #   yIn_max     <- df_i$yIn[len_i]
-#   #   yMaxNew     <- NA
-#   #   
-#   #   # extrapolate |> print(())
-#   #   ### Whether to extend values
-#   #   ### Extend values out to the specified value
-#   #   ### - Find linear relationship between last two points
-#   #   ### - Interpolate the last few values
-#   #   # extrapolate <- TRUE
-#   #   extrapolate <- (xIn_max == extend_from) & (extend_from!=extend_to)
-#   #   extrapolate <- extrapolate | extend_all
-#   #   # extrapolate <- extend_all
-#   #   # extrapolate |> print()
-#   #   if(extrapolate){
-#   #     df_ref_i <- df_i[len_i + -1:0,]
-#   #     # df_ref_i |> print()
-#   #     ### Get linear trend
-#   #     lm_i     <- lm(yIn~xIn, data=df_ref_i)
-#   #     ### Extend values
-#   #     # df_new_i <- tibble(xIn = seq(xIn_max + unitScale, extend_to, unitScale))
-#   #     df_new_i <- tibble(xIn = c(xIn_max + unitScale, extend_to))
-#   #     df_new_i <- df_new_i |> mutate(yIn = xIn * lm_i$coefficients[2] + lm_i$coefficients[1])
-#   #     ### Bind the new observations with the other observations
-#   #     df_i     <- df_i |> rbind(df_new_i)
-#   #     ### Sort and get new y value to extend to
-#   #     which_i <- df_i$xIn == extend_to
-#   #     yMaxNew <- df_i$yIn[which_i]
-#   #   } ### End if(extrapolate)
-#   #   
-#   #   ###### Linear Interpolation
-#   #   ### Create a piece-wise linear interpolation function using approxfun and defaults
-#   #   ###    rule = 1 (Returns NA for x-values outside range)
-#   #   ###    ties = mean (take the average of multiple values)
-#   #   # fun_i <- approxfun(x = df_i$xIn, y = df_i$yIn, method = "linear", rule = 1)
-#   #   fun_i <- approxfun(
-#   #     x = df_i$xIn,
-#   #     y = df_i$yIn,
-#   #     method = "linear",
-#   #     yleft  = yIn_min,
-#   #     yright = yMaxNew
-#   #   ) ### End approxfun
-#   #   ### Return fun_i
-#   #   return(fun_i)
-#   # }) ### End group map
-#   
-#   
-#   ###### Set names
-#   list_x <- list_x |> set_names(groups_x)
-#   
-#   ###### Return Object
-#   return(list_x)
-# }
 
 ###### fun_slrModel2Height
 ### Helper function to convert SLR model to height in cm
@@ -794,7 +664,6 @@ fun_slrModel2Height <- function(
     include   = c("factor", "values"),
     valType   = c("numeric", "character", "factor"),
     labelType = c("numeric", "character") ### Used for factor or label
-    
 ){
   ### Checks
   do_factor <- "factor" %in% include
@@ -808,7 +677,7 @@ fun_slrModel2Height <- function(
     c0  <- ls0[1] %in% y
     c1  <- ls0[2] %in% y
     c3  <- ls0[2] %in% y
-    if(c0) {ls1 <- ls0[1]}
+    if     (c0) {ls1 <- ls0[1]}
     else if(c1) {ls1 <- ls0[2]}
     else        {ls1 <- ls0[3]}
     return(ls1)
@@ -823,7 +692,7 @@ fun_slrModel2Height <- function(
     ls1 <- ls0 <- types_y
     c0  <- do_numb | do_char
     c1  <- ls0[1] %in% y
-    if(c0) {ls1 <- ls0[1]}
+    if     (c0) {ls1 <- ls0[1]}
     else if(c1) {ls1 <- ls0[1]}
     else        {ls1 <- ls0[2]}
     return(ls1)
@@ -857,5 +726,6 @@ fun_slrModel2Height <- function(
   else if(do_factor) {return_x <- list_x$factors}
   else               {return_x <- list_x$values}
   ### Return
+  gc()
   return(return_x)
 }
