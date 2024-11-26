@@ -13,36 +13,36 @@ reshapeConfigData <- function(
     msg0     = "\t"    ### Prefix for messaging
 ) {
   ###### Messaging ######
+  msgN          <- "\n"
   msg1          <- msg0 |> paste("\t")  
-  if (!silent) paste0(msg0, "In reshapeConfigData:") |> message()
+  if (!silent) paste0(msg0, "Running reshapeConfigData...") |> message()
   if (!silent) paste0(msg1, "Reshaping data from FrEDI config file...") |> message()
   
   ###### Assign Objects ######
   # dataList0 <- dataList
   ### Assign tables in dataList to object in local environment
-  listNames <- dataList |> names()
-  # dataList |> names() |> print()
+  listNames     <- dataList |> names()
+  # listNames |> print()
   for(name_i in listNames) {name_i |> assign(dataList[[name_i]]); rm(name_i)}
   # dataList |> list2env(envir = environment())
   
 
   ###### Columns  ######
   ### Region and state level columns to use
-  stateCols0 <- c("state", "postal")
+  stateCols0    <- c("state", "postal")
   
   
   ###### Modify Tables and Update in List ######
   ###### ** 1. Sectors     ######
   ### Filter to those tables to include
   ### Make a copy of the sectors list to include variants
-  drop0           <- c("include", "variants", "impactYears", "impactTypes")
-  co_sectorsRef   <- co_sectors
-  co_sectors      <- co_sectors |> select(-all_of(drop0))
+  drop0         <- c("include", "variants", "impactYears", "impactTypes")
+  co_sectorsRef <- co_sectors
+  co_sectors    <- co_sectors |> select(-all_of(drop0))
   ### Update values in list, drop intermediate variables
   dataList[["co_sectorsRef"]] <- co_sectorsRef
   dataList[["co_sectors"   ]] <- co_sectors
   rm(drop0)
-  
   
   
   ###### ** 2. Misc ######
@@ -51,14 +51,12 @@ reshapeConfigData <- function(
   ### No changes to input scenario info
   
   
-  
   ###### ** 3. Variants ######
   # ### Change NA to "NA"
   # mutate0     <- c(variant)
   # co_variants <- co_variants |> mutate_at(c(mutate0), replace_na, "NA")
   # ### Update in list, drop intermediate values
   # dataList[["co_variants"]] <- co_variants
-  
   
   
   ###### ** 3. Impact Types Info ######
@@ -150,15 +148,6 @@ reshapeConfigData <- function(
   ){
     ### Get functions from FrEDI
     get_matches <- utils::getFromNamespace("get_matches", "FrEDI")
-    ### Get objects from FrEDI
-    # co_sectors  <- "co_sectors"     |> get_frediDataObj("frediData")
-    # co_variants <- "co_variants"    |> get_frediDataObj("frediData")
-    # co_impTypes <- "co_impactTypes" |> get_frediDataObj("frediData")
-    # co_impYears <- "co_impactYears" |> get_frediDataObj("frediData")
-    # co_regions  <- "co_regions"     |> get_frediDataObj("frediData")
-    # co_states   <- "co_states"      |> get_frediDataObj("frediData")
-    # co_modTypes <- "co_modelTypes"  |> get_frediDataObj("frediData")
-    # co_models   <- "co_models"      |> get_frediDataObj("frediData")
     
     ### Conditionals
     colTypes    <- colTypes |> tolower()
@@ -323,9 +312,6 @@ reshapeConfigData <- function(
   
   ###### Return ######
   ### Return the list of dataframes
-  # dataList0[["frediData"]] <- dataList
-  # return(dataList0)
-  # if (!silent) paste0("\n") |> message()
-  # dataList |> names() |> print()
+  if (!silent) paste0(msg0, "...Finished running reshapeConfigData().", msgN) |> message()
   return(dataList)
 }

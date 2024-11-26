@@ -5,14 +5,20 @@ createSystemData <- function(
     dataList    = list(), ### List of data created by reshapeData
     extend_all  = FALSE,  ### Whether to extend all GCM model observations to maximum range
     silent      = FALSE,  ### Level of messaging 
-    msg0        = "\t"    ### Prefix for messaging
+    msg0        = ""      ### Prefix for messaging
 ){
   ###### Set up the environment ######
   ### Level of messaging (default is to message the user) and save behavior
   msgUser    <- !silent
-  lvl0       <- msg0 |> str_count(pattern="\\t")
-  msg0       <- function(lvl0=1){"\t" |> rep(lvl0) |> paste(collapse="")}
-  if(msgUser) {msg0(lvl0=lvl0 + 1) |> paste0("Running createSystemData()...") |> message()}
+  msgN       <- "\n"
+  paste0(msg0, "Running createSystemData()...") |> message()
+  msg1       <- msg0 |> paste0("\t")
+  msg2       <- msg1 |> paste0("\t")
+  msg3       <- msg2 |> paste0("\t")
+  msg4       <- msg3 |> paste0("\t")
+  # lvl0       <- msg0 |> str_count(pattern="\\t")
+  # msg0       <- function(lvl0=1){"\t" |> rep(lvl0) |> paste(collapse="")}
+  if(msgUser) msg0 |> paste0("Running createSystemData()...") |> message()
   
   # dataList |> names() |> print()
   # dataList[["frediData"   ]] |> names() |> print()
@@ -34,7 +40,7 @@ createSystemData <- function(
   
   ###### Configuration Data ######
   ### Get config info, add data to list, assign objects to environment
-  if(msgUser) {msg0(lvl0 + 2) |> paste0("Loading configuration info...") |> message()}
+  if(msgUser) msg1 |> paste0("Loading configuration info...") |> message()
   fredi_config <- frediConfig()
   for(name_i in fredi_config |> names()) {name_i |> assign(fredi_config[[name_i]]); rm(name_i)}
   rDataList[["fredi_config"]] <- fredi_config
@@ -44,10 +50,11 @@ createSystemData <- function(
   ###### Assign Data Objects ###### 
   ###### This section reads in data from the data file and returns a list of tables
   ### Add tables to data list
-  # if(msgUser) {msg0(1) |> paste0(messages_data[["loadInputs"]][["success"]]) |> message()}
-  if(msgUser) msg0(lvl0 + 2) |> paste0("Configuring data...") |> message()
-  # dataList |> list2env(envir = environment())
-  # dataList |> names() |> print()
+  # # if(msgUser) {msg1 |> paste0(messages_data[["loadInputs"]][["success"]]) |> message()}
+  # # dataList |> list2env(envir = environment())
+  # # dataList |> names() |> print()
+  # if(msgUser) 
+  msg1 |> paste0("Configuring scenarios...") |> message()
   frediData     <- dataList[["frediData"   ]]
   scenarios     <- dataList[["scenarioData"]]
   stateData     <- dataList[["stateData"   ]]
@@ -73,7 +80,7 @@ createSystemData <- function(
   
   ###### GCAM Scenarios ######
   ### Get reference years and add to fredi_config
-  if(msgUser) {msg0(lvl0 + 3) |> paste0("Formatting GCAM scenarios...") |> message()}
+  if(msgUser) msg2 |> paste0("Formatting GCAM scenarios...") |> message()
   # co_modelTypes |> glimpse()
   refYear0       <- co_modelTypes |> pull(modelRefYear) |> min()
   ### Default temperature scenario
@@ -89,7 +96,7 @@ createSystemData <- function(
   
   
   ###### Socioeconomic Scenario ######
-  if(msgUser) {msg0(lvl0 + 3) |> paste0("Creating socioeconomic scenario...") |> message()}
+  if(msgUser) msg2 |> paste0("Creating socioeconomic scenario...") |> message()
   
   ### Interpolate annual values for GDP:
   ### Filter to first unique region
@@ -117,7 +124,8 @@ createSystemData <- function(
   
   ###### Format Scalars ######
   ### Interpolate values to annual levels
-  if(msgUser) {msg0(lvl0 + 3) |> paste0("Formatting scalars...") |> message()}
+  # if(msgUser) 
+  msg1 |> paste0("Formatting scalars...") |> message()
   # scalarDataframe |> names() |> print()
   ### Get data
   scalars     <- stateData[["scalarData"]]
@@ -138,9 +146,10 @@ createSystemData <- function(
 
   
   ###### Format SLR Data ######
-  if(msgUser) {msg0(lvl0 + 3) |> paste0("Formatting SLR data...") |> message()}
+  # if(msgUser) 
+  msg1 |> paste0("Formatting SLR data...") |> message()
   ### Standardize SLR scenario info
-  if(msgUser) {msg0(lvl0 + 4) |> paste0("Standardizing SLR scaled impacts...") |> message()}
+  if(msgUser) msg2 |> paste0("...Standardizing SLR scaled impacts...") |> message()
   slrImpData  <- stateData[["slrImpData"]]
   slrImpData  <- slrImpData |> standardize_scaledImpacts(
     df1  = co_sectorsInfo, 
@@ -150,12 +159,12 @@ createSystemData <- function(
   slrImpData  <- stateData[["slrImpData"]]
   
   ### Create data for extreme values above 250cm
-  if(msgUser) {msg0(lvl0 + 4) |> paste0("Creating extreme SLR impact values...") |> message()}
+  if(msgUser) msg2 |> paste0("...Creating extreme SLR impact values...") |> message()
   slrExtremes <- fun_slrConfigExtremes(slr_x=slr_cm, imp_x=slrImpData)
   # return(rDataList)
   
   ### Extend/Interpolate SLR Heights, Impacts, and Extremes
-  if(msgUser) {msg0(lvl0 + 4) |> paste0("Extending SLR values...") |> message()}
+  if(msgUser) msg2 |> paste0("...Extending SLR values...") |> message()
   slr_cm       <- slr_cm      |> extend_slr()
   slrImpacts   <- slrImpData  |> extend_slr()
   slrExtremes  <- slrExtremes |> extend_slr()
@@ -174,15 +183,16 @@ createSystemData <- function(
   frediData[["slr_cm"     ]] <- slr_cm
   stateData[["slrImpacts" ]] <- slrImpacts
   stateData[["slrExtremes"]] <- slrExtremes
-  rm(slr_cm, slrImpacts, slrExtremes)
+  rm(slr_cm, slrExtremes, slrImpData)
   # return(list(frediData=frediData, stateData=stateData))
   
   
   
   ###### Format GCM Data  ######
-  if(msgUser) {msg0(lvl0 + 3) |> paste0("Formatting GCM data...") |> message()}
+  # if(msgUser) 
+  msg1 |> paste0("Formatting GCM data...") |> message()
   ### Standardize GCM scaled impacts data
-  if(msgUser) {msg0(lvl0 + 4) |> paste0("Standardizing GCM scaled impacts...") |> message()}
+  if(msgUser) msg2 |> paste0("...Standardizing GCM scaled impacts...") |> message()
   gcmImpData  <- stateData[["gcmImpData"]]
   gcmImpData  <- gcmImpData |> standardize_scaledImpacts(
     df1  = co_sectorsInfo, 
@@ -193,10 +203,8 @@ createSystemData <- function(
   
   
   
-  ### Get Interpolation Functions for Scenarios
-  ### Iterate over sectors to get interpolation functions with fun_getImpactFunctions()
-  ### fun_getImpactFunctions depends on the function fun_tempImpactFunction()
-  if(msgUser) {msg0(lvl0 + 4) |> paste0("Creating list of impact functions...") |> message()}
+  ### Separate GCM impact data into values with and without scenarios
+  if(msgUser) msg2 |> paste0("...Creating list of groups with non-missing values...") |> message()
   # gcmImpData |> pull(region) |> unique() |> print()
   # gcmImpData |> glimpse()
   gcmNoImpacts  <- gcmImpData |> filter(hasScenario != 1)
@@ -205,20 +213,24 @@ createSystemData <- function(
   rm(gcmImpData)
   
   ### Get info about scenarios with non-missing inputs
-  select0       <- c(sector, variant, impactType, impactYear, state, postal, model)
+  select0       <- c("sector", "variant", "impactType", "impactYear", "region", "state", "postal", "model")
   gcmGroups     <- gcmImpacts |> select(all_of(select0)) |> unique() |> mutate(modelType = "gcm")
-  slrGroups     <- slrImpacts |> filter(!(value |> is.na())) |> select(all_of(select0)) |> unique() |> mutate(modelType = "slr")
+  slrGroups     <- slrImpacts |> filter(!(scaled_impacts |> is.na())) |> select(all_of(select0)) |> unique() |> mutate(modelType = "slr")
   nonNAGroups   <- gcmGroups  |> rbind(slrGroups)
   stateData[["nonNAGroups" ]] <- nonNAGroups
-  rm(gcmGroups, slrGroups, nonNAGroups)
+  rm(gcmGroups, slrGroups, slrImpacts, nonNAGroups)
   
-  ### Max output value, maximum extrapolation value, unit scale, extend type
+  ### Get Interpolation Functions for Scenarios
+  ### Iterate over sectors to get interpolation functions with fun_getImpactFunctions()
+  ### fun_getImpactFunctions depends on the function fun_tempImpactFunction()
+  ### - Max output value, maximum extrapolation value, unit scale, extend type
+  if(msgUser) msg2 |> paste0("...Creating list of impact functions for GCM groups...") |> message()
   df_gcm        <- co_modelTypes |> filter(modelType_id=="gcm")
   maxOutput_gcm <- df_gcm |> pull(modelMaxOutput)
   maxExtrap_gcm <- df_gcm |> pull(modelMaxExtrap)
   # unitScale_gcm  <- df_gcm |> pull(modelUnitScale)
   
-  ### Get functions
+  ### - Get functions
   gcmImpFuncs   <- gcmImpacts |> get_impactFunctions(
     groupCol    = "scenario_id",
     xCol        = "modelUnitValue",
@@ -239,7 +251,7 @@ createSystemData <- function(
   stateData[["gcmImpFuncs"]] <- gcmImpFuncs
   rm(df_gcm, gcmImpacts, gcmImpFuncs)
   ### Message the user
-  if(msgUser) {msg0(4) |> paste0(messages_data[["interpFuns"]]$success) |> message()}
+  if(msgUser) msg4 |> paste0(messages_data[["interpFuns"]]$success) |> message()
   
   ###### Drop Data  ######
   ### Drop data sets that are no longer needed
@@ -247,14 +259,16 @@ createSystemData <- function(
   # stateData     <- stateData |> (function(list0, x=drop0){list0[!((list0 |> names()) %in% x)]})()
   
   ###### Update Data List ######
-  if(msgUser) {msg0(lvl0 + 2) |> paste0("Updating data in lists...") |> message()}
+  # if(msgUser) 
+  msg1 |> paste0("Updating data in lists...") |> message()
   rDataList[["frediData"   ]] <- frediData
   rDataList[["stateData"   ]] <- stateData
   rDataList[["scenarioData"]] <- scenarios
   # scenarios |> names() |> print()
   
   ###### Return ######
-  if(msgUser){paste0(msg0(lvl0 + 1), "...Finished running createSystemData()", ".", "\n") |> message()}
+  paste0(msg0, "...Finished running createSystemData().", msgN) |> message()
+  gc()
   return(rDataList)
 } ### End function
 

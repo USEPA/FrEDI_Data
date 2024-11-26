@@ -1,19 +1,20 @@
 configureSystemData <- function(
-    fileDir     = "." |> file.path("inst", "extdata"), ### Path to project
-    configFile  = "FrEDI_config.xlsx",                          ### Name of excel file with config information
-    configSheet = "tableNames",                                 ### Sheet with table info
+    fileDir     = "." |> file.path("inst", "extdata"),          ### Path to project
+    configFile  = "FrEDI_config.xlsx", ### Name of excel file with config information
+    configSheet = "tableNames",        ### Sheet with table info
     outPath     = "." |> file.path("data", "tmp_sysdata.rda"),  ### Where to save data
     extend_all  = FALSE,  ### Whether to extend all GCM model observations to maximum range
-    reshape     = TRUE,   ### Whether to include reshapeData items in data list (for testing)
-    silent      = TRUE,   ### Level of messaging 
-    return      = TRUE,   ### Whether to return the data list
-    save        = FALSE   ### Whether to save the file
+    reshape     = TRUE ,  ### Whether to include reshaped data items in data list (for testing)
+    silent      = TRUE ,  ### Level of messaging 
+    return      = TRUE ,  ### Whether to return the data list
+    save        = FALSE,  ### Whether to save the file
+    msg0        = ""      ### Message prefix
 ){
-  ### Messages
-  "Running configureSystemData()..." |> message()
-  msg0 <- "\t"
-  msg1 <- msg0 |> rep(2) |> paste0(collapse="")
-  msg2 <- msg0 |> rep(3) |> paste0(collapse="")
+  ### Messaging
+  msgN <- "\n"
+  msgN |> paste0(msg0, "Running configureSystemData()...") |> message()
+  msg1 <- msg0 |> paste0("\t")
+  msg2 <- msg1 |> paste0("\t")
   
   ###### Create File Paths ######
   ### Output file
@@ -32,13 +33,14 @@ configureSystemData <- function(
   ###### 1. Load Excel Data ######
   ### Load state data
   # if(!silent) 
-  paste0(msg0, "Loading data...") |> message()
+  paste0(msg1, "Loading data...") |> message()
   loadData0     <- fileDir |> loadFrediData(
     configFile  = configFile,  ### Name of excel file with config information
     configSheet = configSheet, ### Sheet with info about tables in config file
     silent      = silent,
-    msg0        = msg0
+    msg0        = msg1
   ) ### End loadData
+  gc()
   ### Update data in list
   rDataList[["frediData"   ]] <- loadData0[["frediData"   ]]
   rDataList[["stateData"   ]] <- loadData0[["stateData"   ]]
@@ -50,8 +52,9 @@ configureSystemData <- function(
   ###### 2. Reshape Loaded Data ######
   ### Reshape state data
   # if(!silent) 
-  paste0(msg0, "Reshaping data...") |> message()
-  reshapeData0  <- loadData0 |> reshapeFrediData(silent=silent, msg0=msg0)
+  paste0(msg1, "Reshaping data...") |> message()
+  reshapeData0  <- loadData0 |> reshapeFrediData(silent=silent, msg0=msg1)
+  gc()
   rm(loadData0)
   ### If reshape, save the reshaped data separately
   if(reshape){ 
@@ -69,8 +72,9 @@ configureSystemData <- function(
   ###### 4. Configure Data ######
   ### Names of objects to combine from reshaped data
   # if(!silent) 
-  paste0(msg0, "Configuring data...") |> message()
-  sysDataList0  <- reshapeData0 |> createSystemData(extend_all=extend_all, save=F, silent=silent, msg0=msg0)
+  paste0(msg1, "Configuring data...") |> message()
+  sysDataList0  <- reshapeData0 |> createSystemData(extend_all=extend_all, silent=silent, msg0=msg1)
+  gc()
   rm(reshapeData0)
   ### Update data in list
   rDataList[["fredi_config"]] <- sysDataList0[["fredi_config"]]
@@ -94,19 +98,20 @@ configureSystemData <- function(
   ### - Check if the output file directory exists
   ### - If the outpath exists, try to save the file
   if(save) {
-    msg0 |> paste0("Saving results to ", sysDataPath, "...") |> message()
+    paste0(msg1, "Saving results to ", sysDataPath, "...") |> message()
     outPathExists <- sysDataPath |> dir.exists()
     fredi_config  <- rDataList[["frediData"]][["fredi_config"]]
     if(outPathExists){ 
       # save(fredi_config, rDataList, file=sysDataFile)
       save(rDataList, file=sysDataFile)
     } else{
-      paste0(msg0, "Warning: outPath = ", sysDataPath, "doesn't exist!") |> message()
-      paste0(msg0, msg0, "Exiting without saving...") |> message()
+      paste0(msg1, "Warning: outPath = ", sysDataPath, "doesn't exist!") |> message()
+      paste0(msg2, "Exiting without saving...") |> message()
     } ### End if(outPathExists)
   } ### End if(save)
   
   ###### Return ######
-  "...Finished running configureSystemData()." |> message()
+  paste0(msg0, "...Finished running configureSystemData().") |> paste0(msgN) |> message()
+  gc()
   return(rDataList)
 }

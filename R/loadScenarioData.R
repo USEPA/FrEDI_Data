@@ -6,9 +6,10 @@ loadScenarioData <- function(
     popFile     = "ICLUS_State_Population"  |> paste0(".csv"), ### File in scenarioDir containing population scenarios
     ratiosFile  = "state_population_ratios" |> paste0(".csv"), ### File in scenarioDir containing population ratios
     silent      = FALSE, ### Level of messaging
-    msg0        = "\t\t" ### Messaging indentation
+    msg0        = "\t"   ### Messaging prefix
 ) {
   ###### Messaging ######
+  msgN          <- "\n"
   msg1          <- msg0 |> paste("\t")  
   if (!silent) paste0(msg0, "In loadScenarioData:") |> message()
   
@@ -38,6 +39,6 @@ loadScenarioData <- function(
   
   
   ###### Return ######
-  if (!silent) paste0("\n") |> message()
+  if (!silent) paste0("...Finished running loadScenarioData().") |> message()
   return(dataList)
 }

@@ -16,6 +16,7 @@ reshapeScalarData <- function(
     msg0       = "\t"   ### Prefix for messaging
 ) {
   ###### Messaging ######
+  msgN       <- "\n"
   msg1       <- msg0 |> paste("\t")  
   if (!silent) paste0(msg0, "In reshapeScalarData:"   ) |> message()
   if (!silent) paste0(msg1, "Reshaping scalar data...") |> message()
@@ -62,6 +63,6 @@ reshapeScalarData <- function(
   
   ###### Return ######
   ### Return the list of dataframes
-  # if (!silent) paste0("\n") |> message()
+  if (!silent) paste0(msg0, "...Finished running reshapeScalarData().", msgN) |> message()
   return(scalarData)
 }
