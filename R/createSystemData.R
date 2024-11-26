@@ -3,11 +3,8 @@
 ### The purpose of this function is to import data from Excel and use this data to create and save R data objects.
 createSystemData <- function(
     dataList    = list(), ### List of data created by reshapeData
-    outPath     = "." |> file.path("data", "sysdata.rda"),
     extend_all  = FALSE,  ### Whether to extend all GCM model observations to maximum range
     silent      = FALSE,  ### Level of messaging 
-    return      = TRUE,   ### Whether to return the data list
-    save        = FALSE,  ### Whether to save the file
     msg0        = "\t"    ### Prefix for messaging
 ){
   ###### Set up the environment ######
@@ -60,16 +57,13 @@ createSystemData <- function(
   stateNames    <- stateData  |> names()
   # frediNames |> print(); scenarioNames |> print(); stateNames |> print()
   ### Assign objects
-  for(name_i in frediNames   ){ name_i |> assign(frediData   [[name_i]]); rm(name_i) }
-
-  
+  for(name_i in frediNames){ name_i |> assign(frediData[[name_i]]); rm(name_i) }
   
   ###### State Columns ######
-  stateCols0  <- c("state", "postal")
-  popCol0     <- c("pop")
-  national0   <- c("NationalTotal")
+  stateCols0    <- c("state", "postal")
+  popCol0       <- c("pop")
+  national0     <- c("NationalTotal")
 
-  
   ###### Sector Info ######
   ### Exclude some sectors, get the number of sectors and sector info
   ### Sector info with additional sector info: df_sectorsInfo
@@ -126,9 +120,9 @@ createSystemData <- function(
   if(msgUser) {msg0(lvl0 + 3) |> paste0("Formatting scalars...") |> message()}
   # scalarDataframe |> names() |> print()
   ### Get data
-  scalars    <- stateData[["scalarData"]]
+  scalars     <- stateData[["scalarData"]]
   ### df_mainScalars
-  df_scalars <- fun_formatScalars(
+  df_scalars  <- fun_formatScalars(
     data_x  = scalars,          ### rDataList$scalarDataframe
     info_x  = co_scalarInfo,    ### rDataList$co_scalarInfo
     years_x = minYear0:npdYear0 ### rDataList$list_years
@@ -209,6 +203,14 @@ createSystemData <- function(
   gcmImpacts    <- gcmImpData |> filter(hasScenario == 1)
   gcmImpacts    <- gcmImpacts |> filter(!(scaled_impacts |> is.na())) 
   rm(gcmImpData)
+  
+  ### Get info about scenarios with non-missing inputs
+  select0       <- c(sector, variant, impactType, impactYear, state, postal, model)
+  gcmGroups     <- gcmImpacts |> select(all_of(select0)) |> unique() |> mutate(modelType = "gcm")
+  slrGroups     <- slrImpacts |> filter(!(value |> is.na())) |> select(all_of(select0)) |> unique() |> mutate(modelType = "slr")
+  nonNAGroups   <- gcmGroups  |> rbind(slrGroups)
+  stateData[["nonNAGroups" ]] <- nonNAGroups
+  rm(gcmGroups, slrGroups, nonNAGroups)
   
   ### Max output value, maximum extrapolation value, unit scale, extend type
   df_gcm        <- co_modelTypes |> filter(modelType_id=="gcm")
