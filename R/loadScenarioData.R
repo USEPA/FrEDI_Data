@@ -5,8 +5,8 @@ loadScenarioData <- function(
     gdpFile     = "EPPA_v6_GDP"      |> paste0(".csv"), ### File in scenarioDir containing GDP scenarios
     popFile     = "ICLUS_State_Population"  |> paste0(".csv"), ### File in scenarioDir containing population scenarios
     ratiosFile  = "state_population_ratios" |> paste0(".csv"), ### File in scenarioDir containing population ratios
-    silent      = FALSE,                                ### Level of messaging
-    msg0        = "\t\t"
+    silent      = FALSE, ### Level of messaging
+    msg0        = "\t\t" ### Messaging indentation
 ) {
   ###### Messaging ######
   msg1          <- msg0 |> paste("\t")  

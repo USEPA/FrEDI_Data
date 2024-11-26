@@ -11,7 +11,7 @@ loadFrediData <- function(
     popFile     = "ICLUS_State_Population"  |> paste0(".csv"), ### File in scenarioDir containing population scenarios
     ### Other args
     ratiosFile  = "state_population_ratios" |> paste0(".csv"), ### File in scenarioDir containing population ratios
-    silent      = FALSE, ### Level of messaging
+    silent      = FALSE,   ### Level of messaging
     msg0        = "\t\t"   ### Message index
 ) {
   ###### Messaging ######
@@ -85,24 +85,12 @@ loadFrediData <- function(
   listState[["scalarData"]] <- data_scalars
   listState[["gcmImpData"]] <- data_gcmImpacts
   listState[["slrImpData"]] <- data_slrImpacts
-  rm(data_scalars, data_gcmImpacts, data_slrImpacts)
+  # rm(data_scalars, data_gcmImpacts, data_slrImpacts)
+  rm(data_scalars, data_slrImpacts)
   
   ### Add to dataList
   dataList[["stateData"]] <- listState
   rm(listState)
-  
-  ###### Load State Data ######
-  # ### State sectors
-  # sectors0      <- dataList[["co_sectors"]] |> pull(sector_id) |> unique()
-  # ### Load state data
-  # state_fpath   <- frediDir     |> file.path("state")
-  # state_data    <- state_fpath |> loadStateData()
-  # ### Load state data
-  # dataList[["co_defaultScenario"]] <- state_data[["df_statePop"       ]]
-  # dataList[["df_popRatios"      ]] <- state_data[["df_popRatios"      ]]
-  # dataList[["data_scaledImpacts"]] <- state_data[["df_gcmStateImpacts"]]
-  # dataList[["slrImpacts"        ]] <- state_data[["df_slrStateImpacts"]]
-  # dataList[["scalarDataframe"   ]] <- state_data[["df_stateScalars"   ]]
   
   ###### Return ######
   if (!silent) paste0("\n") |> message()
