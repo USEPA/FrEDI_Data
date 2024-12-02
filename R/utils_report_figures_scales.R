@@ -342,8 +342,8 @@ fun_limitsByGroup <- function(
   ###### Spread ######
   ### Spread & calculate the spread
   lim_bySector <- lim_bySector |> pivot_wider(
-    names_from="summary_type", 
-    values_from="summary_value"
+    names_from  = "summary_type", 
+    values_from = "summary_value"
   ) ### End pivot_wider
   ### Calculate spread
   lim_bySector <- lim_bySector |> mutate(spread= max - min)
@@ -369,12 +369,12 @@ fun_limitsByGroup <- function(
   ### Arrange the sectors & get their order
   # arrange0     <- groupCols    |> c("max", "spread")
   arrange0     <- "order" |> paste0("_", groupCols)
-  lim_bySector <- lim_bySector |> arrange_at(.vars = c(arrange0))
+  lim_bySector <- lim_bySector |> arrange_at(c(arrange0))
   lim_bySector <- lim_bySector |> mutate(order = row_number())
   # lim_bySector |> print()
 
   ### Return value
-  if(print_msg){ msg1 |> paste0("...Finished.") |> message()}
+  if(print_msg) msg1 |> paste0("...Finished.") |> message()
   return(lim_bySector)
 }
 
@@ -415,33 +415,33 @@ get_sector_plotInfo <- function(
   doVariants <- "variant"    %in% groupCols
   doTypes    <- "impactType" %in% groupCols
   ### Sectors
-  if(doSector){
+  if(doSector) {
     c_sectors <- df_sectorInfo[["sector_factor"]] |> levels() |> as.character()
     n_sectors <- c_sectors |> length()
     list0[["cSectors" ]] <- c_sectors |> as.character()
     list0[["nSectors" ]] <- n_sectors
-  }
+  } ### End if(doSector)
   ### Impact Years
-  if(doYears){
+  if(doYears) {
     c_impYears <- df_sectorInfo[["impactYear_factor"]] |> levels() |> as.character()
     n_impYears <- c_impYears |> length()
     list0[["cImpYears"]] <- c_impYears |> as.character()
     list0[["nImpYears"]] <- n_impYears
-  }
+  } ### End if(doYears)
   ### Variants
-  if(doVariants){
+  if(doVariants) {
     c_variants <- df_sectorInfo[["variant_factor"]] |> levels() |> as.character()
     n_variants <- c_variants |> length()
     list0[["cVariants"]] <- c_variants |> as.character()
     list0[["nVariants"]] <- n_variants
-  }
+  } ### End if(doVariants)
   ### Impact Types
-  if(doTypes){
+  if(doTypes) {
     c_impTypes <- df_sectorInfo[["impactType_factor"]] |> levels() |> as.character()
     n_impTypes <- c_impTypes |> length()
     list0[["cImpTypes"]] <- c_impTypes |> as.character()
     list0[["nImpTypes"]] <- n_impTypes
-  }
+  } ### End if(doTypes)
 
   ###### Number of Rows & Columns ######
   ### Initialize rows & columns

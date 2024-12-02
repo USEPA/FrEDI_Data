@@ -50,7 +50,46 @@ get_scaledImpactPlotTitles <- function(
   return(list0)
 }
 
-
+### Function to get scales for plots
+### getAxesScales 
+getXAxisScale <- function(
+    info0   = NULL,
+    xCol    = "driverValue",
+    maxYear = 2100,
+    yrUnit  = 20
+){
+  ### Initialize list
+  list0  <- list()
+  
+  ### Conditionals
+  doInfo <- !(list0 |> is.null())
+  doYear <- xCol %in% c("year")
+  
+  ### Limits
+  if(doInfo) {
+    if(doYear) {
+      limits0 <- 2000:maxYear
+      breaks0 <- seq(limits0[1] - 10, limits0[2] + 10, by=yrUnit)
+      denom0  <- 1
+    } else              {
+      limits0 <- c(-1, 11)
+      breaks0 <- seq(0, 10, by=2)
+      denom0  <- 1
+    } ### End if(doYear)
+  }  else{
+    limits0    <- info0[["limits"]]
+    breaks0    <- info0[["breaks"]]
+    denom0     <- info0[["denom" ]]
+  } ### End if(do_xInfo)
+  
+  ### Update list
+  list0[["limits"]] <- limits0
+  list0[["breaks"]] <- breaks0
+  list0[["denom" ]] <- denom0
+  
+  ### Return values
+  return(list0)
+}
 
 
 ### Function to get manual colors for regions, states in a region, or models

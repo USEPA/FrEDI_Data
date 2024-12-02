@@ -25,64 +25,72 @@ create_scaledImpact_plot <- function(
     )
 ){
   ###### Messaging ######
-  print_msg <- !silent
-  if(print_msg){ "Running create_scaledImpact_plot()..." |> message()}
+  print_msg  <- !silent
+  if(print_msg) "Running create_scaledImpact_plot()..." |> message()
   
   ###### Get from FrEDI Namespace ######
   # get_colScale <- utils::getFromNamespace("get_colScale", "FrEDI")
   
   ###### Data ######
-  df0        <- data |> filter(sector     == sector0)
-  df0        <- df0  |> filter(impactType == impType0)
-  df0        <- df0  |> filter(impactYear == impYear0)
-  type0      <- df0  |> pull(modelType) |> unique()
+  df0        <- data  |> filter(sector     == sector0 )
+  df0        <- df0   |> filter(impactType == impType0)
+  df0        <- df0   |> filter(impactYear == impYear0)
+  df0        <- df0   |> filter(region     == region0 )
+  type0      <- df0   |> pull(modelType) |> unique()
   typeLC0    <- type0 |> tolower()
   # df0 |> glimpse()
   
   ###### Values ######
   ###### ** By State ######
   # byState    <- df0 |> pull(state) |> unique() |> (function(x){!("N/A" %in% x)})()
-  byState   <- df0 |> filter(!(state %in% "N/A")) |> nrow()
+  byState    <- df0 |> filter(!(state %in% "N/A")) |> nrow()
   stateCols  <- c("state", "postal")
-  if(byState){df0 <- df0 |> filter(region == region0)} 
+  if(byState) df0 <- df0 |> filter(region == region0)
   
   ###### ** Model Types ######
   # type0 |> print()
-  do_gcm     <- "gcm" %in% (type0 |> tolower())
-  do_slr     <- "slr" %in% (type0 |> tolower())
+  do_gcm     <- "gcm" %in% typeLC0
+  do_slr     <- "slr" %in% typeLC0
   
   ###### Plot Setup ######
   ###### ** Sector Info ######
-  info0      <- infoList0[["sectorInfo"]] |> filter(sector==sector0)
-  index0     <- info0[["sector_order"]][1]
-  row0       <- info0[["plotRow"     ]][1]
-  col0       <- info0[["plotCol"     ]][1]
+  ### Filter to sector info
+  info0      <- infoList0[["sectorInfo"]]
+  info0      <- info0 |> filter(sector     == sector0 )
+  info0      <- info0 |> filter(impactType == impType0)
+  info0      <- info0 |> filter(impactYear == impYear0)
+  info0      <- info0 |> filter(region     == region0 )
+  
+  ### Get sector values
+  # index0     <- info0 |> pull(sector_order) |> unique() |> first()
+  index0     <- info0 |> pull(order_sector) |> unique() |> first()
+  row0       <- info0 |> pull(plotRow     ) |> unique() |> first()
+  col0       <- info0 |> pull(plotCol     ) |> unique() |> first()
   
   ###### ** Breaks info ######
   ###### ** -- X Breaks ######
   do_xInfo   <- xInfo |> is.null()
   if(do_xInfo) {
-    if(xCol == "year"){
-      x_limits <- c(2000, 2100)
-      x_breaks <- seq(x_limits[1] - 10, x_limits[2] + 10, by = 20)
-      x_denom  <- 1
-    } ### End if(xCol == "year")
-    else              {
-      x_limits <- c(-1, 11)
-      x_breaks <- seq(0, 10, by=2)
-      x_denom  <- 1
-    } ### End else(xCol == "year")
-  }  else{
-    x_scale    <- xInfo[["scale" ]]
-    x_p10      <- xInfo[["p10"   ]]
-    x_denom    <- xInfo[["denom" ]]
-    x_breaks   <- xInfo[["breaks"]]
-    x_limits   <- xInfo[["limits"]]
+    xInfo <- xInfo |> getXAxisScale(
+      xCol    = xCol,
+      maxYear = 2100,
+      yrUnit  = 20
+    ) ### End getXAxisScale
   } ### End if(do_xInfo)
+  ### Assign to objects
+  x_limits   <- xInfo[["limits"]]
+  x_breaks   <- xInfo[["breaks"]]
+  x_denom    <- xInfo[["denom" ]]
   
   ###### ** -- Y-Breaks ######
-  y_info     <- infoList0[["minMax"]] |> filter(plotRow == row0)
-  y_info     <- y_info |> mutate(sector=sector0)
+  ### Filter to y columns info
+  y_info     <- infoList0[["minMax"]]
+  # y_info     <- y_info |> filter(plotRow == row0)
+  y_info     <- y_info |> filter(sector     == sector0 )
+  y_info     <- y_info |> filter(impactType == impType0)
+  y_info     <- y_info |> filter(impactYear == impYear0)
+  y_info     <- y_info |> filter(region     == region0 )
+  y_info     <- y_info |> mutate(sector = sector0)
   y_info     <- y_info |> get_colScale(col0="summary_value", nTicks=nTicks)
   ### Additional info
   y_scale    <- y_info[["scale" ]]
@@ -92,6 +100,9 @@ create_scaledImpact_plot <- function(
   y_breaks   <- y_info[["breaks"]]
   y_limits   <- y_info[["limits"]]
   y_label    <- y_info[["label" ]]
+  # x_limits |> print(); df0[[xCol]] |> range(na.rm=T) |> print()
+  # y_limits |> print(); df0[[yCol]] |> range(na.rm=T) |> print()
+  # df0[df0[[yCol]] |> is.na(),] |> nrow() |> print()
   ### Labeling
   y_prelabel <- (y_label == "") |> ifelse("", ", ")
   y_label    <- (y_label == "") |> ifelse("Scaled Impacts", paste0("(", y_label, ")"))
@@ -102,6 +113,7 @@ create_scaledImpact_plot <- function(
   df0[[xCol]] <- df0[[xCol]] / x_denom
   df0[[yCol]] <- df0[[yCol]] / y_denom
   
+
   
   ###### ** Plot Options ######
   ### Values
@@ -129,7 +141,11 @@ create_scaledImpact_plot <- function(
   ### Group values
   # groups0     <- c("sector", "variant", "impactType", "impactYear", "region", "model", "maxUnitValue")
   # # groups0  <- groups0 |> c(xCol)
+  ### Legend labels and facet col
   facetCol    <- byState |> ifelse("state", "region") 
+  colorLbl    <- facetCol |> str_to_title()
+  shapeLbl    <- "Variant"
+  ### Other columns
   if(byState) {
     stateCol0 <- "state"
     regCol0   <- "state"
@@ -147,8 +163,19 @@ create_scaledImpact_plot <- function(
   # rm(groups0)
   
   ### Points dataframe
-  if(do_slr) df_points0 <- df0 |> filter(year %in% x_breaks)
-  else       df_points0 <- df0
+  # if(do_slr) df_points0 <- df0 |> filter(year %in% x_breaks)
+  # else       df_points0 <- df0
+  if(do_gcm) {
+    ### Plot these values as lines
+    df0_1 <- df0 |> filter((maxUnitValue < 6 & driverValue <= maxUnitValue) | maxUnitValue >= 6) 
+    ### Plot these values as points
+    df0_2 <- df0 |> filter((maxUnitValue < 6 & driverValue >= maxUnitValue))
+  } else if(do_slr) {
+    ### Plot these values as lines
+    df0_1 <- df0
+    ### Plot these values as points
+    df0_2 <- df0 |> filter(year %in% x_breaks)
+  } ### End if(do_gcm)
   
   ###### ** Initialize plot
   ### Initialize plot
@@ -159,72 +186,33 @@ create_scaledImpact_plot <- function(
   # df0 |> nrow() |> print(); x_breaks |> print(); x_limits |> print()
   doPlot      <- !allNA
   if(doPlot) {
-    ### Determine the columns to use
-    # if(byState) {regCol0   <- c("state" ); stateCol0 <- c("state")} 
-    # else        {regCol0   <- c("region"); stateCol0 <- c()}
-    # group0 <- c("sector", "variant", "impactType", "impactYear", "region") |> c(stateCol0) |> c("model") |> unique()
-    # # group0 |> print(); df0 |> glimpse(); xCol |> c(yCol) |> print()
-    # # group0  <- groups0 |> c(stateCol0) |> c("model") |> unique()
-    ###### ** Add geoms
-    if(do_slr) {
-      ### Points data
-      plot0  <- df0 |> ggplot()
-      plot0  <- plot0 + geom_line(
-        data  = df0, 
-        alpha = 0.65,
-        aes(
-          x        = .data[[xCol]], 
-          y        = .data[[yCol]], 
-          color    = .data[[regCol0]], 
-          linetype = .data[["variant"]], 
-          group    = interaction(!!!syms(groups0))
-        ) ### End aes
-      ) ### End geom_line
-      
-      ### Add points
-      plot0  <- plot0 + geom_point(
-        data  = df_points0, 
-        alpha = 0.65,
-        aes(
-          x     = .data[[xCol]], 
-          y     = .data[[yCol]], 
-          color = .data[[regCol0]], 
-          shape = .data[["variant"]], 
-          group = interaction(!!!syms(groups0))
-        ) ### End aes
-      ) ### End geom_point
-      # rm(df0_2)
-    } else if(do_gcm) {
-      ### Separate GCM values
-      ### Plot these values as lines
-      df0_1 <- df0 |> filter((maxUnitValue < 6 & driverValue <= maxUnitValue) | maxUnitValue >= 6) 
-      ### Plot these values as points
-      df0_2 <- df0 |> filter((maxUnitValue < 6 & driverValue >= maxUnitValue))
-      ### Plot values as lines
-      plot0  <- plot0 + geom_line(
-        data  = df0_1,
-        alpha = 0.65,
-        aes(
-          x        = .data[[xCol]], 
-          y        = .data[[yCol]], 
-          color    = .data[[regCol0]], 
-          linetype = .data[["variant"]], 
-          group    = interaction(!!!syms(groups0))
-        ) ### End aes
-      ) ### End geom_line
-      ### Plot values as points
-      plot0  <- plot0 + geom_point(
-        data  = df0_2,
-        alpha = 0.65, 
-        aes(
-          x     = .data[[xCol]], 
-          y     = .data[[yCol]], 
-          color = .data[[regCol0]], 
-          shape = .data[["variant"]], 
-          group = interaction(!!!syms(groups0))
-        ) ### End aes
-      ) ### End geom_line
-    } ### End if(do_slr)
+    # x_limits |> print(); df0[[xCol]] |> range(na.rm=T) |> print()
+    # y_limits |> print(); df0[[yCol]] |> range(na.rm=T) |> print()
+    
+    ### Plot values as lines
+    plot0  <- plot0 + geom_line(
+      data  = df0_1,
+      alpha = 0.65,
+      aes(
+        x        = .data[[xCol]], 
+        y        = .data[[yCol]], 
+        color    = .data[[regCol0]], 
+        linetype = .data[["variant"]], 
+        group    = interaction(!!!syms(groups0))
+      ) ### End aes
+    ) ### End geom_line
+    ### Plot values as points
+    plot0  <- plot0 + geom_point(
+      data  = df0_2,
+      alpha = 0.65, 
+      aes(
+        x     = .data[[xCol]], 
+        y     = .data[[yCol]], 
+        color = .data[[regCol0]], 
+        shape = .data[["variant"]], 
+        group = interaction(!!!syms(groups0))
+      ) ### End aes
+    ) ### End geom_line
     
     ###### * Add geoms
     # plot0  <- plot0 + geom_line(aes(linetype = .data[["variant"]]), alpha=0.5)
@@ -239,7 +227,9 @@ create_scaledImpact_plot <- function(
     ###### ** Add scales
     plot0  <- plot0 + scale_x_continuous(xTitle, breaks=x_breaks, limits=x_limits)
     plot0  <- plot0 + scale_y_continuous(y_label)
-    plot0  <- plot0 + scale_color_discrete("Region")
+    plot0  <- plot0 + scale_color_discrete(colorLbl)
+    plot0  <- plot0 + scale_shape_discrete(shapeLbl)
+    plot0  <- plot0 + scale_linetype_discrete(shapeLbl)
     
     ###### ** Adjust legend title
     if(hasLgdPos) plot0 <- plot0 + guides(color = guide_legend(title.position = lgdPos))
