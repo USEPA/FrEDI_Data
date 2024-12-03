@@ -215,7 +215,7 @@ create_scaledImpact_plots <- function(
         plotList_k  <- list(spacer1=spacer0, plots=plotGrid_k, spacer2=spacer0)
         plotGrid_k  <- ggarrange(plotlist=plotList_k, nrow=3, ncol=1, heights=c(0.01, 1, 0.1))
         plotGrid_k  <- plotGrid_k |> annotate_figure(top=grobType_k)
-        plotGrid_k |> print()
+        # plotGrid_k |> print()
         ### Return
         gc()
         return(plotGrid_k)

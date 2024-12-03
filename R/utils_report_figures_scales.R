@@ -77,6 +77,7 @@ fun_getScale <- function(
     ### If the values are all negative, set the maximum to zero.
     if(xMin > 0) xMin <- 0
     if(xMax < 0) xMax <- 0
+    limits    <- c(xMin, xMax)
     
     ### Bounds
     bound_min <- xMin |> floor  ()
@@ -168,6 +169,7 @@ fun_getScale <- function(
     x_breaks       <- x_breaks_p10 * 10**x_p10Max
     # return(x_breaks)
   } else{
+    df_minMax      <- NULL
     x_breaks       <- NULL
     limits         <- NULL
     bounds_rounded <- NULL
@@ -183,7 +185,8 @@ fun_getScale <- function(
   ### Create list to return
   return_list <- list(
     breaks  = x_breaks,
-    limits  = df_minMax |> pull(value),
+    limits  = limits,
+    # limits  = df_minMax |> pull(value),
     bounds  = bounds_rounded,
     p10     = x_p10Max,
     p1000   = x_p1000,
@@ -228,6 +231,15 @@ get_colScale <- function(
     x_lab    <- x_lab[["label"]][1]
     # x_p10 |> print(); x_p1000 |> print(); x_lab |> print()
   } else{
+    ### Modify values
+    x_p1000  <- 0
+    x_p10    <- 0
+    x_denom  <- 10**x_p10
+    # x_info[["breaks"]] |> print()
+    x_breaks <- x_info[["breaks"]] / x_denom
+    x_limits <- x_info[["limits"]] / x_denom
+    
+    ### Add labels
     x_lab    <- ""
   } ### End if(hasVals)
  

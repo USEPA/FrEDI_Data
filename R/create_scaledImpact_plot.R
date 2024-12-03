@@ -43,7 +43,7 @@ create_scaledImpact_plot <- function(
   ###### Values ######
   ###### ** By State ######
   # byState    <- df0 |> pull(state) |> unique() |> (function(x){!("N/A" %in% x)})()
-  byState    <- df0 |> filter(!(state %in% "N/A")) |> nrow()
+  byState    <- (df0 |> filter(!(state %in% "N/A")) |> nrow()) & (df0 |> nrow())
   stateCols  <- c("state", "postal")
   if(byState) df0 <- df0 |> filter(region == region0)
   
@@ -150,7 +150,7 @@ create_scaledImpact_plot <- function(
     stateCol0 <- "state"
     regCol0   <- "state"
   } else {
-    groups0   <- groups0
+    # groups0   <- groups0
     stateCol0 <- c()
     regCol0   <- "region"
   } ### End if(byState)

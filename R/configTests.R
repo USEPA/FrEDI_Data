@@ -1021,7 +1021,8 @@ save_scaled_impact_figures <- function(
   fdir      <- fdir |> file.path("images")
   created0  <- fdir |> check_and_create_path(createDir=createDir)
   ### Prepare data
-  df0       <- df0  |> filter(modelType %in% type0)
+  typeLC0   <- type0 |> tolower()
+  df0       <- df0   |> filter((modelType |> tolower()) %in% typeLC0)
   list0     <- plotList[[type0]]
   ### Unique values
   names0    <- list0  |> names()
