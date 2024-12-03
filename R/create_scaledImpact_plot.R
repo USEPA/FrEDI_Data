@@ -174,11 +174,17 @@ create_scaledImpact_plot <- function(
     df0_2 <- df0 |> filter((maxUnitValue < 6 & driverValue >= maxUnitValue))
   } else if(do_slr) {
     # "Do SLR" |> print()
+    ### Filter to values
+    df0   <- df0 |> filter(year >= x_limits[1], year <= x_limits[2])
+    df0   <- df0 |> filter(!(model %in% c("0cm", "0 cm", NA)))
     ### Plot these values as lines
     df0_1 <- df0
+    # return(df0)
     ### Plot these values as points
     df0_2 <- df0 |> filter(year %in% x_breaks)
   } ### End if(do_gcm)
+  # df0_1 |> dim() |> print()
+  # df0_2 |> dim() |> print()
   
   ###### ** Initialize plot
   ### Initialize plot
@@ -204,6 +210,9 @@ create_scaledImpact_plot <- function(
         group    = interaction(!!!syms(groups0))
       ) ### End aes
     ) ### End geom_line
+    # "got here1" |> print()
+    # return(plot0)
+    
     ### Plot values as points
     plot0  <- plot0 + geom_point(
       data  = df0_2,
@@ -216,9 +225,7 @@ create_scaledImpact_plot <- function(
         group = interaction(!!!syms(groups0))
       ) ### End aes
     ) ### End geom_line
-    
-    ###### * Add geoms
-    # plot0  <- plot0 + geom_line(aes(linetype = .data[["variant"]]), alpha=0.5)
+    # "got here2" |> print()
     
     ###### ** Add facet_grid
     plot0  <- plot0 + facet_grid(model~.data[[regCol0]])
@@ -235,8 +242,8 @@ create_scaledImpact_plot <- function(
     plot0  <- plot0 + scale_linetype_discrete(shapeLbl)
     
     ###### ** Adjust legend title
-    if(hasLgdPos) plot0 <- plot0 + guides(color = guide_legend(title.position = lgdPos))
-    plot0  <- plot0 + theme(legend.direction = "vertical", legend.box = "vertical")
+    if(hasLgdPos) plot0 <- plot0 + guides(color=guide_legend(title.position=lgdPos))
+    plot0  <- plot0 + theme(legend.direction="vertical", legend.box="vertical")
     
   } ### End if(doPlot)
   
@@ -283,7 +290,7 @@ create_scaledImpact_plot <- function(
   plot0  <- plot0 + theme(legend.text      = element_text(size=9 ))
   plot0  <- plot0 + theme(legend.spacing.y = unit(0.05, "cm"))
   # refPlot0  <- refPlot0 + theme(legend.box.margin = margin(t=0.05, r=0.05, b=0.05, l=0.05, unit='cm'))
-  
+  # "got here3" |> print()
   
   ###### Return ######
   ### Return the plot
