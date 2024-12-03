@@ -120,7 +120,7 @@ create_scaledImpact_plots <- function(
   if(do_slr){
     # slrUnit <- paste0(" ", "cm")
     slrUnit <- paste0("cm")
-    labs0   <- c(30, 50, 100, 150, 200, 250) |> paste0(slrUnit)
+    labs0   <- c(0, 30, 50, 100, 150, 200, 250) |> paste0(slrUnit)
     df0     <- df0 |> mutate(model = model |> factor(levels=labs0))
   } ### End if(do_slr)
   
@@ -182,6 +182,7 @@ create_scaledImpact_plots <- function(
   ### Iterate over Impact Years
   # cIter1 |> print()
   listIter1 <- cIter1 |> map(function(iter1_i){
+    # iter1_i |> print()
     listYears0 <- cImpYears |> map(function(impYear_j){
       listTypes_j <- cImpTypes |> map(function(impType_k){
         # iter1_i |> print(); impYear_j |> print(); impType_k |> print(); 
@@ -204,6 +205,8 @@ create_scaledImpact_plots <- function(
           silent    = silent,
           options   = plotOpts0
         ) ### End create_scaledImpact_plot
+        # "got here1" |> print()
+        # return(plot_k)
         # plot_k |> print()
         
         ###### Annotate Plots ######
@@ -212,10 +215,15 @@ create_scaledImpact_plots <- function(
         typeTitle_k <- "Impact Type: " |> paste0(impType_k)
         grobType_k  <- text_grob(typeTitle_k, face="italic", size=11)
         plotGrid_k  <- plot_k
+        # "got here2" |> print()
         plotList_k  <- list(spacer1=spacer0, plots=plotGrid_k, spacer2=spacer0)
+        # "got here3" |> print()
         plotGrid_k  <- ggarrange(plotlist=plotList_k, nrow=3, ncol=1, heights=c(0.01, 1, 0.1))
+        # "got here4" |> print()
         plotGrid_k  <- plotGrid_k |> annotate_figure(top=grobType_k)
         # plotGrid_k |> print()
+        # "got here5" |> print()
+        
         ### Return
         gc()
         return(plotGrid_k)
@@ -252,7 +260,7 @@ create_scaledImpact_plots <- function(
       plotGrid_j  <- ggarrange(plotlist=plotList_j, nrow=1, legend="none", widths=c(0.01, nRegions, 0.01))
       plotGrid_j  <- plotGrid_j |> annotate_figure(left=plotYTit_j)
       # return(plotGrid_j)
-      plotGrid_j |> print()
+      # plotGrid_j |> print()
       
       ###### Return Impact Type Plot ######
       gc()
