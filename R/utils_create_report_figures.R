@@ -68,7 +68,7 @@ getXAxisScale <- function(
   ### Limits
   if(doInfo) {
     if(doYear) {
-      limits0 <- 2000:maxYear
+      limits0 <- c(2000, maxYear)
       breaks0 <- seq(limits0[1] - 10, limits0[2] + 10, by=yrUnit)
       denom0  <- 1
     } else              {

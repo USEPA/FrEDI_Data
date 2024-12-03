@@ -133,22 +133,23 @@ create_scaledImpact_plots <- function(
   # x_denom <- y_denom <- 1
   
   ###### ** X Breaks ######
-  if(xCol == "year"){
-    x_limits <- c(2000, 2100)
-    x_breaks <- seq(x_limits[1] - 10, x_limits[2] + 10, by = 20)
-    x_denom  <- 1
-    x_info   <- NULL
-  } else              {
-    x_limits <- c(-1, 11)
-    x_breaks <- seq(0, 10, by=2)
-    x_denom  <- 1
-    x_info   <- NULL
-  } ### End if(xCol == "year")
+  x_info     <- NULL
+  x_info     <- x_info |> getXAxisScale(
+    xCol    = xCol,
+    maxYear = 2100,
+    yrUnit  = 20
+  ) ### End getXAxisScale
+  ### Assign to objects
+  x_limits   <- x_info[["limits"]]
+  x_breaks   <- x_info[["breaks"]]
+  x_denom    <- x_info[["denom" ]]
+  # x_info     <- NULL
   
   ###### ** Y-Breaks ######
-  # y_info     <- infoList0[["minMax"]] |> filter(plotRow == row0)
   y_info     <- infoList0[["minMax"]]
-  y_info     <- y_info |> mutate(sector=sector0)
+  # y_info     <- y_info |> filter(plotRow == row0)
+  # y_info     <- y_info |> mutate(sector=sector0)
+  y_info     <- y_info |> filter(sector     == sector0 )
   y_info     <- y_info |> get_colScale(col0="summary_value", nTicks=nTicks)
   ### Additional info
   y_scale    <- y_info[["scale" ]]

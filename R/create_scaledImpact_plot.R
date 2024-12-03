@@ -86,11 +86,11 @@ create_scaledImpact_plot <- function(
   ### Filter to y columns info
   y_info     <- infoList0[["minMax"]]
   # y_info     <- y_info |> filter(plotRow == row0)
+  # y_info     <- y_info |> mutate(sector = sector0)
   y_info     <- y_info |> filter(sector     == sector0 )
   y_info     <- y_info |> filter(impactType == impType0)
   y_info     <- y_info |> filter(impactYear == impYear0)
   y_info     <- y_info |> filter(region     == region0 )
-  y_info     <- y_info |> mutate(sector = sector0)
   y_info     <- y_info |> get_colScale(col0="summary_value", nTicks=nTicks)
   ### Additional info
   y_scale    <- y_info[["scale" ]]
@@ -100,9 +100,7 @@ create_scaledImpact_plot <- function(
   y_breaks   <- y_info[["breaks"]]
   y_limits   <- y_info[["limits"]]
   y_label    <- y_info[["label" ]]
-  # x_limits |> print(); df0[[xCol]] |> range(na.rm=T) |> print()
-  # y_limits |> print(); df0[[yCol]] |> range(na.rm=T) |> print()
-  # df0[df0[[yCol]] |> is.na(),] |> nrow() |> print()
+  
   ### Labeling
   y_prelabel <- (y_label == "") |> ifelse("", ", ")
   y_label    <- (y_label == "") |> ifelse("Scaled Impacts", paste0("(", y_label, ")"))
@@ -112,8 +110,10 @@ create_scaledImpact_plot <- function(
   # "got here" |> print(); x_denom |> print(); y_denom |> print()
   df0[[xCol]] <- df0[[xCol]] / x_denom
   df0[[yCol]] <- df0[[yCol]] / y_denom
-  
-
+  # x_limits |> print(); df0[[xCol]] |> range(na.rm=T) |> print()
+  # y_limits |> print(); df0[[yCol]] |> range(na.rm=T) |> print()
+  # df0[df0[[yCol]] |> is.na(),] |> nrow() |> print()
+  # df0 |> glimpse()
   
   ###### ** Plot Options ######
   ### Values
@@ -155,7 +155,8 @@ create_scaledImpact_plot <- function(
     regCol0   <- "region"
   } ### End if(byState)
   ### Groups & Faceting column
-  groups0     <- c("sector", "variant", "impactType", "impactYear", "region", stateCol0, "model", "maxUnitValue") |> unique()
+  # groups0     <- c("sector", "variant", "impactType", "impactYear", "region", stateCol0, "model", "maxUnitValue") |> unique()
+  groups0     <- c("sector", "variant", "impactType", "impactYear", "region", stateCol0, "model") |> unique()
   # groups0  <- groups0 |> c(xCol)
   facetCol <- regCol0
   ### Group values
@@ -166,11 +167,13 @@ create_scaledImpact_plot <- function(
   # if(do_slr) df_points0 <- df0 |> filter(year %in% x_breaks)
   # else       df_points0 <- df0
   if(do_gcm) {
+    # "Do GCM" |> print()
     ### Plot these values as lines
     df0_1 <- df0 |> filter((maxUnitValue < 6 & driverValue <= maxUnitValue) | maxUnitValue >= 6) 
     ### Plot these values as points
     df0_2 <- df0 |> filter((maxUnitValue < 6 & driverValue >= maxUnitValue))
   } else if(do_slr) {
+    # "Do SLR" |> print()
     ### Plot these values as lines
     df0_1 <- df0
     ### Plot these values as points
@@ -196,8 +199,8 @@ create_scaledImpact_plot <- function(
       aes(
         x        = .data[[xCol]], 
         y        = .data[[yCol]], 
-        color    = .data[[regCol0]], 
-        linetype = .data[["variant"]], 
+        color    = .data[[regCol0]],
+        linetype = .data[["variant"]],
         group    = interaction(!!!syms(groups0))
       ) ### End aes
     ) ### End geom_line
