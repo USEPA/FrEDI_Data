@@ -31,7 +31,7 @@ configureFrediData <- function(
   
   
   ###### Initialize Return List ######
-  returnList  <- list()
+  # returnList  <- list()
   
   
   ###### Set Paths ######
@@ -45,6 +45,7 @@ configureFrediData <- function(
   ### Path and file name for saving outputs
   dataOutDir  <- projectDir     |> file.path("data")
   dataOutName <- "tmp_sysdata"  |> paste0(".", "rda")
+  # dataOutName <- "tmp_sysdata"  |> paste0(".", "rda")
   dataOutPath <- dataOutDir     |> file.path(dataOutName)
   ### Path for saving test outputs
   testOutDir  <- projectDir     |> file.path("data_tests")
@@ -73,37 +74,10 @@ configureFrediData <- function(
   # returnList[["systemDataList"]] <- list_systemData0
   
   
-  ###### 2. Run General Tests on Data ######
-  ### Run general tests
-  test_general_config <- general_config_test(
-    configuredData = list_systemData0,
-    save           = save0,
-    overwrite      = TRUE,
-    xlsxName       = testOutFile,
-    msg0        = msg0
-  ) ### End general_config_test
-  ### Add to return list
-  returnList[["generalConfigTests"]] <- test_general_config
-  
-  
-  ###### 5. Create Images of Scaled Impacts ######
-  ### Test create results
-  testResults  <- list_systemData0 |> get_fredi_sectorOptions_results(); testResults |> glimpse()
-  # ### Test region plot info
-  # testIter0    <- testResults |> get_region_plotInfo(); 
-  # # testIter0$sectorInfo |> glimpse()
-  ### Make scaled impact plots 
-  testPlots0   <- testResults |> make_scaled_impact_plots()
-  ### Add to return list
-  returnList[["testPlots0"]] <- testPlots0
-  ### Save plots
-  testPlots1   <- testPlots0 |> save_scaled_impact_figures(df0=testResults, type0="GCM", fpath=testOutDir)
-  testPlots2   <- testPlots0 |> save_scaled_impact_figures(df0=testResults, type0="SLR", fpath=testOutDir)
-  
-  
   ###### Return ######
   paste0(msg0, "...Finished running configureFrediData().") |> paste0(msgN) |> message()
-  return(returnList)
+  return(list_systemData0)
+  # return(returnList)
 }
 
 ###### End script ######

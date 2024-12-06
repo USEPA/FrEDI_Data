@@ -6,7 +6,7 @@
 ### For uploading artifacts:
 ###     "path:" is the output path where Pandoc will write the compiled PDF. 
 ###      Note, this should be the same directory as the input paper.md
-name: 1. Compile FrEDI Data
+name: 1. Compile Main FrEDI Data
 
 on: 
   workflow_dispatch:
@@ -42,7 +42,6 @@ jobs:
             any::admisc
             any::zoo
 
-
       - name: Install FrEDI
         run: |
           Rscript -e '
@@ -56,34 +55,33 @@ jobs:
               type    = "source"
             )'
 
-      - name: Run createsystemData
+      - name: Compile Main FrEDI Data
         run: |
           Rscript -e '
-          projectDir <- "."
-          scriptDir  <- projectDir |> file.path("scripts")
-          scriptDir |> file.path("configureFrediData.R") |> source()
-          test0      <- projectDir |> configureFrediData(save=T)
-          "./data_tests/" |> list.files() |> print()
-          "./data/" |> list.files() |> print()
+            projectDir <- "."
+            scriptDir  <- projectDir |> file.path("scripts")
+            scriptDir |> file.path("configureFrediData.R") |> source()
+            test0      <- projectDir |> configureFrediData(save=T)
+            "./data_tests/" |> list.files() |> print()
           '
 
+      #  ./data_tests/*
       - name: Upload Tests
         uses: actions/upload-artifact@v4
         with:
           name: Data
           path: |
-            ./data_tests/*
             ./data/tmp_sysdata.rd*
 
 
-      - name: Commit results
-        run: |
-          git config --local core.autocrlf false
-          git config --local user.email "${{ github.actor }}@users.noreply.github.com"
-          git config --local user.name  "${{ github.actor }}"
-          git add data/tmp_sysdata.rd*
-          git add data_tests/**.xlsx
-          git pull origin ${{ github.head_ref }} --autostash --rebase -X ours
-          git commit -a -m "Updated temporary system data and tests"
-          git push
+      # - name: Commit results
+      #   run: |
+      #     git config --local core.autocrlf false
+      #     git config --local user.email "${{ github.actor }}@users.noreply.github.com"
+      #     git config --local user.name  "${{ github.actor }}"
+      #     git add data/tmp_sysdata.rd*
+      #     git add data_tests/**.xlsx
+      #     git pull origin ${{ github.head_ref }} --autostash --rebase -X ours
+      #     git commit -a -m "Updated temporary system data and tests"
+      #     git push
 
