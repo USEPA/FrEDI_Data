@@ -16,7 +16,7 @@ on:
         - yes
       workflow_id:
         type: string
-        description: Enter the run ID for the workflow from which to retrieve the main FrEDI Data:  
+        description: Enter the run ID for the workflow from which to retrieve the main FrEDI Data
     
 
 jobs:
