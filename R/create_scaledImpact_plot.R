@@ -99,8 +99,6 @@ create_scaledImpact_plot <- function(
   yInfo      <- yInfo |> filter(region     == region0 )
   yInfo      <- yInfo |> get_colScale(col0="summary_value", nTicks=nTicks)
   ### Additional info
-  y_scale    <- yInfo[["scale" ]]
-  # y_scale |> names() |> print()
   y_p10      <- yInfo[["p10"   ]]
   y_denom    <- yInfo[["denom" ]]
   y_breaks   <- yInfo[["breaks"]]
