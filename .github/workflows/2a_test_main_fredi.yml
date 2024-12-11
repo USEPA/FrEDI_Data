@@ -27,9 +27,9 @@ on:
         options:
         - no    
         - yes
-      workflow_id:
-        type: string
-        description: Enter the run ID for the workflow from which to retrieve the main FrEDI Data
+      # workflow_id:
+      #   type: string
+      #   description: Enter the run ID for the workflow from which to retrieve the main FrEDI Data
       fredi_branch:
         type: string
         description: Which FrEDI Package branch do you want to use?
@@ -45,14 +45,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         
+      # echo "$${{ github.ref_name }} ${{ inputs.workflow_id }} ${{ inputs.fredi_branch }} ${{ inputs.gen_test }} ${{ inputs.figures }}"
       - name: Send input status
         run: |
-          echo "$${{ github.ref_name }} ${{ inputs.workflow_id }} ${{ inputs.fredi_branch }} ${{ inputs.gen_test }} ${{ inputs.figures }}"  
+          echo "$${{ github.ref_name }} ${{ inputs.fredi_branch }} ${{ inputs.gen_test }} ${{ inputs.figures }}"  
       
       ### Download tmp_sysdata.rda from 1. Compile Main FrEDI Data run
+      ### dawidd6/action-download-artifact@v7
       - name: Download artifact
         id:   download-artifact
-        uses: dawidd6/action-download-artifact@v7
+        uses: actions/download-artifact@v4
         with: 
           github_token:    ${{secrets.GITHUB_TOKEN}}
           # workflow:        workflow_name.yml
