@@ -129,7 +129,7 @@ get_region_plotInfo <- function(
     yCol      = "scaled_impacts",
     # groupCols = c("sector", "variant", "impactType", "impactYear", "region", "model"),
     groupCols = c("sector", "variant", "impactType", "impactYear", "region", "state", "postal", "model", "maxUnitValue"),
-    nCol      = 4,
+    nCol      = 4, ### Number of columns
     silent    = TRUE
 ){
   ###### Initialize Return List ######
@@ -241,13 +241,15 @@ get_region_plotInfo <- function(
   df_sectorInfo[["plotRow"]] <- df_sectorInfo[[row_oCol]]
   
   ### Get maximum and minimum values by plot row and combine
+  group0      <- c("plotRow")
+  group0      <- c("sector", "variant", "impactType", "impactYear", "region") |> c(group0)
   df_minMax   <- df_sectorInfo |>
-    group_by_at(.vars=c("plotRow")) |>
+    group_by_at(c(group0)) |>
     summarize(min = min(min), max=max(max)) |>
     ungroup()
   ### Gather values
   df_minMax   <- df_minMax |> pivot_longer(
-    cols      = -c("plotRow"),
+    cols      = -c(group0),
     names_to  = "summary_type", 
     values_to = "summary_value"
   ) ### End pivot_longer

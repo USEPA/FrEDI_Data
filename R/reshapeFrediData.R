@@ -1,8 +1,8 @@
-#' reshapeData
+#' reshapeFrediData
 #'
 #' @param dataList Outputs from `loadData`
-#' @param silent Indicate level of messaging
-#' @param msg0 Initial messaging prefix
+#' @param silent   Indicate level of messaging
+#' @param msg0    Initial messaging prefix
 #'
 #' @return
 #' @export
@@ -14,14 +14,17 @@ reshapeFrediData <- function(
     msg0     = "\t"    ### Prefix for messaging
 ) {
   ###### Messaging ######
-  msg1          <- msg0 |> paste("\t")  
-  if (!silent) paste0(msg0, "In reshapeFrediData:") |> message()
+  msgUser    <- !silent
+  msgN       <- "\n"
+  msg1       <- msg0 |> paste("\t")  
+  # if (!silent) 
+  paste0(msg0, "Running reshapeFrediData...") |> message()
   
   ###### Assign Objects ######
   ### Assign tables in dataList to object in local environment
-  frediData <- dataList[["frediData"]]
-  stateData <- dataList[["stateData"]]
-  scenarios <- dataList[["scenarioData"]]
+  frediData  <- dataList[["frediData"]]
+  stateData  <- dataList[["stateData"]]
+  scenarios  <- dataList[["scenarioData"]]
   # stateData |> names() |> print()
   # stateData[["scalars"]] |> glimpse()
   # stateData[["gcmImpacts"]] |> glimpse()
@@ -36,7 +39,7 @@ reshapeFrediData <- function(
   
   ###### Scenarios Data  ######
   ### Reshape scenario data
-  scenarios <- scenarios |> reshapeScenarioData(
+  scenarios  <- scenarios |> reshapeScenarioData(
     silent    = silent, 
     msg0      = msg1
   ) ### End reshapeScalarData
@@ -78,10 +81,11 @@ reshapeFrediData <- function(
   
   ### Update data in list
   dataList[["stateData"]] <- stateData
+  # dataList[["frediData"]] |> names() |> print()
   
   ###### Return ######
   ### Return the list of dataframes
-  if(!silent) paste0("\n") |> message()
-  # dataList[["frediData"]] |> names() |> print()
+  # if(!silent) 
+  paste0(msg0, "...Finished running reshapeFrediData().", msgN) |> message()
   return(dataList)
 }

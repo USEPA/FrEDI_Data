@@ -14,6 +14,7 @@ reshapeScenarioData <- function(
     msg0         = "\t"  ### Prefix for messaging
 ) {
   ###### Messaging ######
+  msgN          <- "\n"
   msg1          <- msg0 |> paste("\t")  
   if (!silent) paste0(msg0, "In reshapeScenarioData:"   ) |> message()
   if (!silent) paste0(msg1, "Reshaping scenario data...") |> message()
@@ -46,6 +47,6 @@ reshapeScenarioData <- function(
   
   ###### Return ######
   ### Return the list of dataframes
-  # if (!silent) paste0("\n") |> message()
+  if (!silent) paste0(msg0, "...Finished running reshapeScenarioData.", msgN) |> message()
   return(scenarioData)
 }

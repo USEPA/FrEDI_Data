@@ -2,21 +2,22 @@
 #'
 #' @param scalarData Tibble with scalars data (as output from `loadFrediScalars`)
 #' @param frediData  List of FrEDI configuration data (as output from `loadFrediData`)
-#' @param silent Indicate level of messaging
-#' @param msg0 Prefix for messaging
+#' @param silent     Indicate level of messaging
+#' @param msg0       Prefix for messaging
 #'
 #' @return
 #' @export
 #'
 #' @examples
 reshapeScalarData <- function(
-    scalarData = NULL, ### Tibble with scalars data
-    frediData  = NULL, ### List of FrEDI configuration data
-    silent     = TRUE, ### Level of messaging
-    msg0     = "\t"    ### Prefix for messaging
+    scalarData = NULL , ### Tibble with scalars data
+    frediData  = NULL , ### List of FrEDI configuration data
+    silent     = TRUE , ### Level of messaging
+    msg0       = "\t"   ### Prefix for messaging
 ) {
   ###### Messaging ######
-  msg1          <- msg0 |> paste("\t")  
+  msgN       <- "\n"
+  msg1       <- msg0 |> paste("\t")  
   if (!silent) paste0(msg0, "In reshapeScalarData:"   ) |> message()
   if (!silent) paste0(msg1, "Reshaping scalar data...") |> message()
   
@@ -39,15 +40,10 @@ reshapeScalarData <- function(
   rm(select0, join0)
   
   ### Replace data with NA values
-  # scalarData <- scalarData |> mutate(region = region |> replace_na("National"))
-  # scalarData <- scalarData |> mutate(state  = state  |> replace_na("All"))
-  # scalarData <- scalarData |> mutate(postal = postal |> replace_na("US"))
   scalarData <- scalarData |> mutate(region = region |> str_replace_all("\\.", ""))
   scalarData <- scalarData |> mutate(region = region |> str_replace_all(" ", ""))
   scalarData <- scalarData |> mutate(state  = state  |> na_if("National Total"))
   scalarData <- scalarData |> mutate(region = region |> replace_na("National"))
-  # scalarData <- scalarData |> mutate(state  = state  |> replace_na("All"))
-  # scalarData <- scalarData |> mutate(postal = postal |> replace_na("US"))
   scalarData <- scalarData |> mutate(state  = state  |> replace_na("N/A"))
   scalarData <- scalarData |> mutate(postal = postal |> replace_na("N/A"))
   
@@ -67,6 +63,6 @@ reshapeScalarData <- function(
   
   ###### Return ######
   ### Return the list of dataframes
-  # if (!silent) paste0("\n") |> message()
+  if (!silent) paste0(msg0, "...Finished running reshapeScalarData().", msgN) |> message()
   return(scalarData)
 }
