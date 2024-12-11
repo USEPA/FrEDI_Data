@@ -131,7 +131,7 @@ jobs:
             ### Load Scripts
             scriptDir   <- projectDir |> file.path("scripts")
             scriptNames <- c("testFrediData") |> paste0(".", "R")
-            scriptPaths <- artDir     |> file.path(scriptNames)
+            scriptPaths <- scriptDir  |> file.path(scriptNames)
             # scriptDir |> file.path("testFrediData.R") |> source()
             for(path_i in scriptPaths){path_i |> source()}
             
