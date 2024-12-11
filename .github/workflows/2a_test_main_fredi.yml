@@ -114,7 +114,7 @@ jobs:
             ### Arguments
             doGenTests  <- "${{ inputs.gen_test }}" == "true" 
             doFigures   <- "${{ inputs.figures  }}" == "true"
-            doTests     <- doGenTests | doTests
+            doTests     <- doGenTests | doFigures
             
             ### Directories for project, scripts, data, and artifacts
             projectDir  <- "."
