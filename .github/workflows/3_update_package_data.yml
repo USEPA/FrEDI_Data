@@ -2,7 +2,7 @@
 # on:
 #   workflow_run:
 #     workflows: ["Compile FrEDI Data"]
-name: 3. Update FrEDI Data (if tests passed)
+name: 3. Update Package Data (if tests passed)
 
 on:
   workflow_dispatch:

@@ -1,5 +1,5 @@
 ### Overwrite FrEDI data with past data
-name: 2.2 Compile SV Impacts (as needed)
+name: 1c. Compile SV Impacts (as needed)
 
 on: 
   workflow_dispatch:
