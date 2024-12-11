@@ -13,7 +13,7 @@ check_and_create_path <- function(
   if(create1) {
     "Directory does not exist. " |> message()
     "\t" |> paste0("Creating directory...") |> message()
-    try0 <- fpath |> dir.create() |> try()
+    try0 <- fpath |> dir.create(recursive=T) |> try()
     "\t" |> paste0("...Directory created.") |> message()
   } ### End if(create1)
 } ### End check_and_create_path

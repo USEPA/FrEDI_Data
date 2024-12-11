@@ -1,3 +1,97 @@
+### Defaults
+### Function to create data frame with info
+scaledImpactPlotTitles <- function(x=1){
+  ### Tibble
+  df0 <- tibble(modelType = c("gcm", "slr"))
+  df0 <- df0 |> mutate(model_type = modelType |> toupper())
+  df0 <- df0 |> mutate(title      = c("Scaled Impacts by Degrees of Warming", "Scaled Impacts by Year"))
+  df0 <- df0 |> mutate(xTitle     = c("expression(\"Degrees of Warming (°C)\")", "\"Year\""))
+  df0 <- df0 |> mutate(yTitle     = c("Scaled Impacts"))
+  df0 <- df0 |> mutate(lgdLbl     = c("Model", "Scenario"))
+  df0 <- df0 |> mutate(lgdPos     = c("top"))
+  df0 <- df0 |> mutate(margins    = c("c(0, 0, .15, 0)", "c(0, .2, .15, 0)"))
+  df0 <- df0 |> mutate(marginUnit = c("cm"))
+  df0 <- df0 |> mutate(nameBrk    = c(18))
+  return(df0)
+}
+
+### Function to get plot labels
+get_scaledImpactPlotTitles <- function(
+    type0   = "gcm" ,      ### or "slr"
+    options = list(),      ### List of options
+    # col0  = "title",     ### Or modelType, model_type, title, xTitle, lgdLbl, margins0
+    df0   = scaledImpactPlotTitles() ### Tibble with options
+){
+  ### Filter to data
+  type0     <- type0 |> tolower()
+  df0       <- df0   |> filter(modelType %in% type0)
+  ### Convert data to list
+  list0     <- df0   |> as.list()
+  listNames <- list0 |> names()
+  ### Parse data
+  list0[["xTitle" ]] <- parse(text=list0[["xTitle" ]])
+  list0[["margins"]] <- parse(text=list0[["margins"]])
+  list0[["theme"  ]] <- NULL
+  ### Update data with list
+  hasOpts   <- options |> map(function(x){x |> length() & !(x |> is.null())}) |> unlist() |> which()
+  options   <- options[hasOpts]
+  optNames  <- options  |> names()
+  doOpts    <- optNames |> length()
+  if(doOpts) {
+    for(name_i in optNames) {
+      do_i <- name_i %in% listNames
+      if(do_i) {
+        list0[[name_i]] <- options[[name_i]]
+      } ### End if(do_i)
+    } ### End for(name_i in optNames)
+  } ### End if(doOpts)
+  
+  ### Return
+  return(list0)
+}
+
+### Function to get scales for plots
+### getAxesScales 
+getXAxisScale <- function(
+    info0   = NULL,
+    xCol    = "driverValue",
+    maxYear = 2100,
+    yrUnit  = 20
+){
+  ### Initialize list
+  list0  <- list()
+  
+  ### Conditionals
+  doInfo <- !(list0 |> is.null())
+  doYear <- xCol %in% c("year")
+  
+  ### Limits
+  if(doInfo) {
+    if(doYear) {
+      limits0 <- c(2000, maxYear)
+      breaks0 <- seq(limits0[1] - 10, limits0[2] + 10, by=yrUnit)
+      denom0  <- 1
+    } else              {
+      limits0 <- c(-1, 11)
+      breaks0 <- seq(0, 10, by=2)
+      denom0  <- 1
+    } ### End if(doYear)
+  }  else{
+    limits0    <- info0[["limits"]]
+    breaks0    <- info0[["breaks"]]
+    denom0     <- info0[["denom" ]]
+  } ### End if(do_xInfo)
+  
+  ### Update list
+  list0[["limits"]] <- limits0
+  list0[["breaks"]] <- breaks0
+  list0[["denom" ]] <- denom0
+  
+  ### Return values
+  return(list0)
+}
+
+
 ### Function to get manual colors for regions, states in a region, or models
 fun_manual_colors <- function(x=1){
   # colorVals <- c("D81B60", "FF792D", "4E94E4", "735EA0", "67032F", "49D4F5", "D082CD", "68A796")
