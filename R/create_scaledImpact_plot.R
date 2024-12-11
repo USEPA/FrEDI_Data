@@ -13,6 +13,7 @@ create_scaledImpact_plot <- function(
     refPlot = FALSE, ### Whether to do a ref plot
     nTicks  = 5,
     silent  = TRUE,
+    repo0     = "FrEDI Data", ### Repo name, for use in getting plot defaults
     options = list(
       # title      = "Impacts by Degrees of Warming",
       # subtitle   = NULL,
@@ -31,16 +32,21 @@ create_scaledImpact_plot <- function(
   ###### Get from FrEDI Namespace ######
   # get_colScale <- utils::getFromNamespace("get_colScale", "FrEDI")
   
-  ###### Data ######
+  ###### Format Data ######
+  ###### ** Filter Data ######
   df0        <- data  |> filter(sector     == sector0 )
   df0        <- df0   |> filter(impactType == impType0)
   df0        <- df0   |> filter(impactYear == impYear0)
   df0        <- df0   |> filter(region     == region0 )
+  
+  
+  ###### Values ######
+  ###### ** Model Type ######
+  repo0      <- repo0 |> tolower()
   type0      <- df0   |> pull(modelType) |> unique()
   typeLC0    <- type0 |> tolower()
   # df0 |> glimpse()
   
-  ###### Values ######
   ###### ** By State ######
   # byState    <- df0 |> pull(state) |> unique() |> (function(x){!("N/A" %in% x)})()
   byState    <- (df0 |> filter(!(state %in% "N/A")) |> nrow()) & (df0 |> nrow())
@@ -84,22 +90,22 @@ create_scaledImpact_plot <- function(
   
   ###### ** -- Y-Breaks ######
   ### Filter to y columns info
-  y_info     <- infoList0[["minMax"]]
-  # y_info     <- y_info |> filter(plotRow == row0)
-  # y_info     <- y_info |> mutate(sector = sector0)
-  y_info     <- y_info |> filter(sector     == sector0 )
-  y_info     <- y_info |> filter(impactType == impType0)
-  y_info     <- y_info |> filter(impactYear == impYear0)
-  y_info     <- y_info |> filter(region     == region0 )
-  y_info     <- y_info |> get_colScale(col0="summary_value", nTicks=nTicks)
+  yInfo      <- infoList0[["minMax"]]
+  # yInfo      <- yInfo |> filter(plotRow == row0)
+  # yInfo      <- yInfo |> mutate(sector = sector0)
+  yInfo      <- yInfo |> filter(sector     == sector0 )
+  yInfo      <- yInfo |> filter(impactType == impType0)
+  yInfo      <- yInfo |> filter(impactYear == impYear0)
+  yInfo      <- yInfo |> filter(region     == region0 )
+  yInfo      <- yInfo |> get_colScale(col0="summary_value", nTicks=nTicks)
   ### Additional info
-  y_scale    <- y_info[["scale" ]]
+  y_scale    <- yInfo[["scale" ]]
   # y_scale |> names() |> print()
-  y_p10      <- y_info[["p10"   ]]
-  y_denom    <- y_info[["denom" ]]
-  y_breaks   <- y_info[["breaks"]]
-  y_limits   <- y_info[["limits"]]
-  y_label    <- y_info[["label" ]]
+  y_p10      <- yInfo[["p10"   ]]
+  y_denom    <- yInfo[["denom" ]]
+  y_breaks   <- yInfo[["breaks"]]
+  y_limits   <- yInfo[["limits"]]
+  y_label    <- yInfo[["label" ]]
   
   ### Labeling
   y_prelabel <- (y_label == "") |> ifelse("", ", ")
@@ -117,7 +123,8 @@ create_scaledImpact_plot <- function(
   
   ###### ** Plot Options ######
   ### Values
-  plotOpts0   <- typeLC0 |> get_scaledImpactPlotTitles(options=options)
+  # plotOpts0   <- typeLC0 |> get_scaledImpactPlotTitles(options=options)
+  plotOpts0   <- typeLC0 |> get_scaledImpactPlotTitles(options=options, repo=repo0)
   title0      <- plotOpts0[["title"     ]]
   xTitle      <- plotOpts0[["xTitle"    ]]
   yTitle      <- plotOpts0[["yTitle"    ]]
@@ -127,10 +134,12 @@ create_scaledImpact_plot <- function(
   margins     <- plotOpts0[["margins"   ]]
   mUnit       <- plotOpts0[["marginUnit"]]
   theme0      <- plotOpts0[["theme"     ]]
+  nameBrk     <- plotOpts0[["nameBreak" ]]
   ### Conditionals
   hasLgdPos   <- !(lgdPos  |> is.null())
   hasMargins  <- !(margins |> is.null())
   hasTheme    <- !(theme0  |> is.null())
+  hasNameBrk  <- !(nameBrk |> is.null())
   # xTitle |> print()
   
   ###### Standardize column names ######
@@ -260,7 +269,7 @@ create_scaledImpact_plot <- function(
   
   ###### ** Add themes & margins ######
   ### Theme
-  if(hasTheme){
+  if(hasTheme) {
     if(theme=="bw"){plot0 <- plot0 + theme_bw()}
     else           {plot0 <- plot0 + theme0}
   } ### End if(hasTheme  )
