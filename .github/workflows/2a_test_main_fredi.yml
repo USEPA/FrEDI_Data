@@ -27,9 +27,9 @@ on:
         options:
         - no    
         - yes
-      # workflow_id:
-      #   type: string
-      #   description: Enter the run ID for the workflow from which to retrieve the main FrEDI Data
+      workflow_id:
+        type: string
+        description: Enter the run ID for the workflow from which to retrieve the main FrEDI Data
       fredi_branch:
         type: string
         description: Which FrEDI Package branch do you want to use?
