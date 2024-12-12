@@ -143,6 +143,7 @@ jobs:
             ### Load Data
             dataDir     <- projectDir |> file.path("data")
             artDir      <- dataDir    |> file.path("data")
+            getwd() |> print()
             "." |> list.files() |> print(); 
             "/tmp" |> list.files() |> print()
             dataDir |> list.files() |> print(); 
