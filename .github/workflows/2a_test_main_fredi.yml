@@ -33,9 +33,9 @@ on:
         options:
         - no    
         - yes
-      sectors:
-        type: string
-        description: Which sectors do you want to run?  
+      # sectors:
+      #   type: string
+      #   description: Which sectors do you want to run?  
 
 
 jobs:
