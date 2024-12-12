@@ -44,17 +44,6 @@ testFrediData <- function(
   ###### Project path
   # projectDir  <- "."
   projectDir  <- projectDir
-
-  ### Path and file name for saving outputs
-  # dataOutDir  <- projectDir     |> file.path("data")
-  # dataOutName <- "tmp_sysdata"  |> paste0(".", "rda")
-  # # dataOutName <- "sysdata"  |> paste0(".", "rda")
-  # dataOutPath <- dataOutDir     |> file.path(dataOutName)
-  
-  ### Path for saving test outputs
-  # testOutDir  <- projectDir     |> file.path("data_tests")
-  # testOutFile <- "configPlotResults" |> paste0(".", "xlsx")
-  # testOutPath <- testOutDir     |> file.path(testOutFile)
   
   
   ###### 0. Load FrEDI Data Code ###### 
@@ -68,13 +57,13 @@ testFrediData <- function(
       configuredData = dataList,
       save           = save0,
       overwrite      = TRUE,
-      # xlsxName       = testOutFile,
       save           = TRUE, 
       outPath        = outDir,
       xlsxName       = testFile,
       msg0           = msg0
     ) |> try(silent=T) ### End general_config_test
     ### Add to return list
+    testResults |> print()
     returnList[["generalTestResults"]] <- testResults
   } ### End if(general)
   

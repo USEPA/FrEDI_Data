@@ -177,6 +177,7 @@ jobs:
               ) ### End testFrediData
               ### Save data
               testList |> save(file=listFile)
+              outDir |> list.files() |> print()
               "./data_tests/" |> list.files() |> print()
             } ### End if(doTests)
           '
