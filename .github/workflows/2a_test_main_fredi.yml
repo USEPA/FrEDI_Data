@@ -119,6 +119,9 @@ jobs:
             ### Directories for project, scripts, data, and artifacts
             projectDir  <- "."
             
+            ### Load all code
+            projectDir |> devtools::load_all()          
+            
             ### Create directory for outputs
             ### - Filename for general tests
             ### - Filename for list of tests
@@ -128,12 +131,12 @@ jobs:
             doOutDir    <- !(outDir |> dir.exists())
             if(doOutDir) outDir |> dir.create()
             
-            ### Load Scripts
-            scriptDir   <- projectDir |> file.path("scripts")
-            scriptNames <- c("testFrediData") |> paste0(".", "R")
-            scriptPaths <- scriptDir  |> file.path(scriptNames)
-            # scriptDir |> file.path("testFrediData.R") |> source()
-            for(path_i in scriptPaths){path_i |> source()}
+            # ### Load Scripts
+            # scriptDir   <- projectDir |> file.path("scripts")
+            # scriptNames <- c("testFrediData") |> paste0(".", "R")
+            # scriptPaths <- scriptDir  |> file.path(scriptNames)
+            # # scriptDir |> file.path("testFrediData.R") |> source()
+            # for(path_i in scriptPaths){path_i |> source()}
             
             ### Load Data
             dataDir     <- projectDir |> file.path("data")
