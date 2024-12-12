@@ -134,10 +134,12 @@ jobs:
             ### - Filename for general tests
             ### - Filename for list of tests
             outDir      <- projectDir |> file.path("data_tests")
-            testFile    <- "configTestResults" |> paste0(".", "xlsx") 
-            listFile    <- "testList" |> paste0(".", "R") 
             doOutDir    <- !(outDir |> dir.exists())
             if(doOutDir) outDir |> dir.create()
+            ### Output paths
+            testFile    <- "configTestResults" |> paste0(".", "xlsx") 
+            listFile    <- "testList" |> paste0(".", "R") 
+            listPath    <- outDir     |> file.path(listFile)
             
             # ### Load Scripts
             # scriptDir   <- projectDir |> file.path("scripts")
@@ -171,14 +173,12 @@ jobs:
                 dataList = rDataList , ### List with data (e.g., rDataList)
                 general  = doGenTests, ### Whether to run the general test
                 figures  = doFigures , ### Whether to create scaled impact figures
-                # save     = TRUE      ,
                 outDir   = outDir    ,
                 testFile = testFile
               ) ### End testFrediData
               ### Save data
-              testList |> save(file=listFile)
+              testList |> save(file=listPath)
               outDir |> list.files() |> print()
-              "./data_tests/" |> list.files() |> print()
             } ### End if(doTests)
           '
 
