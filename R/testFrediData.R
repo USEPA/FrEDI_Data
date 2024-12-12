@@ -98,7 +98,7 @@ testFrediData <- function(
     if(doAll) {
       plotResults <- plotResults
     } else{
-      plotResults <- plotResults |> filter(sector %in% sectorsLC0)
+      plotResults <- plotResults |> filter((sector |> tolower()) %in% sectorsLC0)
     } ### End if(doAll)
     
     ### Check if results are present
