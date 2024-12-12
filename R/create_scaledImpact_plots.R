@@ -140,7 +140,8 @@ create_scaledImpact_plots <- function(
   x_info     <- NULL
   x_info     <- x_info |> getXAxisScale(
     xCol    = xCol,
-    maxYear = 2100,
+    # maxYear = 2100,
+    years   = seq(2000, 2100),
     yrUnit  = 20
   ) ### End getXAxisScale
   ### Assign to objects

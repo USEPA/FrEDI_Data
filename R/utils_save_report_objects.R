@@ -79,6 +79,7 @@ save_image <- function(
 
   ### Save Image
   saved0    <- ggsave(fname, plot=obj0, device=dev0, path=fdir, width=w0, height=h0, units=units0) |> try()
+  saved0 |> print()
   ### Return
 } ### End save_image
 

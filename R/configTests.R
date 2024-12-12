@@ -836,10 +836,10 @@ save_scaled_impact_figures <- function(
     # df0 |> glimpse()
     
     ### Unique sector values
-    c_types   <- df_x[["impactType"]] |> unique()
-    c_regions <- df_x[["region"    ]] |> unique()
-    c_states  <- df_x[["state"     ]] |> unique()
-    c_models  <- (df_x |> filter(!(scaled_impacts |> is.na())))[["model"]] |> unique()
+    c_types   <- df_x |> pull(impactType) |> unique()
+    c_regions <- df_x |> pull(regions   ) |> unique()
+    c_states  <- df_x |> pull(state     ) |> unique()
+    c_models  <- df_x |> filter(!(scaled_impacts |> is.na())) |> pull(model) |> unique()
     # c_years |> print(); c_types |> print(); c_vars |> print();
     
     ### Number of values
