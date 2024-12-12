@@ -171,7 +171,7 @@ jobs:
                 dataList = rDataList , ### List with data (e.g., rDataList)
                 general  = doGenTests, ### Whether to run the general test
                 figures  = doFigures , ### Whether to create scaled impact figures
-                save     = TRUE      ,
+                # save     = TRUE      ,
                 outDir   = outDir    ,
                 testFile = testFile
               ) ### End testFrediData
