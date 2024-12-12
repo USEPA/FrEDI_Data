@@ -78,8 +78,10 @@ jobs:
           github-token: ${{ secrets.GH_PAT }}
           repository: actions/toolkit
           run-id: ${{ inputs.workflow_id }}
-          path: ls -R ./data
-      - run: ls -R ./data    
+          path: ls -R /home/runner/work/FrEDI_Data/FrEDI_Data/data
+          # path: ls -R ./data
+      - run: ls -R /home/runner/work/FrEDI_Data/FrEDI_Data/data
+      # - run: ls -R ./data    
       
       - name: Setup R
         uses: r-lib/actions/setup-r@v2
