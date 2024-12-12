@@ -75,6 +75,7 @@ jobs:
         id:   download-artifact
         uses: actions/download-artifact@v4
         with: 
+          name: Data
           github-token: ${{ secrets.GH_PAT }}
           repository: actions/toolkit
           run-id: ${{ inputs.workflow_id }}
@@ -146,6 +147,7 @@ jobs:
             dataDir     <- projectDir |> file.path("data")
             artDir      <- dataDir    |> file.path("data")
             getwd() |> print()
+            getwd() |> list.files() |> print()
             "." |> list.files() |> print(); 
             "/tmp" |> list.files() |> print()
             dataDir |> list.files() |> print(); 
