@@ -138,7 +138,7 @@ jobs:
             if(doOutDir) outDir |> dir.create()
             ### Output paths
             testFile    <- "configTestResults" |> paste0(".", "xlsx") 
-            listFile    <- "testList" |> paste0(".", "R") 
+            listFile    <- "testList" |> paste0(".", "rda") 
             listPath    <- outDir     |> file.path(listFile)
             
             # ### Load Scripts
