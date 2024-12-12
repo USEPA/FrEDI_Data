@@ -39,23 +39,23 @@ on:
 
 
 jobs:
-  # download:
-  #     needs: upload
-  #     runs-on: ubuntu-latest
-  #     steps:
-  #     ### Download tmp_sysdata.rda from 1. Compile Main FrEDI Data run
-  #     - name: Download all artifacts
-  #       id:   download-artifact
-  #       uses: actions/download-artifact@v4
-  #       with: 
-  #         github_token: ${{secrets.GITHUB_TOKEN}}
-  #         run-id: ${{ inputs.workflow_id }}
-  #         path: ls -R ./data
-  #     - run: ls -R ./data    
+  download:
+      runs-on: ubuntu-latest
+      steps:
+      ### Download tmp_sysdata.rda from 1. Compile Main FrEDI Data run
+      - name: Download all artifacts
+        id:   download-artifact
+        uses: actions/download-artifact@v4
+        with:
+          github_token: ${{secrets.GITHUB_TOKEN}}
+          run-id: ${{ inputs.workflow_id }}
+          path: ls -R ./data
+      - run: ls -R ./data
 
   
-  compile_data:
+  test_data:
     runs-on: ubuntu-latest
+    needs: download
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     
@@ -69,20 +69,20 @@ jobs:
         run: |
           echo "$${{ github.ref_name }} ${{ inputs.fredi_branch }} ${{ inputs.gen_test }} ${{ inputs.figures }}"  
         
-      ### Download tmp_sysdata.rda from 1. Compile Main FrEDI Data run
-      ### ${{ secrets.GITHUB_TOKEN }}
-      - name: Download all artifacts
-        id:   download-artifact
-        uses: actions/download-artifact@v4
-        with: 
-          name: 
-          github-token: ${{ secrets.GH_PAT }}
-          repository: actions/toolkit
-          run-id: ${{ inputs.workflow_id }}
-          path: ls -R /home/runner/work/FrEDI_Data/FrEDI_Data/data
-          # path: ls -R ./data
-      - run: ls -R /home/runner/work/FrEDI_Data/FrEDI_Data/data
-      # - run: ls -R ./data    
+      # ### Download tmp_sysdata.rda from 1. Compile Main FrEDI Data run
+      # ### ${{ secrets.GITHUB_TOKEN }}
+      # - name: Download all artifacts
+      #   id:   download-artifact
+      #   uses: actions/download-artifact@v4
+      #   with: 
+      #     name: 
+      #     github-token: ${{ secrets.GH_PAT }}
+      #     repository: actions/toolkit
+      #     run-id: ${{ inputs.workflow_id }}
+      #     path: ls -R /home/runner/work/FrEDI_Data/FrEDI_Data/data
+      #     # path: ls -R ./data
+      # - run: ls -R /home/runner/work/FrEDI_Data/FrEDI_Data/data
+      # # - run: ls -R ./data    
       
       - name: Setup R
         uses: r-lib/actions/setup-r@v2
