@@ -78,6 +78,7 @@ testFrediData <- function(
     plotResults  <- dataList |> 
       get_fredi_sectorOptions_results() |> 
       try(silent=T); plotResults |> glimpse()
+    plotResults |> pull(sector) |> unique() |> print()
     ### Add to figure list
     figureList[["sectorOptions"]] <- plotResults
     
@@ -92,13 +93,15 @@ testFrediData <- function(
     plotList     <- plotResults |> 
       make_scaled_impact_plots() |> 
       try(silent=T)
+    plotList[[1]] |> print()
     ### Add to figure list
     figureList[["plotList"]] <- plotList
 
     ### Save plots
     # modelTypes   <- c("GCM")
     # modelTypes   <- c("SLR")
-    modelTypes   <- c("GCM", "SLR")
+    # modelTypes   <- c("GCM", "SLR")
+    modelTypes   <- plotResults |> pull(modelType) |> unique()
     for(type_i in modelTypes) {
       savePlots <- plotList |> 
         save_scaled_impact_figures(
