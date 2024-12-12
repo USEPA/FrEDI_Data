@@ -89,7 +89,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           # github-token: ${{ GITHUB_PAT }}
           run-id: ${{ inputs.workflow_id }}
-          path: .
+          path: /tmp
       - run: |
           ls -R
           pwd
