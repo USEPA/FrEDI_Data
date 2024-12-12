@@ -84,7 +84,7 @@ testFrediData <- function(
     ### Test region plot info function
     plotInfo     <- plotResults |> 
       get_region_plotInfo() |> 
-      try(silent=T); plotInfo$sectorInfo |> glimpse()
+      try(silent=T); plotInfo[["sectorInfo"]] |> glimpse()
     ### Add to figure list
     figureList[["plotInfo"]] <- plotInfo
     
