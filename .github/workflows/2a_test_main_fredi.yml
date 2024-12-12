@@ -122,7 +122,10 @@ jobs:
             ### Load Data
             dataDir     <- projectDir |> file.path("data")
             artDir      <- dataDir    |> file.path("data")
-            artDir |> list.files() |> print(); "tmp" |> file.path(artDir) |> list.files() |> print()
+            "." |> list.files() |> print(); 
+            "tmp" |> list.files() |> print()
+            dataDir |> list.files() |> print(); 
+            
             artName     <- "tmp_sysdata.rda" 
             artPath     <- artDir     |> file.path(artName)
             artPath |> load()
