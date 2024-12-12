@@ -47,7 +47,7 @@ jobs:
         id:   download-artifact
         uses: actions/download-artifact@v4
         with:
-          github_token: ${{secrets.GITHUB_TOKEN}}
+          github-token: ${{secrets.GITHUB_TOKEN}}
           run-id: ${{ inputs.workflow_id }}
           path: ls -R
       - run: ls -R
