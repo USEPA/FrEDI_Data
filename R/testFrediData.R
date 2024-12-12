@@ -65,10 +65,11 @@ testFrediData <- function(
   ### Run general tests
   if(general) {
     testResults <- general_config_test(
-      configuredData = list_systemData0,
+      configuredData = dataList,
       save           = save0,
       overwrite      = TRUE,
       # xlsxName       = testOutFile,
+      save           = TRUE, 
       outPath        = outDir,
       xlsxName       = testFile,
       msg0           = msg0
