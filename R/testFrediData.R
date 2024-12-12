@@ -37,7 +37,7 @@ testFrediData <- function(
   
   ### Sectors
   sectorsLC0  <- sectors |> tolower(); rm(sectors)
-  doAll       <- "all" %in% sectors0
+  doAll       <- "all" %in% sectorsLC0
   
   ### Whether to include reshaped data in outputs (e.g., for testing)
   reshape0    <- dataList[["rsData"]] |> length()
