@@ -75,7 +75,7 @@ testFrediData <- function(
     figureList   <- list()
     
     ### Create info for plot figures
-    plotResults  <- testResults |> 
+    plotResults  <- dataList |> 
       get_fredi_sectorOptions_results() |> 
       try(silent=T); plotResults |> glimpse()
     ### Add to figure list
