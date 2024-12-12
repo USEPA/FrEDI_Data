@@ -13,6 +13,15 @@ name: 2a. Test Main FrEDI Data
 on: 
   workflow_dispatch:
     inputs:
+      workflow_id:
+        type: string
+        description: Enter the run ID for the workflow from which to retrieve the main FrEDI Data
+      fredi_branch:
+        type: string
+        description: Which FrEDI Package branch do you want to use?
+      sectors:
+        type: string
+        description: Which sectors do you want to run?
       gen_test:
         type: choice
         description: Run general tests on main FrEDI data?
@@ -27,14 +36,24 @@ on:
         options:
         - no    
         - yes
-      workflow_id:
-        type: string
-        description: Enter the run ID for the workflow from which to retrieve the main FrEDI Data
-      fredi_branch:
-        type: string
-        description: Which FrEDI Package branch do you want to use?
+
 
 jobs:
+  download:
+      needs: upload
+      runs-on: ubuntu-latest
+      steps:
+      ### Download tmp_sysdata.rda from 1. Compile Main FrEDI Data run
+      - name: Download all artifacts
+        id:   download-artifact
+        uses: actions/download-artifact@v4
+        with: 
+          github_token: ${{secrets.GITHUB_TOKEN}}
+          run-id: ${{ inputs.workflow_id }}
+          path: ls -R ./data
+      - run: ls -R ./data    
+
+  
   compile_data:
     runs-on: ubuntu-latest
     env:
@@ -49,16 +68,6 @@ jobs:
       - name: Send input status
         run: |
           echo "$${{ github.ref_name }} ${{ inputs.fredi_branch }} ${{ inputs.gen_test }} ${{ inputs.figures }}"  
-      
-      ### Download tmp_sysdata.rda from 1. Compile Main FrEDI Data run
-      ### dawidd6/action-download-artifact@v7
-      - name: Download artifact
-        id:   download-artifact
-        uses: actions/download-artifact@v4
-        with: 
-          github_token: ${{secrets.GITHUB_TOKEN}}
-          run-id: ${{ inputs.workflow_id }}
-          path: ls -R
         
       - name: Setup R
         uses: r-lib/actions/setup-r@v2
