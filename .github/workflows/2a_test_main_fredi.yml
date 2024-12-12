@@ -57,27 +57,8 @@ jobs:
         uses: actions/download-artifact@v4
         with: 
           github_token:    ${{secrets.GITHUB_TOKEN}}
-          # workflow:        workflow_name.yml
-          # workflow_search: false
-          # workflow_conclusion: success
-          # pr: ${{github.event.pull_request.number}}
-          # commit: ${{github.event.pull_request.head.sha}}
-          # branch: 
-          ### Run ID
-          # run-id: ${{ github.event.workflow_run.id }}
-          # run_id: 1122334455
           run-id: ${{ inputs.workflow_id }}
-          ### Optional, run number from the workflow
-          # run_number: 34
-          ### Optional, uploaded artifact name,
-          ### will download all artifacts if not specified and extract them into respective subdirectories
-          ### https://github.com/actions/download-artifact
-          # name: artifact_name
-          name_is_regexp: true
-          ### Optional, a directory where to extract artifact(s), defaults to the current directory
-          # path: extract_here
           path: ./data/
-          if_no_artifact_found: fail
         
       - name: Setup R
         uses: r-lib/actions/setup-r@v2
@@ -141,8 +122,9 @@ jobs:
             ### Load Data
             dataDir     <- projectDir |> file.path("data")
             artDir      <- dataDir    |> file.path("data")
+            artDir |> list.files() |> print(); "tmp" |> file.path(artDir) |> list.files() |> print()
             artName     <- "tmp_sysdata.rda" 
-            artPath     <- artDir     |> file.path(artFile)
+            artPath     <- artDir     |> file.path(artName)
             artPath |> load()
             
             ### Run general test
