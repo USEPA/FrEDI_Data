@@ -56,9 +56,9 @@ jobs:
         id:   download-artifact
         uses: actions/download-artifact@v4
         with: 
-          github_token:    ${{secrets.GITHUB_TOKEN}}
+          github_token: ${{secrets.GITHUB_TOKEN}}
           run-id: ${{ inputs.workflow_id }}
-          path: ./data/
+          path: ls -R ./data/
         
       - name: Setup R
         uses: r-lib/actions/setup-r@v2
