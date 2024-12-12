@@ -50,7 +50,9 @@ jobs:
           github-token: ${{secrets.GITHUB_TOKEN}}
           run-id: ${{ inputs.workflow_id }}
           path: ls -R
-      - run: ls -R
+      - run: |
+          ls -R
+          pwd
 
   
   test_data:
