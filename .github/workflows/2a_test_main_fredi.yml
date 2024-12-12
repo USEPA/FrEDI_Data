@@ -49,8 +49,8 @@ jobs:
         with:
           github_token: ${{secrets.GITHUB_TOKEN}}
           run-id: ${{ inputs.workflow_id }}
-          path: ls -R ./data
-      - run: ls -R ./data
+          path: ls -R
+      - run: ls -R
 
   
   test_data:
