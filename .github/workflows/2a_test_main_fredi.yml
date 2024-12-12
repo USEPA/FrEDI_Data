@@ -58,7 +58,7 @@ jobs:
         with: 
           github_token: ${{secrets.GITHUB_TOKEN}}
           run-id: ${{ inputs.workflow_id }}
-          path: ls -R .
+          path: ls -R
         
       - name: Setup R
         uses: r-lib/actions/setup-r@v2
