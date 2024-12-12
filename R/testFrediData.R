@@ -57,7 +57,6 @@ testFrediData <- function(
       configuredData = dataList,
       save           = save0,
       overwrite      = TRUE,
-      save           = TRUE, 
       outPath        = outDir,
       xlsxName       = testFile,
       msg0           = msg0
