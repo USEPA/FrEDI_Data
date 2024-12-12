@@ -157,10 +157,9 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           # github-token: ${{ GITHUB_PAT }}
           run-id: ${{ inputs.workflow_id }}
-          path: /tmp
+          path: ./data
       - run: |
-          ls -R 
-          ls -R /tmp
+          ls -R ./data
           pwd
           
       - name: Run Tests on Main FrEDI Data
