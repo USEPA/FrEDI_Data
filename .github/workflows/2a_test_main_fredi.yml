@@ -156,10 +156,12 @@ jobs:
             
             artName     <- "tmp_sysdata.rda" 
             artPath     <- artDir     |> file.path(artName)
-            artPath |> load()
             
             ### Run general test
             if(doTests) {
+              ### Load data
+              artPath |> load()
+              ### Run tests
               testList <- projectDir |> testFrediData(
                 dataList = rDataList , ### List with data (e.g., rDataList)
                 general  = doGenTests, ### Whether to run the general test
