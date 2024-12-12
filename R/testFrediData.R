@@ -14,6 +14,7 @@ testFrediData <- function(
     dataList   = NULL , ### List with data (e.g., rDataList)
     general    = TRUE , ### Whether to run the general test
     figures    = TRUE , ### Whether to create scaled impact figures
+    sectors    = "all", ### Which sector to run
     # save       = TRUE , ### Whether to save the data
     outDir     = "." |> file.path("data_tests"), ### Directory to save test results
     testFile   = "configTestResults" |> paste0(".", "xlsx"), ### Filename for general tests
@@ -33,6 +34,10 @@ testFrediData <- function(
   # reshape0    <- reshape; rm(reshape)
   save0       <- TRUE
   msgUser     <- !silent
+  
+  ### Sectors
+  sectorsLC0  <- sectors |> tolower(); rm(sectors)
+  doAll       <- "all" %in% sectors0
   
   ### Whether to include reshaped data in outputs (e.g., for testing)
   reshape0    <- dataList[["rsData"]] |> length()
@@ -89,29 +94,41 @@ testFrediData <- function(
     ### Add to figure list
     figureList[["plotInfo"]] <- plotInfo
     
-    ### Make scaled impact plots
-    plotList     <- plotResults |> 
-      make_scaled_impact_plots() |> 
-      try(silent=T)
-    plotList[[1]] |> print()
-    ### Add to figure list
-    figureList[["plotList"]] <- plotList
-
-    ### Save plots
-    # modelTypes   <- c("GCM")
-    # modelTypes   <- c("SLR")
-    # modelTypes   <- c("GCM", "SLR")
-    modelTypes   <- plotResults |> pull(modelType) |> unique()
-    for(type_i in modelTypes) {
-      savePlots <- plotList |> 
-        save_scaled_impact_figures(
-          df0   = plotResults, 
-          type0 = type_i, 
-          fpath = outDir
-        ) |> try(silent=T)
-    } ### End for(type_i in modelTypes)
-    # savePlots1   <- plotList |> save_scaled_impact_figures(df0=plotResults, type0="GCM", fpath=testOutDir) |> try(silent=T)
-    # savePlots2   <- plotList |> save_scaled_impact_figures(df0=plotResults, type0="SLR", fpath=testOutDir) |> try(silent=T)
+    ### Filter to specific sectors
+    if(doAll) {
+      plotResults <- plotResults
+    } else{
+      plotResults <- plotResults |> filter(sector %in% sectorsLC0)
+    } ### End if(doAll)
+    
+    ### Check if results are present
+    hasResults   <- plotResults |> length()
+    if(hasResults) {
+      ### Make scaled impact plots
+      plotList     <- plotResults |> 
+        make_scaled_impact_plots() |> 
+        try(silent=T)
+      plotList[[1]] |> print()
+      ### Add to figure list
+      figureList[["plotList"]] <- plotList
+      
+      ### Save plots
+      # modelTypes   <- c("GCM")
+      # modelTypes   <- c("SLR")
+      # modelTypes   <- c("GCM", "SLR")
+      modelTypes   <- plotResults |> pull(modelType) |> unique()
+      for(type_i in modelTypes) {
+        savePlots <- plotList |> 
+          save_scaled_impact_figures(
+            df0   = plotResults, 
+            type0 = type_i, 
+            fpath = outDir
+          ) |> try(silent=T)
+      } ### End for(type_i in modelTypes)
+      # savePlots1   <- plotList |> save_scaled_impact_figures(df0=plotResults, type0="GCM", fpath=testOutDir) |> try(silent=T)
+      # savePlots2   <- plotList |> save_scaled_impact_figures(df0=plotResults, type0="SLR", fpath=testOutDir) |> try(silent=T)
+    } ### End if(hasResults) 
+   
     
     ### Add to return list
     returnList[["figures"]] <- figureList

@@ -19,6 +19,7 @@ on:
       fredi_branch:
         type: string
         description: Which FrEDI Package branch do you want to use?
+        default: "main"
       gen_test:
         type: choice
         description: Run general tests on main FrEDI data?
@@ -33,9 +34,10 @@ on:
         options:
         - no    
         - yes
-      # sectors:
-      #   type: string
-      #   description: Which sectors do you want to run?  
+      sector:
+        type: string
+        description: Which sectors do you want to run?
+        default: "all"
 
 
 jobs:
@@ -123,6 +125,7 @@ jobs:
             doGenTests  <- "${{ inputs.gen_test }}" == "true" 
             doFigures   <- "${{ inputs.figures  }}" == "true"
             doTests     <- doGenTests | doFigures
+            sector0     <- "${{ inputs.sector  }}"
             
             ### Directories for project, scripts, data, and artifacts
             projectDir  <- "."
@@ -173,8 +176,9 @@ jobs:
                 dataList = rDataList , ### List with data (e.g., rDataList)
                 general  = doGenTests, ### Whether to run the general test
                 figures  = doFigures , ### Whether to create scaled impact figures
-                outDir   = outDir    ,
-                testFile = testFile
+                sectors  = sector0   , ### Which sector to run
+                outDir   = outDir    , ### Where to save output files
+                testFile = testFile    ### Name of Excel file for testing results
               ) ### End testFrediData
               ### Save data
               testList |> save(file=listPath)
