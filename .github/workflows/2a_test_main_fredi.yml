@@ -70,11 +70,13 @@ jobs:
           echo "$${{ github.ref_name }} ${{ inputs.fredi_branch }} ${{ inputs.gen_test }} ${{ inputs.figures }}"  
         
       ### Download tmp_sysdata.rda from 1. Compile Main FrEDI Data run
+      ### ${{ secrets.GITHUB_TOKEN }}
       - name: Download all artifacts
         id:   download-artifact
         uses: actions/download-artifact@v4
         with: 
-          github_token: ${{secrets.GITHUB_TOKEN}}
+          github-token: ${{ secrets.GH_PAT }}
+          repository: actions/toolkit
           run-id: ${{ inputs.workflow_id }}
           path: ls -R ./data
       - run: ls -R ./data    
