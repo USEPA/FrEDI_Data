@@ -52,45 +52,30 @@ jobs:
           echo "$${{ github.ref_name }} ${{ inputs.passed_tests }} ${{ inputs.workflow_id }}"  
       
       ### Download tmp_sysdata.rda from 1. Compile Main FrEDI Data run
-      - name: Download artifact
+      - name: Download all artifacts
         id:   download-artifact
-        uses: dawidd6/action-download-artifact@v7
-        with: 
-          github_token:    ${{secrets.GITHUB_TOKEN}}
-          # workflow:        workflow_name.yml
-          # workflow_search: false
-          # workflow_conclusion: success
-          # pr: ${{github.event.pull_request.number}}
-          # commit: ${{github.event.pull_request.head.sha}}
-          # branch: 
-          ### Run ID
-          # run-id: ${{ github.event.workflow_run.id }}
-          # run_id: 1122334455
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          # github-token: ${{ GITHUB_PAT }}
           run-id: ${{ inputs.workflow_id }}
-          ### Optional, run number from the workflow
-          # run_number: 34
-          ### Optional, uploaded artifact name,
-          ### will download all artifacts if not specified and extract them into respective subdirectories
-          ### https://github.com/actions/download-artifact
-          # name: artifact_name
-          name_is_regexp: true
-          ### Optional, a directory where to extract artifact(s), defaults to the current directory
-          # path: extract_here
-          path: ./data/
-          if_no_artifact_found: fail
+          path: ./data
+      - run: |
+          pwd
+          ls -R ./data/Data
       
+      # github.event.inputs.passed_tests == 'true'
+      # cp data/tmp_sysdata.rda data/sysdata.rda
       - name: Update Data
         if: |
-          # github.event.inputs.passed_tests == 'true'
           github.inputs.passed_tests == 'true'
         run:  |
           git rm data/sysdata.rda
-          cp data/data/tmp_sysdata.rda data/sysdata.rda
-          # cp data/tmp_sysdata.rda data/sysdata.rda
-
+          cp data/Data/tmp_sysdata.rda data/sysdata.rda
+          
+      # github.event.inputs.passed_tests == 'true'
       - name: Add SV Data to sysdata
         if: |
-          # github.event.inputs.passed_tests == 'true'
           github.inputs.passed_tests == 'true'
         run:  |
           Rscript -e '
