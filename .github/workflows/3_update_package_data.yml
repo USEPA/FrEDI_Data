@@ -70,8 +70,9 @@ jobs:
         if: |
           github.inputs.passed_tests == 'true'
         run:  |
-          git rm data/sysdata.rda
-          cp data/Data/tmp_sysdata.rda data/sysdata.rda
+          rm ./data/sysdata.rda
+          cp ./data/Data/tmp_sysdata.rda ./data/sysdata.rda
+          rm ./data/Data/tmp_sysdata.rda
           
       # github.event.inputs.passed_tests == 'true'
       - name: Add SV Data to sysdata
@@ -79,21 +80,63 @@ jobs:
           github.inputs.passed_tests == 'true'
         run:  |
           Rscript -e '
-            pPath0 <- "."
-            sPath0 <- "./scripts/add_svData_to_sysdata.R"
-            sPath0 |> source()
-            add_svData_to_sysdata(projectDir=pPath0, save=T)
+            # pPath0 <- "."
+            # sPath0 <- "./scripts/add_svData_to_sysdata.R"
+            # sPath0 |> source()
+            # add_svData_to_sysdata(projectDir=pPath0, save=T)
+            ###### Set Paths ######
+            ### Project path
+            ### Data output path and file name
+            projectDir  <- "."
+            dataDir     <- projectDir |> file.path("data")
+            svDir       <- dataPath   |> file.path("sv")
+            ### Filenames
+            dataFile    <- "sysdata.rda"
+  
+            ###### 0. Local Function ###### 
+            projectDir |> load_all()
+  
+            ###### 1. Add SV Data to sysdata.rda ###### 
+            tmpData     <- projectDir |> update_sysdata(
+              dataPath  = dataDir,
+              mainFile  = dataFile, 
+              sv        = TRUE ,
+              svPath    = svDir,
+              svDataExt = "rda", 
+              save      = TRUE ,
+              return    = FALSE
+            ) ### End update_sysdata
           '
       
       - name: Commit results
         if: |
           github.event.inputs.passed_tests == 'true'
         run: |
+          # Configure github
           git config --local core.autocrlf false
           git config --local user.email "${{ github.actor }}@users.noreply.github.com"
           git config --local user.name  "${{ github.actor }}"
-          # git rm data/tmp_sysdata.rda*
-          git add data/*.rd*
+          
+          # Navigate to the repository directory (optional, set the path below if needed)
+          # cd /path/to/your/repo
+          
+          # Add data files
+          git add ./data/*.rd*
+          
+          # Rebase files
           git pull origin ${{ github.head_ref }} --autostash --rebase -X ours
-          git commit -a -m "Updated sysdata and added SV data to sysdata"
-          git push
+
+          # Check for staged changes
+          if git diff --cached --quiet; then
+            echo "No changes staged for commit."
+          else
+            echo "Some changes staged for commit."
+            # Commit the changes
+            commit_message="Auto-commit: Updated sysdata and added SV data to sysdata. Date: $(date '+%Y-%m-%d %H:%M:%S')"
+            git commit -m "$commit_message"
+            echo "Changes committed with message: '$commit_message'."
+            git push
+          fi
+          # git pull origin ${{ github.head_ref }} --autostash --rebase -X ours
+          # git commit -a -m "Updated sysdata and added SV data to sysdata"
+          # git push
