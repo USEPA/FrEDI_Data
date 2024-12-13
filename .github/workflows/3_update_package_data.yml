@@ -65,10 +65,13 @@ jobs:
           ls -R ./data/Data
       
       # github.event.inputs.passed_tests == 'true'
+      # github.inputs.passed_tests == 'true'
       # cp data/tmp_sysdata.rda data/sysdata.rda
+      # ${{ ( github.inputs.passed_tests == 'true' ) || ( github.inputs.passed_tests == 'yes' ) }}
       - name: Update Data
         if: |
-          github.inputs.passed_tests == 'true'
+          ${{ ( inputs.passed_tests == 'true' ) || 
+            ( inputs.passed_tests == 'yes' ) }}
         run:  |
           rm ./data/sysdata.rda
           cp ./data/Data/tmp_sysdata.rda ./data/sysdata.rda
@@ -77,13 +80,10 @@ jobs:
       # github.event.inputs.passed_tests == 'true'
       - name: Add SV Data to sysdata
         if: |
-          github.inputs.passed_tests == 'true'
+          ${{ ( inputs.passed_tests == 'true' ) || 
+            ( inputs.passed_tests == 'yes' ) }}
         run:  |
           Rscript -e '
-            # pPath0 <- "."
-            # sPath0 <- "./scripts/add_svData_to_sysdata.R"
-            # sPath0 |> source()
-            # add_svData_to_sysdata(projectDir=pPath0, save=T)
             ###### Set Paths ######
             ### Project path
             ### Data output path and file name
@@ -110,7 +110,8 @@ jobs:
       
       - name: Commit results
         if: |
-          github.event.inputs.passed_tests == 'true'
+          ${{ ( inputs.passed_tests == 'true' ) || 
+            ( inputs.passed_tests == 'yes' ) }}
         run: |
           # Configure github
           git config --local core.autocrlf false
@@ -125,6 +126,9 @@ jobs:
           
           # Rebase files
           git pull origin ${{ github.head_ref }} --autostash --rebase -X ours
+          
+          # git commit -a -m "Updated sysdata and added SV data to sysdata"
+          # git push
 
           # Check for staged changes
           if git diff --cached --quiet; then
@@ -137,6 +141,3 @@ jobs:
             echo "Changes committed with message: '$commit_message'."
             git push
           fi
-          # git pull origin ${{ github.head_ref }} --autostash --rebase -X ours
-          # git commit -a -m "Updated sysdata and added SV data to sysdata"
-          # git push
