@@ -83,7 +83,6 @@ testFrediData <- function(
     plotResults  <- dataList |> 
       get_fredi_sectorOptions_results() |> 
       try(silent=T); plotResults |> glimpse()
-    plotResults |> pull(sector) |> unique() |> print()
     ### Add to figure list
     figureList[["sectorOptions"]] <- plotResults
     
@@ -98,7 +97,14 @@ testFrediData <- function(
     if(doAll) {
       plotResults <- plotResults
     } else{
-      plotResults <- plotResults |> filter((sector |> tolower()) %in% sectorsLC0)
+      ### Sectors
+      sectors1     <- plotResults |> pull(sector) |> unique()
+      sectorsLC1   <- sectors1    |> tolower()
+      whichSectors <- sectorsLC1 %in% sectorsLC0
+      plotSectors  <- sectors1[whichSectors]    
+      plotSectors |> print()
+      ### Filter sectors
+      plotResults <- plotResults |> filter(sector %in% plotSectors)
     } ### End if(doAll)
     
     ### Check if results are present
