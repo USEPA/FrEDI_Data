@@ -106,7 +106,7 @@ jobs:
               mainFile  = dataFile, 
               sv        = TRUE ,
               svPath    = svDir,
-              svDataExt = "rda", 
+              svExt     = "rda", 
               save      = TRUE ,
               return    = FALSE
             ) ### End update_sysdata
