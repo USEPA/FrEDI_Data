@@ -84,6 +84,10 @@ jobs:
             ( inputs.passed_tests == 'yes' ) }}
         run:  |
           Rscript -e '
+             ### Libraries
+            require(tidyverse)
+            require(devtools)
+            
             ###### Set Paths ######
             ### Project path
             ### Data output path and file name
@@ -94,7 +98,7 @@ jobs:
             dataFile    <- "sysdata.rda"
   
             ###### 0. Local Function ###### 
-            projectDir |> load_all()
+            projectDir |> devtools::load_all()
   
             ###### 1. Add SV Data to sysdata.rda ###### 
             tmpData     <- projectDir |> update_sysdata(
