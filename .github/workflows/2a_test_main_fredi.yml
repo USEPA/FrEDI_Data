@@ -169,7 +169,9 @@ jobs:
             runTests    <- doTests & artExists
             
             ### Modify sectors
-            sectors0    <- sectors0 |> str_replace_all(" ,", ",") |> str_split(pattern=",") |> unlist()
+            sectors0    <- sectors0 |> trimws()
+            sectors0    <- sectors0 |> str_replace_all(" ,", ",")
+            sectors0    <- sectors0 |> str_split(pattern=",") |> unlist()
             sectors0 |> print()
             
             ### Run general test

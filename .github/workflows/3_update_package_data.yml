@@ -89,7 +89,7 @@ jobs:
             ### Data output path and file name
             projectDir  <- "."
             dataDir     <- projectDir |> file.path("data")
-            svDir       <- dataPath   |> file.path("sv")
+            svDir       <- dataDir    |> file.path("sv")
             ### Filenames
             dataFile    <- "sysdata.rda"
   
