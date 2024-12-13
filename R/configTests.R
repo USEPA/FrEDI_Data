@@ -113,7 +113,7 @@ dataInfo_test <- function(
     rm(outExt, csvName)
     ### Check if outDir exists and, if not, create one
     odExists  <- outDir  |> dir.exists()
-    if(!odExists){outDir |> dir.create(showWarnings = F)}
+    if(!odExists) outDir |> dir.create(showWarnings = F)
     rm(odExists)
     ## Save the test results
     df_info  |> write_csv(outFile)
@@ -121,7 +121,8 @@ dataInfo_test <- function(
   
   ###### Return ######
   "Finished." |> message()
-  if(return) {return(df_info)}
+  if(return) return(df_info)
+  else       return()
 }
 
 ###### General Configuration Tests ######
@@ -239,7 +240,7 @@ general_config_test <- function(
     outFile   <- outDir  |> file.path(xlsxName)
     ### Check if outDir exists and, if not, create one
     odExists  <- outDir  |> dir.exists()
-    if(!odExists){outDir |> dir.create(showWarnings = F)}
+    if(!odExists) outDir |> dir.create(showWarnings = F)
     rm(odExists)
     ### Create Excel workbook
     wbook0    <- createWorkbook()
@@ -837,7 +838,7 @@ save_scaled_impact_figures <- function(
     
     ### Unique sector values
     c_types   <- df_x |> pull(impactType) |> unique()
-    c_regions <- df_x |> pull(regions   ) |> unique()
+    c_regions <- df_x |> pull(region    ) |> unique()
     c_states  <- df_x |> pull(state     ) |> unique()
     c_models  <- df_x |> filter(!(scaled_impacts |> is.na())) |> pull(model) |> unique()
     # c_years |> print(); c_types |> print(); c_vars |> print();
