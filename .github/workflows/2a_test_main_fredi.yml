@@ -121,9 +121,12 @@ jobs:
       - name: Run Tests on Main FrEDI Data
         run: |
           Rscript -e '
+            ### Libraries
+            require(tidyverse)
+            require(devtools)
             ### Arguments
-            doGenTests  <- "${{ inputs.gen_test }}" == "true" 
-            doFigures   <- "${{ inputs.figures  }}" == "true"
+            doGenTests  <- "${{ inputs.gen_test }}" %in% c("true", "yes")
+            doFigures   <- "${{ inputs.figures  }}" %in% c("true", "yes")
             doTests     <- doGenTests | doFigures
             sectors0    <- "${{ inputs.sector  }}"
             
@@ -171,6 +174,7 @@ jobs:
             ### Modify sectors
             sectors0    <- sectors0 |> trimws()
             sectors0    <- sectors0 |> str_replace_all(" ,", ",")
+            sectors0    <- sectors0 |> trimws()
             sectors0    <- sectors0 |> str_split(pattern=",") |> unlist()
             sectors0 |> print()
             
