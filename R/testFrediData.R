@@ -124,7 +124,8 @@ testFrediData <- function(
             type0 = type_i, 
             fpath = outDir
           ) |> try(silent=T)
-        outDir |> file.path("images") |> list.files() |> print()
+        outDir |> file.path("images") |> list.files() |> head() |> print()
+        rm(type_i)
       } ### End for(type_i in modelTypes)
       # savePlots1   <- plotList |> save_scaled_impact_figures(df0=plotResults, type0="GCM", fpath=testOutDir) |> try(silent=T)
       # savePlots2   <- plotList |> save_scaled_impact_figures(df0=plotResults, type0="SLR", fpath=testOutDir) |> try(silent=T)
