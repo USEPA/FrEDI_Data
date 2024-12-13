@@ -125,7 +125,7 @@ jobs:
             doGenTests  <- "${{ inputs.gen_test }}" == "true" 
             doFigures   <- "${{ inputs.figures  }}" == "true"
             doTests     <- doGenTests | doFigures
-            sector0     <- "${{ inputs.sector  }}"
+            sectors0    <- "${{ inputs.sector  }}"
             
             ### Directories for project, scripts, data, and artifacts
             projectDir  <- "."
@@ -144,12 +144,12 @@ jobs:
             listFile    <- "testList" |> paste0(".", "rda") 
             listPath    <- outDir     |> file.path(listFile)
             
-            # ### Load Scripts
-            # scriptDir   <- projectDir |> file.path("scripts")
-            # scriptNames <- c("testFrediData") |> paste0(".", "R")
-            # scriptPaths <- scriptDir  |> file.path(scriptNames)
-            # # scriptDir |> file.path("testFrediData.R") |> source()
-            # for(path_i in scriptPaths){path_i |> source()}
+            ### Load Scripts
+            scriptDir   <- projectDir |> file.path("scripts")
+            scriptName  <- c("testFrediData") |> paste0(".", "R")
+            scriptPath  <- scriptDir  |> file.path(scriptName)
+            scriptPath |> source()
+            # for(path_i in scriptPath){path_i |> source()}
             
             ### Load Data
             dataDir     <- projectDir |> file.path("data")
@@ -159,6 +159,7 @@ jobs:
             # dataDir |> list.files() |> print(); 
             # artDir  |> list.files() |> print(); 
             
+            ### Artifact paths
             artName     <- "tmp_sysdata.rda" 
             artPath     <- artDir     |> file.path(artName)
             artExists   <- artPath    |> file.exists()
@@ -166,6 +167,10 @@ jobs:
             
             ### Whether to run the test
             runTests    <- doTests & artExists
+            
+            ### Modify sectors
+            sectors0    <- sectors0 |> str_replace_all(" ,", ",") |> str_split(pattern=",") |> unlist()
+            sectors0 |> print()
             
             ### Run general test
             if(runTests) {
@@ -176,13 +181,13 @@ jobs:
                 dataList = rDataList , ### List with data (e.g., rDataList)
                 general  = doGenTests, ### Whether to run the general test
                 figures  = doFigures , ### Whether to create scaled impact figures
-                sectors  = sector0   , ### Which sector to run
+                sectors  = sectors0  , ### Which sector to run
                 outDir   = outDir    , ### Where to save output files
                 testFile = testFile    ### Name of Excel file for testing results
               ) ### End testFrediData
               ### Save data
               testList |> save(file=listPath)
-              outDir |> list.files() |> print()
+              outDir   |> list.files() |> print()
             } ### End if(doTests)
           '
 
