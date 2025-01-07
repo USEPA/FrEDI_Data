@@ -123,13 +123,13 @@ configureSystemData <- function(
   
   if(return_type == "db"){
     
+    dbExecute(conn = con,"DROP TABLE IF EXISTS fredi_config")
+    dbExecute(conn = con,"CREATE TABLE fredi_config (value BLOB)")
+    dbExecute(con, 'INSERT INTO fredi_config (value) VALUES (:value)', params = list(value = list(serialize(sysDataList0[["fredi_config"]], connection = NULL))
+                                                                                             )
+              )
     
-    #DBI::dbWriteTable(conn = con, name = "fredi_config", value = sysDataList0[["fredi_config"]] |> serialize(conn = NULL),  field.types=list(value='BLOB'),overwrite = TRUE)
     
-    #DBI::dbReadTable(con,"fredi_config")
-    
-    #RSQLite::dbGetQuery(db.conn, 'INSERT INTO data VALUES (:blob)', params = list(blob = list(serialize(some_object)))
-    #some_object <- unserialize(RSQLite::dbGetQuery(db.conn, 'SELECT blob FROM data LIMIT 1')$blob[[1]])                    
     for(i in 1:length(sysDataList0[["frediData"]])){
       DBI::dbWriteTable(conn = con, name = names(sysDataList0[["frediData"   ]][i]), value = sysDataList0[["frediData"   ]][[i]], overwrite = TRUE)
     }
@@ -137,6 +137,11 @@ configureSystemData <- function(
     #for(i in 1:length(sysDataList0[["stateData"]])){
     # DBI::dbWriteTable(conn = con, name = names(sysDataList0[["stateData"   ]][i]), value = sysDataList0[["stateData"   ]][[i]], overwrite = TRUE)
     #}
+    dbExecute(conn = con,"DROP TABLE IF EXISTS stateData")
+    dbExecute(conn = con,"CREATE TABLE stateData (value BLOB)")
+    dbExecute(con, 'INSERT INTO stateData (value) VALUES (:value)', params = list(value = list(serialize(sysDataList0[["stateData"   ]], connection = NULL))
+    )
+    )
     
     for(i in 1:length(sysDataList0[["scenarioData"   ]])){
       DBI::dbWriteTable(conn = con, name = names(sysDataList0[["scenarioData"]][i]), value = sysDataList0[["scenarioData"]][[i]], overwrite = TRUE)
