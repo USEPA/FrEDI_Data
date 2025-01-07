@@ -89,7 +89,6 @@ jobs:
             any::ggpubr
             any::openxlsx
             any::devtools
-            any::admisc
             any::zoo
 
       - name: Install FrEDI
@@ -175,8 +174,8 @@ jobs:
             sectors0 |> print()
             sectors0    <- sectors0 |> trimws()
             sectors0    <- sectors0 |> str_replace_all(" ", "")
-            sectors0    <- sectors0 |> trimws()
             sectors0    <- sectors0 |> str_split(pattern=",") |> unlist()
+            sectors0    <- sectors0 |> trimws()
             sectors0 |> print()
             
             ### Run general test
