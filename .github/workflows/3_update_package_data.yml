@@ -94,8 +94,16 @@ jobs:
             projectDir  <- "."
             dataDir     <- projectDir |> file.path("data")
             svDir       <- dataDir    |> file.path("sv")
+            ghgDir      <- dataDir    |> file.path("methane")
+            
+            
             ### Filenames
             dataFile    <- "sysdata.rda"
+            ghgFile     <- "listMethane.rda"
+            
+            dataPath    <- dataDir |> file.path(dataFile) 
+            ghgPath     <- ghgDir  |> file.path(ghgFile )
+            
   
             ###### 0. Local Function ###### 
             projectDir |> devtools::load_all()
@@ -110,6 +118,12 @@ jobs:
               save      = TRUE ,
               return    = FALSE
             ) ### End update_sysdata
+            
+            ###### 2. Save Data List ###### 
+            projectDir |> devtools::load_all()
+            ghgPath    <- ghgDir |> file.path(ghgFile)
+            ghgPath |> load()
+            save(rDataList, listMethane, svDataList, svPopList, format_styles, file=dataPath)
           '
       
       - name: Commit results
