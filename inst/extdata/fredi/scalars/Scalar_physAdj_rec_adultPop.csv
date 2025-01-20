@@ -1,442 +1,540 @@
-year,value,state,postal,scalarName
-2010,0.806481583,Alabama,AL,rec_adultPop
-2020,0.807188773,Alabama,AL,rec_adultPop
-2030,0.810505667,Alabama,AL,rec_adultPop
-2040,0.809635353,Alabama,AL,rec_adultPop
-2050,0.807541015,Alabama,AL,rec_adultPop
-2060,0.806504238,Alabama,AL,rec_adultPop
-2070,0.806157809,Alabama,AL,rec_adultPop
-2080,0.806448952,Alabama,AL,rec_adultPop
-2090,0.808037176,Alabama,AL,rec_adultPop
-2010,0.785037393,Arizona,AZ,rec_adultPop
-2020,0.793827499,Arizona,AZ,rec_adultPop
-2030,0.7987186,Arizona,AZ,rec_adultPop
-2040,0.800719904,Arizona,AZ,rec_adultPop
-2050,0.802876294,Arizona,AZ,rec_adultPop
-2060,0.804467694,Arizona,AZ,rec_adultPop
-2070,0.805692853,Arizona,AZ,rec_adultPop
-2080,0.807853067,Arizona,AZ,rec_adultPop
-2090,0.81141852,Arizona,AZ,rec_adultPop
-2010,0.80311044,Arkansas,AR,rec_adultPop
-2020,0.807404898,Arkansas,AR,rec_adultPop
-2030,0.80963849,Arkansas,AR,rec_adultPop
-2040,0.809873974,Arkansas,AR,rec_adultPop
-2050,0.809394909,Arkansas,AR,rec_adultPop
-2060,0.808792797,Arkansas,AR,rec_adultPop
-2070,0.808624533,Arkansas,AR,rec_adultPop
-2080,0.80914229,Arkansas,AR,rec_adultPop
-2090,0.810966324,Arkansas,AR,rec_adultPop
-2010,0.784847109,California,CA,rec_adultPop
-2020,0.784882239,California,CA,rec_adultPop
-2030,0.797441041,California,CA,rec_adultPop
-2040,0.798705303,California,CA,rec_adultPop
-2050,0.797704883,California,CA,rec_adultPop
-2060,0.800235924,California,CA,rec_adultPop
-2070,0.80089544,California,CA,rec_adultPop
-2080,0.802672499,California,CA,rec_adultPop
-2090,0.806802287,California,CA,rec_adultPop
-2010,0.801609529,Colorado,CO,rec_adultPop
-2020,0.810939061,Colorado,CO,rec_adultPop
-2030,0.818813431,Colorado,CO,rec_adultPop
-2040,0.817075562,Colorado,CO,rec_adultPop
-2050,0.815948525,Colorado,CO,rec_adultPop
-2060,0.815568291,Colorado,CO,rec_adultPop
-2070,0.814295846,Colorado,CO,rec_adultPop
-2080,0.815549233,Colorado,CO,rec_adultPop
-2090,0.818421449,Colorado,CO,rec_adultPop
-2010,0.814921816,Connecticut,CT,rec_adultPop
-2020,0.808947286,Connecticut,CT,rec_adultPop
-2030,0.810140375,Connecticut,CT,rec_adultPop
-2040,0.811866068,Connecticut,CT,rec_adultPop
-2050,0.80756029,Connecticut,CT,rec_adultPop
-2060,0.806170363,Connecticut,CT,rec_adultPop
-2070,0.806693863,Connecticut,CT,rec_adultPop
-2080,0.807498368,Connecticut,CT,rec_adultPop
-2090,0.809514158,Connecticut,CT,rec_adultPop
-2010,0.80584663,Delaware,DE,rec_adultPop
-2020,0.807563813,Delaware,DE,rec_adultPop
-2030,0.81345464,Delaware,DE,rec_adultPop
-2040,0.813407146,Delaware,DE,rec_adultPop
-2050,0.812185745,Delaware,DE,rec_adultPop
-2060,0.812805189,Delaware,DE,rec_adultPop
-2070,0.812072069,Delaware,DE,rec_adultPop
-2080,0.812807346,Delaware,DE,rec_adultPop
-2090,0.815390706,Delaware,DE,rec_adultPop
-2010,0.8012203,District of Columbia,DC,rec_adultPop
-2020,0.771706144,District of Columbia,DC,rec_adultPop
-2030,0.833978923,District of Columbia,DC,rec_adultPop
-2040,0.802862365,District of Columbia,DC,rec_adultPop
-2050,0.796167944,District of Columbia,DC,rec_adultPop
-2060,0.812516999,District of Columbia,DC,rec_adultPop
-2070,0.798185556,District of Columbia,DC,rec_adultPop
-2080,0.795426166,District of Columbia,DC,rec_adultPop
-2090,0.806157309,District of Columbia,DC,rec_adultPop
-2010,0.81439659,Florida,FL,rec_adultPop
-2020,0.811780086,Florida,FL,rec_adultPop
-2030,0.815864702,Florida,FL,rec_adultPop
-2040,0.813510717,Florida,FL,rec_adultPop
-2050,0.811711864,Florida,FL,rec_adultPop
-2060,0.81090547,Florida,FL,rec_adultPop
-2070,0.810468423,Florida,FL,rec_adultPop
-2080,0.811702045,Florida,FL,rec_adultPop
-2090,0.813971047,Florida,FL,rec_adultPop
-2010,0.793759574,Georgia,GA,rec_adultPop
-2020,0.808800575,Georgia,GA,rec_adultPop
-2030,0.814194474,Georgia,GA,rec_adultPop
-2040,0.815361507,Georgia,GA,rec_adultPop
-2050,0.816207557,Georgia,GA,rec_adultPop
-2060,0.814782311,Georgia,GA,rec_adultPop
-2070,0.814232117,Georgia,GA,rec_adultPop
-2080,0.815022555,Georgia,GA,rec_adultPop
-2090,0.816806474,Georgia,GA,rec_adultPop
-2010,0.790564559,Idaho,ID,rec_adultPop
-2020,0.800558676,Idaho,ID,rec_adultPop
-2030,0.802250974,Idaho,ID,rec_adultPop
-2040,0.80690052,Idaho,ID,rec_adultPop
-2050,0.807644384,Idaho,ID,rec_adultPop
-2060,0.808737876,Idaho,ID,rec_adultPop
-2070,0.810417877,Idaho,ID,rec_adultPop
-2080,0.811666664,Idaho,ID,rec_adultPop
-2090,0.813798926,Idaho,ID,rec_adultPop
-2010,0.797685634,Illinois,IL,rec_adultPop
-2020,0.798852632,Illinois,IL,rec_adultPop
-2030,0.804886941,Illinois,IL,rec_adultPop
-2040,0.80455168,Illinois,IL,rec_adultPop
-2050,0.80331805,Illinois,IL,rec_adultPop
-2060,0.803946464,Illinois,IL,rec_adultPop
-2070,0.803662531,Illinois,IL,rec_adultPop
-2080,0.804700636,Illinois,IL,rec_adultPop
-2090,0.807633064,Illinois,IL,rec_adultPop
-2010,0.799892301,Indiana,IN,rec_adultPop
-2020,0.802524564,Indiana,IN,rec_adultPop
-2030,0.804078229,Indiana,IN,rec_adultPop
-2040,0.804941054,Indiana,IN,rec_adultPop
-2050,0.803117721,Indiana,IN,rec_adultPop
-2060,0.802607489,Indiana,IN,rec_adultPop
-2070,0.802467195,Indiana,IN,rec_adultPop
-2080,0.802683932,Indiana,IN,rec_adultPop
-2090,0.80436771,Indiana,IN,rec_adultPop
-2010,0.808275363,Iowa,IA,rec_adultPop
-2020,0.800278665,Iowa,IA,rec_adultPop
-2030,0.801911368,Iowa,IA,rec_adultPop
-2040,0.803493712,Iowa,IA,rec_adultPop
-2050,0.799228192,Iowa,IA,rec_adultPop
-2060,0.800556549,Iowa,IA,rec_adultPop
-2070,0.800750665,Iowa,IA,rec_adultPop
-2080,0.800220737,Iowa,IA,rec_adultPop
-2090,0.802246007,Iowa,IA,rec_adultPop
-2010,0.798131032,Kansas,KS,rec_adultPop
-2020,0.800078505,Kansas,KS,rec_adultPop
-2030,0.804515857,Kansas,KS,rec_adultPop
-2040,0.8070819,Kansas,KS,rec_adultPop
-2050,0.806003406,Kansas,KS,rec_adultPop
-2060,0.807406146,Kansas,KS,rec_adultPop
-2070,0.80812227,Kansas,KS,rec_adultPop
-2080,0.808637977,Kansas,KS,rec_adultPop
-2090,0.810832585,Kansas,KS,rec_adultPop
-2010,0.808555249,Kentucky,KY,rec_adultPop
-2020,0.811531135,Kentucky,KY,rec_adultPop
-2030,0.813548519,Kentucky,KY,rec_adultPop
-2040,0.811450913,Kentucky,KY,rec_adultPop
-2050,0.809927081,Kentucky,KY,rec_adultPop
-2060,0.808487372,Kentucky,KY,rec_adultPop
-2070,0.807020501,Kentucky,KY,rec_adultPop
-2080,0.807002215,Kentucky,KY,rec_adultPop
-2090,0.808329753,Kentucky,KY,rec_adultPop
-2010,0.793975531,Louisiana,LA,rec_adultPop
-2020,0.797136847,Louisiana,LA,rec_adultPop
-2030,0.806572541,Louisiana,LA,rec_adultPop
-2040,0.807095625,Louisiana,LA,rec_adultPop
-2050,0.806026495,Louisiana,LA,rec_adultPop
-2060,0.807513532,Louisiana,LA,rec_adultPop
-2070,0.806852911,Louisiana,LA,rec_adultPop
-2080,0.807449141,Louisiana,LA,rec_adultPop
-2090,0.80953924,Louisiana,LA,rec_adultPop
-2010,0.834186891,Maine,ME,rec_adultPop
-2020,0.822219545,Maine,ME,rec_adultPop
-2030,0.823522379,Maine,ME,rec_adultPop
-2040,0.822881808,Maine,ME,rec_adultPop
-2050,0.81494077,Maine,ME,rec_adultPop
-2060,0.813382236,Maine,ME,rec_adultPop
-2070,0.812529949,Maine,ME,rec_adultPop
-2080,0.811549443,Maine,ME,rec_adultPop
-2090,0.812666496,Maine,ME,rec_adultPop
-2010,0.806911362,Maryland,MD,rec_adultPop
-2020,0.80751899,Maryland,MD,rec_adultPop
-2030,0.814599445,Maryland,MD,rec_adultPop
-2040,0.813361831,Maryland,MD,rec_adultPop
-2050,0.810294739,Maryland,MD,rec_adultPop
-2060,0.810063249,Maryland,MD,rec_adultPop
-2070,0.809077998,Maryland,MD,rec_adultPop
-2080,0.809220393,Maryland,MD,rec_adultPop
-2090,0.811589408,Maryland,MD,rec_adultPop
-2010,0.812652697,Massachusetts,MA,rec_adultPop
-2020,0.805056867,Massachusetts,MA,rec_adultPop
-2030,0.814583964,Massachusetts,MA,rec_adultPop
-2040,0.810702518,Massachusetts,MA,rec_adultPop
-2050,0.806756033,Massachusetts,MA,rec_adultPop
-2060,0.807966493,Massachusetts,MA,rec_adultPop
-2070,0.805794841,Massachusetts,MA,rec_adultPop
-2080,0.80604134,Massachusetts,MA,rec_adultPop
-2090,0.809107232,Massachusetts,MA,rec_adultPop
-2010,0.808151781,Michigan,MI,rec_adultPop
-2020,0.804633646,Michigan,MI,rec_adultPop
-2030,0.8059481,Michigan,MI,rec_adultPop
-2040,0.807618443,Michigan,MI,rec_adultPop
-2050,0.80398239,Michigan,MI,rec_adultPop
-2060,0.803290451,Michigan,MI,rec_adultPop
-2070,0.803642876,Michigan,MI,rec_adultPop
-2080,0.803701391,Michigan,MI,rec_adultPop
-2090,0.805161177,Michigan,MI,rec_adultPop
-2010,0.806228459,Minnesota,MN,rec_adultPop
-2020,0.804551531,Minnesota,MN,rec_adultPop
-2030,0.807264939,Minnesota,MN,rec_adultPop
-2040,0.808356109,Minnesota,MN,rec_adultPop
-2050,0.804823682,Minnesota,MN,rec_adultPop
-2060,0.804696615,Minnesota,MN,rec_adultPop
-2070,0.804588764,Minnesota,MN,rec_adultPop
-2080,0.804067334,Minnesota,MN,rec_adultPop
-2090,0.805723729,Minnesota,MN,rec_adultPop
-2010,0.793665674,Mississippi,MS,rec_adultPop
-2020,0.799857768,Mississippi,MS,rec_adultPop
-2030,0.806864629,Mississippi,MS,rec_adultPop
-2040,0.808630883,Mississippi,MS,rec_adultPop
-2050,0.808563422,Mississippi,MS,rec_adultPop
-2060,0.808878893,Mississippi,MS,rec_adultPop
-2070,0.808671363,Mississippi,MS,rec_adultPop
-2080,0.80930334,Mississippi,MS,rec_adultPop
-2090,0.810991359,Mississippi,MS,rec_adultPop
-2010,0.80727812,Missouri,MO,rec_adultPop
-2020,0.807330306,Missouri,MO,rec_adultPop
-2030,0.811720789,Missouri,MO,rec_adultPop
-2040,0.811849375,Missouri,MO,rec_adultPop
-2050,0.810104911,Missouri,MO,rec_adultPop
-2060,0.810389185,Missouri,MO,rec_adultPop
-2070,0.809738276,Missouri,MO,rec_adultPop
-2080,0.809850743,Missouri,MO,rec_adultPop
-2090,0.811820079,Missouri,MO,rec_adultPop
-2010,0.819343988,Montana,MT,rec_adultPop
-2020,0.809326232,Montana,MT,rec_adultPop
-2030,0.810164054,Montana,MT,rec_adultPop
-2040,0.810958175,Montana,MT,rec_adultPop
-2050,0.806500349,Montana,MT,rec_adultPop
-2060,0.807044252,Montana,MT,rec_adultPop
-2070,0.807833297,Montana,MT,rec_adultPop
-2080,0.807845485,Montana,MT,rec_adultPop
-2090,0.809726178,Montana,MT,rec_adultPop
-2010,0.797918693,Nebraska,NE,rec_adultPop
-2020,0.799656167,Nebraska,NE,rec_adultPop
-2030,0.801000442,Nebraska,NE,rec_adultPop
-2040,0.804727547,Nebraska,NE,rec_adultPop
-2050,0.803351437,Nebraska,NE,rec_adultPop
-2060,0.803942934,Nebraska,NE,rec_adultPop
-2070,0.805596218,Nebraska,NE,rec_adultPop
-2080,0.806068144,Nebraska,NE,rec_adultPop
-2090,0.807748339,Nebraska,NE,rec_adultPop
-2010,0.796894896,Nevada,NV,rec_adultPop
-2020,0.810145532,Nevada,NV,rec_adultPop
-2030,0.813408105,Nevada,NV,rec_adultPop
-2040,0.813531173,Nevada,NV,rec_adultPop
-2050,0.813610661,Nevada,NV,rec_adultPop
-2060,0.813193802,Nevada,NV,rec_adultPop
-2070,0.813496024,Nevada,NV,rec_adultPop
-2080,0.815295299,Nevada,NV,rec_adultPop
-2090,0.818237664,Nevada,NV,rec_adultPop
-2010,0.822632852,New Hampshire,NH,rec_adultPop
-2020,0.817148568,New Hampshire,NH,rec_adultPop
-2030,0.819154856,New Hampshire,NH,rec_adultPop
-2040,0.82108283,New Hampshire,NH,rec_adultPop
-2050,0.814784718,New Hampshire,NH,rec_adultPop
-2060,0.813147547,New Hampshire,NH,rec_adultPop
-2070,0.812922744,New Hampshire,NH,rec_adultPop
-2080,0.812487904,New Hampshire,NH,rec_adultPop
-2090,0.813854388,New Hampshire,NH,rec_adultPop
-2010,0.805105522,New Jersey,NJ,rec_adultPop
-2020,0.807000413,New Jersey,NJ,rec_adultPop
-2030,0.807187259,New Jersey,NJ,rec_adultPop
-2040,0.805753858,New Jersey,NJ,rec_adultPop
-2050,0.803907779,New Jersey,NJ,rec_adultPop
-2060,0.801015105,New Jersey,NJ,rec_adultPop
-2070,0.800795995,New Jersey,NJ,rec_adultPop
-2080,0.802474365,New Jersey,NJ,rec_adultPop
-2090,0.804331402,New Jersey,NJ,rec_adultPop
-2010,0.784128161,New Mexico,NM,rec_adultPop
-2020,0.788313537,New Mexico,NM,rec_adultPop
-2030,0.80571456,New Mexico,NM,rec_adultPop
-2040,0.807826547,New Mexico,NM,rec_adultPop
-2050,0.808456186,New Mexico,NM,rec_adultPop
-2060,0.811745938,New Mexico,NM,rec_adultPop
-2070,0.812941513,New Mexico,NM,rec_adultPop
-2080,0.815170216,New Mexico,NM,rec_adultPop
-2090,0.818800369,New Mexico,NM,rec_adultPop
-2010,0.810128809,New York,NY,rec_adultPop
-2020,0.803149706,New York,NY,rec_adultPop
-2030,0.810128672,New York,NY,rec_adultPop
-2040,0.806684855,New York,NY,rec_adultPop
-2050,0.803799017,New York,NY,rec_adultPop
-2060,0.804624999,New York,NY,rec_adultPop
-2070,0.804302963,New York,NY,rec_adultPop
-2080,0.805672398,New York,NY,rec_adultPop
-2090,0.808532244,New York,NY,rec_adultPop
-2010,0.80372852,North Carolina,NC,rec_adultPop
-2020,0.813898666,North Carolina,NC,rec_adultPop
-2030,0.816520758,North Carolina,NC,rec_adultPop
-2040,0.81629524,North Carolina,NC,rec_adultPop
-2050,0.816336162,North Carolina,NC,rec_adultPop
-2060,0.814297089,North Carolina,NC,rec_adultPop
-2070,0.813730978,North Carolina,NC,rec_adultPop
-2080,0.814375839,North Carolina,NC,rec_adultPop
-2090,0.816120517,North Carolina,NC,rec_adultPop
-2010,0.811903309,North Dakota,ND,rec_adultPop
-2020,0.79455602,North Dakota,ND,rec_adultPop
-2030,0.802318028,North Dakota,ND,rec_adultPop
-2040,0.801694258,North Dakota,ND,rec_adultPop
-2050,0.79645955,North Dakota,ND,rec_adultPop
-2060,0.798820721,North Dakota,ND,rec_adultPop
-2070,0.797690283,North Dakota,ND,rec_adultPop
-2080,0.796690631,North Dakota,ND,rec_adultPop
-2090,0.798023754,North Dakota,ND,rec_adultPop
-2010,0.809094447,Ohio,OH,rec_adultPop
-2020,0.806721466,Ohio,OH,rec_adultPop
-2030,0.807486614,Ohio,OH,rec_adultPop
-2040,0.807834906,Ohio,OH,rec_adultPop
-2050,0.804170225,Ohio,OH,rec_adultPop
-2060,0.803336347,Ohio,OH,rec_adultPop
-2070,0.803003921,Ohio,OH,rec_adultPop
-2080,0.802784238,Ohio,OH,rec_adultPop
-2090,0.804082461,Ohio,OH,rec_adultPop
-2010,0.79715419,Oklahoma,OK,rec_adultPop
-2020,0.801619375,Oklahoma,OK,rec_adultPop
-2030,0.807524491,Oklahoma,OK,rec_adultPop
-2040,0.808651287,Oklahoma,OK,rec_adultPop
-2050,0.808856238,Oklahoma,OK,rec_adultPop
-2060,0.810151368,Oklahoma,OK,rec_adultPop
-2070,0.810818363,Oklahoma,OK,rec_adultPop
-2080,0.811852511,Oklahoma,OK,rec_adultPop
-2090,0.814317763,Oklahoma,OK,rec_adultPop
-2010,0.810416494,Oregon,OR,rec_adultPop
-2020,0.806058761,Oregon,OR,rec_adultPop
-2030,0.809991244,Oregon,OR,rec_adultPop
-2040,0.808323781,Oregon,OR,rec_adultPop
-2050,0.805159867,Oregon,OR,rec_adultPop
-2060,0.805953818,Oregon,OR,rec_adultPop
-2070,0.805801102,Oregon,OR,rec_adultPop
-2080,0.806229757,Oregon,OR,rec_adultPop
-2090,0.809375027,Oregon,OR,rec_adultPop
-2010,0.821157309,Pennsylvania,PA,rec_adultPop
-2020,0.809719,Pennsylvania,PA,rec_adultPop
-2030,0.812830797,Pennsylvania,PA,rec_adultPop
-2040,0.812690732,Pennsylvania,PA,rec_adultPop
-2050,0.806750842,Pennsylvania,PA,rec_adultPop
-2060,0.806844473,Pennsylvania,PA,rec_adultPop
-2070,0.806519803,Pennsylvania,PA,rec_adultPop
-2080,0.805916778,Pennsylvania,PA,rec_adultPop
-2090,0.807550592,Pennsylvania,PA,rec_adultPop
-2010,0.818346069,Rhode Island,RI,rec_adultPop
-2020,0.803170149,Rhode Island,RI,rec_adultPop
-2030,0.816832845,Rhode Island,RI,rec_adultPop
-2040,0.8165848,Rhode Island,RI,rec_adultPop
-2050,0.810116179,Rhode Island,RI,rec_adultPop
-2060,0.813221059,Rhode Island,RI,rec_adultPop
-2070,0.812713977,Rhode Island,RI,rec_adultPop
-2080,0.812124325,Rhode Island,RI,rec_adultPop
-2090,0.815429445,Rhode Island,RI,rec_adultPop
-2010,0.806280463,South Carolina,SC,rec_adultPop
-2020,0.810655641,South Carolina,SC,rec_adultPop
-2030,0.816478716,South Carolina,SC,rec_adultPop
-2040,0.816246143,South Carolina,SC,rec_adultPop
-2050,0.815574498,South Carolina,SC,rec_adultPop
-2060,0.814752602,South Carolina,SC,rec_adultPop
-2070,0.814298245,South Carolina,SC,rec_adultPop
-2080,0.814975046,South Carolina,SC,rec_adultPop
-2090,0.816691574,South Carolina,SC,rec_adultPop
-2010,0.801901263,South Dakota,SD,rec_adultPop
-2020,0.799878452,South Dakota,SD,rec_adultPop
-2030,0.800742854,South Dakota,SD,rec_adultPop
-2040,0.804548856,South Dakota,SD,rec_adultPop
-2050,0.80349102,South Dakota,SD,rec_adultPop
-2060,0.80428781,South Dakota,SD,rec_adultPop
-2070,0.805447959,South Dakota,SD,rec_adultPop
-2080,0.805596958,South Dakota,SD,rec_adultPop
-2090,0.806964739,South Dakota,SD,rec_adultPop
-2010,0.808818875,Tennessee,TN,rec_adultPop
-2020,0.812617362,Tennessee,TN,rec_adultPop
-2030,0.815062081,Tennessee,TN,rec_adultPop
-2040,0.813274006,Tennessee,TN,rec_adultPop
-2050,0.812022591,Tennessee,TN,rec_adultPop
-2060,0.81028911,Tennessee,TN,rec_adultPop
-2070,0.809219756,Tennessee,TN,rec_adultPop
-2080,0.809575517,Tennessee,TN,rec_adultPop
-2090,0.811193941,Tennessee,TN,rec_adultPop
-2010,0.77517079,Texas,TX,rec_adultPop
-2020,0.788447101,Texas,TX,rec_adultPop
-2030,0.797198325,Texas,TX,rec_adultPop
-2040,0.799662526,Texas,TX,rec_adultPop
-2050,0.80154863,Texas,TX,rec_adultPop
-2060,0.80261993,Texas,TX,rec_adultPop
-2070,0.804058366,Texas,TX,rec_adultPop
-2080,0.806374032,Texas,TX,rec_adultPop
-2090,0.809555615,Texas,TX,rec_adultPop
-2010,0.749450724,Utah,UT,rec_adultPop
-2020,0.782312969,Utah,UT,rec_adultPop
-2030,0.791340813,Utah,UT,rec_adultPop
-2040,0.799368711,Utah,UT,rec_adultPop
-2050,0.807331077,Utah,UT,rec_adultPop
-2060,0.809729924,Utah,UT,rec_adultPop
-2070,0.811641283,Utah,UT,rec_adultPop
-2080,0.81313765,Utah,UT,rec_adultPop
-2090,0.81547707,Utah,UT,rec_adultPop
-2010,0.83205963,Vermont,VT,rec_adultPop
-2020,0.814007321,Vermont,VT,rec_adultPop
-2030,0.819572503,Vermont,VT,rec_adultPop
-2040,0.818379574,Vermont,VT,rec_adultPop
-2050,0.808574976,Vermont,VT,rec_adultPop
-2060,0.809090115,Vermont,VT,rec_adultPop
-2070,0.807359456,Vermont,VT,rec_adultPop
-2080,0.805796307,Vermont,VT,rec_adultPop
-2090,0.807440107,Vermont,VT,rec_adultPop
-2010,0.807344997,Virginia,VA,rec_adultPop
-2020,0.811886168,Virginia,VA,rec_adultPop
-2030,0.820003545,Virginia,VA,rec_adultPop
-2040,0.817684832,Virginia,VA,rec_adultPop
-2050,0.816111111,Virginia,VA,rec_adultPop
-2060,0.815295597,Virginia,VA,rec_adultPop
-2070,0.813245461,Virginia,VA,rec_adultPop
-2080,0.813498257,Virginia,VA,rec_adultPop
-2090,0.81574288,Virginia,VA,rec_adultPop
-2010,0.80647677,Washington,WA,rec_adultPop
-2020,0.805665553,Washington,WA,rec_adultPop
-2030,0.809763062,Washington,WA,rec_adultPop
-2040,0.808983672,Washington,WA,rec_adultPop
-2050,0.805373469,Washington,WA,rec_adultPop
-2060,0.805150771,Washington,WA,rec_adultPop
-2070,0.805100485,Washington,WA,rec_adultPop
-2080,0.805345689,Washington,WA,rec_adultPop
-2090,0.807624931,Washington,WA,rec_adultPop
-2010,0.823424802,West Virginia,WV,rec_adultPop
-2020,0.810078232,West Virginia,WV,rec_adultPop
-2030,0.810000395,West Virginia,WV,rec_adultPop
-2040,0.803022791,West Virginia,WV,rec_adultPop
-2050,0.795723152,West Virginia,WV,rec_adultPop
-2060,0.795075465,West Virginia,WV,rec_adultPop
-2070,0.79212141,West Virginia,WV,rec_adultPop
-2080,0.791194697,West Virginia,WV,rec_adultPop
-2090,0.793992525,West Virginia,WV,rec_adultPop
-2010,0.811477949,Wisconsin,WI,rec_adultPop
-2020,0.805362365,Wisconsin,WI,rec_adultPop
-2030,0.808059901,Wisconsin,WI,rec_adultPop
-2040,0.80904365,Wisconsin,WI,rec_adultPop
-2050,0.804873979,Wisconsin,WI,rec_adultPop
-2060,0.804443777,Wisconsin,WI,rec_adultPop
-2070,0.804556459,Wisconsin,WI,rec_adultPop
-2080,0.804344714,Wisconsin,WI,rec_adultPop
-2090,0.805841208,Wisconsin,WI,rec_adultPop
-2010,0.811079823,Wyoming,WY,rec_adultPop
-2020,0.806204716,Wyoming,WY,rec_adultPop
-2030,0.812272083,Wyoming,WY,rec_adultPop
-2040,0.812931909,Wyoming,WY,rec_adultPop
-2050,0.81121283,Wyoming,WY,rec_adultPop
-2060,0.813457433,Wyoming,WY,rec_adultPop
-2070,0.814406888,Wyoming,WY,rec_adultPop
-2080,0.816190623,Wyoming,WY,rec_adultPop
-2090,0.820398037,Wyoming,WY,rec_adultPop
+"state","postal","scalarName","year","value"
+"Alabama","AL","rec_adultPop",2000,NA
+"Alabama","AL","rec_adultPop",2010,0.806481583414589
+"Alabama","AL","rec_adultPop",2020,0.807188773283238
+"Alabama","AL","rec_adultPop",2030,0.810505666651778
+"Alabama","AL","rec_adultPop",2040,0.809635352638556
+"Alabama","AL","rec_adultPop",2050,0.807541014729904
+"Alabama","AL","rec_adultPop",2060,0.806504238354583
+"Alabama","AL","rec_adultPop",2070,0.806157808593914
+"Alabama","AL","rec_adultPop",2080,0.806448952310975
+"Alabama","AL","rec_adultPop",2090,0.808037176308501
+"Alabama","AL","rec_adultPop",2300,0.81212060765502
+"Arizona","AZ","rec_adultPop",2000,NA
+"Arizona","AZ","rec_adultPop",2010,0.785037392567403
+"Arizona","AZ","rec_adultPop",2020,0.793827499216363
+"Arizona","AZ","rec_adultPop",2030,0.798718600330351
+"Arizona","AZ","rec_adultPop",2040,0.800719903505032
+"Arizona","AZ","rec_adultPop",2050,0.802876294438565
+"Arizona","AZ","rec_adultPop",2060,0.804467693894678
+"Arizona","AZ","rec_adultPop",2070,0.805692852808116
+"Arizona","AZ","rec_adultPop",2080,0.807853066821134
+"Arizona","AZ","rec_adultPop",2090,0.811418519774027
+"Arizona","AZ","rec_adultPop",2300,0.880668978691415
+"Arkansas","AR","rec_adultPop",2000,NA
+"Arkansas","AR","rec_adultPop",2010,0.803110439951773
+"Arkansas","AR","rec_adultPop",2020,0.807404898073426
+"Arkansas","AR","rec_adultPop",2030,0.809638490107746
+"Arkansas","AR","rec_adultPop",2040,0.809873974364911
+"Arkansas","AR","rec_adultPop",2050,0.809394909313754
+"Arkansas","AR","rec_adultPop",2060,0.808792796777433
+"Arkansas","AR","rec_adultPop",2070,0.808624532913418
+"Arkansas","AR","rec_adultPop",2080,0.809142289908665
+"Arkansas","AR","rec_adultPop",2090,0.810966323846263
+"Arkansas","AR","rec_adultPop",2300,0.8315880190693
+"California","CA","rec_adultPop",2000,NA
+"California","CA","rec_adultPop",2010,0.784847108797586
+"California","CA","rec_adultPop",2020,0.784882238656683
+"California","CA","rec_adultPop",2030,0.797441040950621
+"California","CA","rec_adultPop",2040,0.798705302741017
+"California","CA","rec_adultPop",2050,0.797704882804308
+"California","CA","rec_adultPop",2060,0.800235923926127
+"California","CA","rec_adultPop",2070,0.800895440321215
+"California","CA","rec_adultPop",2080,0.802672498513761
+"California","CA","rec_adultPop",2090,0.806802287282682
+"California","CA","rec_adultPop",2300,0.864434630806061
+"Colorado","CO","rec_adultPop",2000,NA
+"Colorado","CO","rec_adultPop",2010,0.80160952874146
+"Colorado","CO","rec_adultPop",2020,0.81093906098833
+"Colorado","CO","rec_adultPop",2030,0.818813430907718
+"Colorado","CO","rec_adultPop",2040,0.817075561829952
+"Colorado","CO","rec_adultPop",2050,0.815948525483313
+"Colorado","CO","rec_adultPop",2060,0.815568290642331
+"Colorado","CO","rec_adultPop",2070,0.814295846049219
+"Colorado","CO","rec_adultPop",2080,0.815549233306964
+"Colorado","CO","rec_adultPop",2090,0.818421448669858
+"Colorado","CO","rec_adultPop",2300,0.862552738481905
+"Connecticut","CT","rec_adultPop",2000,NA
+"Connecticut","CT","rec_adultPop",2010,0.814921816325434
+"Connecticut","CT","rec_adultPop",2020,0.808947286411183
+"Connecticut","CT","rec_adultPop",2030,0.810140375029158
+"Connecticut","CT","rec_adultPop",2040,0.811866067867292
+"Connecticut","CT","rec_adultPop",2050,0.80756028996849
+"Connecticut","CT","rec_adultPop",2060,0.806170362953802
+"Connecticut","CT","rec_adultPop",2070,0.806693862581061
+"Connecticut","CT","rec_adultPop",2080,0.807498367570752
+"Connecticut","CT","rec_adultPop",2090,0.809514158370324
+"Connecticut","CT","rec_adultPop",2300,0.795319056238162
+"Delaware","DE","rec_adultPop",2000,NA
+"Delaware","DE","rec_adultPop",2010,0.805846630321704
+"Delaware","DE","rec_adultPop",2020,0.807563813288668
+"Delaware","DE","rec_adultPop",2030,0.813454639853642
+"Delaware","DE","rec_adultPop",2040,0.813407146304457
+"Delaware","DE","rec_adultPop",2050,0.812185745366555
+"Delaware","DE","rec_adultPop",2060,0.812805188730959
+"Delaware","DE","rec_adultPop",2070,0.812072068761125
+"Delaware","DE","rec_adultPop",2080,0.81280734588562
+"Delaware","DE","rec_adultPop",2090,0.815390705701468
+"Delaware","DE","rec_adultPop",2300,0.840443903573349
+"District of Columbia","DC","rec_adultPop",2000,NA
+"District of Columbia","DC","rec_adultPop",2010,0.801220299809663
+"District of Columbia","DC","rec_adultPop",2020,0.771706144213236
+"District of Columbia","DC","rec_adultPop",2030,0.833978923159203
+"District of Columbia","DC","rec_adultPop",2040,0.802862364819491
+"District of Columbia","DC","rec_adultPop",2050,0.796167944091517
+"District of Columbia","DC","rec_adultPop",2060,0.812516999073724
+"District of Columbia","DC","rec_adultPop",2070,0.798185556378177
+"District of Columbia","DC","rec_adultPop",2080,0.795426165735139
+"District of Columbia","DC","rec_adultPop",2090,0.806157309030618
+"District of Columbia","DC","rec_adultPop",2300,0.819116958235624
+"Florida","FL","rec_adultPop",2000,NA
+"Florida","FL","rec_adultPop",2010,0.814396590280963
+"Florida","FL","rec_adultPop",2020,0.811780086126429
+"Florida","FL","rec_adultPop",2030,0.815864701520965
+"Florida","FL","rec_adultPop",2040,0.813510716906463
+"Florida","FL","rec_adultPop",2050,0.811711864208762
+"Florida","FL","rec_adultPop",2060,0.810905470194995
+"Florida","FL","rec_adultPop",2070,0.81046842347387
+"Florida","FL","rec_adultPop",2080,0.811702045004811
+"Florida","FL","rec_adultPop",2090,0.813971047052744
+"Florida","FL","rec_adultPop",2300,0.812853996078671
+"Georgia","GA","rec_adultPop",2000,NA
+"Georgia","GA","rec_adultPop",2010,0.793759573682787
+"Georgia","GA","rec_adultPop",2020,0.808800574602007
+"Georgia","GA","rec_adultPop",2030,0.814194473807167
+"Georgia","GA","rec_adultPop",2040,0.815361506660925
+"Georgia","GA","rec_adultPop",2050,0.816207557154464
+"Georgia","GA","rec_adultPop",2060,0.814782311053557
+"Georgia","GA","rec_adultPop",2070,0.814232117279151
+"Georgia","GA","rec_adultPop",2080,0.815022555205558
+"Georgia","GA","rec_adultPop",2090,0.816806473953797
+"Georgia","GA","rec_adultPop",2300,0.877304587165198
+"Idaho","ID","rec_adultPop",2000,NA
+"Idaho","ID","rec_adultPop",2010,0.790564559116851
+"Idaho","ID","rec_adultPop",2020,0.800558675941697
+"Idaho","ID","rec_adultPop",2030,0.802250974131308
+"Idaho","ID","rec_adultPop",2040,0.806900520341434
+"Idaho","ID","rec_adultPop",2050,0.807644383906406
+"Idaho","ID","rec_adultPop",2060,0.808737875525062
+"Idaho","ID","rec_adultPop",2070,0.810417876721755
+"Idaho","ID","rec_adultPop",2080,0.811666664345762
+"Idaho","ID","rec_adultPop",2090,0.813798925913609
+"Idaho","ID","rec_adultPop",2300,0.874789138755099
+"Illinois","IL","rec_adultPop",2000,NA
+"Illinois","IL","rec_adultPop",2010,0.79768563410032
+"Illinois","IL","rec_adultPop",2020,0.798852632439452
+"Illinois","IL","rec_adultPop",2030,0.804886940988233
+"Illinois","IL","rec_adultPop",2040,0.804551679915345
+"Illinois","IL","rec_adultPop",2050,0.803318050123377
+"Illinois","IL","rec_adultPop",2060,0.803946463799163
+"Illinois","IL","rec_adultPop",2070,0.803662531366322
+"Illinois","IL","rec_adultPop",2080,0.804700635954308
+"Illinois","IL","rec_adultPop",2090,0.807633063902185
+"Illinois","IL","rec_adultPop",2300,0.83374506713208
+"Indiana","IN","rec_adultPop",2000,NA
+"Indiana","IN","rec_adultPop",2010,0.79989230130766
+"Indiana","IN","rec_adultPop",2020,0.802524564431508
+"Indiana","IN","rec_adultPop",2030,0.804078228638942
+"Indiana","IN","rec_adultPop",2040,0.80494105420827
+"Indiana","IN","rec_adultPop",2050,0.803117721016026
+"Indiana","IN","rec_adultPop",2060,0.802607489268524
+"Indiana","IN","rec_adultPop",2070,0.802467194826302
+"Indiana","IN","rec_adultPop",2080,0.802683931734358
+"Indiana","IN","rec_adultPop",2090,0.804367710396397
+"Indiana","IN","rec_adultPop",2300,0.816115659254333
+"Iowa","IA","rec_adultPop",2000,NA
+"Iowa","IA","rec_adultPop",2010,0.80827536338831
+"Iowa","IA","rec_adultPop",2020,0.800278664776814
+"Iowa","IA","rec_adultPop",2030,0.801911367840408
+"Iowa","IA","rec_adultPop",2040,0.803493711744865
+"Iowa","IA","rec_adultPop",2050,0.799228192103284
+"Iowa","IA","rec_adultPop",2060,0.800556548508387
+"Iowa","IA","rec_adultPop",2070,0.800750664965419
+"Iowa","IA","rec_adultPop",2080,0.800220736511409
+"Iowa","IA","rec_adultPop",2090,0.802246006963903
+"Iowa","IA","rec_adultPop",2300,0.786418946349834
+"Kansas","KS","rec_adultPop",2000,NA
+"Kansas","KS","rec_adultPop",2010,0.798131032262864
+"Kansas","KS","rec_adultPop",2020,0.800078504768034
+"Kansas","KS","rec_adultPop",2030,0.804515856739152
+"Kansas","KS","rec_adultPop",2040,0.807081900443539
+"Kansas","KS","rec_adultPop",2050,0.806003406225015
+"Kansas","KS","rec_adultPop",2060,0.80740614591924
+"Kansas","KS","rec_adultPop",2070,0.808122270038935
+"Kansas","KS","rec_adultPop",2080,0.808637977038313
+"Kansas","KS","rec_adultPop",2090,0.810832584505234
+"Kansas","KS","rec_adultPop",2300,0.844174159141457
+"Kentucky","KY","rec_adultPop",2000,NA
+"Kentucky","KY","rec_adultPop",2010,0.808555249461981
+"Kentucky","KY","rec_adultPop",2020,0.811531134785332
+"Kentucky","KY","rec_adultPop",2030,0.813548519074885
+"Kentucky","KY","rec_adultPop",2040,0.811450913289158
+"Kentucky","KY","rec_adultPop",2050,0.809927081428493
+"Kentucky","KY","rec_adultPop",2060,0.808487371631106
+"Kentucky","KY","rec_adultPop",2070,0.807020501494541
+"Kentucky","KY","rec_adultPop",2080,0.807002215327257
+"Kentucky","KY","rec_adultPop",2090,0.808329752880292
+"Kentucky","KY","rec_adultPop",2300,0.807737824353358
+"Louisiana","LA","rec_adultPop",2000,NA
+"Louisiana","LA","rec_adultPop",2010,0.793975530618735
+"Louisiana","LA","rec_adultPop",2020,0.797136847423669
+"Louisiana","LA","rec_adultPop",2030,0.806572540707499
+"Louisiana","LA","rec_adultPop",2040,0.807095625130983
+"Louisiana","LA","rec_adultPop",2050,0.806026495317611
+"Louisiana","LA","rec_adultPop",2060,0.807513532225332
+"Louisiana","LA","rec_adultPop",2070,0.806852910663276
+"Louisiana","LA","rec_adultPop",2080,0.807449141230223
+"Louisiana","LA","rec_adultPop",2090,0.809539239735374
+"Louisiana","LA","rec_adultPop",2300,0.850393976166551
+"Maine","ME","rec_adultPop",2000,NA
+"Maine","ME","rec_adultPop",2010,0.834186891010839
+"Maine","ME","rec_adultPop",2020,0.82221954494374
+"Maine","ME","rec_adultPop",2030,0.823522378606115
+"Maine","ME","rec_adultPop",2040,0.822881808105092
+"Maine","ME","rec_adultPop",2050,0.814940769761906
+"Maine","ME","rec_adultPop",2060,0.813382236056042
+"Maine","ME","rec_adultPop",2070,0.812529948874629
+"Maine","ME","rec_adultPop",2080,0.811549443062451
+"Maine","ME","rec_adultPop",2090,0.812666496149081
+"Maine","ME","rec_adultPop",2300,0.756175459636967
+"Maryland","MD","rec_adultPop",2000,NA
+"Maryland","MD","rec_adultPop",2010,0.806911362077499
+"Maryland","MD","rec_adultPop",2020,0.807518989645414
+"Maryland","MD","rec_adultPop",2030,0.814599445476553
+"Maryland","MD","rec_adultPop",2040,0.813361830753823
+"Maryland","MD","rec_adultPop",2050,0.810294738806805
+"Maryland","MD","rec_adultPop",2060,0.810063248761238
+"Maryland","MD","rec_adultPop",2070,0.809077998188364
+"Maryland","MD","rec_adultPop",2080,0.8092203925867
+"Maryland","MD","rec_adultPop",2090,0.811589407633757
+"Maryland","MD","rec_adultPop",2300,0.823869277218934
+"Massachusetts","MA","rec_adultPop",2000,NA
+"Massachusetts","MA","rec_adultPop",2010,0.812652696546259
+"Massachusetts","MA","rec_adultPop",2020,0.805056867415407
+"Massachusetts","MA","rec_adultPop",2030,0.814583964449058
+"Massachusetts","MA","rec_adultPop",2040,0.81070251822402
+"Massachusetts","MA","rec_adultPop",2050,0.806756033401413
+"Massachusetts","MA","rec_adultPop",2060,0.807966492785095
+"Massachusetts","MA","rec_adultPop",2070,0.805794841338101
+"Massachusetts","MA","rec_adultPop",2080,0.806041339507302
+"Massachusetts","MA","rec_adultPop",2090,0.809107231718777
+"Massachusetts","MA","rec_adultPop",2300,0.799800386546636
+"Michigan","MI","rec_adultPop",2000,NA
+"Michigan","MI","rec_adultPop",2010,0.808151780722004
+"Michigan","MI","rec_adultPop",2020,0.804633645572172
+"Michigan","MI","rec_adultPop",2030,0.805948099509826
+"Michigan","MI","rec_adultPop",2040,0.807618443048068
+"Michigan","MI","rec_adultPop",2050,0.803982389783134
+"Michigan","MI","rec_adultPop",2060,0.80329045074968
+"Michigan","MI","rec_adultPop",2070,0.803642876399443
+"Michigan","MI","rec_adultPop",2080,0.803701390721149
+"Michigan","MI","rec_adultPop",2090,0.805161177328374
+"Michigan","MI","rec_adultPop",2300,0.797310843420094
+"Minnesota","MN","rec_adultPop",2000,NA
+"Minnesota","MN","rec_adultPop",2010,0.806228458769859
+"Minnesota","MN","rec_adultPop",2020,0.804551531173342
+"Minnesota","MN","rec_adultPop",2030,0.807264939395134
+"Minnesota","MN","rec_adultPop",2040,0.808356109339909
+"Minnesota","MN","rec_adultPop",2050,0.804823682444175
+"Minnesota","MN","rec_adultPop",2060,0.804696614825857
+"Minnesota","MN","rec_adultPop",2070,0.804588764021615
+"Minnesota","MN","rec_adultPop",2080,0.80406733384536
+"Minnesota","MN","rec_adultPop",2090,0.805723728685038
+"Minnesota","MN","rec_adultPop",2300,0.804398812212383
+"Mississippi","MS","rec_adultPop",2000,NA
+"Mississippi","MS","rec_adultPop",2010,0.793665674300282
+"Mississippi","MS","rec_adultPop",2020,0.799857767501293
+"Mississippi","MS","rec_adultPop",2030,0.806864629444886
+"Mississippi","MS","rec_adultPop",2040,0.808630883001806
+"Mississippi","MS","rec_adultPop",2050,0.80856342217428
+"Mississippi","MS","rec_adultPop",2060,0.808878892817411
+"Mississippi","MS","rec_adultPop",2070,0.808671362798646
+"Mississippi","MS","rec_adultPop",2080,0.809303339913333
+"Mississippi","MS","rec_adultPop",2090,0.81099135871402
+"Mississippi","MS","rec_adultPop",2300,0.856471280300082
+"Missouri","MO","rec_adultPop",2000,NA
+"Missouri","MO","rec_adultPop",2010,0.807278119912434
+"Missouri","MO","rec_adultPop",2020,0.807330305680105
+"Missouri","MO","rec_adultPop",2030,0.811720788627019
+"Missouri","MO","rec_adultPop",2040,0.811849374745613
+"Missouri","MO","rec_adultPop",2050,0.810104910762679
+"Missouri","MO","rec_adultPop",2060,0.810389184639285
+"Missouri","MO","rec_adultPop",2070,0.809738276303069
+"Missouri","MO","rec_adultPop",2080,0.809850742534503
+"Missouri","MO","rec_adultPop",2090,0.811820078634781
+"Missouri","MO","rec_adultPop",2300,0.823742720280945
+"Montana","MT","rec_adultPop",2000,NA
+"Montana","MT","rec_adultPop",2010,0.81934398846658
+"Montana","MT","rec_adultPop",2020,0.809326232065414
+"Montana","MT","rec_adultPop",2030,0.810164054316634
+"Montana","MT","rec_adultPop",2040,0.810958175230228
+"Montana","MT","rec_adultPop",2050,0.806500349089766
+"Montana","MT","rec_adultPop",2060,0.807044252493302
+"Montana","MT","rec_adultPop",2070,0.80783329699191
+"Montana","MT","rec_adultPop",2080,0.807845484690707
+"Montana","MT","rec_adultPop",2090,0.809726177511659
+"Montana","MT","rec_adultPop",2300,0.784479423754989
+"Nebraska","NE","rec_adultPop",2000,NA
+"Nebraska","NE","rec_adultPop",2010,0.797918692830493
+"Nebraska","NE","rec_adultPop",2020,0.799656167176733
+"Nebraska","NE","rec_adultPop",2030,0.801000442394543
+"Nebraska","NE","rec_adultPop",2040,0.804727546537347
+"Nebraska","NE","rec_adultPop",2050,0.803351437274121
+"Nebraska","NE","rec_adultPop",2060,0.803942934041008
+"Nebraska","NE","rec_adultPop",2070,0.805596217887562
+"Nebraska","NE","rec_adultPop",2080,0.806068143721093
+"Nebraska","NE","rec_adultPop",2090,0.807748339028855
+"Nebraska","NE","rec_adultPop",2300,0.833551160299558
+"Nevada","NV","rec_adultPop",2000,NA
+"Nevada","NV","rec_adultPop",2010,0.796894895508769
+"Nevada","NV","rec_adultPop",2020,0.810145532009265
+"Nevada","NV","rec_adultPop",2030,0.81340810513371
+"Nevada","NV","rec_adultPop",2040,0.813531172785273
+"Nevada","NV","rec_adultPop",2050,0.813610660794483
+"Nevada","NV","rec_adultPop",2060,0.813193801797562
+"Nevada","NV","rec_adultPop",2070,0.813496024237767
+"Nevada","NV","rec_adultPop",2080,0.815295299403119
+"Nevada","NV","rec_adultPop",2090,0.818237663613492
+"Nevada","NV","rec_adultPop",2300,0.87426242988839
+"New Hampshire","NH","rec_adultPop",2000,NA
+"New Hampshire","NH","rec_adultPop",2010,0.822632851695104
+"New Hampshire","NH","rec_adultPop",2020,0.817148567574463
+"New Hampshire","NH","rec_adultPop",2030,0.819154855548369
+"New Hampshire","NH","rec_adultPop",2040,0.821082829998764
+"New Hampshire","NH","rec_adultPop",2050,0.814784718353322
+"New Hampshire","NH","rec_adultPop",2060,0.813147547391339
+"New Hampshire","NH","rec_adultPop",2070,0.812922744220458
+"New Hampshire","NH","rec_adultPop",2080,0.812487903659665
+"New Hampshire","NH","rec_adultPop",2090,0.813854387765328
+"New Hampshire","NH","rec_adultPop",2300,0.790810919949667
+"New Jersey","NJ","rec_adultPop",2000,NA
+"New Jersey","NJ","rec_adultPop",2010,0.805105521848042
+"New Jersey","NJ","rec_adultPop",2020,0.807000413211194
+"New Jersey","NJ","rec_adultPop",2030,0.807187258639352
+"New Jersey","NJ","rec_adultPop",2040,0.805753857852135
+"New Jersey","NJ","rec_adultPop",2050,0.803907778660894
+"New Jersey","NJ","rec_adultPop",2060,0.801015105268685
+"New Jersey","NJ","rec_adultPop",2070,0.800795994837115
+"New Jersey","NJ","rec_adultPop",2080,0.802474365422556
+"New Jersey","NJ","rec_adultPop",2090,0.804331402232708
+"New Jersey","NJ","rec_adultPop",2300,0.802299338242455
+"New Mexico","NM","rec_adultPop",2000,NA
+"New Mexico","NM","rec_adultPop",2010,0.78412816135947
+"New Mexico","NM","rec_adultPop",2020,0.788313537406214
+"New Mexico","NM","rec_adultPop",2030,0.805714560091564
+"New Mexico","NM","rec_adultPop",2040,0.807826547006246
+"New Mexico","NM","rec_adultPop",2050,0.808456185554004
+"New Mexico","NM","rec_adultPop",2060,0.811745938390786
+"New Mexico","NM","rec_adultPop",2070,0.812941513315725
+"New Mexico","NM","rec_adultPop",2080,0.815170216471999
+"New Mexico","NM","rec_adultPop",2090,0.818800369375814
+"New Mexico","NM","rec_adultPop",2300,0.909814915418716
+"New York","NY","rec_adultPop",2000,NA
+"New York","NY","rec_adultPop",2010,0.810128809358284
+"New York","NY","rec_adultPop",2020,0.803149705958131
+"New York","NY","rec_adultPop",2030,0.810128671596723
+"New York","NY","rec_adultPop",2040,0.806684855331723
+"New York","NY","rec_adultPop",2050,0.803799017145574
+"New York","NY","rec_adultPop",2060,0.804624999182397
+"New York","NY","rec_adultPop",2070,0.804302963427182
+"New York","NY","rec_adultPop",2080,0.805672398050152
+"New York","NY","rec_adultPop",2090,0.808532243621601
+"New York","NY","rec_adultPop",2300,0.804341258562808
+"North Carolina","NC","rec_adultPop",2000,NA
+"North Carolina","NC","rec_adultPop",2010,0.803728520246763
+"North Carolina","NC","rec_adultPop",2020,0.813898665954809
+"North Carolina","NC","rec_adultPop",2030,0.816520758030288
+"North Carolina","NC","rec_adultPop",2040,0.816295239536051
+"North Carolina","NC","rec_adultPop",2050,0.816336161725237
+"North Carolina","NC","rec_adultPop",2060,0.814297089435689
+"North Carolina","NC","rec_adultPop",2070,0.813730978306041
+"North Carolina","NC","rec_adultPop",2080,0.814375839403473
+"North Carolina","NC","rec_adultPop",2090,0.816120517453711
+"North Carolina","NC","rec_adultPop",2300,0.848649510121949
+"North Dakota","ND","rec_adultPop",2000,NA
+"North Dakota","ND","rec_adultPop",2010,0.811903308749754
+"North Dakota","ND","rec_adultPop",2020,0.794556019969612
+"North Dakota","ND","rec_adultPop",2030,0.80231802791539
+"North Dakota","ND","rec_adultPop",2040,0.801694257928919
+"North Dakota","ND","rec_adultPop",2050,0.796459550102717
+"North Dakota","ND","rec_adultPop",2060,0.798820721445905
+"North Dakota","ND","rec_adultPop",2070,0.797690282782656
+"North Dakota","ND","rec_adultPop",2080,0.796690630649437
+"North Dakota","ND","rec_adultPop",2090,0.798023753950353
+"North Dakota","ND","rec_adultPop",2300,0.761589922601925
+"Ohio","OH","rec_adultPop",2000,NA
+"Ohio","OH","rec_adultPop",2010,0.809094446954501
+"Ohio","OH","rec_adultPop",2020,0.8067214663931
+"Ohio","OH","rec_adultPop",2030,0.807486613605447
+"Ohio","OH","rec_adultPop",2040,0.807834906475707
+"Ohio","OH","rec_adultPop",2050,0.804170225466996
+"Ohio","OH","rec_adultPop",2060,0.803336346767947
+"Ohio","OH","rec_adultPop",2070,0.80300392116257
+"Ohio","OH","rec_adultPop",2080,0.80278423795601
+"Ohio","OH","rec_adultPop",2090,0.804082461331578
+"Ohio","OH","rec_adultPop",2300,0.790925999071406
+"Oklahoma","OK","rec_adultPop",2000,NA
+"Oklahoma","OK","rec_adultPop",2010,0.797154190026906
+"Oklahoma","OK","rec_adultPop",2020,0.801619375434194
+"Oklahoma","OK","rec_adultPop",2030,0.807524490760675
+"Oklahoma","OK","rec_adultPop",2040,0.808651286562109
+"Oklahoma","OK","rec_adultPop",2050,0.808856237519302
+"Oklahoma","OK","rec_adultPop",2060,0.810151367689208
+"Oklahoma","OK","rec_adultPop",2070,0.81081836269232
+"Oklahoma","OK","rec_adultPop",2080,0.81185251128478
+"Oklahoma","OK","rec_adultPop",2090,0.814317763394384
+"Oklahoma","OK","rec_adultPop",2300,0.859372143484015
+"Oregon","OR","rec_adultPop",2000,NA
+"Oregon","OR","rec_adultPop",2010,0.810416493558256
+"Oregon","OR","rec_adultPop",2020,0.80605876070352
+"Oregon","OR","rec_adultPop",2030,0.809991244075778
+"Oregon","OR","rec_adultPop",2040,0.808323781067931
+"Oregon","OR","rec_adultPop",2050,0.805159867221376
+"Oregon","OR","rec_adultPop",2060,0.805953818345914
+"Oregon","OR","rec_adultPop",2070,0.805801101761227
+"Oregon","OR","rec_adultPop",2080,0.806229756962684
+"Oregon","OR","rec_adultPop",2090,0.809375026622319
+"Oregon","OR","rec_adultPop",2300,0.806641175915485
+"Pennsylvania","PA","rec_adultPop",2000,NA
+"Pennsylvania","PA","rec_adultPop",2010,0.821157308616293
+"Pennsylvania","PA","rec_adultPop",2020,0.809718999852655
+"Pennsylvania","PA","rec_adultPop",2030,0.812830797458715
+"Pennsylvania","PA","rec_adultPop",2040,0.812690731530065
+"Pennsylvania","PA","rec_adultPop",2050,0.806750842324049
+"Pennsylvania","PA","rec_adultPop",2060,0.806844472606271
+"Pennsylvania","PA","rec_adultPop",2070,0.806519803351356
+"Pennsylvania","PA","rec_adultPop",2080,0.805916778497829
+"Pennsylvania","PA","rec_adultPop",2090,0.807550591720106
+"Pennsylvania","PA","rec_adultPop",2300,0.771832959867613
+"Rhode Island","RI","rec_adultPop",2000,NA
+"Rhode Island","RI","rec_adultPop",2010,0.818346068746292
+"Rhode Island","RI","rec_adultPop",2020,0.803170148852502
+"Rhode Island","RI","rec_adultPop",2030,0.816832845297315
+"Rhode Island","RI","rec_adultPop",2040,0.816584800312364
+"Rhode Island","RI","rec_adultPop",2050,0.810116178515488
+"Rhode Island","RI","rec_adultPop",2060,0.813221059322901
+"Rhode Island","RI","rec_adultPop",2070,0.81271397742422
+"Rhode Island","RI","rec_adultPop",2080,0.812124324697468
+"Rhode Island","RI","rec_adultPop",2090,0.815429445296945
+"Rhode Island","RI","rec_adultPop",2300,0.80777330874241
+"South Carolina","SC","rec_adultPop",2000,NA
+"South Carolina","SC","rec_adultPop",2010,0.806280463497533
+"South Carolina","SC","rec_adultPop",2020,0.810655641215118
+"South Carolina","SC","rec_adultPop",2030,0.816478716291741
+"South Carolina","SC","rec_adultPop",2040,0.816246142631468
+"South Carolina","SC","rec_adultPop",2050,0.815574497804494
+"South Carolina","SC","rec_adultPop",2060,0.814752601883004
+"South Carolina","SC","rec_adultPop",2070,0.814298244962394
+"South Carolina","SC","rec_adultPop",2080,0.814975046296224
+"South Carolina","SC","rec_adultPop",2090,0.816691574166725
+"South Carolina","SC","rec_adultPop",2300,0.844020739673352
+"South Dakota","SD","rec_adultPop",2000,NA
+"South Dakota","SD","rec_adultPop",2010,0.801901263279691
+"South Dakota","SD","rec_adultPop",2020,0.799878452023234
+"South Dakota","SD","rec_adultPop",2030,0.800742854353216
+"South Dakota","SD","rec_adultPop",2040,0.804548856061094
+"South Dakota","SD","rec_adultPop",2050,0.803491020290403
+"South Dakota","SD","rec_adultPop",2060,0.804287809914735
+"South Dakota","SD","rec_adultPop",2070,0.80544795898108
+"South Dakota","SD","rec_adultPop",2080,0.805596957999915
+"South Dakota","SD","rec_adultPop",2090,0.806964738774053
+"South Dakota","SD","rec_adultPop",2300,0.820256361946754
+"Tennessee","TN","rec_adultPop",2000,NA
+"Tennessee","TN","rec_adultPop",2010,0.808818875054081
+"Tennessee","TN","rec_adultPop",2020,0.812617361940811
+"Tennessee","TN","rec_adultPop",2030,0.815062080777431
+"Tennessee","TN","rec_adultPop",2040,0.813274006487968
+"Tennessee","TN","rec_adultPop",2050,0.812022590852508
+"Tennessee","TN","rec_adultPop",2060,0.810289109843042
+"Tennessee","TN","rec_adultPop",2070,0.809219755716404
+"Tennessee","TN","rec_adultPop",2080,0.809575516686558
+"Tennessee","TN","rec_adultPop",2090,0.811193940895077
+"Tennessee","TN","rec_adultPop",2300,0.817428488727691
+"Texas","TX","rec_adultPop",2000,NA
+"Texas","TX","rec_adultPop",2010,0.775170789855441
+"Texas","TX","rec_adultPop",2020,0.788447101073741
+"Texas","TX","rec_adultPop",2030,0.79719832494788
+"Texas","TX","rec_adultPop",2040,0.799662526361786
+"Texas","TX","rec_adultPop",2050,0.801548630159994
+"Texas","TX","rec_adultPop",2060,0.802619930234657
+"Texas","TX","rec_adultPop",2070,0.804058365857984
+"Texas","TX","rec_adultPop",2080,0.806374032392554
+"Texas","TX","rec_adultPop",2090,0.809555614769559
+"Texas","TX","rec_adultPop",2300,0.899815780169121
+"Utah","UT","rec_adultPop",2000,NA
+"Utah","UT","rec_adultPop",2010,0.749450723663684
+"Utah","UT","rec_adultPop",2020,0.782312969398569
+"Utah","UT","rec_adultPop",2030,0.791340813319961
+"Utah","UT","rec_adultPop",2040,0.799368710820906
+"Utah","UT","rec_adultPop",2050,0.807331076812129
+"Utah","UT","rec_adultPop",2060,0.809729924312441
+"Utah","UT","rec_adultPop",2070,0.811641282745407
+"Utah","UT","rec_adultPop",2080,0.813137650093515
+"Utah","UT","rec_adultPop",2090,0.8154770702423
+"Utah","UT","rec_adultPop",2300,0.988796230011168
+"Vermont","VT","rec_adultPop",2000,NA
+"Vermont","VT","rec_adultPop",2010,0.832059630085958
+"Vermont","VT","rec_adultPop",2020,0.814007321013848
+"Vermont","VT","rec_adultPop",2030,0.819572503035236
+"Vermont","VT","rec_adultPop",2040,0.818379574216842
+"Vermont","VT","rec_adultPop",2050,0.808574975913292
+"Vermont","VT","rec_adultPop",2060,0.809090115437935
+"Vermont","VT","rec_adultPop",2070,0.807359456495161
+"Vermont","VT","rec_adultPop",2080,0.805796306559211
+"Vermont","VT","rec_adultPop",2090,0.807440106778262
+"Vermont","VT","rec_adultPop",2300,0.742813858095558
+"Virginia","VA","rec_adultPop",2000,NA
+"Virginia","VA","rec_adultPop",2010,0.80734499715343
+"Virginia","VA","rec_adultPop",2020,0.81188616763567
+"Virginia","VA","rec_adultPop",2030,0.820003544537114
+"Virginia","VA","rec_adultPop",2040,0.81768483208761
+"Virginia","VA","rec_adultPop",2050,0.816111110559827
+"Virginia","VA","rec_adultPop",2060,0.815295596525567
+"Virginia","VA","rec_adultPop",2070,0.813245460950422
+"Virginia","VA","rec_adultPop",2080,0.813498257190946
+"Virginia","VA","rec_adultPop",2090,0.815742879615395
+"Virginia","VA","rec_adultPop",2300,0.837787321078051
+"Washington","WA","rec_adultPop",2000,NA
+"Washington","WA","rec_adultPop",2010,0.806476769529963
+"Washington","WA","rec_adultPop",2020,0.805665553411589
+"Washington","WA","rec_adultPop",2030,0.809763062252856
+"Washington","WA","rec_adultPop",2040,0.808983671792312
+"Washington","WA","rec_adultPop",2050,0.805373469451299
+"Washington","WA","rec_adultPop",2060,0.805150771417715
+"Washington","WA","rec_adultPop",2070,0.805100484700926
+"Washington","WA","rec_adultPop",2080,0.805345689181261
+"Washington","WA","rec_adultPop",2090,0.807624931075632
+"Washington","WA","rec_adultPop",2300,0.810638855133016
+"West Virginia","WV","rec_adultPop",2000,NA
+"West Virginia","WV","rec_adultPop",2010,0.8234248018081
+"West Virginia","WV","rec_adultPop",2020,0.810078232279545
+"West Virginia","WV","rec_adultPop",2030,0.810000394513834
+"West Virginia","WV","rec_adultPop",2040,0.80302279108311
+"West Virginia","WV","rec_adultPop",2050,0.795723152339027
+"West Virginia","WV","rec_adultPop",2060,0.795075464925377
+"West Virginia","WV","rec_adultPop",2070,0.792121409777705
+"West Virginia","WV","rec_adultPop",2080,0.79119469684901
+"West Virginia","WV","rec_adultPop",2090,0.793992525438675
+"West Virginia","WV","rec_adultPop",2300,0.716732799968934
+"Wisconsin","WI","rec_adultPop",2000,NA
+"Wisconsin","WI","rec_adultPop",2010,0.811477948709792
+"Wisconsin","WI","rec_adultPop",2020,0.805362365208876
+"Wisconsin","WI","rec_adultPop",2030,0.808059901199696
+"Wisconsin","WI","rec_adultPop",2040,0.809043650041863
+"Wisconsin","WI","rec_adultPop",2050,0.804873979331755
+"Wisconsin","WI","rec_adultPop",2060,0.80444377721875
+"Wisconsin","WI","rec_adultPop",2070,0.804556459296534
+"Wisconsin","WI","rec_adultPop",2080,0.804344714385462
+"Wisconsin","WI","rec_adultPop",2090,0.805841207638798
+"Wisconsin","WI","rec_adultPop",2300,0.791044762327439
+"Wyoming","WY","rec_adultPop",2000,NA
+"Wyoming","WY","rec_adultPop",2010,0.811079822615916
+"Wyoming","WY","rec_adultPop",2020,0.806204715885732
+"Wyoming","WY","rec_adultPop",2030,0.812272083390889
+"Wyoming","WY","rec_adultPop",2040,0.812931909195418
+"Wyoming","WY","rec_adultPop",2050,0.811212829654755
+"Wyoming","WY","rec_adultPop",2060,0.813457433310058
+"Wyoming","WY","rec_adultPop",2070,0.814406887890875
+"Wyoming","WY","rec_adultPop",2080,0.816190622667852
+"Wyoming","WY","rec_adultPop",2090,0.820398037255218
+"Wyoming","WY","rec_adultPop",2300,0.844858350683384
