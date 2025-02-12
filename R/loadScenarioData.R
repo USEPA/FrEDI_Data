@@ -62,7 +62,7 @@ loadScenarioData <- function(
     if (!silent) paste0(msg1, "Loading ", name_i, " data...") |> message()
     file_i <- files_i[[name_i]]
     path_i <- dir_i  |> file.path(file_i)
-    df_i   <- file_i |> read.csv() |> as_tibble()
+    df_i   <- path_i |> read.csv() |> as_tibble()
     return(df_i)
   }) |> set_names(scenarioNames |> paste0("Data"))
   
@@ -77,7 +77,7 @@ loadScenarioData <- function(
     if (!silent) paste0(msg1, "Loading ", name_i, "scenario data...") |> message()
     file_i <- files_i[[name_i]]
     path_i <- dir_i  |> file.path(file_i)
-    df_i   <- file_i |> read.csv() |> as_tibble()
+    df_i   <- path_i |> read.csv() |> as_tibble()
     return(df_i)
   }) |> set_names(inputNames)
   
