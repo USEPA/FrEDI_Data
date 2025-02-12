@@ -11,6 +11,11 @@ loadFrediData <- function(
     popFile     = "ICLUS_State_Population"  |> paste0(".csv"), ### File in scenarioDir containing population scenarios
     ### Other args
     ratiosFile  = "state_population_ratios" |> paste0(".csv"), ### File in scenarioDir containing population ratios
+    testFiles   = list(
+      temp = "zero_to_six_2300_temp" |> paste0(".csv"),
+      gdp  = "rff_gdp_mean"          |> paste0(".csv"),
+      pop  = "rff_state_pop_mean"    |> paste0(".csv")
+    ), ### Files to load for test scenarios
     silent      = FALSE, ### Level of messaging
     msg0        = "\t"   ### Message index
 ) {
@@ -53,6 +58,7 @@ loadFrediData <- function(
     gdpFile     = gdpFile    , ### File in scenarioDir containing GDP scenarios
     popFile     = popFile    , ### File in scenarioDir containing population scenarios
     ratiosFile  = ratiosFile , ### File in scenarioDir containing population ratios
+    testFiles   = testFiles  , ### Files with scenarios for testing
     silent      = silent     , ### Level of messaging
     msg0        = msg1
   ) ### End loadFrediConfig
