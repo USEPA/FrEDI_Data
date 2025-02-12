@@ -65,7 +65,7 @@ jobs:
               rff_temp_mean    = "rff_temp_mean"         |> paste0(".csv"),
               rff_gdp_mean     = "rff_gdp_mean"          |> paste0(".csv"),
               rff_pop_mean     = "rff_state_pop_mean"    |> paste0(".csv")
-            ), ### End list
+            ) ### End list
             scriptDir |> file.path("configureFrediData.R") |> source()
             test0      <- projectDir |> configureFrediData(save=T, testFiles=listFiles)
             "./data_tests/" |> list.files() |> print()
