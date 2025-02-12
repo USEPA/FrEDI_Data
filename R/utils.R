@@ -497,6 +497,87 @@ fun_formatScalars <- function(
 
 ###### Extrapolate Impact Function
 ### Function to extrapolate an impact function
+# extrapolate_impFunction <- function(
+#     df0,
+#     xCol        = "xIn", ### Which column to use for x (default = temp_C)
+#     yCol        = "yIn", ### Which column to use for y
+#     xMin        = 0,     ### Minimum value for x
+#     yMin        = 0,     ### Value of y at minimum value of x 
+#     # extrapolate = TRUE,
+#     extend_from = NULL,  ### Maximum value for model type to extend from, if not missing
+#     extend_to   = NULL,  ### Extend last points for x
+#     unitScale   = 0.5,   ### Scale between values,
+#     extend_all  = FALSE  ### Whether to extend all models or just those that go to the max model value
+# ){
+#   ### Filter out NA values
+#   select0   <- c(xCol, yCol)
+#   df0       <- df0 |> select(all_of(select0))
+#   df0       <- df0 |> filter_all(all_vars(!is.na(.)))
+#   
+#   ### Rename values
+#   renameAt  <- c(xCol, yCol)
+#   renameTo  <- c("xIn", "yIn")
+#   df0       <- df0 |> rename_at(c(renameAt), ~renameTo)
+#   
+#   ### Standardize minimum value, then get unique values
+#   df0_min   <- tibble(xIn=xMin, yIn=yMin)
+#   df0       <- df0_min |> rbind(df0) 
+#   df0       <- df0     |> unique()
+#   rm(df0_min)
+#   
+#   ### Extend from/to
+#   ### Make sure values are numeric
+#   extendAt  <- extend_from |> as.character() |> as.numeric()
+#   extendTo  <- extend_to   |> as.character() |> as.numeric()
+#   
+#   ### Arrange by x values
+#   ### - Get maximum value
+#   df0       <- df0 |> arrange_at(vars("xIn"))
+#   xIn_max   <- df0 |> pull(xIn) |> max()
+#   # xOut_min  <- xIn_max + unitScale
+#   xOut_max  <- extendTo
+#   xOut      <- xOut_max
+#   # xOut      <- xOut_min:xOut_max
+#   
+#   ### If extrapolate:
+#   extrap0   <- (xIn_max == extendAt) & (extendAt != extendTo)
+#   extrap0   <- extrap0 | extend_all
+#   if(extrap0){
+#     ### - Filter to the last two observations
+#     # df0 |> tail(2) |> print()
+#     ### Get linear trend
+#     lm_ex    <- lm(yIn~xIn, data=df0 |> tail(2))
+#     slope0   <- lm_ex$coefficients[[2]]
+#     inter0   <- lm_ex$coefficients[[1]]
+#     ### Extend values, then bind with earlier observations
+#     df_new   <- tibble(xIn = xOut) |> mutate(yIn = inter0 + xIn * slope0)
+#     df0      <- df0 |> rbind(df_new)
+#     # ### Sort and get new y value to extend to
+#     # which0   <- df0$xIn == extend_to
+#     # yMaxNew  <- df0$yIn[df0$xIn == extend_to]
+#   } ### End if(extrapolate)
+#   
+#   # ### Then, interpolate over the range
+#   # xIn0      <- df0  |> pull(xIn)
+#   # yIn0      <- df0  |> pull(yIn)
+#   # range0    <- xIn0 |> range()
+#   # xOut0     <- range0[1] |> seq(range0[2], by=unitScale)
+#   # # xIn0 |> print(); yIn0 |> print(); xOut0 |> print()
+#   # df0       <- approx(x=xIn0, y=yIn0, xout=xOut0, rule=1)
+#   # df0       <- df0 |> as_tibble()
+#   # 
+#   # renameAt  <- c("x", "y")
+#   # ### Rename columns and bind
+#   ### Rename columns and bind
+#   renameAt  <- c("xIn", "yIn")
+#   renameTo  <- c(xCol, yCol)
+#   df0       <- df0 |> rename_at(c(renameAt), ~renameTo)
+#   
+#   ### Return
+#   return(df0)
+# }
+###### Extrapolate Impact Function
+### Function to extrapolate an impact function
 extrapolate_impFunction <- function(
     df0,
     xCol        = "xIn", ### Which column to use for x (default = temp_C)
@@ -512,7 +593,7 @@ extrapolate_impFunction <- function(
   ### Filter out NA values
   select0   <- c(xCol, yCol)
   df0       <- df0 |> select(all_of(select0))
-  df0       <- df0 |> filter_all(all_vars(!is.na(.)))
+  df0       <- df0 |> filter_all(all_vars(!(. |> is.na())))
   
   ### Rename values
   renameAt  <- c(xCol, yCol)
@@ -525,12 +606,20 @@ extrapolate_impFunction <- function(
   df0       <- df0     |> unique()
   rm(df0_min)
   
+  ### Sort values
+  ### - Get max x value for which is there a non-missing y-value
+  sort0     <- c("xIn")
+  df0       <- df0    |> arrange_at(c(sort0))
+  extendAt  <- df0    |> pull(all_of(sort0)) |> max()
+  rm(sort0)
+  
   ### Extend from/to
   ### Make sure values are numeric
-  extendAt  <- extend_from |> as.character() |> as.numeric()
+  # extendAt  <- extend_from |> as.character() |> as.numeric()
   extendTo  <- extend_to   |> as.character() |> as.numeric()
   
   ### Arrange by x values
+  ### - Get max x value for which is there a non-missing y-value
   ### - Get maximum value
   df0       <- df0 |> arrange_at(vars("xIn"))
   xIn_max   <- df0 |> pull(xIn) |> max()
