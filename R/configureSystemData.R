@@ -4,9 +4,9 @@ configureSystemData <- function(
     configSheet = "tableNames",        ### Sheet with table info
     outPath     = "." |> file.path("data", "tmp_sysdata.rda"),  ### Where to save data
     testFiles   = list(
-      temp = "zero_to_six_2300_temp" |> paste0(".csv"),
-      gdp  = "rff_gdp_mean"          |> paste0(".csv"),
-      pop  = "rff_state_pop_mean"    |> paste0(".csv")
+      temp = "temp_0to6_to2300"   |> paste0(".csv"),
+      gdp  = "rff_gdp_mean"       |> paste0(".csv"),
+      pop  = "rff_state_pop_mean" |> paste0(".csv")
     ), ### Files in inst/extdata/scenarios to load for testing
     extend_all  = FALSE,  ### Whether to extend all GCM model observations to maximum range
     reshape     = TRUE ,  ### Whether to include reshaped data items in data list (for testing)

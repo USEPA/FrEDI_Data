@@ -12,9 +12,9 @@ require(devtools)
 configureFrediData <- function(
     projectDir = ".",   ### Directory in which to find the FrEDI_Data project/package
     testFiles  = list(
-      temp = "zero_to_six_2300_temp" |> paste0(".csv"),
-      gdp  = "rff_gdp_mean"          |> paste0(".csv"),
-      pop  = "rff_state_pop_mean"    |> paste0(".csv")
+      temp = "temp_0to6_to2300"   |> paste0(".csv"),
+      gdp  = "rff_gdp_mean"       |> paste0(".csv"),
+      pop  = "rff_state_pop_mean" |> paste0(".csv")
     ), ### End list
     save       = FALSE, ### Whether to save the data
     reshape    = TRUE , ### Whether to include reshaped data in outputs (e.g., for testing)
