@@ -197,11 +197,20 @@ jobs:
             } ### End if(doTests)
           '
 
-      - name: Upload Tests
+      - name: Upload General Test Results
         uses: actions/upload-artifact@v4
+        if: |
+          inputs.gen_test == 'true'
         with:
-          name: Tests
+          name: General Test
           path: |
             ./data_tests/*
 
-
+      - name: Upload Scaled Impact Figures
+        uses: actions/upload-artifact@v4
+        if: |
+          inputs.figures == 'true'
+        with:
+          name: Scaled Impact Figures
+          path: |
+            ./data_tests/*

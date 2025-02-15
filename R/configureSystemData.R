@@ -3,6 +3,11 @@ configureSystemData <- function(
     configFile  = "FrEDI_config.xlsx", ### Name of excel file with config information
     configSheet = "tableNames",        ### Sheet with table info
     outPath     = "." |> file.path("data", "tmp_sysdata.rda"),  ### Where to save data
+    testFiles   = list(
+      temp = "temp_0to6_to2300"   |> paste0(".csv"),
+      gdp  = "rff_gdp_mean"       |> paste0(".csv"),
+      pop  = "rff_state_pop_mean" |> paste0(".csv")
+    ), ### Files in inst/extdata/scenarios to load for testing
     extend_all  = FALSE,  ### Whether to extend all GCM model observations to maximum range
     reshape     = TRUE ,  ### Whether to include reshaped data items in data list (for testing)
     silent      = TRUE ,  ### Level of messaging 
@@ -37,6 +42,7 @@ configureSystemData <- function(
   loadData0     <- fileDir |> loadFrediData(
     configFile  = configFile,  ### Name of excel file with config information
     configSheet = configSheet, ### Sheet with info about tables in config file
+    testFiles   = testFiles,   ### Files to load for testing
     silent      = silent,
     msg0        = msg1
   ) ### End loadData

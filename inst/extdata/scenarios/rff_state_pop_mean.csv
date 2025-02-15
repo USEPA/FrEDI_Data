@@ -1,0 +1,2892 @@
+year,region,state,postal,pop
+2010,Midwest,Illinois,IL,12759761.91
+2010,Midwest,Indiana,IN,6683684.81
+2010,Midwest,Iowa,IA,3038038.55
+2010,Midwest,Michigan,MI,9721723.36
+2010,Midwest,Minnesota,MN,5468469.39
+2010,Midwest,Missouri,MO,6076077.1
+2010,Midwest,Ohio,OH,11544546.49
+2010,Midwest,Wisconsin,WI,5468469.39
+2015,Midwest,Illinois,IL,13131656.97
+2015,Midwest,Indiana,IN,6878486.987
+2015,Midwest,Iowa,IA,3126584.994
+2015,Midwest,Michigan,MI,10005071.98
+2015,Midwest,Minnesota,MN,5627852.989
+2015,Midwest,Missouri,MO,6253169.988
+2015,Midwest,Ohio,OH,11881022.98
+2015,Midwest,Wisconsin,WI,5627852.989
+2020,Midwest,Illinois,IL,14088337.06
+2020,Midwest,Indiana,IN,7044168.53
+2020,Midwest,Iowa,IA,3201894.787
+2020,Midwest,Michigan,MI,10246063.32
+2020,Midwest,Minnesota,MN,5763410.616
+2020,Midwest,Missouri,MO,6403789.573
+2020,Midwest,Ohio,OH,11526821.23
+2020,Midwest,Wisconsin,WI,5763410.616
+2025,Midwest,Illinois,IL,14350152.63
+2025,Midwest,Indiana,IN,7175076.314
+2025,Midwest,Iowa,IA,3261398.325
+2025,Midwest,Michigan,MI,10436474.64
+2025,Midwest,Minnesota,MN,5870516.984
+2025,Midwest,Missouri,MO,6522796.649
+2025,Midwest,Ohio,OH,11741033.97
+2025,Midwest,Wisconsin,WI,5870516.984
+2030,Midwest,Illinois,IL,14564686
+2030,Midwest,Indiana,IN,7282342.998
+2030,Midwest,Iowa,IA,3310155.908
+2030,Midwest,Michigan,MI,10592498.91
+2030,Midwest,Minnesota,MN,5958280.634
+2030,Midwest,Missouri,MO,6620311.816
+2030,Midwest,Ohio,OH,11916561.27
+2030,Midwest,Wisconsin,WI,5958280.634
+2035,Midwest,Illinois,IL,15380034.16
+2035,Midwest,Indiana,IN,7355668.51
+2035,Midwest,Iowa,IA,3343485.687
+2035,Midwest,Michigan,MI,10699154.2
+2035,Midwest,Minnesota,MN,6018274.236
+2035,Midwest,Missouri,MO,6686971.373
+2035,Midwest,Ohio,OH,11367851.33
+2035,Midwest,Wisconsin,WI,6018274.236
+2040,Midwest,Illinois,IL,15457461.04
+2040,Midwest,Indiana,IN,7392698.756
+2040,Midwest,Iowa,IA,3360317.617
+2040,Midwest,Michigan,MI,10753016.37
+2040,Midwest,Minnesota,MN,6048571.71
+2040,Midwest,Missouri,MO,6720635.233
+2040,Midwest,Ohio,OH,11425079.9
+2040,Midwest,Wisconsin,WI,6048571.71
+2045,Midwest,Illinois,IL,15474925.81
+2045,Midwest,Indiana,IN,7401051.474
+2045,Midwest,Iowa,IA,3364114.307
+2045,Midwest,Michigan,MI,10765165.78
+2045,Midwest,Minnesota,MN,6055405.752
+2045,Midwest,Missouri,MO,6728228.613
+2045,Midwest,Ohio,OH,11437988.64
+2045,Midwest,Wisconsin,WI,6055405.752
+2050,Midwest,Illinois,IL,15463670.61
+2050,Midwest,Indiana,IN,7395668.554
+2050,Midwest,Iowa,IA,3361667.525
+2050,Midwest,Michigan,MI,10757336.08
+2050,Midwest,Minnesota,MN,6051001.544
+2050,Midwest,Missouri,MO,6723335.049
+2050,Midwest,Ohio,OH,11429669.58
+2050,Midwest,Wisconsin,WI,6051001.544
+2055,Midwest,Illinois,IL,16111461.86
+2055,Midwest,Indiana,IN,8055730.932
+2055,Midwest,Iowa,IA,3356554.555
+2055,Midwest,Michigan,MI,10740974.58
+2055,Midwest,Minnesota,MN,6041798.199
+2055,Midwest,Missouri,MO,6041798.199
+2055,Midwest,Ohio,OH,10740974.58
+2055,Midwest,Wisconsin,WI,6041798.199
+2060,Midwest,Illinois,IL,16098112.88
+2060,Midwest,Indiana,IN,8049056.44
+2060,Midwest,Iowa,IA,3353773.517
+2060,Midwest,Michigan,MI,10732075.25
+2060,Midwest,Minnesota,MN,6036792.33
+2060,Midwest,Missouri,MO,6036792.33
+2060,Midwest,Ohio,OH,10732075.25
+2060,Midwest,Wisconsin,WI,6036792.33
+2065,Midwest,Illinois,IL,16089675.69
+2065,Midwest,Indiana,IN,8044837.843
+2065,Midwest,Iowa,IA,3352015.768
+2065,Midwest,Michigan,MI,10726450.46
+2065,Midwest,Minnesota,MN,6033628.382
+2065,Midwest,Missouri,MO,6033628.382
+2065,Midwest,Ohio,OH,10726450.46
+2065,Midwest,Wisconsin,WI,6033628.382
+2070,Midwest,Illinois,IL,16078925.57
+2070,Midwest,Indiana,IN,8039462.786
+2070,Midwest,Iowa,IA,3349776.161
+2070,Midwest,Michigan,MI,10719283.72
+2070,Midwest,Minnesota,MN,6029597.09
+2070,Midwest,Missouri,MO,6029597.09
+2070,Midwest,Ohio,OH,10719283.72
+2070,Midwest,Wisconsin,WI,6029597.09
+2075,Midwest,Illinois,IL,16717344.77
+2075,Midwest,Indiana,IN,8024325.488
+2075,Midwest,Iowa,IA,3343468.954
+2075,Midwest,Michigan,MI,10030406.86
+2075,Midwest,Minnesota,MN,6018244.116
+2075,Midwest,Missouri,MO,6018244.116
+2075,Midwest,Ohio,OH,10699100.65
+2075,Midwest,Wisconsin,WI,6018244.116
+2080,Midwest,Illinois,IL,16661540.55
+2080,Midwest,Indiana,IN,7997539.464
+2080,Midwest,Iowa,IA,3332308.11
+2080,Midwest,Michigan,MI,10663385.95
+2080,Midwest,Minnesota,MN,5998154.598
+2080,Midwest,Missouri,MO,5998154.598
+2080,Midwest,Ohio,OH,9996924.33
+2080,Midwest,Wisconsin,WI,5998154.598
+2085,Midwest,Illinois,IL,16590514.76
+2085,Midwest,Indiana,IN,7963447.085
+2085,Midwest,Iowa,IA,3318102.952
+2085,Midwest,Michigan,MI,10617929.45
+2085,Midwest,Minnesota,MN,5972585.314
+2085,Midwest,Missouri,MO,5972585.314
+2085,Midwest,Ohio,OH,9954308.856
+2085,Midwest,Wisconsin,WI,5972585.314
+2090,Midwest,Illinois,IL,16589245.52
+2090,Midwest,Indiana,IN,7962837.851
+2090,Midwest,Iowa,IA,3981418.925
+2090,Midwest,Michigan,MI,9953547.314
+2090,Midwest,Minnesota,MN,5972128.388
+2090,Midwest,Missouri,MO,5972128.388
+2090,Midwest,Ohio,OH,9953547.314
+2090,Midwest,Wisconsin,WI,5972128.388
+2095,Midwest,Illinois,IL,16604484.08
+2095,Midwest,Indiana,IN,7970152.356
+2095,Midwest,Iowa,IA,3985076.178
+2095,Midwest,Michigan,MI,9962690.445
+2095,Midwest,Minnesota,MN,5977614.267
+2095,Midwest,Missouri,MO,5977614.267
+2095,Midwest,Ohio,OH,9962690.445
+2095,Midwest,Wisconsin,WI,5977614.267
+2100,Midwest,Illinois,IL,16624638.78
+2100,Midwest,Indiana,IN,7979826.612
+2100,Midwest,Iowa,IA,3989913.306
+2100,Midwest,Michigan,MI,9974783.265
+2100,Midwest,Minnesota,MN,5984869.959
+2100,Midwest,Missouri,MO,5984869.959
+2100,Midwest,Ohio,OH,9974783.265
+2100,Midwest,Wisconsin,WI,5984869.959
+2105,Midwest,Illinois,IL,17501522.52
+2105,Midwest,Indiana,IN,8347009.884
+2105,Midwest,Iowa,IA,3780155.719
+2105,Midwest,Michigan,MI,10399109.75
+2105,Midwest,Minnesota,MN,6112022.469
+2105,Midwest,Missouri,MO,5914375.878
+2105,Midwest,Ohio,OH,9745142.083
+2105,Midwest,Wisconsin,WI,6112022.469
+2110,Midwest,Illinois,IL,17699903.03
+2110,Midwest,Indiana,IN,8420152.642
+2110,Midwest,Iowa,IA,3817486.733
+2110,Midwest,Michigan,MI,10396399.51
+2110,Midwest,Minnesota,MN,6128871.05
+2110,Midwest,Missouri,MO,5880546.476
+2110,Midwest,Ohio,OH,9626336.742
+2110,Midwest,Wisconsin,WI,6128871.05
+2115,Midwest,Illinois,IL,17898283.54
+2115,Midwest,Indiana,IN,8493295.399
+2115,Midwest,Iowa,IA,3854817.746
+2115,Midwest,Michigan,MI,10393689.26
+2115,Midwest,Minnesota,MN,6145719.632
+2115,Midwest,Missouri,MO,5846717.074
+2115,Midwest,Ohio,OH,9507531.402
+2115,Midwest,Wisconsin,WI,6145719.632
+2120,Midwest,Illinois,IL,18096664.05
+2120,Midwest,Indiana,IN,8566438.157
+2120,Midwest,Iowa,IA,3892148.76
+2120,Midwest,Michigan,MI,10390979.02
+2120,Midwest,Minnesota,MN,6162568.213
+2120,Midwest,Missouri,MO,5812887.672
+2120,Midwest,Ohio,OH,9388726.061
+2120,Midwest,Wisconsin,WI,6162568.213
+2125,Midwest,Illinois,IL,18295044.56
+2125,Midwest,Indiana,IN,8639580.915
+2125,Midwest,Iowa,IA,3929479.773
+2125,Midwest,Michigan,MI,10388268.77
+2125,Midwest,Minnesota,MN,6179416.794
+2125,Midwest,Missouri,MO,5779058.27
+2125,Midwest,Ohio,OH,9269920.721
+2125,Midwest,Wisconsin,WI,6179416.794
+2130,Midwest,Illinois,IL,18493425.07
+2130,Midwest,Indiana,IN,8712723.673
+2130,Midwest,Iowa,IA,3966810.786
+2130,Midwest,Michigan,MI,10385558.53
+2130,Midwest,Minnesota,MN,6196265.375
+2130,Midwest,Missouri,MO,5745228.869
+2130,Midwest,Ohio,OH,9151115.38
+2130,Midwest,Wisconsin,WI,6196265.375
+2135,Midwest,Illinois,IL,18691805.58
+2135,Midwest,Indiana,IN,8785866.431
+2135,Midwest,Iowa,IA,4004141.8
+2135,Midwest,Michigan,MI,10382848.28
+2135,Midwest,Minnesota,MN,6213113.956
+2135,Midwest,Missouri,MO,5711399.467
+2135,Midwest,Ohio,OH,9032310.04
+2135,Midwest,Wisconsin,WI,6213113.956
+2140,Midwest,Illinois,IL,18890186.09
+2140,Midwest,Indiana,IN,8859009.189
+2140,Midwest,Iowa,IA,4041472.813
+2140,Midwest,Michigan,MI,10380138.03
+2140,Midwest,Minnesota,MN,6229962.537
+2140,Midwest,Missouri,MO,5677570.065
+2140,Midwest,Ohio,OH,8913504.7
+2140,Midwest,Wisconsin,WI,6229962.537
+2145,Midwest,Illinois,IL,19088566.61
+2145,Midwest,Indiana,IN,8932151.947
+2145,Midwest,Iowa,IA,4078803.827
+2145,Midwest,Michigan,MI,10377427.79
+2145,Midwest,Minnesota,MN,6246811.118
+2145,Midwest,Missouri,MO,5643740.663
+2145,Midwest,Ohio,OH,8794699.359
+2145,Midwest,Wisconsin,WI,6246811.118
+2150,Midwest,Illinois,IL,19286947.12
+2150,Midwest,Indiana,IN,9005294.705
+2150,Midwest,Iowa,IA,4116134.84
+2150,Midwest,Michigan,MI,10374717.54
+2150,Midwest,Minnesota,MN,6263659.7
+2150,Midwest,Missouri,MO,5609911.261
+2150,Midwest,Ohio,OH,8675894.019
+2150,Midwest,Wisconsin,WI,6263659.7
+2155,Midwest,Illinois,IL,19485327.63
+2155,Midwest,Indiana,IN,9078437.463
+2155,Midwest,Iowa,IA,4153465.853
+2155,Midwest,Michigan,MI,10372007.3
+2155,Midwest,Minnesota,MN,6280508.281
+2155,Midwest,Missouri,MO,5576081.859
+2155,Midwest,Ohio,OH,8557088.678
+2155,Midwest,Wisconsin,WI,6280508.281
+2160,Midwest,Illinois,IL,19683708.14
+2160,Midwest,Indiana,IN,9151580.221
+2160,Midwest,Iowa,IA,4190796.867
+2160,Midwest,Michigan,MI,10369297.05
+2160,Midwest,Minnesota,MN,6297356.862
+2160,Midwest,Missouri,MO,5542252.457
+2160,Midwest,Ohio,OH,8438283.338
+2160,Midwest,Wisconsin,WI,6297356.862
+2165,Midwest,Illinois,IL,19882088.65
+2165,Midwest,Indiana,IN,9224722.978
+2165,Midwest,Iowa,IA,4228127.88
+2165,Midwest,Michigan,MI,10366586.81
+2165,Midwest,Minnesota,MN,6314205.443
+2165,Midwest,Missouri,MO,5508423.055
+2165,Midwest,Ohio,OH,8319477.997
+2165,Midwest,Wisconsin,WI,6314205.443
+2170,Midwest,Illinois,IL,20080469.16
+2170,Midwest,Indiana,IN,9297865.736
+2170,Midwest,Iowa,IA,4265458.894
+2170,Midwest,Michigan,MI,10363876.56
+2170,Midwest,Minnesota,MN,6331054.024
+2170,Midwest,Missouri,MO,5474593.653
+2170,Midwest,Ohio,OH,8200672.657
+2170,Midwest,Wisconsin,WI,6331054.024
+2175,Midwest,Illinois,IL,20278849.67
+2175,Midwest,Indiana,IN,9371008.494
+2175,Midwest,Iowa,IA,4302789.907
+2175,Midwest,Michigan,MI,10361166.32
+2175,Midwest,Minnesota,MN,6347902.605
+2175,Midwest,Missouri,MO,5440764.252
+2175,Midwest,Ohio,OH,8081867.317
+2175,Midwest,Wisconsin,WI,6347902.605
+2180,Midwest,Illinois,IL,20477230.19
+2180,Midwest,Indiana,IN,9444151.252
+2180,Midwest,Iowa,IA,4340120.92
+2180,Midwest,Michigan,MI,10358456.07
+2180,Midwest,Minnesota,MN,6364751.186
+2180,Midwest,Missouri,MO,5406934.85
+2180,Midwest,Ohio,OH,7963061.976
+2180,Midwest,Wisconsin,WI,6364751.186
+2185,Midwest,Illinois,IL,20675610.7
+2185,Midwest,Indiana,IN,9517294.01
+2185,Midwest,Iowa,IA,4377451.934
+2185,Midwest,Michigan,MI,10355745.83
+2185,Midwest,Minnesota,MN,6381599.768
+2185,Midwest,Missouri,MO,5373105.448
+2185,Midwest,Ohio,OH,7844256.636
+2185,Midwest,Wisconsin,WI,6381599.768
+2190,Midwest,Illinois,IL,20873991.21
+2190,Midwest,Indiana,IN,9590436.768
+2190,Midwest,Iowa,IA,4414782.947
+2190,Midwest,Michigan,MI,10353035.58
+2190,Midwest,Minnesota,MN,6398448.349
+2190,Midwest,Missouri,MO,5339276.046
+2190,Midwest,Ohio,OH,7725451.295
+2190,Midwest,Wisconsin,WI,6398448.349
+2195,Midwest,Illinois,IL,21072371.72
+2195,Midwest,Indiana,IN,9663579.526
+2195,Midwest,Iowa,IA,4452113.961
+2195,Midwest,Michigan,MI,10350325.33
+2195,Midwest,Minnesota,MN,6415296.93
+2195,Midwest,Missouri,MO,5305446.644
+2195,Midwest,Ohio,OH,7606645.955
+2195,Midwest,Wisconsin,WI,6415296.93
+2200,Midwest,Illinois,IL,21270752.23
+2200,Midwest,Indiana,IN,9736722.284
+2200,Midwest,Iowa,IA,4489444.974
+2200,Midwest,Michigan,MI,10347615.09
+2200,Midwest,Minnesota,MN,6432145.511
+2200,Midwest,Missouri,MO,5271617.242
+2200,Midwest,Ohio,OH,7487840.614
+2200,Midwest,Wisconsin,WI,6432145.511
+2205,Midwest,Illinois,IL,21469132.74
+2205,Midwest,Indiana,IN,9809865.042
+2205,Midwest,Iowa,IA,4526775.987
+2205,Midwest,Michigan,MI,10344904.84
+2205,Midwest,Minnesota,MN,6448994.092
+2205,Midwest,Missouri,MO,5237787.84
+2205,Midwest,Ohio,OH,7369035.274
+2205,Midwest,Wisconsin,WI,6448994.092
+2210,Midwest,Illinois,IL,21667513.25
+2210,Midwest,Indiana,IN,9883007.799
+2210,Midwest,Iowa,IA,4564107.001
+2210,Midwest,Michigan,MI,10342194.6
+2210,Midwest,Minnesota,MN,6465842.673
+2210,Midwest,Missouri,MO,5203958.438
+2210,Midwest,Ohio,OH,7250229.933
+2210,Midwest,Wisconsin,WI,6465842.673
+2215,Midwest,Illinois,IL,21865893.76
+2215,Midwest,Indiana,IN,9956150.557
+2215,Midwest,Iowa,IA,4601438.014
+2215,Midwest,Michigan,MI,10339484.35
+2215,Midwest,Minnesota,MN,6482691.255
+2215,Midwest,Missouri,MO,5170129.037
+2215,Midwest,Ohio,OH,7131424.593
+2215,Midwest,Wisconsin,WI,6482691.255
+2220,Midwest,Illinois,IL,22064274.28
+2220,Midwest,Indiana,IN,10029293.32
+2220,Midwest,Iowa,IA,4638769.028
+2220,Midwest,Michigan,MI,10336774.11
+2220,Midwest,Minnesota,MN,6499539.836
+2220,Midwest,Missouri,MO,5136299.635
+2220,Midwest,Ohio,OH,7012619.253
+2220,Midwest,Wisconsin,WI,6499539.836
+2225,Midwest,Illinois,IL,22262654.79
+2225,Midwest,Indiana,IN,10102436.07
+2225,Midwest,Iowa,IA,4676100.041
+2225,Midwest,Michigan,MI,10334063.86
+2225,Midwest,Minnesota,MN,6516388.417
+2225,Midwest,Missouri,MO,5102470.233
+2225,Midwest,Ohio,OH,6893813.912
+2225,Midwest,Wisconsin,WI,6516388.417
+2230,Midwest,Illinois,IL,22461035.3
+2230,Midwest,Indiana,IN,10175578.83
+2230,Midwest,Iowa,IA,4713431.054
+2230,Midwest,Michigan,MI,10331353.62
+2230,Midwest,Minnesota,MN,6533236.998
+2230,Midwest,Missouri,MO,5068640.831
+2230,Midwest,Ohio,OH,6775008.572
+2230,Midwest,Wisconsin,WI,6533236.998
+2235,Midwest,Illinois,IL,22659415.81
+2235,Midwest,Indiana,IN,10248721.59
+2235,Midwest,Iowa,IA,4750762.068
+2235,Midwest,Michigan,MI,10328643.37
+2235,Midwest,Minnesota,MN,6550085.579
+2235,Midwest,Missouri,MO,5034811.429
+2235,Midwest,Ohio,OH,6656203.231
+2235,Midwest,Wisconsin,WI,6550085.579
+2240,Midwest,Illinois,IL,22857796.32
+2240,Midwest,Indiana,IN,10321864.35
+2240,Midwest,Iowa,IA,4788093.081
+2240,Midwest,Michigan,MI,10325933.13
+2240,Midwest,Minnesota,MN,6566934.16
+2240,Midwest,Missouri,MO,5000982.027
+2240,Midwest,Ohio,OH,6537397.891
+2240,Midwest,Wisconsin,WI,6566934.16
+2245,Midwest,Illinois,IL,23056176.83
+2245,Midwest,Indiana,IN,10395007.1
+2245,Midwest,Iowa,IA,4825424.095
+2245,Midwest,Michigan,MI,10323222.88
+2245,Midwest,Minnesota,MN,6583782.741
+2245,Midwest,Missouri,MO,4967152.625
+2245,Midwest,Ohio,OH,6418592.55
+2245,Midwest,Wisconsin,WI,6583782.741
+2250,Midwest,Illinois,IL,23254557.34
+2250,Midwest,Indiana,IN,10468149.86
+2250,Midwest,Iowa,IA,4862755.108
+2250,Midwest,Michigan,MI,10320512.64
+2250,Midwest,Minnesota,MN,6600631.323
+2250,Midwest,Missouri,MO,4933323.223
+2250,Midwest,Ohio,OH,6299787.21
+2250,Midwest,Wisconsin,WI,6600631.323
+2255,Midwest,Illinois,IL,23452937.85
+2255,Midwest,Indiana,IN,10541292.62
+2255,Midwest,Iowa,IA,4900086.122
+2255,Midwest,Michigan,MI,10317802.39
+2255,Midwest,Minnesota,MN,6617479.904
+2255,Midwest,Missouri,MO,4899493.822
+2255,Midwest,Ohio,OH,6180981.87
+2255,Midwest,Wisconsin,WI,6617479.904
+2260,Midwest,Illinois,IL,23651318.37
+2260,Midwest,Indiana,IN,10614435.38
+2260,Midwest,Iowa,IA,4937417.135
+2260,Midwest,Michigan,MI,10315092.14
+2260,Midwest,Minnesota,MN,6634328.485
+2260,Midwest,Missouri,MO,4865664.42
+2260,Midwest,Ohio,OH,6062176.529
+2260,Midwest,Wisconsin,WI,6634328.485
+2265,Midwest,Illinois,IL,23849698.88
+2265,Midwest,Indiana,IN,10687578.14
+2265,Midwest,Iowa,IA,4974748.148
+2265,Midwest,Michigan,MI,10312381.9
+2265,Midwest,Minnesota,MN,6651177.066
+2265,Midwest,Missouri,MO,4831835.018
+2265,Midwest,Ohio,OH,5943371.189
+2265,Midwest,Wisconsin,WI,6651177.066
+2270,Midwest,Illinois,IL,24048079.39
+2270,Midwest,Indiana,IN,10760720.89
+2270,Midwest,Iowa,IA,5012079.162
+2270,Midwest,Michigan,MI,10309671.65
+2270,Midwest,Minnesota,MN,6668025.647
+2270,Midwest,Missouri,MO,4798005.616
+2270,Midwest,Ohio,OH,5824565.848
+2270,Midwest,Wisconsin,WI,6668025.647
+2275,Midwest,Illinois,IL,24246459.9
+2275,Midwest,Indiana,IN,10833863.65
+2275,Midwest,Iowa,IA,5049410.175
+2275,Midwest,Michigan,MI,10306961.41
+2275,Midwest,Minnesota,MN,6684874.228
+2275,Midwest,Missouri,MO,4764176.214
+2275,Midwest,Ohio,OH,5705760.508
+2275,Midwest,Wisconsin,WI,6684874.228
+2280,Midwest,Illinois,IL,24444840.41
+2280,Midwest,Indiana,IN,10907006.41
+2280,Midwest,Iowa,IA,5086741.189
+2280,Midwest,Michigan,MI,10304251.16
+2280,Midwest,Minnesota,MN,6701722.809
+2280,Midwest,Missouri,MO,4730346.812
+2280,Midwest,Ohio,OH,5586955.167
+2280,Midwest,Wisconsin,WI,6701722.809
+2285,Midwest,Illinois,IL,24643220.92
+2285,Midwest,Indiana,IN,10980149.17
+2285,Midwest,Iowa,IA,5124072.202
+2285,Midwest,Michigan,MI,10301540.92
+2285,Midwest,Minnesota,MN,6718571.391
+2285,Midwest,Missouri,MO,4696517.41
+2285,Midwest,Ohio,OH,5468149.827
+2285,Midwest,Wisconsin,WI,6718571.391
+2290,Midwest,Illinois,IL,24841601.43
+2290,Midwest,Indiana,IN,11053291.93
+2290,Midwest,Iowa,IA,5161403.215
+2290,Midwest,Michigan,MI,10298830.67
+2290,Midwest,Minnesota,MN,6735419.972
+2290,Midwest,Missouri,MO,4662688.008
+2290,Midwest,Ohio,OH,5349344.487
+2290,Midwest,Wisconsin,WI,6735419.972
+2295,Midwest,Illinois,IL,25039981.95
+2295,Midwest,Indiana,IN,11126434.68
+2295,Midwest,Iowa,IA,5198734.229
+2295,Midwest,Michigan,MI,10296120.43
+2295,Midwest,Minnesota,MN,6752268.553
+2295,Midwest,Missouri,MO,4628858.607
+2295,Midwest,Ohio,OH,5230539.146
+2295,Midwest,Wisconsin,WI,6752268.553
+2300,Midwest,Illinois,IL,25238362.46
+2300,Midwest,Indiana,IN,11199577.44
+2300,Midwest,Iowa,IA,5236065.242
+2300,Midwest,Michigan,MI,10293410.18
+2300,Midwest,Minnesota,MN,6769117.134
+2300,Midwest,Missouri,MO,4595029.205
+2300,Midwest,Ohio,OH,5111733.806
+2300,Midwest,Wisconsin,WI,6769117.134
+2010,Northeast,Connecticut,CT,3222172.15
+2010,Northeast,Delaware,DE,644434.43
+2010,Northeast,District of Columbia,DC,644434.43
+2010,Northeast,Maine,ME,1288868.86
+2010,Northeast,Maryland,MD,5799909.87
+2010,Northeast,Massachusetts,MA,6444344.3
+2010,Northeast,New Hampshire,NH,1288868.86
+2010,Northeast,New Jersey,NJ,9022082.02
+2010,Northeast,New York,NY,19333032.9
+2010,Northeast,Pennsylvania,PA,12888688.6
+2010,Northeast,Rhode Island,RI,1288868.86
+2010,Northeast,Vermont,VT,644434.43
+2010,Northeast,West Virginia,WV,1933303.29
+2015,Northeast,Connecticut,CT,3975741.362
+2015,Northeast,Delaware,DE,662623.5603
+2015,Northeast,District of Columbia,DC,662623.5603
+2015,Northeast,Maine,ME,1325247.121
+2015,Northeast,Maryland,MD,5963612.043
+2015,Northeast,Massachusetts,MA,6626235.603
+2015,Northeast,New Hampshire,NH,1325247.121
+2015,Northeast,New Jersey,NJ,9276729.844
+2015,Northeast,New York,NY,19878706.81
+2015,Northeast,Pennsylvania,PA,12589847.65
+2015,Northeast,Rhode Island,RI,1325247.121
+2015,Northeast,Vermont,VT,662623.5603
+2015,Northeast,West Virginia,WV,1987870.681
+2020,Northeast,Connecticut,CT,3392048.755
+2020,Northeast,Delaware,DE,678409.751
+2020,Northeast,District of Columbia,DC,678409.751
+2020,Northeast,Maine,ME,1356819.502
+2020,Northeast,Maryland,MD,6105687.759
+2020,Northeast,Massachusetts,MA,6784097.51
+2020,Northeast,New Hampshire,NH,1356819.502
+2020,Northeast,New Jersey,NJ,9497736.514
+2020,Northeast,New York,NY,21030702.28
+2020,Northeast,Pennsylvania,PA,12889785.27
+2020,Northeast,Rhode Island,RI,1356819.502
+2020,Northeast,Vermont,VT,678409.751
+2020,Northeast,West Virginia,WV,2035229.253
+2025,Northeast,Connecticut,CT,3453111.765
+2025,Northeast,Delaware,DE,690622.353
+2025,Northeast,District of Columbia,DC,690622.353
+2025,Northeast,Maine,ME,1381244.706
+2025,Northeast,Maryland,MD,6215601.177
+2025,Northeast,Massachusetts,MA,6906223.53
+2025,Northeast,New Hampshire,NH,1381244.706
+2025,Northeast,New Jersey,NJ,10359335.3
+2025,Northeast,New York,NY,21409292.94
+2025,Northeast,Pennsylvania,PA,12431202.35
+2025,Northeast,Rhode Island,RI,1381244.706
+2025,Northeast,Vermont,VT,690622.353
+2025,Northeast,West Virginia,WV,2071867.059
+2030,Northeast,Connecticut,CT,3507223.525
+2030,Northeast,Delaware,DE,701444.705
+2030,Northeast,District of Columbia,DC,701444.705
+2030,Northeast,Maine,ME,1402889.41
+2030,Northeast,Maryland,MD,6313002.345
+2030,Northeast,Massachusetts,MA,7014447.05
+2030,Northeast,New Hampshire,NH,1402889.41
+2030,Northeast,New Jersey,NJ,10521670.58
+2030,Northeast,New York,NY,21744785.86
+2030,Northeast,Pennsylvania,PA,12626004.69
+2030,Northeast,Rhode Island,RI,1402889.41
+2030,Northeast,Vermont,VT,701444.705
+2030,Northeast,West Virginia,WV,2104334.115
+2035,Northeast,Connecticut,CT,3553936.154
+2035,Northeast,Delaware,DE,710787.2308
+2035,Northeast,District of Columbia,DC,710787.2308
+2035,Northeast,Maine,ME,1421574.462
+2035,Northeast,Maryland,MD,6397085.077
+2035,Northeast,Massachusetts,MA,7107872.308
+2035,Northeast,New Hampshire,NH,1421574.462
+2035,Northeast,New Jersey,NJ,10661808.46
+2035,Northeast,New York,NY,22745191.39
+2035,Northeast,Pennsylvania,PA,12794170.15
+2035,Northeast,Rhode Island,RI,710787.2308
+2035,Northeast,Vermont,VT,710787.2308
+2035,Northeast,West Virginia,WV,2132361.692
+2040,Northeast,Connecticut,CT,3588637.234
+2040,Northeast,Delaware,DE,717727.4468
+2040,Northeast,District of Columbia,DC,717727.4468
+2040,Northeast,Maine,ME,1435454.894
+2040,Northeast,Maryland,MD,6459547.021
+2040,Northeast,Massachusetts,MA,7177274.468
+2040,Northeast,New Hampshire,NH,1435454.894
+2040,Northeast,New Jersey,NJ,10765911.7
+2040,Northeast,New York,NY,22967278.3
+2040,Northeast,Pennsylvania,PA,12201366.6
+2040,Northeast,Rhode Island,RI,1435454.894
+2040,Northeast,Vermont,VT,717727.4468
+2040,Northeast,West Virginia,WV,2153182.34
+2045,Northeast,Connecticut,CT,3612125.533
+2045,Northeast,Delaware,DE,722425.1066
+2045,Northeast,District of Columbia,DC,722425.1066
+2045,Northeast,Maine,ME,1444850.213
+2045,Northeast,Maryland,MD,6501825.959
+2045,Northeast,Massachusetts,MA,7224251.066
+2045,Northeast,New Hampshire,NH,1444850.213
+2045,Northeast,New Jersey,NJ,11558801.71
+2045,Northeast,New York,NY,23117603.41
+2045,Northeast,Pennsylvania,PA,12281226.81
+2045,Northeast,Rhode Island,RI,722425.1066
+2045,Northeast,Vermont,VT,722425.1066
+2045,Northeast,West Virginia,WV,2167275.32
+2050,Northeast,Connecticut,CT,3628642.992
+2050,Northeast,Delaware,DE,725728.5983
+2050,Northeast,District of Columbia,DC,725728.5983
+2050,Northeast,Maine,ME,725728.5983
+2050,Northeast,Maryland,MD,6531557.385
+2050,Northeast,Massachusetts,MA,7257285.983
+2050,Northeast,New Hampshire,NH,1451457.197
+2050,Northeast,New Jersey,NJ,11611657.57
+2050,Northeast,New York,NY,23949043.74
+2050,Northeast,Pennsylvania,PA,12337386.17
+2050,Northeast,Rhode Island,RI,725728.5983
+2050,Northeast,Vermont,VT,725728.5983
+2050,Northeast,West Virginia,WV,2177185.795
+2055,Northeast,Connecticut,CT,3641394.319
+2055,Northeast,Delaware,DE,728278.8638
+2055,Northeast,District of Columbia,DC,728278.8638
+2055,Northeast,Maine,ME,1456557.728
+2055,Northeast,Maryland,MD,6554509.774
+2055,Northeast,Massachusetts,MA,7282788.638
+2055,Northeast,New Hampshire,NH,1456557.728
+2055,Northeast,New Jersey,NJ,11652461.82
+2055,Northeast,New York,NY,24033202.51
+2055,Northeast,Pennsylvania,PA,11652461.82
+2055,Northeast,Rhode Island,RI,728278.8638
+2055,Northeast,Vermont,VT,728278.8638
+2055,Northeast,West Virginia,WV,2184836.591
+2060,Northeast,Connecticut,CT,3656403.662
+2060,Northeast,Delaware,DE,731280.7324
+2060,Northeast,District of Columbia,DC,731280.7324
+2060,Northeast,Maine,ME,731280.7324
+2060,Northeast,Maryland,MD,6581526.592
+2060,Northeast,Massachusetts,MA,7312807.324
+2060,Northeast,New Hampshire,NH,1462561.465
+2060,Northeast,New Jersey,NJ,12431772.45
+2060,Northeast,New York,NY,24132264.17
+2060,Northeast,Pennsylvania,PA,11700491.72
+2060,Northeast,Rhode Island,RI,731280.7324
+2060,Northeast,Vermont,VT,731280.7324
+2060,Northeast,West Virginia,WV,2193842.197
+2065,Northeast,Connecticut,CT,3673072.159
+2065,Northeast,Delaware,DE,734614.4317
+2065,Northeast,District of Columbia,DC,734614.4317
+2065,Northeast,Maine,ME,734614.4317
+2065,Northeast,Maryland,MD,6611529.885
+2065,Northeast,Massachusetts,MA,7346144.317
+2065,Northeast,New Hampshire,NH,1469228.863
+2065,Northeast,New Jersey,NJ,12488445.34
+2065,Northeast,New York,NY,24242276.25
+2065,Northeast,Pennsylvania,PA,11753830.91
+2065,Northeast,Rhode Island,RI,734614.4317
+2065,Northeast,Vermont,VT,734614.4317
+2065,Northeast,West Virginia,WV,2203843.295
+2070,Northeast,Connecticut,CT,3689804.418
+2070,Northeast,Delaware,DE,737960.8835
+2070,Northeast,District of Columbia,DC,737960.8835
+2070,Northeast,Maine,ME,737960.8835
+2070,Northeast,Maryland,MD,6641647.951
+2070,Northeast,Massachusetts,MA,7379608.835
+2070,Northeast,New Hampshire,NH,1475921.767
+2070,Northeast,New Jersey,NJ,12545335.02
+2070,Northeast,New York,NY,25090670.04
+2070,Northeast,Pennsylvania,PA,11069413.25
+2070,Northeast,Rhode Island,RI,737960.8835
+2070,Northeast,Vermont,VT,737960.8835
+2070,Northeast,West Virginia,WV,2213882.65
+2075,Northeast,Connecticut,CT,3702362.819
+2075,Northeast,Delaware,DE,740472.5638
+2075,Northeast,District of Columbia,DC,740472.5638
+2075,Northeast,Maine,ME,740472.5638
+2075,Northeast,Maryland,MD,6664253.074
+2075,Northeast,Massachusetts,MA,7404725.638
+2075,Northeast,New Hampshire,NH,1480945.128
+2075,Northeast,New Jersey,NJ,12588033.58
+2075,Northeast,New York,NY,25176067.17
+2075,Northeast,Pennsylvania,PA,11107088.46
+2075,Northeast,Rhode Island,RI,740472.5638
+2075,Northeast,Vermont,VT,740472.5638
+2075,Northeast,West Virginia,WV,2221417.691
+2080,Northeast,Connecticut,CT,3708621.57
+2080,Northeast,Delaware,DE,741724.3139
+2080,Northeast,District of Columbia,DC,741724.3139
+2080,Northeast,Maine,ME,741724.3139
+2080,Northeast,Maryland,MD,6675518.825
+2080,Northeast,Massachusetts,MA,7417243.139
+2080,Northeast,New Hampshire,NH,1483448.628
+2080,Northeast,New Jersey,NJ,12609313.34
+2080,Northeast,New York,NY,25218626.67
+2080,Northeast,Pennsylvania,PA,11125864.71
+2080,Northeast,Rhode Island,RI,741724.3139
+2080,Northeast,Vermont,VT,741724.3139
+2080,Northeast,West Virginia,WV,2225172.942
+2085,Northeast,Connecticut,CT,3710545.587
+2085,Northeast,Delaware,DE,742109.1174
+2085,Northeast,District of Columbia,DC,742109.1174
+2085,Northeast,Maine,ME,742109.1174
+2085,Northeast,Maryland,MD,6678982.057
+2085,Northeast,Massachusetts,MA,7421091.174
+2085,Northeast,New Hampshire,NH,1484218.235
+2085,Northeast,New Jersey,NJ,12615855
+2085,Northeast,New York,NY,25231709.99
+2085,Northeast,Pennsylvania,PA,11131636.76
+2085,Northeast,Rhode Island,RI,742109.1174
+2085,Northeast,Vermont,VT,742109.1174
+2085,Northeast,West Virginia,WV,2226327.352
+2090,Northeast,Connecticut,CT,2970940.634
+2090,Northeast,Delaware,DE,742735.1584
+2090,Northeast,District of Columbia,DC,742735.1584
+2090,Northeast,Maine,ME,742735.1584
+2090,Northeast,Maryland,MD,6684616.426
+2090,Northeast,Massachusetts,MA,7427351.584
+2090,Northeast,New Hampshire,NH,1485470.317
+2090,Northeast,New Jersey,NJ,12626497.69
+2090,Northeast,New York,NY,25995730.54
+2090,Northeast,Pennsylvania,PA,11141027.38
+2090,Northeast,Rhode Island,RI,742735.1584
+2090,Northeast,Vermont,VT,742735.1584
+2090,Northeast,West Virginia,WV,2228205.475
+2095,Northeast,Connecticut,CT,2973669.681
+2095,Northeast,Delaware,DE,743417.4203
+2095,Northeast,District of Columbia,DC,743417.4203
+2095,Northeast,Maine,ME,743417.4203
+2095,Northeast,Maryland,MD,6690756.783
+2095,Northeast,Massachusetts,MA,7434174.203
+2095,Northeast,New Hampshire,NH,1486834.841
+2095,Northeast,New Jersey,NJ,12638096.15
+2095,Northeast,New York,NY,26019609.71
+2095,Northeast,Pennsylvania,PA,11151261.3
+2095,Northeast,Rhode Island,RI,743417.4203
+2095,Northeast,Vermont,VT,743417.4203
+2095,Northeast,West Virginia,WV,2230252.261
+2100,Northeast,Connecticut,CT,2977279.153
+2100,Northeast,Delaware,DE,744319.7883
+2100,Northeast,District of Columbia,DC,744319.7883
+2100,Northeast,Maine,ME,744319.7883
+2100,Northeast,Maryland,MD,6698878.095
+2100,Northeast,Massachusetts,MA,7443197.883
+2100,Northeast,New Hampshire,NH,1488639.577
+2100,Northeast,New Jersey,NJ,12653436.4
+2100,Northeast,New York,NY,26051192.59
+2100,Northeast,Pennsylvania,PA,11164796.82
+2100,Northeast,Rhode Island,RI,744319.7883
+2100,Northeast,Vermont,VT,744319.7883
+2100,Northeast,West Virginia,WV,2232959.365
+2105,Northeast,Connecticut,CT,3339355.937
+2105,Northeast,Delaware,DE,765590.1295
+2105,Northeast,District of Columbia,DC,765590.1295
+2105,Northeast,Maine,ME,569596.3507
+2105,Northeast,Maryland,MD,6890311.165
+2105,Northeast,Massachusetts,MA,7655901.295
+2105,Northeast,New Hampshire,NH,1531180.259
+2105,Northeast,New Jersey,NJ,13606127.97
+2105,Northeast,New York,NY,27110118.79
+2105,Northeast,Pennsylvania,PA,10731818.7
+2105,Northeast,Rhode Island,RI,531061.711
+2105,Northeast,Vermont,VT,765590.1295
+2105,Northeast,West Virginia,WV,2296770.388
+2110,Northeast,Connecticut,CT,3322566.618
+2110,Northeast,Delaware,DE,770353.7927
+2110,Northeast,District of Columbia,DC,770353.7927
+2110,Northeast,Maine,ME,521830.3548
+2110,Northeast,Maryland,MD,6933184.134
+2110,Northeast,Massachusetts,MA,7703537.927
+2110,Northeast,New Hampshire,NH,1540707.585
+2110,Northeast,New Jersey,NJ,13818714.55
+2110,Northeast,New York,NY,27466567.58
+2110,Northeast,Pennsylvania,PA,10615329.24
+2110,Northeast,Rhode Island,RI,490818.5205
+2110,Northeast,Vermont,VT,770353.7927
+2110,Northeast,West Virginia,WV,2311061.378
+2115,Northeast,Connecticut,CT,3305777.299
+2115,Northeast,Delaware,DE,775117.4558
+2115,Northeast,District of Columbia,DC,775117.4558
+2115,Northeast,Maine,ME,474064.3588
+2115,Northeast,Maryland,MD,6976057.102
+2115,Northeast,Massachusetts,MA,7751174.558
+2115,Northeast,New Hampshire,NH,1550234.912
+2115,Northeast,New Jersey,NJ,14031301.13
+2115,Northeast,New York,NY,27823016.36
+2115,Northeast,Pennsylvania,PA,10498839.79
+2115,Northeast,Rhode Island,RI,450575.33
+2115,Northeast,Vermont,VT,775117.4558
+2115,Northeast,West Virginia,WV,2325352.367
+2120,Northeast,Connecticut,CT,3288987.98
+2120,Northeast,Delaware,DE,779881.119
+2120,Northeast,District of Columbia,DC,779881.119
+2120,Northeast,Maine,ME,426298.3628
+2120,Northeast,Maryland,MD,7018930.071
+2120,Northeast,Massachusetts,MA,7798811.19
+2120,Northeast,New Hampshire,NH,1559762.238
+2120,Northeast,New Jersey,NJ,14243887.72
+2120,Northeast,New York,NY,28179465.15
+2120,Northeast,Pennsylvania,PA,10382350.34
+2120,Northeast,Rhode Island,RI,410332.1395
+2120,Northeast,Vermont,VT,779881.119
+2120,Northeast,West Virginia,WV,2339643.357
+2125,Northeast,Connecticut,CT,3272198.66
+2125,Northeast,Delaware,DE,784644.7822
+2125,Northeast,District of Columbia,DC,784644.7822
+2125,Northeast,Maine,ME,378532.3668
+2125,Northeast,Maryland,MD,7061803.04
+2125,Northeast,Massachusetts,MA,7846447.822
+2125,Northeast,New Hampshire,NH,1569289.564
+2125,Northeast,New Jersey,NJ,14456474.3
+2125,Northeast,New York,NY,28535913.94
+2125,Northeast,Pennsylvania,PA,10265860.88
+2125,Northeast,Rhode Island,RI,370088.949
+2125,Northeast,Vermont,VT,784644.7822
+2125,Northeast,West Virginia,WV,2353934.347
+2130,Northeast,Connecticut,CT,3255409.341
+2130,Northeast,Delaware,DE,789408.4454
+2130,Northeast,District of Columbia,DC,789408.4454
+2130,Northeast,Maine,ME,330766.3708
+2130,Northeast,Maryland,MD,7104676.008
+2130,Northeast,Massachusetts,MA,7894084.454
+2130,Northeast,New Hampshire,NH,1578816.891
+2130,Northeast,New Jersey,NJ,14669060.89
+2130,Northeast,New York,NY,28892362.73
+2130,Northeast,Pennsylvania,PA,10149371.43
+2130,Northeast,Rhode Island,RI,329845.7585
+2130,Northeast,Vermont,VT,789408.4454
+2130,Northeast,West Virginia,WV,2368225.336
+2135,Northeast,Connecticut,CT,3238620.022
+2135,Northeast,Delaware,DE,794172.1086
+2135,Northeast,District of Columbia,DC,794172.1086
+2135,Northeast,Maine,ME,283000.3748
+2135,Northeast,Maryland,MD,7147548.977
+2135,Northeast,Massachusetts,MA,7941721.086
+2135,Northeast,New Hampshire,NH,1588344.217
+2135,Northeast,New Jersey,NJ,14881647.47
+2135,Northeast,New York,NY,29248811.51
+2135,Northeast,Pennsylvania,PA,10032881.98
+2135,Northeast,Rhode Island,RI,289602.568
+2135,Northeast,Vermont,VT,794172.1086
+2135,Northeast,West Virginia,WV,2382516.326
+2140,Northeast,Connecticut,CT,3221830.703
+2140,Northeast,Delaware,DE,798935.7717
+2140,Northeast,District of Columbia,DC,798935.7717
+2140,Northeast,Maine,ME,235234.3788
+2140,Northeast,Maryland,MD,7190421.946
+2140,Northeast,Massachusetts,MA,7989357.717
+2140,Northeast,New Hampshire,NH,1597871.543
+2140,Northeast,New Jersey,NJ,15094234.05
+2140,Northeast,New York,NY,29605260.3
+2140,Northeast,Pennsylvania,PA,9916392.523
+2140,Northeast,Rhode Island,RI,249359.3775
+2140,Northeast,Vermont,VT,798935.7717
+2140,Northeast,West Virginia,WV,2396807.315
+2145,Northeast,Connecticut,CT,3205041.383
+2145,Northeast,Delaware,DE,803699.4349
+2145,Northeast,District of Columbia,DC,803699.4349
+2145,Northeast,Maine,ME,187468.3828
+2145,Northeast,Maryland,MD,7233294.914
+2145,Northeast,Massachusetts,MA,8036994.349
+2145,Northeast,New Hampshire,NH,1607398.87
+2145,Northeast,New Jersey,NJ,15306820.64
+2145,Northeast,New York,NY,29961709.09
+2145,Northeast,Pennsylvania,PA,9799903.069
+2145,Northeast,Rhode Island,RI,209116.1871
+2145,Northeast,Vermont,VT,803699.4349
+2145,Northeast,West Virginia,WV,2411098.305
+2150,Northeast,Connecticut,CT,3188252.064
+2150,Northeast,Delaware,DE,808463.0981
+2150,Northeast,District of Columbia,DC,808463.0981
+2150,Northeast,Maine,ME,139702.3868
+2150,Northeast,Maryland,MD,7276167.883
+2150,Northeast,Massachusetts,MA,8084630.981
+2150,Northeast,New Hampshire,NH,1616926.196
+2150,Northeast,New Jersey,NJ,15519407.22
+2150,Northeast,New York,NY,30318157.88
+2150,Northeast,Pennsylvania,PA,9683413.616
+2150,Northeast,Rhode Island,RI,168872.9966
+2150,Northeast,Vermont,VT,808463.0981
+2150,Northeast,West Virginia,WV,2425389.294
+2155,Northeast,Connecticut,CT,3171462.745
+2155,Northeast,Delaware,DE,813226.7613
+2155,Northeast,District of Columbia,DC,813226.7613
+2155,Northeast,Maine,ME,91936.39082
+2155,Northeast,Maryland,MD,7319040.852
+2155,Northeast,Massachusetts,MA,8132267.613
+2155,Northeast,New Hampshire,NH,1626453.523
+2155,Northeast,New Jersey,NJ,15731993.8
+2155,Northeast,New York,NY,30674606.67
+2155,Northeast,Pennsylvania,PA,9566924.162
+2155,Northeast,Rhode Island,RI,128629.8061
+2155,Northeast,Vermont,VT,813226.7613
+2155,Northeast,West Virginia,WV,2439680.284
+2160,Northeast,Connecticut,CT,3154673.425
+2160,Northeast,Delaware,DE,817990.4245
+2160,Northeast,District of Columbia,DC,817990.4245
+2160,Northeast,Maine,ME,44170.39483
+2160,Northeast,Maryland,MD,7361913.82
+2160,Northeast,Massachusetts,MA,8179904.245
+2160,Northeast,New Hampshire,NH,1635980.849
+2160,Northeast,New Jersey,NJ,15944580.39
+2160,Northeast,New York,NY,31031055.45
+2160,Northeast,Pennsylvania,PA,9450434.709
+2160,Northeast,Rhode Island,RI,88386.61558
+2160,Northeast,Vermont,VT,817990.4245
+2160,Northeast,West Virginia,WV,2453971.273
+2165,Northeast,Connecticut,CT,3137884.106
+2165,Northeast,Delaware,DE,822754.0877
+2165,Northeast,District of Columbia,DC,822754.0877
+2165,Northeast,Maine,ME,-3595.601159
+2165,Northeast,Maryland,MD,7404786.789
+2165,Northeast,Massachusetts,MA,8227540.877
+2165,Northeast,New Hampshire,NH,1645508.175
+2165,Northeast,New Jersey,NJ,16157166.97
+2165,Northeast,New York,NY,31387504.24
+2165,Northeast,Pennsylvania,PA,9333945.255
+2165,Northeast,Rhode Island,RI,48143.42509
+2165,Northeast,Vermont,VT,822754.0877
+2165,Northeast,West Virginia,WV,2468262.263
+2170,Northeast,Connecticut,CT,3121094.787
+2170,Northeast,Delaware,DE,827517.7508
+2170,Northeast,District of Columbia,DC,827517.7508
+2170,Northeast,Maine,ME,-51361.59715
+2170,Northeast,Maryland,MD,7447659.758
+2170,Northeast,Massachusetts,MA,8275177.508
+2170,Northeast,New Hampshire,NH,1655035.502
+2170,Northeast,New Jersey,NJ,16369753.55
+2170,Northeast,New York,NY,31743953.03
+2170,Northeast,Pennsylvania,PA,9217455.802
+2170,Northeast,Rhode Island,RI,7900.234605
+2170,Northeast,Vermont,VT,827517.7508
+2170,Northeast,West Virginia,WV,2482553.253
+2175,Northeast,Connecticut,CT,3104305.468
+2175,Northeast,Delaware,DE,832281.414
+2175,Northeast,District of Columbia,DC,832281.414
+2175,Northeast,Maine,ME,-99127.59314
+2175,Northeast,Maryland,MD,7490532.726
+2175,Northeast,Massachusetts,MA,8322814.14
+2175,Northeast,New Hampshire,NH,1664562.828
+2175,Northeast,New Jersey,NJ,16582340.14
+2175,Northeast,New York,NY,32100401.82
+2175,Northeast,Pennsylvania,PA,9100966.348
+2175,Northeast,Rhode Island,RI,-32342.95588
+2175,Northeast,Vermont,VT,832281.414
+2175,Northeast,West Virginia,WV,2496844.242
+2180,Northeast,Connecticut,CT,3087516.148
+2180,Northeast,Delaware,DE,837045.0772
+2180,Northeast,District of Columbia,DC,837045.0772
+2180,Northeast,Maine,ME,-146893.5891
+2180,Northeast,Maryland,MD,7533405.695
+2180,Northeast,Massachusetts,MA,8370450.772
+2180,Northeast,New Hampshire,NH,1674090.154
+2180,Northeast,New Jersey,NJ,16794926.72
+2180,Northeast,New York,NY,32456850.61
+2180,Northeast,Pennsylvania,PA,8984476.895
+2180,Northeast,Rhode Island,RI,-72586.14637
+2180,Northeast,Vermont,VT,837045.0772
+2180,Northeast,West Virginia,WV,2511135.232
+2185,Northeast,Connecticut,CT,3070726.829
+2185,Northeast,Delaware,DE,841808.7404
+2185,Northeast,District of Columbia,DC,841808.7404
+2185,Northeast,Maine,ME,-194659.5851
+2185,Northeast,Maryland,MD,7576278.663
+2185,Northeast,Massachusetts,MA,8418087.404
+2185,Northeast,New Hampshire,NH,1683617.481
+2185,Northeast,New Jersey,NJ,17007513.31
+2185,Northeast,New York,NY,32813299.39
+2185,Northeast,Pennsylvania,PA,8867987.441
+2185,Northeast,Rhode Island,RI,-112829.3369
+2185,Northeast,Vermont,VT,841808.7404
+2185,Northeast,West Virginia,WV,2525426.221
+2190,Northeast,Connecticut,CT,3053937.51
+2190,Northeast,Delaware,DE,846572.4036
+2190,Northeast,District of Columbia,DC,846572.4036
+2190,Northeast,Maine,ME,-242425.5811
+2190,Northeast,Maryland,MD,7619151.632
+2190,Northeast,Massachusetts,MA,8465724.036
+2190,Northeast,New Hampshire,NH,1693144.807
+2190,Northeast,New Jersey,NJ,17220099.89
+2190,Northeast,New York,NY,33169748.18
+2190,Northeast,Pennsylvania,PA,8751497.988
+2190,Northeast,Rhode Island,RI,-153072.5274
+2190,Northeast,Vermont,VT,846572.4036
+2190,Northeast,West Virginia,WV,2539717.211
+2195,Northeast,Connecticut,CT,3037148.191
+2195,Northeast,Delaware,DE,851336.0667
+2195,Northeast,District of Columbia,DC,851336.0667
+2195,Northeast,Maine,ME,-290191.5771
+2195,Northeast,Maryland,MD,7662024.601
+2195,Northeast,Massachusetts,MA,8513360.667
+2195,Northeast,New Hampshire,NH,1702672.133
+2195,Northeast,New Jersey,NJ,17432686.47
+2195,Northeast,New York,NY,33526196.97
+2195,Northeast,Pennsylvania,PA,8635008.534
+2195,Northeast,Rhode Island,RI,-193315.7178
+2195,Northeast,Vermont,VT,851336.0667
+2195,Northeast,West Virginia,WV,2554008.2
+2200,Northeast,Connecticut,CT,3020358.871
+2200,Northeast,Delaware,DE,856099.7299
+2200,Northeast,District of Columbia,DC,856099.7299
+2200,Northeast,Maine,ME,-337957.5731
+2200,Northeast,Maryland,MD,7704897.569
+2200,Northeast,Massachusetts,MA,8560997.299
+2200,Northeast,New Hampshire,NH,1712199.46
+2200,Northeast,New Jersey,NJ,17645273.06
+2200,Northeast,New York,NY,33882645.76
+2200,Northeast,Pennsylvania,PA,8518519.081
+2200,Northeast,Rhode Island,RI,-233558.9083
+2200,Northeast,Vermont,VT,856099.7299
+2200,Northeast,West Virginia,WV,2568299.19
+2205,Northeast,Connecticut,CT,3003569.552
+2205,Northeast,Delaware,DE,860863.3931
+2205,Northeast,District of Columbia,DC,860863.3931
+2205,Northeast,Maine,ME,-385723.5691
+2205,Northeast,Maryland,MD,7747770.538
+2205,Northeast,Massachusetts,MA,8608633.931
+2205,Northeast,New Hampshire,NH,1721726.786
+2205,Northeast,New Jersey,NJ,17857859.64
+2205,Northeast,New York,NY,34239094.55
+2205,Northeast,Pennsylvania,PA,8402029.627
+2205,Northeast,Rhode Island,RI,-273802.0988
+2205,Northeast,Vermont,VT,860863.3931
+2205,Northeast,West Virginia,WV,2582590.179
+2210,Northeast,Connecticut,CT,2986780.233
+2210,Northeast,Delaware,DE,865627.0563
+2210,Northeast,District of Columbia,DC,865627.0563
+2210,Northeast,Maine,ME,-433489.5651
+2210,Northeast,Maryland,MD,7790643.507
+2210,Northeast,Massachusetts,MA,8656270.563
+2210,Northeast,New Hampshire,NH,1731254.113
+2210,Northeast,New Jersey,NJ,18070446.22
+2210,Northeast,New York,NY,34595543.33
+2210,Northeast,Pennsylvania,PA,8285540.174
+2210,Northeast,Rhode Island,RI,-314045.2893
+2210,Northeast,Vermont,VT,865627.0563
+2210,Northeast,West Virginia,WV,2596881.169
+2215,Northeast,Connecticut,CT,2969990.914
+2215,Northeast,Delaware,DE,870390.7195
+2215,Northeast,District of Columbia,DC,870390.7195
+2215,Northeast,Maine,ME,-481255.5611
+2215,Northeast,Maryland,MD,7833516.475
+2215,Northeast,Massachusetts,MA,8703907.195
+2215,Northeast,New Hampshire,NH,1740781.439
+2215,Northeast,New Jersey,NJ,18283032.81
+2215,Northeast,New York,NY,34951992.12
+2215,Northeast,Pennsylvania,PA,8169050.72
+2215,Northeast,Rhode Island,RI,-354288.4798
+2215,Northeast,Vermont,VT,870390.7195
+2215,Northeast,West Virginia,WV,2611172.158
+2220,Northeast,Connecticut,CT,2953201.594
+2220,Northeast,Delaware,DE,875154.3827
+2220,Northeast,District of Columbia,DC,875154.3827
+2220,Northeast,Maine,ME,-529021.5571
+2220,Northeast,Maryland,MD,7876389.444
+2220,Northeast,Massachusetts,MA,8751543.827
+2220,Northeast,New Hampshire,NH,1750308.765
+2220,Northeast,New Jersey,NJ,18495619.39
+2220,Northeast,New York,NY,35308440.91
+2220,Northeast,Pennsylvania,PA,8052561.267
+2220,Northeast,Rhode Island,RI,-394531.6703
+2220,Northeast,Vermont,VT,875154.3827
+2220,Northeast,West Virginia,WV,2625463.148
+2225,Northeast,Connecticut,CT,2936412.275
+2225,Northeast,Delaware,DE,879918.0458
+2225,Northeast,District of Columbia,DC,879918.0458
+2225,Northeast,Maine,ME,-576787.5531
+2225,Northeast,Maryland,MD,7919262.413
+2225,Northeast,Massachusetts,MA,8799180.458
+2225,Northeast,New Hampshire,NH,1759836.092
+2225,Northeast,New Jersey,NJ,18708205.97
+2225,Northeast,New York,NY,35664889.7
+2225,Northeast,Pennsylvania,PA,7936071.813
+2225,Northeast,Rhode Island,RI,-434774.8608
+2225,Northeast,Vermont,VT,879918.0458
+2225,Northeast,West Virginia,WV,2639754.138
+2230,Northeast,Connecticut,CT,2919622.956
+2230,Northeast,Delaware,DE,884681.709
+2230,Northeast,District of Columbia,DC,884681.709
+2230,Northeast,Maine,ME,-624553.5491
+2230,Northeast,Maryland,MD,7962135.381
+2230,Northeast,Massachusetts,MA,8846817.09
+2230,Northeast,New Hampshire,NH,1769363.418
+2230,Northeast,New Jersey,NJ,18920792.56
+2230,Northeast,New York,NY,36021338.49
+2230,Northeast,Pennsylvania,PA,7819582.36
+2230,Northeast,Rhode Island,RI,-475018.0513
+2230,Northeast,Vermont,VT,884681.709
+2230,Northeast,West Virginia,WV,2654045.127
+2235,Northeast,Connecticut,CT,2902833.637
+2235,Northeast,Delaware,DE,889445.3722
+2235,Northeast,District of Columbia,DC,889445.3722
+2235,Northeast,Maine,ME,-672319.545
+2235,Northeast,Maryland,MD,8005008.35
+2235,Northeast,Massachusetts,MA,8894453.722
+2235,Northeast,New Hampshire,NH,1778890.744
+2235,Northeast,New Jersey,NJ,19133379.14
+2235,Northeast,New York,NY,36377787.27
+2235,Northeast,Pennsylvania,PA,7703092.906
+2235,Northeast,Rhode Island,RI,-515261.2418
+2235,Northeast,Vermont,VT,889445.3722
+2235,Northeast,West Virginia,WV,2668336.117
+2240,Northeast,Connecticut,CT,2886044.317
+2240,Northeast,Delaware,DE,894209.0354
+2240,Northeast,District of Columbia,DC,894209.0354
+2240,Northeast,Maine,ME,-720085.541
+2240,Northeast,Maryland,MD,8047881.318
+2240,Northeast,Massachusetts,MA,8942090.354
+2240,Northeast,New Hampshire,NH,1788418.071
+2240,Northeast,New Jersey,NJ,19345965.73
+2240,Northeast,New York,NY,36734236.06
+2240,Northeast,Pennsylvania,PA,7586603.452
+2240,Northeast,Rhode Island,RI,-555504.4322
+2240,Northeast,Vermont,VT,894209.0354
+2240,Northeast,West Virginia,WV,2682627.106
+2245,Northeast,Connecticut,CT,2869254.998
+2245,Northeast,Delaware,DE,898972.6986
+2245,Northeast,District of Columbia,DC,898972.6986
+2245,Northeast,Maine,ME,-767851.537
+2245,Northeast,Maryland,MD,8090754.287
+2245,Northeast,Massachusetts,MA,8989726.986
+2245,Northeast,New Hampshire,NH,1797945.397
+2245,Northeast,New Jersey,NJ,19558552.31
+2245,Northeast,New York,NY,37090684.85
+2245,Northeast,Pennsylvania,PA,7470113.999
+2245,Northeast,Rhode Island,RI,-595747.6227
+2245,Northeast,Vermont,VT,898972.6986
+2245,Northeast,West Virginia,WV,2696918.096
+2250,Northeast,Connecticut,CT,2852465.679
+2250,Northeast,Delaware,DE,903736.3617
+2250,Northeast,District of Columbia,DC,903736.3617
+2250,Northeast,Maine,ME,-815617.533
+2250,Northeast,Maryland,MD,8133627.256
+2250,Northeast,Massachusetts,MA,9037363.617
+2250,Northeast,New Hampshire,NH,1807472.723
+2250,Northeast,New Jersey,NJ,19771138.89
+2250,Northeast,New York,NY,37447133.64
+2250,Northeast,Pennsylvania,PA,7353624.545
+2250,Northeast,Rhode Island,RI,-635990.8132
+2250,Northeast,Vermont,VT,903736.3617
+2250,Northeast,West Virginia,WV,2711209.085
+2255,Northeast,Connecticut,CT,2835676.36
+2255,Northeast,Delaware,DE,908500.0249
+2255,Northeast,District of Columbia,DC,908500.0249
+2255,Northeast,Maine,ME,-863383.529
+2255,Northeast,Maryland,MD,8176500.224
+2255,Northeast,Massachusetts,MA,9085000.249
+2255,Northeast,New Hampshire,NH,1817000.05
+2255,Northeast,New Jersey,NJ,19983725.48
+2255,Northeast,New York,NY,37803582.42
+2255,Northeast,Pennsylvania,PA,7237135.092
+2255,Northeast,Rhode Island,RI,-676234.0037
+2255,Northeast,Vermont,VT,908500.0249
+2255,Northeast,West Virginia,WV,2725500.075
+2260,Northeast,Connecticut,CT,2818887.04
+2260,Northeast,Delaware,DE,913263.6881
+2260,Northeast,District of Columbia,DC,913263.6881
+2260,Northeast,Maine,ME,-911149.525
+2260,Northeast,Maryland,MD,8219373.193
+2260,Northeast,Massachusetts,MA,9132636.881
+2260,Northeast,New Hampshire,NH,1826527.376
+2260,Northeast,New Jersey,NJ,20196312.06
+2260,Northeast,New York,NY,38160031.21
+2260,Northeast,Pennsylvania,PA,7120645.638
+2260,Northeast,Rhode Island,RI,-716477.1942
+2260,Northeast,Vermont,VT,913263.6881
+2260,Northeast,West Virginia,WV,2739791.064
+2265,Northeast,Connecticut,CT,2802097.721
+2265,Northeast,Delaware,DE,918027.3513
+2265,Northeast,District of Columbia,DC,918027.3513
+2265,Northeast,Maine,ME,-958915.521
+2265,Northeast,Maryland,MD,8262246.162
+2265,Northeast,Massachusetts,MA,9180273.513
+2265,Northeast,New Hampshire,NH,1836054.703
+2265,Northeast,New Jersey,NJ,20408898.64
+2265,Northeast,New York,NY,38516480
+2265,Northeast,Pennsylvania,PA,7004156.185
+2265,Northeast,Rhode Island,RI,-756720.3847
+2265,Northeast,Vermont,VT,918027.3513
+2265,Northeast,West Virginia,WV,2754082.054
+2270,Northeast,Connecticut,CT,2785308.402
+2270,Northeast,Delaware,DE,922791.0145
+2270,Northeast,District of Columbia,DC,922791.0145
+2270,Northeast,Maine,ME,-1006681.517
+2270,Northeast,Maryland,MD,8305119.13
+2270,Northeast,Massachusetts,MA,9227910.145
+2270,Northeast,New Hampshire,NH,1845582.029
+2270,Northeast,New Jersey,NJ,20621485.23
+2270,Northeast,New York,NY,38872928.79
+2270,Northeast,Pennsylvania,PA,6887666.731
+2270,Northeast,Rhode Island,RI,-796963.5752
+2270,Northeast,Vermont,VT,922791.0145
+2270,Northeast,West Virginia,WV,2768373.043
+2275,Northeast,Connecticut,CT,2768519.082
+2275,Northeast,Delaware,DE,927554.6777
+2275,Northeast,District of Columbia,DC,927554.6777
+2275,Northeast,Maine,ME,-1054447.513
+2275,Northeast,Maryland,MD,8347992.099
+2275,Northeast,Massachusetts,MA,9275546.777
+2275,Northeast,New Hampshire,NH,1855109.355
+2275,Northeast,New Jersey,NJ,20834071.81
+2275,Northeast,New York,NY,39229377.58
+2275,Northeast,Pennsylvania,PA,6771177.278
+2275,Northeast,Rhode Island,RI,-837206.7657
+2275,Northeast,Vermont,VT,927554.6777
+2275,Northeast,West Virginia,WV,2782664.033
+2280,Northeast,Connecticut,CT,2751729.763
+2280,Northeast,Delaware,DE,932318.3408
+2280,Northeast,District of Columbia,DC,932318.3408
+2280,Northeast,Maine,ME,-1102213.509
+2280,Northeast,Maryland,MD,8390865.068
+2280,Northeast,Massachusetts,MA,9323183.408
+2280,Northeast,New Hampshire,NH,1864636.682
+2280,Northeast,New Jersey,NJ,21046658.4
+2280,Northeast,New York,NY,39585826.36
+2280,Northeast,Pennsylvania,PA,6654687.824
+2280,Northeast,Rhode Island,RI,-877449.9562
+2280,Northeast,Vermont,VT,932318.3408
+2280,Northeast,West Virginia,WV,2796955.023
+2285,Northeast,Connecticut,CT,2734940.444
+2285,Northeast,Delaware,DE,937082.004
+2285,Northeast,District of Columbia,DC,937082.004
+2285,Northeast,Maine,ME,-1149979.505
+2285,Northeast,Maryland,MD,8433738.036
+2285,Northeast,Massachusetts,MA,9370820.04
+2285,Northeast,New Hampshire,NH,1874164.008
+2285,Northeast,New Jersey,NJ,21259244.98
+2285,Northeast,New York,NY,39942275.15
+2285,Northeast,Pennsylvania,PA,6538198.371
+2285,Northeast,Rhode Island,RI,-917693.1467
+2285,Northeast,Vermont,VT,937082.004
+2285,Northeast,West Virginia,WV,2811246.012
+2290,Northeast,Connecticut,CT,2718151.125
+2290,Northeast,Delaware,DE,941845.6672
+2290,Northeast,District of Columbia,DC,941845.6672
+2290,Northeast,Maine,ME,-1197745.501
+2290,Northeast,Maryland,MD,8476611.005
+2290,Northeast,Massachusetts,MA,9418456.672
+2290,Northeast,New Hampshire,NH,1883691.334
+2290,Northeast,New Jersey,NJ,21471831.56
+2290,Northeast,New York,NY,40298723.94
+2290,Northeast,Pennsylvania,PA,6421708.917
+2290,Northeast,Rhode Island,RI,-957936.3371
+2290,Northeast,Vermont,VT,941845.6672
+2290,Northeast,West Virginia,WV,2825537.002
+2295,Northeast,Connecticut,CT,2701361.805
+2295,Northeast,Delaware,DE,946609.3304
+2295,Northeast,District of Columbia,DC,946609.3304
+2295,Northeast,Maine,ME,-1245511.497
+2295,Northeast,Maryland,MD,8519483.973
+2295,Northeast,Massachusetts,MA,9466093.304
+2295,Northeast,New Hampshire,NH,1893218.661
+2295,Northeast,New Jersey,NJ,21684418.15
+2295,Northeast,New York,NY,40655172.73
+2295,Northeast,Pennsylvania,PA,6305219.464
+2295,Northeast,Rhode Island,RI,-998179.5276
+2295,Northeast,Vermont,VT,946609.3304
+2295,Northeast,West Virginia,WV,2839827.991
+2300,Northeast,Connecticut,CT,2684572.486
+2300,Northeast,Delaware,DE,951372.9936
+2300,Northeast,District of Columbia,DC,951372.9936
+2300,Northeast,Maine,ME,-1293277.493
+2300,Northeast,Maryland,MD,8562356.942
+2300,Northeast,Massachusetts,MA,9513729.936
+2300,Northeast,New Hampshire,NH,1902745.987
+2300,Northeast,New Jersey,NJ,21897004.73
+2300,Northeast,New York,NY,41011621.52
+2300,Northeast,Pennsylvania,PA,6188730.01
+2300,Northeast,Rhode Island,RI,-1038422.718
+2300,Northeast,Vermont,VT,951372.9936
+2300,Northeast,West Virginia,WV,2854118.981
+2010,Northern Plains,Montana,MT,973230.6
+2010,Northern Plains,Nebraska,NE,1800476.61
+2010,Northern Plains,North Dakota,ND,681261.42
+2010,Northern Plains,South Dakota,SD,827246.01
+2010,Northern Plains,Wyoming,WY,583938.36
+2015,Northern Plains,Montana,MT,1028723.684
+2015,Northern Plains,Nebraska,NE,1903138.815
+2015,Northern Plains,North Dakota,ND,720106.5788
+2015,Northern Plains,South Dakota,SD,874415.1314
+2015,Northern Plains,Wyoming,WY,617234.2104
+2020,Northern Plains,Montana,MT,1077924.395
+2020,Northern Plains,Nebraska,NE,1940263.911
+2020,Northern Plains,North Dakota,ND,754547.0766
+2020,Northern Plains,South Dakota,SD,916235.7359
+2020,Northern Plains,Wyoming,WY,700650.8569
+2025,Northern Plains,Montana,MT,1120838.266
+2025,Northern Plains,Nebraska,NE,2017508.878
+2025,Northern Plains,North Dakota,ND,784586.7861
+2025,Northern Plains,South Dakota,SD,952712.5259
+2025,Northern Plains,Wyoming,WY,728544.8728
+2030,Northern Plains,Montana,MT,1158902.424
+2030,Northern Plains,Nebraska,NE,2028079.241
+2030,Northern Plains,North Dakota,ND,811231.6965
+2030,Northern Plains,South Dakota,SD,985067.0601
+2030,Northern Plains,Wyoming,WY,811231.6965
+2035,Northern Plains,Montana,MT,1130778.923
+2035,Northern Plains,Nebraska,NE,2083013.806
+2035,Northern Plains,North Dakota,ND,833205.5224
+2035,Northern Plains,South Dakota,SD,1071264.243
+2035,Northern Plains,Wyoming,WY,833205.5224
+2040,Northern Plains,Montana,MT,1154447.987
+2040,Northern Plains,Nebraska,NE,2126614.713
+2040,Northern Plains,North Dakota,ND,850645.8852
+2040,Northern Plains,South Dakota,SD,1093687.567
+2040,Northern Plains,Wyoming,WY,850645.8852
+2045,Northern Plains,Montana,MT,1172764.713
+2045,Northern Plains,Nebraska,NE,2160356.051
+2045,Northern Plains,North Dakota,ND,864142.4204
+2045,Northern Plains,South Dakota,SD,1111040.255
+2045,Northern Plains,Wyoming,WY,864142.4204
+2050,Northern Plains,Montana,MT,1188002.504
+2050,Northern Plains,Nebraska,NE,2188425.665
+2050,Northern Plains,North Dakota,ND,875370.2661
+2050,Northern Plains,South Dakota,SD,1125476.056
+2050,Northern Plains,Wyoming,WY,875370.2661
+2055,Northern Plains,Montana,MT,1201472.55
+2055,Northern Plains,Nebraska,NE,2213238.907
+2055,Northern Plains,North Dakota,ND,885295.5629
+2055,Northern Plains,South Dakota,SD,1138237.152
+2055,Northern Plains,Wyoming,WY,885295.5629
+2060,Northern Plains,Montana,MT,1215034.33
+2060,Northern Plains,Nebraska,NE,2174271.958
+2060,Northern Plains,North Dakota,ND,895288.4534
+2060,Northern Plains,South Dakota,SD,1151085.154
+2060,Northern Plains,Wyoming,WY,959237.6286
+2065,Northern Plains,Montana,MT,1228117.33
+2065,Northern Plains,Nebraska,NE,2197683.643
+2065,Northern Plains,North Dakota,ND,904928.5591
+2065,Northern Plains,South Dakota,SD,1163479.576
+2065,Northern Plains,Wyoming,WY,969566.3133
+2070,Northern Plains,Montana,MT,1240191.822
+2070,Northern Plains,Nebraska,NE,2219290.629
+2070,Northern Plains,North Dakota,ND,913825.5531
+2070,Northern Plains,South Dakota,SD,1174918.568
+2070,Northern Plains,Wyoming,WY,979098.8068
+2075,Northern Plains,Montana,MT,1184110.725
+2075,Northern Plains,Nebraska,NE,2236653.592
+2075,Northern Plains,North Dakota,ND,920975.0087
+2075,Northern Plains,South Dakota,SD,1249894.655
+2075,Northern Plains,Wyoming,WY,986758.9378
+2080,Northern Plains,Montana,MT,1190906.28
+2080,Northern Plains,Nebraska,NE,2249489.64
+2080,Northern Plains,North Dakota,ND,926260.4399
+2080,Northern Plains,South Dakota,SD,1257067.74
+2080,Northern Plains,Wyoming,WY,992421.8998
+2085,Northern Plains,Montana,MT,1196059.886
+2085,Northern Plains,Nebraska,NE,2259224.23
+2085,Northern Plains,North Dakota,ND,930268.8004
+2085,Northern Plains,South Dakota,SD,1262507.658
+2085,Northern Plains,Wyoming,WY,996716.5719
+2090,Northern Plains,Montana,MT,1197968.953
+2090,Northern Plains,Nebraska,NE,2262830.244
+2090,Northern Plains,North Dakota,ND,931753.6301
+2090,Northern Plains,South Dakota,SD,1264522.784
+2090,Northern Plains,Wyoming,WY,998307.4608
+2095,Northern Plains,Montana,MT,1199069.384
+2095,Northern Plains,Nebraska,NE,2264908.836
+2095,Northern Plains,North Dakota,ND,932609.5205
+2095,Northern Plains,South Dakota,SD,1265684.349
+2095,Northern Plains,Wyoming,WY,999224.4863
+2100,Northern Plains,Montana,MT,1200524.827
+2100,Northern Plains,Nebraska,NE,2267658.006
+2100,Northern Plains,North Dakota,ND,933741.5319
+2100,Northern Plains,South Dakota,SD,1267220.65
+2100,Northern Plains,Wyoming,WY,1000437.356
+2105,Northern Plains,Montana,MT,1256939.984
+2105,Northern Plains,Nebraska,NE,2362220.555
+2105,Northern Plains,North Dakota,ND,988671.3643
+2105,Northern Plains,South Dakota,SD,1355977.194
+2105,Northern Plains,Wyoming,WY,1098129.22
+2110,Northern Plains,Montana,MT,1266533.616
+2110,Northern Plains,Nebraska,NE,2384794.572
+2110,Northern Plains,North Dakota,ND,1001485.634
+2110,Northern Plains,South Dakota,SD,1380249.845
+2110,Northern Plains,Wyoming,WY,1120405.146
+2115,Northern Plains,Montana,MT,1276127.248
+2115,Northern Plains,Nebraska,NE,2407368.589
+2115,Northern Plains,North Dakota,ND,1014299.903
+2115,Northern Plains,South Dakota,SD,1404522.497
+2115,Northern Plains,Wyoming,WY,1142681.073
+2120,Northern Plains,Montana,MT,1285720.88
+2120,Northern Plains,Nebraska,NE,2429942.606
+2120,Northern Plains,North Dakota,ND,1027114.173
+2120,Northern Plains,South Dakota,SD,1428795.148
+2120,Northern Plains,Wyoming,WY,1164957
+2125,Northern Plains,Montana,MT,1295314.512
+2125,Northern Plains,Nebraska,NE,2452516.622
+2125,Northern Plains,North Dakota,ND,1039928.442
+2125,Northern Plains,South Dakota,SD,1453067.8
+2125,Northern Plains,Wyoming,WY,1187232.926
+2130,Northern Plains,Montana,MT,1304908.144
+2130,Northern Plains,Nebraska,NE,2475090.639
+2130,Northern Plains,North Dakota,ND,1052742.712
+2130,Northern Plains,South Dakota,SD,1477340.452
+2130,Northern Plains,Wyoming,WY,1209508.853
+2135,Northern Plains,Montana,MT,1314501.776
+2135,Northern Plains,Nebraska,NE,2497664.656
+2135,Northern Plains,North Dakota,ND,1065556.982
+2135,Northern Plains,South Dakota,SD,1501613.103
+2135,Northern Plains,Wyoming,WY,1231784.78
+2140,Northern Plains,Montana,MT,1324095.409
+2140,Northern Plains,Nebraska,NE,2520238.672
+2140,Northern Plains,North Dakota,ND,1078371.251
+2140,Northern Plains,South Dakota,SD,1525885.755
+2140,Northern Plains,Wyoming,WY,1254060.706
+2145,Northern Plains,Montana,MT,1333689.041
+2145,Northern Plains,Nebraska,NE,2542812.689
+2145,Northern Plains,North Dakota,ND,1091185.521
+2145,Northern Plains,South Dakota,SD,1550158.407
+2145,Northern Plains,Wyoming,WY,1276336.633
+2150,Northern Plains,Montana,MT,1343282.673
+2150,Northern Plains,Nebraska,NE,2565386.706
+2150,Northern Plains,North Dakota,ND,1103999.79
+2150,Northern Plains,South Dakota,SD,1574431.058
+2150,Northern Plains,Wyoming,WY,1298612.559
+2155,Northern Plains,Montana,MT,1352876.305
+2155,Northern Plains,Nebraska,NE,2587960.723
+2155,Northern Plains,North Dakota,ND,1116814.06
+2155,Northern Plains,South Dakota,SD,1598703.71
+2155,Northern Plains,Wyoming,WY,1320888.486
+2160,Northern Plains,Montana,MT,1362469.937
+2160,Northern Plains,Nebraska,NE,2610534.739
+2160,Northern Plains,North Dakota,ND,1129628.329
+2160,Northern Plains,South Dakota,SD,1622976.361
+2160,Northern Plains,Wyoming,WY,1343164.413
+2165,Northern Plains,Montana,MT,1372063.569
+2165,Northern Plains,Nebraska,NE,2633108.756
+2165,Northern Plains,North Dakota,ND,1142442.599
+2165,Northern Plains,South Dakota,SD,1647249.013
+2165,Northern Plains,Wyoming,WY,1365440.339
+2170,Northern Plains,Montana,MT,1381657.201
+2170,Northern Plains,Nebraska,NE,2655682.773
+2170,Northern Plains,North Dakota,ND,1155256.868
+2170,Northern Plains,South Dakota,SD,1671521.665
+2170,Northern Plains,Wyoming,WY,1387716.266
+2175,Northern Plains,Montana,MT,1391250.834
+2175,Northern Plains,Nebraska,NE,2678256.789
+2175,Northern Plains,North Dakota,ND,1168071.138
+2175,Northern Plains,South Dakota,SD,1695794.316
+2175,Northern Plains,Wyoming,WY,1409992.193
+2180,Northern Plains,Montana,MT,1400844.466
+2180,Northern Plains,Nebraska,NE,2700830.806
+2180,Northern Plains,North Dakota,ND,1180885.407
+2180,Northern Plains,South Dakota,SD,1720066.968
+2180,Northern Plains,Wyoming,WY,1432268.119
+2185,Northern Plains,Montana,MT,1410438.098
+2185,Northern Plains,Nebraska,NE,2723404.823
+2185,Northern Plains,North Dakota,ND,1193699.677
+2185,Northern Plains,South Dakota,SD,1744339.619
+2185,Northern Plains,Wyoming,WY,1454544.046
+2190,Northern Plains,Montana,MT,1420031.73
+2190,Northern Plains,Nebraska,NE,2745978.84
+2190,Northern Plains,North Dakota,ND,1206513.946
+2190,Northern Plains,South Dakota,SD,1768612.271
+2190,Northern Plains,Wyoming,WY,1476819.973
+2195,Northern Plains,Montana,MT,1429625.362
+2195,Northern Plains,Nebraska,NE,2768552.856
+2195,Northern Plains,North Dakota,ND,1219328.216
+2195,Northern Plains,South Dakota,SD,1792884.923
+2195,Northern Plains,Wyoming,WY,1499095.899
+2200,Northern Plains,Montana,MT,1439218.994
+2200,Northern Plains,Nebraska,NE,2791126.873
+2200,Northern Plains,North Dakota,ND,1232142.485
+2200,Northern Plains,South Dakota,SD,1817157.574
+2200,Northern Plains,Wyoming,WY,1521371.826
+2205,Northern Plains,Montana,MT,1448812.626
+2205,Northern Plains,Nebraska,NE,2813700.89
+2205,Northern Plains,North Dakota,ND,1244956.755
+2205,Northern Plains,South Dakota,SD,1841430.226
+2205,Northern Plains,Wyoming,WY,1543647.752
+2210,Northern Plains,Montana,MT,1458406.258
+2210,Northern Plains,Nebraska,NE,2836274.906
+2210,Northern Plains,North Dakota,ND,1257771.024
+2210,Northern Plains,South Dakota,SD,1865702.878
+2210,Northern Plains,Wyoming,WY,1565923.679
+2215,Northern Plains,Montana,MT,1467999.891
+2215,Northern Plains,Nebraska,NE,2858848.923
+2215,Northern Plains,North Dakota,ND,1270585.294
+2215,Northern Plains,South Dakota,SD,1889975.529
+2215,Northern Plains,Wyoming,WY,1588199.606
+2220,Northern Plains,Montana,MT,1477593.523
+2220,Northern Plains,Nebraska,NE,2881422.94
+2220,Northern Plains,North Dakota,ND,1283399.564
+2220,Northern Plains,South Dakota,SD,1914248.181
+2220,Northern Plains,Wyoming,WY,1610475.532
+2225,Northern Plains,Montana,MT,1487187.155
+2225,Northern Plains,Nebraska,NE,2903996.957
+2225,Northern Plains,North Dakota,ND,1296213.833
+2225,Northern Plains,South Dakota,SD,1938520.832
+2225,Northern Plains,Wyoming,WY,1632751.459
+2230,Northern Plains,Montana,MT,1496780.787
+2230,Northern Plains,Nebraska,NE,2926570.973
+2230,Northern Plains,North Dakota,ND,1309028.103
+2230,Northern Plains,South Dakota,SD,1962793.484
+2230,Northern Plains,Wyoming,WY,1655027.386
+2235,Northern Plains,Montana,MT,1506374.419
+2235,Northern Plains,Nebraska,NE,2949144.99
+2235,Northern Plains,North Dakota,ND,1321842.372
+2235,Northern Plains,South Dakota,SD,1987066.136
+2235,Northern Plains,Wyoming,WY,1677303.312
+2240,Northern Plains,Montana,MT,1515968.051
+2240,Northern Plains,Nebraska,NE,2971719.007
+2240,Northern Plains,North Dakota,ND,1334656.642
+2240,Northern Plains,South Dakota,SD,2011338.787
+2240,Northern Plains,Wyoming,WY,1699579.239
+2245,Northern Plains,Montana,MT,1525561.683
+2245,Northern Plains,Nebraska,NE,2994293.024
+2245,Northern Plains,North Dakota,ND,1347470.911
+2245,Northern Plains,South Dakota,SD,2035611.439
+2245,Northern Plains,Wyoming,WY,1721855.166
+2250,Northern Plains,Montana,MT,1535155.316
+2250,Northern Plains,Nebraska,NE,3016867.04
+2250,Northern Plains,North Dakota,ND,1360285.181
+2250,Northern Plains,South Dakota,SD,2059884.091
+2250,Northern Plains,Wyoming,WY,1744131.092
+2255,Northern Plains,Montana,MT,1544748.948
+2255,Northern Plains,Nebraska,NE,3039441.057
+2255,Northern Plains,North Dakota,ND,1373099.45
+2255,Northern Plains,South Dakota,SD,2084156.742
+2255,Northern Plains,Wyoming,WY,1766407.019
+2260,Northern Plains,Montana,MT,1554342.58
+2260,Northern Plains,Nebraska,NE,3062015.074
+2260,Northern Plains,North Dakota,ND,1385913.72
+2260,Northern Plains,South Dakota,SD,2108429.394
+2260,Northern Plains,Wyoming,WY,1788682.945
+2265,Northern Plains,Montana,MT,1563936.212
+2265,Northern Plains,Nebraska,NE,3084589.09
+2265,Northern Plains,North Dakota,ND,1398727.989
+2265,Northern Plains,South Dakota,SD,2132702.045
+2265,Northern Plains,Wyoming,WY,1810958.872
+2270,Northern Plains,Montana,MT,1573529.844
+2270,Northern Plains,Nebraska,NE,3107163.107
+2270,Northern Plains,North Dakota,ND,1411542.259
+2270,Northern Plains,South Dakota,SD,2156974.697
+2270,Northern Plains,Wyoming,WY,1833234.799
+2275,Northern Plains,Montana,MT,1583123.476
+2275,Northern Plains,Nebraska,NE,3129737.124
+2275,Northern Plains,North Dakota,ND,1424356.528
+2275,Northern Plains,South Dakota,SD,2181247.349
+2275,Northern Plains,Wyoming,WY,1855510.725
+2280,Northern Plains,Montana,MT,1592717.108
+2280,Northern Plains,Nebraska,NE,3152311.141
+2280,Northern Plains,North Dakota,ND,1437170.798
+2280,Northern Plains,South Dakota,SD,2205520
+2280,Northern Plains,Wyoming,WY,1877786.652
+2285,Northern Plains,Montana,MT,1602310.741
+2285,Northern Plains,Nebraska,NE,3174885.157
+2285,Northern Plains,North Dakota,ND,1449985.067
+2285,Northern Plains,South Dakota,SD,2229792.652
+2285,Northern Plains,Wyoming,WY,1900062.579
+2290,Northern Plains,Montana,MT,1611904.373
+2290,Northern Plains,Nebraska,NE,3197459.174
+2290,Northern Plains,North Dakota,ND,1462799.337
+2290,Northern Plains,South Dakota,SD,2254065.303
+2290,Northern Plains,Wyoming,WY,1922338.505
+2295,Northern Plains,Montana,MT,1621498.005
+2295,Northern Plains,Nebraska,NE,3220033.191
+2295,Northern Plains,North Dakota,ND,1475613.606
+2295,Northern Plains,South Dakota,SD,2278337.955
+2295,Northern Plains,Wyoming,WY,1944614.432
+2300,Northern Plains,Montana,MT,1631091.637
+2300,Northern Plains,Nebraska,NE,3242607.207
+2300,Northern Plains,North Dakota,ND,1488427.876
+2300,Northern Plains,South Dakota,SD,2302610.607
+2300,Northern Plains,Wyoming,WY,1966890.358
+2010,Northwest,Idaho,ID,1576015.48
+2010,Northwest,Oregon,OR,3879422.72
+2010,Northwest,Washington,WA,6667757.8
+2015,Northwest,Idaho,ID,1625057.356
+2015,Northwest,Oregon,OR,3875136.772
+2015,Northwest,Washington,WA,7000247.072
+2020,Northwest,Idaho,ID,1664582.962
+2020,Northwest,Oregon,OR,3969390.139
+2020,Northwest,Washington,WA,7170511.219
+2025,Northwest,Idaho,ID,1825417.94
+2025,Northwest,Oregon,OR,4041996.867
+2025,Northwest,Washington,WA,7171284.764
+2030,Northwest,Idaho,ID,1853889.225
+2030,Northwest,Oregon,OR,4105040.426
+2030,Northwest,Washington,WA,7283136.24
+2035,Northwest,Idaho,ID,1875833.438
+2035,Northwest,Oregon,OR,4153631.184
+2035,Northwest,Washington,WA,7369345.649
+2040,Northwest,Idaho,ID,1889554.663
+2040,Northwest,Oregon,OR,4184013.896
+2040,Northwest,Washington,WA,7423250.461
+2045,Northwest,Idaho,ID,1896333.792
+2045,Northwest,Oregon,OR,4199024.825
+2045,Northwest,Washington,WA,7449882.754
+2050,Northwest,Idaho,ID,1899259.209
+2050,Northwest,Oregon,OR,4205502.535
+2050,Northwest,Washington,WA,7461375.466
+2055,Northwest,Idaho,ID,1900089.643
+2055,Northwest,Oregon,OR,4207341.353
+2055,Northwest,Washington,WA,7464637.884
+2060,Northwest,Idaho,ID,1901928.764
+2060,Northwest,Oregon,OR,4211413.693
+2060,Northwest,Washington,WA,7471863.003
+2065,Northwest,Idaho,ID,1903901.731
+2065,Northwest,Oregon,OR,4215782.405
+2065,Northwest,Washington,WA,7479613.944
+2070,Northwest,Idaho,ID,1905095.807
+2070,Northwest,Oregon,OR,4218426.429
+2070,Northwest,Washington,WA,7484304.955
+2075,Northwest,Idaho,ID,1903793.777
+2075,Northwest,Oregon,OR,4215543.364
+2075,Northwest,Washington,WA,7479189.839
+2080,Northwest,Idaho,ID,1899669.302
+2080,Northwest,Oregon,OR,4206410.596
+2080,Northwest,Washington,WA,7462986.542
+2085,Northwest,Idaho,ID,1893839.524
+2085,Northwest,Oregon,OR,4193501.803
+2085,Northwest,Washington,WA,7440083.844
+2090,Northwest,Idaho,ID,1894163.851
+2090,Northwest,Oregon,OR,4194219.955
+2090,Northwest,Washington,WA,7441357.985
+2095,Northwest,Idaho,ID,1895903.792
+2095,Northwest,Oregon,OR,4198072.681
+2095,Northwest,Washington,WA,7448193.467
+2100,Northwest,Idaho,ID,1898205.06
+2100,Northwest,Oregon,OR,4203168.347
+2100,Northwest,Washington,WA,7457234.164
+2105,Northwest,Idaho,ID,1978892.105
+2105,Northwest,Oregon,OR,4296637.188
+2105,Northwest,Washington,WA,7625756.019
+2110,Northwest,Idaho,ID,1992031.13
+2110,Northwest,Oregon,OR,4312211.222
+2110,Northwest,Washington,WA,7653456.584
+2115,Northwest,Idaho,ID,2005170.154
+2115,Northwest,Oregon,OR,4327785.257
+2115,Northwest,Washington,WA,7681157.149
+2120,Northwest,Idaho,ID,2018309.179
+2120,Northwest,Oregon,OR,4343359.291
+2120,Northwest,Washington,WA,7708857.713
+2125,Northwest,Idaho,ID,2031448.203
+2125,Northwest,Oregon,OR,4358933.326
+2125,Northwest,Washington,WA,7736558.278
+2130,Northwest,Idaho,ID,2044587.228
+2130,Northwest,Oregon,OR,4374507.361
+2130,Northwest,Washington,WA,7764258.843
+2135,Northwest,Idaho,ID,2057726.253
+2135,Northwest,Oregon,OR,4390081.395
+2135,Northwest,Washington,WA,7791959.408
+2140,Northwest,Idaho,ID,2070865.277
+2140,Northwest,Oregon,OR,4405655.43
+2140,Northwest,Washington,WA,7819659.973
+2145,Northwest,Idaho,ID,2084004.302
+2145,Northwest,Oregon,OR,4421229.465
+2145,Northwest,Washington,WA,7847360.538
+2150,Northwest,Idaho,ID,2097143.327
+2150,Northwest,Oregon,OR,4436803.499
+2150,Northwest,Washington,WA,7875061.102
+2155,Northwest,Idaho,ID,2110282.351
+2155,Northwest,Oregon,OR,4452377.534
+2155,Northwest,Washington,WA,7902761.667
+2160,Northwest,Idaho,ID,2123421.376
+2160,Northwest,Oregon,OR,4467951.568
+2160,Northwest,Washington,WA,7930462.232
+2165,Northwest,Idaho,ID,2136560.4
+2165,Northwest,Oregon,OR,4483525.603
+2165,Northwest,Washington,WA,7958162.797
+2170,Northwest,Idaho,ID,2149699.425
+2170,Northwest,Oregon,OR,4499099.638
+2170,Northwest,Washington,WA,7985863.362
+2175,Northwest,Idaho,ID,2162838.45
+2175,Northwest,Oregon,OR,4514673.672
+2175,Northwest,Washington,WA,8013563.926
+2180,Northwest,Idaho,ID,2175977.474
+2180,Northwest,Oregon,OR,4530247.707
+2180,Northwest,Washington,WA,8041264.491
+2185,Northwest,Idaho,ID,2189116.499
+2185,Northwest,Oregon,OR,4545821.741
+2185,Northwest,Washington,WA,8068965.056
+2190,Northwest,Idaho,ID,2202255.524
+2190,Northwest,Oregon,OR,4561395.776
+2190,Northwest,Washington,WA,8096665.621
+2195,Northwest,Idaho,ID,2215394.548
+2195,Northwest,Oregon,OR,4576969.811
+2195,Northwest,Washington,WA,8124366.186
+2200,Northwest,Idaho,ID,2228533.573
+2200,Northwest,Oregon,OR,4592543.845
+2200,Northwest,Washington,WA,8152066.75
+2205,Northwest,Idaho,ID,2241672.597
+2205,Northwest,Oregon,OR,4608117.88
+2205,Northwest,Washington,WA,8179767.315
+2210,Northwest,Idaho,ID,2254811.622
+2210,Northwest,Oregon,OR,4623691.915
+2210,Northwest,Washington,WA,8207467.88
+2215,Northwest,Idaho,ID,2267950.647
+2215,Northwest,Oregon,OR,4639265.949
+2215,Northwest,Washington,WA,8235168.445
+2220,Northwest,Idaho,ID,2281089.671
+2220,Northwest,Oregon,OR,4654839.984
+2220,Northwest,Washington,WA,8262869.01
+2225,Northwest,Idaho,ID,2294228.696
+2225,Northwest,Oregon,OR,4670414.018
+2225,Northwest,Washington,WA,8290569.574
+2230,Northwest,Idaho,ID,2307367.721
+2230,Northwest,Oregon,OR,4685988.053
+2230,Northwest,Washington,WA,8318270.139
+2235,Northwest,Idaho,ID,2320506.745
+2235,Northwest,Oregon,OR,4701562.088
+2235,Northwest,Washington,WA,8345970.704
+2240,Northwest,Idaho,ID,2333645.77
+2240,Northwest,Oregon,OR,4717136.122
+2240,Northwest,Washington,WA,8373671.269
+2245,Northwest,Idaho,ID,2346784.794
+2245,Northwest,Oregon,OR,4732710.157
+2245,Northwest,Washington,WA,8401371.834
+2250,Northwest,Idaho,ID,2359923.819
+2250,Northwest,Oregon,OR,4748284.191
+2250,Northwest,Washington,WA,8429072.399
+2255,Northwest,Idaho,ID,2373062.844
+2255,Northwest,Oregon,OR,4763858.226
+2255,Northwest,Washington,WA,8456772.963
+2260,Northwest,Idaho,ID,2386201.868
+2260,Northwest,Oregon,OR,4779432.261
+2260,Northwest,Washington,WA,8484473.528
+2265,Northwest,Idaho,ID,2399340.893
+2265,Northwest,Oregon,OR,4795006.295
+2265,Northwest,Washington,WA,8512174.093
+2270,Northwest,Idaho,ID,2412479.918
+2270,Northwest,Oregon,OR,4810580.33
+2270,Northwest,Washington,WA,8539874.658
+2275,Northwest,Idaho,ID,2425618.942
+2275,Northwest,Oregon,OR,4826154.365
+2275,Northwest,Washington,WA,8567575.223
+2280,Northwest,Idaho,ID,2438757.967
+2280,Northwest,Oregon,OR,4841728.399
+2280,Northwest,Washington,WA,8595275.787
+2285,Northwest,Idaho,ID,2451896.991
+2285,Northwest,Oregon,OR,4857302.434
+2285,Northwest,Washington,WA,8622976.352
+2290,Northwest,Idaho,ID,2465036.016
+2290,Northwest,Oregon,OR,4872876.468
+2290,Northwest,Washington,WA,8650676.917
+2295,Northwest,Idaho,ID,2478175.041
+2295,Northwest,Oregon,OR,4888450.503
+2295,Northwest,Washington,WA,8678377.482
+2300,Northwest,Idaho,ID,2491314.065
+2300,Northwest,Oregon,OR,4904024.538
+2300,Northwest,Washington,WA,8706078.047
+2010,Southeast,Alabama,AL,4591957.74
+2010,Southeast,Arkansas,AR,3061305.16
+2010,Southeast,Florida,FL,19133157.25
+2010,Southeast,Georgia,GA,9949241.77
+2010,Southeast,Kentucky,KY,4591957.74
+2010,Southeast,Louisiana,LA,4591957.74
+2010,Southeast,Mississippi,MS,3061305.16
+2010,Southeast,North Carolina,NC,9183915.48
+2010,Southeast,South Carolina,SC,4591957.74
+2010,Southeast,Tennessee,TN,6122610.32
+2010,Southeast,Virginia,VA,7653262.9
+2015,Southeast,Alabama,AL,4775070.265
+2015,Southeast,Arkansas,AR,3183380.176
+2015,Southeast,Florida,FL,19100281.06
+2015,Southeast,Georgia,GA,10345985.57
+2015,Southeast,Kentucky,KY,4775070.265
+2015,Southeast,Louisiana,LA,4775070.265
+2015,Southeast,Mississippi,MS,3183380.176
+2015,Southeast,North Carolina,NC,9550140.529
+2015,Southeast,South Carolina,SC,4775070.265
+2015,Southeast,Tennessee,TN,6366760.353
+2015,Southeast,Virginia,VA,8754295.485
+2020,Southeast,Alabama,AL,4929153.501
+2020,Southeast,Arkansas,AR,3286102.334
+2020,Southeast,Florida,FL,19716614
+2020,Southeast,Georgia,GA,10679832.59
+2020,Southeast,Kentucky,KY,4929153.501
+2020,Southeast,Louisiana,LA,4929153.501
+2020,Southeast,Mississippi,MS,3286102.334
+2020,Southeast,North Carolina,NC,9858307.002
+2020,Southeast,South Carolina,SC,4929153.501
+2020,Southeast,Tennessee,TN,6572204.668
+2020,Southeast,Virginia,VA,9036781.418
+2025,Southeast,Alabama,AL,5054722.172
+2025,Southeast,Arkansas,AR,3369814.781
+2025,Southeast,Florida,FL,20218888.69
+2025,Southeast,Georgia,GA,11794351.73
+2025,Southeast,Kentucky,KY,4212268.477
+2025,Southeast,Louisiana,LA,5054722.172
+2025,Southeast,Mississippi,MS,3369814.781
+2025,Southeast,North Carolina,NC,10109444.34
+2025,Southeast,South Carolina,SC,5054722.172
+2025,Southeast,Tennessee,TN,6739629.562
+2025,Southeast,Virginia,VA,9266990.648
+2030,Southeast,Alabama,AL,5166891.61
+2030,Southeast,Arkansas,AR,3444594.407
+2030,Southeast,Florida,FL,20667566.44
+2030,Southeast,Georgia,GA,12056080.42
+2030,Southeast,Kentucky,KY,4305743.009
+2030,Southeast,Louisiana,LA,5166891.61
+2030,Southeast,Mississippi,MS,3444594.407
+2030,Southeast,North Carolina,NC,10333783.22
+2030,Southeast,South Carolina,SC,5166891.61
+2030,Southeast,Tennessee,TN,6889188.814
+2030,Southeast,Virginia,VA,9472634.619
+2035,Southeast,Alabama,AL,5262875.007
+2035,Southeast,Arkansas,AR,3508583.338
+2035,Southeast,Florida,FL,21928645.86
+2035,Southeast,Georgia,GA,12280041.68
+2035,Southeast,Kentucky,KY,4385729.173
+2035,Southeast,Louisiana,LA,5262875.007
+2035,Southeast,Mississippi,MS,3508583.338
+2035,Southeast,North Carolina,NC,10525750.01
+2035,Southeast,South Carolina,SC,5262875.007
+2035,Southeast,Tennessee,TN,7017166.676
+2035,Southeast,Virginia,VA,8771458.345
+2040,Southeast,Alabama,AL,5337854.897
+2040,Southeast,Arkansas,AR,3558569.932
+2040,Southeast,Florida,FL,22241062.07
+2040,Southeast,Georgia,GA,12454994.76
+2040,Southeast,Kentucky,KY,4448212.415
+2040,Southeast,Louisiana,LA,5337854.897
+2040,Southeast,Mississippi,MS,3558569.932
+2040,Southeast,North Carolina,NC,10675709.79
+2040,Southeast,South Carolina,SC,5337854.897
+2040,Southeast,Tennessee,TN,7117139.863
+2040,Southeast,Virginia,VA,8896424.829
+2045,Southeast,Alabama,AL,5393090.303
+2045,Southeast,Arkansas,AR,3595393.535
+2045,Southeast,Florida,FL,22471209.6
+2045,Southeast,Georgia,GA,12583877.37
+2045,Southeast,Kentucky,KY,4494241.919
+2045,Southeast,Louisiana,LA,5393090.303
+2045,Southeast,Mississippi,MS,3595393.535
+2045,Southeast,North Carolina,NC,10786180.61
+2045,Southeast,South Carolina,SC,5393090.303
+2045,Southeast,Tennessee,TN,6291938.687
+2045,Southeast,Virginia,VA,9887332.222
+2050,Southeast,Alabama,AL,5436985.2
+2050,Southeast,Arkansas,AR,3624656.8
+2050,Southeast,Florida,FL,22654105
+2050,Southeast,Georgia,GA,12686298.8
+2050,Southeast,Kentucky,KY,4530821
+2050,Southeast,Louisiana,LA,5436985.2
+2050,Southeast,Mississippi,MS,3624656.8
+2050,Southeast,North Carolina,NC,10873970.4
+2050,Southeast,South Carolina,SC,5436985.2
+2050,Southeast,Tennessee,TN,6343149.4
+2050,Southeast,Virginia,VA,9967806.2
+2055,Southeast,Alabama,AL,5475070.714
+2055,Southeast,Arkansas,AR,3650047.142
+2055,Southeast,Florida,FL,23725306.43
+2055,Southeast,Georgia,GA,12775165
+2055,Southeast,Kentucky,KY,4562558.928
+2055,Southeast,Louisiana,LA,5475070.714
+2055,Southeast,Mississippi,MS,3650047.142
+2055,Southeast,North Carolina,NC,10950141.43
+2055,Southeast,South Carolina,SC,5475070.714
+2055,Southeast,Tennessee,TN,6387582.499
+2055,Southeast,Virginia,VA,9125117.856
+2060,Southeast,Alabama,AL,5515659.688
+2060,Southeast,Arkansas,AR,3677106.459
+2060,Southeast,Florida,FL,23901191.98
+2060,Southeast,Georgia,GA,12869872.61
+2060,Southeast,Kentucky,KY,4596383.074
+2060,Southeast,Louisiana,LA,5515659.688
+2060,Southeast,Mississippi,MS,3677106.459
+2060,Southeast,North Carolina,NC,11031319.38
+2060,Southeast,South Carolina,SC,5515659.688
+2060,Southeast,Tennessee,TN,6434936.303
+2060,Southeast,Virginia,VA,9192766.147
+2065,Southeast,Alabama,AL,5556494.752
+2065,Southeast,Arkansas,AR,3704329.835
+2065,Southeast,Florida,FL,24078143.93
+2065,Southeast,Georgia,GA,12965154.42
+2065,Southeast,Kentucky,KY,4630412.294
+2065,Southeast,Louisiana,LA,5556494.752
+2065,Southeast,Mississippi,MS,3704329.835
+2065,Southeast,North Carolina,NC,11112989.5
+2065,Southeast,South Carolina,SC,5556494.752
+2065,Southeast,Tennessee,TN,6482577.211
+2065,Southeast,Virginia,VA,9260824.587
+2070,Southeast,Alabama,AL,5595651.798
+2070,Southeast,Arkansas,AR,3730434.532
+2070,Southeast,Florida,FL,25180433.09
+2070,Southeast,Georgia,GA,13056520.86
+2070,Southeast,Kentucky,KY,4663043.165
+2070,Southeast,Louisiana,LA,5595651.798
+2070,Southeast,Mississippi,MS,3730434.532
+2070,Southeast,North Carolina,NC,10258694.96
+2070,Southeast,South Carolina,SC,5595651.798
+2070,Southeast,Tennessee,TN,6528260.431
+2070,Southeast,Virginia,VA,9326086.33
+2075,Southeast,Alabama,AL,5626930.383
+2075,Southeast,Arkansas,AR,3751286.922
+2075,Southeast,Florida,FL,25321186.72
+2075,Southeast,Georgia,GA,13129504.23
+2075,Southeast,Kentucky,KY,4689108.653
+2075,Southeast,Louisiana,LA,5626930.383
+2075,Southeast,Mississippi,MS,3751286.922
+2075,Southeast,North Carolina,NC,10316039.04
+2075,Southeast,South Carolina,SC,5626930.383
+2075,Southeast,Tennessee,TN,6564752.114
+2075,Southeast,Virginia,VA,9378217.305
+2080,Southeast,Alabama,AL,5649252.872
+2080,Southeast,Arkansas,AR,3766168.582
+2080,Southeast,Florida,FL,25421637.93
+2080,Southeast,Georgia,GA,13181590.04
+2080,Southeast,Kentucky,KY,4707710.727
+2080,Southeast,Louisiana,LA,5649252.872
+2080,Southeast,Mississippi,MS,3766168.582
+2080,Southeast,North Carolina,NC,10356963.6
+2080,Southeast,South Carolina,SC,5649252.872
+2080,Southeast,Tennessee,TN,6590795.018
+2080,Southeast,Virginia,VA,9415421.454
+2085,Southeast,Alabama,AL,5665197.802
+2085,Southeast,Arkansas,AR,3776798.534
+2085,Southeast,Florida,FL,25493390.11
+2085,Southeast,Georgia,GA,14162994.5
+2085,Southeast,Kentucky,KY,3776798.534
+2085,Southeast,Louisiana,LA,5665197.802
+2085,Southeast,Mississippi,MS,3776798.534
+2085,Southeast,North Carolina,NC,10386195.97
+2085,Southeast,South Carolina,SC,5665197.802
+2085,Southeast,Tennessee,TN,6609397.435
+2085,Southeast,Virginia,VA,9441996.336
+2090,Southeast,Alabama,AL,5672630.186
+2090,Southeast,Arkansas,AR,3781753.457
+2090,Southeast,Florida,FL,25526835.84
+2090,Southeast,Georgia,GA,14181575.46
+2090,Southeast,Kentucky,KY,3781753.457
+2090,Southeast,Louisiana,LA,5672630.186
+2090,Southeast,Mississippi,MS,3781753.457
+2090,Southeast,North Carolina,NC,10399822.01
+2090,Southeast,South Carolina,SC,5672630.186
+2090,Southeast,Tennessee,TN,6618068.55
+2090,Southeast,Virginia,VA,9454383.643
+2095,Southeast,Alabama,AL,5677840.952
+2095,Southeast,Arkansas,AR,3785227.301
+2095,Southeast,Florida,FL,26496591.11
+2095,Southeast,Georgia,GA,13248295.55
+2095,Southeast,Kentucky,KY,3785227.301
+2095,Southeast,Louisiana,LA,5677840.952
+2095,Southeast,Mississippi,MS,3785227.301
+2095,Southeast,North Carolina,NC,10409375.08
+2095,Southeast,South Carolina,SC,5677840.952
+2095,Southeast,Tennessee,TN,6624147.777
+2095,Southeast,Virginia,VA,9463068.253
+2100,Southeast,Alabama,AL,5684732.776
+2100,Southeast,Arkansas,AR,3789821.85
+2100,Southeast,Florida,FL,26528752.95
+2100,Southeast,Georgia,GA,13264376.48
+2100,Southeast,Kentucky,KY,3789821.85
+2100,Southeast,Louisiana,LA,5684732.776
+2100,Southeast,Mississippi,MS,3789821.85
+2100,Southeast,North Carolina,NC,10422010.09
+2100,Southeast,South Carolina,SC,5684732.776
+2100,Southeast,Tennessee,TN,6632188.238
+2100,Southeast,Virginia,VA,9474554.626
+2105,Southeast,Alabama,AL,5915358.266
+2105,Southeast,Arkansas,AR,3943572.177
+2105,Southeast,Florida,FL,27510245.49
+2105,Southeast,Georgia,GA,14325475.7
+2105,Southeast,Kentucky,KY,4024407.217
+2105,Southeast,Louisiana,LA,5915358.266
+2105,Southeast,Mississippi,MS,3943572.177
+2105,Southeast,North Carolina,NC,10788194.39
+2105,Southeast,South Carolina,SC,5915358.266
+2105,Southeast,Tennessee,TN,6603284.829
+2105,Southeast,Virginia,VA,9704477.652
+2110,Southeast,Alabama,AL,5969693.763
+2110,Southeast,Arkansas,AR,3979795.842
+2110,Southeast,Florida,FL,27946506.88
+2110,Southeast,Georgia,GA,14507150.88
+2110,Southeast,Kentucky,KY,3986553.12
+2110,Southeast,Louisiana,LA,5969693.763
+2110,Southeast,Mississippi,MS,3979795.842
+2110,Southeast,North Carolina,NC,10827325.66
+2110,Southeast,South Carolina,SC,5969693.763
+2110,Southeast,Tennessee,TN,6606073.87
+2110,Southeast,Virginia,VA,9752612.664
+2115,Southeast,Alabama,AL,6024029.26
+2115,Southeast,Arkansas,AR,4016019.506
+2115,Southeast,Florida,FL,28382768.27
+2115,Southeast,Georgia,GA,14688826.06
+2115,Southeast,Kentucky,KY,3948699.023
+2115,Southeast,Louisiana,LA,6024029.26
+2115,Southeast,Mississippi,MS,4016019.506
+2115,Southeast,North Carolina,NC,10866456.93
+2115,Southeast,South Carolina,SC,6024029.26
+2115,Southeast,Tennessee,TN,6608862.911
+2115,Southeast,Virginia,VA,9800747.675
+2120,Southeast,Alabama,AL,6078364.757
+2120,Southeast,Arkansas,AR,4052243.171
+2120,Southeast,Florida,FL,28819029.66
+2120,Southeast,Georgia,GA,14870501.25
+2120,Southeast,Kentucky,KY,3910844.927
+2120,Southeast,Louisiana,LA,6078364.757
+2120,Southeast,Mississippi,MS,4052243.171
+2120,Southeast,North Carolina,NC,10905588.2
+2120,Southeast,South Carolina,SC,6078364.757
+2120,Southeast,Tennessee,TN,6611651.953
+2120,Southeast,Virginia,VA,9848882.687
+2125,Southeast,Alabama,AL,6132700.254
+2125,Southeast,Arkansas,AR,4088466.836
+2125,Southeast,Florida,FL,29255291.05
+2125,Southeast,Georgia,GA,15052176.43
+2125,Southeast,Kentucky,KY,3872990.83
+2125,Southeast,Louisiana,LA,6132700.254
+2125,Southeast,Mississippi,MS,4088466.836
+2125,Southeast,North Carolina,NC,10944719.46
+2125,Southeast,South Carolina,SC,6132700.254
+2125,Southeast,Tennessee,TN,6614440.994
+2125,Southeast,Virginia,VA,9897017.698
+2130,Southeast,Alabama,AL,6187035.751
+2130,Southeast,Arkansas,AR,4124690.5
+2130,Southeast,Florida,FL,29691552.44
+2130,Southeast,Georgia,GA,15233851.61
+2130,Southeast,Kentucky,KY,3835136.733
+2130,Southeast,Louisiana,LA,6187035.751
+2130,Southeast,Mississippi,MS,4124690.5
+2130,Southeast,North Carolina,NC,10983850.73
+2130,Southeast,South Carolina,SC,6187035.751
+2130,Southeast,Tennessee,TN,6617230.035
+2130,Southeast,Virginia,VA,9945152.71
+2135,Southeast,Alabama,AL,6241371.248
+2135,Southeast,Arkansas,AR,4160914.165
+2135,Southeast,Florida,FL,30127813.83
+2135,Southeast,Georgia,GA,15415526.79
+2135,Southeast,Kentucky,KY,3797282.637
+2135,Southeast,Louisiana,LA,6241371.248
+2135,Southeast,Mississippi,MS,4160914.165
+2135,Southeast,North Carolina,NC,11022982
+2135,Southeast,South Carolina,SC,6241371.248
+2135,Southeast,Tennessee,TN,6620019.076
+2135,Southeast,Virginia,VA,9993287.721
+2140,Southeast,Alabama,AL,6295706.745
+2140,Southeast,Arkansas,AR,4197137.83
+2140,Southeast,Florida,FL,30564075.22
+2140,Southeast,Georgia,GA,15597201.97
+2140,Southeast,Kentucky,KY,3759428.54
+2140,Southeast,Louisiana,LA,6295706.745
+2140,Southeast,Mississippi,MS,4197137.83
+2140,Southeast,North Carolina,NC,11062113.27
+2140,Southeast,South Carolina,SC,6295706.745
+2140,Southeast,Tennessee,TN,6622808.118
+2140,Southeast,Virginia,VA,10041422.73
+2145,Southeast,Alabama,AL,6350042.242
+2145,Southeast,Arkansas,AR,4233361.495
+2145,Southeast,Florida,FL,31000336.61
+2145,Southeast,Georgia,GA,15778877.15
+2145,Southeast,Kentucky,KY,3721574.444
+2145,Southeast,Louisiana,LA,6350042.242
+2145,Southeast,Mississippi,MS,4233361.495
+2145,Southeast,North Carolina,NC,11101244.54
+2145,Southeast,South Carolina,SC,6350042.242
+2145,Southeast,Tennessee,TN,6625597.159
+2145,Southeast,Virginia,VA,10089557.74
+2150,Southeast,Alabama,AL,6404377.739
+2150,Southeast,Arkansas,AR,4269585.159
+2150,Southeast,Florida,FL,31436598
+2150,Southeast,Georgia,GA,15960552.33
+2150,Southeast,Kentucky,KY,3683720.347
+2150,Southeast,Louisiana,LA,6404377.739
+2150,Southeast,Mississippi,MS,4269585.159
+2150,Southeast,North Carolina,NC,11140375.8
+2150,Southeast,South Carolina,SC,6404377.739
+2150,Southeast,Tennessee,TN,6628386.2
+2150,Southeast,Virginia,VA,10137692.76
+2155,Southeast,Alabama,AL,6458713.236
+2155,Southeast,Arkansas,AR,4305808.824
+2155,Southeast,Florida,FL,31872859.39
+2155,Southeast,Georgia,GA,16142227.52
+2155,Southeast,Kentucky,KY,3645866.25
+2155,Southeast,Louisiana,LA,6458713.236
+2155,Southeast,Mississippi,MS,4305808.824
+2155,Southeast,North Carolina,NC,11179507.07
+2155,Southeast,South Carolina,SC,6458713.236
+2155,Southeast,Tennessee,TN,6631175.241
+2155,Southeast,Virginia,VA,10185827.77
+2160,Southeast,Alabama,AL,6513048.733
+2160,Southeast,Arkansas,AR,4342032.489
+2160,Southeast,Florida,FL,32309120.78
+2160,Southeast,Georgia,GA,16323902.7
+2160,Southeast,Kentucky,KY,3608012.154
+2160,Southeast,Louisiana,LA,6513048.733
+2160,Southeast,Mississippi,MS,4342032.489
+2160,Southeast,North Carolina,NC,11218638.34
+2160,Southeast,South Carolina,SC,6513048.733
+2160,Southeast,Tennessee,TN,6633964.282
+2160,Southeast,Virginia,VA,10233962.78
+2165,Southeast,Alabama,AL,6567384.23
+2165,Southeast,Arkansas,AR,4378256.153
+2165,Southeast,Florida,FL,32745382.17
+2165,Southeast,Georgia,GA,16505577.88
+2165,Southeast,Kentucky,KY,3570158.057
+2165,Southeast,Louisiana,LA,6567384.23
+2165,Southeast,Mississippi,MS,4378256.153
+2165,Southeast,North Carolina,NC,11257769.61
+2165,Southeast,South Carolina,SC,6567384.23
+2165,Southeast,Tennessee,TN,6636753.324
+2165,Southeast,Virginia,VA,10282097.79
+2170,Southeast,Alabama,AL,6621719.727
+2170,Southeast,Arkansas,AR,4414479.818
+2170,Southeast,Florida,FL,33181643.57
+2170,Southeast,Georgia,GA,16687253.06
+2170,Southeast,Kentucky,KY,3532303.96
+2170,Southeast,Louisiana,LA,6621719.727
+2170,Southeast,Mississippi,MS,4414479.818
+2170,Southeast,North Carolina,NC,11296900.88
+2170,Southeast,South Carolina,SC,6621719.727
+2170,Southeast,Tennessee,TN,6639542.365
+2170,Southeast,Virginia,VA,10330232.8
+2175,Southeast,Alabama,AL,6676055.224
+2175,Southeast,Arkansas,AR,4450703.483
+2175,Southeast,Florida,FL,33617904.96
+2175,Southeast,Georgia,GA,16868928.24
+2175,Southeast,Kentucky,KY,3494449.864
+2175,Southeast,Louisiana,LA,6676055.224
+2175,Southeast,Mississippi,MS,4450703.483
+2175,Southeast,North Carolina,NC,11336032.15
+2175,Southeast,South Carolina,SC,6676055.224
+2175,Southeast,Tennessee,TN,6642331.406
+2175,Southeast,Virginia,VA,10378367.81
+2180,Southeast,Alabama,AL,6730390.721
+2180,Southeast,Arkansas,AR,4486927.147
+2180,Southeast,Florida,FL,34054166.35
+2180,Southeast,Georgia,GA,17050603.42
+2180,Southeast,Kentucky,KY,3456595.767
+2180,Southeast,Louisiana,LA,6730390.721
+2180,Southeast,Mississippi,MS,4486927.147
+2180,Southeast,North Carolina,NC,11375163.41
+2180,Southeast,South Carolina,SC,6730390.721
+2180,Southeast,Tennessee,TN,6645120.447
+2180,Southeast,Virginia,VA,10426502.83
+2185,Southeast,Alabama,AL,6784726.218
+2185,Southeast,Arkansas,AR,4523150.812
+2185,Southeast,Florida,FL,34490427.74
+2185,Southeast,Georgia,GA,17232278.6
+2185,Southeast,Kentucky,KY,3418741.67
+2185,Southeast,Louisiana,LA,6784726.218
+2185,Southeast,Mississippi,MS,4523150.812
+2185,Southeast,North Carolina,NC,11414294.68
+2185,Southeast,South Carolina,SC,6784726.218
+2185,Southeast,Tennessee,TN,6647909.488
+2185,Southeast,Virginia,VA,10474637.84
+2190,Southeast,Alabama,AL,6839061.715
+2190,Southeast,Arkansas,AR,4559374.477
+2190,Southeast,Florida,FL,34926689.13
+2190,Southeast,Georgia,GA,17413953.79
+2190,Southeast,Kentucky,KY,3380887.574
+2190,Southeast,Louisiana,LA,6839061.715
+2190,Southeast,Mississippi,MS,4559374.477
+2190,Southeast,North Carolina,NC,11453425.95
+2190,Southeast,South Carolina,SC,6839061.715
+2190,Southeast,Tennessee,TN,6650698.53
+2190,Southeast,Virginia,VA,10522772.85
+2195,Southeast,Alabama,AL,6893397.212
+2195,Southeast,Arkansas,AR,4595598.141
+2195,Southeast,Florida,FL,35362950.52
+2195,Southeast,Georgia,GA,17595628.97
+2195,Southeast,Kentucky,KY,3343033.477
+2195,Southeast,Louisiana,LA,6893397.212
+2195,Southeast,Mississippi,MS,4595598.141
+2195,Southeast,North Carolina,NC,11492557.22
+2195,Southeast,South Carolina,SC,6893397.212
+2195,Southeast,Tennessee,TN,6653487.571
+2195,Southeast,Virginia,VA,10570907.86
+2200,Southeast,Alabama,AL,6947732.709
+2200,Southeast,Arkansas,AR,4631821.806
+2200,Southeast,Florida,FL,35799211.91
+2200,Southeast,Georgia,GA,17777304.15
+2200,Southeast,Kentucky,KY,3305179.38
+2200,Southeast,Louisiana,LA,6947732.709
+2200,Southeast,Mississippi,MS,4631821.806
+2200,Southeast,North Carolina,NC,11531688.49
+2200,Southeast,South Carolina,SC,6947732.709
+2200,Southeast,Tennessee,TN,6656276.612
+2200,Southeast,Virginia,VA,10619042.87
+2205,Southeast,Alabama,AL,7002068.206
+2205,Southeast,Arkansas,AR,4668045.471
+2205,Southeast,Florida,FL,36235473.3
+2205,Southeast,Georgia,GA,17958979.33
+2205,Southeast,Kentucky,KY,3267325.284
+2205,Southeast,Louisiana,LA,7002068.206
+2205,Southeast,Mississippi,MS,4668045.471
+2205,Southeast,North Carolina,NC,11570819.76
+2205,Southeast,South Carolina,SC,7002068.206
+2205,Southeast,Tennessee,TN,6659065.653
+2205,Southeast,Virginia,VA,10667177.88
+2210,Southeast,Alabama,AL,7056403.703
+2210,Southeast,Arkansas,AR,4704269.135
+2210,Southeast,Florida,FL,36671734.69
+2210,Southeast,Georgia,GA,18140654.51
+2210,Southeast,Kentucky,KY,3229471.187
+2210,Southeast,Louisiana,LA,7056403.703
+2210,Southeast,Mississippi,MS,4704269.135
+2210,Southeast,North Carolina,NC,11609951.02
+2210,Southeast,South Carolina,SC,7056403.703
+2210,Southeast,Tennessee,TN,6661854.695
+2210,Southeast,Virginia,VA,10715312.89
+2215,Southeast,Alabama,AL,7110739.2
+2215,Southeast,Arkansas,AR,4740492.8
+2215,Southeast,Florida,FL,37107996.08
+2215,Southeast,Georgia,GA,18322329.69
+2215,Southeast,Kentucky,KY,3191617.091
+2215,Southeast,Louisiana,LA,7110739.2
+2215,Southeast,Mississippi,MS,4740492.8
+2215,Southeast,North Carolina,NC,11649082.29
+2215,Southeast,South Carolina,SC,7110739.2
+2215,Southeast,Tennessee,TN,6664643.736
+2215,Southeast,Virginia,VA,10763447.91
+2220,Southeast,Alabama,AL,7165074.697
+2220,Southeast,Arkansas,AR,4776716.465
+2220,Southeast,Florida,FL,37544257.47
+2220,Southeast,Georgia,GA,18504004.87
+2220,Southeast,Kentucky,KY,3153762.994
+2220,Southeast,Louisiana,LA,7165074.697
+2220,Southeast,Mississippi,MS,4776716.465
+2220,Southeast,North Carolina,NC,11688213.56
+2220,Southeast,South Carolina,SC,7165074.697
+2220,Southeast,Tennessee,TN,6667432.777
+2220,Southeast,Virginia,VA,10811582.92
+2225,Southeast,Alabama,AL,7219410.194
+2225,Southeast,Arkansas,AR,4812940.129
+2225,Southeast,Florida,FL,37980518.86
+2225,Southeast,Georgia,GA,18685680.06
+2225,Southeast,Kentucky,KY,3115908.897
+2225,Southeast,Louisiana,LA,7219410.194
+2225,Southeast,Mississippi,MS,4812940.129
+2225,Southeast,North Carolina,NC,11727344.83
+2225,Southeast,South Carolina,SC,7219410.194
+2225,Southeast,Tennessee,TN,6670221.818
+2225,Southeast,Virginia,VA,10859717.93
+2230,Southeast,Alabama,AL,7273745.691
+2230,Southeast,Arkansas,AR,4849163.794
+2230,Southeast,Florida,FL,38416780.25
+2230,Southeast,Georgia,GA,18867355.24
+2230,Southeast,Kentucky,KY,3078054.801
+2230,Southeast,Louisiana,LA,7273745.691
+2230,Southeast,Mississippi,MS,4849163.794
+2230,Southeast,North Carolina,NC,11766476.1
+2230,Southeast,South Carolina,SC,7273745.691
+2230,Southeast,Tennessee,TN,6673010.859
+2230,Southeast,Virginia,VA,10907852.94
+2235,Southeast,Alabama,AL,7328081.188
+2235,Southeast,Arkansas,AR,4885387.459
+2235,Southeast,Florida,FL,38853041.64
+2235,Southeast,Georgia,GA,19049030.42
+2235,Southeast,Kentucky,KY,3040200.704
+2235,Southeast,Louisiana,LA,7328081.188
+2235,Southeast,Mississippi,MS,4885387.459
+2235,Southeast,North Carolina,NC,11805607.37
+2235,Southeast,South Carolina,SC,7328081.188
+2235,Southeast,Tennessee,TN,6675799.901
+2235,Southeast,Virginia,VA,10955987.95
+2240,Southeast,Alabama,AL,7382416.685
+2240,Southeast,Arkansas,AR,4921611.123
+2240,Southeast,Florida,FL,39289303.03
+2240,Southeast,Georgia,GA,19230705.6
+2240,Southeast,Kentucky,KY,3002346.607
+2240,Southeast,Louisiana,LA,7382416.685
+2240,Southeast,Mississippi,MS,4921611.123
+2240,Southeast,North Carolina,NC,11844738.63
+2240,Southeast,South Carolina,SC,7382416.685
+2240,Southeast,Tennessee,TN,6678588.942
+2240,Southeast,Virginia,VA,11004122.96
+2245,Southeast,Alabama,AL,7436752.182
+2245,Southeast,Arkansas,AR,4957834.788
+2245,Southeast,Florida,FL,39725564.42
+2245,Southeast,Georgia,GA,19412380.78
+2245,Southeast,Kentucky,KY,2964492.511
+2245,Southeast,Louisiana,LA,7436752.182
+2245,Southeast,Mississippi,MS,4957834.788
+2245,Southeast,North Carolina,NC,11883869.9
+2245,Southeast,South Carolina,SC,7436752.182
+2245,Southeast,Tennessee,TN,6681377.983
+2245,Southeast,Virginia,VA,11052257.98
+2250,Southeast,Alabama,AL,7491087.679
+2250,Southeast,Arkansas,AR,4994058.453
+2250,Southeast,Florida,FL,40161825.81
+2250,Southeast,Georgia,GA,19594055.96
+2250,Southeast,Kentucky,KY,2926638.414
+2250,Southeast,Louisiana,LA,7491087.679
+2250,Southeast,Mississippi,MS,4994058.453
+2250,Southeast,North Carolina,NC,11923001.17
+2250,Southeast,South Carolina,SC,7491087.679
+2250,Southeast,Tennessee,TN,6684167.024
+2250,Southeast,Virginia,VA,11100392.99
+2255,Southeast,Alabama,AL,7545423.176
+2255,Southeast,Arkansas,AR,5030282.117
+2255,Southeast,Florida,FL,40598087.21
+2255,Southeast,Georgia,GA,19775731.14
+2255,Southeast,Kentucky,KY,2888784.317
+2255,Southeast,Louisiana,LA,7545423.176
+2255,Southeast,Mississippi,MS,5030282.117
+2255,Southeast,North Carolina,NC,11962132.44
+2255,Southeast,South Carolina,SC,7545423.176
+2255,Southeast,Tennessee,TN,6686956.066
+2255,Southeast,Virginia,VA,11148528
+2260,Southeast,Alabama,AL,7599758.673
+2260,Southeast,Arkansas,AR,5066505.782
+2260,Southeast,Florida,FL,41034348.6
+2260,Southeast,Georgia,GA,19957406.33
+2260,Southeast,Kentucky,KY,2850930.221
+2260,Southeast,Louisiana,LA,7599758.673
+2260,Southeast,Mississippi,MS,5066505.782
+2260,Southeast,North Carolina,NC,12001263.71
+2260,Southeast,South Carolina,SC,7599758.673
+2260,Southeast,Tennessee,TN,6689745.107
+2260,Southeast,Virginia,VA,11196663.01
+2265,Southeast,Alabama,AL,7654094.17
+2265,Southeast,Arkansas,AR,5102729.447
+2265,Southeast,Florida,FL,41470609.99
+2265,Southeast,Georgia,GA,20139081.51
+2265,Southeast,Kentucky,KY,2813076.124
+2265,Southeast,Louisiana,LA,7654094.17
+2265,Southeast,Mississippi,MS,5102729.447
+2265,Southeast,North Carolina,NC,12040394.98
+2265,Southeast,South Carolina,SC,7654094.17
+2265,Southeast,Tennessee,TN,6692534.148
+2265,Southeast,Virginia,VA,11244798.02
+2270,Southeast,Alabama,AL,7708429.667
+2270,Southeast,Arkansas,AR,5138953.111
+2270,Southeast,Florida,FL,41906871.38
+2270,Southeast,Georgia,GA,20320756.69
+2270,Southeast,Kentucky,KY,2775222.027
+2270,Southeast,Louisiana,LA,7708429.667
+2270,Southeast,Mississippi,MS,5138953.111
+2270,Southeast,North Carolina,NC,12079526.24
+2270,Southeast,South Carolina,SC,7708429.667
+2270,Southeast,Tennessee,TN,6695323.189
+2270,Southeast,Virginia,VA,11292933.03
+2275,Southeast,Alabama,AL,7762765.164
+2275,Southeast,Arkansas,AR,5175176.776
+2275,Southeast,Florida,FL,42343132.77
+2275,Southeast,Georgia,GA,20502431.87
+2275,Southeast,Kentucky,KY,2737367.931
+2275,Southeast,Louisiana,LA,7762765.164
+2275,Southeast,Mississippi,MS,5175176.776
+2275,Southeast,North Carolina,NC,12118657.51
+2275,Southeast,South Carolina,SC,7762765.164
+2275,Southeast,Tennessee,TN,6698112.23
+2275,Southeast,Virginia,VA,11341068.04
+2280,Southeast,Alabama,AL,7817100.661
+2280,Southeast,Arkansas,AR,5211400.441
+2280,Southeast,Florida,FL,42779394.16
+2280,Southeast,Georgia,GA,20684107.05
+2280,Southeast,Kentucky,KY,2699513.834
+2280,Southeast,Louisiana,LA,7817100.661
+2280,Southeast,Mississippi,MS,5211400.441
+2280,Southeast,North Carolina,NC,12157788.78
+2280,Southeast,South Carolina,SC,7817100.661
+2280,Southeast,Tennessee,TN,6700901.272
+2280,Southeast,Virginia,VA,11389203.06
+2285,Southeast,Alabama,AL,7871436.158
+2285,Southeast,Arkansas,AR,5247624.105
+2285,Southeast,Florida,FL,43215655.55
+2285,Southeast,Georgia,GA,20865782.23
+2285,Southeast,Kentucky,KY,2661659.738
+2285,Southeast,Louisiana,LA,7871436.158
+2285,Southeast,Mississippi,MS,5247624.105
+2285,Southeast,North Carolina,NC,12196920.05
+2285,Southeast,South Carolina,SC,7871436.158
+2285,Southeast,Tennessee,TN,6703690.313
+2285,Southeast,Virginia,VA,11437338.07
+2290,Southeast,Alabama,AL,7925771.655
+2290,Southeast,Arkansas,AR,5283847.77
+2290,Southeast,Florida,FL,43651916.94
+2290,Southeast,Georgia,GA,21047457.41
+2290,Southeast,Kentucky,KY,2623805.641
+2290,Southeast,Louisiana,LA,7925771.655
+2290,Southeast,Mississippi,MS,5283847.77
+2290,Southeast,North Carolina,NC,12236051.32
+2290,Southeast,South Carolina,SC,7925771.655
+2290,Southeast,Tennessee,TN,6706479.354
+2290,Southeast,Virginia,VA,11485473.08
+2295,Southeast,Alabama,AL,7980107.152
+2295,Southeast,Arkansas,AR,5320071.435
+2295,Southeast,Florida,FL,44088178.33
+2295,Southeast,Georgia,GA,21229132.6
+2295,Southeast,Kentucky,KY,2585951.544
+2295,Southeast,Louisiana,LA,7980107.152
+2295,Southeast,Mississippi,MS,5320071.435
+2295,Southeast,North Carolina,NC,12275182.59
+2295,Southeast,South Carolina,SC,7980107.152
+2295,Southeast,Tennessee,TN,6709268.395
+2295,Southeast,Virginia,VA,11533608.09
+2300,Southeast,Alabama,AL,8034442.649
+2300,Southeast,Arkansas,AR,5356295.099
+2300,Southeast,Florida,FL,44524439.72
+2300,Southeast,Georgia,GA,21410807.78
+2300,Southeast,Kentucky,KY,2548097.448
+2300,Southeast,Louisiana,LA,8034442.649
+2300,Southeast,Mississippi,MS,5356295.099
+2300,Southeast,North Carolina,NC,12314313.85
+2300,Southeast,South Carolina,SC,8034442.649
+2300,Southeast,Tennessee,TN,6712057.437
+2300,Southeast,Virginia,VA,11581743.1
+2010,Southern Plains,Kansas,KS,2857502.7
+2010,Southern Plains,Oklahoma,OK,3810003.6
+2010,Southern Plains,Texas,TX,25082523.7
+2015,Southern Plains,Kansas,KS,3052316.831
+2015,Southern Plains,Oklahoma,OK,3730609.461
+2015,Southern Plains,Texas,TX,27131705.17
+2020,Southern Plains,Kansas,KS,3229915.035
+2020,Southern Plains,Oklahoma,OK,3947673.931
+2020,Southern Plains,Texas,TX,28710355.86
+2025,Southern Plains,Kansas,KS,3388641.695
+2025,Southern Plains,Oklahoma,OK,4141673.183
+2025,Southern Plains,Texas,TX,30121259.51
+2030,Southern Plains,Kansas,KS,3539472.938
+2030,Southern Plains,Oklahoma,OK,3932747.709
+2030,Southern Plains,Texas,TX,31855256.44
+2035,Southern Plains,Kansas,KS,3677427.501
+2035,Southern Plains,Oklahoma,OK,4086030.557
+2035,Southern Plains,Texas,TX,33096847.51
+2040,Southern Plains,Kansas,KS,3795343.386
+2040,Southern Plains,Oklahoma,OK,4217048.207
+2040,Southern Plains,Texas,TX,34158090.48
+2045,Southern Plains,Kansas,KS,3460662.298
+2045,Southern Plains,Oklahoma,OK,4325827.873
+2045,Southern Plains,Texas,TX,35471788.56
+2050,Southern Plains,Kansas,KS,3535399.949
+2050,Southern Plains,Oklahoma,OK,4419249.936
+2050,Southern Plains,Texas,TX,36237849.48
+2055,Southern Plains,Kansas,KS,3601646.518
+2055,Southern Plains,Oklahoma,OK,4502058.147
+2055,Southern Plains,Texas,TX,36916876.81
+2060,Southern Plains,Kansas,KS,3665364.73
+2060,Southern Plains,Oklahoma,OK,4581705.912
+2060,Southern Plains,Texas,TX,37569988.48
+2065,Southern Plains,Kansas,KS,3725262.335
+2065,Southern Plains,Oklahoma,OK,4190920.127
+2065,Southern Plains,Texas,TX,38649596.73
+2070,Southern Plains,Kansas,KS,3779929.538
+2070,Southern Plains,Oklahoma,OK,4252420.73
+2070,Southern Plains,Texas,TX,39216768.95
+2075,Southern Plains,Kansas,KS,3825960.102
+2075,Southern Plains,Oklahoma,OK,4304205.115
+2075,Southern Plains,Texas,TX,39694336.06
+2080,Southern Plains,Kansas,KS,3863721.276
+2080,Southern Plains,Oklahoma,OK,4346686.436
+2080,Southern Plains,Texas,TX,40086108.24
+2085,Southern Plains,Kansas,KS,3895351.236
+2085,Southern Plains,Oklahoma,OK,4382270.141
+2085,Southern Plains,Texas,TX,40414269.07
+2090,Southern Plains,Kansas,KS,3904379.324
+2090,Southern Plains,Oklahoma,OK,4392426.739
+2090,Southern Plains,Texas,TX,40507935.49
+2095,Southern Plains,Kansas,KS,3907965.81
+2095,Southern Plains,Oklahoma,OK,4396461.536
+2095,Southern Plains,Texas,TX,40545145.27
+2100,Southern Plains,Kansas,KS,3912709.34
+2100,Southern Plains,Oklahoma,OK,4401798.008
+2100,Southern Plains,Texas,TX,40594359.4
+2105,Southern Plains,Kansas,KS,4084013.542
+2105,Southern Plains,Oklahoma,OK,4548007.362
+2105,Southern Plains,Texas,TX,44032392.01
+2110,Southern Plains,Kansas,KS,4131262.409
+2110,Southern Plains,Oklahoma,OK,4579851.165
+2110,Southern Plains,Texas,TX,44877415.1
+2115,Southern Plains,Kansas,KS,4178511.276
+2115,Southern Plains,Oklahoma,OK,4611694.968
+2115,Southern Plains,Texas,TX,45722438.19
+2120,Southern Plains,Kansas,KS,4225760.143
+2120,Southern Plains,Oklahoma,OK,4643538.77
+2120,Southern Plains,Texas,TX,46567461.28
+2125,Southern Plains,Kansas,KS,4273009.01
+2125,Southern Plains,Oklahoma,OK,4675382.573
+2125,Southern Plains,Texas,TX,47412484.37
+2130,Southern Plains,Kansas,KS,4320257.877
+2130,Southern Plains,Oklahoma,OK,4707226.376
+2130,Southern Plains,Texas,TX,48257507.45
+2135,Southern Plains,Kansas,KS,4367506.745
+2135,Southern Plains,Oklahoma,OK,4739070.179
+2135,Southern Plains,Texas,TX,49102530.54
+2140,Southern Plains,Kansas,KS,4414755.612
+2140,Southern Plains,Oklahoma,OK,4770913.981
+2140,Southern Plains,Texas,TX,49947553.63
+2145,Southern Plains,Kansas,KS,4462004.479
+2145,Southern Plains,Oklahoma,OK,4802757.784
+2145,Southern Plains,Texas,TX,50792576.72
+2150,Southern Plains,Kansas,KS,4509253.346
+2150,Southern Plains,Oklahoma,OK,4834601.587
+2150,Southern Plains,Texas,TX,51637599.81
+2155,Southern Plains,Kansas,KS,4556502.213
+2155,Southern Plains,Oklahoma,OK,4866445.39
+2155,Southern Plains,Texas,TX,52482622.9
+2160,Southern Plains,Kansas,KS,4603751.08
+2160,Southern Plains,Oklahoma,OK,4898289.193
+2160,Southern Plains,Texas,TX,53327645.99
+2165,Southern Plains,Kansas,KS,4650999.947
+2165,Southern Plains,Oklahoma,OK,4930132.995
+2165,Southern Plains,Texas,TX,54172669.08
+2170,Southern Plains,Kansas,KS,4698248.814
+2170,Southern Plains,Oklahoma,OK,4961976.798
+2170,Southern Plains,Texas,TX,55017692.17
+2175,Southern Plains,Kansas,KS,4745497.682
+2175,Southern Plains,Oklahoma,OK,4993820.601
+2175,Southern Plains,Texas,TX,55862715.26
+2180,Southern Plains,Kansas,KS,4792746.549
+2180,Southern Plains,Oklahoma,OK,5025664.404
+2180,Southern Plains,Texas,TX,56707738.35
+2185,Southern Plains,Kansas,KS,4839995.416
+2185,Southern Plains,Oklahoma,OK,5057508.207
+2185,Southern Plains,Texas,TX,57552761.44
+2190,Southern Plains,Kansas,KS,4887244.283
+2190,Southern Plains,Oklahoma,OK,5089352.009
+2190,Southern Plains,Texas,TX,58397784.53
+2195,Southern Plains,Kansas,KS,4934493.15
+2195,Southern Plains,Oklahoma,OK,5121195.812
+2195,Southern Plains,Texas,TX,59242807.61
+2200,Southern Plains,Kansas,KS,4981742.017
+2200,Southern Plains,Oklahoma,OK,5153039.615
+2200,Southern Plains,Texas,TX,60087830.7
+2205,Southern Plains,Kansas,KS,5028990.884
+2205,Southern Plains,Oklahoma,OK,5184883.418
+2205,Southern Plains,Texas,TX,60932853.79
+2210,Southern Plains,Kansas,KS,5076239.751
+2210,Southern Plains,Oklahoma,OK,5216727.221
+2210,Southern Plains,Texas,TX,61777876.88
+2215,Southern Plains,Kansas,KS,5123488.618
+2215,Southern Plains,Oklahoma,OK,5248571.023
+2215,Southern Plains,Texas,TX,62622899.97
+2220,Southern Plains,Kansas,KS,5170737.486
+2220,Southern Plains,Oklahoma,OK,5280414.826
+2220,Southern Plains,Texas,TX,63467923.06
+2225,Southern Plains,Kansas,KS,5217986.353
+2225,Southern Plains,Oklahoma,OK,5312258.629
+2225,Southern Plains,Texas,TX,64312946.15
+2230,Southern Plains,Kansas,KS,5265235.22
+2230,Southern Plains,Oklahoma,OK,5344102.432
+2230,Southern Plains,Texas,TX,65157969.24
+2235,Southern Plains,Kansas,KS,5312484.087
+2235,Southern Plains,Oklahoma,OK,5375946.234
+2235,Southern Plains,Texas,TX,66002992.33
+2240,Southern Plains,Kansas,KS,5359732.954
+2240,Southern Plains,Oklahoma,OK,5407790.037
+2240,Southern Plains,Texas,TX,66848015.42
+2245,Southern Plains,Kansas,KS,5406981.821
+2245,Southern Plains,Oklahoma,OK,5439633.84
+2245,Southern Plains,Texas,TX,67693038.51
+2250,Southern Plains,Kansas,KS,5454230.688
+2250,Southern Plains,Oklahoma,OK,5471477.643
+2250,Southern Plains,Texas,TX,68538061.6
+2255,Southern Plains,Kansas,KS,5501479.555
+2255,Southern Plains,Oklahoma,OK,5503321.446
+2255,Southern Plains,Texas,TX,69383084.68
+2260,Southern Plains,Kansas,KS,5548728.423
+2260,Southern Plains,Oklahoma,OK,5535165.248
+2260,Southern Plains,Texas,TX,70228107.77
+2265,Southern Plains,Kansas,KS,5595977.29
+2265,Southern Plains,Oklahoma,OK,5567009.051
+2265,Southern Plains,Texas,TX,71073130.86
+2270,Southern Plains,Kansas,KS,5643226.157
+2270,Southern Plains,Oklahoma,OK,5598852.854
+2270,Southern Plains,Texas,TX,71918153.95
+2275,Southern Plains,Kansas,KS,5690475.024
+2275,Southern Plains,Oklahoma,OK,5630696.657
+2275,Southern Plains,Texas,TX,72763177.04
+2280,Southern Plains,Kansas,KS,5737723.891
+2280,Southern Plains,Oklahoma,OK,5662540.46
+2280,Southern Plains,Texas,TX,73608200.13
+2285,Southern Plains,Kansas,KS,5784972.758
+2285,Southern Plains,Oklahoma,OK,5694384.262
+2285,Southern Plains,Texas,TX,74453223.22
+2290,Southern Plains,Kansas,KS,5832221.625
+2290,Southern Plains,Oklahoma,OK,5726228.065
+2290,Southern Plains,Texas,TX,75298246.31
+2295,Southern Plains,Kansas,KS,5879470.492
+2295,Southern Plains,Oklahoma,OK,5758071.868
+2295,Southern Plains,Texas,TX,76143269.4
+2300,Southern Plains,Kansas,KS,5926719.36
+2300,Southern Plains,Oklahoma,OK,5789915.671
+2300,Southern Plains,Texas,TX,76988292.49
+2010,Southwest,Arizona,AZ,6181866.24
+2010,Southwest,California,CA,37091197.44
+2010,Southwest,Colorado,CO,5057890.56
+2010,Southwest,Nevada,NV,2809939.2
+2010,Southwest,New Mexico,NM,2247951.36
+2010,Southwest,Utah,UT,2809939.2
+2015,Southwest,Arizona,AZ,6564632.433
+2015,Southwest,California,CA,39387794.6
+2015,Southwest,Colorado,CO,5371062.899
+2015,Southwest,Nevada,NV,2983923.833
+2015,Southwest,New Mexico,NM,2387139.066
+2015,Southwest,Utah,UT,2983923.833
+2020,Southwest,Arizona,AZ,6917808.336
+2020,Southwest,California,CA,42135741.68
+2020,Southwest,Colorado,CO,5660025.002
+2020,Southwest,Nevada,NV,2515566.668
+2020,Southwest,New Mexico,NM,2515566.668
+2020,Southwest,Utah,UT,3144458.335
+2025,Southwest,Arizona,AZ,7227709.069
+2025,Southwest,California,CA,44023318.87
+2025,Southwest,Colorado,CO,5256515.686
+2025,Southwest,Nevada,NV,3285322.304
+2025,Southwest,New Mexico,NM,2628257.843
+2025,Southwest,Utah,UT,3285322.304
+2030,Southwest,Arizona,AZ,7525483.253
+2030,Southwest,California,CA,45837034.36
+2030,Southwest,Colorado,CO,5473078.73
+2030,Southwest,Nevada,NV,3420674.206
+2030,Southwest,New Mexico,NM,2736539.365
+2030,Southwest,Utah,UT,3420674.206
+2035,Southwest,Arizona,AZ,7808972.754
+2035,Southwest,California,CA,48273649.75
+2035,Southwest,Colorado,CO,5679252.912
+2035,Southwest,Nevada,NV,2839626.456
+2035,Southwest,New Mexico,NM,2839626.456
+2035,Southwest,Utah,UT,3549533.07
+2040,Southwest,Arizona,AZ,8061206.843
+2040,Southwest,California,CA,49832915.03
+2040,Southwest,Colorado,CO,5862695.886
+2040,Southwest,Nevada,NV,2931347.943
+2040,Southwest,New Mexico,NM,2931347.943
+2040,Southwest,Utah,UT,3664184.929
+2045,Southwest,Arizona,AZ,8279342.38
+2045,Southwest,California,CA,51181389.26
+2045,Southwest,Colorado,CO,6021339.913
+2045,Southwest,Nevada,NV,3010669.956
+2045,Southwest,New Mexico,NM,3010669.956
+2045,Southwest,Utah,UT,3763337.446
+2050,Southwest,Arizona,AZ,8468993.859
+2050,Southwest,California,CA,52353780.22
+2050,Southwest,Colorado,CO,6159268.261
+2050,Southwest,Nevada,NV,3079634.13
+2050,Southwest,New Mexico,NM,3079634.13
+2050,Southwest,Utah,UT,3849542.663
+2055,Southwest,Arizona,AZ,8635955.587
+2055,Southwest,California,CA,54170994.13
+2055,Southwest,Colorado,CO,6280694.972
+2055,Southwest,Nevada,NV,3140347.486
+2055,Southwest,New Mexico,NM,3140347.486
+2055,Southwest,Utah,UT,3140347.486
+2060,Southwest,Arizona,AZ,8795886.82
+2060,Southwest,California,CA,55174199.14
+2060,Southwest,Colorado,CO,6397008.596
+2060,Southwest,Nevada,NV,3198504.298
+2060,Southwest,New Mexico,NM,3198504.298
+2060,Southwest,Utah,UT,3198504.298
+2065,Southwest,Arizona,AZ,8947788.71
+2065,Southwest,California,CA,56127038.27
+2065,Southwest,Colorado,CO,6507482.698
+2065,Southwest,Nevada,NV,3253741.349
+2065,Southwest,New Mexico,NM,3253741.349
+2065,Southwest,Utah,UT,3253741.349
+2070,Southwest,Arizona,AZ,9088498.704
+2070,Southwest,California,CA,57009673.69
+2070,Southwest,Colorado,CO,6609817.239
+2070,Southwest,Nevada,NV,3304908.62
+2070,Southwest,New Mexico,NM,3304908.62
+2070,Southwest,Utah,UT,3304908.62
+2075,Southwest,Arizona,AZ,9209697.259
+2075,Southwest,California,CA,57769919.17
+2075,Southwest,Colorado,CO,6697961.643
+2075,Southwest,Nevada,NV,3348980.822
+2075,Southwest,New Mexico,NM,3348980.822
+2075,Southwest,Utah,UT,3348980.822
+2080,Southwest,Arizona,AZ,9309863.815
+2080,Southwest,California,CA,59244587.91
+2080,Southwest,Colorado,CO,6770810.047
+2080,Southwest,Nevada,NV,3385405.024
+2080,Southwest,New Mexico,NM,2539053.768
+2080,Southwest,Utah,UT,3385405.024
+2085,Southwest,Arizona,AZ,9393652.575
+2085,Southwest,California,CA,59777789.11
+2085,Southwest,Colorado,CO,6831747.327
+2085,Southwest,Nevada,NV,3415873.664
+2085,Southwest,New Mexico,NM,2561905.248
+2085,Southwest,Utah,UT,3415873.664
+2090,Southwest,Arizona,AZ,9416731.925
+2090,Southwest,California,CA,59924657.7
+2090,Southwest,Colorado,CO,6848532.309
+2090,Southwest,Nevada,NV,3424266.154
+2090,Southwest,New Mexico,NM,2568199.616
+2090,Southwest,Utah,UT,3424266.154
+2095,Southwest,Arizona,AZ,9425381.948
+2095,Southwest,California,CA,59979703.31
+2095,Southwest,Colorado,CO,6854823.235
+2095,Southwest,Nevada,NV,3427411.618
+2095,Southwest,New Mexico,NM,2570558.713
+2095,Southwest,Utah,UT,3427411.618
+2100,Southwest,Arizona,AZ,9436822.577
+2100,Southwest,California,CA,60052507.31
+2100,Southwest,Colorado,CO,6863143.692
+2100,Southwest,Nevada,NV,3431571.846
+2100,Southwest,New Mexico,NM,2573678.885
+2100,Southwest,Utah,UT,3431571.846
+2105,Southwest,Arizona,AZ,10140843.45
+2105,Southwest,California,CA,64872715.85
+2105,Southwest,Colorado,CO,7219519.968
+2105,Southwest,Nevada,NV,3517486.209
+2105,Southwest,New Mexico,NM,2937802.442
+2105,Southwest,Utah,UT,3501117.986
+2110,Southwest,Arizona,AZ,10319684.14
+2110,Southwest,California,CA,66152893.27
+2110,Southwest,Colorado,CO,7324613.272
+2110,Southwest,Nevada,NV,3552352.116
+2110,Southwest,New Mexico,NM,2950337.362
+2110,Southwest,Utah,UT,3515430.169
+2115,Southwest,Arizona,AZ,10498524.82
+2115,Southwest,California,CA,67433070.69
+2115,Southwest,Colorado,CO,7429706.576
+2115,Southwest,Nevada,NV,3587218.024
+2115,Southwest,New Mexico,NM,2962872.282
+2115,Southwest,Utah,UT,3529742.353
+2120,Southwest,Arizona,AZ,10677365.51
+2120,Southwest,California,CA,68713248.11
+2120,Southwest,Colorado,CO,7534799.88
+2120,Southwest,Nevada,NV,3622083.931
+2120,Southwest,New Mexico,NM,2975407.202
+2120,Southwest,Utah,UT,3544054.536
+2125,Southwest,Arizona,AZ,10856206.2
+2125,Southwest,California,CA,69993425.53
+2125,Southwest,Colorado,CO,7639893.184
+2125,Southwest,Nevada,NV,3656949.838
+2125,Southwest,New Mexico,NM,2987942.122
+2125,Southwest,Utah,UT,3558366.72
+2130,Southwest,Arizona,AZ,11035046.88
+2130,Southwest,California,CA,71273602.96
+2130,Southwest,Colorado,CO,7744986.488
+2130,Southwest,Nevada,NV,3691815.746
+2130,Southwest,New Mexico,NM,3000477.042
+2130,Southwest,Utah,UT,3572678.903
+2135,Southwest,Arizona,AZ,11213887.57
+2135,Southwest,California,CA,72553780.38
+2135,Southwest,Colorado,CO,7850079.793
+2135,Southwest,Nevada,NV,3726681.653
+2135,Southwest,New Mexico,NM,3013011.962
+2135,Southwest,Utah,UT,3586991.087
+2140,Southwest,Arizona,AZ,11392728.26
+2140,Southwest,California,CA,73833957.8
+2140,Southwest,Colorado,CO,7955173.097
+2140,Southwest,Nevada,NV,3761547.561
+2140,Southwest,New Mexico,NM,3025546.882
+2140,Southwest,Utah,UT,3601303.27
+2145,Southwest,Arizona,AZ,11571568.94
+2145,Southwest,California,CA,75114135.22
+2145,Southwest,Colorado,CO,8060266.401
+2145,Southwest,Nevada,NV,3796413.468
+2145,Southwest,New Mexico,NM,3038081.802
+2145,Southwest,Utah,UT,3615615.454
+2150,Southwest,Arizona,AZ,11750409.63
+2150,Southwest,California,CA,76394312.64
+2150,Southwest,Colorado,CO,8165359.705
+2150,Southwest,Nevada,NV,3831279.375
+2150,Southwest,New Mexico,NM,3050616.722
+2150,Southwest,Utah,UT,3629927.637
+2155,Southwest,Arizona,AZ,11929250.31
+2155,Southwest,California,CA,77674490.07
+2155,Southwest,Colorado,CO,8270453.009
+2155,Southwest,Nevada,NV,3866145.283
+2155,Southwest,New Mexico,NM,3063151.642
+2155,Southwest,Utah,UT,3644239.821
+2160,Southwest,Arizona,AZ,12108091
+2160,Southwest,California,CA,78954667.49
+2160,Southwest,Colorado,CO,8375546.313
+2160,Southwest,Nevada,NV,3901011.19
+2160,Southwest,New Mexico,NM,3075686.562
+2160,Southwest,Utah,UT,3658552.004
+2165,Southwest,Arizona,AZ,12286931.69
+2165,Southwest,California,CA,80234844.91
+2165,Southwest,Colorado,CO,8480639.617
+2165,Southwest,Nevada,NV,3935877.097
+2165,Southwest,New Mexico,NM,3088221.482
+2165,Southwest,Utah,UT,3672864.188
+2170,Southwest,Arizona,AZ,12465772.37
+2170,Southwest,California,CA,81515022.33
+2170,Southwest,Colorado,CO,8585732.921
+2170,Southwest,Nevada,NV,3970743.005
+2170,Southwest,New Mexico,NM,3100756.402
+2170,Southwest,Utah,UT,3687176.371
+2175,Southwest,Arizona,AZ,12644613.06
+2175,Southwest,California,CA,82795199.75
+2175,Southwest,Colorado,CO,8690826.226
+2175,Southwest,Nevada,NV,4005608.912
+2175,Southwest,New Mexico,NM,3113291.322
+2175,Southwest,Utah,UT,3701488.555
+2180,Southwest,Arizona,AZ,12823453.75
+2180,Southwest,California,CA,84075377.17
+2180,Southwest,Colorado,CO,8795919.53
+2180,Southwest,Nevada,NV,4040474.819
+2180,Southwest,New Mexico,NM,3125826.242
+2180,Southwest,Utah,UT,3715800.738
+2185,Southwest,Arizona,AZ,13002294.43
+2185,Southwest,California,CA,85355554.6
+2185,Southwest,Colorado,CO,8901012.834
+2185,Southwest,Nevada,NV,4075340.727
+2185,Southwest,New Mexico,NM,3138361.163
+2185,Southwest,Utah,UT,3730112.922
+2190,Southwest,Arizona,AZ,13181135.12
+2190,Southwest,California,CA,86635732.02
+2190,Southwest,Colorado,CO,9006106.138
+2190,Southwest,Nevada,NV,4110206.634
+2190,Southwest,New Mexico,NM,3150896.083
+2190,Southwest,Utah,UT,3744425.105
+2195,Southwest,Arizona,AZ,13359975.81
+2195,Southwest,California,CA,87915909.44
+2195,Southwest,Colorado,CO,9111199.442
+2195,Southwest,Nevada,NV,4145072.541
+2195,Southwest,New Mexico,NM,3163431.003
+2195,Southwest,Utah,UT,3758737.289
+2200,Southwest,Arizona,AZ,13538816.49
+2200,Southwest,California,CA,89196086.86
+2200,Southwest,Colorado,CO,9216292.746
+2200,Southwest,Nevada,NV,4179938.449
+2200,Southwest,New Mexico,NM,3175965.923
+2200,Southwest,Utah,UT,3773049.472
+2205,Southwest,Arizona,AZ,13717657.18
+2205,Southwest,California,CA,90476264.28
+2205,Southwest,Colorado,CO,9321386.05
+2205,Southwest,Nevada,NV,4214804.356
+2205,Southwest,New Mexico,NM,3188500.843
+2205,Southwest,Utah,UT,3787361.656
+2210,Southwest,Arizona,AZ,13896497.87
+2210,Southwest,California,CA,91756441.71
+2210,Southwest,Colorado,CO,9426479.354
+2210,Southwest,Nevada,NV,4249670.263
+2210,Southwest,New Mexico,NM,3201035.763
+2210,Southwest,Utah,UT,3801673.839
+2215,Southwest,Arizona,AZ,14075338.55
+2215,Southwest,California,CA,93036619.13
+2215,Southwest,Colorado,CO,9531572.658
+2215,Southwest,Nevada,NV,4284536.171
+2215,Southwest,New Mexico,NM,3213570.683
+2215,Southwest,Utah,UT,3815986.023
+2220,Southwest,Arizona,AZ,14254179.24
+2220,Southwest,California,CA,94316796.55
+2220,Southwest,Colorado,CO,9636665.963
+2220,Southwest,Nevada,NV,4319402.078
+2220,Southwest,New Mexico,NM,3226105.603
+2220,Southwest,Utah,UT,3830298.206
+2225,Southwest,Arizona,AZ,14433019.93
+2225,Southwest,California,CA,95596973.97
+2225,Southwest,Colorado,CO,9741759.267
+2225,Southwest,Nevada,NV,4354267.985
+2225,Southwest,New Mexico,NM,3238640.523
+2225,Southwest,Utah,UT,3844610.39
+2230,Southwest,Arizona,AZ,14611860.61
+2230,Southwest,California,CA,96877151.39
+2230,Southwest,Colorado,CO,9846852.571
+2230,Southwest,Nevada,NV,4389133.893
+2230,Southwest,New Mexico,NM,3251175.443
+2230,Southwest,Utah,UT,3858922.573
+2235,Southwest,Arizona,AZ,14790701.3
+2235,Southwest,California,CA,98157328.81
+2235,Southwest,Colorado,CO,9951945.875
+2235,Southwest,Nevada,NV,4423999.8
+2235,Southwest,New Mexico,NM,3263710.363
+2235,Southwest,Utah,UT,3873234.757
+2240,Southwest,Arizona,AZ,14969541.99
+2240,Southwest,California,CA,99437506.24
+2240,Southwest,Colorado,CO,10057039.18
+2240,Southwest,Nevada,NV,4458865.708
+2240,Southwest,New Mexico,NM,3276245.283
+2240,Southwest,Utah,UT,3887546.94
+2245,Southwest,Arizona,AZ,15148382.67
+2245,Southwest,California,CA,100717683.7
+2245,Southwest,Colorado,CO,10162132.48
+2245,Southwest,Nevada,NV,4493731.615
+2245,Southwest,New Mexico,NM,3288780.203
+2245,Southwest,Utah,UT,3901859.124
+2250,Southwest,Arizona,AZ,15327223.36
+2250,Southwest,California,CA,101997861.1
+2250,Southwest,Colorado,CO,10267225.79
+2250,Southwest,Nevada,NV,4528597.522
+2250,Southwest,New Mexico,NM,3301315.123
+2250,Southwest,Utah,UT,3916171.307
+2255,Southwest,Arizona,AZ,15506064.05
+2255,Southwest,California,CA,103278038.5
+2255,Southwest,Colorado,CO,10372319.09
+2255,Southwest,Nevada,NV,4563463.43
+2255,Southwest,New Mexico,NM,3313850.043
+2255,Southwest,Utah,UT,3930483.491
+2260,Southwest,Arizona,AZ,15684904.73
+2260,Southwest,California,CA,104558215.9
+2260,Southwest,Colorado,CO,10477412.4
+2260,Southwest,Nevada,NV,4598329.337
+2260,Southwest,New Mexico,NM,3326384.963
+2260,Southwest,Utah,UT,3944795.674
+2265,Southwest,Arizona,AZ,15863745.42
+2265,Southwest,California,CA,105838393.3
+2265,Southwest,Colorado,CO,10582505.7
+2265,Southwest,Nevada,NV,4633195.244
+2265,Southwest,New Mexico,NM,3338919.883
+2265,Southwest,Utah,UT,3959107.858
+2270,Southwest,Arizona,AZ,16042586.11
+2270,Southwest,California,CA,107118570.8
+2270,Southwest,Colorado,CO,10687599
+2270,Southwest,Nevada,NV,4668061.152
+2270,Southwest,New Mexico,NM,3351454.803
+2270,Southwest,Utah,UT,3973420.041
+2275,Southwest,Arizona,AZ,16221426.79
+2275,Southwest,California,CA,108398748.2
+2275,Southwest,Colorado,CO,10792692.31
+2275,Southwest,Nevada,NV,4702927.059
+2275,Southwest,New Mexico,NM,3363989.723
+2275,Southwest,Utah,UT,3987732.225
+2280,Southwest,Arizona,AZ,16400267.48
+2280,Southwest,California,CA,109678925.6
+2280,Southwest,Colorado,CO,10897785.61
+2280,Southwest,Nevada,NV,4737792.966
+2280,Southwest,New Mexico,NM,3376524.643
+2280,Southwest,Utah,UT,4002044.408
+2285,Southwest,Arizona,AZ,16579108.17
+2285,Southwest,California,CA,110959103
+2285,Southwest,Colorado,CO,11002878.92
+2285,Southwest,Nevada,NV,4772658.874
+2285,Southwest,New Mexico,NM,3389059.563
+2285,Southwest,Utah,UT,4016356.592
+2290,Southwest,Arizona,AZ,16757948.85
+2290,Southwest,California,CA,112239280.5
+2290,Southwest,Colorado,CO,11107972.22
+2290,Southwest,Nevada,NV,4807524.781
+2290,Southwest,New Mexico,NM,3401594.483
+2290,Southwest,Utah,UT,4030668.775
+2295,Southwest,Arizona,AZ,16936789.54
+2295,Southwest,California,CA,113519457.9
+2295,Southwest,Colorado,CO,11213065.52
+2295,Southwest,Nevada,NV,4842390.688
+2295,Southwest,New Mexico,NM,3414129.403
+2295,Southwest,Utah,UT,4044980.959
+2300,Southwest,Arizona,AZ,17115630.23
+2300,Southwest,California,CA,114799635.3
+2300,Southwest,Colorado,CO,11318158.83
+2300,Southwest,Nevada,NV,4877256.596
+2300,Southwest,New Mexico,NM,3426664.323
+2300,Southwest,Utah,UT,4059293.142
