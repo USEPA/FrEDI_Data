@@ -60,8 +60,14 @@ jobs:
           Rscript -e '
             projectDir <- "."
             scriptDir  <- projectDir |> file.path("scripts")
+            testFiles0 <- list(
+              temp_0to6_to2300 = "temp_0to6_to2300"   |> paste0(".csv"),
+              rff_temp_mean    = "rff_temp_mean"      |> paste0(".csv"),
+              rff_gdp_mean     = "rff_gdp_mean"       |> paste0(".csv"),
+              rff_pop_mean     = "rff_state_pop_mean" |> paste0(".csv")
+            ) ### End list of filenames with test scenarios
             scriptDir |> file.path("configureFrediData.R") |> source()
-            test0      <- projectDir |> configureFrediData(save=T)
+            test0      <- projectDir |> configureFrediData(save=T, testFiles=testFiles0)
             "./data_tests/" |> list.files() |> print()
           '
 
