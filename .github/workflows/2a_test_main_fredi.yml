@@ -13,6 +13,13 @@ name: 2a. Test Main FrEDI Data
 on: 
   workflow_dispatch:
     inputs:
+      workflow_id:
+        type: string
+        description: Enter the run ID for the workflow from which to retrieve the main FrEDI Data
+      fredi_branch:
+        type: string
+        description: Which FrEDI Package branch do you want to use?
+        default: "main"
       gen_test:
         type: choice
         description: Run general tests on main FrEDI data?
@@ -27,16 +34,35 @@ on:
         options:
         - no    
         - yes
-      workflow_id:
+      sector:
         type: string
-        description: Enter the run ID for the workflow from which to retrieve the main FrEDI Data
-      fredi_branch:
-        type: string
-        description: Which FrEDI Package branch do you want to use?
+        description: Which sectors do you want to run?
+        default: "all"
+
 
 jobs:
-  compile_data:
+  # download:
+  #     runs-on: ubuntu-latest
+  #     # needs: install
+  #     env:
+  #       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+  #     steps:
+  #     ### Download tmp_sysdata.rda from 1. Compile Main FrEDI Data run
+  #     - name: Download all artifacts
+  #       id:   download-artifact
+  #       uses: actions/download-artifact@v4
+  #       with:
+  #         github-token: ${{ secrets.GITHUB_TOKEN }}
+  #         # github-token: ${{ GITHUB_PAT }}
+  #         run-id: ${{ inputs.workflow_id }}
+  #         path: ./data
+  #     - run: |
+  #         pwd
+  #         ls -R ./data/Data
+
+  test_data:
     runs-on: ubuntu-latest
+    # needs: download
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     
@@ -45,41 +71,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         
+      # echo "$${{ github.ref_name }} ${{ inputs.workflow_id }} ${{ inputs.fredi_branch }} ${{ inputs.gen_test }} ${{ inputs.figures }}"
       - name: Send input status
         run: |
-          echo "$${{ github.ref_name }} ${{ inputs.workflow_id }} ${{ inputs.fredi_branch }} ${{ inputs.gen_test }} ${{ inputs.figures }}"  
-      
-      ### Download tmp_sysdata.rda from 1. Compile Main FrEDI Data run
-      - name: Download artifact
-        id:   download-artifact
-        uses: dawidd6/action-download-artifact@v7
-        with: 
-          github_token:    ${{secrets.GITHUB_TOKEN}}
-          # workflow:        workflow_name.yml
-          # workflow_search: false
-          # workflow_conclusion: success
-          # pr: ${{github.event.pull_request.number}}
-          # commit: ${{github.event.pull_request.head.sha}}
-          # branch: 
-          ### Run ID
-          # run-id: ${{ github.event.workflow_run.id }}
-          # run_id: 1122334455
-          run-id: ${{ inputs.workflow_id }}
-          ### Optional, run number from the workflow
-          # run_number: 34
-          ### Optional, uploaded artifact name,
-          ### will download all artifacts if not specified and extract them into respective subdirectories
-          ### https://github.com/actions/download-artifact
-          # name: artifact_name
-          name_is_regexp: true
-          ### Optional, a directory where to extract artifact(s), defaults to the current directory
-          # path: extract_here
-          path: ./data/
-          if_no_artifact_found: fail
-        
+          echo "$${{ github.ref_name }} ${{ inputs.fredi_branch }} ${{ inputs.gen_test }} ${{ inputs.figures }}"  
+
       - name: Setup R
         uses: r-lib/actions/setup-r@v2
-      
+
       - name: Setup R package dependencies
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
@@ -90,9 +89,7 @@ jobs:
             any::ggpubr
             any::openxlsx
             any::devtools
-            any::admisc
             any::zoo
-
 
       - name: Install FrEDI
         run: |
@@ -106,72 +103,114 @@ jobs:
               type         = "source"
             )'
 
+              
+      ### Download tmp_sysdata.rda from 1. Compile Main FrEDI Data run
+      - name: Download all artifacts
+        id:   download-artifact
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          # github-token: ${{ GITHUB_PAT }}
+          run-id: ${{ inputs.workflow_id }}
+          path: ./data
+      # - run: |
+      #     pwd
+      #     ls -R ./data/Data
+          
       - name: Run Tests on Main FrEDI Data
         run: |
           Rscript -e '
+            ### Libraries
+            require(tidyverse)
+            require(devtools)
             ### Arguments
-            doGenTests  <- "${{ inputs.gen_test }}" == "true" 
-            doFigures   <- "${{ inputs.figures  }}" == "true"
-            doTests     <- doGenTests | doTests
+            doGenTests  <- "${{ inputs.gen_test }}" %in% c("true", "yes")
+            doFigures   <- "${{ inputs.figures  }}" %in% c("true", "yes")
+            doTests     <- doGenTests | doFigures
+            sectors0    <- "${{ inputs.sector  }}"
             
             ### Directories for project, scripts, data, and artifacts
             projectDir  <- "."
+            
+            ### Load all code
+            projectDir |> devtools::load_all()          
             
             ### Create directory for outputs
             ### - Filename for general tests
             ### - Filename for list of tests
             outDir      <- projectDir |> file.path("data_tests")
-            testFile    <- "configTestResults" |> paste0(".", "xlsx") 
-            listFile    <- "testList" |> paste0(".", "R") 
             doOutDir    <- !(outDir |> dir.exists())
             if(doOutDir) outDir |> dir.create()
+            ### Output paths
+            testFile    <- "configTestResults" |> paste0(".", "xlsx") 
+            listFile    <- "testList" |> paste0(".", "rda") 
+            listPath    <- outDir     |> file.path(listFile)
             
             ### Load Scripts
             scriptDir   <- projectDir |> file.path("scripts")
-            scriptNames <- c("testFrediData") |> paste0(".", "R")
-            scriptPaths <- artDir     |> file.path(scriptNames)
-            # scriptDir |> file.path("testFrediData.R") |> source()
-            for(path_i in scriptPaths){path_i |> source()}
+            scriptName  <- c("testFrediData") |> paste0(".", "R")
+            scriptPath  <- scriptDir  |> file.path(scriptName)
+            scriptPath |> source()
+            # for(path_i in scriptPath){path_i |> source()}
             
             ### Load Data
             dataDir     <- projectDir |> file.path("data")
-            artDir      <- dataDir    |> file.path("data")
+            artDir      <- dataDir    |> file.path("Data")
+            # getwd() |> print()
+            # "." |> list.files() |> print(); 
+            # dataDir |> list.files() |> print(); 
+            # artDir  |> list.files() |> print(); 
+            
+            ### Artifact paths
             artName     <- "tmp_sysdata.rda" 
-            artPath     <- artDir     |> file.path(artFile)
-            artPath |> load()
+            artPath     <- artDir     |> file.path(artName)
+            artExists   <- artPath    |> file.exists()
+            artExists |> print()
+            
+            ### Whether to run the test
+            runTests    <- doTests & artExists
+            
+            ### Modify sectors
+            sectors0 |> print()
+            sectors0    <- sectors0 |> trimws()
+            sectors0    <- sectors0 |> str_replace_all(" ", "")
+            sectors0    <- sectors0 |> str_split(pattern=",") |> unlist()
+            sectors0    <- sectors0 |> trimws()
+            sectors0 |> print()
             
             ### Run general test
-            if(doTests) {
+            if(runTests) {
+              ### Load data
+              artPath |> load()
+              ### Run tests
               testList <- projectDir |> testFrediData(
                 dataList = rDataList , ### List with data (e.g., rDataList)
                 general  = doGenTests, ### Whether to run the general test
                 figures  = doFigures , ### Whether to create scaled impact figures
-                save     = TRUE      ,
-                outDir   = outDir    ,
-                testFile = testFile
+                sectors  = sectors0  , ### Which sector to run
+                outDir   = outDir    , ### Where to save output files
+                testFile = testFile    ### Name of Excel file for testing results
               ) ### End testFrediData
+              ### Save data
+              testList |> save(file=listPath)
+              outDir   |> list.files() |> print()
             } ### End if(doTests)
-            testList |> save(file=listFile)
-            "./data_tests/" |> list.files() |> print()
           '
 
-      #  ./data_tests/*
-      - name: Upload Tests
+      - name: Upload General Test Results
         uses: actions/upload-artifact@v4
+        if: |
+          inputs.gen_test == 'true'
         with:
-          name: Data
+          name: General Test
           path: |
             ./data_tests/*
 
-
-      # - name: Commit results
-      #   run: |
-      #     git config --local core.autocrlf false
-      #     git config --local user.email "${{ github.actor }}@users.noreply.github.com"
-      #     git config --local user.name  "${{ github.actor }}"
-      #     git add data/tmp_sysdata.rd*
-      #     git add data_tests/**.xlsx
-      #     git pull origin ${{ github.head_ref }} --autostash --rebase -X ours
-      #     git commit -a -m "Updated temporary system data and tests"
-      #     git push
-
+      - name: Upload Scaled Impact Figures
+        uses: actions/upload-artifact@v4
+        if: |
+          inputs.figures == 'true'
+        with:
+          name: Scaled Impact Figures
+          path: |
+            ./data_tests/*

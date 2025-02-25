@@ -1,26 +1,88 @@
 ### Defaults
 ### Function to create data frame with info
-scaledImpactPlotTitles <- function(x=1){
-  ### Tibble
-  df0 <- tibble(modelType = c("gcm", "slr"))
-  df0 <- df0 |> mutate(model_type = modelType |> toupper())
-  df0 <- df0 |> mutate(title      = c("Scaled Impacts by Degrees of Warming", "Scaled Impacts by Year"))
-  df0 <- df0 |> mutate(xTitle     = c("expression(\"Degrees of Warming (°C)\")", "\"Year\""))
-  df0 <- df0 |> mutate(yTitle     = c("Scaled Impacts"))
-  df0 <- df0 |> mutate(lgdLbl     = c("Model", "Scenario"))
-  df0 <- df0 |> mutate(lgdPos     = c("top"))
-  df0 <- df0 |> mutate(margins    = c("c(0, 0, .15, 0)", "c(0, .2, .15, 0)"))
-  df0 <- df0 |> mutate(marginUnit = c("cm"))
-  df0 <- df0 |> mutate(nameBrk    = c(18))
+scaledImpactPlotTitles <- function(
+    x = 1
+    # repo0 = "FrEDI" ### Which repo to get defaults for
+){
+  # # ### Tibble
+  # # df0 <- tibble(modelType = c("gcm", "slr"))
+  # # df0 <- df0 |> mutate(model_type = modelType |> toupper())
+  # # df0 <- df0 |> mutate(title      = c("Scaled Impacts by Degrees of Warming", "Scaled Impacts by Year"))
+  # # df0 <- df0 |> mutate(xTitle     = c("expression(\"Degrees of Warming (°C)\")", "\"Year\""))
+  # # df0 <- df0 |> mutate(yTitle     = c("Scaled Impacts"))
+  # # df0 <- df0 |> mutate(lgdLbl     = c("Model", "Scenario"))
+  # # df0 <- df0 |> mutate(lgdPos     = c("top"))
+  # # df0 <- df0 |> mutate(margins    = c("c(0, 0, .15, 0)", "c(0, .2, .15, 0)"))
+  # # df0 <- df0 |> mutate(marginUnit = c("cm"))
+  # # df0 <- df0 |> mutate(nameBrk    = c(18))
+  # # return(df0)
+  # 
+  # ### Defaults depend on repo
+  # repo0     <- repo0 |> tolower()
+  # doFrEDI   <- "fredi" %in% repo0
+  # ### Titles
+  # gcmTitle  <- doFrEDI |> ifelse("Impacts by Degrees of Warming", "Scaled Impacts by Degrees of Warming")
+  # slrTitle  <- doFrEDI |> ifelse("Impacts by GMSL (cm)", "Scaled Impacts by Year")
+  # ### Axis titles
+  # gcmXTitle <- "expression(\"Degrees of Warming (°C)\")"
+  # slrXTitle <- doFrEDI |> ifelse("\"GMSL (cm)\"", "\"Year\"")
+  # YTitle    <- doFrEDI |> ifelse("Impacts ($2015)", "Scaled Impacts")
+  # ### Legend labels
+  # gcmLgdLbl <- "Model"
+  # slrLgdLbl <- doFrEDI |> ifelse("Year", "Scenario")
+  # 
+  # ### Tibble
+  # ### Titles
+  # df0     <- tibble(modelType = c("gcm", "slr"))
+  # df0     <- df0 |> mutate(model_type = modelType |> toupper())
+  # df0     <- df0 |> mutate(title      = c(gcmTitle , slrTitle))
+  # df0     <- df0 |> mutate(xTitle     = c(gcmXTitle, slrXTitle))
+  # df0     <- df0 |> mutate(yTitle     = c(YTitle))
+  # df0     <- df0 |> mutate(xTitle     = c(gcmLgdLbl, slrLgdLbl))
+  ### Tibble for FrEDI Data
+  ### - Titles
+  df0     <- tibble(modelType = c("gcm", "slr"))
+  df0     <- df0 |> mutate(repo       = "FrEDI Data")
+  df0     <- df0 |> mutate(title      = c("Scaled Impacts by Degrees of Warming", "Scaled Impacts by Year"))
+  # df0     <- df0 |> mutate(xTitle     = c("expression(\"Degrees of Warming (°C)\")", "\"Year\""))
+  df0     <- df0 |> mutate(xTitle     = c("Degrees of Warming (°C)", "Year"))
+  df0     <- df0 |> mutate(yTitle     = c("Scaled Impacts"))
+  df0     <- df0 |> mutate(lgdLbl     = c("Model", "Scenario"))
+  ### - Other info
+  df0     <- df0 |> mutate(lgdPos     = c("top"))
+  df0     <- df0 |> mutate(margins    = c("c(0, 0, .15, 0)", "c(0, .2, .15, 0)"))
+  df0     <- df0 |> mutate(marginUnit = c("cm"))
+  df0     <- df0 |> mutate(nameBrk    = c(16))
+  
+  ### Tibble for FrEDI
+  ### - Titles
+  df1     <- tibble(modelType = c("gcm", "slr"))
+  df1     <- df1 |> mutate(repo       = "FrEDI")
+  df1     <- df1 |> mutate(title      = c("Impacts by Degrees of Warming", "Impacts by GMSL (cm)"))
+  # df1     <- df1 |> mutate(xTitle     = c("expression(\"Degrees of Warming (°C)\")", "\"GMSL (cm)\""))
+  df1     <- df1 |> mutate(xTitle     = c("Degrees of Warming (°C)", "GMSL (cm)"))
+  df1     <- df1 |> mutate(yTitle     = c("Impacts ($2015)"))
+  df1     <- df1 |> mutate(lgdLbl     = c("Model", "Year"))
+  ### - Other info
+  df1     <- df1 |> mutate(lgdPos     = c("top"))
+  df1     <- df1 |> mutate(margins    = c("c(0, 0, .15, 0)", "c(0, .2, .15, 0)"))
+  df1     <- df1 |> mutate(marginUnit = c("cm"))
+  df1     <- df1 |> mutate(nameBrk    = c(16))
+  
+  ### Bind data
+  df0     <- df0 |> rbind(df1)
+  
+  ### Return
   return(df0)
 }
 
 ### Function to get plot labels
 get_scaledImpactPlotTitles <- function(
-    type0   = "gcm" ,      ### or "slr"
-    options = list(),      ### List of options
-    # col0  = "title",     ### Or modelType, model_type, title, xTitle, lgdLbl, margins0
-    df0   = scaledImpactPlotTitles() ### Tibble with options
+    type0   = "gcm" ,  ### or "slr"
+    options = list(),  ### List of options
+    # col0    = "title", ### Or modelType, model_type, title, xTitle, lgdLbl, margins0
+    repo0   = "FrEDI Data", ### Which repo to get defaults for
+    df0     = scaledImpactPlotTitles() ### Tibble with options
 ){
   ### Filter to data
   type0     <- type0 |> tolower()
@@ -29,7 +91,7 @@ get_scaledImpactPlotTitles <- function(
   list0     <- df0   |> as.list()
   listNames <- list0 |> names()
   ### Parse data
-  list0[["xTitle" ]] <- parse(text=list0[["xTitle" ]])
+  # list0[["xTitle" ]] <- parse(text=list0[["xTitle" ]])
   list0[["margins"]] <- parse(text=list0[["margins"]])
   list0[["theme"  ]] <- NULL
   ### Update data with list
@@ -52,34 +114,48 @@ get_scaledImpactPlotTitles <- function(
 
 ### Function to get scales for plots
 ### getAxesScales 
+### getAxesScales
 getXAxisScale <- function(
     info0   = NULL,
     xCol    = "driverValue",
-    maxYear = 2100,
-    yrUnit  = 20
+    years   = seq(2000, 2100),
+    # maxYear = 2100,
+    yrUnit  = 20,
+    nTicks  = 5 ### Number of tick marks to break scale into
 ){
   ### Initialize list
-  list0  <- list()
+  list0     <- list()
   
   ### Conditionals
-  doInfo <- !(list0 |> is.null())
-  doYear <- xCol %in% c("year")
+  doInfo    <- !(list0 |> is.null())
+  doYear    <- "year"        %in% xCol
+  doDrivers <- "driverValue" %in% xCol
   
   ### Limits
   if(doInfo) {
     if(doYear) {
-      limits0 <- c(2000, maxYear)
-      breaks0 <- seq(limits0[1] - 10, limits0[2] + 10, by=yrUnit)
+      # limits0 <- c(2000, maxYear) |> sort()
+      # min0    <- limits0 |> min()
+      # max0    <- limits0 |> max()
+      min0    <- years |> min()
+      max0    <- years |> max()
+      limits0 <- c(min0, max0)
+      breaks0 <- seq(min0 - 10, max0 + 10, by=yrUnit)
       denom0  <- 1
-    } else              {
+    } else if(doDrivers) {
       limits0 <- c(-1, 11)
       breaks0 <- seq(0, 10, by=2)
       denom0  <- 1
+    } else {
+      info0   <- df0 |> get_colScale(col0=xCol, nTicks=nTicks)
+      limits0 <- info0[["limits"]]
+      breaks0 <- info0[["breaks"]]
+      denom0  <- info0[["denom" ]]
     } ### End if(doYear)
   }  else{
-    limits0    <- info0[["limits"]]
-    breaks0    <- info0[["breaks"]]
-    denom0     <- info0[["denom" ]]
+    limits0 <- info0[["limits"]]
+    breaks0 <- info0[["breaks"]]
+    denom0  <- info0[["denom" ]]
   } ### End if(do_xInfo)
   
   ### Update list
@@ -94,8 +170,6 @@ getXAxisScale <- function(
 
 ### Function to get manual colors for regions, states in a region, or models
 fun_manual_colors <- function(x=1){
-  # colorVals <- c("D81B60", "FF792D", "4E94E4", "735EA0", "67032F", "49D4F5", "D082CD", "68A796")
-  # colorVals <- c("D81B60", "B38ADA", "FB9358", "2EAD8A", "49D4F5", "6B7682", "893620", "2C5EB7")
   colorVals <- c("FF5291", "D8B8F7", "7D2E19", "4BD886", "F97E39", "A952EC", "639BFF", "386D79")
   colorVals <- "#" |> paste0(colorVals)
   return(colorVals)
