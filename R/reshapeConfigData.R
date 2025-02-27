@@ -273,43 +273,45 @@ reshapeConfigData <- function(
   
   ###### ** 8. SLR Scenario Info ######
   ### Gather slr_cm columns
-  # slr_cm |> names() |> print()
-  slr_cm  <- slr_cm |> (function(df0, df1=co_models, cols0=c("year")){
-    ### Gather slr_cm columns
-    df0    <- df0 |> pivot_longer(
-      cols      = -all_of(cols0), 
-      names_to  = "model",
-      values_to = "driverValue"
-    ) ### End pivot_longer
-    
-    ### Add model type
-    df0    <- df0 |> mutate(model_type = "slr")
-    
-    ### Zero out values and bind with other values
-    df0_0cm <- df0     |> filter(model == "30cm")
-    df0_0cm <- df0_0cm |> mutate(model = "0cm")
-    df0_0cm <- df0_0cm |> mutate(driverValue = 0)
-    df0     <- df0     |> filter(model != "0cm")
-    df0     <- df0_0cm |> rbind(df0)
-    rm(df0_0cm)
-    
-    ### Add model type
-    drop0   <- c("model_type")
-    df0     <- df0 |> select(-any_of(drop0))
-    df0     <- df0 |> mutate(modelType = "slr" |> as.character())
-    
-    ### Arrange
-    cols0   <- c("model", "year")
-    df0     <- df0 |> arrange_at(vars(cols0))
-    
-    ### Return
-    return(df0)
-  })()
-  ### Update in data list, drop intermediate values
-  # slr_cm |> names() |> print()
-  dataList[["slr_cm"]] <- slr_cm
-  # dataList |> names() |> print()
-  
+  doSlrCm <- "slr_cm" |> exists()
+  if(doSlrCm) {
+    # slr_cm |> names() |> print()
+    slr_cm  <- slr_cm |> (function(df0, df1=co_models, cols0=c("year")){
+      ### Gather slr_cm columns
+      df0    <- df0 |> pivot_longer(
+        cols      = -all_of(cols0), 
+        names_to  = "model",
+        values_to = "driverValue"
+      ) ### End pivot_longer
+      
+      ### Add model type
+      df0    <- df0 |> mutate(model_type = "slr")
+      
+      ### Zero out values and bind with other values
+      df0_0cm <- df0     |> filter(model == "30cm")
+      df0_0cm <- df0_0cm |> mutate(model = "0cm")
+      df0_0cm <- df0_0cm |> mutate(driverValue = 0)
+      df0     <- df0     |> filter(model != "0cm")
+      df0     <- df0_0cm |> rbind(df0)
+      rm(df0_0cm)
+      
+      ### Add model type
+      drop0   <- c("model_type")
+      df0     <- df0 |> select(-any_of(drop0))
+      df0     <- df0 |> mutate(modelType = "slr" |> as.character())
+      
+      ### Arrange
+      cols0   <- c("model", "year")
+      df0     <- df0 |> arrange_at(vars(cols0))
+      
+      ### Return
+      return(df0)
+    })()
+    ### Update in data list, drop intermediate values
+    # slr_cm |> names() |> print()
+    dataList[["slr_cm"]] <- slr_cm
+    # dataList |> names() |> print()
+  }
   ###### Return ######
   ### Return the list of dataframes
   if (!silent) paste0(msg0, "...Finished running reshapeConfigData().", msgN) |> message()

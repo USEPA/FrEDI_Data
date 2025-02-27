@@ -1,19 +1,30 @@
 configureSystemData <- function(
-    fileDir     = "." |> file.path("inst", "extdata"),          ### Path to project
-    configFile  = "FrEDI_config.xlsx", ### Name of excel file with config information
-    configSheet = "tableNames",        ### Sheet with table info
-    outPath     = "." |> file.path("data", "tmp_sysdata.rda"),  ### Where to save data
-    testFiles   = list(
-      temp = "temp_0to6_to2300"   |> paste0(".csv"),
-      gdp  = "rff_gdp_mean"       |> paste0(".csv"),
-      pop  = "rff_state_pop_mean" |> paste0(".csv")
-    ), ### Files in inst/extdata/scenarios to load for testing
-    extend_all  = FALSE,  ### Whether to extend all GCM model observations to maximum range
-    reshape     = TRUE ,  ### Whether to include reshaped data items in data list (for testing)
-    silent      = TRUE ,  ### Level of messaging 
-    return      = TRUE ,  ### Whether to return the data list
-    save        = FALSE,  ### Whether to save the file
-    msg0        = ""      ### Message prefix
+  # fileDir     = "." |> file.path("inst", "extdata"),          ### Path to project
+  ### Directories
+  dataDir     = "." |> file.path("inst", "extdata"), ### Path to projectDir
+  configDir   = "fredi"    , ### Module directory relative to dataDir
+  scenarioDir = "scenarios", ### Directory to scenario relative to dataDir
+  ### Info on config file
+  configFile  = "FrEDI_config.xlsx", ### Name of excel file with config information
+  configSheet = "tableNames",        ### Sheet with table info
+  ### Additional scenarios
+  testFiles   = list(
+    temp = "temp_0to6_to2300"   |> paste0(".csv"),
+    gdp  = "rff_gdp_mean"       |> paste0(".csv"),
+    pop  = "rff_state_pop_mean" |> paste0(".csv")
+  ), ### Files in inst/extdata/scenarios to load for testing
+  ### Conditionals
+  reshape0    = TRUE , ### Whether to include reshaped data items in data list (for testing)
+  extend_all  = TRUE , ### Whether to extend all GCM model observations to maximum range
+  doScalars   = TRUE , ### Whether or not do format scalars
+  doScenarios = TRUE , ### Whether to load scenarios
+  ### Info on saving
+  outPath     = "." |> file.path("data", "tmp_sysdata.rda"),  ### Where to save data
+  save0       = FALSE, ### Whether to save the file
+  return0     = TRUE , ### Whether to return the data list
+  ### Info on messaging
+  silent      = TRUE , ### Level of messaging 
+  msg0        = ""     ### Message prefix
 ){
   ### Messaging
   msgN <- "\n"
@@ -33,16 +44,20 @@ configureSystemData <- function(
   rDataList[["frediData"   ]] <- list(name="frediData"   , data=list())
   rDataList[["stateData"   ]] <- list(name="stateData"   , data=list())
   rDataList[["scenarioData"]] <- list(name="scenarioData", data=list())
-
+  
   
   ###### 1. Load Excel Data ######
   ### Load state data
   # if(!silent) 
   paste0(msg1, "Loading data...") |> message()
-  loadData0     <- fileDir |> loadFrediData(
-    configFile  = configFile,  ### Name of excel file with config information
+  loadData0     <- dataDir |> loadFrediData(
+    configDir   = configDir  , ### Directory containing config file, model impacts, scalars
+    configFile  = configFile , ### Name of excel file with config information
     configSheet = configSheet, ### Sheet with info about tables in config file
-    testFiles   = testFiles,   ### Files to load for testing
+    scenarioDir = scenarioDir, ### Directory containing scenarios
+    testFiles   = testFiles  , ### Files to load for testing
+    doScalars   = doScalars  , ### Whether or not do format scalars
+    doScenarios = doScenarios, ### Whether to load scenarios
     silent      = silent,
     msg0        = msg1
   ) ### End loadData
@@ -59,15 +74,20 @@ configureSystemData <- function(
   ### Reshape state data
   # if(!silent) 
   paste0(msg1, "Reshaping data...") |> message()
-  reshapeData0  <- loadData0 |> reshapeFrediData(silent=silent, msg0=msg1)
+  reshapeData0  <- loadData0 |> reshapeFrediData(
+    doScalars   = doScalars  , ### Whether or not do format scalars
+    doScenarios = doScenarios, ### Whether to load scenarios
+    silent      = silent, 
+    msg0        = msg1
+  ) ### End reshapeFrediData
   gc()
   rm(loadData0)
-  ### If reshape, save the reshaped data separately
-  if(reshape){ 
+  ### If reshape0, save the reshaped data separately
+  if(reshape0){ 
     rDataList[["rsData"]] <- reshapeData0
   } else{
     rDataList[["rsData"]] <- list(name="rsData", data=list())
-  } ### End if(reshape)
+  } ### End if(reshape0)
   ### Update data in list
   rDataList[["frediData"   ]] <- reshapeData0[["frediData"   ]]
   rDataList[["stateData"   ]] <- reshapeData0[["stateData"   ]]
@@ -79,7 +99,13 @@ configureSystemData <- function(
   ### Names of objects to combine from reshaped data
   # if(!silent) 
   paste0(msg1, "Configuring data...") |> message()
-  sysDataList0  <- reshapeData0 |> createSystemData(extend_all=extend_all, silent=silent, msg0=msg1)
+  sysDataList0  <- reshapeData0 |> createSystemData(
+    extend_all  = extend_all , ### Whether to extend values to maximum allowable value
+    doScalars   = doScalars  , ### Whether or not do format scalars
+    doScenarios = doScenarios, ### Whether to load scenarios
+    silent = silent, 
+    msg0   = msg1
+  ) ### End createSystemData
   gc()
   rm(reshapeData0)
   ### Update data in list
@@ -90,12 +116,12 @@ configureSystemData <- function(
   
   
   ###### 6. Drop Reshaped Data Objects ######
-  if(!reshape) {
+  if(!reshape0) {
     drop0         <- c("rsData")
     inDrop0       <- (rDataList |> names()) %in% drop0
     rDataList     <- rDataList
     rDataList     <- rDataList[!inDrop0]
-  } ### End if(!reshape) 
+  } ### End if(!reshape0) 
   
   ###### Save to File ######
   ### Save R Data objects
@@ -103,7 +129,7 @@ configureSystemData <- function(
   ### - Message the user
   ### - Check if the output file directory exists
   ### - If the outpath exists, try to save the file
-  if(save) {
+  if(save0) {
     paste0(msg1, "Saving results to ", sysDataPath, "...") |> message()
     outPathExists <- sysDataPath |> dir.exists()
     fredi_config  <- rDataList[["frediData"]][["fredi_config"]]
@@ -119,5 +145,5 @@ configureSystemData <- function(
   ###### Return ######
   paste0(msg0, "...Finished running configureSystemData().") |> paste0(msgN) |> message()
   gc()
-  return(rDataList)
+  if(return0) return(rDataList)
 }
