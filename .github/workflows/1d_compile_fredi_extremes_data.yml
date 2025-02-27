@@ -1,0 +1,112 @@
+### https://github.com/actions/upload-artifact
+### https://github.blog/changelog/2021-11-10-github-actions-input-types-for-manual-workflows/
+### https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows
+### https://github.com/r-lib/actions/tree/v2/setup-r-dependencies
+### https://docs.github.com/en/actions/using-jobs/using-conditions-to-control-job-execution
+### For uploading artifacts:
+###     "path:" is the output path where Pandoc will write the compiled PDF. 
+###      Note, this should be the same directory as the input paper.md
+name: 1d. Compile FrEDI Extremes Data
+
+on: 
+  workflow_dispatch:
+    inputs:
+      branch_name:
+        type: string
+        description: Which FrEDI Package branch do you want to use?
+
+jobs:
+  compile_data:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    
+    name: Process Data
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
+      - name: Setup R
+        uses: r-lib/actions/setup-r@v2
+      
+      - name: Setup R package dependencies
+        uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          cache: true
+          cache-version: 1
+          packages: |
+            any::tidyverse
+            any::ggpubr
+            any::openxlsx
+            any::devtools
+            any::admisc
+            any::zoo
+
+      - name: Install FrEDI
+        run: |
+          Rscript -e '
+            devtools::install_github(
+              repo    = "https://github.com/USEPA/FrEDI",
+              ref     = "${{ github.event.inputs.branch_name }}",
+              # subdir  = "FrEDI",
+              dependencies = FALSE,
+              upgrade = "never",
+              force   = TRUE,
+              type    = "source"
+            )'
+
+      - name: Compile Main FrEDI Data
+        run: |
+          Rscript -e '
+            ### Directories
+            projectDir  <- "." ### Directory in which to find the FrEDI_Data project/package
+            dataDir     <- "." |> file.path("inst", "extdata") ### Path to projectDir
+            configDir   <- "extremes"  ### Module directory relative to dataDir
+            outDir      <- "data"      ### Directory to save outputs relative to projectDir
+            
+            ### Info on config file, output file
+            configFile  <- "extremes_config"  |> paste0(".", "xlsx"), ### Name of excel file with config information
+            outFile     <- "tmp_extremesData" |> paste0(".", "rda" ), ### Name of file to which to save results
+            
+            ### Additional scenarios
+            testFiles0 <- list(
+              temp_0to6_to2300 = "temp_0to6_to2300"   |> paste0(".csv"),
+              rff_temp_mean    = "rff_temp_mean"      |> paste0(".csv"),
+              rff_gdp_mean     = "rff_gdp_mean"       |> paste0(".csv"),
+              rff_pop_mean     = "rff_state_pop_mean" |> paste0(".csv")
+            ) ### End list of filenames with test scenarios
+            
+            ### Load scripts
+            scriptDir   <- projectDir |> file.path("scripts")
+            scriptDir |> file.path("configureFrediData.R") |> source()
+            ### Run scripts
+            test0      <- projectDir |> configureFrediData(
+              testFiles   = testFiles0
+              reshape     = TRUE , ### Whether to include reshaped data in outputs (e.g., for testing)
+              extend_all  = FALSE, ### Whether to extend all GCM model observations to maximum range
+              doScalars   = FALSE, ### Whether or not do format scalars
+              doScenarios = FALSE, ### Whether to load scenarios
+              save = T
+            ) ### End configureFrediData
+            projectDir |> file.path(outDir) |> list.files() |> print()
+          '
+
+      - name: Upload Tests
+        uses: actions/upload-artifact@v4
+        with:
+          name: Extremes Data
+          path: |
+            ./data/tmp_extremesData.rd*
+
+
+      # - name: Commit results
+      #   run: |
+      #     git config --local core.autocrlf false
+      #     git config --local user.email "${{ github.actor }}@users.noreply.github.com"
+      #     git config --local user.name  "${{ github.actor }}"
+      #     git add data/tmp_sysdata.rd*
+      #     git add data_tests/**.xlsx
+      #     git pull origin ${{ github.head_ref }} --autostash --rebase -X ours
+      #     git commit -a -m "Updated temporary system data and tests"
+      #     git push
+
