@@ -58,8 +58,17 @@ jobs:
       - name: Compile Main FrEDI Data
         run: |
           Rscript -e '
-            projectDir <- "."
-            scriptDir  <- projectDir |> file.path("scripts")
+            ### Directories
+            projectDir  <- "." ### Directory in which to find the FrEDI_Data project/package
+            dataDir     <- "." |> file.path("inst", "extdata") ### Path to projectDir
+            configDir   <- "fredi"  ### Module directory relative to dataDir
+            outDir      <- "data"   ### Directory to save outputs relative to projectDir
+            
+            ### Info on config file, output file
+            configFile  <- "FrEDI_config"  |> paste0(".", "xlsx"), ### Name of excel file with config information
+            outFile     <- "tmp_frediData" |> paste0(".", "rda" ), ### Name of file to which to save results
+            
+            ### Test scenarios
             testFiles0 <- list(
               temp_0to6_to2300 = "temp_0to6_to2300"   |> paste0(".csv"),
               rff_temp_mean    = "rff_temp_mean"      |> paste0(".csv"),
@@ -68,9 +77,28 @@ jobs:
               baseline_temp    = "baseline_temp_C"    |> paste0(".csv"),
               mitigated_temp   = "mitigated_temp_C"   |> paste0(".csv")
             ) ### End list of filenames with test scenarios
+            
+            ### Load scripts
+            scriptDir   <- projectDir |> file.path("scripts")
             scriptDir |> file.path("configureFrediData.R") |> source()
-            test0      <- projectDir |> configureFrediData(save=T, testFiles=testFiles0)
-            "./data_tests/" |> list.files() |> print()
+            
+            ### Run scripts
+            test0      <- projectDir |> configureFrediData(
+              dataDir     = dataDir,
+              configDir   = configDir,
+              configFile  = configFile,
+              reshape     = TRUE , ### Whether to include reshaped data in outputs (e.g., for testing)
+              extend_all  = TRUE , ### Whether to extend all GCM model observations to maximum range
+              doScalars   = TRUE , ### Whether or not do format scalars
+              doScenarios = TRUE , ### Whether to load scenarios
+              testFiles   = testFiles0,
+              outDir      = outDir,
+              outFile     = outFile,
+              save = T
+            ) ### End configureFrediData
+            
+            ### List files
+            projectDir |> file.path(outDir) |> list.files() |> print()
           '
 
       #  ./data_tests/*
@@ -79,7 +107,8 @@ jobs:
         with:
           name: Data
           path: |
-            ./data/tmp_sysdata.rd*
+            # ./data/tmp_frediData.rd*
+            # ./data/tmp_sysdata.rd*
 
 
       # - name: Commit results
