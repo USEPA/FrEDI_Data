@@ -10,7 +10,7 @@ projDir   <- "."
 "." |> load_all()
 ### Data dir
 ### Get file paths: 9 files, including county results
-dataDir   <- projDir   |> file.path("inst", "extdata", "methane")
+dataDir   <- projDir   |> file.path("inst", "extdata", "ghg")
 dataPaths <- dataDir   |> list.files(full.names = T, pattern = "\\.csv")
 dataFiles <- dataPaths |> basename(); dataFiles
 
@@ -1035,13 +1035,13 @@ listScenarios[["o3_default"]] <- o3_default
 ###### Update Data in List & Save List ######
 listMethane[["package"     ]] <- listData
 listMethane[["scenarioData"]] <- listScenarios
-rDataList  <- rDataList |> (function(list0, names0="listMethane"){list0[!((list0 |> names()) %in% names0)]})()
+rDataList  <- rDataList |> (function(list0, names0="ghgData"){list0[!((list0 |> names()) %in% names0)]})()
 
 
 ###### Update Data in List & Save List ######
 # saveFile   <- projDir |> file.path("data", "listMethane.rda")
-saveFile   <- projDir |> file.path("data", "methane", "listMethane.rda")
-save(listMethane, file=saveFile)
+saveFile   <- projDir |> file.path("data", "ghg", "ghgData") |> paste0(".", "rda")
+save(ghgData, file=saveFile)
 
 # saveFile   <- projDir |> file.path("data", "sysdata.rda")
 # save(rDataList, listMethane, svDataList, svPopList, format_styles, file=saveFile)
