@@ -62,7 +62,7 @@ jobs:
             projectDir  <- "." ### Directory in which to find the FrEDI_Data project/package
             dataDir     <- "." |> file.path("inst", "extdata") ### Path to projectDir
             configDir   <- "extremes"  ### Module directory relative to dataDir
-            outDir      <- "data"      ### Directory to save outputs relative to projectDir
+            outDir      <- "data" |> file.path("extremes") ### Directory to save outputs relative to projectDir
             
             ### Info on config file, output file
             configFile  <- "extremes_config"  |> paste0(".", "xlsx"), ### Name of excel file with config information
@@ -86,6 +86,7 @@ jobs:
               extend_all  = FALSE, ### Whether to extend all GCM model observations to maximum range
               doScalars   = FALSE, ### Whether or not do format scalars
               doScenarios = FALSE, ### Whether to load scenarios
+              outFile     = outFile,
               save = T
             ) ### End configureFrediData
             projectDir |> file.path(outDir) |> list.files() |> print()
@@ -94,9 +95,9 @@ jobs:
       - name: Upload Tests
         uses: actions/upload-artifact@v4
         with:
-          name: Extremes Data
+          name: Data
           path: |
-            ./data/tmp_extremesData.rd*
+            ./data/extremes/tmp_extremesData.rd*
 
 
       # - name: Commit results
