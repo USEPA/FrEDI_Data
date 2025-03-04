@@ -209,12 +209,11 @@ co_modelTypes   <- rDataList$frediData$co_modelTypes |> (function(df0){
   
   ### Create new values to bind
   df1       <- tibble(modelType_id = "gcm") |> 
-    mutate(inputName       = "methane") |> 
     mutate(modelType_label = "GCM") |> 
+    mutate(inputName       = "methane") |> 
     mutate(modelUnitDesc   = "Ozone Response") |> 
     mutate(modelUnit_id    = "pptv/pptb") |> 
-    mutate(modelUnit_label = "pptv/pptb") |> 
-    mutate(modelType_id    = "gcm")
+    mutate(modelUnit_label = "pptv/pptb")
   
   ### Filter to no values
   ### Bind new values to other values
@@ -297,143 +296,6 @@ listData[["co_inputInfo"]] <- co_inputInfo
 
 
 
-###### ** Sectors, Variants, Impact Types ######
-# ### Get new sectors, variants, impact types, impact years
-# rDataList$frediData$co_sectors |> glimpse()
-# co_sectors   <- rDataList$frediData$co_sectors |> (function(df0){
-#   ### Glimpse
-#   # df0 |> glimpse()
-#   
-#   ### Create new values to bind
-#   df1       <- tibble(sector_id = "Methane") |> 
-#     mutate(sector_label = sector_id) |>
-#     mutate(modelType    = "gcm")
-#   
-#   ### Filter to no values
-#   ### Bind new values to other values
-#   df0       <- df0 |> filter(modelType %in% "GCM")
-#   df0       <- df0 |> rbind(df1)
-#   
-#   ### Return
-#   return(df0)
-# })(); co_sectors |> glimpse()
-# listData[["co_sectors"]] <- co_sectors
-# 
-# # co_sectors   <- rDataList$frediData$co_sectorsInfo |> (function(df0){
-# #   ### Glimpse
-# #   # df0 |> glimpse()
-# #   
-# #   ### Create new values to bind
-# #   df1       <- tibble(sector = "Methane") |> 
-# #     mutate(variant      = "NA") |>
-# #     mutate(impactType   = "NA") |>
-# #     mutate(impactYear   = "NA") |>
-# #     mutate(modelTyp     = "gcm") |>
-# #     mutate(sector_label = "NA")
-# #   
-# #   ### Filter to no values
-# #   ### Bind new values to other values
-# #   df0       <- df0 |> filter(modelType %in% "GCM")
-# #   df0       <- df0 |> rbind(df1)
-# #   
-# #   ### Return
-# #   return(df0)
-# # })(); co_sectors |> glimpse()
-# # listData[["co_sectors"]] <- co_sectors
-# 
-# ### Variants
-# rDataList$frediData$co_variants |> glimpse()
-# co_variants   <- rDataList$frediData$co_variants |> (function(df0){
-#   ### Glimpse
-#   # df0 |> glimpse()
-#   
-#   ### Create new values to bind
-#   df1       <- tibble(sector_id = "Methane") |> 
-#     mutate(variant_label = sector_id) |>
-#     mutate(variant_id    = "Methane") |> 
-#     # mutate(sectorprimary = 1) |> 
-#     # mutate(includeaggregate = 1) |> 
-#     mutate(damageAdjName = "none")
-#   
-#   ### Filter to no values
-#   ### Bind new values to other values
-#   df0       <- df0 |> filter(sector_id %in% "GCM")
-#   df0       <- df0 |> rbind(df1)
-#   
-#   ### Return
-#   return(df0)
-# })(); co_variants |> glimpse()
-# listData[["co_variants"]] <- co_variants
-# 
-# 
-# ### Impact Types
-# rDataList$frediData$co_impactTypes |> glimpse()
-# co_impactTypes   <- rDataList$frediData$co_impactTypes |> (function(df0){
-#   ### Glimpse
-#   # df0 |> glimpse()
-#   
-#   ### Create new values to bind
-#   df1       <- tibble(sector_id = "Methane") |> 
-#     mutate(impactType_label = "Excess Mortality") |>
-#     mutate(impactType_id    = "xMort") |> 
-#     mutate(impactType_description = "Excess Mortality") |>
-#     mutate(physicalmeasure = "Excess Mortality") |>
-#     mutate(physScalarName  = "none") |>
-#     mutate(physAdjName     = "none")
-#   
-#   ### Get Valuation info and bind to df1
-#   join0      <- c("sector_id")
-#   select0    <- join0 |> c("econScalarName", "econMultiplierName", "c0", "c1", "exp0", "year0")
-#   df2        <- df0 |> 
-#     mutate(sector_id = "Methane") |>
-#     mutate(year0     = "2020") |>
-#     filter(econScalarName      == "vsl_usd"   ) |>
-#     filter(econMultiplierName  == "gdp_percap") |>
-#     select(all_of(select0)) |>
-#     distinct()
-#   df1        <- df1 |> left_join(df2, by=c(join0))
-#   rm(select0, join0)
-#   
-#   
-#   ### Filter to no values
-#   ### Bind new values to other values
-#   df0       <- df0 |> filter(sector_id %in% "GCM")
-#   df0       <- df0 |> rbind(df1)
-#   
-#   ### Return
-#   return(df0)
-# })(); co_impactTypes |> glimpse()
-# listData[["co_impactTypes"]] <- co_impactTypes
-# 
-# 
-# ### Impact Types
-# rDataList$frediData$co_impactYears |> glimpse()
-# co_impactYears   <- rDataList$frediData$co_impactYears |> (function(df0){
-#   ### Glimpse
-#   # df0 |> glimpse()
-#   
-#   ### Create new values to bind
-#   df1       <- tibble(sector_id = "Methane") |> 
-#     mutate(impactYear_id    = "NA") |> 
-#     mutate(impactYear_label = "N/A")
-#   
-#   ### Filter to no values
-#   ### Bind new values to other values
-#   df0       <- df0 |> filter(sector_id %in% "GCM")
-#   df0       <- df0 |> rbind(df1)
-#   
-#   ### Return
-#   return(df0)
-# })(); co_impactYears |> glimpse()
-# listData[["co_impactYears"]] <- co_impactYears
-# 
-# 
-# 
-# ###### ** Sectors Info
-# ### Get new regions
-# rDataList$frediData$co_sectorsInfo |> glimpse()
-
-
 
 
 ###### Coffiecients ######
@@ -469,11 +331,6 @@ list_coefficients <- list() |> (function(
     ### Calculate adjustment
     df0   <- df0 |> mutate(gdp_percap = gdp_usd / national_pop)
     
-    # ### Reshape
-    # drop0 <- c("gdp_usd", "national_pop")
-    # df0   <- df0 |> select(-any_of(drop0))
-    # df0   <- df0 |> pivot_longer(c("gdp_percap"), names_to="econAdjName", values_to="econAdjValue0")
-    
     ### Return
     return(df0)
   })()
@@ -483,38 +340,6 @@ list_coefficients <- list() |> (function(
   ###### ** Mortality ######
   ### Initialize list
   listM   <- list()
-  # ### Mortality coefficients (from RFF)... may be a time dependent function
-  # listM[["intercept0"]] <- 0
-  # listM[["slope0"    ]] <- 1
-  # ### Function of mortality as a function of population
-  # calc_mortality <- function(
-    #   pop0, ### Column with population values
-  #   slope0     = listM[["slope0"    ]], 
-  #   intercept0 = listM[["intercept0"]]
-  # ){
-  #   pop0 <- pop0 * slope0 + intercept0
-  #   return(pop0)
-  # }; listM[["fun0"]] <- calc_mortality
-  # ### Function of mortality as a function of population
-  # calc_mortality <- function(
-  #   df0, ### Tibble with population and years
-  #   df1, ### Tibble with columns for mortality rate slope and mortality rate intercept
-  #   # sCol0    = "rff_mrate_slope"    , ### Column with mortality rate slope, 
-  #   # iCol0    = "rff_mrate_intercept", ### Column with mortality rate intercept, 
-  #   joinCols = c("year") ### Column to join df0 and df1
-  # ){
-  #   ### Join df0 and df1
-  #   # join0 <- c("year")
-  #   join0 <- joinCols
-  #   df0   <- df0 |> left_join(df1, by=join0)
-  #   rm(df1)
-  #   ### Calculate intermediate populations
-  #   df0   <- df0 |> mutate(delta_rff_pop = national_pop - rff_pop)
-  #   df0   <- df0 |> mutate(rff_factor    = delta_rff_pop * rff_mrate_slope + rff_mrate_intercept)
-  #   df0   <- df0 |> mutate(resp_mrate    = rff_factor    * nat_ifRespScalar)
-  #   ### Return data
-  #   return(df0)
-  # }; 
   listM[["fun0"]] <- NULL
   ### Update in list
   list0[["Mortality"]] <- listM
