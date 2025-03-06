@@ -165,19 +165,25 @@ createSystemData <- function(
   
   ### Extend/Interpolate SLR Heights, Impacts, and Extremes
   if(msgUser) msg2 |> paste0("...Extending SLR values...") |> message()
-  slr_cm       <- slr_cm      |> extend_slr()
-  slrImpacts   <- slrImpData  |> extend_slr()
-  slrExtremes  <- slrExtremes |> extend_slr()
+  slr_cm      <- slr_cm      |> extend_slr()
+  slrImpacts  <- slrImpData  |> extend_slr()
+  slrExtremes <- slrExtremes |> extend_slr()
   
   ### Add other values back into slrImpacts
-  include0     <- c("region") |> c(stateCols0) |> c("model")
-  slrImpacts   <- slrImpacts  |> get_scenario_id(include=include0) |> ungroup()
-  # slrExtremes  <- slrExtremes |> get_scenario_id(include=include0) |> ungroup()
-  
-  groups0      <- slrImpacts  |> filter(!(scaled_impacts |> is.na())) |> pull(scenario_id) |> unique()
-  slrImpacts   <- slrImpacts  |> mutate(hasScenario = scenario_id %in% groups0)
-  # slrExtremes  <- slrExtremes |> mutate(hasScenario = scenario_id %in% groups0)
-  rm(include0, groups0)
+  include0    <- c("region") |> c(stateCols0) # |> c("model")
+  slrImpacts  <- slrImpacts  |> get_scenario_id(include=include0) |> paste0()
+  slrExtremes <- slrExtremes |> get_scenario_id(include=include0) |> ungroup()
+  rm(include0)
+  ### Mutate column
+  slrImpacts  <- slrImpacts  |> mutate(scenario_id = scenario_id |> paste0("_", "Interpolation"))
+  slrExtremes <- slrExtremes |> mutate(scenario_id = scenario_id |> paste0("_", "Interpolation"))
+  ### Get groups
+  idsImpacts  <- slrImpacts  |> filter(!(scaled_impacts |> is.na())) |> pull(scenario_id) |> unique()
+  idsExtremes <- slrExtremes |> filter(!(scaled_impacts |> is.na())) |> pull(scenario_id) |> unique()
+  ### Create column with valid values
+  slrImpacts  <- slrImpacts  |> mutate(hasScenario = scenario_id %in% idsImpacts)
+  slrExtremes <- slrExtremes |> mutate(hasScenario = scenario_id %in% idsExtremes)
+  rm(idsImpacts, idsExtremes)
   
   ### Update in data list and remove objects
   frediData[["slr_cm"     ]] <- slr_cm
