@@ -364,6 +364,7 @@ fun_limitsByGroup <- function(
   ### Arrange the sectors & get their order
   arrange0     <- c("max", "spread")
   lim_bySector <- lim_bySector |> arrange_at(c(arrange0), desc)
+  rm(arrange0)
   # lim_bySector |> print()
 
   ###### Get Group Orders ######
@@ -375,6 +376,7 @@ fun_limitsByGroup <- function(
     fac_i <- group_i |> paste0("_", "factor")
     lim_bySector[[fac_i]] <- lim_bySector[[group_i]] |> factor(levels=val_i)
     lim_bySector[[ord_i]] <- lim_bySector[[fac_i  ]] |> as.numeric()
+    rm(group_i, val_i, ord_i, fac_i)
   } ### End for(group_i in groupCols)
 
   ###### Arrange Again ######
@@ -405,7 +407,7 @@ get_sector_plotInfo <- function(
   list0  <- list()
 
   ###### Grouping Columns ######
-  if(byType){
+  if(byType) {
     group0    <- c("impactYear", "variant", "impactType")
     groupCols <- groupCols[!(groupCols %in% group0)]
     groupCols <- groupCols |> c(group0)
@@ -482,7 +484,7 @@ get_sector_plotInfo <- function(
   ### Get maximum and minimum values by plot row and combine
   df_minMax   <- df_sectorInfo |>
     group_by_at(c("plotRow")) |>
-    summarize(min = min(min), max=max(max)) |> ungroup()
+    summarize(min = min(min), max = max(max)) |> ungroup()
   ### Gather values
   df_minMax   <- df_minMax |> pivot_longer(
     cols      = -c("plotRow"),
@@ -499,3 +501,122 @@ get_sector_plotInfo <- function(
   return(list0)
 }
 
+
+### Get region plot info (for scaled impact plots)
+get_region_plotInfo <- function(
+    df0,      ### Data
+    yCol      = "scaled_impacts",
+    # groupCols = c("sector", "variant", "impactType", "impactYear", "region", "model"),
+    groupCols = c("sector", "variant", "impactType", "impactYear", "region", "state", "postal", "model", "maxUnitValue"),
+    nCol      = 4, ### Number of columns
+    silent    = TRUE
+){
+  ###### Initialize Return List ######
+  list0  <- list()
+  
+  ###### Get from FrEDI Namespace ######
+  # fun_limitsByGroup <- utils::getFromNamespace("fun_limitsByGroup", "FrEDI")
+  
+  ###### Get Value Ranges ######
+  # df0 |> glimpse()
+  df_sectorInfo <- df0 |> fun_limitsByGroup(
+    sumCols   = yCol,
+    groupCols = groupCols,
+    silent    = silent
+  ) ### End fun_limitsByGroup()
+  # df_sectorInfo |> print()
+  
+  ###### Number of NA Values ######
+  ### Get number of observations in a group
+  group0        <- groupCols[!(groupCols %in% c("state", "postal"))]
+  df_na         <- df0   |> mutate_at(c(yCol), is.na)
+  df_na         <- df_na |> rename_at(c(yCol), ~c("nNA"))
+  df_na         <- df_na |> mutate(nObs = 1)
+  df_na         <- df_na |>
+    group_by_at (c(group0)) |> 
+    summarize_at(c("nObs", "nNA"), sum) |> ungroup()
+  
+  ### Join with df_sectorInfo
+  df_sectorInfo <- df_sectorInfo |> left_join(df_na, by=c(group0))
+  
+  ### Drop values for which nObs == nNA
+  df_sectorInfo <- df_sectorInfo |> mutate(naThresh = df_sectorInfo[["nObs"]] |> max())
+  df_sectorInfo <- df_sectorInfo |> filter(!(nObs == nNA))
+  ### Remove values
+  rm(df_na, group0)
+  
+  ###### Get Value Lists & Lengths ######
+  ### Get number of sectors and calculate columns
+  cCols      <- groupCols[!(groupCols %in% c("postal"))]
+  df_iter    <- tibble(column = cCols)
+  df_iter    <- df_iter |> mutate(colSuffix = case_when(
+    column == "impactType" ~ "ImpTypes",
+    column == "impactYear" ~ "ImpYears",
+    .default = column |> str_to_title() |> paste0("s")
+  )) ### End mutate
+  df_iter    <- df_iter |> mutate(cName = "c" |> paste0(colSuffix))
+  df_iter    <- df_iter |> mutate(nName = "n" |> paste0(colSuffix))
+  df_iter    <- df_iter |> mutate(factorCol = column  |> paste0("_factor"))
+  df_iter    <- df_iter |> mutate(orderCol  = "order_" |> paste0(column))
+  ### Iterate over iteration column
+  for(i in df_iter |> row_number()){
+    fCol_i  <- df_iter[["factorCol"]][i]
+    cName_i <- df_iter[["cName"    ]][i]
+    nName_i <- df_iter[["nName"    ]][i]
+    # fCol_i |> print(); cName_i |> print(); nName_i |> print()
+    list0[[cName_i]] <- df_sectorInfo |> pull(all_of(fCol_i)) |> levels() |> as.character()
+    list0[[nName_i]] <- list0[[cName_i]] |> length()
+    # list0[[cName_i]] |> print()
+    rm(i, fCol_i, cName_i, nName_i)
+  } ### End for(i in test0 |> row_number())
+  # list0 |> names() |> print()
+  
+  ###### Number of Rows & Columns ######
+  colCol    <- "state"
+  rowCol    <- "impactType"
+  ### Initialize rows & columns
+  col_nCol  <- df_iter |> filter(column == colCol) |> pull(nName) |> unique()
+  row_nCol  <- df_iter |> filter(column == rowCol) |> pull(nName) |> unique()
+  # col_nCol |> c(row_nCol) |> print(); list0 |> names() |> print()
+  nCol      <- list0[[col_nCol]]
+  nRow      <- list0[[row_nCol]]
+  # nCol |> c(nRow) |> print()
+  ### Correct for zeros
+  nCol      <- (nCol == 0) |> ifelse(1, nCol)
+  nRow      <- (nRow == 0) |> ifelse(1, nRow)
+  ### Add to list
+  list0[["nCol"]] <- nCol
+  list0[["nRow"]] <- nRow
+  
+  ###### Min/Max Info ######
+  ### Also figure out sector positions in the list of plots
+  col_oCol  <- df_iter |> filter(column == colCol) |> pull(orderCol) |> unique()
+  row_oCol  <- df_iter |> filter(column == rowCol) |> pull(orderCol) |> unique()
+  # col_oCol |> c(row_oCol) |> print(); df_sectorInfo[[col_oCol]] |> print(); df_sectorInfo[[row_oCol]] |> print()
+  df_sectorInfo[["plotCol"]] <- df_sectorInfo[[col_oCol]]
+  df_sectorInfo[["plotRow"]] <- df_sectorInfo[[row_oCol]]
+  
+  ### Get maximum and minimum values by plot row and combine
+  group0      <- c("plotRow")
+  group0      <- c("sector", "variant", "impactType", "impactYear", "region") |> c(group0)
+  df_minMax   <- df_sectorInfo |>
+    group_by_at(c(group0)) |>
+    summarize(min = min(min), max = max(max)) |> ungroup()
+  ### Gather values
+  df_minMax   <- df_minMax |> pivot_longer(
+    cols      = -c(group0),
+    names_to  = "summary_type", 
+    values_to = "summary_value"
+  ) ### End pivot_longer
+  # df_minMax[["summary_value"]] |> print()
+  
+  ###### Return List ######
+  ### Return list
+  list0[["df_iter"   ]] <- df_iter
+  list0[["minMax"    ]] <- df_minMax
+  list0[["sectorInfo"]] <- df_sectorInfo
+  ### Return
+  return(list0)
+}
+
+###### End Script ######

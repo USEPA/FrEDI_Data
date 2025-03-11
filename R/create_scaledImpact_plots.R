@@ -8,6 +8,7 @@ create_scaledImpact_plots <- function(
     type0     = "GCM",
     nTicks    = 5,
     silent    = TRUE,
+    repo0     = "FrEDI Data", ### Repo name, for use in getting plot defaults
     options   = list(
       # title      = "Scaled Impacts by Degrees of Warming",
       # subtitle   = NULL,
@@ -24,9 +25,10 @@ create_scaledImpact_plots <- function(
   print_msg <- !silent
   if(print_msg){ "Running create_scaledImpact_plots()..." |> message()}
   
-  ### Model Type
+  ###### Model Type ######
   # type0 |> print()
   typeLC0   <- type0 |> tolower()
+  repo0     <- repo0 |> tolower()
   do_gcm    <- "gcm" %in% typeLC0
   do_slr    <- "slr" %in% typeLC0
   # type0 |> print(); do_gcm |> print(); do_slr |> print()
@@ -51,7 +53,8 @@ create_scaledImpact_plots <- function(
   
   ###### Plot Options ######
   ### Values
-  plotOpts0   <- typeLC0 |> get_scaledImpactPlotTitles(options=options)
+  # plotOpts0   <- typeLC0 |> get_scaledImpactPlotTitles(options=options)
+  plotOpts0   <- typeLC0 |> get_scaledImpactPlotTitles(options=options, repo0=repo0)
   title0      <- plotOpts0[["title"     ]]
   xTitle      <- plotOpts0[["xTitle"    ]]
   yTitle      <- plotOpts0[["yTitle"    ]]
@@ -61,6 +64,7 @@ create_scaledImpact_plots <- function(
   margins     <- plotOpts0[["margins"   ]]
   mUnit       <- plotOpts0[["marginUnit"]]
   theme0      <- plotOpts0[["theme"     ]]
+  nameBrk     <- plotOpts0[["nameBreak" ]]
   # xTitle |> print()
   
   ###### Get Sector Info ######
@@ -136,7 +140,8 @@ create_scaledImpact_plots <- function(
   x_info     <- NULL
   x_info     <- x_info |> getXAxisScale(
     xCol    = xCol,
-    maxYear = 2100,
+    # maxYear = 2100,
+    years   = seq(2000, 2100),
     yrUnit  = 20
   ) ### End getXAxisScale
   ### Assign to objects

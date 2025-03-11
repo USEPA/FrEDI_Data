@@ -1,4 +1,5 @@
-### For iterating over list names
+### For iterating over list names in general config tests
+###### General Values ######
 ### Calculating number of columns
 fun_nCol <- function(
     z, ### Object name
@@ -49,6 +50,53 @@ fun_nUnq <- function(z, a, b){
   return(nUnq0)
 } ### End fun_nUnq
 
+# ### For iterating over list names
+# ### Calculating number of columns
+# fun_nCol <- function(z, a, b){
+#   # z |> print()
+#   # if_else("data.frame" %in% a[[z]], b[[z]] |> ncol(), 0 |> as.integer())
+#   val1 <- "data.frame" %in% a[[z]]
+#   val2 <- b[[z]] |> ncol()
+#   val3 <- 0    |> as.integer()
+#   val2 <- val2 |> is.null() |> ifelse(val3, val2)
+#   # val1 |> print(); val2 |> print(); val3 |> print()
+#   y    <- if_else(val1, true=val2, false=val3)
+#   return(y)
+# }
+#
+# ### Calculating number of rows
+# fun_nRow <- function(z, a, b){
+#   # z |> print()
+#   # if_else("data.frame" %in% a[[z]], b[[z]] |> nrow(), b[[z]] |> length())
+#   val1 <- "data.frame" %in% a[[z]]
+#   val2 <- b[[z]] |> nrow()
+#   val3 <- b[[z]] |> length()
+#   val2 <- val2   |> is.null() |> ifelse(val3, val2)
+#   # val1 |> print(); val2 |> print(); val3 |> print()
+#   y    <- if_else(val1, true=val2, false=val3)
+#   return(y)
+# }
+#
+# ### Calculating distinct rows or values
+# fun_nUnq <- function(z, a, b){
+#   # z |> print()
+#   # if_else("data.frame" %in% a[[z]], b[[z]] |> distinct() |> nrow(),  b[[z]] |> distinct() |> length())
+#   class_z <- a[[z]]
+#   obj_z   <- b[[z]]
+#   do_df0  <- "data.frame" %in% class_z
+#   ### Values
+#   val1    <- do_df0
+#   ### What to do for data frames
+#   if(do_df0) {val2 <- obj_z |> distinct() |> nrow()}
+#   else       {val2 <- obj_z |> unique()   |> length()}
+#   # val1 |> print; val2 |> print; val3 |> print
+#   val3 <- val2
+#   y    <- if_else(val1, true=val2, false=val3)
+#   return(y)
+# }
+
+
+###### All-NA Values ######
 ### Calculating columns with all NA vales
 fun_allNA <- function(z, a, b){
   ### Get values
@@ -121,148 +169,84 @@ has_allNA_values_misc <- function(b, a) {
 } ### End has_nonNA_values_misc
 
 
-
-
-### Get region plot info (for scaled impact plots)
-get_region_plotInfo <- function(
-    df0,      ### Data
-    yCol      = "scaled_impacts",
-    # groupCols = c("sector", "variant", "impactType", "impactYear", "region", "model"),
-    groupCols = c("sector", "variant", "impactType", "impactYear", "region", "state", "postal", "model", "maxUnitValue"),
-    nCol      = 4, ### Number of columns
-    silent    = TRUE
-){
-  ###### Initialize Return List ######
-  list0  <- list()
-  
-  ###### Get from FrEDI Namespace ######
-  # fun_limitsByGroup <- utils::getFromNamespace("fun_limitsByGroup", "FrEDI")
-  # get_column_values <- utils::getFromNamespace("get_column_values", "FrEDI")
-  
-  ###### Get Value Ranges ######
-  # df0 |> glimpse()
-  df_sectorInfo <- df0 |> fun_limitsByGroup(
-    sumCols   = yCol,
-    groupCols = groupCols,
-    silent    = silent
-  ) ### End fun_limitsByGroup()
-  # df_sectorInfo |> print()
-  
-  ###### Number of NA Values ######
-  ### Get number of observations in a group
-  group0        <- groupCols[!(groupCols %in% c("state", "postal"))]
-  df_na         <- df0   |> mutate_at(c(yCol), is.na)
-  df_na         <- df_na |> rename_at(c(yCol), ~c("nNA"))
-  df_na         <- df_na |> mutate(nObs = 1)
-  df_na         <- df_na |>
-    group_by_at (c(group0)) |> 
-    summarize_at(c("nObs", "nNA"), sum) |> ungroup()
-  # ### Get number of NA values
-  # df0 |> nrow() |> print(); df0[[yCol]] |> length() |> print()
-  # df_na         <- df0 |> 
-  #   group_by_at(.vars=c(groupCols)) |> 
-  #   mutate(isNA = df0[[yCol]] |> is.na()) |>
-  #   summarize(nNA=isNA |> sum(), .groups="keep") |> ungroup()
-  # ### Join observations
-  # df_na         <- df_obs |> left_join(df_na, by=c(group0))
-  
-  
-  ### Join with df_sectorInfo
-  df_sectorInfo <- df_sectorInfo |> left_join(df_na, by=c(group0))
-  ### Drop values for which nObs == nNA
-  # naThresh0     <- 
-  df_sectorInfo <- df_sectorInfo |> mutate(naThresh = df_sectorInfo[["nObs"]] |> max())
-  # return(df_sectorInfo)
-  # df_sectorInfo <- df_sectorInfo |> filter(!(nObs < naThresh))
-  df_sectorInfo <- df_sectorInfo |> filter(!(nObs == nNA))
-  ### Remove values
-  rm(df_na, group0)
-  
-  ###### Get Value Lists & Lengths ######
-  ### Get number of sectors and calculate columns
-  # doSectors  <- "sector"     %in% groupCols
-  # doVariants <- "variant"    %in% groupCols
-  # doTypes    <- "impactType" %in% groupCols
-  # doYears    <- "impactYear" %in% groupCols
-  # doRegions  <- "region"     %in% groupCols
-  # doStates   <- "state"      %in% groupCols
-  # doModels   <- "model"      %in% groupCols
-  # cCols      <- c("sector", "variant", "impactType", "impactYear", "region")
-  cCols      <- groupCols[!(groupCols %in% c("postal"))]
-  df_iter    <- tibble(column = cCols)
-  df_iter    <- df_iter |> mutate(colSuffix = case_when(
-      column == "impactType" ~ "ImpTypes",
-      column == "impactYear" ~ "ImpYears",
-      .default = column |> str_to_title() |> paste0("s")
-  )) ### End mutate
-  df_iter    <- df_iter |> mutate(cName = "c" |> paste0(colSuffix))
-  df_iter    <- df_iter |> mutate(nName = "n" |> paste0(colSuffix))
-  df_iter    <- df_iter |> mutate(factorCol = column  |> paste0("_factor"))
-  df_iter    <- df_iter |> mutate(orderCol  = "order_" |> paste0(column))
-  ### Iterate over iteration column
-  for(i in df_iter |> row_number()){
-    fCol_i  <- df_iter[["factorCol"]][i]
-    cName_i <- df_iter[["cName"    ]][i]
-    nName_i <- df_iter[["nName"    ]][i]
-    # fCol_i |> print(); cName_i |> print(); nName_i |> print();
-    list0[[cName_i]] <- df_sectorInfo |> pull(all_of(fCol_i)) |> levels() |> as.character()
-    list0[[nName_i]] <- list0[[cName_i]] |> length()
-    # list0[[cName_i]] |> print()
-    rm(i, fCol_i, cName_i, nName_i)
-  } ### End for(i in test0 |> row_number())
-  # list0 |> names() |> print
-  
-  ###### Number of Rows & Columns ######
-  # "got here" |> print()
-  # colCol    <- byState |> ifelse(list0[["state"]], list0[["region"]])
-  # colCol    <- byState |> ifelse("state", "region")
-  colCol    <- "state"
-  rowCol    <- "impactType"
-  ### Initialize rows & columns
-  col_nCol  <- df_iter |> filter(column == colCol) |> get_column_values(col0 = "nName", unique0 = T)
-  row_nCol  <- df_iter |> filter(column == rowCol) |> get_column_values(col0 = "nName", unique0 = T)
-  # col_nCol |> c(row_nCol) |> print(); list0 |> names() |> print()
-  nCol      <- list0[[col_nCol]]
-  nRow      <- list0[[row_nCol]]
-  # nCol |> c(nRow) |> print()
-  ### Correct for zeros
-  nCol      <- (nCol == 0) |> ifelse(1, nCol)
-  nRow      <- (nRow == 0) |> ifelse(1, nRow)
-  ### Add to list
-  list0[["nCol"]] <- nCol
-  list0[["nRow"]] <- nRow
-  
-  ###### Min/Max Info ######
-  ### Also figure out sector positions in the list of plots
-  col_oCol  <- df_iter |> filter(column == colCol) |> get_column_values(col0 = "orderCol", unique0 = T)
-  row_oCol  <- df_iter |> filter(column == rowCol) |> get_column_values(col0 = "orderCol", unique0 = T)
-  # col_oCol |> c(row_oCol) |> print(); df_sectorInfo[[col_oCol]] |> print(); df_sectorInfo[[row_oCol]] |> print()
-  df_sectorInfo[["plotCol"]] <- df_sectorInfo[[col_oCol]]
-  df_sectorInfo[["plotRow"]] <- df_sectorInfo[[row_oCol]]
-  
-  ### Get maximum and minimum values by plot row and combine
-  group0      <- c("plotRow")
-  group0      <- c("sector", "variant", "impactType", "impactYear", "region") |> c(group0)
-  df_minMax   <- df_sectorInfo |>
-    group_by_at(c(group0)) |>
-    summarize(min = min(min), max=max(max)) |>
-    ungroup()
-  ### Gather values
-  df_minMax   <- df_minMax |> pivot_longer(
-    cols      = -c(group0),
-    names_to  = "summary_type", 
-    values_to = "summary_value"
-  ) ### End pivot_longer
-  # df_minMax[["summary_value"]] |> print()
-  
-  ###### Return List ######
-  ### Return list
-  list0[["df_iter"   ]] <- df_iter
-  list0[["minMax"    ]] <- df_minMax
-  list0[["sectorInfo"]] <- df_sectorInfo
+###### Non-NA Values ######
+### Function to check if column has at least one non NA value
+has_nonNA_values <- function(
+    x
+) {
+  ### Check whether values in x are NA
+  x <- x |> is.na()
+  ### Calculate number of rows
+  y <- tibble(numRows = x |> nrow())
+  ### Number of NA values
+  y <- y |> mutate(numNA = x |> colSums() |> nrow() |> is.null() |> if_else(0, 1))
+  ### Whether all results are missing
+  y <- y |> mutate(allNA = (numRows == numNA))
+  ### Filter to values with allNA
+  y <- y |> filter(allNA)
+  ### Get number of rows
+  z <- y |> nrow()
+  # z <- 1 * (z > 0)
   ### Return
-  return(list0)
+  return(z)
+} ### End has_nonNA_values_df
+
+### Function to check if column has at least one non NA value
+has_nonNA_values_df <- function(
+    df0,
+    groups0 = "sector",
+    col0    = "annual_impacts"
+) {
+  ### Add counters
+  df0   <- df0 |> mutate(numRows = 1)
+  vals0 <- df0 |> pull(all_of(col0)) |> is.na()
+  x     <- df0 |> mutate(numNA   = 1 * vals0)
+  ### Summarize
+  sum0  <- c("numRows", "numNA")
+  y     <- x |> group_by_at(c(groups0)) |> summarize_at(c(sum0), sum)
+  ### Whether all results are missing
+  y     <- y |> mutate(allNA = (numRows == numNA))
+  ### Filter to values with allNA
+  z     <- y |> filter(allNA)
+  ### Return
+  return(z)
 }
+
+### Function to check non NA values for other types
+has_nonNA_values_misc <- function(x) {
+  class_x <- x |> class()
+  len_x   <- x |> length()
+  isList0 <- "list" %in% class_x
+  if(isList0) {
+    names_x    <- x |> names()
+    hasNames_x <- !(names_x |> is.null())
+    if(hasNames_x) {y <- names_x |> map(~ x[[.]] |> class()) |> unlist()}
+    else           {y <- x       |> map(~ . |> class()) |> unlist()}
+    skip_y <- ("function" %in% y) | ("list" %in% y)
+    # skip_y |> print
+    ### If y has functions
+    if(skip_y) {
+      y <- FALSE
+    } else {
+      y0 <- x |> map(~ . |> unlist() |> is.na()) |> unlist()
+      # y0 |> head |> print
+      y0 <- y0 |> all(na.rm=TRUE)
+      y1 <- x |> map(~ .y |> length()) |> unlist()
+      y  <- y0 & (y1 > 1)
+    } ### End if(skip_y)
+  } else {
+    y <- x |> is.na() |> all(na.rm=TRUE)
+  } ### End if(isList0)
+  ### Which observations
+  which_x <- y |> which()
+  ### Count NA values
+  z       <- y |> which() |> length()
+  ### Return
+  return(z)
+}
+
+
+###### End Script ######
 
 
 

@@ -52,63 +52,110 @@ jobs:
           echo "$${{ github.ref_name }} ${{ inputs.passed_tests }} ${{ inputs.workflow_id }}"  
       
       ### Download tmp_sysdata.rda from 1. Compile Main FrEDI Data run
-      - name: Download artifact
+      - name: Download all artifacts
         id:   download-artifact
-        uses: dawidd6/action-download-artifact@v7
-        with: 
-          github_token:    ${{secrets.GITHUB_TOKEN}}
-          # workflow:        workflow_name.yml
-          # workflow_search: false
-          # workflow_conclusion: success
-          # pr: ${{github.event.pull_request.number}}
-          # commit: ${{github.event.pull_request.head.sha}}
-          # branch: 
-          ### Run ID
-          # run-id: ${{ github.event.workflow_run.id }}
-          # run_id: 1122334455
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          # github-token: ${{ GITHUB_PAT }}
           run-id: ${{ inputs.workflow_id }}
-          ### Optional, run number from the workflow
-          # run_number: 34
-          ### Optional, uploaded artifact name,
-          ### will download all artifacts if not specified and extract them into respective subdirectories
-          ### https://github.com/actions/download-artifact
-          # name: artifact_name
-          name_is_regexp: true
-          ### Optional, a directory where to extract artifact(s), defaults to the current directory
-          # path: extract_here
-          path: ./data/
-          if_no_artifact_found: fail
+          path: ./data
+      - run: |
+          pwd
+          ls -R ./data/Data
       
+      # github.event.inputs.passed_tests == 'true'
+      # github.inputs.passed_tests == 'true'
+      # cp data/tmp_sysdata.rda data/sysdata.rda
+      # ${{ ( github.inputs.passed_tests == 'true' ) || ( github.inputs.passed_tests == 'yes' ) }}
       - name: Update Data
         if: |
-          # github.event.inputs.passed_tests == 'true'
-          github.inputs.passed_tests == 'true'
+          ${{ ( inputs.passed_tests == 'true' ) || 
+            ( inputs.passed_tests == 'yes' ) }}
         run:  |
-          git rm data/sysdata.rda
-          cp data/data/tmp_sysdata.rda data/sysdata.rda
-          # cp data/tmp_sysdata.rda data/sysdata.rda
-
+          rm ./data/sysdata.rda
+          cp ./data/Data/tmp_sysdata.rda ./data/sysdata.rda
+          rm ./data/Data/tmp_sysdata.rda
+          
+      # github.event.inputs.passed_tests == 'true'
       - name: Add SV Data to sysdata
         if: |
-          # github.event.inputs.passed_tests == 'true'
-          github.inputs.passed_tests == 'true'
+          ${{ ( inputs.passed_tests == 'true' ) || 
+            ( inputs.passed_tests == 'yes' ) }}
         run:  |
           Rscript -e '
-            pPath0 <- "."
-            sPath0 <- "./scripts/add_svData_to_sysdata.R"
-            sPath0 |> source()
-            add_svData_to_sysdata(projectDir=pPath0, save=T)
+             ### Libraries
+            require(tidyverse)
+            require(devtools)
+            
+            ###### Set Paths ######
+            ### Project path
+            ### Data output path and file name
+            projectDir  <- "."
+            dataDir     <- projectDir |> file.path("data")
+            svDir       <- dataDir    |> file.path("sv")
+            ghgDir      <- dataDir    |> file.path("methane")
+            
+            
+            ### Filenames
+            dataFile    <- "sysdata.rda"
+            ghgFile     <- "listMethane.rda"
+            
+            dataPath    <- dataDir |> file.path(dataFile) 
+            ghgPath     <- ghgDir  |> file.path(ghgFile )
+            
+  
+            ###### 0. Local Function ###### 
+            projectDir |> devtools::load_all()
+  
+            ###### 1. Add SV Data to sysdata.rda ###### 
+            tmpData     <- projectDir |> update_sysdata(
+              dataPath  = dataDir,
+              mainFile  = dataFile, 
+              sv        = TRUE ,
+              svPath    = svDir,
+              svExt     = "rda", 
+              save      = TRUE ,
+              return    = FALSE
+            ) ### End update_sysdata
+            
+            ###### 2. Save Data List ###### 
+            projectDir |> devtools::load_all()
+            ghgPath    <- ghgDir |> file.path(ghgFile)
+            ghgPath |> load()
+            save(rDataList, listMethane, svDataList, svPopList, format_styles, file=dataPath)
           '
       
       - name: Commit results
         if: |
-          github.event.inputs.passed_tests == 'true'
+          ${{ ( inputs.passed_tests == 'true' ) || 
+            ( inputs.passed_tests == 'yes' ) }}
         run: |
+          # Configure github
           git config --local core.autocrlf false
           git config --local user.email "${{ github.actor }}@users.noreply.github.com"
           git config --local user.name  "${{ github.actor }}"
-          # git rm data/tmp_sysdata.rda*
-          git add data/*.rd*
+          
+          # Navigate to the repository directory (optional, set the path below if needed)
+          # cd /path/to/your/repo
+          
+          # Add data files
+          git add ./data/*.rd*
+          
+          # Rebase files
           git pull origin ${{ github.head_ref }} --autostash --rebase -X ours
-          git commit -a -m "Updated sysdata and added SV data to sysdata"
-          git push
+          
+          # git commit -a -m "Updated sysdata and added SV data to sysdata"
+          # git push
+
+          # Check for staged changes
+          if git diff --cached --quiet; then
+            echo "No changes staged for commit."
+          else
+            echo "Some changes staged for commit."
+            # Commit the changes
+            commit_message="Auto-commit: Updated sysdata and added SV data to sysdata. Date: $(date '+%Y-%m-%d %H:%M:%S')"
+            git commit -m "$commit_message"
+            echo "Changes committed with message: '$commit_message'."
+            git push
+          fi

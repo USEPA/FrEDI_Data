@@ -1,0 +1,540 @@
+state,postal,year,value,scalarName
+Alabama,AL,2000,NA,loss_Pop1417
+Alabama,AL,2010,0.056491321,loss_Pop1417
+Alabama,AL,2020,0.053545782,loss_Pop1417
+Alabama,AL,2030,0.055531799,loss_Pop1417
+Alabama,AL,2040,0.053816503,loss_Pop1417
+Alabama,AL,2050,0.054262148,loss_Pop1417
+Alabama,AL,2060,0.054712985,loss_Pop1417
+Alabama,AL,2070,0.054105029,loss_Pop1417
+Alabama,AL,2080,0.054002553,loss_Pop1417
+Alabama,AL,2090,0.053803516,loss_Pop1417
+Alabama,AL,2300,0.046748029,loss_Pop1417
+Arizona,AZ,2000,NA,loss_Pop1417
+Arizona,AZ,2010,0.057365618,loss_Pop1417
+Arizona,AZ,2020,0.05765,loss_Pop1417
+Arizona,AZ,2030,0.054697835,loss_Pop1417
+Arizona,AZ,2040,0.054396016,loss_Pop1417
+Arizona,AZ,2050,0.054274513,loss_Pop1417
+Arizona,AZ,2060,0.053950479,loss_Pop1417
+Arizona,AZ,2070,0.053691356,loss_Pop1417
+Arizona,AZ,2080,0.05321922,loss_Pop1417
+Arizona,AZ,2090,0.052540825,loss_Pop1417
+Arizona,AZ,2300,0.039875746,loss_Pop1417
+Arkansas,AR,2000,NA,loss_Pop1417
+Arkansas,AR,2010,0.055486962,loss_Pop1417
+Arkansas,AR,2020,0.053895104,loss_Pop1417
+Arkansas,AR,2030,0.053412887,loss_Pop1417
+Arkansas,AR,2040,0.052590847,loss_Pop1417
+Arkansas,AR,2050,0.052451312,loss_Pop1417
+Arkansas,AR,2060,0.052658002,loss_Pop1417
+Arkansas,AR,2070,0.052278323,loss_Pop1417
+Arkansas,AR,2080,0.052077696,loss_Pop1417
+Arkansas,AR,2090,0.051788456,loss_Pop1417
+Arkansas,AR,2300,0.042079879,loss_Pop1417
+California,CA,2000,NA,loss_Pop1417
+California,CA,2010,0.059391008,loss_Pop1417
+California,CA,2020,0.057279404,loss_Pop1417
+California,CA,2030,0.058031406,loss_Pop1417
+California,CA,2040,0.055268755,loss_Pop1417
+California,CA,2050,0.056357893,loss_Pop1417
+California,CA,2060,0.056814199,loss_Pop1417
+California,CA,2070,0.05592892,loss_Pop1417
+California,CA,2080,0.055779567,loss_Pop1417
+California,CA,2090,0.055150343,loss_Pop1417
+California,CA,2300,0.044018596,loss_Pop1417
+Colorado,CO,2000,NA,loss_Pop1417
+Colorado,CO,2010,0.053729434,loss_Pop1417
+Colorado,CO,2020,0.053388218,loss_Pop1417
+Colorado,CO,2030,0.051387816,loss_Pop1417
+Colorado,CO,2040,0.050178272,loss_Pop1417
+Colorado,CO,2050,0.051312956,loss_Pop1417
+Colorado,CO,2060,0.051751835,loss_Pop1417
+Colorado,CO,2070,0.051605562,loss_Pop1417
+Colorado,CO,2080,0.051615851,loss_Pop1417
+Colorado,CO,2090,0.051046499,loss_Pop1417
+Colorado,CO,2300,0.044003794,loss_Pop1417
+Connecticut,CT,2000,NA,loss_Pop1417
+Connecticut,CT,2010,0.055553444,loss_Pop1417
+Connecticut,CT,2020,0.048715496,loss_Pop1417
+Connecticut,CT,2030,0.05238991,loss_Pop1417
+Connecticut,CT,2040,0.05199064,loss_Pop1417
+Connecticut,CT,2050,0.051331274,loss_Pop1417
+Connecticut,CT,2060,0.052971016,loss_Pop1417
+Connecticut,CT,2070,0.052551328,loss_Pop1417
+Connecticut,CT,2080,0.05173355,loss_Pop1417
+Connecticut,CT,2090,0.051868508,loss_Pop1417
+Connecticut,CT,2300,0.042195548,loss_Pop1417
+Delaware,DE,2000,NA,loss_Pop1417
+Delaware,DE,2010,0.055816352,loss_Pop1417
+Delaware,DE,2020,0.054315762,loss_Pop1417
+Delaware,DE,2030,0.054131807,loss_Pop1417
+Delaware,DE,2040,0.052611887,loss_Pop1417
+Delaware,DE,2050,0.052779997,loss_Pop1417
+Delaware,DE,2060,0.0533124,loss_Pop1417
+Delaware,DE,2070,0.052519817,loss_Pop1417
+Delaware,DE,2080,0.052337261,loss_Pop1417
+Delaware,DE,2090,0.052112475,loss_Pop1417
+Delaware,DE,2300,0.042389799,loss_Pop1417
+District of Columbia,DC,2000,NA,loss_Pop1417
+District of Columbia,DC,2010,0.048127793,loss_Pop1417
+District of Columbia,DC,2020,0.060784479,loss_Pop1417
+District of Columbia,DC,2030,0.066080264,loss_Pop1417
+District of Columbia,DC,2040,0.052326325,loss_Pop1417
+District of Columbia,DC,2050,0.062176474,loss_Pop1417
+District of Columbia,DC,2060,0.061191123,loss_Pop1417
+District of Columbia,DC,2070,0.057428534,loss_Pop1417
+District of Columbia,DC,2080,0.060635031,loss_Pop1417
+District of Columbia,DC,2090,0.059041611,loss_Pop1417
+District of Columbia,DC,2300,0.087690382,loss_Pop1417
+Florida,FL,2000,NA,loss_Pop1417
+Florida,FL,2010,0.051230398,loss_Pop1417
+Florida,FL,2020,0.051259657,loss_Pop1417
+Florida,FL,2030,0.052217465,loss_Pop1417
+Florida,FL,2040,0.051238072,loss_Pop1417
+Florida,FL,2050,0.052459911,loss_Pop1417
+Florida,FL,2060,0.052936254,loss_Pop1417
+Florida,FL,2070,0.052721715,loss_Pop1417
+Florida,FL,2080,0.052622072,loss_Pop1417
+Florida,FL,2090,0.052211613,loss_Pop1417
+Florida,FL,2300,0.0547873,loss_Pop1417
+Georgia,GA,2000,NA,loss_Pop1417
+Georgia,GA,2010,0.058211863,loss_Pop1417
+Georgia,GA,2020,0.056243463,loss_Pop1417
+Georgia,GA,2030,0.053591522,loss_Pop1417
+Georgia,GA,2040,0.052547595,loss_Pop1417
+Georgia,GA,2050,0.052468124,loss_Pop1417
+Georgia,GA,2060,0.052528278,loss_Pop1417
+Georgia,GA,2070,0.052344409,loss_Pop1417
+Georgia,GA,2080,0.052052194,loss_Pop1417
+Georgia,GA,2090,0.051695396,loss_Pop1417
+Georgia,GA,2300,0.034589673,loss_Pop1417
+Idaho,ID,2000,NA,loss_Pop1417
+Idaho,ID,2010,0.059075954,loss_Pop1417
+Idaho,ID,2020,0.057192179,loss_Pop1417
+Idaho,ID,2030,0.055306514,loss_Pop1417
+Idaho,ID,2040,0.053499313,loss_Pop1417
+Idaho,ID,2050,0.052458459,loss_Pop1417
+Idaho,ID,2060,0.052436597,loss_Pop1417
+Idaho,ID,2070,0.051622298,loss_Pop1417
+Idaho,ID,2080,0.051114325,loss_Pop1417
+Idaho,ID,2090,0.050830637,loss_Pop1417
+Idaho,ID,2300,0.02918668,loss_Pop1417
+Illinois,IL,2000,NA,loss_Pop1417
+Illinois,IL,2010,0.056670045,loss_Pop1417
+Illinois,IL,2020,0.054801878,loss_Pop1417
+Illinois,IL,2030,0.055606637,loss_Pop1417
+Illinois,IL,2040,0.053707143,loss_Pop1417
+Illinois,IL,2050,0.05410848,loss_Pop1417
+Illinois,IL,2060,0.054650589,loss_Pop1417
+Illinois,IL,2070,0.053874745,loss_Pop1417
+Illinois,IL,2080,0.053687313,loss_Pop1417
+Illinois,IL,2090,0.05337562,loss_Pop1417
+Illinois,IL,2300,0.044727756,loss_Pop1417
+Indiana,IN,2000,NA,loss_Pop1417
+Indiana,IN,2010,0.05795106,loss_Pop1417
+Indiana,IN,2020,0.055137525,loss_Pop1417
+Indiana,IN,2030,0.05699432,loss_Pop1417
+Indiana,IN,2040,0.055334478,loss_Pop1417
+Indiana,IN,2050,0.055321567,loss_Pop1417
+Indiana,IN,2060,0.056521275,loss_Pop1417
+Indiana,IN,2070,0.055730205,loss_Pop1417
+Indiana,IN,2080,0.055694889,loss_Pop1417
+Indiana,IN,2090,0.055835865,loss_Pop1417
+Indiana,IN,2300,0.050283476,loss_Pop1417
+Iowa,IA,2000,NA,loss_Pop1417
+Iowa,IA,2010,0.056373952,loss_Pop1417
+Iowa,IA,2020,0.054559722,loss_Pop1417
+Iowa,IA,2030,0.059873658,loss_Pop1417
+Iowa,IA,2040,0.056188008,loss_Pop1417
+Iowa,IA,2050,0.056825633,loss_Pop1417
+Iowa,IA,2060,0.058995424,loss_Pop1417
+Iowa,IA,2070,0.057245537,loss_Pop1417
+Iowa,IA,2080,0.057637506,loss_Pop1417
+Iowa,IA,2090,0.05812225,loss_Pop1417
+Iowa,IA,2300,0.062711534,loss_Pop1417
+Kansas,KS,2000,NA,loss_Pop1417
+Kansas,KS,2010,0.05680443,loss_Pop1417
+Kansas,KS,2020,0.05540677,loss_Pop1417
+Kansas,KS,2030,0.057957264,loss_Pop1417
+Kansas,KS,2040,0.054241523,loss_Pop1417
+Kansas,KS,2050,0.054563377,loss_Pop1417
+Kansas,KS,2060,0.05588255,loss_Pop1417
+Kansas,KS,2070,0.054284398,loss_Pop1417
+Kansas,KS,2080,0.054469187,loss_Pop1417
+Kansas,KS,2090,0.054645892,loss_Pop1417
+Kansas,KS,2300,0.048979731,loss_Pop1417
+Kentucky,KY,2000,NA,loss_Pop1417
+Kentucky,KY,2010,0.054134167,loss_Pop1417
+Kentucky,KY,2020,0.052810926,loss_Pop1417
+Kentucky,KY,2030,0.05259314,loss_Pop1417
+Kentucky,KY,2040,0.051712697,loss_Pop1417
+Kentucky,KY,2050,0.052298011,loss_Pop1417
+Kentucky,KY,2060,0.052654289,loss_Pop1417
+Kentucky,KY,2070,0.052296655,loss_Pop1417
+Kentucky,KY,2080,0.052346834,loss_Pop1417
+Kentucky,KY,2090,0.052076999,loss_Pop1417
+Kentucky,KY,2300,0.046676933,loss_Pop1417
+Louisiana,LA,2000,NA,loss_Pop1417
+Louisiana,LA,2010,0.056786559,loss_Pop1417
+Louisiana,LA,2020,0.054253635,loss_Pop1417
+Louisiana,LA,2030,0.054627585,loss_Pop1417
+Louisiana,LA,2040,0.052197141,loss_Pop1417
+Louisiana,LA,2050,0.052026895,loss_Pop1417
+Louisiana,LA,2060,0.051979528,loss_Pop1417
+Louisiana,LA,2070,0.051024171,loss_Pop1417
+Louisiana,LA,2080,0.050787242,loss_Pop1417
+Louisiana,LA,2090,0.050438874,loss_Pop1417
+Louisiana,LA,2300,0.033776201,loss_Pop1417
+Maine,ME,2000,NA,loss_Pop1417
+Maine,ME,2010,0.051784567,loss_Pop1417
+Maine,ME,2020,0.046717279,loss_Pop1417
+Maine,ME,2030,0.051429472,loss_Pop1417
+Maine,ME,2040,0.050040554,loss_Pop1417
+Maine,ME,2050,0.05013661,loss_Pop1417
+Maine,ME,2060,0.052689731,loss_Pop1417
+Maine,ME,2070,0.051725305,loss_Pop1417
+Maine,ME,2080,0.051545362,loss_Pop1417
+Maine,ME,2090,0.05200689,loss_Pop1417
+Maine,ME,2300,0.052590487,loss_Pop1417
+Maryland,MD,2000,NA,loss_Pop1417
+Maryland,MD,2010,0.05534728,loss_Pop1417
+Maryland,MD,2020,0.052035153,loss_Pop1417
+Maryland,MD,2030,0.052758382,loss_Pop1417
+Maryland,MD,2040,0.051545343,loss_Pop1417
+Maryland,MD,2050,0.051861686,loss_Pop1417
+Maryland,MD,2060,0.052638613,loss_Pop1417
+Maryland,MD,2070,0.052139582,loss_Pop1417
+Maryland,MD,2080,0.051802945,loss_Pop1417
+Maryland,MD,2090,0.051652643,loss_Pop1417
+Maryland,MD,2300,0.041954219,loss_Pop1417
+Massachusetts,MA,2000,NA,loss_Pop1417
+Massachusetts,MA,2010,0.054794827,loss_Pop1417
+Massachusetts,MA,2020,0.053774765,loss_Pop1417
+Massachusetts,MA,2030,0.057011749,loss_Pop1417
+Massachusetts,MA,2040,0.053537129,loss_Pop1417
+Massachusetts,MA,2050,0.055271107,loss_Pop1417
+Massachusetts,MA,2060,0.056500669,loss_Pop1417
+Massachusetts,MA,2070,0.055230636,loss_Pop1417
+Massachusetts,MA,2080,0.055453303,loss_Pop1417
+Massachusetts,MA,2090,0.055304784,loss_Pop1417
+Massachusetts,MA,2300,0.056643421,loss_Pop1417
+Michigan,MI,2000,NA,loss_Pop1417
+Michigan,MI,2010,0.058561683,loss_Pop1417
+Michigan,MI,2020,0.052835808,loss_Pop1417
+Michigan,MI,2030,0.056438847,loss_Pop1417
+Michigan,MI,2040,0.054639097,loss_Pop1417
+Michigan,MI,2050,0.054201555,loss_Pop1417
+Michigan,MI,2060,0.055516248,loss_Pop1417
+Michigan,MI,2070,0.05462074,loss_Pop1417
+Michigan,MI,2080,0.054240545,loss_Pop1417
+Michigan,MI,2090,0.054356694,loss_Pop1417
+Michigan,MI,2300,0.043318596,loss_Pop1417
+Minnesota,MN,2000,NA,loss_Pop1417
+Minnesota,MN,2010,0.054896289,loss_Pop1417
+Minnesota,MN,2020,0.052708949,loss_Pop1417
+Minnesota,MN,2030,0.054201163,loss_Pop1417
+Minnesota,MN,2040,0.052511369,loss_Pop1417
+Minnesota,MN,2050,0.052379426,loss_Pop1417
+Minnesota,MN,2060,0.053733208,loss_Pop1417
+Minnesota,MN,2070,0.052843825,loss_Pop1417
+Minnesota,MN,2080,0.052757452,loss_Pop1417
+Minnesota,MN,2090,0.052954655,loss_Pop1417
+Minnesota,MN,2300,0.047857863,loss_Pop1417
+Mississippi,MS,2000,NA,loss_Pop1417
+Mississippi,MS,2010,0.05945516,loss_Pop1417
+Mississippi,MS,2020,0.056425903,loss_Pop1417
+Mississippi,MS,2030,0.056726901,loss_Pop1417
+Mississippi,MS,2040,0.054202584,loss_Pop1417
+Mississippi,MS,2050,0.053890562,loss_Pop1417
+Mississippi,MS,2060,0.053670756,loss_Pop1417
+Mississippi,MS,2070,0.052752288,loss_Pop1417
+Mississippi,MS,2080,0.052405548,loss_Pop1417
+Mississippi,MS,2090,0.051989434,loss_Pop1417
+Mississippi,MS,2300,0.032391902,loss_Pop1417
+Missouri,MO,2000,NA,loss_Pop1417
+Missouri,MO,2010,0.055767765,loss_Pop1417
+Missouri,MO,2020,0.053192274,loss_Pop1417
+Missouri,MO,2030,0.054373427,loss_Pop1417
+Missouri,MO,2040,0.052123439,loss_Pop1417
+Missouri,MO,2050,0.052263844,loss_Pop1417
+Missouri,MO,2060,0.053031752,loss_Pop1417
+Missouri,MO,2070,0.052109067,loss_Pop1417
+Missouri,MO,2080,0.052112097,loss_Pop1417
+Missouri,MO,2090,0.052036382,loss_Pop1417
+Missouri,MO,2300,0.042241499,loss_Pop1417
+Montana,MT,2000,NA,loss_Pop1417
+Montana,MT,2010,0.052819456,loss_Pop1417
+Montana,MT,2020,0.04970031,loss_Pop1417
+Montana,MT,2030,0.052803362,loss_Pop1417
+Montana,MT,2040,0.050709671,loss_Pop1417
+Montana,MT,2050,0.050542989,loss_Pop1417
+Montana,MT,2060,0.052049129,loss_Pop1417
+Montana,MT,2070,0.050837545,loss_Pop1417
+Montana,MT,2080,0.050597289,loss_Pop1417
+Montana,MT,2090,0.050817016,loss_Pop1417
+Montana,MT,2300,0.04556061,loss_Pop1417
+Nebraska,NE,2000,NA,loss_Pop1417
+Nebraska,NE,2010,0.055880049,loss_Pop1417
+Nebraska,NE,2020,0.055031845,loss_Pop1417
+Nebraska,NE,2030,0.054717173,loss_Pop1417
+Nebraska,NE,2040,0.053139536,loss_Pop1417
+Nebraska,NE,2050,0.052287772,loss_Pop1417
+Nebraska,NE,2060,0.053229494,loss_Pop1417
+Nebraska,NE,2070,0.052292924,loss_Pop1417
+Nebraska,NE,2080,0.051828446,loss_Pop1417
+Nebraska,NE,2090,0.052017524,loss_Pop1417
+Nebraska,NE,2300,0.041878397,loss_Pop1417
+Nevada,NV,2000,NA,loss_Pop1417
+Nevada,NV,2010,0.054135099,loss_Pop1417
+Nevada,NV,2020,0.052113895,loss_Pop1417
+Nevada,NV,2030,0.049269287,loss_Pop1417
+Nevada,NV,2040,0.049880758,loss_Pop1417
+Nevada,NV,2050,0.050049223,loss_Pop1417
+Nevada,NV,2060,0.050193915,loss_Pop1417
+Nevada,NV,2070,0.05018081,loss_Pop1417
+Nevada,NV,2080,0.049858929,loss_Pop1417
+Nevada,NV,2090,0.049274815,loss_Pop1417
+Nevada,NV,2300,0.036516568,loss_Pop1417
+New Hampshire,NH,2000,NA,loss_Pop1417
+New Hampshire,NH,2010,0.055524243,loss_Pop1417
+New Hampshire,NH,2020,0.048300555,loss_Pop1417
+New Hampshire,NH,2030,0.053142759,loss_Pop1417
+New Hampshire,NH,2040,0.051438883,loss_Pop1417
+New Hampshire,NH,2050,0.05082375,loss_Pop1417
+New Hampshire,NH,2060,0.053434261,loss_Pop1417
+New Hampshire,NH,2070,0.052429607,loss_Pop1417
+New Hampshire,NH,2080,0.051942031,loss_Pop1417
+New Hampshire,NH,2090,0.052496264,loss_Pop1417
+New Hampshire,NH,2300,0.04454782,loss_Pop1417
+New Jersey,NJ,2000,NA,loss_Pop1417
+New Jersey,NJ,2010,0.054177905,loss_Pop1417
+New Jersey,NJ,2020,0.050319449,loss_Pop1417
+New Jersey,NJ,2030,0.050320347,loss_Pop1417
+New Jersey,NJ,2040,0.051488781,loss_Pop1417
+New Jersey,NJ,2050,0.051447091,loss_Pop1417
+New Jersey,NJ,2060,0.052125405,loss_Pop1417
+New Jersey,NJ,2070,0.05249194,loss_Pop1417
+New Jersey,NJ,2080,0.051801144,loss_Pop1417
+New Jersey,NJ,2090,0.051590635,loss_Pop1417
+New Jersey,NJ,2300,0.044799053,loss_Pop1417
+New Mexico,NM,2000,NA,loss_Pop1417
+New Mexico,NM,2010,0.057428131,loss_Pop1417
+New Mexico,NM,2020,0.05609369,loss_Pop1417
+New Mexico,NM,2030,0.058187433,loss_Pop1417
+New Mexico,NM,2040,0.054340175,loss_Pop1417
+New Mexico,NM,2050,0.056045578,loss_Pop1417
+New Mexico,NM,2060,0.05557733,loss_Pop1417
+New Mexico,NM,2070,0.054448966,loss_Pop1417
+New Mexico,NM,2080,0.054177391,loss_Pop1417
+New Mexico,NM,2090,0.053134421,loss_Pop1417
+New Mexico,NM,2300,0.041863434,loss_Pop1417
+New York,NY,2000,NA,loss_Pop1417
+New York,NY,2010,0.054807122,loss_Pop1417
+New York,NY,2020,0.053116678,loss_Pop1417
+New York,NY,2030,0.056303324,loss_Pop1417
+New York,NY,2040,0.053569539,loss_Pop1417
+New York,NY,2050,0.054776811,loss_Pop1417
+New York,NY,2060,0.055425091,loss_Pop1417
+New York,NY,2070,0.054409421,loss_Pop1417
+New York,NY,2080,0.054156431,loss_Pop1417
+New York,NY,2090,0.05377932,loss_Pop1417
+New York,NY,2300,0.051081338,loss_Pop1417
+North Carolina,NC,2000,NA,loss_Pop1417
+North Carolina,NC,2010,0.054740321,loss_Pop1417
+North Carolina,NC,2020,0.053928211,loss_Pop1417
+North Carolina,NC,2030,0.051821449,loss_Pop1417
+North Carolina,NC,2040,0.051463418,loss_Pop1417
+North Carolina,NC,2050,0.051701842,loss_Pop1417
+North Carolina,NC,2060,0.051830248,loss_Pop1417
+North Carolina,NC,2070,0.051830526,loss_Pop1417
+North Carolina,NC,2080,0.051521996,loss_Pop1417
+North Carolina,NC,2090,0.051133599,loss_Pop1417
+North Carolina,NC,2300,0.041665952,loss_Pop1417
+North Dakota,ND,2000,NA,loss_Pop1417
+North Dakota,ND,2010,0.054184125,loss_Pop1417
+North Dakota,ND,2020,0.053699588,loss_Pop1417
+North Dakota,ND,2030,0.059758572,loss_Pop1417
+North Dakota,ND,2040,0.05409113,loss_Pop1417
+North Dakota,ND,2050,0.055148068,loss_Pop1417
+North Dakota,ND,2060,0.057508453,loss_Pop1417
+North Dakota,ND,2070,0.05532584,loss_Pop1417
+North Dakota,ND,2080,0.055863695,loss_Pop1417
+North Dakota,ND,2090,0.056657233,loss_Pop1417
+North Dakota,ND,2300,0.063149139,loss_Pop1417
+Ohio,OH,2000,NA,loss_Pop1417
+Ohio,OH,2010,0.056269126,loss_Pop1417
+Ohio,OH,2020,0.052173968,loss_Pop1417
+Ohio,OH,2030,0.054399964,loss_Pop1417
+Ohio,OH,2040,0.053414767,loss_Pop1417
+Ohio,OH,2050,0.053020753,loss_Pop1417
+Ohio,OH,2060,0.054092271,loss_Pop1417
+Ohio,OH,2070,0.053444824,loss_Pop1417
+Ohio,OH,2080,0.053133432,loss_Pop1417
+Ohio,OH,2090,0.053206561,loss_Pop1417
+Ohio,OH,2300,0.045167329,loss_Pop1417
+Oklahoma,OK,2000,NA,loss_Pop1417
+Oklahoma,OK,2010,0.055826074,loss_Pop1417
+Oklahoma,OK,2020,0.055211476,loss_Pop1417
+Oklahoma,OK,2030,0.054734209,loss_Pop1417
+Oklahoma,OK,2040,0.052411286,loss_Pop1417
+Oklahoma,OK,2050,0.05260886,loss_Pop1417
+Oklahoma,OK,2060,0.052666278,loss_Pop1417
+Oklahoma,OK,2070,0.051694344,loss_Pop1417
+Oklahoma,OK,2080,0.051538554,loss_Pop1417
+Oklahoma,OK,2090,0.051129368,loss_Pop1417
+Oklahoma,OK,2300,0.038800516,loss_Pop1417
+Oregon,OR,2000,NA,loss_Pop1417
+Oregon,OR,2010,0.05257725,loss_Pop1417
+Oregon,OR,2020,0.051037777,loss_Pop1417
+Oregon,OR,2030,0.053451283,loss_Pop1417
+Oregon,OR,2040,0.051495128,loss_Pop1417
+Oregon,OR,2050,0.052462375,loss_Pop1417
+Oregon,OR,2060,0.05368692,loss_Pop1417
+Oregon,OR,2070,0.052588569,loss_Pop1417
+Oregon,OR,2080,0.052759271,loss_Pop1417
+Oregon,OR,2090,0.052628511,loss_Pop1417
+Oregon,OR,2300,0.052763069,loss_Pop1417
+Pennsylvania,PA,2000,NA,loss_Pop1417
+Pennsylvania,PA,2010,0.055207752,loss_Pop1417
+Pennsylvania,PA,2020,0.051241039,loss_Pop1417
+Pennsylvania,PA,2030,0.056336499,loss_Pop1417
+Pennsylvania,PA,2040,0.054162458,loss_Pop1417
+Pennsylvania,PA,2050,0.054330197,loss_Pop1417
+Pennsylvania,PA,2060,0.056405335,loss_Pop1417
+Pennsylvania,PA,2070,0.055228757,loss_Pop1417
+Pennsylvania,PA,2080,0.055108377,loss_Pop1417
+Pennsylvania,PA,2090,0.055461963,loss_Pop1417
+Pennsylvania,PA,2300,0.056129267,loss_Pop1417
+Rhode Island,RI,2000,NA,loss_Pop1417
+Rhode Island,RI,2010,0.057756322,loss_Pop1417
+Rhode Island,RI,2020,0.054359459,loss_Pop1417
+Rhode Island,RI,2030,0.060342571,loss_Pop1417
+Rhode Island,RI,2040,0.05497324,loss_Pop1417
+Rhode Island,RI,2050,0.056094492,loss_Pop1417
+Rhode Island,RI,2060,0.058429727,loss_Pop1417
+Rhode Island,RI,2070,0.056325846,loss_Pop1417
+Rhode Island,RI,2080,0.056463602,loss_Pop1417
+Rhode Island,RI,2090,0.056665941,loss_Pop1417
+Rhode Island,RI,2300,0.053803691,loss_Pop1417
+South Carolina,SC,2000,NA,loss_Pop1417
+South Carolina,SC,2010,0.055530894,loss_Pop1417
+South Carolina,SC,2020,0.053142825,loss_Pop1417
+South Carolina,SC,2030,0.053182704,loss_Pop1417
+South Carolina,SC,2040,0.05161938,loss_Pop1417
+South Carolina,SC,2050,0.05188405,loss_Pop1417
+South Carolina,SC,2060,0.051862535,loss_Pop1417
+South Carolina,SC,2070,0.051439091,loss_Pop1417
+South Carolina,SC,2080,0.051101584,loss_Pop1417
+South Carolina,SC,2090,0.050696896,loss_Pop1417
+South Carolina,SC,2300,0.03800765,loss_Pop1417
+South Dakota,SD,2000,NA,loss_Pop1417
+South Dakota,SD,2010,0.055825197,loss_Pop1417
+South Dakota,SD,2020,0.054735248,loss_Pop1417
+South Dakota,SD,2030,0.057049303,loss_Pop1417
+South Dakota,SD,2040,0.05332135,loss_Pop1417
+South Dakota,SD,2050,0.052864655,loss_Pop1417
+South Dakota,SD,2060,0.053938843,loss_Pop1417
+South Dakota,SD,2070,0.052409677,loss_Pop1417
+South Dakota,SD,2080,0.052258492,loss_Pop1417
+South Dakota,SD,2090,0.052477377,loss_Pop1417
+South Dakota,SD,2300,0.043689348,loss_Pop1417
+Tennessee,TN,2000,NA,loss_Pop1417
+Tennessee,TN,2010,0.054537358,loss_Pop1417
+Tennessee,TN,2020,0.052803743,loss_Pop1417
+Tennessee,TN,2030,0.051986692,loss_Pop1417
+Tennessee,TN,2040,0.051494927,loss_Pop1417
+Tennessee,TN,2050,0.051897429,loss_Pop1417
+Tennessee,TN,2060,0.052146954,loss_Pop1417
+Tennessee,TN,2070,0.051947406,loss_Pop1417
+Tennessee,TN,2080,0.051836844,loss_Pop1417
+Tennessee,TN,2090,0.051472598,loss_Pop1417
+Tennessee,TN,2300,0.043427603,loss_Pop1417
+Texas,TX,2000,NA,loss_Pop1417
+Texas,TX,2010,0.059901363,loss_Pop1417
+Texas,TX,2020,0.059945826,loss_Pop1417
+Texas,TX,2030,0.057200202,loss_Pop1417
+Texas,TX,2040,0.055967914,loss_Pop1417
+Texas,TX,2050,0.056162385,loss_Pop1417
+Texas,TX,2060,0.055836354,loss_Pop1417
+Texas,TX,2070,0.055451908,loss_Pop1417
+Texas,TX,2080,0.054982645,loss_Pop1417
+Texas,TX,2090,0.054298537,loss_Pop1417
+Texas,TX,2300,0.039591116,loss_Pop1417
+Utah,UT,2000,NA,loss_Pop1417
+Utah,UT,2010,0.064490456,loss_Pop1417
+Utah,UT,2020,0.066714333,loss_Pop1417
+Utah,UT,2030,0.056587124,loss_Pop1417
+Utah,UT,2040,0.054271265,loss_Pop1417
+Utah,UT,2050,0.052839304,loss_Pop1417
+Utah,UT,2060,0.050699141,loss_Pop1417
+Utah,UT,2070,0.050402613,loss_Pop1417
+Utah,UT,2080,0.050111172,loss_Pop1417
+Utah,UT,2090,0.049392749,loss_Pop1417
+Utah,UT,2300,0.009761268,loss_Pop1417
+Vermont,VT,2000,NA,loss_Pop1417
+Vermont,VT,2010,0.056148791,loss_Pop1417
+Vermont,VT,2020,0.050150002,loss_Pop1417
+Vermont,VT,2030,0.05784903,loss_Pop1417
+Vermont,VT,2040,0.05452815,loss_Pop1417
+Vermont,VT,2050,0.054732849,loss_Pop1417
+Vermont,VT,2060,0.058218569,loss_Pop1417
+Vermont,VT,2070,0.056416523,loss_Pop1417
+Vermont,VT,2080,0.056380689,loss_Pop1417
+Vermont,VT,2090,0.057232562,loss_Pop1417
+Vermont,VT,2300,0.060077462,loss_Pop1417
+Virginia,VA,2000,NA,loss_Pop1417
+Virginia,VA,2010,0.054096601,loss_Pop1417
+Virginia,VA,2020,0.054765442,loss_Pop1417
+Virginia,VA,2030,0.057651439,loss_Pop1417
+Virginia,VA,2040,0.052735286,loss_Pop1417
+Virginia,VA,2050,0.054719867,loss_Pop1417
+Virginia,VA,2060,0.056051322,loss_Pop1417
+Virginia,VA,2070,0.054604294,loss_Pop1417
+Virginia,VA,2080,0.055234045,loss_Pop1417
+Virginia,VA,2090,0.055166275,loss_Pop1417
+Virginia,VA,2300,0.057974168,loss_Pop1417
+Washington,WA,2000,NA,loss_Pop1417
+Washington,WA,2010,0.054267447,loss_Pop1417
+Washington,WA,2020,0.051424619,loss_Pop1417
+Washington,WA,2030,0.053423879,loss_Pop1417
+Washington,WA,2040,0.051697673,loss_Pop1417
+Washington,WA,2050,0.052294971,loss_Pop1417
+Washington,WA,2060,0.05344911,loss_Pop1417
+Washington,WA,2070,0.052558315,loss_Pop1417
+Washington,WA,2080,0.05254359,loss_Pop1417
+Washington,WA,2090,0.052449128,loss_Pop1417
+Washington,WA,2300,0.04767604,loss_Pop1417
+West Virginia,WV,2000,NA,loss_Pop1417
+West Virginia,WV,2010,0.050655425,loss_Pop1417
+West Virginia,WV,2020,0.051881431,loss_Pop1417
+West Virginia,WV,2030,0.057034993,loss_Pop1417
+West Virginia,WV,2040,0.054769179,loss_Pop1417
+West Virginia,WV,2050,0.056892107,loss_Pop1417
+West Virginia,WV,2060,0.059041014,loss_Pop1417
+West Virginia,WV,2070,0.057699865,loss_Pop1417
+West Virginia,WV,2080,0.05842064,loss_Pop1417
+West Virginia,WV,2090,0.058461622,loss_Pop1417
+West Virginia,WV,2300,0.078952887,loss_Pop1417
+Wisconsin,WI,2000,NA,loss_Pop1417
+Wisconsin,WI,2010,0.055338767,loss_Pop1417
+Wisconsin,WI,2020,0.051799842,loss_Pop1417
+Wisconsin,WI,2030,0.054855023,loss_Pop1417
+Wisconsin,WI,2040,0.053161842,loss_Pop1417
+Wisconsin,WI,2050,0.052931631,loss_Pop1417
+Wisconsin,WI,2060,0.054480292,loss_Pop1417
+Wisconsin,WI,2070,0.05361796,loss_Pop1417
+Wisconsin,WI,2080,0.053323538,loss_Pop1417
+Wisconsin,WI,2090,0.053486455,loss_Pop1417
+Wisconsin,WI,2300,0.048624135,loss_Pop1417
+Wyoming,WY,2000,NA,loss_Pop1417
+Wyoming,WY,2010,0.053361981,loss_Pop1417
+Wyoming,WY,2020,0.05212852,loss_Pop1417
+Wyoming,WY,2030,0.053771736,loss_Pop1417
+Wyoming,WY,2040,0.049921805,loss_Pop1417
+Wyoming,WY,2050,0.050397225,loss_Pop1417
+Wyoming,WY,2060,0.050774701,loss_Pop1417
+Wyoming,WY,2070,0.049370681,loss_Pop1417
+Wyoming,WY,2080,0.0490867,loss_Pop1417
+Wyoming,WY,2090,0.048380911,loss_Pop1417
+Wyoming,WY,2300,0.035305602,loss_Pop1417
