@@ -50,7 +50,8 @@ format_gcamData <- function(
   ### Calculate temp_C_conus
   # df0 |> pull(scenario) |> unique() |> print()
   # groups0 <- df0 |> group_keys()
-  df0     <- group_map(format_gcamData_byScenario, 
+  df0     <- df0 |> group_map(
+    format_tempData_byScenario, 
     tempType0 = tempType0,
     minYr0    = minYr0,
     maxYr0    = maxYr0,
@@ -71,21 +72,21 @@ format_gcamData <- function(
 ### scenCol0  = Scenario column
 ### tempCol0  = Temperature column
 ### tempType0 = Temperature type
-format_gcamData_byScenario <- function(
+format_tempData_byScenario <- function(
     .x,       ### Data, filtered to a scenario
     .y,       ### Group info
     tempType0 = "global",
     minYr0    = "minYear0" |> get_frediDataObj("fredi_config", "rDataList"),
     maxYr0    = "npdYear0" |> get_frediDataObj("fredi_config", "rDataList"),
-    scenCol0  = "scenario",
+    # scenCol0  = "scenario",
     tempCol0  = "temp_C_global",
     yrCol0    = "year",
     rule      = 1
 ){
-  ### Import Functions to Namespace
-  convertTemps       <- utils::getFromNamespace("convertTemps"      , "FrEDI")
-  temps2slr          <- utils::getFromNamespace("temps2slr"         , "FrEDI")
-  interpolate_annual <- utils::getFromNamespace("interpolate_annual", "FrEDI")
+  # ### Import Functions to Namespace
+  # convertTemps       <- utils::getFromNamespace("convertTemps"      , "FrEDI")
+  # temps2slr          <- utils::getFromNamespace("temps2slr"         , "FrEDI")
+  # interpolate_annual <- utils::getFromNamespace("interpolate_annual", "FrEDI")
   ### Sort data
   df0       <- df0 |> arrange_at(c(yrCol))
   ### Values and columns
@@ -96,7 +97,6 @@ format_gcamData_byScenario <- function(
   tempType2 <- case_when(doGlobal ~ conusStr, .default = globalStr)
   select0   <- c(yrCol0) |> c(tempColX |> paste0(c(conusStr0, globalStr0)))
   ### Interpolate values, convert temperatures, calculate slr_cm
-  # scenario0 <- .y |> pull(all_of(scenCol0)) |> unique()
   .y |> glimpse()
   x0        <- .x |> pull(all_of(yrCol0  ))
   y0        <- .x |> pull(all_of(tempCol0))

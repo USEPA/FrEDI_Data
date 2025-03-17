@@ -19,13 +19,13 @@ reshapeScaledImpacts <- function(
     silent     = TRUE , ### Level of messaging
     msg0       = ""     ### Prefix for messaging
 ) {
-  ###### Messaging ######
+  ### Messaging ----------------
   msgN       <- "\n"
   msg1       <- msg0 |> paste("\t")  
   if (!silent) paste0(msg0, "Running reshapeScaledImpacts...") |> message()
   if (!silent) paste0(msg1, "Reshaping ", type0 |> toupper(), " scaled impacts...") |> message()
   
-  ###### Values & Columns ######
+  ### Values & Columns ----------------
   ### Model Types
   naStr0     <- "NA"
   pattern0   <- " |\\.|\\-"
@@ -38,6 +38,7 @@ reshapeScaledImpacts <- function(
   mainCols0  <- c("sector", "variant", "impactType", "impactYear")
   # regCols0   <- c("region", "state", "postal")
   regCols0   <- c("region", "postal")
+  stateCol0  <- "state"
   mTypeCol0  <- "model_type"
   modCol0    <- "model"
   yrCol0     <- "year"
@@ -47,7 +48,7 @@ reshapeScaledImpacts <- function(
   idCol0     <- "scenario_id"
   
   
-  ###### Assign Objects ######
+  ### Assign Objects ----------------
   ### Assign tables in dataList to object in local environment
   dfSectInfo <- frediData[["co_sectorsInfo"]] |> filter_at(c(mTypeCol0), function(x, y=type0){(x |> tolower()) %in% y})
   co_sectors <- frediData[["co_sectors"]] |> filter_at(c(mTypeCol0), function(x, y=type0){(x |> tolower()) %in% y})
@@ -60,21 +61,18 @@ reshapeScaledImpacts <- function(
   # co_models |> glimpse()
   
   ### Standardize region
-  co_states  <- co_states |> 
-    # mutate_at(c(mutate0), function(x){x |> str_replace_all(" ", "")})|> 
-    # mutate_at(c(mutate0), function(x){x |> str_replace_all("\\.", "")})
-    mutate_at(c(mutate0), function(x){x |> str_replace_all(pattern0, replace0)})
+  # co_states  <- co_states |> mutate_at(c(mutate0), function(x){x |> str_replace_all(pattern0, replace0)})
+  co_states  <- co_states |> select(-any_of(stateCol0))
   
 
-  ###### Standardize Region ######
+  ### Standardize Region ----------------
   ### Join with state info & relocate columns
   ### Mutate special characters in model
   # select0    <- mainCols0 |> c(regCols0, mTypeCol0, modCol0, xCol0, yCol0)
   join0      <- impacts |> names() |> get_matches(y=regCols0)
   impacts    <- impacts |> 
+    select(-any_of(stateCol0)) |>
     mutate_at(c(mTypeCol0), function(x, y=type0){y})
-    # mutate_at(c(modCol0), function(x){x |> str_replace_all(" ", "")}) |> 
-    # mutate_at(c(modCol0), function(x){x |> str_replace_all("\\.|\\-", "")}) |> 
     mutate_at(c(mutate0), function(x){x |> str_replace_all(pattern0, replace0)}) |>
     mutate_at(c(mainCols0, modCol0, mTypeCol0), as.character) |> 
     mutate_at(c(mainCols0), replace_na, naStr0) |> 
@@ -84,7 +82,7 @@ reshapeScaledImpacts <- function(
   rm(join0)
   
   
-  ###### Filter to Models & Sectors ######
+  ### Filter to Models & Sectors ----------------
   # ### Filter to unique models and sectors
   # models0   <- co_models  |> pull(model ) |> unique()
   # sectors0  <- co_sectors |> pull(sector) |> unique()
@@ -95,7 +93,7 @@ reshapeScaledImpacts <- function(
   # impacts    <- impacts |> filter(sector %in% sectors0)
   # rm(filter0, filter1)
   
-  ###### Format SLR Values ######
+  ### Format SLR Values ----------------
   if(doSlr) {
     ### Zero out values 
     impacts  <- impacts |> (function(dfX, minX=30, newX=0, unitX="cm"){
@@ -110,7 +108,7 @@ reshapeScaledImpacts <- function(
     })
   } ### End if doSlr
   
-  ###### Select & Arrange ######
+  ### Select & Arrange ----------------
   ### Replace NA values in impactYear, impactType
   select0    <- mainCols0 |> c(regCols0, mTypeCol0, modCol0, xCol0, yCol0)
   sort0      <- select0   |> get_matches(y=select0, matches=F)
@@ -118,7 +116,7 @@ reshapeScaledImpacts <- function(
     select(all_of(select0)) |>
     arrange_at(vars(sort0))
   
-  ##### Select columns ######
+  ### Select columns ----------------
   # col0       <- doGcm  |> ifelse("modelUnitValue", "year")
   # cols0      <- c("sector", "variant", "impactType", "impactYear", "modelType", "model")
   # cols0      <- cols0   |> c("region") |> c(stateCols0) |> c(col0)
@@ -127,7 +125,7 @@ reshapeScaledImpacts <- function(
   #   select(all_of(select0))
   # impacts    <- impacts |> arrange_at(vars(cols0))
   
-  ###### Standardize Data ######
+  ### Standardize Data ----------------
   impacts    <- impacts |> standardize_scaledImpacts(
     df1    = dfSectInfo,
     maxYr0 = maxYr0, 
@@ -152,7 +150,7 @@ reshapeScaledImpacts <- function(
   # } ### End if(doSlr)
   
   
-  ###### Return ######
+  ### Return ----------------
   ### Return the list of dataframes
   if (!silent) paste0(msg0, "...Finished running reshapeScaledImpacts().", msgN) |> message()
   return(impacts)

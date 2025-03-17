@@ -9,22 +9,35 @@
 #'
 #' @examples
 reshapeScenarioData <- function(
-    scenarioData = NULL, ### List with scenario data
+    # dfInfo, ### Table with scenario info
+    # scenarioData = NULL, ### List with scenario data
+    scenarioList = NULL, ### List of scenarios by type, output of loadScenarioData
+    inputInfo    = NULL, ### List with input info
+    path0        = "." |> file.path("scenarios"), ### Path relative to other data
+    popRatioName = "state_population_ratios", ### File name for popRatio
     silent       = TRUE, ### Level of messaging
     msg0         = "\t"  ### Prefix for messaging
 ) {
-  ###### Messaging ######
+  ### Messaging ----------------
   msgN          <- "\n"
   msg1          <- msg0 |> paste("\t")  
   if (!silent) paste0(msg0, "In reshapeScenarioData:"   ) |> message()
   if (!silent) paste0(msg1, "Reshaping scenario data...") |> message()
   
-  ###### Get Unique Values for Data ######
-  ### Add region to scalar data frame
-  gcamData   <- scenarioData[["gcamData"     ]]
-  gdpData    <- scenarioData[["gdpData"      ]]
-  popData    <- scenarioData[["popData"      ]]
-  ratiosData <- scenarioData[["popRatiosData"]]
+  ### Get Unique Values for Data ----------------
+  dfFiles     <- dataList[["co_scenarios"]]
+  dfInfo      <- dataList[["co_inputInfo"]]
+  types0      <- dfInfo |> pull(inputName) |> unique()
+  
+  ### Join file paths and info
+  join0       <- "inputName"
+  dfFiles     <- dfFiles |> left_join(dfInfo, by=join0)
+  
+  # ### Add region to scalar data frame
+  # gcamData   <- scenarioData[["gcamData"     ]]
+  # gdpData    <- scenarioData[["gdpData"      ]]
+  # popData    <- scenarioData[["popData"      ]]
+  # ratiosData <- scenarioData[["popRatiosData"]]
   # ratiosData |> glimpse()
   
   ### Replace data with NA values
@@ -45,7 +58,7 @@ reshapeScenarioData <- function(
   scenarioData[["popRatiosData"]] <- ratiosData
   # scenarioData[["popRatiosData"]] |> dim() |> print()
   
-  ###### GCAM Scenarios ######
+  ### GCAM Scenarios ----------------
   ### Get reference years and add to fredi_config
   if(msgUser) msg2 |> paste0("Formatting GCAM scenarios...") |> message()
   # co_modelTypes |> glimpse()
@@ -61,7 +74,7 @@ reshapeScenarioData <- function(
   scenarios[["gcam_default"  ]] <- gcam_default
   rm(refYear0, gcamData)
   
-  # #### GCAM Scenarios ----------------
+  ### GCAM Scenarios ----------------
   # ### Get reference years and add to fredi_config
   # if(msgUser) msg2 |> paste0("Formatting GCAM scenarios...") |> message()
   # # co_modelTypes |> glimpse()
@@ -78,7 +91,7 @@ reshapeScenarioData <- function(
   # rm(refYear0, gcamData)
   # 
   # 
-  # #### Socioeconomic Scenario ----------------
+  ### Socioeconomic Scenario ----------------
   # # if(msgUser) msg2 |> paste0("Creating socioeconomic scenario...") |> message()
   # # 
   # # ### Interpolate annual values for GDP:
@@ -117,7 +130,7 @@ reshapeScenarioData <- function(
   #   data_x  = scalars,          ### rDataList$scalarDataframe
   #   info_x  = co_scalarInfo,    ### rDataList$co_scalarInfo
   
-  ###### Socioeconomic Scenario ######
+  ### Socioeconomic Scenario ######
   # if(msgUser) msg2 |> paste0("Creating socioeconomic scenario...") |> message()
   # 
   # ### Interpolate annual values for GDP:
@@ -142,7 +155,7 @@ reshapeScenarioData <- function(
   # # df_national |> names() |> print()
   # rm(gdp_default, pop_default)
   
-  ###### Return ######
+  ###### Return ----------------
   ### Return the list of dataframes
   if (!silent) paste0(msg0, "...Finished running reshapeScenarioData.", msgN) |> message()
   return(scenarioData)
