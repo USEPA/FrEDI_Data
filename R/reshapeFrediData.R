@@ -55,7 +55,8 @@ reshapeFrediData <- function(
     silent    = silent, 
     msg0      = msg1
   ) ### End reshapeScalarData
-  stateData[["scalarData"]] <- scalarData
+  # stateData[["scalarData"]] <- scalarData
+  stateData[["df_scalars"]] <- scalarData
   
   ###### GCM Scaled Impacts  ######
   ### Reshape scalar data
