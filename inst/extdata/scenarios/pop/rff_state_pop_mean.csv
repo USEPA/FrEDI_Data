@@ -1,0 +1,2892 @@
+region,state,postal,year,pop
+Midwest,Illinois,IL,2010,12759761.91
+Midwest,Illinois,IL,2015,13131656.97
+Midwest,Illinois,IL,2020,14088337.06
+Midwest,Illinois,IL,2025,14350152.63
+Midwest,Illinois,IL,2030,14564686
+Midwest,Illinois,IL,2035,15380034.16
+Midwest,Illinois,IL,2040,15457461.04
+Midwest,Illinois,IL,2045,15474925.81
+Midwest,Illinois,IL,2050,15463670.61
+Midwest,Illinois,IL,2055,16111461.86
+Midwest,Illinois,IL,2060,16098112.88
+Midwest,Illinois,IL,2065,16089675.69
+Midwest,Illinois,IL,2070,16078925.57
+Midwest,Illinois,IL,2075,16717344.77
+Midwest,Illinois,IL,2080,16661540.55
+Midwest,Illinois,IL,2085,16590514.76
+Midwest,Illinois,IL,2090,16589245.52
+Midwest,Illinois,IL,2095,16604484.08
+Midwest,Illinois,IL,2100,16624638.78
+Midwest,Illinois,IL,2105,17501522.52
+Midwest,Illinois,IL,2110,17699903.03
+Midwest,Illinois,IL,2115,17898283.54
+Midwest,Illinois,IL,2120,18096664.05
+Midwest,Illinois,IL,2125,18295044.56
+Midwest,Illinois,IL,2130,18493425.07
+Midwest,Illinois,IL,2135,18691805.58
+Midwest,Illinois,IL,2140,18890186.09
+Midwest,Illinois,IL,2145,19088566.61
+Midwest,Illinois,IL,2150,19286947.12
+Midwest,Illinois,IL,2155,19485327.63
+Midwest,Illinois,IL,2160,19683708.14
+Midwest,Illinois,IL,2165,19882088.65
+Midwest,Illinois,IL,2170,20080469.16
+Midwest,Illinois,IL,2175,20278849.67
+Midwest,Illinois,IL,2180,20477230.19
+Midwest,Illinois,IL,2185,20675610.7
+Midwest,Illinois,IL,2190,20873991.21
+Midwest,Illinois,IL,2195,21072371.72
+Midwest,Illinois,IL,2200,21270752.23
+Midwest,Illinois,IL,2205,21469132.74
+Midwest,Illinois,IL,2210,21667513.25
+Midwest,Illinois,IL,2215,21865893.76
+Midwest,Illinois,IL,2220,22064274.28
+Midwest,Illinois,IL,2225,22262654.79
+Midwest,Illinois,IL,2230,22461035.3
+Midwest,Illinois,IL,2235,22659415.81
+Midwest,Illinois,IL,2240,22857796.32
+Midwest,Illinois,IL,2245,23056176.83
+Midwest,Illinois,IL,2250,23254557.34
+Midwest,Illinois,IL,2255,23452937.85
+Midwest,Illinois,IL,2260,23651318.37
+Midwest,Illinois,IL,2265,23849698.88
+Midwest,Illinois,IL,2270,24048079.39
+Midwest,Illinois,IL,2275,24246459.9
+Midwest,Illinois,IL,2280,24444840.41
+Midwest,Illinois,IL,2285,24643220.92
+Midwest,Illinois,IL,2290,24841601.43
+Midwest,Illinois,IL,2295,25039981.95
+Midwest,Illinois,IL,2300,25238362.46
+Midwest,Indiana,IN,2010,6683684.81
+Midwest,Indiana,IN,2015,6878486.987
+Midwest,Indiana,IN,2020,7044168.53
+Midwest,Indiana,IN,2025,7175076.314
+Midwest,Indiana,IN,2030,7282342.998
+Midwest,Indiana,IN,2035,7355668.51
+Midwest,Indiana,IN,2040,7392698.756
+Midwest,Indiana,IN,2045,7401051.474
+Midwest,Indiana,IN,2050,7395668.554
+Midwest,Indiana,IN,2055,8055730.932
+Midwest,Indiana,IN,2060,8049056.44
+Midwest,Indiana,IN,2065,8044837.843
+Midwest,Indiana,IN,2070,8039462.786
+Midwest,Indiana,IN,2075,8024325.488
+Midwest,Indiana,IN,2080,7997539.464
+Midwest,Indiana,IN,2085,7963447.085
+Midwest,Indiana,IN,2090,7962837.851
+Midwest,Indiana,IN,2095,7970152.356
+Midwest,Indiana,IN,2100,7979826.612
+Midwest,Indiana,IN,2105,8347009.884
+Midwest,Indiana,IN,2110,8420152.642
+Midwest,Indiana,IN,2115,8493295.399
+Midwest,Indiana,IN,2120,8566438.157
+Midwest,Indiana,IN,2125,8639580.915
+Midwest,Indiana,IN,2130,8712723.673
+Midwest,Indiana,IN,2135,8785866.431
+Midwest,Indiana,IN,2140,8859009.189
+Midwest,Indiana,IN,2145,8932151.947
+Midwest,Indiana,IN,2150,9005294.705
+Midwest,Indiana,IN,2155,9078437.463
+Midwest,Indiana,IN,2160,9151580.221
+Midwest,Indiana,IN,2165,9224722.978
+Midwest,Indiana,IN,2170,9297865.736
+Midwest,Indiana,IN,2175,9371008.494
+Midwest,Indiana,IN,2180,9444151.252
+Midwest,Indiana,IN,2185,9517294.01
+Midwest,Indiana,IN,2190,9590436.768
+Midwest,Indiana,IN,2195,9663579.526
+Midwest,Indiana,IN,2200,9736722.284
+Midwest,Indiana,IN,2205,9809865.042
+Midwest,Indiana,IN,2210,9883007.799
+Midwest,Indiana,IN,2215,9956150.557
+Midwest,Indiana,IN,2220,10029293.32
+Midwest,Indiana,IN,2225,10102436.07
+Midwest,Indiana,IN,2230,10175578.83
+Midwest,Indiana,IN,2235,10248721.59
+Midwest,Indiana,IN,2240,10321864.35
+Midwest,Indiana,IN,2245,10395007.1
+Midwest,Indiana,IN,2250,10468149.86
+Midwest,Indiana,IN,2255,10541292.62
+Midwest,Indiana,IN,2260,10614435.38
+Midwest,Indiana,IN,2265,10687578.14
+Midwest,Indiana,IN,2270,10760720.89
+Midwest,Indiana,IN,2275,10833863.65
+Midwest,Indiana,IN,2280,10907006.41
+Midwest,Indiana,IN,2285,10980149.17
+Midwest,Indiana,IN,2290,11053291.93
+Midwest,Indiana,IN,2295,11126434.68
+Midwest,Indiana,IN,2300,11199577.44
+Midwest,Iowa,IA,2010,3038038.55
+Midwest,Iowa,IA,2015,3126584.994
+Midwest,Iowa,IA,2020,3201894.787
+Midwest,Iowa,IA,2025,3261398.325
+Midwest,Iowa,IA,2030,3310155.908
+Midwest,Iowa,IA,2035,3343485.687
+Midwest,Iowa,IA,2040,3360317.617
+Midwest,Iowa,IA,2045,3364114.307
+Midwest,Iowa,IA,2050,3361667.525
+Midwest,Iowa,IA,2055,3356554.555
+Midwest,Iowa,IA,2060,3353773.517
+Midwest,Iowa,IA,2065,3352015.768
+Midwest,Iowa,IA,2070,3349776.161
+Midwest,Iowa,IA,2075,3343468.954
+Midwest,Iowa,IA,2080,3332308.11
+Midwest,Iowa,IA,2085,3318102.952
+Midwest,Iowa,IA,2090,3981418.925
+Midwest,Iowa,IA,2095,3985076.178
+Midwest,Iowa,IA,2100,3989913.306
+Midwest,Iowa,IA,2105,3780155.719
+Midwest,Iowa,IA,2110,3817486.733
+Midwest,Iowa,IA,2115,3854817.746
+Midwest,Iowa,IA,2120,3892148.76
+Midwest,Iowa,IA,2125,3929479.773
+Midwest,Iowa,IA,2130,3966810.786
+Midwest,Iowa,IA,2135,4004141.8
+Midwest,Iowa,IA,2140,4041472.813
+Midwest,Iowa,IA,2145,4078803.827
+Midwest,Iowa,IA,2150,4116134.84
+Midwest,Iowa,IA,2155,4153465.853
+Midwest,Iowa,IA,2160,4190796.867
+Midwest,Iowa,IA,2165,4228127.88
+Midwest,Iowa,IA,2170,4265458.894
+Midwest,Iowa,IA,2175,4302789.907
+Midwest,Iowa,IA,2180,4340120.92
+Midwest,Iowa,IA,2185,4377451.934
+Midwest,Iowa,IA,2190,4414782.947
+Midwest,Iowa,IA,2195,4452113.961
+Midwest,Iowa,IA,2200,4489444.974
+Midwest,Iowa,IA,2205,4526775.987
+Midwest,Iowa,IA,2210,4564107.001
+Midwest,Iowa,IA,2215,4601438.014
+Midwest,Iowa,IA,2220,4638769.028
+Midwest,Iowa,IA,2225,4676100.041
+Midwest,Iowa,IA,2230,4713431.054
+Midwest,Iowa,IA,2235,4750762.068
+Midwest,Iowa,IA,2240,4788093.081
+Midwest,Iowa,IA,2245,4825424.095
+Midwest,Iowa,IA,2250,4862755.108
+Midwest,Iowa,IA,2255,4900086.122
+Midwest,Iowa,IA,2260,4937417.135
+Midwest,Iowa,IA,2265,4974748.148
+Midwest,Iowa,IA,2270,5012079.162
+Midwest,Iowa,IA,2275,5049410.175
+Midwest,Iowa,IA,2280,5086741.189
+Midwest,Iowa,IA,2285,5124072.202
+Midwest,Iowa,IA,2290,5161403.215
+Midwest,Iowa,IA,2295,5198734.229
+Midwest,Iowa,IA,2300,5236065.242
+Midwest,Michigan,MI,2010,9721723.36
+Midwest,Michigan,MI,2015,10005071.98
+Midwest,Michigan,MI,2020,10246063.32
+Midwest,Michigan,MI,2025,10436474.64
+Midwest,Michigan,MI,2030,10592498.91
+Midwest,Michigan,MI,2035,10699154.2
+Midwest,Michigan,MI,2040,10753016.37
+Midwest,Michigan,MI,2045,10765165.78
+Midwest,Michigan,MI,2050,10757336.08
+Midwest,Michigan,MI,2055,10740974.58
+Midwest,Michigan,MI,2060,10732075.25
+Midwest,Michigan,MI,2065,10726450.46
+Midwest,Michigan,MI,2070,10719283.72
+Midwest,Michigan,MI,2075,10030406.86
+Midwest,Michigan,MI,2080,10663385.95
+Midwest,Michigan,MI,2085,10617929.45
+Midwest,Michigan,MI,2090,9953547.314
+Midwest,Michigan,MI,2095,9962690.445
+Midwest,Michigan,MI,2100,9974783.265
+Midwest,Michigan,MI,2105,10399109.75
+Midwest,Michigan,MI,2110,10396399.51
+Midwest,Michigan,MI,2115,10393689.26
+Midwest,Michigan,MI,2120,10390979.02
+Midwest,Michigan,MI,2125,10388268.77
+Midwest,Michigan,MI,2130,10385558.53
+Midwest,Michigan,MI,2135,10382848.28
+Midwest,Michigan,MI,2140,10380138.03
+Midwest,Michigan,MI,2145,10377427.79
+Midwest,Michigan,MI,2150,10374717.54
+Midwest,Michigan,MI,2155,10372007.3
+Midwest,Michigan,MI,2160,10369297.05
+Midwest,Michigan,MI,2165,10366586.81
+Midwest,Michigan,MI,2170,10363876.56
+Midwest,Michigan,MI,2175,10361166.32
+Midwest,Michigan,MI,2180,10358456.07
+Midwest,Michigan,MI,2185,10355745.83
+Midwest,Michigan,MI,2190,10353035.58
+Midwest,Michigan,MI,2195,10350325.33
+Midwest,Michigan,MI,2200,10347615.09
+Midwest,Michigan,MI,2205,10344904.84
+Midwest,Michigan,MI,2210,10342194.6
+Midwest,Michigan,MI,2215,10339484.35
+Midwest,Michigan,MI,2220,10336774.11
+Midwest,Michigan,MI,2225,10334063.86
+Midwest,Michigan,MI,2230,10331353.62
+Midwest,Michigan,MI,2235,10328643.37
+Midwest,Michigan,MI,2240,10325933.13
+Midwest,Michigan,MI,2245,10323222.88
+Midwest,Michigan,MI,2250,10320512.64
+Midwest,Michigan,MI,2255,10317802.39
+Midwest,Michigan,MI,2260,10315092.14
+Midwest,Michigan,MI,2265,10312381.9
+Midwest,Michigan,MI,2270,10309671.65
+Midwest,Michigan,MI,2275,10306961.41
+Midwest,Michigan,MI,2280,10304251.16
+Midwest,Michigan,MI,2285,10301540.92
+Midwest,Michigan,MI,2290,10298830.67
+Midwest,Michigan,MI,2295,10296120.43
+Midwest,Michigan,MI,2300,10293410.18
+Midwest,Minnesota,MN,2010,5468469.39
+Midwest,Minnesota,MN,2015,5627852.989
+Midwest,Minnesota,MN,2020,5763410.616
+Midwest,Minnesota,MN,2025,5870516.984
+Midwest,Minnesota,MN,2030,5958280.634
+Midwest,Minnesota,MN,2035,6018274.236
+Midwest,Minnesota,MN,2040,6048571.71
+Midwest,Minnesota,MN,2045,6055405.752
+Midwest,Minnesota,MN,2050,6051001.544
+Midwest,Minnesota,MN,2055,6041798.199
+Midwest,Minnesota,MN,2060,6036792.33
+Midwest,Minnesota,MN,2065,6033628.382
+Midwest,Minnesota,MN,2070,6029597.09
+Midwest,Minnesota,MN,2075,6018244.116
+Midwest,Minnesota,MN,2080,5998154.598
+Midwest,Minnesota,MN,2085,5972585.314
+Midwest,Minnesota,MN,2090,5972128.388
+Midwest,Minnesota,MN,2095,5977614.267
+Midwest,Minnesota,MN,2100,5984869.959
+Midwest,Minnesota,MN,2105,6112022.469
+Midwest,Minnesota,MN,2110,6128871.05
+Midwest,Minnesota,MN,2115,6145719.632
+Midwest,Minnesota,MN,2120,6162568.213
+Midwest,Minnesota,MN,2125,6179416.794
+Midwest,Minnesota,MN,2130,6196265.375
+Midwest,Minnesota,MN,2135,6213113.956
+Midwest,Minnesota,MN,2140,6229962.537
+Midwest,Minnesota,MN,2145,6246811.118
+Midwest,Minnesota,MN,2150,6263659.7
+Midwest,Minnesota,MN,2155,6280508.281
+Midwest,Minnesota,MN,2160,6297356.862
+Midwest,Minnesota,MN,2165,6314205.443
+Midwest,Minnesota,MN,2170,6331054.024
+Midwest,Minnesota,MN,2175,6347902.605
+Midwest,Minnesota,MN,2180,6364751.186
+Midwest,Minnesota,MN,2185,6381599.768
+Midwest,Minnesota,MN,2190,6398448.349
+Midwest,Minnesota,MN,2195,6415296.93
+Midwest,Minnesota,MN,2200,6432145.511
+Midwest,Minnesota,MN,2205,6448994.092
+Midwest,Minnesota,MN,2210,6465842.673
+Midwest,Minnesota,MN,2215,6482691.255
+Midwest,Minnesota,MN,2220,6499539.836
+Midwest,Minnesota,MN,2225,6516388.417
+Midwest,Minnesota,MN,2230,6533236.998
+Midwest,Minnesota,MN,2235,6550085.579
+Midwest,Minnesota,MN,2240,6566934.16
+Midwest,Minnesota,MN,2245,6583782.741
+Midwest,Minnesota,MN,2250,6600631.323
+Midwest,Minnesota,MN,2255,6617479.904
+Midwest,Minnesota,MN,2260,6634328.485
+Midwest,Minnesota,MN,2265,6651177.066
+Midwest,Minnesota,MN,2270,6668025.647
+Midwest,Minnesota,MN,2275,6684874.228
+Midwest,Minnesota,MN,2280,6701722.809
+Midwest,Minnesota,MN,2285,6718571.391
+Midwest,Minnesota,MN,2290,6735419.972
+Midwest,Minnesota,MN,2295,6752268.553
+Midwest,Minnesota,MN,2300,6769117.134
+Midwest,Missouri,MO,2010,6076077.1
+Midwest,Missouri,MO,2015,6253169.988
+Midwest,Missouri,MO,2020,6403789.573
+Midwest,Missouri,MO,2025,6522796.649
+Midwest,Missouri,MO,2030,6620311.816
+Midwest,Missouri,MO,2035,6686971.373
+Midwest,Missouri,MO,2040,6720635.233
+Midwest,Missouri,MO,2045,6728228.613
+Midwest,Missouri,MO,2050,6723335.049
+Midwest,Missouri,MO,2055,6041798.199
+Midwest,Missouri,MO,2060,6036792.33
+Midwest,Missouri,MO,2065,6033628.382
+Midwest,Missouri,MO,2070,6029597.09
+Midwest,Missouri,MO,2075,6018244.116
+Midwest,Missouri,MO,2080,5998154.598
+Midwest,Missouri,MO,2085,5972585.314
+Midwest,Missouri,MO,2090,5972128.388
+Midwest,Missouri,MO,2095,5977614.267
+Midwest,Missouri,MO,2100,5984869.959
+Midwest,Missouri,MO,2105,5914375.878
+Midwest,Missouri,MO,2110,5880546.476
+Midwest,Missouri,MO,2115,5846717.074
+Midwest,Missouri,MO,2120,5812887.672
+Midwest,Missouri,MO,2125,5779058.27
+Midwest,Missouri,MO,2130,5745228.869
+Midwest,Missouri,MO,2135,5711399.467
+Midwest,Missouri,MO,2140,5677570.065
+Midwest,Missouri,MO,2145,5643740.663
+Midwest,Missouri,MO,2150,5609911.261
+Midwest,Missouri,MO,2155,5576081.859
+Midwest,Missouri,MO,2160,5542252.457
+Midwest,Missouri,MO,2165,5508423.055
+Midwest,Missouri,MO,2170,5474593.653
+Midwest,Missouri,MO,2175,5440764.252
+Midwest,Missouri,MO,2180,5406934.85
+Midwest,Missouri,MO,2185,5373105.448
+Midwest,Missouri,MO,2190,5339276.046
+Midwest,Missouri,MO,2195,5305446.644
+Midwest,Missouri,MO,2200,5271617.242
+Midwest,Missouri,MO,2205,5237787.84
+Midwest,Missouri,MO,2210,5203958.438
+Midwest,Missouri,MO,2215,5170129.037
+Midwest,Missouri,MO,2220,5136299.635
+Midwest,Missouri,MO,2225,5102470.233
+Midwest,Missouri,MO,2230,5068640.831
+Midwest,Missouri,MO,2235,5034811.429
+Midwest,Missouri,MO,2240,5000982.027
+Midwest,Missouri,MO,2245,4967152.625
+Midwest,Missouri,MO,2250,4933323.223
+Midwest,Missouri,MO,2255,4899493.822
+Midwest,Missouri,MO,2260,4865664.42
+Midwest,Missouri,MO,2265,4831835.018
+Midwest,Missouri,MO,2270,4798005.616
+Midwest,Missouri,MO,2275,4764176.214
+Midwest,Missouri,MO,2280,4730346.812
+Midwest,Missouri,MO,2285,4696517.41
+Midwest,Missouri,MO,2290,4662688.008
+Midwest,Missouri,MO,2295,4628858.607
+Midwest,Missouri,MO,2300,4595029.205
+Midwest,Ohio,OH,2010,11544546.49
+Midwest,Ohio,OH,2015,11881022.98
+Midwest,Ohio,OH,2020,11526821.23
+Midwest,Ohio,OH,2025,11741033.97
+Midwest,Ohio,OH,2030,11916561.27
+Midwest,Ohio,OH,2035,11367851.33
+Midwest,Ohio,OH,2040,11425079.9
+Midwest,Ohio,OH,2045,11437988.64
+Midwest,Ohio,OH,2050,11429669.58
+Midwest,Ohio,OH,2055,10740974.58
+Midwest,Ohio,OH,2060,10732075.25
+Midwest,Ohio,OH,2065,10726450.46
+Midwest,Ohio,OH,2070,10719283.72
+Midwest,Ohio,OH,2075,10699100.65
+Midwest,Ohio,OH,2080,9996924.33
+Midwest,Ohio,OH,2085,9954308.856
+Midwest,Ohio,OH,2090,9953547.314
+Midwest,Ohio,OH,2095,9962690.445
+Midwest,Ohio,OH,2100,9974783.265
+Midwest,Ohio,OH,2105,9745142.083
+Midwest,Ohio,OH,2110,9626336.742
+Midwest,Ohio,OH,2115,9507531.402
+Midwest,Ohio,OH,2120,9388726.061
+Midwest,Ohio,OH,2125,9269920.721
+Midwest,Ohio,OH,2130,9151115.38
+Midwest,Ohio,OH,2135,9032310.04
+Midwest,Ohio,OH,2140,8913504.7
+Midwest,Ohio,OH,2145,8794699.359
+Midwest,Ohio,OH,2150,8675894.019
+Midwest,Ohio,OH,2155,8557088.678
+Midwest,Ohio,OH,2160,8438283.338
+Midwest,Ohio,OH,2165,8319477.997
+Midwest,Ohio,OH,2170,8200672.657
+Midwest,Ohio,OH,2175,8081867.317
+Midwest,Ohio,OH,2180,7963061.976
+Midwest,Ohio,OH,2185,7844256.636
+Midwest,Ohio,OH,2190,7725451.295
+Midwest,Ohio,OH,2195,7606645.955
+Midwest,Ohio,OH,2200,7487840.614
+Midwest,Ohio,OH,2205,7369035.274
+Midwest,Ohio,OH,2210,7250229.933
+Midwest,Ohio,OH,2215,7131424.593
+Midwest,Ohio,OH,2220,7012619.253
+Midwest,Ohio,OH,2225,6893813.912
+Midwest,Ohio,OH,2230,6775008.572
+Midwest,Ohio,OH,2235,6656203.231
+Midwest,Ohio,OH,2240,6537397.891
+Midwest,Ohio,OH,2245,6418592.55
+Midwest,Ohio,OH,2250,6299787.21
+Midwest,Ohio,OH,2255,6180981.87
+Midwest,Ohio,OH,2260,6062176.529
+Midwest,Ohio,OH,2265,5943371.189
+Midwest,Ohio,OH,2270,5824565.848
+Midwest,Ohio,OH,2275,5705760.508
+Midwest,Ohio,OH,2280,5586955.167
+Midwest,Ohio,OH,2285,5468149.827
+Midwest,Ohio,OH,2290,5349344.487
+Midwest,Ohio,OH,2295,5230539.146
+Midwest,Ohio,OH,2300,5111733.806
+Midwest,Wisconsin,WI,2010,5468469.39
+Midwest,Wisconsin,WI,2015,5627852.989
+Midwest,Wisconsin,WI,2020,5763410.616
+Midwest,Wisconsin,WI,2025,5870516.984
+Midwest,Wisconsin,WI,2030,5958280.634
+Midwest,Wisconsin,WI,2035,6018274.236
+Midwest,Wisconsin,WI,2040,6048571.71
+Midwest,Wisconsin,WI,2045,6055405.752
+Midwest,Wisconsin,WI,2050,6051001.544
+Midwest,Wisconsin,WI,2055,6041798.199
+Midwest,Wisconsin,WI,2060,6036792.33
+Midwest,Wisconsin,WI,2065,6033628.382
+Midwest,Wisconsin,WI,2070,6029597.09
+Midwest,Wisconsin,WI,2075,6018244.116
+Midwest,Wisconsin,WI,2080,5998154.598
+Midwest,Wisconsin,WI,2085,5972585.314
+Midwest,Wisconsin,WI,2090,5972128.388
+Midwest,Wisconsin,WI,2095,5977614.267
+Midwest,Wisconsin,WI,2100,5984869.959
+Midwest,Wisconsin,WI,2105,6112022.469
+Midwest,Wisconsin,WI,2110,6128871.05
+Midwest,Wisconsin,WI,2115,6145719.632
+Midwest,Wisconsin,WI,2120,6162568.213
+Midwest,Wisconsin,WI,2125,6179416.794
+Midwest,Wisconsin,WI,2130,6196265.375
+Midwest,Wisconsin,WI,2135,6213113.956
+Midwest,Wisconsin,WI,2140,6229962.537
+Midwest,Wisconsin,WI,2145,6246811.118
+Midwest,Wisconsin,WI,2150,6263659.7
+Midwest,Wisconsin,WI,2155,6280508.281
+Midwest,Wisconsin,WI,2160,6297356.862
+Midwest,Wisconsin,WI,2165,6314205.443
+Midwest,Wisconsin,WI,2170,6331054.024
+Midwest,Wisconsin,WI,2175,6347902.605
+Midwest,Wisconsin,WI,2180,6364751.186
+Midwest,Wisconsin,WI,2185,6381599.768
+Midwest,Wisconsin,WI,2190,6398448.349
+Midwest,Wisconsin,WI,2195,6415296.93
+Midwest,Wisconsin,WI,2200,6432145.511
+Midwest,Wisconsin,WI,2205,6448994.092
+Midwest,Wisconsin,WI,2210,6465842.673
+Midwest,Wisconsin,WI,2215,6482691.255
+Midwest,Wisconsin,WI,2220,6499539.836
+Midwest,Wisconsin,WI,2225,6516388.417
+Midwest,Wisconsin,WI,2230,6533236.998
+Midwest,Wisconsin,WI,2235,6550085.579
+Midwest,Wisconsin,WI,2240,6566934.16
+Midwest,Wisconsin,WI,2245,6583782.741
+Midwest,Wisconsin,WI,2250,6600631.323
+Midwest,Wisconsin,WI,2255,6617479.904
+Midwest,Wisconsin,WI,2260,6634328.485
+Midwest,Wisconsin,WI,2265,6651177.066
+Midwest,Wisconsin,WI,2270,6668025.647
+Midwest,Wisconsin,WI,2275,6684874.228
+Midwest,Wisconsin,WI,2280,6701722.809
+Midwest,Wisconsin,WI,2285,6718571.391
+Midwest,Wisconsin,WI,2290,6735419.972
+Midwest,Wisconsin,WI,2295,6752268.553
+Midwest,Wisconsin,WI,2300,6769117.134
+Northeast,Connecticut,CT,2010,3222172.15
+Northeast,Connecticut,CT,2015,3975741.362
+Northeast,Connecticut,CT,2020,3392048.755
+Northeast,Connecticut,CT,2025,3453111.765
+Northeast,Connecticut,CT,2030,3507223.525
+Northeast,Connecticut,CT,2035,3553936.154
+Northeast,Connecticut,CT,2040,3588637.234
+Northeast,Connecticut,CT,2045,3612125.533
+Northeast,Connecticut,CT,2050,3628642.992
+Northeast,Connecticut,CT,2055,3641394.319
+Northeast,Connecticut,CT,2060,3656403.662
+Northeast,Connecticut,CT,2065,3673072.159
+Northeast,Connecticut,CT,2070,3689804.418
+Northeast,Connecticut,CT,2075,3702362.819
+Northeast,Connecticut,CT,2080,3708621.57
+Northeast,Connecticut,CT,2085,3710545.587
+Northeast,Connecticut,CT,2090,2970940.634
+Northeast,Connecticut,CT,2095,2973669.681
+Northeast,Connecticut,CT,2100,2977279.153
+Northeast,Connecticut,CT,2105,3339355.937
+Northeast,Connecticut,CT,2110,3322566.618
+Northeast,Connecticut,CT,2115,3305777.299
+Northeast,Connecticut,CT,2120,3288987.98
+Northeast,Connecticut,CT,2125,3272198.66
+Northeast,Connecticut,CT,2130,3255409.341
+Northeast,Connecticut,CT,2135,3238620.022
+Northeast,Connecticut,CT,2140,3221830.703
+Northeast,Connecticut,CT,2145,3205041.383
+Northeast,Connecticut,CT,2150,3188252.064
+Northeast,Connecticut,CT,2155,3171462.745
+Northeast,Connecticut,CT,2160,3154673.425
+Northeast,Connecticut,CT,2165,3137884.106
+Northeast,Connecticut,CT,2170,3121094.787
+Northeast,Connecticut,CT,2175,3104305.468
+Northeast,Connecticut,CT,2180,3087516.148
+Northeast,Connecticut,CT,2185,3070726.829
+Northeast,Connecticut,CT,2190,3053937.51
+Northeast,Connecticut,CT,2195,3037148.191
+Northeast,Connecticut,CT,2200,3020358.871
+Northeast,Connecticut,CT,2205,3003569.552
+Northeast,Connecticut,CT,2210,2986780.233
+Northeast,Connecticut,CT,2215,2969990.914
+Northeast,Connecticut,CT,2220,2953201.594
+Northeast,Connecticut,CT,2225,2936412.275
+Northeast,Connecticut,CT,2230,2919622.956
+Northeast,Connecticut,CT,2235,2902833.637
+Northeast,Connecticut,CT,2240,2886044.317
+Northeast,Connecticut,CT,2245,2869254.998
+Northeast,Connecticut,CT,2250,2852465.679
+Northeast,Connecticut,CT,2255,2835676.36
+Northeast,Connecticut,CT,2260,2818887.04
+Northeast,Connecticut,CT,2265,2802097.721
+Northeast,Connecticut,CT,2270,2785308.402
+Northeast,Connecticut,CT,2275,2768519.082
+Northeast,Connecticut,CT,2280,2751729.763
+Northeast,Connecticut,CT,2285,2734940.444
+Northeast,Connecticut,CT,2290,2718151.125
+Northeast,Connecticut,CT,2295,2701361.805
+Northeast,Connecticut,CT,2300,2684572.486
+Northeast,Delaware,DE,2010,644434.43
+Northeast,Delaware,DE,2015,662623.5603
+Northeast,Delaware,DE,2020,678409.751
+Northeast,Delaware,DE,2025,690622.353
+Northeast,Delaware,DE,2030,701444.705
+Northeast,Delaware,DE,2035,710787.2308
+Northeast,Delaware,DE,2040,717727.4468
+Northeast,Delaware,DE,2045,722425.1066
+Northeast,Delaware,DE,2050,725728.5983
+Northeast,Delaware,DE,2055,728278.8638
+Northeast,Delaware,DE,2060,731280.7324
+Northeast,Delaware,DE,2065,734614.4317
+Northeast,Delaware,DE,2070,737960.8835
+Northeast,Delaware,DE,2075,740472.5638
+Northeast,Delaware,DE,2080,741724.3139
+Northeast,Delaware,DE,2085,742109.1174
+Northeast,Delaware,DE,2090,742735.1584
+Northeast,Delaware,DE,2095,743417.4203
+Northeast,Delaware,DE,2100,744319.7883
+Northeast,Delaware,DE,2105,765590.1295
+Northeast,Delaware,DE,2110,770353.7927
+Northeast,Delaware,DE,2115,775117.4558
+Northeast,Delaware,DE,2120,779881.119
+Northeast,Delaware,DE,2125,784644.7822
+Northeast,Delaware,DE,2130,789408.4454
+Northeast,Delaware,DE,2135,794172.1086
+Northeast,Delaware,DE,2140,798935.7717
+Northeast,Delaware,DE,2145,803699.4349
+Northeast,Delaware,DE,2150,808463.0981
+Northeast,Delaware,DE,2155,813226.7613
+Northeast,Delaware,DE,2160,817990.4245
+Northeast,Delaware,DE,2165,822754.0877
+Northeast,Delaware,DE,2170,827517.7508
+Northeast,Delaware,DE,2175,832281.414
+Northeast,Delaware,DE,2180,837045.0772
+Northeast,Delaware,DE,2185,841808.7404
+Northeast,Delaware,DE,2190,846572.4036
+Northeast,Delaware,DE,2195,851336.0667
+Northeast,Delaware,DE,2200,856099.7299
+Northeast,Delaware,DE,2205,860863.3931
+Northeast,Delaware,DE,2210,865627.0563
+Northeast,Delaware,DE,2215,870390.7195
+Northeast,Delaware,DE,2220,875154.3827
+Northeast,Delaware,DE,2225,879918.0458
+Northeast,Delaware,DE,2230,884681.709
+Northeast,Delaware,DE,2235,889445.3722
+Northeast,Delaware,DE,2240,894209.0354
+Northeast,Delaware,DE,2245,898972.6986
+Northeast,Delaware,DE,2250,903736.3617
+Northeast,Delaware,DE,2255,908500.0249
+Northeast,Delaware,DE,2260,913263.6881
+Northeast,Delaware,DE,2265,918027.3513
+Northeast,Delaware,DE,2270,922791.0145
+Northeast,Delaware,DE,2275,927554.6777
+Northeast,Delaware,DE,2280,932318.3408
+Northeast,Delaware,DE,2285,937082.004
+Northeast,Delaware,DE,2290,941845.6672
+Northeast,Delaware,DE,2295,946609.3304
+Northeast,Delaware,DE,2300,951372.9936
+Northeast,District of Columbia,DC,2010,644434.43
+Northeast,District of Columbia,DC,2015,662623.5603
+Northeast,District of Columbia,DC,2020,678409.751
+Northeast,District of Columbia,DC,2025,690622.353
+Northeast,District of Columbia,DC,2030,701444.705
+Northeast,District of Columbia,DC,2035,710787.2308
+Northeast,District of Columbia,DC,2040,717727.4468
+Northeast,District of Columbia,DC,2045,722425.1066
+Northeast,District of Columbia,DC,2050,725728.5983
+Northeast,District of Columbia,DC,2055,728278.8638
+Northeast,District of Columbia,DC,2060,731280.7324
+Northeast,District of Columbia,DC,2065,734614.4317
+Northeast,District of Columbia,DC,2070,737960.8835
+Northeast,District of Columbia,DC,2075,740472.5638
+Northeast,District of Columbia,DC,2080,741724.3139
+Northeast,District of Columbia,DC,2085,742109.1174
+Northeast,District of Columbia,DC,2090,742735.1584
+Northeast,District of Columbia,DC,2095,743417.4203
+Northeast,District of Columbia,DC,2100,744319.7883
+Northeast,District of Columbia,DC,2105,765590.1295
+Northeast,District of Columbia,DC,2110,770353.7927
+Northeast,District of Columbia,DC,2115,775117.4558
+Northeast,District of Columbia,DC,2120,779881.119
+Northeast,District of Columbia,DC,2125,784644.7822
+Northeast,District of Columbia,DC,2130,789408.4454
+Northeast,District of Columbia,DC,2135,794172.1086
+Northeast,District of Columbia,DC,2140,798935.7717
+Northeast,District of Columbia,DC,2145,803699.4349
+Northeast,District of Columbia,DC,2150,808463.0981
+Northeast,District of Columbia,DC,2155,813226.7613
+Northeast,District of Columbia,DC,2160,817990.4245
+Northeast,District of Columbia,DC,2165,822754.0877
+Northeast,District of Columbia,DC,2170,827517.7508
+Northeast,District of Columbia,DC,2175,832281.414
+Northeast,District of Columbia,DC,2180,837045.0772
+Northeast,District of Columbia,DC,2185,841808.7404
+Northeast,District of Columbia,DC,2190,846572.4036
+Northeast,District of Columbia,DC,2195,851336.0667
+Northeast,District of Columbia,DC,2200,856099.7299
+Northeast,District of Columbia,DC,2205,860863.3931
+Northeast,District of Columbia,DC,2210,865627.0563
+Northeast,District of Columbia,DC,2215,870390.7195
+Northeast,District of Columbia,DC,2220,875154.3827
+Northeast,District of Columbia,DC,2225,879918.0458
+Northeast,District of Columbia,DC,2230,884681.709
+Northeast,District of Columbia,DC,2235,889445.3722
+Northeast,District of Columbia,DC,2240,894209.0354
+Northeast,District of Columbia,DC,2245,898972.6986
+Northeast,District of Columbia,DC,2250,903736.3617
+Northeast,District of Columbia,DC,2255,908500.0249
+Northeast,District of Columbia,DC,2260,913263.6881
+Northeast,District of Columbia,DC,2265,918027.3513
+Northeast,District of Columbia,DC,2270,922791.0145
+Northeast,District of Columbia,DC,2275,927554.6777
+Northeast,District of Columbia,DC,2280,932318.3408
+Northeast,District of Columbia,DC,2285,937082.004
+Northeast,District of Columbia,DC,2290,941845.6672
+Northeast,District of Columbia,DC,2295,946609.3304
+Northeast,District of Columbia,DC,2300,951372.9936
+Northeast,Maine,ME,2010,1288868.86
+Northeast,Maine,ME,2015,1325247.121
+Northeast,Maine,ME,2020,1356819.502
+Northeast,Maine,ME,2025,1381244.706
+Northeast,Maine,ME,2030,1402889.41
+Northeast,Maine,ME,2035,1421574.462
+Northeast,Maine,ME,2040,1435454.894
+Northeast,Maine,ME,2045,1444850.213
+Northeast,Maine,ME,2050,725728.5983
+Northeast,Maine,ME,2055,1456557.728
+Northeast,Maine,ME,2060,731280.7324
+Northeast,Maine,ME,2065,734614.4317
+Northeast,Maine,ME,2070,737960.8835
+Northeast,Maine,ME,2075,740472.5638
+Northeast,Maine,ME,2080,741724.3139
+Northeast,Maine,ME,2085,742109.1174
+Northeast,Maine,ME,2090,742735.1584
+Northeast,Maine,ME,2095,743417.4203
+Northeast,Maine,ME,2100,744319.7883
+Northeast,Maine,ME,2105,569596.3507
+Northeast,Maine,ME,2110,521830.3548
+Northeast,Maine,ME,2115,474064.3588
+Northeast,Maine,ME,2120,426298.3628
+Northeast,Maine,ME,2125,378532.3668
+Northeast,Maine,ME,2130,330766.3708
+Northeast,Maine,ME,2135,283000.3748
+Northeast,Maine,ME,2140,235234.3788
+Northeast,Maine,ME,2145,187468.3828
+Northeast,Maine,ME,2150,139702.3868
+Northeast,Maine,ME,2155,91936.39082
+Northeast,Maine,ME,2160,44170.39483
+Northeast,Maine,ME,2165,-3595.601159
+Northeast,Maine,ME,2170,-51361.59715
+Northeast,Maine,ME,2175,-99127.59314
+Northeast,Maine,ME,2180,-146893.5891
+Northeast,Maine,ME,2185,-194659.5851
+Northeast,Maine,ME,2190,-242425.5811
+Northeast,Maine,ME,2195,-290191.5771
+Northeast,Maine,ME,2200,-337957.5731
+Northeast,Maine,ME,2205,-385723.5691
+Northeast,Maine,ME,2210,-433489.5651
+Northeast,Maine,ME,2215,-481255.5611
+Northeast,Maine,ME,2220,-529021.5571
+Northeast,Maine,ME,2225,-576787.5531
+Northeast,Maine,ME,2230,-624553.5491
+Northeast,Maine,ME,2235,-672319.545
+Northeast,Maine,ME,2240,-720085.541
+Northeast,Maine,ME,2245,-767851.537
+Northeast,Maine,ME,2250,-815617.533
+Northeast,Maine,ME,2255,-863383.529
+Northeast,Maine,ME,2260,-911149.525
+Northeast,Maine,ME,2265,-958915.521
+Northeast,Maine,ME,2270,-1006681.517
+Northeast,Maine,ME,2275,-1054447.513
+Northeast,Maine,ME,2280,-1102213.509
+Northeast,Maine,ME,2285,-1149979.505
+Northeast,Maine,ME,2290,-1197745.501
+Northeast,Maine,ME,2295,-1245511.497
+Northeast,Maine,ME,2300,-1293277.493
+Northeast,Maryland,MD,2010,5799909.87
+Northeast,Maryland,MD,2015,5963612.043
+Northeast,Maryland,MD,2020,6105687.759
+Northeast,Maryland,MD,2025,6215601.177
+Northeast,Maryland,MD,2030,6313002.345
+Northeast,Maryland,MD,2035,6397085.077
+Northeast,Maryland,MD,2040,6459547.021
+Northeast,Maryland,MD,2045,6501825.959
+Northeast,Maryland,MD,2050,6531557.385
+Northeast,Maryland,MD,2055,6554509.774
+Northeast,Maryland,MD,2060,6581526.592
+Northeast,Maryland,MD,2065,6611529.885
+Northeast,Maryland,MD,2070,6641647.951
+Northeast,Maryland,MD,2075,6664253.074
+Northeast,Maryland,MD,2080,6675518.825
+Northeast,Maryland,MD,2085,6678982.057
+Northeast,Maryland,MD,2090,6684616.426
+Northeast,Maryland,MD,2095,6690756.783
+Northeast,Maryland,MD,2100,6698878.095
+Northeast,Maryland,MD,2105,6890311.165
+Northeast,Maryland,MD,2110,6933184.134
+Northeast,Maryland,MD,2115,6976057.102
+Northeast,Maryland,MD,2120,7018930.071
+Northeast,Maryland,MD,2125,7061803.04
+Northeast,Maryland,MD,2130,7104676.008
+Northeast,Maryland,MD,2135,7147548.977
+Northeast,Maryland,MD,2140,7190421.946
+Northeast,Maryland,MD,2145,7233294.914
+Northeast,Maryland,MD,2150,7276167.883
+Northeast,Maryland,MD,2155,7319040.852
+Northeast,Maryland,MD,2160,7361913.82
+Northeast,Maryland,MD,2165,7404786.789
+Northeast,Maryland,MD,2170,7447659.758
+Northeast,Maryland,MD,2175,7490532.726
+Northeast,Maryland,MD,2180,7533405.695
+Northeast,Maryland,MD,2185,7576278.663
+Northeast,Maryland,MD,2190,7619151.632
+Northeast,Maryland,MD,2195,7662024.601
+Northeast,Maryland,MD,2200,7704897.569
+Northeast,Maryland,MD,2205,7747770.538
+Northeast,Maryland,MD,2210,7790643.507
+Northeast,Maryland,MD,2215,7833516.475
+Northeast,Maryland,MD,2220,7876389.444
+Northeast,Maryland,MD,2225,7919262.413
+Northeast,Maryland,MD,2230,7962135.381
+Northeast,Maryland,MD,2235,8005008.35
+Northeast,Maryland,MD,2240,8047881.318
+Northeast,Maryland,MD,2245,8090754.287
+Northeast,Maryland,MD,2250,8133627.256
+Northeast,Maryland,MD,2255,8176500.224
+Northeast,Maryland,MD,2260,8219373.193
+Northeast,Maryland,MD,2265,8262246.162
+Northeast,Maryland,MD,2270,8305119.13
+Northeast,Maryland,MD,2275,8347992.099
+Northeast,Maryland,MD,2280,8390865.068
+Northeast,Maryland,MD,2285,8433738.036
+Northeast,Maryland,MD,2290,8476611.005
+Northeast,Maryland,MD,2295,8519483.973
+Northeast,Maryland,MD,2300,8562356.942
+Northeast,Massachusetts,MA,2010,6444344.3
+Northeast,Massachusetts,MA,2015,6626235.603
+Northeast,Massachusetts,MA,2020,6784097.51
+Northeast,Massachusetts,MA,2025,6906223.53
+Northeast,Massachusetts,MA,2030,7014447.05
+Northeast,Massachusetts,MA,2035,7107872.308
+Northeast,Massachusetts,MA,2040,7177274.468
+Northeast,Massachusetts,MA,2045,7224251.066
+Northeast,Massachusetts,MA,2050,7257285.983
+Northeast,Massachusetts,MA,2055,7282788.638
+Northeast,Massachusetts,MA,2060,7312807.324
+Northeast,Massachusetts,MA,2065,7346144.317
+Northeast,Massachusetts,MA,2070,7379608.835
+Northeast,Massachusetts,MA,2075,7404725.638
+Northeast,Massachusetts,MA,2080,7417243.139
+Northeast,Massachusetts,MA,2085,7421091.174
+Northeast,Massachusetts,MA,2090,7427351.584
+Northeast,Massachusetts,MA,2095,7434174.203
+Northeast,Massachusetts,MA,2100,7443197.883
+Northeast,Massachusetts,MA,2105,7655901.295
+Northeast,Massachusetts,MA,2110,7703537.927
+Northeast,Massachusetts,MA,2115,7751174.558
+Northeast,Massachusetts,MA,2120,7798811.19
+Northeast,Massachusetts,MA,2125,7846447.822
+Northeast,Massachusetts,MA,2130,7894084.454
+Northeast,Massachusetts,MA,2135,7941721.086
+Northeast,Massachusetts,MA,2140,7989357.717
+Northeast,Massachusetts,MA,2145,8036994.349
+Northeast,Massachusetts,MA,2150,8084630.981
+Northeast,Massachusetts,MA,2155,8132267.613
+Northeast,Massachusetts,MA,2160,8179904.245
+Northeast,Massachusetts,MA,2165,8227540.877
+Northeast,Massachusetts,MA,2170,8275177.508
+Northeast,Massachusetts,MA,2175,8322814.14
+Northeast,Massachusetts,MA,2180,8370450.772
+Northeast,Massachusetts,MA,2185,8418087.404
+Northeast,Massachusetts,MA,2190,8465724.036
+Northeast,Massachusetts,MA,2195,8513360.667
+Northeast,Massachusetts,MA,2200,8560997.299
+Northeast,Massachusetts,MA,2205,8608633.931
+Northeast,Massachusetts,MA,2210,8656270.563
+Northeast,Massachusetts,MA,2215,8703907.195
+Northeast,Massachusetts,MA,2220,8751543.827
+Northeast,Massachusetts,MA,2225,8799180.458
+Northeast,Massachusetts,MA,2230,8846817.09
+Northeast,Massachusetts,MA,2235,8894453.722
+Northeast,Massachusetts,MA,2240,8942090.354
+Northeast,Massachusetts,MA,2245,8989726.986
+Northeast,Massachusetts,MA,2250,9037363.617
+Northeast,Massachusetts,MA,2255,9085000.249
+Northeast,Massachusetts,MA,2260,9132636.881
+Northeast,Massachusetts,MA,2265,9180273.513
+Northeast,Massachusetts,MA,2270,9227910.145
+Northeast,Massachusetts,MA,2275,9275546.777
+Northeast,Massachusetts,MA,2280,9323183.408
+Northeast,Massachusetts,MA,2285,9370820.04
+Northeast,Massachusetts,MA,2290,9418456.672
+Northeast,Massachusetts,MA,2295,9466093.304
+Northeast,Massachusetts,MA,2300,9513729.936
+Northeast,New Hampshire,NH,2010,1288868.86
+Northeast,New Hampshire,NH,2015,1325247.121
+Northeast,New Hampshire,NH,2020,1356819.502
+Northeast,New Hampshire,NH,2025,1381244.706
+Northeast,New Hampshire,NH,2030,1402889.41
+Northeast,New Hampshire,NH,2035,1421574.462
+Northeast,New Hampshire,NH,2040,1435454.894
+Northeast,New Hampshire,NH,2045,1444850.213
+Northeast,New Hampshire,NH,2050,1451457.197
+Northeast,New Hampshire,NH,2055,1456557.728
+Northeast,New Hampshire,NH,2060,1462561.465
+Northeast,New Hampshire,NH,2065,1469228.863
+Northeast,New Hampshire,NH,2070,1475921.767
+Northeast,New Hampshire,NH,2075,1480945.128
+Northeast,New Hampshire,NH,2080,1483448.628
+Northeast,New Hampshire,NH,2085,1484218.235
+Northeast,New Hampshire,NH,2090,1485470.317
+Northeast,New Hampshire,NH,2095,1486834.841
+Northeast,New Hampshire,NH,2100,1488639.577
+Northeast,New Hampshire,NH,2105,1531180.259
+Northeast,New Hampshire,NH,2110,1540707.585
+Northeast,New Hampshire,NH,2115,1550234.912
+Northeast,New Hampshire,NH,2120,1559762.238
+Northeast,New Hampshire,NH,2125,1569289.564
+Northeast,New Hampshire,NH,2130,1578816.891
+Northeast,New Hampshire,NH,2135,1588344.217
+Northeast,New Hampshire,NH,2140,1597871.543
+Northeast,New Hampshire,NH,2145,1607398.87
+Northeast,New Hampshire,NH,2150,1616926.196
+Northeast,New Hampshire,NH,2155,1626453.523
+Northeast,New Hampshire,NH,2160,1635980.849
+Northeast,New Hampshire,NH,2165,1645508.175
+Northeast,New Hampshire,NH,2170,1655035.502
+Northeast,New Hampshire,NH,2175,1664562.828
+Northeast,New Hampshire,NH,2180,1674090.154
+Northeast,New Hampshire,NH,2185,1683617.481
+Northeast,New Hampshire,NH,2190,1693144.807
+Northeast,New Hampshire,NH,2195,1702672.133
+Northeast,New Hampshire,NH,2200,1712199.46
+Northeast,New Hampshire,NH,2205,1721726.786
+Northeast,New Hampshire,NH,2210,1731254.113
+Northeast,New Hampshire,NH,2215,1740781.439
+Northeast,New Hampshire,NH,2220,1750308.765
+Northeast,New Hampshire,NH,2225,1759836.092
+Northeast,New Hampshire,NH,2230,1769363.418
+Northeast,New Hampshire,NH,2235,1778890.744
+Northeast,New Hampshire,NH,2240,1788418.071
+Northeast,New Hampshire,NH,2245,1797945.397
+Northeast,New Hampshire,NH,2250,1807472.723
+Northeast,New Hampshire,NH,2255,1817000.05
+Northeast,New Hampshire,NH,2260,1826527.376
+Northeast,New Hampshire,NH,2265,1836054.703
+Northeast,New Hampshire,NH,2270,1845582.029
+Northeast,New Hampshire,NH,2275,1855109.355
+Northeast,New Hampshire,NH,2280,1864636.682
+Northeast,New Hampshire,NH,2285,1874164.008
+Northeast,New Hampshire,NH,2290,1883691.334
+Northeast,New Hampshire,NH,2295,1893218.661
+Northeast,New Hampshire,NH,2300,1902745.987
+Northeast,New Jersey,NJ,2010,9022082.02
+Northeast,New Jersey,NJ,2015,9276729.844
+Northeast,New Jersey,NJ,2020,9497736.514
+Northeast,New Jersey,NJ,2025,10359335.3
+Northeast,New Jersey,NJ,2030,10521670.58
+Northeast,New Jersey,NJ,2035,10661808.46
+Northeast,New Jersey,NJ,2040,10765911.7
+Northeast,New Jersey,NJ,2045,11558801.71
+Northeast,New Jersey,NJ,2050,11611657.57
+Northeast,New Jersey,NJ,2055,11652461.82
+Northeast,New Jersey,NJ,2060,12431772.45
+Northeast,New Jersey,NJ,2065,12488445.34
+Northeast,New Jersey,NJ,2070,12545335.02
+Northeast,New Jersey,NJ,2075,12588033.58
+Northeast,New Jersey,NJ,2080,12609313.34
+Northeast,New Jersey,NJ,2085,12615855
+Northeast,New Jersey,NJ,2090,12626497.69
+Northeast,New Jersey,NJ,2095,12638096.15
+Northeast,New Jersey,NJ,2100,12653436.4
+Northeast,New Jersey,NJ,2105,13606127.97
+Northeast,New Jersey,NJ,2110,13818714.55
+Northeast,New Jersey,NJ,2115,14031301.13
+Northeast,New Jersey,NJ,2120,14243887.72
+Northeast,New Jersey,NJ,2125,14456474.3
+Northeast,New Jersey,NJ,2130,14669060.89
+Northeast,New Jersey,NJ,2135,14881647.47
+Northeast,New Jersey,NJ,2140,15094234.05
+Northeast,New Jersey,NJ,2145,15306820.64
+Northeast,New Jersey,NJ,2150,15519407.22
+Northeast,New Jersey,NJ,2155,15731993.8
+Northeast,New Jersey,NJ,2160,15944580.39
+Northeast,New Jersey,NJ,2165,16157166.97
+Northeast,New Jersey,NJ,2170,16369753.55
+Northeast,New Jersey,NJ,2175,16582340.14
+Northeast,New Jersey,NJ,2180,16794926.72
+Northeast,New Jersey,NJ,2185,17007513.31
+Northeast,New Jersey,NJ,2190,17220099.89
+Northeast,New Jersey,NJ,2195,17432686.47
+Northeast,New Jersey,NJ,2200,17645273.06
+Northeast,New Jersey,NJ,2205,17857859.64
+Northeast,New Jersey,NJ,2210,18070446.22
+Northeast,New Jersey,NJ,2215,18283032.81
+Northeast,New Jersey,NJ,2220,18495619.39
+Northeast,New Jersey,NJ,2225,18708205.97
+Northeast,New Jersey,NJ,2230,18920792.56
+Northeast,New Jersey,NJ,2235,19133379.14
+Northeast,New Jersey,NJ,2240,19345965.73
+Northeast,New Jersey,NJ,2245,19558552.31
+Northeast,New Jersey,NJ,2250,19771138.89
+Northeast,New Jersey,NJ,2255,19983725.48
+Northeast,New Jersey,NJ,2260,20196312.06
+Northeast,New Jersey,NJ,2265,20408898.64
+Northeast,New Jersey,NJ,2270,20621485.23
+Northeast,New Jersey,NJ,2275,20834071.81
+Northeast,New Jersey,NJ,2280,21046658.4
+Northeast,New Jersey,NJ,2285,21259244.98
+Northeast,New Jersey,NJ,2290,21471831.56
+Northeast,New Jersey,NJ,2295,21684418.15
+Northeast,New Jersey,NJ,2300,21897004.73
+Northeast,New York,NY,2010,19333032.9
+Northeast,New York,NY,2015,19878706.81
+Northeast,New York,NY,2020,21030702.28
+Northeast,New York,NY,2025,21409292.94
+Northeast,New York,NY,2030,21744785.86
+Northeast,New York,NY,2035,22745191.39
+Northeast,New York,NY,2040,22967278.3
+Northeast,New York,NY,2045,23117603.41
+Northeast,New York,NY,2050,23949043.74
+Northeast,New York,NY,2055,24033202.51
+Northeast,New York,NY,2060,24132264.17
+Northeast,New York,NY,2065,24242276.25
+Northeast,New York,NY,2070,25090670.04
+Northeast,New York,NY,2075,25176067.17
+Northeast,New York,NY,2080,25218626.67
+Northeast,New York,NY,2085,25231709.99
+Northeast,New York,NY,2090,25995730.54
+Northeast,New York,NY,2095,26019609.71
+Northeast,New York,NY,2100,26051192.59
+Northeast,New York,NY,2105,27110118.79
+Northeast,New York,NY,2110,27466567.58
+Northeast,New York,NY,2115,27823016.36
+Northeast,New York,NY,2120,28179465.15
+Northeast,New York,NY,2125,28535913.94
+Northeast,New York,NY,2130,28892362.73
+Northeast,New York,NY,2135,29248811.51
+Northeast,New York,NY,2140,29605260.3
+Northeast,New York,NY,2145,29961709.09
+Northeast,New York,NY,2150,30318157.88
+Northeast,New York,NY,2155,30674606.67
+Northeast,New York,NY,2160,31031055.45
+Northeast,New York,NY,2165,31387504.24
+Northeast,New York,NY,2170,31743953.03
+Northeast,New York,NY,2175,32100401.82
+Northeast,New York,NY,2180,32456850.61
+Northeast,New York,NY,2185,32813299.39
+Northeast,New York,NY,2190,33169748.18
+Northeast,New York,NY,2195,33526196.97
+Northeast,New York,NY,2200,33882645.76
+Northeast,New York,NY,2205,34239094.55
+Northeast,New York,NY,2210,34595543.33
+Northeast,New York,NY,2215,34951992.12
+Northeast,New York,NY,2220,35308440.91
+Northeast,New York,NY,2225,35664889.7
+Northeast,New York,NY,2230,36021338.49
+Northeast,New York,NY,2235,36377787.27
+Northeast,New York,NY,2240,36734236.06
+Northeast,New York,NY,2245,37090684.85
+Northeast,New York,NY,2250,37447133.64
+Northeast,New York,NY,2255,37803582.42
+Northeast,New York,NY,2260,38160031.21
+Northeast,New York,NY,2265,38516480
+Northeast,New York,NY,2270,38872928.79
+Northeast,New York,NY,2275,39229377.58
+Northeast,New York,NY,2280,39585826.36
+Northeast,New York,NY,2285,39942275.15
+Northeast,New York,NY,2290,40298723.94
+Northeast,New York,NY,2295,40655172.73
+Northeast,New York,NY,2300,41011621.52
+Northeast,Pennsylvania,PA,2010,12888688.6
+Northeast,Pennsylvania,PA,2015,12589847.65
+Northeast,Pennsylvania,PA,2020,12889785.27
+Northeast,Pennsylvania,PA,2025,12431202.35
+Northeast,Pennsylvania,PA,2030,12626004.69
+Northeast,Pennsylvania,PA,2035,12794170.15
+Northeast,Pennsylvania,PA,2040,12201366.6
+Northeast,Pennsylvania,PA,2045,12281226.81
+Northeast,Pennsylvania,PA,2050,12337386.17
+Northeast,Pennsylvania,PA,2055,11652461.82
+Northeast,Pennsylvania,PA,2060,11700491.72
+Northeast,Pennsylvania,PA,2065,11753830.91
+Northeast,Pennsylvania,PA,2070,11069413.25
+Northeast,Pennsylvania,PA,2075,11107088.46
+Northeast,Pennsylvania,PA,2080,11125864.71
+Northeast,Pennsylvania,PA,2085,11131636.76
+Northeast,Pennsylvania,PA,2090,11141027.38
+Northeast,Pennsylvania,PA,2095,11151261.3
+Northeast,Pennsylvania,PA,2100,11164796.82
+Northeast,Pennsylvania,PA,2105,10731818.7
+Northeast,Pennsylvania,PA,2110,10615329.24
+Northeast,Pennsylvania,PA,2115,10498839.79
+Northeast,Pennsylvania,PA,2120,10382350.34
+Northeast,Pennsylvania,PA,2125,10265860.88
+Northeast,Pennsylvania,PA,2130,10149371.43
+Northeast,Pennsylvania,PA,2135,10032881.98
+Northeast,Pennsylvania,PA,2140,9916392.523
+Northeast,Pennsylvania,PA,2145,9799903.069
+Northeast,Pennsylvania,PA,2150,9683413.616
+Northeast,Pennsylvania,PA,2155,9566924.162
+Northeast,Pennsylvania,PA,2160,9450434.709
+Northeast,Pennsylvania,PA,2165,9333945.255
+Northeast,Pennsylvania,PA,2170,9217455.802
+Northeast,Pennsylvania,PA,2175,9100966.348
+Northeast,Pennsylvania,PA,2180,8984476.895
+Northeast,Pennsylvania,PA,2185,8867987.441
+Northeast,Pennsylvania,PA,2190,8751497.988
+Northeast,Pennsylvania,PA,2195,8635008.534
+Northeast,Pennsylvania,PA,2200,8518519.081
+Northeast,Pennsylvania,PA,2205,8402029.627
+Northeast,Pennsylvania,PA,2210,8285540.174
+Northeast,Pennsylvania,PA,2215,8169050.72
+Northeast,Pennsylvania,PA,2220,8052561.267
+Northeast,Pennsylvania,PA,2225,7936071.813
+Northeast,Pennsylvania,PA,2230,7819582.36
+Northeast,Pennsylvania,PA,2235,7703092.906
+Northeast,Pennsylvania,PA,2240,7586603.452
+Northeast,Pennsylvania,PA,2245,7470113.999
+Northeast,Pennsylvania,PA,2250,7353624.545
+Northeast,Pennsylvania,PA,2255,7237135.092
+Northeast,Pennsylvania,PA,2260,7120645.638
+Northeast,Pennsylvania,PA,2265,7004156.185
+Northeast,Pennsylvania,PA,2270,6887666.731
+Northeast,Pennsylvania,PA,2275,6771177.278
+Northeast,Pennsylvania,PA,2280,6654687.824
+Northeast,Pennsylvania,PA,2285,6538198.371
+Northeast,Pennsylvania,PA,2290,6421708.917
+Northeast,Pennsylvania,PA,2295,6305219.464
+Northeast,Pennsylvania,PA,2300,6188730.01
+Northeast,Rhode Island,RI,2010,1288868.86
+Northeast,Rhode Island,RI,2015,1325247.121
+Northeast,Rhode Island,RI,2020,1356819.502
+Northeast,Rhode Island,RI,2025,1381244.706
+Northeast,Rhode Island,RI,2030,1402889.41
+Northeast,Rhode Island,RI,2035,710787.2308
+Northeast,Rhode Island,RI,2040,1435454.894
+Northeast,Rhode Island,RI,2045,722425.1066
+Northeast,Rhode Island,RI,2050,725728.5983
+Northeast,Rhode Island,RI,2055,728278.8638
+Northeast,Rhode Island,RI,2060,731280.7324
+Northeast,Rhode Island,RI,2065,734614.4317
+Northeast,Rhode Island,RI,2070,737960.8835
+Northeast,Rhode Island,RI,2075,740472.5638
+Northeast,Rhode Island,RI,2080,741724.3139
+Northeast,Rhode Island,RI,2085,742109.1174
+Northeast,Rhode Island,RI,2090,742735.1584
+Northeast,Rhode Island,RI,2095,743417.4203
+Northeast,Rhode Island,RI,2100,744319.7883
+Northeast,Rhode Island,RI,2105,531061.711
+Northeast,Rhode Island,RI,2110,490818.5205
+Northeast,Rhode Island,RI,2115,450575.33
+Northeast,Rhode Island,RI,2120,410332.1395
+Northeast,Rhode Island,RI,2125,370088.949
+Northeast,Rhode Island,RI,2130,329845.7585
+Northeast,Rhode Island,RI,2135,289602.568
+Northeast,Rhode Island,RI,2140,249359.3775
+Northeast,Rhode Island,RI,2145,209116.1871
+Northeast,Rhode Island,RI,2150,168872.9966
+Northeast,Rhode Island,RI,2155,128629.8061
+Northeast,Rhode Island,RI,2160,88386.61558
+Northeast,Rhode Island,RI,2165,48143.42509
+Northeast,Rhode Island,RI,2170,7900.234605
+Northeast,Rhode Island,RI,2175,-32342.95588
+Northeast,Rhode Island,RI,2180,-72586.14637
+Northeast,Rhode Island,RI,2185,-112829.3369
+Northeast,Rhode Island,RI,2190,-153072.5274
+Northeast,Rhode Island,RI,2195,-193315.7178
+Northeast,Rhode Island,RI,2200,-233558.9083
+Northeast,Rhode Island,RI,2205,-273802.0988
+Northeast,Rhode Island,RI,2210,-314045.2893
+Northeast,Rhode Island,RI,2215,-354288.4798
+Northeast,Rhode Island,RI,2220,-394531.6703
+Northeast,Rhode Island,RI,2225,-434774.8608
+Northeast,Rhode Island,RI,2230,-475018.0513
+Northeast,Rhode Island,RI,2235,-515261.2418
+Northeast,Rhode Island,RI,2240,-555504.4322
+Northeast,Rhode Island,RI,2245,-595747.6227
+Northeast,Rhode Island,RI,2250,-635990.8132
+Northeast,Rhode Island,RI,2255,-676234.0037
+Northeast,Rhode Island,RI,2260,-716477.1942
+Northeast,Rhode Island,RI,2265,-756720.3847
+Northeast,Rhode Island,RI,2270,-796963.5752
+Northeast,Rhode Island,RI,2275,-837206.7657
+Northeast,Rhode Island,RI,2280,-877449.9562
+Northeast,Rhode Island,RI,2285,-917693.1467
+Northeast,Rhode Island,RI,2290,-957936.3371
+Northeast,Rhode Island,RI,2295,-998179.5276
+Northeast,Rhode Island,RI,2300,-1038422.718
+Northeast,Vermont,VT,2010,644434.43
+Northeast,Vermont,VT,2015,662623.5603
+Northeast,Vermont,VT,2020,678409.751
+Northeast,Vermont,VT,2025,690622.353
+Northeast,Vermont,VT,2030,701444.705
+Northeast,Vermont,VT,2035,710787.2308
+Northeast,Vermont,VT,2040,717727.4468
+Northeast,Vermont,VT,2045,722425.1066
+Northeast,Vermont,VT,2050,725728.5983
+Northeast,Vermont,VT,2055,728278.8638
+Northeast,Vermont,VT,2060,731280.7324
+Northeast,Vermont,VT,2065,734614.4317
+Northeast,Vermont,VT,2070,737960.8835
+Northeast,Vermont,VT,2075,740472.5638
+Northeast,Vermont,VT,2080,741724.3139
+Northeast,Vermont,VT,2085,742109.1174
+Northeast,Vermont,VT,2090,742735.1584
+Northeast,Vermont,VT,2095,743417.4203
+Northeast,Vermont,VT,2100,744319.7883
+Northeast,Vermont,VT,2105,765590.1295
+Northeast,Vermont,VT,2110,770353.7927
+Northeast,Vermont,VT,2115,775117.4558
+Northeast,Vermont,VT,2120,779881.119
+Northeast,Vermont,VT,2125,784644.7822
+Northeast,Vermont,VT,2130,789408.4454
+Northeast,Vermont,VT,2135,794172.1086
+Northeast,Vermont,VT,2140,798935.7717
+Northeast,Vermont,VT,2145,803699.4349
+Northeast,Vermont,VT,2150,808463.0981
+Northeast,Vermont,VT,2155,813226.7613
+Northeast,Vermont,VT,2160,817990.4245
+Northeast,Vermont,VT,2165,822754.0877
+Northeast,Vermont,VT,2170,827517.7508
+Northeast,Vermont,VT,2175,832281.414
+Northeast,Vermont,VT,2180,837045.0772
+Northeast,Vermont,VT,2185,841808.7404
+Northeast,Vermont,VT,2190,846572.4036
+Northeast,Vermont,VT,2195,851336.0667
+Northeast,Vermont,VT,2200,856099.7299
+Northeast,Vermont,VT,2205,860863.3931
+Northeast,Vermont,VT,2210,865627.0563
+Northeast,Vermont,VT,2215,870390.7195
+Northeast,Vermont,VT,2220,875154.3827
+Northeast,Vermont,VT,2225,879918.0458
+Northeast,Vermont,VT,2230,884681.709
+Northeast,Vermont,VT,2235,889445.3722
+Northeast,Vermont,VT,2240,894209.0354
+Northeast,Vermont,VT,2245,898972.6986
+Northeast,Vermont,VT,2250,903736.3617
+Northeast,Vermont,VT,2255,908500.0249
+Northeast,Vermont,VT,2260,913263.6881
+Northeast,Vermont,VT,2265,918027.3513
+Northeast,Vermont,VT,2270,922791.0145
+Northeast,Vermont,VT,2275,927554.6777
+Northeast,Vermont,VT,2280,932318.3408
+Northeast,Vermont,VT,2285,937082.004
+Northeast,Vermont,VT,2290,941845.6672
+Northeast,Vermont,VT,2295,946609.3304
+Northeast,Vermont,VT,2300,951372.9936
+Northeast,West Virginia,WV,2010,1933303.29
+Northeast,West Virginia,WV,2015,1987870.681
+Northeast,West Virginia,WV,2020,2035229.253
+Northeast,West Virginia,WV,2025,2071867.059
+Northeast,West Virginia,WV,2030,2104334.115
+Northeast,West Virginia,WV,2035,2132361.692
+Northeast,West Virginia,WV,2040,2153182.34
+Northeast,West Virginia,WV,2045,2167275.32
+Northeast,West Virginia,WV,2050,2177185.795
+Northeast,West Virginia,WV,2055,2184836.591
+Northeast,West Virginia,WV,2060,2193842.197
+Northeast,West Virginia,WV,2065,2203843.295
+Northeast,West Virginia,WV,2070,2213882.65
+Northeast,West Virginia,WV,2075,2221417.691
+Northeast,West Virginia,WV,2080,2225172.942
+Northeast,West Virginia,WV,2085,2226327.352
+Northeast,West Virginia,WV,2090,2228205.475
+Northeast,West Virginia,WV,2095,2230252.261
+Northeast,West Virginia,WV,2100,2232959.365
+Northeast,West Virginia,WV,2105,2296770.388
+Northeast,West Virginia,WV,2110,2311061.378
+Northeast,West Virginia,WV,2115,2325352.367
+Northeast,West Virginia,WV,2120,2339643.357
+Northeast,West Virginia,WV,2125,2353934.347
+Northeast,West Virginia,WV,2130,2368225.336
+Northeast,West Virginia,WV,2135,2382516.326
+Northeast,West Virginia,WV,2140,2396807.315
+Northeast,West Virginia,WV,2145,2411098.305
+Northeast,West Virginia,WV,2150,2425389.294
+Northeast,West Virginia,WV,2155,2439680.284
+Northeast,West Virginia,WV,2160,2453971.273
+Northeast,West Virginia,WV,2165,2468262.263
+Northeast,West Virginia,WV,2170,2482553.253
+Northeast,West Virginia,WV,2175,2496844.242
+Northeast,West Virginia,WV,2180,2511135.232
+Northeast,West Virginia,WV,2185,2525426.221
+Northeast,West Virginia,WV,2190,2539717.211
+Northeast,West Virginia,WV,2195,2554008.2
+Northeast,West Virginia,WV,2200,2568299.19
+Northeast,West Virginia,WV,2205,2582590.179
+Northeast,West Virginia,WV,2210,2596881.169
+Northeast,West Virginia,WV,2215,2611172.158
+Northeast,West Virginia,WV,2220,2625463.148
+Northeast,West Virginia,WV,2225,2639754.138
+Northeast,West Virginia,WV,2230,2654045.127
+Northeast,West Virginia,WV,2235,2668336.117
+Northeast,West Virginia,WV,2240,2682627.106
+Northeast,West Virginia,WV,2245,2696918.096
+Northeast,West Virginia,WV,2250,2711209.085
+Northeast,West Virginia,WV,2255,2725500.075
+Northeast,West Virginia,WV,2260,2739791.064
+Northeast,West Virginia,WV,2265,2754082.054
+Northeast,West Virginia,WV,2270,2768373.043
+Northeast,West Virginia,WV,2275,2782664.033
+Northeast,West Virginia,WV,2280,2796955.023
+Northeast,West Virginia,WV,2285,2811246.012
+Northeast,West Virginia,WV,2290,2825537.002
+Northeast,West Virginia,WV,2295,2839827.991
+Northeast,West Virginia,WV,2300,2854118.981
+Northern Plains,Montana,MT,2010,973230.6
+Northern Plains,Montana,MT,2015,1028723.684
+Northern Plains,Montana,MT,2020,1077924.395
+Northern Plains,Montana,MT,2025,1120838.266
+Northern Plains,Montana,MT,2030,1158902.424
+Northern Plains,Montana,MT,2035,1130778.923
+Northern Plains,Montana,MT,2040,1154447.987
+Northern Plains,Montana,MT,2045,1172764.713
+Northern Plains,Montana,MT,2050,1188002.504
+Northern Plains,Montana,MT,2055,1201472.55
+Northern Plains,Montana,MT,2060,1215034.33
+Northern Plains,Montana,MT,2065,1228117.33
+Northern Plains,Montana,MT,2070,1240191.822
+Northern Plains,Montana,MT,2075,1184110.725
+Northern Plains,Montana,MT,2080,1190906.28
+Northern Plains,Montana,MT,2085,1196059.886
+Northern Plains,Montana,MT,2090,1197968.953
+Northern Plains,Montana,MT,2095,1199069.384
+Northern Plains,Montana,MT,2100,1200524.827
+Northern Plains,Montana,MT,2105,1256939.984
+Northern Plains,Montana,MT,2110,1266533.616
+Northern Plains,Montana,MT,2115,1276127.248
+Northern Plains,Montana,MT,2120,1285720.88
+Northern Plains,Montana,MT,2125,1295314.512
+Northern Plains,Montana,MT,2130,1304908.144
+Northern Plains,Montana,MT,2135,1314501.776
+Northern Plains,Montana,MT,2140,1324095.409
+Northern Plains,Montana,MT,2145,1333689.041
+Northern Plains,Montana,MT,2150,1343282.673
+Northern Plains,Montana,MT,2155,1352876.305
+Northern Plains,Montana,MT,2160,1362469.937
+Northern Plains,Montana,MT,2165,1372063.569
+Northern Plains,Montana,MT,2170,1381657.201
+Northern Plains,Montana,MT,2175,1391250.834
+Northern Plains,Montana,MT,2180,1400844.466
+Northern Plains,Montana,MT,2185,1410438.098
+Northern Plains,Montana,MT,2190,1420031.73
+Northern Plains,Montana,MT,2195,1429625.362
+Northern Plains,Montana,MT,2200,1439218.994
+Northern Plains,Montana,MT,2205,1448812.626
+Northern Plains,Montana,MT,2210,1458406.258
+Northern Plains,Montana,MT,2215,1467999.891
+Northern Plains,Montana,MT,2220,1477593.523
+Northern Plains,Montana,MT,2225,1487187.155
+Northern Plains,Montana,MT,2230,1496780.787
+Northern Plains,Montana,MT,2235,1506374.419
+Northern Plains,Montana,MT,2240,1515968.051
+Northern Plains,Montana,MT,2245,1525561.683
+Northern Plains,Montana,MT,2250,1535155.316
+Northern Plains,Montana,MT,2255,1544748.948
+Northern Plains,Montana,MT,2260,1554342.58
+Northern Plains,Montana,MT,2265,1563936.212
+Northern Plains,Montana,MT,2270,1573529.844
+Northern Plains,Montana,MT,2275,1583123.476
+Northern Plains,Montana,MT,2280,1592717.108
+Northern Plains,Montana,MT,2285,1602310.741
+Northern Plains,Montana,MT,2290,1611904.373
+Northern Plains,Montana,MT,2295,1621498.005
+Northern Plains,Montana,MT,2300,1631091.637
+Northern Plains,Nebraska,NE,2010,1800476.61
+Northern Plains,Nebraska,NE,2015,1903138.815
+Northern Plains,Nebraska,NE,2020,1940263.911
+Northern Plains,Nebraska,NE,2025,2017508.878
+Northern Plains,Nebraska,NE,2030,2028079.241
+Northern Plains,Nebraska,NE,2035,2083013.806
+Northern Plains,Nebraska,NE,2040,2126614.713
+Northern Plains,Nebraska,NE,2045,2160356.051
+Northern Plains,Nebraska,NE,2050,2188425.665
+Northern Plains,Nebraska,NE,2055,2213238.907
+Northern Plains,Nebraska,NE,2060,2174271.958
+Northern Plains,Nebraska,NE,2065,2197683.643
+Northern Plains,Nebraska,NE,2070,2219290.629
+Northern Plains,Nebraska,NE,2075,2236653.592
+Northern Plains,Nebraska,NE,2080,2249489.64
+Northern Plains,Nebraska,NE,2085,2259224.23
+Northern Plains,Nebraska,NE,2090,2262830.244
+Northern Plains,Nebraska,NE,2095,2264908.836
+Northern Plains,Nebraska,NE,2100,2267658.006
+Northern Plains,Nebraska,NE,2105,2362220.555
+Northern Plains,Nebraska,NE,2110,2384794.572
+Northern Plains,Nebraska,NE,2115,2407368.589
+Northern Plains,Nebraska,NE,2120,2429942.606
+Northern Plains,Nebraska,NE,2125,2452516.622
+Northern Plains,Nebraska,NE,2130,2475090.639
+Northern Plains,Nebraska,NE,2135,2497664.656
+Northern Plains,Nebraska,NE,2140,2520238.672
+Northern Plains,Nebraska,NE,2145,2542812.689
+Northern Plains,Nebraska,NE,2150,2565386.706
+Northern Plains,Nebraska,NE,2155,2587960.723
+Northern Plains,Nebraska,NE,2160,2610534.739
+Northern Plains,Nebraska,NE,2165,2633108.756
+Northern Plains,Nebraska,NE,2170,2655682.773
+Northern Plains,Nebraska,NE,2175,2678256.789
+Northern Plains,Nebraska,NE,2180,2700830.806
+Northern Plains,Nebraska,NE,2185,2723404.823
+Northern Plains,Nebraska,NE,2190,2745978.84
+Northern Plains,Nebraska,NE,2195,2768552.856
+Northern Plains,Nebraska,NE,2200,2791126.873
+Northern Plains,Nebraska,NE,2205,2813700.89
+Northern Plains,Nebraska,NE,2210,2836274.906
+Northern Plains,Nebraska,NE,2215,2858848.923
+Northern Plains,Nebraska,NE,2220,2881422.94
+Northern Plains,Nebraska,NE,2225,2903996.957
+Northern Plains,Nebraska,NE,2230,2926570.973
+Northern Plains,Nebraska,NE,2235,2949144.99
+Northern Plains,Nebraska,NE,2240,2971719.007
+Northern Plains,Nebraska,NE,2245,2994293.024
+Northern Plains,Nebraska,NE,2250,3016867.04
+Northern Plains,Nebraska,NE,2255,3039441.057
+Northern Plains,Nebraska,NE,2260,3062015.074
+Northern Plains,Nebraska,NE,2265,3084589.09
+Northern Plains,Nebraska,NE,2270,3107163.107
+Northern Plains,Nebraska,NE,2275,3129737.124
+Northern Plains,Nebraska,NE,2280,3152311.141
+Northern Plains,Nebraska,NE,2285,3174885.157
+Northern Plains,Nebraska,NE,2290,3197459.174
+Northern Plains,Nebraska,NE,2295,3220033.191
+Northern Plains,Nebraska,NE,2300,3242607.207
+Northern Plains,North Dakota,ND,2010,681261.42
+Northern Plains,North Dakota,ND,2015,720106.5788
+Northern Plains,North Dakota,ND,2020,754547.0766
+Northern Plains,North Dakota,ND,2025,784586.7861
+Northern Plains,North Dakota,ND,2030,811231.6965
+Northern Plains,North Dakota,ND,2035,833205.5224
+Northern Plains,North Dakota,ND,2040,850645.8852
+Northern Plains,North Dakota,ND,2045,864142.4204
+Northern Plains,North Dakota,ND,2050,875370.2661
+Northern Plains,North Dakota,ND,2055,885295.5629
+Northern Plains,North Dakota,ND,2060,895288.4534
+Northern Plains,North Dakota,ND,2065,904928.5591
+Northern Plains,North Dakota,ND,2070,913825.5531
+Northern Plains,North Dakota,ND,2075,920975.0087
+Northern Plains,North Dakota,ND,2080,926260.4399
+Northern Plains,North Dakota,ND,2085,930268.8004
+Northern Plains,North Dakota,ND,2090,931753.6301
+Northern Plains,North Dakota,ND,2095,932609.5205
+Northern Plains,North Dakota,ND,2100,933741.5319
+Northern Plains,North Dakota,ND,2105,988671.3643
+Northern Plains,North Dakota,ND,2110,1001485.634
+Northern Plains,North Dakota,ND,2115,1014299.903
+Northern Plains,North Dakota,ND,2120,1027114.173
+Northern Plains,North Dakota,ND,2125,1039928.442
+Northern Plains,North Dakota,ND,2130,1052742.712
+Northern Plains,North Dakota,ND,2135,1065556.982
+Northern Plains,North Dakota,ND,2140,1078371.251
+Northern Plains,North Dakota,ND,2145,1091185.521
+Northern Plains,North Dakota,ND,2150,1103999.79
+Northern Plains,North Dakota,ND,2155,1116814.06
+Northern Plains,North Dakota,ND,2160,1129628.329
+Northern Plains,North Dakota,ND,2165,1142442.599
+Northern Plains,North Dakota,ND,2170,1155256.868
+Northern Plains,North Dakota,ND,2175,1168071.138
+Northern Plains,North Dakota,ND,2180,1180885.407
+Northern Plains,North Dakota,ND,2185,1193699.677
+Northern Plains,North Dakota,ND,2190,1206513.946
+Northern Plains,North Dakota,ND,2195,1219328.216
+Northern Plains,North Dakota,ND,2200,1232142.485
+Northern Plains,North Dakota,ND,2205,1244956.755
+Northern Plains,North Dakota,ND,2210,1257771.024
+Northern Plains,North Dakota,ND,2215,1270585.294
+Northern Plains,North Dakota,ND,2220,1283399.564
+Northern Plains,North Dakota,ND,2225,1296213.833
+Northern Plains,North Dakota,ND,2230,1309028.103
+Northern Plains,North Dakota,ND,2235,1321842.372
+Northern Plains,North Dakota,ND,2240,1334656.642
+Northern Plains,North Dakota,ND,2245,1347470.911
+Northern Plains,North Dakota,ND,2250,1360285.181
+Northern Plains,North Dakota,ND,2255,1373099.45
+Northern Plains,North Dakota,ND,2260,1385913.72
+Northern Plains,North Dakota,ND,2265,1398727.989
+Northern Plains,North Dakota,ND,2270,1411542.259
+Northern Plains,North Dakota,ND,2275,1424356.528
+Northern Plains,North Dakota,ND,2280,1437170.798
+Northern Plains,North Dakota,ND,2285,1449985.067
+Northern Plains,North Dakota,ND,2290,1462799.337
+Northern Plains,North Dakota,ND,2295,1475613.606
+Northern Plains,North Dakota,ND,2300,1488427.876
+Northern Plains,South Dakota,SD,2010,827246.01
+Northern Plains,South Dakota,SD,2015,874415.1314
+Northern Plains,South Dakota,SD,2020,916235.7359
+Northern Plains,South Dakota,SD,2025,952712.5259
+Northern Plains,South Dakota,SD,2030,985067.0601
+Northern Plains,South Dakota,SD,2035,1071264.243
+Northern Plains,South Dakota,SD,2040,1093687.567
+Northern Plains,South Dakota,SD,2045,1111040.255
+Northern Plains,South Dakota,SD,2050,1125476.056
+Northern Plains,South Dakota,SD,2055,1138237.152
+Northern Plains,South Dakota,SD,2060,1151085.154
+Northern Plains,South Dakota,SD,2065,1163479.576
+Northern Plains,South Dakota,SD,2070,1174918.568
+Northern Plains,South Dakota,SD,2075,1249894.655
+Northern Plains,South Dakota,SD,2080,1257067.74
+Northern Plains,South Dakota,SD,2085,1262507.658
+Northern Plains,South Dakota,SD,2090,1264522.784
+Northern Plains,South Dakota,SD,2095,1265684.349
+Northern Plains,South Dakota,SD,2100,1267220.65
+Northern Plains,South Dakota,SD,2105,1355977.194
+Northern Plains,South Dakota,SD,2110,1380249.845
+Northern Plains,South Dakota,SD,2115,1404522.497
+Northern Plains,South Dakota,SD,2120,1428795.148
+Northern Plains,South Dakota,SD,2125,1453067.8
+Northern Plains,South Dakota,SD,2130,1477340.452
+Northern Plains,South Dakota,SD,2135,1501613.103
+Northern Plains,South Dakota,SD,2140,1525885.755
+Northern Plains,South Dakota,SD,2145,1550158.407
+Northern Plains,South Dakota,SD,2150,1574431.058
+Northern Plains,South Dakota,SD,2155,1598703.71
+Northern Plains,South Dakota,SD,2160,1622976.361
+Northern Plains,South Dakota,SD,2165,1647249.013
+Northern Plains,South Dakota,SD,2170,1671521.665
+Northern Plains,South Dakota,SD,2175,1695794.316
+Northern Plains,South Dakota,SD,2180,1720066.968
+Northern Plains,South Dakota,SD,2185,1744339.619
+Northern Plains,South Dakota,SD,2190,1768612.271
+Northern Plains,South Dakota,SD,2195,1792884.923
+Northern Plains,South Dakota,SD,2200,1817157.574
+Northern Plains,South Dakota,SD,2205,1841430.226
+Northern Plains,South Dakota,SD,2210,1865702.878
+Northern Plains,South Dakota,SD,2215,1889975.529
+Northern Plains,South Dakota,SD,2220,1914248.181
+Northern Plains,South Dakota,SD,2225,1938520.832
+Northern Plains,South Dakota,SD,2230,1962793.484
+Northern Plains,South Dakota,SD,2235,1987066.136
+Northern Plains,South Dakota,SD,2240,2011338.787
+Northern Plains,South Dakota,SD,2245,2035611.439
+Northern Plains,South Dakota,SD,2250,2059884.091
+Northern Plains,South Dakota,SD,2255,2084156.742
+Northern Plains,South Dakota,SD,2260,2108429.394
+Northern Plains,South Dakota,SD,2265,2132702.045
+Northern Plains,South Dakota,SD,2270,2156974.697
+Northern Plains,South Dakota,SD,2275,2181247.349
+Northern Plains,South Dakota,SD,2280,2205520
+Northern Plains,South Dakota,SD,2285,2229792.652
+Northern Plains,South Dakota,SD,2290,2254065.303
+Northern Plains,South Dakota,SD,2295,2278337.955
+Northern Plains,South Dakota,SD,2300,2302610.607
+Northern Plains,Wyoming,WY,2010,583938.36
+Northern Plains,Wyoming,WY,2015,617234.2104
+Northern Plains,Wyoming,WY,2020,700650.8569
+Northern Plains,Wyoming,WY,2025,728544.8728
+Northern Plains,Wyoming,WY,2030,811231.6965
+Northern Plains,Wyoming,WY,2035,833205.5224
+Northern Plains,Wyoming,WY,2040,850645.8852
+Northern Plains,Wyoming,WY,2045,864142.4204
+Northern Plains,Wyoming,WY,2050,875370.2661
+Northern Plains,Wyoming,WY,2055,885295.5629
+Northern Plains,Wyoming,WY,2060,959237.6286
+Northern Plains,Wyoming,WY,2065,969566.3133
+Northern Plains,Wyoming,WY,2070,979098.8068
+Northern Plains,Wyoming,WY,2075,986758.9378
+Northern Plains,Wyoming,WY,2080,992421.8998
+Northern Plains,Wyoming,WY,2085,996716.5719
+Northern Plains,Wyoming,WY,2090,998307.4608
+Northern Plains,Wyoming,WY,2095,999224.4863
+Northern Plains,Wyoming,WY,2100,1000437.356
+Northern Plains,Wyoming,WY,2105,1098129.22
+Northern Plains,Wyoming,WY,2110,1120405.146
+Northern Plains,Wyoming,WY,2115,1142681.073
+Northern Plains,Wyoming,WY,2120,1164957
+Northern Plains,Wyoming,WY,2125,1187232.926
+Northern Plains,Wyoming,WY,2130,1209508.853
+Northern Plains,Wyoming,WY,2135,1231784.78
+Northern Plains,Wyoming,WY,2140,1254060.706
+Northern Plains,Wyoming,WY,2145,1276336.633
+Northern Plains,Wyoming,WY,2150,1298612.559
+Northern Plains,Wyoming,WY,2155,1320888.486
+Northern Plains,Wyoming,WY,2160,1343164.413
+Northern Plains,Wyoming,WY,2165,1365440.339
+Northern Plains,Wyoming,WY,2170,1387716.266
+Northern Plains,Wyoming,WY,2175,1409992.193
+Northern Plains,Wyoming,WY,2180,1432268.119
+Northern Plains,Wyoming,WY,2185,1454544.046
+Northern Plains,Wyoming,WY,2190,1476819.973
+Northern Plains,Wyoming,WY,2195,1499095.899
+Northern Plains,Wyoming,WY,2200,1521371.826
+Northern Plains,Wyoming,WY,2205,1543647.752
+Northern Plains,Wyoming,WY,2210,1565923.679
+Northern Plains,Wyoming,WY,2215,1588199.606
+Northern Plains,Wyoming,WY,2220,1610475.532
+Northern Plains,Wyoming,WY,2225,1632751.459
+Northern Plains,Wyoming,WY,2230,1655027.386
+Northern Plains,Wyoming,WY,2235,1677303.312
+Northern Plains,Wyoming,WY,2240,1699579.239
+Northern Plains,Wyoming,WY,2245,1721855.166
+Northern Plains,Wyoming,WY,2250,1744131.092
+Northern Plains,Wyoming,WY,2255,1766407.019
+Northern Plains,Wyoming,WY,2260,1788682.945
+Northern Plains,Wyoming,WY,2265,1810958.872
+Northern Plains,Wyoming,WY,2270,1833234.799
+Northern Plains,Wyoming,WY,2275,1855510.725
+Northern Plains,Wyoming,WY,2280,1877786.652
+Northern Plains,Wyoming,WY,2285,1900062.579
+Northern Plains,Wyoming,WY,2290,1922338.505
+Northern Plains,Wyoming,WY,2295,1944614.432
+Northern Plains,Wyoming,WY,2300,1966890.358
+Northwest,Idaho,ID,2010,1576015.48
+Northwest,Idaho,ID,2015,1625057.356
+Northwest,Idaho,ID,2020,1664582.962
+Northwest,Idaho,ID,2025,1825417.94
+Northwest,Idaho,ID,2030,1853889.225
+Northwest,Idaho,ID,2035,1875833.438
+Northwest,Idaho,ID,2040,1889554.663
+Northwest,Idaho,ID,2045,1896333.792
+Northwest,Idaho,ID,2050,1899259.209
+Northwest,Idaho,ID,2055,1900089.643
+Northwest,Idaho,ID,2060,1901928.764
+Northwest,Idaho,ID,2065,1903901.731
+Northwest,Idaho,ID,2070,1905095.807
+Northwest,Idaho,ID,2075,1903793.777
+Northwest,Idaho,ID,2080,1899669.302
+Northwest,Idaho,ID,2085,1893839.524
+Northwest,Idaho,ID,2090,1894163.851
+Northwest,Idaho,ID,2095,1895903.792
+Northwest,Idaho,ID,2100,1898205.06
+Northwest,Idaho,ID,2105,1978892.105
+Northwest,Idaho,ID,2110,1992031.13
+Northwest,Idaho,ID,2115,2005170.154
+Northwest,Idaho,ID,2120,2018309.179
+Northwest,Idaho,ID,2125,2031448.203
+Northwest,Idaho,ID,2130,2044587.228
+Northwest,Idaho,ID,2135,2057726.253
+Northwest,Idaho,ID,2140,2070865.277
+Northwest,Idaho,ID,2145,2084004.302
+Northwest,Idaho,ID,2150,2097143.327
+Northwest,Idaho,ID,2155,2110282.351
+Northwest,Idaho,ID,2160,2123421.376
+Northwest,Idaho,ID,2165,2136560.4
+Northwest,Idaho,ID,2170,2149699.425
+Northwest,Idaho,ID,2175,2162838.45
+Northwest,Idaho,ID,2180,2175977.474
+Northwest,Idaho,ID,2185,2189116.499
+Northwest,Idaho,ID,2190,2202255.524
+Northwest,Idaho,ID,2195,2215394.548
+Northwest,Idaho,ID,2200,2228533.573
+Northwest,Idaho,ID,2205,2241672.597
+Northwest,Idaho,ID,2210,2254811.622
+Northwest,Idaho,ID,2215,2267950.647
+Northwest,Idaho,ID,2220,2281089.671
+Northwest,Idaho,ID,2225,2294228.696
+Northwest,Idaho,ID,2230,2307367.721
+Northwest,Idaho,ID,2235,2320506.745
+Northwest,Idaho,ID,2240,2333645.77
+Northwest,Idaho,ID,2245,2346784.794
+Northwest,Idaho,ID,2250,2359923.819
+Northwest,Idaho,ID,2255,2373062.844
+Northwest,Idaho,ID,2260,2386201.868
+Northwest,Idaho,ID,2265,2399340.893
+Northwest,Idaho,ID,2270,2412479.918
+Northwest,Idaho,ID,2275,2425618.942
+Northwest,Idaho,ID,2280,2438757.967
+Northwest,Idaho,ID,2285,2451896.991
+Northwest,Idaho,ID,2290,2465036.016
+Northwest,Idaho,ID,2295,2478175.041
+Northwest,Idaho,ID,2300,2491314.065
+Northwest,Oregon,OR,2010,3879422.72
+Northwest,Oregon,OR,2015,3875136.772
+Northwest,Oregon,OR,2020,3969390.139
+Northwest,Oregon,OR,2025,4041996.867
+Northwest,Oregon,OR,2030,4105040.426
+Northwest,Oregon,OR,2035,4153631.184
+Northwest,Oregon,OR,2040,4184013.896
+Northwest,Oregon,OR,2045,4199024.825
+Northwest,Oregon,OR,2050,4205502.535
+Northwest,Oregon,OR,2055,4207341.353
+Northwest,Oregon,OR,2060,4211413.693
+Northwest,Oregon,OR,2065,4215782.405
+Northwest,Oregon,OR,2070,4218426.429
+Northwest,Oregon,OR,2075,4215543.364
+Northwest,Oregon,OR,2080,4206410.596
+Northwest,Oregon,OR,2085,4193501.803
+Northwest,Oregon,OR,2090,4194219.955
+Northwest,Oregon,OR,2095,4198072.681
+Northwest,Oregon,OR,2100,4203168.347
+Northwest,Oregon,OR,2105,4296637.188
+Northwest,Oregon,OR,2110,4312211.222
+Northwest,Oregon,OR,2115,4327785.257
+Northwest,Oregon,OR,2120,4343359.291
+Northwest,Oregon,OR,2125,4358933.326
+Northwest,Oregon,OR,2130,4374507.361
+Northwest,Oregon,OR,2135,4390081.395
+Northwest,Oregon,OR,2140,4405655.43
+Northwest,Oregon,OR,2145,4421229.465
+Northwest,Oregon,OR,2150,4436803.499
+Northwest,Oregon,OR,2155,4452377.534
+Northwest,Oregon,OR,2160,4467951.568
+Northwest,Oregon,OR,2165,4483525.603
+Northwest,Oregon,OR,2170,4499099.638
+Northwest,Oregon,OR,2175,4514673.672
+Northwest,Oregon,OR,2180,4530247.707
+Northwest,Oregon,OR,2185,4545821.741
+Northwest,Oregon,OR,2190,4561395.776
+Northwest,Oregon,OR,2195,4576969.811
+Northwest,Oregon,OR,2200,4592543.845
+Northwest,Oregon,OR,2205,4608117.88
+Northwest,Oregon,OR,2210,4623691.915
+Northwest,Oregon,OR,2215,4639265.949
+Northwest,Oregon,OR,2220,4654839.984
+Northwest,Oregon,OR,2225,4670414.018
+Northwest,Oregon,OR,2230,4685988.053
+Northwest,Oregon,OR,2235,4701562.088
+Northwest,Oregon,OR,2240,4717136.122
+Northwest,Oregon,OR,2245,4732710.157
+Northwest,Oregon,OR,2250,4748284.191
+Northwest,Oregon,OR,2255,4763858.226
+Northwest,Oregon,OR,2260,4779432.261
+Northwest,Oregon,OR,2265,4795006.295
+Northwest,Oregon,OR,2270,4810580.33
+Northwest,Oregon,OR,2275,4826154.365
+Northwest,Oregon,OR,2280,4841728.399
+Northwest,Oregon,OR,2285,4857302.434
+Northwest,Oregon,OR,2290,4872876.468
+Northwest,Oregon,OR,2295,4888450.503
+Northwest,Oregon,OR,2300,4904024.538
+Northwest,Washington,WA,2010,6667757.8
+Northwest,Washington,WA,2015,7000247.072
+Northwest,Washington,WA,2020,7170511.219
+Northwest,Washington,WA,2025,7171284.764
+Northwest,Washington,WA,2030,7283136.24
+Northwest,Washington,WA,2035,7369345.649
+Northwest,Washington,WA,2040,7423250.461
+Northwest,Washington,WA,2045,7449882.754
+Northwest,Washington,WA,2050,7461375.466
+Northwest,Washington,WA,2055,7464637.884
+Northwest,Washington,WA,2060,7471863.003
+Northwest,Washington,WA,2065,7479613.944
+Northwest,Washington,WA,2070,7484304.955
+Northwest,Washington,WA,2075,7479189.839
+Northwest,Washington,WA,2080,7462986.542
+Northwest,Washington,WA,2085,7440083.844
+Northwest,Washington,WA,2090,7441357.985
+Northwest,Washington,WA,2095,7448193.467
+Northwest,Washington,WA,2100,7457234.164
+Northwest,Washington,WA,2105,7625756.019
+Northwest,Washington,WA,2110,7653456.584
+Northwest,Washington,WA,2115,7681157.149
+Northwest,Washington,WA,2120,7708857.713
+Northwest,Washington,WA,2125,7736558.278
+Northwest,Washington,WA,2130,7764258.843
+Northwest,Washington,WA,2135,7791959.408
+Northwest,Washington,WA,2140,7819659.973
+Northwest,Washington,WA,2145,7847360.538
+Northwest,Washington,WA,2150,7875061.102
+Northwest,Washington,WA,2155,7902761.667
+Northwest,Washington,WA,2160,7930462.232
+Northwest,Washington,WA,2165,7958162.797
+Northwest,Washington,WA,2170,7985863.362
+Northwest,Washington,WA,2175,8013563.926
+Northwest,Washington,WA,2180,8041264.491
+Northwest,Washington,WA,2185,8068965.056
+Northwest,Washington,WA,2190,8096665.621
+Northwest,Washington,WA,2195,8124366.186
+Northwest,Washington,WA,2200,8152066.75
+Northwest,Washington,WA,2205,8179767.315
+Northwest,Washington,WA,2210,8207467.88
+Northwest,Washington,WA,2215,8235168.445
+Northwest,Washington,WA,2220,8262869.01
+Northwest,Washington,WA,2225,8290569.574
+Northwest,Washington,WA,2230,8318270.139
+Northwest,Washington,WA,2235,8345970.704
+Northwest,Washington,WA,2240,8373671.269
+Northwest,Washington,WA,2245,8401371.834
+Northwest,Washington,WA,2250,8429072.399
+Northwest,Washington,WA,2255,8456772.963
+Northwest,Washington,WA,2260,8484473.528
+Northwest,Washington,WA,2265,8512174.093
+Northwest,Washington,WA,2270,8539874.658
+Northwest,Washington,WA,2275,8567575.223
+Northwest,Washington,WA,2280,8595275.787
+Northwest,Washington,WA,2285,8622976.352
+Northwest,Washington,WA,2290,8650676.917
+Northwest,Washington,WA,2295,8678377.482
+Northwest,Washington,WA,2300,8706078.047
+Southeast,Alabama,AL,2010,4591957.74
+Southeast,Alabama,AL,2015,4775070.265
+Southeast,Alabama,AL,2020,4929153.501
+Southeast,Alabama,AL,2025,5054722.172
+Southeast,Alabama,AL,2030,5166891.61
+Southeast,Alabama,AL,2035,5262875.007
+Southeast,Alabama,AL,2040,5337854.897
+Southeast,Alabama,AL,2045,5393090.303
+Southeast,Alabama,AL,2050,5436985.2
+Southeast,Alabama,AL,2055,5475070.714
+Southeast,Alabama,AL,2060,5515659.688
+Southeast,Alabama,AL,2065,5556494.752
+Southeast,Alabama,AL,2070,5595651.798
+Southeast,Alabama,AL,2075,5626930.383
+Southeast,Alabama,AL,2080,5649252.872
+Southeast,Alabama,AL,2085,5665197.802
+Southeast,Alabama,AL,2090,5672630.186
+Southeast,Alabama,AL,2095,5677840.952
+Southeast,Alabama,AL,2100,5684732.776
+Southeast,Alabama,AL,2105,5915358.266
+Southeast,Alabama,AL,2110,5969693.763
+Southeast,Alabama,AL,2115,6024029.26
+Southeast,Alabama,AL,2120,6078364.757
+Southeast,Alabama,AL,2125,6132700.254
+Southeast,Alabama,AL,2130,6187035.751
+Southeast,Alabama,AL,2135,6241371.248
+Southeast,Alabama,AL,2140,6295706.745
+Southeast,Alabama,AL,2145,6350042.242
+Southeast,Alabama,AL,2150,6404377.739
+Southeast,Alabama,AL,2155,6458713.236
+Southeast,Alabama,AL,2160,6513048.733
+Southeast,Alabama,AL,2165,6567384.23
+Southeast,Alabama,AL,2170,6621719.727
+Southeast,Alabama,AL,2175,6676055.224
+Southeast,Alabama,AL,2180,6730390.721
+Southeast,Alabama,AL,2185,6784726.218
+Southeast,Alabama,AL,2190,6839061.715
+Southeast,Alabama,AL,2195,6893397.212
+Southeast,Alabama,AL,2200,6947732.709
+Southeast,Alabama,AL,2205,7002068.206
+Southeast,Alabama,AL,2210,7056403.703
+Southeast,Alabama,AL,2215,7110739.2
+Southeast,Alabama,AL,2220,7165074.697
+Southeast,Alabama,AL,2225,7219410.194
+Southeast,Alabama,AL,2230,7273745.691
+Southeast,Alabama,AL,2235,7328081.188
+Southeast,Alabama,AL,2240,7382416.685
+Southeast,Alabama,AL,2245,7436752.182
+Southeast,Alabama,AL,2250,7491087.679
+Southeast,Alabama,AL,2255,7545423.176
+Southeast,Alabama,AL,2260,7599758.673
+Southeast,Alabama,AL,2265,7654094.17
+Southeast,Alabama,AL,2270,7708429.667
+Southeast,Alabama,AL,2275,7762765.164
+Southeast,Alabama,AL,2280,7817100.661
+Southeast,Alabama,AL,2285,7871436.158
+Southeast,Alabama,AL,2290,7925771.655
+Southeast,Alabama,AL,2295,7980107.152
+Southeast,Alabama,AL,2300,8034442.649
+Southeast,Arkansas,AR,2010,3061305.16
+Southeast,Arkansas,AR,2015,3183380.176
+Southeast,Arkansas,AR,2020,3286102.334
+Southeast,Arkansas,AR,2025,3369814.781
+Southeast,Arkansas,AR,2030,3444594.407
+Southeast,Arkansas,AR,2035,3508583.338
+Southeast,Arkansas,AR,2040,3558569.932
+Southeast,Arkansas,AR,2045,3595393.535
+Southeast,Arkansas,AR,2050,3624656.8
+Southeast,Arkansas,AR,2055,3650047.142
+Southeast,Arkansas,AR,2060,3677106.459
+Southeast,Arkansas,AR,2065,3704329.835
+Southeast,Arkansas,AR,2070,3730434.532
+Southeast,Arkansas,AR,2075,3751286.922
+Southeast,Arkansas,AR,2080,3766168.582
+Southeast,Arkansas,AR,2085,3776798.534
+Southeast,Arkansas,AR,2090,3781753.457
+Southeast,Arkansas,AR,2095,3785227.301
+Southeast,Arkansas,AR,2100,3789821.85
+Southeast,Arkansas,AR,2105,3943572.177
+Southeast,Arkansas,AR,2110,3979795.842
+Southeast,Arkansas,AR,2115,4016019.506
+Southeast,Arkansas,AR,2120,4052243.171
+Southeast,Arkansas,AR,2125,4088466.836
+Southeast,Arkansas,AR,2130,4124690.5
+Southeast,Arkansas,AR,2135,4160914.165
+Southeast,Arkansas,AR,2140,4197137.83
+Southeast,Arkansas,AR,2145,4233361.495
+Southeast,Arkansas,AR,2150,4269585.159
+Southeast,Arkansas,AR,2155,4305808.824
+Southeast,Arkansas,AR,2160,4342032.489
+Southeast,Arkansas,AR,2165,4378256.153
+Southeast,Arkansas,AR,2170,4414479.818
+Southeast,Arkansas,AR,2175,4450703.483
+Southeast,Arkansas,AR,2180,4486927.147
+Southeast,Arkansas,AR,2185,4523150.812
+Southeast,Arkansas,AR,2190,4559374.477
+Southeast,Arkansas,AR,2195,4595598.141
+Southeast,Arkansas,AR,2200,4631821.806
+Southeast,Arkansas,AR,2205,4668045.471
+Southeast,Arkansas,AR,2210,4704269.135
+Southeast,Arkansas,AR,2215,4740492.8
+Southeast,Arkansas,AR,2220,4776716.465
+Southeast,Arkansas,AR,2225,4812940.129
+Southeast,Arkansas,AR,2230,4849163.794
+Southeast,Arkansas,AR,2235,4885387.459
+Southeast,Arkansas,AR,2240,4921611.123
+Southeast,Arkansas,AR,2245,4957834.788
+Southeast,Arkansas,AR,2250,4994058.453
+Southeast,Arkansas,AR,2255,5030282.117
+Southeast,Arkansas,AR,2260,5066505.782
+Southeast,Arkansas,AR,2265,5102729.447
+Southeast,Arkansas,AR,2270,5138953.111
+Southeast,Arkansas,AR,2275,5175176.776
+Southeast,Arkansas,AR,2280,5211400.441
+Southeast,Arkansas,AR,2285,5247624.105
+Southeast,Arkansas,AR,2290,5283847.77
+Southeast,Arkansas,AR,2295,5320071.435
+Southeast,Arkansas,AR,2300,5356295.099
+Southeast,Florida,FL,2010,19133157.25
+Southeast,Florida,FL,2015,19100281.06
+Southeast,Florida,FL,2020,19716614
+Southeast,Florida,FL,2025,20218888.69
+Southeast,Florida,FL,2030,20667566.44
+Southeast,Florida,FL,2035,21928645.86
+Southeast,Florida,FL,2040,22241062.07
+Southeast,Florida,FL,2045,22471209.6
+Southeast,Florida,FL,2050,22654105
+Southeast,Florida,FL,2055,23725306.43
+Southeast,Florida,FL,2060,23901191.98
+Southeast,Florida,FL,2065,24078143.93
+Southeast,Florida,FL,2070,25180433.09
+Southeast,Florida,FL,2075,25321186.72
+Southeast,Florida,FL,2080,25421637.93
+Southeast,Florida,FL,2085,25493390.11
+Southeast,Florida,FL,2090,25526835.84
+Southeast,Florida,FL,2095,26496591.11
+Southeast,Florida,FL,2100,26528752.95
+Southeast,Florida,FL,2105,27510245.49
+Southeast,Florida,FL,2110,27946506.88
+Southeast,Florida,FL,2115,28382768.27
+Southeast,Florida,FL,2120,28819029.66
+Southeast,Florida,FL,2125,29255291.05
+Southeast,Florida,FL,2130,29691552.44
+Southeast,Florida,FL,2135,30127813.83
+Southeast,Florida,FL,2140,30564075.22
+Southeast,Florida,FL,2145,31000336.61
+Southeast,Florida,FL,2150,31436598
+Southeast,Florida,FL,2155,31872859.39
+Southeast,Florida,FL,2160,32309120.78
+Southeast,Florida,FL,2165,32745382.17
+Southeast,Florida,FL,2170,33181643.57
+Southeast,Florida,FL,2175,33617904.96
+Southeast,Florida,FL,2180,34054166.35
+Southeast,Florida,FL,2185,34490427.74
+Southeast,Florida,FL,2190,34926689.13
+Southeast,Florida,FL,2195,35362950.52
+Southeast,Florida,FL,2200,35799211.91
+Southeast,Florida,FL,2205,36235473.3
+Southeast,Florida,FL,2210,36671734.69
+Southeast,Florida,FL,2215,37107996.08
+Southeast,Florida,FL,2220,37544257.47
+Southeast,Florida,FL,2225,37980518.86
+Southeast,Florida,FL,2230,38416780.25
+Southeast,Florida,FL,2235,38853041.64
+Southeast,Florida,FL,2240,39289303.03
+Southeast,Florida,FL,2245,39725564.42
+Southeast,Florida,FL,2250,40161825.81
+Southeast,Florida,FL,2255,40598087.21
+Southeast,Florida,FL,2260,41034348.6
+Southeast,Florida,FL,2265,41470609.99
+Southeast,Florida,FL,2270,41906871.38
+Southeast,Florida,FL,2275,42343132.77
+Southeast,Florida,FL,2280,42779394.16
+Southeast,Florida,FL,2285,43215655.55
+Southeast,Florida,FL,2290,43651916.94
+Southeast,Florida,FL,2295,44088178.33
+Southeast,Florida,FL,2300,44524439.72
+Southeast,Georgia,GA,2010,9949241.77
+Southeast,Georgia,GA,2015,10345985.57
+Southeast,Georgia,GA,2020,10679832.59
+Southeast,Georgia,GA,2025,11794351.73
+Southeast,Georgia,GA,2030,12056080.42
+Southeast,Georgia,GA,2035,12280041.68
+Southeast,Georgia,GA,2040,12454994.76
+Southeast,Georgia,GA,2045,12583877.37
+Southeast,Georgia,GA,2050,12686298.8
+Southeast,Georgia,GA,2055,12775165
+Southeast,Georgia,GA,2060,12869872.61
+Southeast,Georgia,GA,2065,12965154.42
+Southeast,Georgia,GA,2070,13056520.86
+Southeast,Georgia,GA,2075,13129504.23
+Southeast,Georgia,GA,2080,13181590.04
+Southeast,Georgia,GA,2085,14162994.5
+Southeast,Georgia,GA,2090,14181575.46
+Southeast,Georgia,GA,2095,13248295.55
+Southeast,Georgia,GA,2100,13264376.48
+Southeast,Georgia,GA,2105,14325475.7
+Southeast,Georgia,GA,2110,14507150.88
+Southeast,Georgia,GA,2115,14688826.06
+Southeast,Georgia,GA,2120,14870501.25
+Southeast,Georgia,GA,2125,15052176.43
+Southeast,Georgia,GA,2130,15233851.61
+Southeast,Georgia,GA,2135,15415526.79
+Southeast,Georgia,GA,2140,15597201.97
+Southeast,Georgia,GA,2145,15778877.15
+Southeast,Georgia,GA,2150,15960552.33
+Southeast,Georgia,GA,2155,16142227.52
+Southeast,Georgia,GA,2160,16323902.7
+Southeast,Georgia,GA,2165,16505577.88
+Southeast,Georgia,GA,2170,16687253.06
+Southeast,Georgia,GA,2175,16868928.24
+Southeast,Georgia,GA,2180,17050603.42
+Southeast,Georgia,GA,2185,17232278.6
+Southeast,Georgia,GA,2190,17413953.79
+Southeast,Georgia,GA,2195,17595628.97
+Southeast,Georgia,GA,2200,17777304.15
+Southeast,Georgia,GA,2205,17958979.33
+Southeast,Georgia,GA,2210,18140654.51
+Southeast,Georgia,GA,2215,18322329.69
+Southeast,Georgia,GA,2220,18504004.87
+Southeast,Georgia,GA,2225,18685680.06
+Southeast,Georgia,GA,2230,18867355.24
+Southeast,Georgia,GA,2235,19049030.42
+Southeast,Georgia,GA,2240,19230705.6
+Southeast,Georgia,GA,2245,19412380.78
+Southeast,Georgia,GA,2250,19594055.96
+Southeast,Georgia,GA,2255,19775731.14
+Southeast,Georgia,GA,2260,19957406.33
+Southeast,Georgia,GA,2265,20139081.51
+Southeast,Georgia,GA,2270,20320756.69
+Southeast,Georgia,GA,2275,20502431.87
+Southeast,Georgia,GA,2280,20684107.05
+Southeast,Georgia,GA,2285,20865782.23
+Southeast,Georgia,GA,2290,21047457.41
+Southeast,Georgia,GA,2295,21229132.6
+Southeast,Georgia,GA,2300,21410807.78
+Southeast,Kentucky,KY,2010,4591957.74
+Southeast,Kentucky,KY,2015,4775070.265
+Southeast,Kentucky,KY,2020,4929153.501
+Southeast,Kentucky,KY,2025,4212268.477
+Southeast,Kentucky,KY,2030,4305743.009
+Southeast,Kentucky,KY,2035,4385729.173
+Southeast,Kentucky,KY,2040,4448212.415
+Southeast,Kentucky,KY,2045,4494241.919
+Southeast,Kentucky,KY,2050,4530821
+Southeast,Kentucky,KY,2055,4562558.928
+Southeast,Kentucky,KY,2060,4596383.074
+Southeast,Kentucky,KY,2065,4630412.294
+Southeast,Kentucky,KY,2070,4663043.165
+Southeast,Kentucky,KY,2075,4689108.653
+Southeast,Kentucky,KY,2080,4707710.727
+Southeast,Kentucky,KY,2085,3776798.534
+Southeast,Kentucky,KY,2090,3781753.457
+Southeast,Kentucky,KY,2095,3785227.301
+Southeast,Kentucky,KY,2100,3789821.85
+Southeast,Kentucky,KY,2105,4024407.217
+Southeast,Kentucky,KY,2110,3986553.12
+Southeast,Kentucky,KY,2115,3948699.023
+Southeast,Kentucky,KY,2120,3910844.927
+Southeast,Kentucky,KY,2125,3872990.83
+Southeast,Kentucky,KY,2130,3835136.733
+Southeast,Kentucky,KY,2135,3797282.637
+Southeast,Kentucky,KY,2140,3759428.54
+Southeast,Kentucky,KY,2145,3721574.444
+Southeast,Kentucky,KY,2150,3683720.347
+Southeast,Kentucky,KY,2155,3645866.25
+Southeast,Kentucky,KY,2160,3608012.154
+Southeast,Kentucky,KY,2165,3570158.057
+Southeast,Kentucky,KY,2170,3532303.96
+Southeast,Kentucky,KY,2175,3494449.864
+Southeast,Kentucky,KY,2180,3456595.767
+Southeast,Kentucky,KY,2185,3418741.67
+Southeast,Kentucky,KY,2190,3380887.574
+Southeast,Kentucky,KY,2195,3343033.477
+Southeast,Kentucky,KY,2200,3305179.38
+Southeast,Kentucky,KY,2205,3267325.284
+Southeast,Kentucky,KY,2210,3229471.187
+Southeast,Kentucky,KY,2215,3191617.091
+Southeast,Kentucky,KY,2220,3153762.994
+Southeast,Kentucky,KY,2225,3115908.897
+Southeast,Kentucky,KY,2230,3078054.801
+Southeast,Kentucky,KY,2235,3040200.704
+Southeast,Kentucky,KY,2240,3002346.607
+Southeast,Kentucky,KY,2245,2964492.511
+Southeast,Kentucky,KY,2250,2926638.414
+Southeast,Kentucky,KY,2255,2888784.317
+Southeast,Kentucky,KY,2260,2850930.221
+Southeast,Kentucky,KY,2265,2813076.124
+Southeast,Kentucky,KY,2270,2775222.027
+Southeast,Kentucky,KY,2275,2737367.931
+Southeast,Kentucky,KY,2280,2699513.834
+Southeast,Kentucky,KY,2285,2661659.738
+Southeast,Kentucky,KY,2290,2623805.641
+Southeast,Kentucky,KY,2295,2585951.544
+Southeast,Kentucky,KY,2300,2548097.448
+Southeast,Louisiana,LA,2010,4591957.74
+Southeast,Louisiana,LA,2015,4775070.265
+Southeast,Louisiana,LA,2020,4929153.501
+Southeast,Louisiana,LA,2025,5054722.172
+Southeast,Louisiana,LA,2030,5166891.61
+Southeast,Louisiana,LA,2035,5262875.007
+Southeast,Louisiana,LA,2040,5337854.897
+Southeast,Louisiana,LA,2045,5393090.303
+Southeast,Louisiana,LA,2050,5436985.2
+Southeast,Louisiana,LA,2055,5475070.714
+Southeast,Louisiana,LA,2060,5515659.688
+Southeast,Louisiana,LA,2065,5556494.752
+Southeast,Louisiana,LA,2070,5595651.798
+Southeast,Louisiana,LA,2075,5626930.383
+Southeast,Louisiana,LA,2080,5649252.872
+Southeast,Louisiana,LA,2085,5665197.802
+Southeast,Louisiana,LA,2090,5672630.186
+Southeast,Louisiana,LA,2095,5677840.952
+Southeast,Louisiana,LA,2100,5684732.776
+Southeast,Louisiana,LA,2105,5915358.266
+Southeast,Louisiana,LA,2110,5969693.763
+Southeast,Louisiana,LA,2115,6024029.26
+Southeast,Louisiana,LA,2120,6078364.757
+Southeast,Louisiana,LA,2125,6132700.254
+Southeast,Louisiana,LA,2130,6187035.751
+Southeast,Louisiana,LA,2135,6241371.248
+Southeast,Louisiana,LA,2140,6295706.745
+Southeast,Louisiana,LA,2145,6350042.242
+Southeast,Louisiana,LA,2150,6404377.739
+Southeast,Louisiana,LA,2155,6458713.236
+Southeast,Louisiana,LA,2160,6513048.733
+Southeast,Louisiana,LA,2165,6567384.23
+Southeast,Louisiana,LA,2170,6621719.727
+Southeast,Louisiana,LA,2175,6676055.224
+Southeast,Louisiana,LA,2180,6730390.721
+Southeast,Louisiana,LA,2185,6784726.218
+Southeast,Louisiana,LA,2190,6839061.715
+Southeast,Louisiana,LA,2195,6893397.212
+Southeast,Louisiana,LA,2200,6947732.709
+Southeast,Louisiana,LA,2205,7002068.206
+Southeast,Louisiana,LA,2210,7056403.703
+Southeast,Louisiana,LA,2215,7110739.2
+Southeast,Louisiana,LA,2220,7165074.697
+Southeast,Louisiana,LA,2225,7219410.194
+Southeast,Louisiana,LA,2230,7273745.691
+Southeast,Louisiana,LA,2235,7328081.188
+Southeast,Louisiana,LA,2240,7382416.685
+Southeast,Louisiana,LA,2245,7436752.182
+Southeast,Louisiana,LA,2250,7491087.679
+Southeast,Louisiana,LA,2255,7545423.176
+Southeast,Louisiana,LA,2260,7599758.673
+Southeast,Louisiana,LA,2265,7654094.17
+Southeast,Louisiana,LA,2270,7708429.667
+Southeast,Louisiana,LA,2275,7762765.164
+Southeast,Louisiana,LA,2280,7817100.661
+Southeast,Louisiana,LA,2285,7871436.158
+Southeast,Louisiana,LA,2290,7925771.655
+Southeast,Louisiana,LA,2295,7980107.152
+Southeast,Louisiana,LA,2300,8034442.649
+Southeast,Mississippi,MS,2010,3061305.16
+Southeast,Mississippi,MS,2015,3183380.176
+Southeast,Mississippi,MS,2020,3286102.334
+Southeast,Mississippi,MS,2025,3369814.781
+Southeast,Mississippi,MS,2030,3444594.407
+Southeast,Mississippi,MS,2035,3508583.338
+Southeast,Mississippi,MS,2040,3558569.932
+Southeast,Mississippi,MS,2045,3595393.535
+Southeast,Mississippi,MS,2050,3624656.8
+Southeast,Mississippi,MS,2055,3650047.142
+Southeast,Mississippi,MS,2060,3677106.459
+Southeast,Mississippi,MS,2065,3704329.835
+Southeast,Mississippi,MS,2070,3730434.532
+Southeast,Mississippi,MS,2075,3751286.922
+Southeast,Mississippi,MS,2080,3766168.582
+Southeast,Mississippi,MS,2085,3776798.534
+Southeast,Mississippi,MS,2090,3781753.457
+Southeast,Mississippi,MS,2095,3785227.301
+Southeast,Mississippi,MS,2100,3789821.85
+Southeast,Mississippi,MS,2105,3943572.177
+Southeast,Mississippi,MS,2110,3979795.842
+Southeast,Mississippi,MS,2115,4016019.506
+Southeast,Mississippi,MS,2120,4052243.171
+Southeast,Mississippi,MS,2125,4088466.836
+Southeast,Mississippi,MS,2130,4124690.5
+Southeast,Mississippi,MS,2135,4160914.165
+Southeast,Mississippi,MS,2140,4197137.83
+Southeast,Mississippi,MS,2145,4233361.495
+Southeast,Mississippi,MS,2150,4269585.159
+Southeast,Mississippi,MS,2155,4305808.824
+Southeast,Mississippi,MS,2160,4342032.489
+Southeast,Mississippi,MS,2165,4378256.153
+Southeast,Mississippi,MS,2170,4414479.818
+Southeast,Mississippi,MS,2175,4450703.483
+Southeast,Mississippi,MS,2180,4486927.147
+Southeast,Mississippi,MS,2185,4523150.812
+Southeast,Mississippi,MS,2190,4559374.477
+Southeast,Mississippi,MS,2195,4595598.141
+Southeast,Mississippi,MS,2200,4631821.806
+Southeast,Mississippi,MS,2205,4668045.471
+Southeast,Mississippi,MS,2210,4704269.135
+Southeast,Mississippi,MS,2215,4740492.8
+Southeast,Mississippi,MS,2220,4776716.465
+Southeast,Mississippi,MS,2225,4812940.129
+Southeast,Mississippi,MS,2230,4849163.794
+Southeast,Mississippi,MS,2235,4885387.459
+Southeast,Mississippi,MS,2240,4921611.123
+Southeast,Mississippi,MS,2245,4957834.788
+Southeast,Mississippi,MS,2250,4994058.453
+Southeast,Mississippi,MS,2255,5030282.117
+Southeast,Mississippi,MS,2260,5066505.782
+Southeast,Mississippi,MS,2265,5102729.447
+Southeast,Mississippi,MS,2270,5138953.111
+Southeast,Mississippi,MS,2275,5175176.776
+Southeast,Mississippi,MS,2280,5211400.441
+Southeast,Mississippi,MS,2285,5247624.105
+Southeast,Mississippi,MS,2290,5283847.77
+Southeast,Mississippi,MS,2295,5320071.435
+Southeast,Mississippi,MS,2300,5356295.099
+Southeast,North Carolina,NC,2010,9183915.48
+Southeast,North Carolina,NC,2015,9550140.529
+Southeast,North Carolina,NC,2020,9858307.002
+Southeast,North Carolina,NC,2025,10109444.34
+Southeast,North Carolina,NC,2030,10333783.22
+Southeast,North Carolina,NC,2035,10525750.01
+Southeast,North Carolina,NC,2040,10675709.79
+Southeast,North Carolina,NC,2045,10786180.61
+Southeast,North Carolina,NC,2050,10873970.4
+Southeast,North Carolina,NC,2055,10950141.43
+Southeast,North Carolina,NC,2060,11031319.38
+Southeast,North Carolina,NC,2065,11112989.5
+Southeast,North Carolina,NC,2070,10258694.96
+Southeast,North Carolina,NC,2075,10316039.04
+Southeast,North Carolina,NC,2080,10356963.6
+Southeast,North Carolina,NC,2085,10386195.97
+Southeast,North Carolina,NC,2090,10399822.01
+Southeast,North Carolina,NC,2095,10409375.08
+Southeast,North Carolina,NC,2100,10422010.09
+Southeast,North Carolina,NC,2105,10788194.39
+Southeast,North Carolina,NC,2110,10827325.66
+Southeast,North Carolina,NC,2115,10866456.93
+Southeast,North Carolina,NC,2120,10905588.2
+Southeast,North Carolina,NC,2125,10944719.46
+Southeast,North Carolina,NC,2130,10983850.73
+Southeast,North Carolina,NC,2135,11022982
+Southeast,North Carolina,NC,2140,11062113.27
+Southeast,North Carolina,NC,2145,11101244.54
+Southeast,North Carolina,NC,2150,11140375.8
+Southeast,North Carolina,NC,2155,11179507.07
+Southeast,North Carolina,NC,2160,11218638.34
+Southeast,North Carolina,NC,2165,11257769.61
+Southeast,North Carolina,NC,2170,11296900.88
+Southeast,North Carolina,NC,2175,11336032.15
+Southeast,North Carolina,NC,2180,11375163.41
+Southeast,North Carolina,NC,2185,11414294.68
+Southeast,North Carolina,NC,2190,11453425.95
+Southeast,North Carolina,NC,2195,11492557.22
+Southeast,North Carolina,NC,2200,11531688.49
+Southeast,North Carolina,NC,2205,11570819.76
+Southeast,North Carolina,NC,2210,11609951.02
+Southeast,North Carolina,NC,2215,11649082.29
+Southeast,North Carolina,NC,2220,11688213.56
+Southeast,North Carolina,NC,2225,11727344.83
+Southeast,North Carolina,NC,2230,11766476.1
+Southeast,North Carolina,NC,2235,11805607.37
+Southeast,North Carolina,NC,2240,11844738.63
+Southeast,North Carolina,NC,2245,11883869.9
+Southeast,North Carolina,NC,2250,11923001.17
+Southeast,North Carolina,NC,2255,11962132.44
+Southeast,North Carolina,NC,2260,12001263.71
+Southeast,North Carolina,NC,2265,12040394.98
+Southeast,North Carolina,NC,2270,12079526.24
+Southeast,North Carolina,NC,2275,12118657.51
+Southeast,North Carolina,NC,2280,12157788.78
+Southeast,North Carolina,NC,2285,12196920.05
+Southeast,North Carolina,NC,2290,12236051.32
+Southeast,North Carolina,NC,2295,12275182.59
+Southeast,North Carolina,NC,2300,12314313.85
+Southeast,South Carolina,SC,2010,4591957.74
+Southeast,South Carolina,SC,2015,4775070.265
+Southeast,South Carolina,SC,2020,4929153.501
+Southeast,South Carolina,SC,2025,5054722.172
+Southeast,South Carolina,SC,2030,5166891.61
+Southeast,South Carolina,SC,2035,5262875.007
+Southeast,South Carolina,SC,2040,5337854.897
+Southeast,South Carolina,SC,2045,5393090.303
+Southeast,South Carolina,SC,2050,5436985.2
+Southeast,South Carolina,SC,2055,5475070.714
+Southeast,South Carolina,SC,2060,5515659.688
+Southeast,South Carolina,SC,2065,5556494.752
+Southeast,South Carolina,SC,2070,5595651.798
+Southeast,South Carolina,SC,2075,5626930.383
+Southeast,South Carolina,SC,2080,5649252.872
+Southeast,South Carolina,SC,2085,5665197.802
+Southeast,South Carolina,SC,2090,5672630.186
+Southeast,South Carolina,SC,2095,5677840.952
+Southeast,South Carolina,SC,2100,5684732.776
+Southeast,South Carolina,SC,2105,5915358.266
+Southeast,South Carolina,SC,2110,5969693.763
+Southeast,South Carolina,SC,2115,6024029.26
+Southeast,South Carolina,SC,2120,6078364.757
+Southeast,South Carolina,SC,2125,6132700.254
+Southeast,South Carolina,SC,2130,6187035.751
+Southeast,South Carolina,SC,2135,6241371.248
+Southeast,South Carolina,SC,2140,6295706.745
+Southeast,South Carolina,SC,2145,6350042.242
+Southeast,South Carolina,SC,2150,6404377.739
+Southeast,South Carolina,SC,2155,6458713.236
+Southeast,South Carolina,SC,2160,6513048.733
+Southeast,South Carolina,SC,2165,6567384.23
+Southeast,South Carolina,SC,2170,6621719.727
+Southeast,South Carolina,SC,2175,6676055.224
+Southeast,South Carolina,SC,2180,6730390.721
+Southeast,South Carolina,SC,2185,6784726.218
+Southeast,South Carolina,SC,2190,6839061.715
+Southeast,South Carolina,SC,2195,6893397.212
+Southeast,South Carolina,SC,2200,6947732.709
+Southeast,South Carolina,SC,2205,7002068.206
+Southeast,South Carolina,SC,2210,7056403.703
+Southeast,South Carolina,SC,2215,7110739.2
+Southeast,South Carolina,SC,2220,7165074.697
+Southeast,South Carolina,SC,2225,7219410.194
+Southeast,South Carolina,SC,2230,7273745.691
+Southeast,South Carolina,SC,2235,7328081.188
+Southeast,South Carolina,SC,2240,7382416.685
+Southeast,South Carolina,SC,2245,7436752.182
+Southeast,South Carolina,SC,2250,7491087.679
+Southeast,South Carolina,SC,2255,7545423.176
+Southeast,South Carolina,SC,2260,7599758.673
+Southeast,South Carolina,SC,2265,7654094.17
+Southeast,South Carolina,SC,2270,7708429.667
+Southeast,South Carolina,SC,2275,7762765.164
+Southeast,South Carolina,SC,2280,7817100.661
+Southeast,South Carolina,SC,2285,7871436.158
+Southeast,South Carolina,SC,2290,7925771.655
+Southeast,South Carolina,SC,2295,7980107.152
+Southeast,South Carolina,SC,2300,8034442.649
+Southeast,Tennessee,TN,2010,6122610.32
+Southeast,Tennessee,TN,2015,6366760.353
+Southeast,Tennessee,TN,2020,6572204.668
+Southeast,Tennessee,TN,2025,6739629.562
+Southeast,Tennessee,TN,2030,6889188.814
+Southeast,Tennessee,TN,2035,7017166.676
+Southeast,Tennessee,TN,2040,7117139.863
+Southeast,Tennessee,TN,2045,6291938.687
+Southeast,Tennessee,TN,2050,6343149.4
+Southeast,Tennessee,TN,2055,6387582.499
+Southeast,Tennessee,TN,2060,6434936.303
+Southeast,Tennessee,TN,2065,6482577.211
+Southeast,Tennessee,TN,2070,6528260.431
+Southeast,Tennessee,TN,2075,6564752.114
+Southeast,Tennessee,TN,2080,6590795.018
+Southeast,Tennessee,TN,2085,6609397.435
+Southeast,Tennessee,TN,2090,6618068.55
+Southeast,Tennessee,TN,2095,6624147.777
+Southeast,Tennessee,TN,2100,6632188.238
+Southeast,Tennessee,TN,2105,6603284.829
+Southeast,Tennessee,TN,2110,6606073.87
+Southeast,Tennessee,TN,2115,6608862.911
+Southeast,Tennessee,TN,2120,6611651.953
+Southeast,Tennessee,TN,2125,6614440.994
+Southeast,Tennessee,TN,2130,6617230.035
+Southeast,Tennessee,TN,2135,6620019.076
+Southeast,Tennessee,TN,2140,6622808.118
+Southeast,Tennessee,TN,2145,6625597.159
+Southeast,Tennessee,TN,2150,6628386.2
+Southeast,Tennessee,TN,2155,6631175.241
+Southeast,Tennessee,TN,2160,6633964.282
+Southeast,Tennessee,TN,2165,6636753.324
+Southeast,Tennessee,TN,2170,6639542.365
+Southeast,Tennessee,TN,2175,6642331.406
+Southeast,Tennessee,TN,2180,6645120.447
+Southeast,Tennessee,TN,2185,6647909.488
+Southeast,Tennessee,TN,2190,6650698.53
+Southeast,Tennessee,TN,2195,6653487.571
+Southeast,Tennessee,TN,2200,6656276.612
+Southeast,Tennessee,TN,2205,6659065.653
+Southeast,Tennessee,TN,2210,6661854.695
+Southeast,Tennessee,TN,2215,6664643.736
+Southeast,Tennessee,TN,2220,6667432.777
+Southeast,Tennessee,TN,2225,6670221.818
+Southeast,Tennessee,TN,2230,6673010.859
+Southeast,Tennessee,TN,2235,6675799.901
+Southeast,Tennessee,TN,2240,6678588.942
+Southeast,Tennessee,TN,2245,6681377.983
+Southeast,Tennessee,TN,2250,6684167.024
+Southeast,Tennessee,TN,2255,6686956.066
+Southeast,Tennessee,TN,2260,6689745.107
+Southeast,Tennessee,TN,2265,6692534.148
+Southeast,Tennessee,TN,2270,6695323.189
+Southeast,Tennessee,TN,2275,6698112.23
+Southeast,Tennessee,TN,2280,6700901.272
+Southeast,Tennessee,TN,2285,6703690.313
+Southeast,Tennessee,TN,2290,6706479.354
+Southeast,Tennessee,TN,2295,6709268.395
+Southeast,Tennessee,TN,2300,6712057.437
+Southeast,Virginia,VA,2010,7653262.9
+Southeast,Virginia,VA,2015,8754295.485
+Southeast,Virginia,VA,2020,9036781.418
+Southeast,Virginia,VA,2025,9266990.648
+Southeast,Virginia,VA,2030,9472634.619
+Southeast,Virginia,VA,2035,8771458.345
+Southeast,Virginia,VA,2040,8896424.829
+Southeast,Virginia,VA,2045,9887332.222
+Southeast,Virginia,VA,2050,9967806.2
+Southeast,Virginia,VA,2055,9125117.856
+Southeast,Virginia,VA,2060,9192766.147
+Southeast,Virginia,VA,2065,9260824.587
+Southeast,Virginia,VA,2070,9326086.33
+Southeast,Virginia,VA,2075,9378217.305
+Southeast,Virginia,VA,2080,9415421.454
+Southeast,Virginia,VA,2085,9441996.336
+Southeast,Virginia,VA,2090,9454383.643
+Southeast,Virginia,VA,2095,9463068.253
+Southeast,Virginia,VA,2100,9474554.626
+Southeast,Virginia,VA,2105,9704477.652
+Southeast,Virginia,VA,2110,9752612.664
+Southeast,Virginia,VA,2115,9800747.675
+Southeast,Virginia,VA,2120,9848882.687
+Southeast,Virginia,VA,2125,9897017.698
+Southeast,Virginia,VA,2130,9945152.71
+Southeast,Virginia,VA,2135,9993287.721
+Southeast,Virginia,VA,2140,10041422.73
+Southeast,Virginia,VA,2145,10089557.74
+Southeast,Virginia,VA,2150,10137692.76
+Southeast,Virginia,VA,2155,10185827.77
+Southeast,Virginia,VA,2160,10233962.78
+Southeast,Virginia,VA,2165,10282097.79
+Southeast,Virginia,VA,2170,10330232.8
+Southeast,Virginia,VA,2175,10378367.81
+Southeast,Virginia,VA,2180,10426502.83
+Southeast,Virginia,VA,2185,10474637.84
+Southeast,Virginia,VA,2190,10522772.85
+Southeast,Virginia,VA,2195,10570907.86
+Southeast,Virginia,VA,2200,10619042.87
+Southeast,Virginia,VA,2205,10667177.88
+Southeast,Virginia,VA,2210,10715312.89
+Southeast,Virginia,VA,2215,10763447.91
+Southeast,Virginia,VA,2220,10811582.92
+Southeast,Virginia,VA,2225,10859717.93
+Southeast,Virginia,VA,2230,10907852.94
+Southeast,Virginia,VA,2235,10955987.95
+Southeast,Virginia,VA,2240,11004122.96
+Southeast,Virginia,VA,2245,11052257.98
+Southeast,Virginia,VA,2250,11100392.99
+Southeast,Virginia,VA,2255,11148528
+Southeast,Virginia,VA,2260,11196663.01
+Southeast,Virginia,VA,2265,11244798.02
+Southeast,Virginia,VA,2270,11292933.03
+Southeast,Virginia,VA,2275,11341068.04
+Southeast,Virginia,VA,2280,11389203.06
+Southeast,Virginia,VA,2285,11437338.07
+Southeast,Virginia,VA,2290,11485473.08
+Southeast,Virginia,VA,2295,11533608.09
+Southeast,Virginia,VA,2300,11581743.1
+Southern Plains,Kansas,KS,2010,2857502.7
+Southern Plains,Kansas,KS,2015,3052316.831
+Southern Plains,Kansas,KS,2020,3229915.035
+Southern Plains,Kansas,KS,2025,3388641.695
+Southern Plains,Kansas,KS,2030,3539472.938
+Southern Plains,Kansas,KS,2035,3677427.501
+Southern Plains,Kansas,KS,2040,3795343.386
+Southern Plains,Kansas,KS,2045,3460662.298
+Southern Plains,Kansas,KS,2050,3535399.949
+Southern Plains,Kansas,KS,2055,3601646.518
+Southern Plains,Kansas,KS,2060,3665364.73
+Southern Plains,Kansas,KS,2065,3725262.335
+Southern Plains,Kansas,KS,2070,3779929.538
+Southern Plains,Kansas,KS,2075,3825960.102
+Southern Plains,Kansas,KS,2080,3863721.276
+Southern Plains,Kansas,KS,2085,3895351.236
+Southern Plains,Kansas,KS,2090,3904379.324
+Southern Plains,Kansas,KS,2095,3907965.81
+Southern Plains,Kansas,KS,2100,3912709.34
+Southern Plains,Kansas,KS,2105,4084013.542
+Southern Plains,Kansas,KS,2110,4131262.409
+Southern Plains,Kansas,KS,2115,4178511.276
+Southern Plains,Kansas,KS,2120,4225760.143
+Southern Plains,Kansas,KS,2125,4273009.01
+Southern Plains,Kansas,KS,2130,4320257.877
+Southern Plains,Kansas,KS,2135,4367506.745
+Southern Plains,Kansas,KS,2140,4414755.612
+Southern Plains,Kansas,KS,2145,4462004.479
+Southern Plains,Kansas,KS,2150,4509253.346
+Southern Plains,Kansas,KS,2155,4556502.213
+Southern Plains,Kansas,KS,2160,4603751.08
+Southern Plains,Kansas,KS,2165,4650999.947
+Southern Plains,Kansas,KS,2170,4698248.814
+Southern Plains,Kansas,KS,2175,4745497.682
+Southern Plains,Kansas,KS,2180,4792746.549
+Southern Plains,Kansas,KS,2185,4839995.416
+Southern Plains,Kansas,KS,2190,4887244.283
+Southern Plains,Kansas,KS,2195,4934493.15
+Southern Plains,Kansas,KS,2200,4981742.017
+Southern Plains,Kansas,KS,2205,5028990.884
+Southern Plains,Kansas,KS,2210,5076239.751
+Southern Plains,Kansas,KS,2215,5123488.618
+Southern Plains,Kansas,KS,2220,5170737.486
+Southern Plains,Kansas,KS,2225,5217986.353
+Southern Plains,Kansas,KS,2230,5265235.22
+Southern Plains,Kansas,KS,2235,5312484.087
+Southern Plains,Kansas,KS,2240,5359732.954
+Southern Plains,Kansas,KS,2245,5406981.821
+Southern Plains,Kansas,KS,2250,5454230.688
+Southern Plains,Kansas,KS,2255,5501479.555
+Southern Plains,Kansas,KS,2260,5548728.423
+Southern Plains,Kansas,KS,2265,5595977.29
+Southern Plains,Kansas,KS,2270,5643226.157
+Southern Plains,Kansas,KS,2275,5690475.024
+Southern Plains,Kansas,KS,2280,5737723.891
+Southern Plains,Kansas,KS,2285,5784972.758
+Southern Plains,Kansas,KS,2290,5832221.625
+Southern Plains,Kansas,KS,2295,5879470.492
+Southern Plains,Kansas,KS,2300,5926719.36
+Southern Plains,Oklahoma,OK,2010,3810003.6
+Southern Plains,Oklahoma,OK,2015,3730609.461
+Southern Plains,Oklahoma,OK,2020,3947673.931
+Southern Plains,Oklahoma,OK,2025,4141673.183
+Southern Plains,Oklahoma,OK,2030,3932747.709
+Southern Plains,Oklahoma,OK,2035,4086030.557
+Southern Plains,Oklahoma,OK,2040,4217048.207
+Southern Plains,Oklahoma,OK,2045,4325827.873
+Southern Plains,Oklahoma,OK,2050,4419249.936
+Southern Plains,Oklahoma,OK,2055,4502058.147
+Southern Plains,Oklahoma,OK,2060,4581705.912
+Southern Plains,Oklahoma,OK,2065,4190920.127
+Southern Plains,Oklahoma,OK,2070,4252420.73
+Southern Plains,Oklahoma,OK,2075,4304205.115
+Southern Plains,Oklahoma,OK,2080,4346686.436
+Southern Plains,Oklahoma,OK,2085,4382270.141
+Southern Plains,Oklahoma,OK,2090,4392426.739
+Southern Plains,Oklahoma,OK,2095,4396461.536
+Southern Plains,Oklahoma,OK,2100,4401798.008
+Southern Plains,Oklahoma,OK,2105,4548007.362
+Southern Plains,Oklahoma,OK,2110,4579851.165
+Southern Plains,Oklahoma,OK,2115,4611694.968
+Southern Plains,Oklahoma,OK,2120,4643538.77
+Southern Plains,Oklahoma,OK,2125,4675382.573
+Southern Plains,Oklahoma,OK,2130,4707226.376
+Southern Plains,Oklahoma,OK,2135,4739070.179
+Southern Plains,Oklahoma,OK,2140,4770913.981
+Southern Plains,Oklahoma,OK,2145,4802757.784
+Southern Plains,Oklahoma,OK,2150,4834601.587
+Southern Plains,Oklahoma,OK,2155,4866445.39
+Southern Plains,Oklahoma,OK,2160,4898289.193
+Southern Plains,Oklahoma,OK,2165,4930132.995
+Southern Plains,Oklahoma,OK,2170,4961976.798
+Southern Plains,Oklahoma,OK,2175,4993820.601
+Southern Plains,Oklahoma,OK,2180,5025664.404
+Southern Plains,Oklahoma,OK,2185,5057508.207
+Southern Plains,Oklahoma,OK,2190,5089352.009
+Southern Plains,Oklahoma,OK,2195,5121195.812
+Southern Plains,Oklahoma,OK,2200,5153039.615
+Southern Plains,Oklahoma,OK,2205,5184883.418
+Southern Plains,Oklahoma,OK,2210,5216727.221
+Southern Plains,Oklahoma,OK,2215,5248571.023
+Southern Plains,Oklahoma,OK,2220,5280414.826
+Southern Plains,Oklahoma,OK,2225,5312258.629
+Southern Plains,Oklahoma,OK,2230,5344102.432
+Southern Plains,Oklahoma,OK,2235,5375946.234
+Southern Plains,Oklahoma,OK,2240,5407790.037
+Southern Plains,Oklahoma,OK,2245,5439633.84
+Southern Plains,Oklahoma,OK,2250,5471477.643
+Southern Plains,Oklahoma,OK,2255,5503321.446
+Southern Plains,Oklahoma,OK,2260,5535165.248
+Southern Plains,Oklahoma,OK,2265,5567009.051
+Southern Plains,Oklahoma,OK,2270,5598852.854
+Southern Plains,Oklahoma,OK,2275,5630696.657
+Southern Plains,Oklahoma,OK,2280,5662540.46
+Southern Plains,Oklahoma,OK,2285,5694384.262
+Southern Plains,Oklahoma,OK,2290,5726228.065
+Southern Plains,Oklahoma,OK,2295,5758071.868
+Southern Plains,Oklahoma,OK,2300,5789915.671
+Southern Plains,Texas,TX,2010,25082523.7
+Southern Plains,Texas,TX,2015,27131705.17
+Southern Plains,Texas,TX,2020,28710355.86
+Southern Plains,Texas,TX,2025,30121259.51
+Southern Plains,Texas,TX,2030,31855256.44
+Southern Plains,Texas,TX,2035,33096847.51
+Southern Plains,Texas,TX,2040,34158090.48
+Southern Plains,Texas,TX,2045,35471788.56
+Southern Plains,Texas,TX,2050,36237849.48
+Southern Plains,Texas,TX,2055,36916876.81
+Southern Plains,Texas,TX,2060,37569988.48
+Southern Plains,Texas,TX,2065,38649596.73
+Southern Plains,Texas,TX,2070,39216768.95
+Southern Plains,Texas,TX,2075,39694336.06
+Southern Plains,Texas,TX,2080,40086108.24
+Southern Plains,Texas,TX,2085,40414269.07
+Southern Plains,Texas,TX,2090,40507935.49
+Southern Plains,Texas,TX,2095,40545145.27
+Southern Plains,Texas,TX,2100,40594359.4
+Southern Plains,Texas,TX,2105,44032392.01
+Southern Plains,Texas,TX,2110,44877415.1
+Southern Plains,Texas,TX,2115,45722438.19
+Southern Plains,Texas,TX,2120,46567461.28
+Southern Plains,Texas,TX,2125,47412484.37
+Southern Plains,Texas,TX,2130,48257507.45
+Southern Plains,Texas,TX,2135,49102530.54
+Southern Plains,Texas,TX,2140,49947553.63
+Southern Plains,Texas,TX,2145,50792576.72
+Southern Plains,Texas,TX,2150,51637599.81
+Southern Plains,Texas,TX,2155,52482622.9
+Southern Plains,Texas,TX,2160,53327645.99
+Southern Plains,Texas,TX,2165,54172669.08
+Southern Plains,Texas,TX,2170,55017692.17
+Southern Plains,Texas,TX,2175,55862715.26
+Southern Plains,Texas,TX,2180,56707738.35
+Southern Plains,Texas,TX,2185,57552761.44
+Southern Plains,Texas,TX,2190,58397784.53
+Southern Plains,Texas,TX,2195,59242807.61
+Southern Plains,Texas,TX,2200,60087830.7
+Southern Plains,Texas,TX,2205,60932853.79
+Southern Plains,Texas,TX,2210,61777876.88
+Southern Plains,Texas,TX,2215,62622899.97
+Southern Plains,Texas,TX,2220,63467923.06
+Southern Plains,Texas,TX,2225,64312946.15
+Southern Plains,Texas,TX,2230,65157969.24
+Southern Plains,Texas,TX,2235,66002992.33
+Southern Plains,Texas,TX,2240,66848015.42
+Southern Plains,Texas,TX,2245,67693038.51
+Southern Plains,Texas,TX,2250,68538061.6
+Southern Plains,Texas,TX,2255,69383084.68
+Southern Plains,Texas,TX,2260,70228107.77
+Southern Plains,Texas,TX,2265,71073130.86
+Southern Plains,Texas,TX,2270,71918153.95
+Southern Plains,Texas,TX,2275,72763177.04
+Southern Plains,Texas,TX,2280,73608200.13
+Southern Plains,Texas,TX,2285,74453223.22
+Southern Plains,Texas,TX,2290,75298246.31
+Southern Plains,Texas,TX,2295,76143269.4
+Southern Plains,Texas,TX,2300,76988292.49
+Southwest,Arizona,AZ,2010,6181866.24
+Southwest,Arizona,AZ,2015,6564632.433
+Southwest,Arizona,AZ,2020,6917808.336
+Southwest,Arizona,AZ,2025,7227709.069
+Southwest,Arizona,AZ,2030,7525483.253
+Southwest,Arizona,AZ,2035,7808972.754
+Southwest,Arizona,AZ,2040,8061206.843
+Southwest,Arizona,AZ,2045,8279342.38
+Southwest,Arizona,AZ,2050,8468993.859
+Southwest,Arizona,AZ,2055,8635955.587
+Southwest,Arizona,AZ,2060,8795886.82
+Southwest,Arizona,AZ,2065,8947788.71
+Southwest,Arizona,AZ,2070,9088498.704
+Southwest,Arizona,AZ,2075,9209697.259
+Southwest,Arizona,AZ,2080,9309863.815
+Southwest,Arizona,AZ,2085,9393652.575
+Southwest,Arizona,AZ,2090,9416731.925
+Southwest,Arizona,AZ,2095,9425381.948
+Southwest,Arizona,AZ,2100,9436822.577
+Southwest,Arizona,AZ,2105,10140843.45
+Southwest,Arizona,AZ,2110,10319684.14
+Southwest,Arizona,AZ,2115,10498524.82
+Southwest,Arizona,AZ,2120,10677365.51
+Southwest,Arizona,AZ,2125,10856206.2
+Southwest,Arizona,AZ,2130,11035046.88
+Southwest,Arizona,AZ,2135,11213887.57
+Southwest,Arizona,AZ,2140,11392728.26
+Southwest,Arizona,AZ,2145,11571568.94
+Southwest,Arizona,AZ,2150,11750409.63
+Southwest,Arizona,AZ,2155,11929250.31
+Southwest,Arizona,AZ,2160,12108091
+Southwest,Arizona,AZ,2165,12286931.69
+Southwest,Arizona,AZ,2170,12465772.37
+Southwest,Arizona,AZ,2175,12644613.06
+Southwest,Arizona,AZ,2180,12823453.75
+Southwest,Arizona,AZ,2185,13002294.43
+Southwest,Arizona,AZ,2190,13181135.12
+Southwest,Arizona,AZ,2195,13359975.81
+Southwest,Arizona,AZ,2200,13538816.49
+Southwest,Arizona,AZ,2205,13717657.18
+Southwest,Arizona,AZ,2210,13896497.87
+Southwest,Arizona,AZ,2215,14075338.55
+Southwest,Arizona,AZ,2220,14254179.24
+Southwest,Arizona,AZ,2225,14433019.93
+Southwest,Arizona,AZ,2230,14611860.61
+Southwest,Arizona,AZ,2235,14790701.3
+Southwest,Arizona,AZ,2240,14969541.99
+Southwest,Arizona,AZ,2245,15148382.67
+Southwest,Arizona,AZ,2250,15327223.36
+Southwest,Arizona,AZ,2255,15506064.05
+Southwest,Arizona,AZ,2260,15684904.73
+Southwest,Arizona,AZ,2265,15863745.42
+Southwest,Arizona,AZ,2270,16042586.11
+Southwest,Arizona,AZ,2275,16221426.79
+Southwest,Arizona,AZ,2280,16400267.48
+Southwest,Arizona,AZ,2285,16579108.17
+Southwest,Arizona,AZ,2290,16757948.85
+Southwest,Arizona,AZ,2295,16936789.54
+Southwest,Arizona,AZ,2300,17115630.23
+Southwest,California,CA,2010,37091197.44
+Southwest,California,CA,2015,39387794.6
+Southwest,California,CA,2020,42135741.68
+Southwest,California,CA,2025,44023318.87
+Southwest,California,CA,2030,45837034.36
+Southwest,California,CA,2035,48273649.75
+Southwest,California,CA,2040,49832915.03
+Southwest,California,CA,2045,51181389.26
+Southwest,California,CA,2050,52353780.22
+Southwest,California,CA,2055,54170994.13
+Southwest,California,CA,2060,55174199.14
+Southwest,California,CA,2065,56127038.27
+Southwest,California,CA,2070,57009673.69
+Southwest,California,CA,2075,57769919.17
+Southwest,California,CA,2080,59244587.91
+Southwest,California,CA,2085,59777789.11
+Southwest,California,CA,2090,59924657.7
+Southwest,California,CA,2095,59979703.31
+Southwest,California,CA,2100,60052507.31
+Southwest,California,CA,2105,64872715.85
+Southwest,California,CA,2110,66152893.27
+Southwest,California,CA,2115,67433070.69
+Southwest,California,CA,2120,68713248.11
+Southwest,California,CA,2125,69993425.53
+Southwest,California,CA,2130,71273602.96
+Southwest,California,CA,2135,72553780.38
+Southwest,California,CA,2140,73833957.8
+Southwest,California,CA,2145,75114135.22
+Southwest,California,CA,2150,76394312.64
+Southwest,California,CA,2155,77674490.07
+Southwest,California,CA,2160,78954667.49
+Southwest,California,CA,2165,80234844.91
+Southwest,California,CA,2170,81515022.33
+Southwest,California,CA,2175,82795199.75
+Southwest,California,CA,2180,84075377.17
+Southwest,California,CA,2185,85355554.6
+Southwest,California,CA,2190,86635732.02
+Southwest,California,CA,2195,87915909.44
+Southwest,California,CA,2200,89196086.86
+Southwest,California,CA,2205,90476264.28
+Southwest,California,CA,2210,91756441.71
+Southwest,California,CA,2215,93036619.13
+Southwest,California,CA,2220,94316796.55
+Southwest,California,CA,2225,95596973.97
+Southwest,California,CA,2230,96877151.39
+Southwest,California,CA,2235,98157328.81
+Southwest,California,CA,2240,99437506.24
+Southwest,California,CA,2245,100717683.7
+Southwest,California,CA,2250,101997861.1
+Southwest,California,CA,2255,103278038.5
+Southwest,California,CA,2260,104558215.9
+Southwest,California,CA,2265,105838393.3
+Southwest,California,CA,2270,107118570.8
+Southwest,California,CA,2275,108398748.2
+Southwest,California,CA,2280,109678925.6
+Southwest,California,CA,2285,110959103
+Southwest,California,CA,2290,112239280.5
+Southwest,California,CA,2295,113519457.9
+Southwest,California,CA,2300,114799635.3
+Southwest,Colorado,CO,2010,5057890.56
+Southwest,Colorado,CO,2015,5371062.899
+Southwest,Colorado,CO,2020,5660025.002
+Southwest,Colorado,CO,2025,5256515.686
+Southwest,Colorado,CO,2030,5473078.73
+Southwest,Colorado,CO,2035,5679252.912
+Southwest,Colorado,CO,2040,5862695.886
+Southwest,Colorado,CO,2045,6021339.913
+Southwest,Colorado,CO,2050,6159268.261
+Southwest,Colorado,CO,2055,6280694.972
+Southwest,Colorado,CO,2060,6397008.596
+Southwest,Colorado,CO,2065,6507482.698
+Southwest,Colorado,CO,2070,6609817.239
+Southwest,Colorado,CO,2075,6697961.643
+Southwest,Colorado,CO,2080,6770810.047
+Southwest,Colorado,CO,2085,6831747.327
+Southwest,Colorado,CO,2090,6848532.309
+Southwest,Colorado,CO,2095,6854823.235
+Southwest,Colorado,CO,2100,6863143.692
+Southwest,Colorado,CO,2105,7219519.968
+Southwest,Colorado,CO,2110,7324613.272
+Southwest,Colorado,CO,2115,7429706.576
+Southwest,Colorado,CO,2120,7534799.88
+Southwest,Colorado,CO,2125,7639893.184
+Southwest,Colorado,CO,2130,7744986.488
+Southwest,Colorado,CO,2135,7850079.793
+Southwest,Colorado,CO,2140,7955173.097
+Southwest,Colorado,CO,2145,8060266.401
+Southwest,Colorado,CO,2150,8165359.705
+Southwest,Colorado,CO,2155,8270453.009
+Southwest,Colorado,CO,2160,8375546.313
+Southwest,Colorado,CO,2165,8480639.617
+Southwest,Colorado,CO,2170,8585732.921
+Southwest,Colorado,CO,2175,8690826.226
+Southwest,Colorado,CO,2180,8795919.53
+Southwest,Colorado,CO,2185,8901012.834
+Southwest,Colorado,CO,2190,9006106.138
+Southwest,Colorado,CO,2195,9111199.442
+Southwest,Colorado,CO,2200,9216292.746
+Southwest,Colorado,CO,2205,9321386.05
+Southwest,Colorado,CO,2210,9426479.354
+Southwest,Colorado,CO,2215,9531572.658
+Southwest,Colorado,CO,2220,9636665.963
+Southwest,Colorado,CO,2225,9741759.267
+Southwest,Colorado,CO,2230,9846852.571
+Southwest,Colorado,CO,2235,9951945.875
+Southwest,Colorado,CO,2240,10057039.18
+Southwest,Colorado,CO,2245,10162132.48
+Southwest,Colorado,CO,2250,10267225.79
+Southwest,Colorado,CO,2255,10372319.09
+Southwest,Colorado,CO,2260,10477412.4
+Southwest,Colorado,CO,2265,10582505.7
+Southwest,Colorado,CO,2270,10687599
+Southwest,Colorado,CO,2275,10792692.31
+Southwest,Colorado,CO,2280,10897785.61
+Southwest,Colorado,CO,2285,11002878.92
+Southwest,Colorado,CO,2290,11107972.22
+Southwest,Colorado,CO,2295,11213065.52
+Southwest,Colorado,CO,2300,11318158.83
+Southwest,Nevada,NV,2010,2809939.2
+Southwest,Nevada,NV,2015,2983923.833
+Southwest,Nevada,NV,2020,2515566.668
+Southwest,Nevada,NV,2025,3285322.304
+Southwest,Nevada,NV,2030,3420674.206
+Southwest,Nevada,NV,2035,2839626.456
+Southwest,Nevada,NV,2040,2931347.943
+Southwest,Nevada,NV,2045,3010669.956
+Southwest,Nevada,NV,2050,3079634.13
+Southwest,Nevada,NV,2055,3140347.486
+Southwest,Nevada,NV,2060,3198504.298
+Southwest,Nevada,NV,2065,3253741.349
+Southwest,Nevada,NV,2070,3304908.62
+Southwest,Nevada,NV,2075,3348980.822
+Southwest,Nevada,NV,2080,3385405.024
+Southwest,Nevada,NV,2085,3415873.664
+Southwest,Nevada,NV,2090,3424266.154
+Southwest,Nevada,NV,2095,3427411.618
+Southwest,Nevada,NV,2100,3431571.846
+Southwest,Nevada,NV,2105,3517486.209
+Southwest,Nevada,NV,2110,3552352.116
+Southwest,Nevada,NV,2115,3587218.024
+Southwest,Nevada,NV,2120,3622083.931
+Southwest,Nevada,NV,2125,3656949.838
+Southwest,Nevada,NV,2130,3691815.746
+Southwest,Nevada,NV,2135,3726681.653
+Southwest,Nevada,NV,2140,3761547.561
+Southwest,Nevada,NV,2145,3796413.468
+Southwest,Nevada,NV,2150,3831279.375
+Southwest,Nevada,NV,2155,3866145.283
+Southwest,Nevada,NV,2160,3901011.19
+Southwest,Nevada,NV,2165,3935877.097
+Southwest,Nevada,NV,2170,3970743.005
+Southwest,Nevada,NV,2175,4005608.912
+Southwest,Nevada,NV,2180,4040474.819
+Southwest,Nevada,NV,2185,4075340.727
+Southwest,Nevada,NV,2190,4110206.634
+Southwest,Nevada,NV,2195,4145072.541
+Southwest,Nevada,NV,2200,4179938.449
+Southwest,Nevada,NV,2205,4214804.356
+Southwest,Nevada,NV,2210,4249670.263
+Southwest,Nevada,NV,2215,4284536.171
+Southwest,Nevada,NV,2220,4319402.078
+Southwest,Nevada,NV,2225,4354267.985
+Southwest,Nevada,NV,2230,4389133.893
+Southwest,Nevada,NV,2235,4423999.8
+Southwest,Nevada,NV,2240,4458865.708
+Southwest,Nevada,NV,2245,4493731.615
+Southwest,Nevada,NV,2250,4528597.522
+Southwest,Nevada,NV,2255,4563463.43
+Southwest,Nevada,NV,2260,4598329.337
+Southwest,Nevada,NV,2265,4633195.244
+Southwest,Nevada,NV,2270,4668061.152
+Southwest,Nevada,NV,2275,4702927.059
+Southwest,Nevada,NV,2280,4737792.966
+Southwest,Nevada,NV,2285,4772658.874
+Southwest,Nevada,NV,2290,4807524.781
+Southwest,Nevada,NV,2295,4842390.688
+Southwest,Nevada,NV,2300,4877256.596
+Southwest,New Mexico,NM,2010,2247951.36
+Southwest,New Mexico,NM,2015,2387139.066
+Southwest,New Mexico,NM,2020,2515566.668
+Southwest,New Mexico,NM,2025,2628257.843
+Southwest,New Mexico,NM,2030,2736539.365
+Southwest,New Mexico,NM,2035,2839626.456
+Southwest,New Mexico,NM,2040,2931347.943
+Southwest,New Mexico,NM,2045,3010669.956
+Southwest,New Mexico,NM,2050,3079634.13
+Southwest,New Mexico,NM,2055,3140347.486
+Southwest,New Mexico,NM,2060,3198504.298
+Southwest,New Mexico,NM,2065,3253741.349
+Southwest,New Mexico,NM,2070,3304908.62
+Southwest,New Mexico,NM,2075,3348980.822
+Southwest,New Mexico,NM,2080,2539053.768
+Southwest,New Mexico,NM,2085,2561905.248
+Southwest,New Mexico,NM,2090,2568199.616
+Southwest,New Mexico,NM,2095,2570558.713
+Southwest,New Mexico,NM,2100,2573678.885
+Southwest,New Mexico,NM,2105,2937802.442
+Southwest,New Mexico,NM,2110,2950337.362
+Southwest,New Mexico,NM,2115,2962872.282
+Southwest,New Mexico,NM,2120,2975407.202
+Southwest,New Mexico,NM,2125,2987942.122
+Southwest,New Mexico,NM,2130,3000477.042
+Southwest,New Mexico,NM,2135,3013011.962
+Southwest,New Mexico,NM,2140,3025546.882
+Southwest,New Mexico,NM,2145,3038081.802
+Southwest,New Mexico,NM,2150,3050616.722
+Southwest,New Mexico,NM,2155,3063151.642
+Southwest,New Mexico,NM,2160,3075686.562
+Southwest,New Mexico,NM,2165,3088221.482
+Southwest,New Mexico,NM,2170,3100756.402
+Southwest,New Mexico,NM,2175,3113291.322
+Southwest,New Mexico,NM,2180,3125826.242
+Southwest,New Mexico,NM,2185,3138361.163
+Southwest,New Mexico,NM,2190,3150896.083
+Southwest,New Mexico,NM,2195,3163431.003
+Southwest,New Mexico,NM,2200,3175965.923
+Southwest,New Mexico,NM,2205,3188500.843
+Southwest,New Mexico,NM,2210,3201035.763
+Southwest,New Mexico,NM,2215,3213570.683
+Southwest,New Mexico,NM,2220,3226105.603
+Southwest,New Mexico,NM,2225,3238640.523
+Southwest,New Mexico,NM,2230,3251175.443
+Southwest,New Mexico,NM,2235,3263710.363
+Southwest,New Mexico,NM,2240,3276245.283
+Southwest,New Mexico,NM,2245,3288780.203
+Southwest,New Mexico,NM,2250,3301315.123
+Southwest,New Mexico,NM,2255,3313850.043
+Southwest,New Mexico,NM,2260,3326384.963
+Southwest,New Mexico,NM,2265,3338919.883
+Southwest,New Mexico,NM,2270,3351454.803
+Southwest,New Mexico,NM,2275,3363989.723
+Southwest,New Mexico,NM,2280,3376524.643
+Southwest,New Mexico,NM,2285,3389059.563
+Southwest,New Mexico,NM,2290,3401594.483
+Southwest,New Mexico,NM,2295,3414129.403
+Southwest,New Mexico,NM,2300,3426664.323
+Southwest,Utah,UT,2010,2809939.2
+Southwest,Utah,UT,2015,2983923.833
+Southwest,Utah,UT,2020,3144458.335
+Southwest,Utah,UT,2025,3285322.304
+Southwest,Utah,UT,2030,3420674.206
+Southwest,Utah,UT,2035,3549533.07
+Southwest,Utah,UT,2040,3664184.929
+Southwest,Utah,UT,2045,3763337.446
+Southwest,Utah,UT,2050,3849542.663
+Southwest,Utah,UT,2055,3140347.486
+Southwest,Utah,UT,2060,3198504.298
+Southwest,Utah,UT,2065,3253741.349
+Southwest,Utah,UT,2070,3304908.62
+Southwest,Utah,UT,2075,3348980.822
+Southwest,Utah,UT,2080,3385405.024
+Southwest,Utah,UT,2085,3415873.664
+Southwest,Utah,UT,2090,3424266.154
+Southwest,Utah,UT,2095,3427411.618
+Southwest,Utah,UT,2100,3431571.846
+Southwest,Utah,UT,2105,3501117.986
+Southwest,Utah,UT,2110,3515430.169
+Southwest,Utah,UT,2115,3529742.353
+Southwest,Utah,UT,2120,3544054.536
+Southwest,Utah,UT,2125,3558366.72
+Southwest,Utah,UT,2130,3572678.903
+Southwest,Utah,UT,2135,3586991.087
+Southwest,Utah,UT,2140,3601303.27
+Southwest,Utah,UT,2145,3615615.454
+Southwest,Utah,UT,2150,3629927.637
+Southwest,Utah,UT,2155,3644239.821
+Southwest,Utah,UT,2160,3658552.004
+Southwest,Utah,UT,2165,3672864.188
+Southwest,Utah,UT,2170,3687176.371
+Southwest,Utah,UT,2175,3701488.555
+Southwest,Utah,UT,2180,3715800.738
+Southwest,Utah,UT,2185,3730112.922
+Southwest,Utah,UT,2190,3744425.105
+Southwest,Utah,UT,2195,3758737.289
+Southwest,Utah,UT,2200,3773049.472
+Southwest,Utah,UT,2205,3787361.656
+Southwest,Utah,UT,2210,3801673.839
+Southwest,Utah,UT,2215,3815986.023
+Southwest,Utah,UT,2220,3830298.206
+Southwest,Utah,UT,2225,3844610.39
+Southwest,Utah,UT,2230,3858922.573
+Southwest,Utah,UT,2235,3873234.757
+Southwest,Utah,UT,2240,3887546.94
+Southwest,Utah,UT,2245,3901859.124
+Southwest,Utah,UT,2250,3916171.307
+Southwest,Utah,UT,2255,3930483.491
+Southwest,Utah,UT,2260,3944795.674
+Southwest,Utah,UT,2265,3959107.858
+Southwest,Utah,UT,2270,3973420.041
+Southwest,Utah,UT,2275,3987732.225
+Southwest,Utah,UT,2280,4002044.408
+Southwest,Utah,UT,2285,4016356.592
+Southwest,Utah,UT,2290,4030668.775
+Southwest,Utah,UT,2295,4044980.959
+Southwest,Utah,UT,2300,4059293.142
