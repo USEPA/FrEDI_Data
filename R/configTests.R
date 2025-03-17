@@ -523,7 +523,7 @@ get_fredi_sectorOptions <- function(
     dfGroups  ### rDataList$stateData$nonNAGroups, where rDataList is output from configureSystemData()
 ){
   ### Load scenario ID function
-  get_scenario_id <- utils::getFromNamespace("get_scenario_id", "FrEDI")
+  # get_scenario_id <- utils::getFromNamespace("get_scenario_id", "FrEDI")
   
   ### Add scenario ID
   include0   <- c("region") |> c("state", "postal") |> c("model")
