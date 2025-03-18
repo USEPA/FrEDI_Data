@@ -1,14 +1,13 @@
 ### FrEDI Data Utilities
 ## Import functions from FrEDI namespace ----------------
-get_matches        <- "get_matches"        |> utils::getFromNamespace("FrEDI")
-interpolate_annual <- "interpolate_annual" |> utils::getFromNamespace("FrEDI")
-get_scenario_id    <- "get_scenario_id"    |> utils::getFromNamespace("FrEDI")
 convertTemps       <- "convertTemps"       |> utils::getFromNamespace("FrEDI")
-temps2slr          <- "temps2slr"          |> utils::getFromNamespace("FrEDI")
+get_matches        <- "get_matches"        |> utils::getFromNamespace("FrEDI")
+get_msgPrefix      <- "get_msgPrefix"      |> utils::getFromNamespace("FrEDI")
+get_scenario_id    <- "get_scenario_id"    |> utils::getFromNamespace("FrEDI")
 interpolate_annual <- "interpolate_annual" |> utils::getFromNamespace("FrEDI")
 match_scalarValues <- "match_scalarValues" |> utils::getFromNamespace("FrEDI")
+temps2slr          <- "temps2slr"          |> utils::getFromNamespace("FrEDI")
 update_popScalars  <- "update_popScalars"  |> utils::getFromNamespace("FrEDI")
-get_scenario_id    <- "get_scenario_id"    |> utils::getFromNamespace("FrEDI")
 
 ### For SV
 calc_countyPop     <- "calc_countyPop" |> utils::getFromNamespace("FrEDI")
@@ -23,93 +22,238 @@ get_years_fromData <- function(years0, by=1){
   return(yrs0)
 }
 
+## Scenario Functions ----------------
+## Function to load data of specific type
+loadScenarioData_byType <- function(
+    type0    = "temp",
+    info0,   ### co_scenarios from configureScenarioData
+    dir0     = "inst" |> file.path("extdata", "scenarios"), 
+    ext0     = "csv",
+    typeCol0 = "inputName",
+    idCol0   = c("scenarioName"),
+    msg0     = 0
+){
+  ### Filter to data
+  names0 <- info0 |> names()
+  info0  <- info0 |> 
+    filter_at(c(typeCol0), function(x, y=type0){x %in% y}) |>
+    group_by_at(c(names0))
+  ids0   <- info0 |> pull(all_of(idCol0))
+  ### Read in files and bind data
+  if (!silent) msg0 |> get_msgPrefix(newline=F) |> paste0("Loading ", type0, "scenario data...") |> message()
+  data0 <- info0 |> group_map(
+    loadScenarioData_byGroup,
+    dir0     = dir0, 
+    ext0     = ext0,
+    typeCol0 = typeCol0,
+    idCol0   = idCol0,
+    msg0     = msg0 + 1
+  ) |> bind_rows()
+  ### Return data
+  return(data0)
+}
+
+### Load scenario by scenarioName
+## .x = group data
+## .y = group key data
+loadScenarioData_byGroup <- function(
+    .x, 
+    .y,
+    # type0    = "temp",
+    info0,   ### co_scenarios from configureScenarioData
+    dir0     = "inst" |> file.path("extdata", "scenarios"), 
+    ext0     = "csv",
+    typeCol0 = "inputName",
+    idCol0   = c("scenarioName"),
+    msg0     = 0
+){
+  ### File paths
+  type0 <- .y |> pull(all_of(typeCol0)) |> unique()
+  file0 <- .y |> pull(all_of(idCol0  )) |> unique()
+  path0 <- dir0 |> file.path(type0, file0) |> paste0(".", ext0)
+  ### Read in file
+  if (!silent) msg0 |> get_msgPrefix(newline=F) |> paste0("Loading data from ", file0 |> paste0(".", ext0), "...") |> message()
+  data0 <- file0 |> read.csv()
+  data0 <- .y |> 
+    cross_join(data0) |> 
+    filter_all(any_vars(!(. |> is.na())))
+  ### Return data
+  return(data0)
+}
+
+### Reshape specific scenarios
+reshapeScenarioData_byType <- function(
+    type0    = "temp",
+    list0, ### List of data with types
+    typeCol0 = c("inputName"),
+    idCol0   = c("scenarioName"),
+    argCol0  = c("inputArgVal"),
+    valCol0  = c("valueCol"),
+    yrCol0   = c("year"),
+    method0  = "linear",
+    rule0    = 1,
+    msg0     = 0
+){ 
+  ### Filter to data
+  data0  <- list0[[type0]]
+  ### Read in files and bind data
+  if (!silent) msg0 |> get_msgPrefix(newline=F) |> paste0("Reshaping ", type0, "scenario data...") |> message()
+  data0 <- data0 |> 
+    filter_all(any_vars(!(. |> is.na()))) |>
+    group_map(
+      reshapeScenarioData_byGroup,
+      typeCol0 = typeCol0,
+      argCol0  = argCol0,
+      valCol0  = valCol0,
+      yrCol0   = yrCol0,
+      idCol0   = idCol0,
+      method0  = method0,
+      rule0    = rule0,
+      msg0     = msg0 + 1
+    ) |> bind_rows()
+  ### Return data
+  return(data0)
+} ### End if(doTemp0)  
 
 
-## Format GCAM scenarios ----------------
-format_gcamData <- function(
-    df0, ### Original GCAM data
-    yrCol0    = "year",
-    scenCol0  = "scenario",
-    modCol0   = "model",
+### Reshape specific scenarios
+reshapeScenarioData_byGroup <- function(
+    .x, 
+    .y,
+    typeCol0 = c("inputName"),
+    idCol0   = c("scenarioName"),
+    argCol0  = c("inputArgVal"),
+    valCol0  = c("valueCol"),
+    yrCol0   = c("year"),
+    method0  = "linear",
+    rule0    = 1,
+    msg0     = 0
+){
+  ### File paths
+  type0  <- .y |> pull(all_of(typeCol0)) |> unique()
+  name0  <- .y |> pull(all_of(idCol0  )) |> unique()
+  yCol0  <- .y |> pull(all_of(valCol0 )) |> unique() 
+  arg0   <- .y |> pull(all_of(argCol0 )) |> unique() 
+  group0 <- .x |> names() |> get_matches(y=c(yrCol0, valCol0), matches=F)
+  sort0  <- group0 |> c(yrCol0)
+  df0    <- .x |> 
+    arrange_at(c(sort0)) |> 
+    group_by_at(c(group0))
+  
+  ### Interpolate data
+  if (!silent) msg0 |> get_msgPrefix(newline=F) |> paste0("Reshaping ", name0, "...") |> message()
+  
+  ### Conditionals
+  doTemp <- type0 |> str_detect("temp")
+  if(doTemp){
+    df0 <- df0 |> group_map(
+      format_tempData_byGroup,
+      tempCol0  = yCol0,
+      yrCol0    = yrCol0,
+      method0   = method0,
+      rule0     = rule0
+    ) |> bind_rows()
+  } else{
+    df0 <- df0 |> group_map(
+      interpolate_byGroup,
+      xCol0     = yrCol0,
+      yCol0     = yCol0,
+      yrCol0    = yrCol0,
+      method0   = method0,
+      rule0     = rule0
+    ) |> bind_rows()
+  } ### End if(doTemp0)  
+  
+  ### Return data
+  return(df0)
+}
+
+
+### Format grouped temperature scenarios
+formatGroupedTempData <- function(
+    df0,      ### Original GCAM data
     tempCol0  = "temp_C_global",
-    tempType0 = "global",
+    typeCol0  = "inputArgValue",
+    # tempType0 = "global",
+    yrCol0    = "year",
     group0    = c("scenario", "model"),
-    rule      = 1
+    method0   = "linear",
+    rule0     = 1
 ){
   ### Select columns
   ### Filter out any missing values
-  select0 <- c(yrCol0, scenCol0, modCol0, tempCol0)
   sort0   <- group0 |> c(yrCol0)
-  df0     <- df0 |> 
-    select(any_of(select0)) |>
-    arrange_at(c(sort0)) |> 
+  df0     <- df0 |>
     filter_all(any_vars(!(. |> is.na()))) |>
+    arrange_at(c(sort0)) |>
     group_by_at(c(group0))
-  rm(select0)
-  
+
   ### Calculate temp_C_conus
   # df0 |> pull(scenario) |> unique() |> print()
   # groups0 <- df0 |> group_keys()
   df0     <- df0 |> group_map(
-    format_tempData_byScenario, 
-    tempType0 = tempType0,
-    minYr0    = minYr0,
-    maxYr0    = maxYr0,
-    scenCol0  = scenCol0,
+    format_tempData_byGroup,
     tempCol0  = tempCol0,
+    # tempType0 = tempType0,
     yrCol0    = yrCol0,
-    rule      = rule
+    method0   = method0,
+    rule0     = rule0
   ) |> bind_rows()
   # df0 |> glimpse()
-  
+
   ### Return
   return(df0)
 }
 
-###### Format GCAM scenario
+### Format grouped temperature scenarios by group
 ### df0       = Data, filtered to a specific scenario
 ### scen0     = Scenario name
 ### scenCol0  = Scenario column
 ### tempCol0  = Temperature column
 ### tempType0 = Temperature type
-format_tempData_byScenario <- function(
+format_tempData_byGroup <- function(
     .x,       ### Data, filtered to a scenario
     .y,       ### Group info
-    tempType0 = "global",
-    minYr0    = "minYear0" |> get_frediDataObj("fredi_config", "rDataList"),
-    maxYr0    = "npdYear0" |> get_frediDataObj("fredi_config", "rDataList"),
-    # scenCol0  = "scenario",
     tempCol0  = "temp_C_global",
+    typeCol0  = "inputArgValue", ### Column to look for tempType
+    tempType0 = "global",
     yrCol0    = "year",
-    rule      = 1
+    method0   = "linear",
+    rule0     = 1,
+    globalStr = "global",
+    conusStr  = "conus"
 ){
-  # ### Import Functions to Namespace
-  # convertTemps       <- utils::getFromNamespace("convertTemps"      , "FrEDI")
-  # temps2slr          <- utils::getFromNamespace("temps2slr"         , "FrEDI")
-  # interpolate_annual <- utils::getFromNamespace("interpolate_annual", "FrEDI")
+  ### Group info
+  tempType0 <- .y |> pull(all_of(tempType0)) |> unique()
+  yrs0      <- .x |> pull(all_of(yrCol0)) |> unique()
+  minYr0    <- yrs0 |> min(na.rm=T)
+  maxYr0    <- yrs0 |> max(na.rm=T)
   ### Sort data
-  df0       <- df0 |> arrange_at(c(yrCol))
+  .x        <- .x |> 
+    filter_all(any_vars(!(. |> is.na()))) |>
+    arrange_at(c(yrCol0))
+  
   ### Values and columns
-  globalStr <- "global"
-  conusStr  <- "conus"
   doGlobal  <- tempType0 |> tolower() |> str_detect(globalStr)
   tempType1 <- tempType0 |> tolower()
   tempType2 <- case_when(doGlobal ~ conusStr, .default = globalStr)
-  select0   <- c(yrCol0) |> c(tempColX |> paste0(c(conusStr0, globalStr0)))
   ### Interpolate values, convert temperatures, calculate slr_cm
-  .y |> glimpse()
+  # .y |> glimpse()
   x0        <- .x |> pull(all_of(yrCol0  ))
   y0        <- .x |> pull(all_of(tempCol0))
   xVals0    <- minYr0:maxYr0
-  yVals0    <- x0 |> approx(y=y0, xout=xVals0, method="linear", rule=rule)
+  yVals0    <- x0 |> approx(y=y0, xout=xVals0, method=method0, rule=rule0)
+  ### Create tibble with results
+  old0      <- c("xVal", "yVal1", "yVal2")
+  new0      <- yrCol0 |> c("temp_C_" |> paste0(c(tempType1, tempType2)))
   df0       <- tibble(xVal=xVals0, yVal1=yVals0) |> 
     mutate(yVal2 = yVal1 |> convertTemps(from=tempType0)) |>
-    rename_at(c(xVal, yVal1, yVal2), ~c(yrCol0, tempCol1, tempCol2)) |>
-    select(all_of(select0))
+    rename_at(c(old0), ~new0)
   ### Calculate SLR
-  df0       <- df0 |> mutate(slr_cm = df0 |> pull(temp_C_global) |> temps2slr(years=xVals0))
+  slrVals0  <- df0 |> pull(temp_C_global) |> temps2slr(years=xVals0)
+  df0       <- df0 |> mutate(slr_cm = slrVals0)
   ### Add model data
-  df0       <- df0 |> cross_join(.y)
+  df0       <- .y |> cross_join(df0)
   ### Return
   return(df0)
 }
