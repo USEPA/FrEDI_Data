@@ -67,13 +67,16 @@ createSystemData <- function(
   ### Assign objects
   for(name_i in frediNames){ name_i |> assign(frediData[[name_i]]); rm(name_i) }
   
-  #### State Columns --------------------
+  #### Columns --------------------
   stateCols0    <- c("state", "postal")
   popCol0       <- c("pop")
   national0     <- c("NationalTotal")
   mTypes0       <- co_modelTypes |> pull(modelType_id) |> unique()
-  doSlr0        <- "slr" %in% mTypes0
-  doGcm0        <- "gcm" %in% mTypes0
+  idCol0        <- "scenario_id"
+  slrStr0       <- "slr"
+  gcmStr0       <- "gcm"
+  doSlr0        <- slrStr0 %in% mTypes0
+  doGcm0        <- gcmStr0 %in% mTypes0
 
   #### Sector Info --------------------
   ### Exclude some sectors, get the number of sectors and sector info
@@ -153,6 +156,7 @@ createSystemData <- function(
 
   
   ### Format SLR Data --------------------
+  nonNAGroups <- c()
   if(doSlr0) {
     # if(msgUser) 
     msg1 |> paste0("Formatting SLR data...") |> message()
@@ -178,19 +182,31 @@ createSystemData <- function(
     slrExtremes  <- slrExtremes |> extend_slr()
     
     ### Add other values back into slrImpacts
-    include0     <- c("region") |> c(stateCols0) |> c("model")
-    slrImpacts   <- slrImpacts  |> get_scenario_id(include=include0) |> ungroup()
+    include0     <- c("region") |> c(stateCols0)
+    slrImpacts   <- slrImpacts  |> get_scenario_id(include=include0) |> ungroup() |> mutate(scenario_id = scenario_id |> paste0("_Interpolation"))
+    slrExtremes  <- slrExtremes |> get_scenario_id(include=include0) |> ungroup() |> mutate(scenario_id = scenario_id |> paste0("_Interpolation"))
     # slrExtremes  <- slrExtremes |> get_scenario_id(include=include0) |> ungroup()
+    rm(include0)
     
-    groups0      <- slrImpacts  |> filter(!(scaled_impacts |> is.na())) |> pull(scenario_id) |> unique()
-    slrImpacts   <- slrImpacts  |> mutate(hasScenario = scenario_id %in% groups0)
-    # slrExtremes  <- slrExtremes |> mutate(hasScenario = scenario_id %in% groups0)
-    rm(include0, groups0)
+    ### SLR IDs
+    dfSlrIds     <- slrImpacts  |> filter(!(scaled_impacts |> is.na())) |> select(all_of(idCol0)) |> distinct() |> mutate(modelType = slrStr0)
+    slrIds       <- dfSlrIds    |> pull(all_of(idCol0))
+    nonNAGroups  <- nonNAGroups |> bind_rows(dfSlrIds)
+    # stateData[["nonNAGroups"]] <- nonNAGroups
+    rm(dfSlrIds)
+    
+    ### Filter to values with SLR IDs
+    slrImpacts   <- slrImpacts  |> mutate(hasScenario = scenario_id %in% slrIds)
+    slrExtremes  <- slrExtremes |> mutate(hasScenario = scenario_id %in% slrIds)
+    # slrExtGroups <- slrExtremes |> filter(!(scaled_impacts |> is.na())) |> pull(scenario_id) |> unique()
+    # slrExtremes  <- slrExtremes |> mutate(hasScenario = scenario_id %in% slrExtGroups)
+    rm(slrIds)
     
     ### Update in data list and remove objects
     frediData[["slr_cm"     ]] <- slr_cm
     stateData[["slrImpacts" ]] <- slrImpacts
     stateData[["slrExtremes"]] <- slrExtremes
+    # stateData[["nonNAGroups"]] <- nonNAGroups
     rm(slr_cm, slrExtremes, slrImpData)
     # return(list(frediData=frediData, stateData=stateData))
   } ### End if(doSlr0)
@@ -222,11 +238,18 @@ createSystemData <- function(
     
     ### Get info about scenarios with non-missing inputs
     select0       <- c("sector", "variant", "impactType", "impactYear", "region", "state", "postal", "model")
-    gcmGroups     <- gcmImpacts |> select(all_of(select0)) |> unique() |> mutate(modelType = "gcm")
-    slrGroups     <- slrImpacts |> filter(!(scaled_impacts |> is.na())) |> select(all_of(select0)) |> unique() |> mutate(modelType = "slr")
-    nonNAGroups   <- gcmGroups  |> rbind(slrGroups)
-    stateData[["nonNAGroups" ]] <- nonNAGroups
-    rm(gcmGroups, slrGroups, slrImpacts, nonNAGroups)
+    ### SLR IDs
+    dfGcmIds     <- gcmImpacts  |> select(all_of(idCol0)) |> distinct() |> mutate(modelType = gcmStr0)
+    gcmIds       <- dfGcmIds    |> pull(all_of(idCol0))
+    nonNAGroups  <- nonNAGroups |> bind_rows(dfGcmIds)
+    # stateData[["nonNAGroups" ]] <- nonNAGroups
+    
+    ### Filter to values with SLR IDs
+    # gcmGroups     <- gcmImpacts |> select(all_of(select0)) |> unique() |> mutate(modelType = "gcm")
+    # slrGroups     <- slrImpacts |> filter(!(scaled_impacts |> is.na())) |> select(all_of(select0)) |> unique() |> mutate(modelType = "slr")
+    # nonNAGroups   <- gcmGroups  |> rbind(gcGroups)
+    # stateData[["nonNAGroups" ]] <- nonNAGroups
+    # rm(gcmGroups, slrGroups, slrImpacts, nonNAGroups)
     
     ### Get Interpolation Functions for Scenarios
     ### Iterate over sectors to get interpolation functions with fun_getImpactFunctions()
@@ -261,6 +284,7 @@ createSystemData <- function(
     ### Message the user
     if(msgUser) msg4 |> paste0(messages_data[["interpFuns"]]$success) |> message()
   } ### End if(doGcm0)
+  stateData[["nonNAGroups" ]] <- nonNAGroups
   
   ### Format List --------------------
   #### Drop Data --------------------
