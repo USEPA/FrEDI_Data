@@ -68,7 +68,7 @@ reshapeFrediData <- function(
   mList0  <- list()
   mList0[["mType0"]] <- frediData[["co_modelTypes"]] |> pull(modelType_id) |> unique()
   mList0[["mName0"]] <- mList0[["mType0"]] |> paste0("ImpData")
-  mData0  <- mList0 |> map(function(mType0, mName0){
+  mData0  <- mList0 |> pmap(function(mType0, mName0){
     ### Get data
     df0 <- stateData[[mName0]]
     ### Shape data
@@ -79,6 +79,13 @@ reshapeFrediData <- function(
       msg0      = msg1
     ) ### End reshapeScalarData
   }) |> set_names(mList0[["mName0"]])
+  mData0|> glimpse()
+  # stateData[[  mList0[["mName0"]][1]]] <- mData0[[1]]
+  # stateData[[  mList0[["mName0"]][2]]] <- mData0[[2]]
+  for(name_i in mList0[["mName0"]] ){
+    #stateData <- stateData |> c(mData0)
+    stateData[[name_i]] <- mData0[[name_i]]
+  }
   # gcmData <- stateData[["gcmImpData"]]
   # doGCM   <- !(gcmData |> is.null())
   # gcmData <- gcmData |> reshapeScaledImpacts(

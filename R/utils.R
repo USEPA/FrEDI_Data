@@ -180,6 +180,7 @@ standardize_scaledImpacts <- function(
   
   ### Filter to options
   select0  <- c("modelType") |> c(xCol)
+  #df0 |> glimpse()
   df2      <- df0 |> select(all_of(select0)) |> distinct()
   rm(select0)
   

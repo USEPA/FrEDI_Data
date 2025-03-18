@@ -203,6 +203,7 @@ createSystemData <- function(
     ### Standardize GCM scaled impacts data
     if(msgUser) msg2 |> paste0("...Standardizing GCM scaled impacts...") |> message()
     gcmImpData  <- stateData[["gcmImpData"]]
+    #gcmImpData|> glimpse()
     gcmImpData  <- gcmImpData |> standardize_scaledImpacts(
       df1  = co_sectorsInfo, 
       xCol = "modelUnitValue"
