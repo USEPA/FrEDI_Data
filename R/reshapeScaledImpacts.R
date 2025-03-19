@@ -105,7 +105,7 @@ reshapeScaledImpacts <- function(
         filter_at(c(modCol0), function(x, y=minX |> paste0(unitX)){!(x %in% y)}) |>
         bind_rows(dfX0)
       return(dfX)
-    })
+    })()
   } ### End if doSlr
   
   ### Select & Arrange ----------------

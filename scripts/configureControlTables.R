@@ -10,17 +10,16 @@
 
 ## configureControlTables
 configureControlTables <- function(
-    ### Directories
-  projectDir  = ".",   ### Directory in which to find the FrEDI_Data project/package
+  ### Directories
+  # projectDir  = ".",   ### Directory in which to find the FrEDI_Data project/package
   dataDir     = "." |> file.path("inst", "extdata"), ### Path to projectDir
-  configDir   = "."    , ### Module directory relative to dataDir
   ### Info on config file
   configFile  = "controlTables" |> paste0(".", "xlsx"), ### Name of excel file with config information
   configSheet = "tableNames" ,  ### Name of worksheet on which to find tables
   ### Conditionals
-  reshape     = TRUE , ### Whether to include reshaped data in outputs (e.g., for testing)
+  # reshape     = TRUE , ### Whether to include reshaped data in outputs (e.g., for testing)
   ### Saving
-  outDir      = "data", ### Directory to save data, relative to dataDir
+  outDir      = "." |> file.path("data"), ### Directory to save data, relative to dataDir
   outFile     = "controlTables" |> paste0(".", "rda" ), ### Name of file to which to save results
   save        = TRUE , ### Whether to save the data
   return      = TRUE , ### Whether to return object
@@ -37,7 +36,7 @@ configureControlTables <- function(
   msg0 <- msg0 |> str_count("t")
   msg1 <- msg0 + 1
   msg2 <- msg0 + 2
-  msg0 |> get_msgPrefix(newline=T) |> paste0("Running configureControlData()...") |> message()
+  msg0 |> get_msgPrefix(newline=T) |> paste0("Running configureControlTables()...") |> message()
   
   #### Values ----------------
   ### Parameters for saving tests
@@ -45,12 +44,12 @@ configureControlTables <- function(
   save0       <- save
   return0     <- return
   msgUser     <- !silent
-  rm(reshape, save, return)
+  rm(save, return)
   
   #### Set Paths ----------------
   ### Adjust paths
-  outDir      <- projectDir |> file.path(outDir)
-  outPath     <- outDir     |> file.path(outFile)
+  # outDir      <- projectDir |> file.path(outDir)
+  outPath     <- outDir |> file.path(outFile)
   
   
   ### 0. Load FrEDI Data Code ----------------
@@ -58,35 +57,35 @@ configureControlTables <- function(
   # projectDir |> devtools::load_all()
   configVals0 <- frediConfig()
   minYr0      <- configVals0[["minYear0"]]
-  maxYr0      <- configVals0[["maxYear0"]]
+  maxYr0      <- configVals0[["npdYear0"]]
   
   ### 1. Read in Tables from Excel ----------------
   ### Initialize list of objects to return
-  controlTables     <- list()
+  # controlData <- list()
   
   ### 2. Load Excel Data ----------------
   ### Load state data
   # if(!silent) 
-  msg1 |> get_msgPrefix(newline=F) |> paste0(msg1, "Loading control tables...") |> message()
+  msg1 |> get_msgPrefix(newline=F) |> paste0("Loading control tables...") |> message()
   # controlTables <- list()
-  controlData <- fileDir |> loadFrediConfig(
+  controlData <- dataDir |> loadFrediConfig(
     configFile  = configFile,  ### Name of excel file with config information
     configSheet = configSheet, ### Sheet with info about tables in config file
     silent      = silent,
     msg0        = msg1
   ) ### End loadData
   # gc()
-  # return(controlTables)
+  # return(controlData)
   
   ### 3. Reshape Loaded Data ----------------
   ### Reshape state data
   # if(!silent) 
-  paste0(msg1, "Reshaping control tables...") |> message()
-  controlData <- controlData |> reshapeConfigData(
+  msg1 |> get_msgPrefix(newline=F) |> paste0("Reshaping control tables...") |> message()
+  controlData <- controlData |> reshapeControlTables(
     minYr0 = minYr0,
     maxYr0 = maxYr0,
     silent = silent, 
-    msg0   = msg0 |> get_msgPrefix(newline=F)
+    msg0   = msg1
   ) ### End reshapeConfigData
   
   ### 4. Save Data to File ----------------
@@ -95,16 +94,16 @@ configureControlTables <- function(
   ### - Message the user
   ### - Check if the output file directory exists
   ### - If the outpath exists, try to save the file
-  if(save) {
-    paste0(msg1, "Saving results to ", outPath, "...") |> message()
-    pathExists <- outPath |> dir.exists()
-    if(!pathExists) {createDir <- outPath |> dir.create(recursive=T)}
-    save(list=c("controlData"))
+  if(save0) {
+    msg1 |> get_msgPrefix(newline=F) |> paste0("Saving results to ", outDir, "...") |> message()
+    pathExists <- outDir |> dir.exists()
+    if(!pathExists) {createDir <- outDir |> dir.create(recursive=T)}
+    save(list=c("controlData"), file=outPath)
   } ### End if(save)
   
   
   ### Return ----------------
-  msg0 |> get_msgPrefix(newline=F) |> paste0("...Finished running configureControlData().") |> message()
+  msg0 |> get_msgPrefix(newline=F) |> paste0("...Finished running configureControlTables().") |> message()
   msg0 |> get_msgPrefix(newline=T) |> message()
   if(return0) {return(controlTables)}
   # return(returnList)

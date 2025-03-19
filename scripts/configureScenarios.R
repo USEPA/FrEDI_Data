@@ -11,12 +11,13 @@
 ## configureScenarios
 configureScenarios <- function(
     ### Directories
-  projectDir  = ".",   ### Directory in which to find the FrEDI_Data project/package
-  dataDir     = "." |> file.path("inst", "extdata"), ### Path to projectDir
-  scenarioDir = "scenarios" , ### Module directory relative to dataDir
+  # projectDir  = ".",   ### Directory in which to find the FrEDI_Data project/package
+  # dataDir     = "." |> file.path("inst", "extdata"), ### Path to projectDir
+  # scenarioDir = "scenarios" , ### Module directory relative to dataDir
+  dataDir     = "." |> file.path("inst", "extdata", "scenarios"), ### Path to projectDir
   controlData = NULL, ### Output of configureControlTables
-  ### Conditionals
-  reshape     = TRUE , ### Whether to include reshaped data in outputs (e.g., for testing)
+  # ### Conditionals
+  # reshape     = TRUE , ### Whether to include reshaped data in outputs (e.g., for testing)
   ### Saving
   outDir      = "data", ### Directory to save data, relative to dataDir
   save        = TRUE , ### Whether to save the data
@@ -57,7 +58,7 @@ configureScenarios <- function(
   
   ### 1. Read in Tables from Excel ----------------
   ### Initialize list of objects to return
-  controlTables     <- list()
+  # controlTables     <- list()
   
   ### 2. Load Excel Data ----------------
   ### Load state data
@@ -76,13 +77,13 @@ configureScenarios <- function(
   ### 3. Reshape Loaded Data ----------------
   ### Reshape state data
   # if(!silent) 
-  paste0(msg1, "Reshaping control tables...") |> message()
-  scenarioData <- scenarioData |> reshapeScenarios(
-    minYr0 = minYr0,
-    maxYr0 = maxYr0,
-    silent = silent, 
-    msg0   = msg0 |> get_msgPrefix(newline=F)
-  ) ### End reshapeConfigData
+  # paste0(msg1, "Reshaping control tables...") |> message()
+  # scenarioData <- scenarioData |> reshapeScenarios(
+  #   minYr0 = minYr0,
+  #   maxYr0 = maxYr0,
+  #   silent = silent, 
+  #   msg0   = msg0 |> get_msgPrefix(newline=F)
+  # ) ### End reshapeConfigData
   
   ### 4. Save Data to File ----------------
   ### Save R Data objects
@@ -91,10 +92,10 @@ configureScenarios <- function(
   ### - Check if the output file directory exists
   ### - If the outpath exists, try to save the file
   if(save) {
-    paste0(msg1, "Saving results to ", outPath, "...") |> message()
-    pathExists <- outPath |> dir.exists()
-    if(!pathExists) {createDir <- outPath |> dir.create(recursive=T)}
-    save(list=c("scenarioData"))
+    msg1 |> get_msgPrefix(newline=F) |> paste0("Saving results to ", outDir, "...") |> message()
+    pathExists <- outDir |> dir.exists()
+    if(!pathExists) {createDir <- outDir |> dir.create(recursive=T)}
+    save(list=c("controlData"), file=outPath)
   } ### End if(save)
   
   

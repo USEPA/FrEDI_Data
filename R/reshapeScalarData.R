@@ -10,16 +10,17 @@
 #'
 #' @examples
 reshapeScalarData <- function(
-    scalarData = NULL , ### Tibble with scalars data
-    frediData  = NULL , ### List of FrEDI configuration data
-    minYr0     = 2010,
-    maxYr0     = 2300,
-    yrCol0     = "year",
-    valCol0    = "value",
-    natStr0    = "US",
-    # dropCols0  = "state", ### Drop state
-    silent     = TRUE , ### Level of messaging
-    msg0       = "\t" ,  ### Prefix for messaging
+    scalarData  = NULL , ### Tibble with scalars data
+    controlData = NULL, ### Output of configControlTables
+    frediData   = NULL , ### List of FrEDI configuration data
+    minYr0      = 2010,
+    maxYr0      = 2300,
+    yrCol0      = "year",
+    valCol0     = "value",
+    natStr0     = "US",
+    # dropCols0   = "state", ### Drop state
+    silent      = TRUE , ### Level of messaging
+    msg0        = "\t"   ### Prefix for messaging
 ) {
   ### Messaging ----------------
   msgN       <- "\n"
@@ -30,8 +31,8 @@ reshapeScalarData <- function(
   ### Assign Objects ----------------
   ### Assign tables in dataList to object in local environment
   # frediData |> names() |> print()
-  co_states  <- frediData[["co_states"    ]]
-  scalarInfo <- frediData[["co_scalarInfo"]]
+  co_states  <- controlData[["co_states"    ]]
+  scalarInfo <- frediData  [["co_scalarInfo"]]
   # co_states  |> glimpse(); scalarInfo |> glimpse()
 
   ### Join with State/Region Info ----------------
@@ -41,14 +42,20 @@ reshapeScalarData <- function(
   # regCols0   <- c("region", "postal")
   # join0      <- scalarData |> names() |> get_matches(y=regCols0)
   # stateCol0  <- c("state")
+  regCol0    <- "region"
   postCol0   <- "postal"
   stateCol0  <- "state"
   # naStr0     <- "US"
-  co_states  <- co_states  |> select(-any_of(stateCol0)) 
+  # select0    <- c("area", "region", "state", "postal", "fips")
+  select0    <- c("region", "state", "postal", "fips")
+  co_states  <- co_states  |> select(any_of(select0)) 
+  join0      <- co_states  |> names() |> 
+    get_matches(y=scalarData |> names()) |> 
+    get_matches(y=stateCol0, matches=F)
   scalarData <- scalarData |> 
-    select(-any_of(dropCols0)) |>
-    mutate_at(c(mutate0), replace_na, naStr0) |>
-    left_join(by=join0)
+    select(-any_of(stateCol0)) |>
+    mutate_at(c(postCol0), replace_na, natStr0) |>
+    left_join(co_states, by=join0)
   # rm(join0)
   # 
   # ### Replace data with NA values

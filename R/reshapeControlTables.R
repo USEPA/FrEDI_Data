@@ -7,17 +7,23 @@
 #' @export
 #'
 #' @examples
-reshapeConfigData <- function(
+reshapeControlTables <- function(
     dataList = NULL,   ### List of data (e.g., as returned from FrEDI_Data::loadData())
     silent   = TRUE,   ### Level of messaging
-    msg0     = "\t"    ### Prefix for messaging
+    minYr0   = 2010,
+    maxYr0   = 2300,
+    # msg0     = "\t"    ### Prefix for messaging
+    msg0     = 0
 ) {
   ### Set up Environment ----------------
   #### Messaging ----------------
   msgN          <- "\n"
-  msg1          <- msg0 |> paste("\t")  
-  if (!silent) paste0(msg0, "Running reshapeControlTables()...") |> message()
-  if (!silent) paste0(msg1, "Reshaping data from control tables file...") |> message()
+  # msg1          <- msg0 |> paste("\t")  
+  msg0 <- msg0 |> str_count("t")
+  msg1 <- msg0 + 1
+  msg2 <- msg0 + 2
+  msg0 |> get_msgPrefix(newline=T) |> paste0("Running reshapeControlTables()...") |> message()
+  # if (!silent) msg1 |> get_msgPrefix(newline=T) |> paste0("Reshaping data from control tables file...") |> message()
   
   ### Import Functions from FrEDI ----------------
   # get_matches        <- "get_matches"        |> utils::getFromNamespace("FrEDI")
@@ -96,9 +102,40 @@ reshapeConfigData <- function(
   })() # ; co_moduleAreas |> glimpse
   dataList[["co_scenarios"]] <- co_scenarios
   
+  #### 5. SLR Scenario Info ----------------
+  ### Gather slr_cm columns
+  # slr_cm |> glimpse()
+  # co_slrCm |> pull(model) |> print()
+  slr_cm  <- slr_cm |> reshape_slrCm(
+    modLvls0 = co_slrCm |> pull(model),
+    xCol0    = "xRef",
+    yrCol0   = "year", 
+    modCol0  = "model"
+  ) |> extend_data(to0 = maxYr0) ### End reshape_slrCm
+  # slr_cm |> glimpse()
+  dataList[["slr_cm"]] <- slr_cm
+  
+  ### Reshape/format slr_cm for use with SLR extremes
+  slrCmExtremes <- slr_cm |> get_slrCmExtremes(
+    xCol0    = "xRef",
+    yrCol0   = "year", 
+    modCol0  = "model"
+  ) ### End reshape_slrCm
+  # slr_cm |> glimpse()
+  dataList[["slrCmExtremes"]] <- slrCmExtremes
+  
+  ### Reshape/format slr_cm for use with main SLR interpolation
+  slrCmMain <- slr_cm |> get_slrCmMain(
+    xCol0    = "xRef",
+    yrCol0   = "year",
+    modCol0  = "model"
+  ) ### End get_slrCmMain
+  # slr_cm |> glimpse()
+  dataList[["slrCmMain"]] <- slrCmMain
   
   ### Return ----------------
   ### Return the list of dataframes
-  if (!silent) paste0(msg0, "...Finished running reshapeControlTables().", msgN) |> message()
+  msg0 |> get_msgPrefix(newline=F) |> paste0("...Finished running reshapeControlTables().", msgN) |> message()
+  msg0 |> get_msgPrefix(newline=T) |> paste0(msgN)
   return(dataList)
 }

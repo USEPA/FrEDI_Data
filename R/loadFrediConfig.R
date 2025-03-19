@@ -4,13 +4,16 @@ loadFrediConfig <- function(
     configFile  = "FrEDI_config.xlsx", ### Name of Excel file with config information, relative to frediDir
     configSheet = "tableNames",        ### Name of sheet in configFile containing table with info about tables
     silent      = FALSE,               ### Level of messaging
-    msg0        = ""               ### Messaging index level
+    msg0        = 0                    ### Messaging index level
 ) {
   ###### Messaging ######
   msgUser       <- !silent
   msgN          <- "\n"
-  msg1          <- msg0 |> paste("\t")  
-  if(msgUser) paste0(msg0, "Running loadFrediConfig...") |> message()
+  # msg1          <- msg0 |> paste("\t")  
+  msg1 <- msg0 + 1
+  msg2 <- msg0 + 2
+  if(msgUser) msg0 |> get_msgPrefix(newline=F) |> paste0("Running loadFrediConfig()...") |> message()
+  # if(msgUser) msg0 |> get_msgPrefix(newline=T) |> paste0("Running loadFrediConfig...") |> message()
   
   ###### File Paths ######
   ### Config file
@@ -33,7 +36,7 @@ loadFrediConfig <- function(
   rm(mutate0)
   
   ### Number of data tables
-  nTables   <- df_tables |> nrow()
+  nTables       <- df_tables |> nrow()
   
   ###### Load Each Table ######
   ### Iterate over the list of data tables: Read them them and add them to the list of tables
@@ -42,7 +45,7 @@ loadFrediConfig <- function(
   tableNames    <- df_tables |> pull(Table.Name)
   for (name_i in tableNames) {
     ### Message the user
-    if (!silent) message(msg1, "Importing table '", name_i, "' from Excel...")
+    if (msgUser) msg1 |> get_msgPrefix(newline=F) |> paste0("Importing table '", name_i, "' from Excel...") |> message()
     ### Subset table info
     info_i      <- df_tables |> filter(Table.Name == name_i)
     sheet_i     <-  info_i |> pull(Worksheet)
@@ -80,6 +83,7 @@ loadFrediConfig <- function(
   } ### End for (i in 1:nTables)
   
   ###### Return ######
-  if(msgUser) paste0(msg0, "...Finished running loadFrediConfig.", msgN) |> message()
+  if(msgUser) msg1 |> get_msgPrefix(newline=F) |> paste0("...Fnished running loadFrediConfig().") |> message()
+  if(msgUser) msg1 |> get_msgPrefix(newline=T) |> message()
   return(dataList)
 }

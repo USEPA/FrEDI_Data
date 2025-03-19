@@ -4,10 +4,10 @@ convertTemps       <- "convertTemps"       |> utils::getFromNamespace("FrEDI")
 get_matches        <- "get_matches"        |> utils::getFromNamespace("FrEDI")
 get_msgPrefix      <- "get_msgPrefix"      |> utils::getFromNamespace("FrEDI")
 get_scenario_id    <- "get_scenario_id"    |> utils::getFromNamespace("FrEDI")
-interpolate_annual <- "interpolate_annual" |> utils::getFromNamespace("FrEDI")
-match_scalarValues <- "match_scalarValues" |> utils::getFromNamespace("FrEDI")
+# interpolate_annual <- "interpolate_annual" |> utils::getFromNamespace("FrEDI")
+# match_scalarValues <- "match_scalarValues" |> utils::getFromNamespace("FrEDI")
 temps2slr          <- "temps2slr"          |> utils::getFromNamespace("FrEDI")
-update_popScalars  <- "update_popScalars"  |> utils::getFromNamespace("FrEDI")
+# update_popScalars  <- "update_popScalars"  |> utils::getFromNamespace("FrEDI")
 
 ### For SV
 calc_countyPop     <- "calc_countyPop" |> utils::getFromNamespace("FrEDI")
@@ -187,7 +187,7 @@ formatGroupedTempData <- function(
     filter_all(any_vars(!(. |> is.na()))) |>
     arrange_at(c(sort0)) |>
     group_by_at(c(group0))
-
+  
   ### Calculate temp_C_conus
   # df0 |> pull(scenario) |> unique() |> print()
   # groups0 <- df0 |> group_keys()
@@ -200,7 +200,7 @@ formatGroupedTempData <- function(
     rule0     = rule0
   ) |> bind_rows()
   # df0 |> glimpse()
-
+  
   ### Return
   return(df0)
 }
@@ -318,8 +318,8 @@ standardize_scaledImpacts <- function(
   df0      <- df1   |> 
     left_join(df0, by=join0, relationship="many-to-many") |> 
     arrange_at(c(cols0))
-    # arrange_at(c(cols0)) |> 
-    # group_by_at(c(group0))
+  # arrange_at(c(cols0)) |> 
+  # group_by_at(c(group0))
   rm(df1)
   
   ### Figure out if there are scenarios present
@@ -349,13 +349,17 @@ extend_data <- function(
 ){
   ### complete(year = seq(min(year), 2300, 1)) |> fill(-c("year"))
   #### Years
+  # df0 |> glimpse()
   from0  <- df0 |> pull(all_of(yrCol0)) |> max()
   years0 <- (from0 + 1):to0
-  dfYrs0 <- tibble()
-  dfYrs0[[yrCol0]] <- years0
+  dfYrs0 <- tibble(year = years0 |> as.numeric()) |> rename_at(c("year"), ~yrCol0)
+  # years0 |> print()
+  # dfYrs0 |> glimpse()
+  
   #### Data to extend
   dfMax  <- df0 |> 
-    filter(year == from0) |> select(-any_of(yrCol0)) |> 
+    filter(year %in% from0) |> 
+    select(-any_of(yrCol0)) |> 
     cross_join(dfYrs0)
   ### Bind back in
   df0    <- df0 |> 
@@ -381,12 +385,15 @@ reshape_slrCm <- function(
     names_to  = modCol0,
     values_to = xCol0
   ) ### End pivot_longer
+  # df0 |> glimpse()
+  # df0 |> pull(all_of(modCol0)) |> unique() |> print()
   
   ### Columns
   sort0 <- c(modCol0, yrCol0, xCol0)
   ### Factor models
   ### Rename columns and organize
   df0   <- df0 |>
+    mutate_at  (c(modCol0), as.character) |>
     mutate_at  (c(modCol0), factor, modLvls0) |>
     arrange_at (c(sort0))
   
@@ -427,6 +434,7 @@ get_slrCmExtremes <- function(
   loStr0  <- "Lo"
   hiStr0  <- "Hi"
   bounds0 <- c(loStr0, hiStr0)
+  funs0   <- c("nth", "max")
   xStr0   <- "x"
   ### Arrange values ascending, get lowest model for each year-xRef combination
   ### Note: this is also done in get_slrCmMain, but keeping this here in case we want to change the order
@@ -436,31 +444,52 @@ get_slrCmExtremes <- function(
     arrange_at (c(sort0 )) |>
     group_by_at(c(group0)) |>
     slice_head(n = 1)
-  rm(group)
+  # df0 |> glimpse()
+  
   ### Then, get the two highest xRefs:
   ### - Sort descending, group by year, get highest and second highest xRef values
   ### - Then, join with other data
-  df0    <- df0 |> 
+  # df0 |> pull(all_of(yrCol0)) |> unique() |> length() |> print()
+  df1  <- df0 |> 
     arrange_at (c(sort0), desc) |>
     group_by_at(c(yrCol0)) |>
-    summarize(Hi = xCol0 |> max(), Lo = xCol0 |> nth(2, order_by=xCol0), .groups="drop") |>
-    pivot_longer(cols=c(loStr0, hiStr0), names_to=boundCol0, values_to=xCol0) |> 
-    left_join(df0, by=sort0) |>
-    arrange_at(c(sort0))
-  ### Join data with model info
-  # df0        <- vals0 |> left_join(df0, by=c(yrCol0, xCol0))
-  # rm(vals0)
-  ### Flatten data
-  old0   <- c(modCol0, xCol0)
-  new0   <- c(modCol0, xStr0)
-  df0    <- bounds0 |> (function(boundX, oldX=old0, newX=new0){
-    df0 |> 
-      filter_at(c(boundCol0), function(x, y=boundX){x %in% y}) |> 
-      rename_at(c(oldX), ~newX |> paste0(boundX)) |> 
-      arrange_at(c(yrCol0))
-  }) |> reduce(left_join, by=yrCol0)
+    summarise_at(c(xCol0), list(~. |> max(na.rm=T), ~. |> nth(2))) |>
+    rename_at(c(funs0), ~xStr0 |> paste0(bounds0)) |>
+    mutate(xLo = case_when(xLo |> is.na() ~ xHi, .default = xLo))
+  # df1 |> glimpse()
+
+  ### Join with model info and reduce
+  df0    <- bounds0 |> map(function(
+    boundX,
+    oldX   = c(xCol0, modCol0),
+    newX   = c(xStr0, modCol0),
+    yrColX = yrCol0
+  ){
+    ### Columns
+    newX   <- newX   |> paste0(boundX)
+    xColX  <- newX[1]
+    mColX  <- newX[2]
+    groupX <- yrColX |> c(xColX)
+    sortX  <- groupX |> c(mColX)
+    ### Rename data
+    dfX   <- df0 |> ungroup() |> rename_at(c(oldX), ~newX)
+    ### Join with values
+    dfX   <- df1 |> left_join(dfX, by=c(yrColX, xColX))
+    # dfX |> nrow() |> print()
+    ### Arrange and make sure values are unique
+    dfX   <- dfX |>
+      arrange_at (c(sortX)) |>
+      group_by_at(c(groupX)) |>
+      slice_head(n = 1) |>
+      ungroup()
+    ### Return
+    return(dfX)
+  }) |> reduce(left_join, by=c(yrCol0, xStr0 |> paste0(bounds0)))
+  # df0 |> glimpse()
+  
   ### Calculate xRef
   df0    <- df0 |> mutate(xRef = case_when(xHi > xLo ~ xHi, .default=xLo))
+  
   ### Return
   return(df0)
 }
@@ -470,7 +499,7 @@ format_slrImpacts <- function(
     df0,      ### Tibble of SLR max heights (outputs of get_slrMaxHeights)
     modLvls0, ### Model levels to use for factoring...from co_slrCm
     yCol0     = c("scaled_impacts"),
-    group0    = c("sector", "variant", "impactType", "impactYear", "region", "state", "postal"),
+    group0    = c("sector", "variant", "impactType", "impactYear", "region", "postal"),
     yrCol0    = c("year"),
     modCol0   = c("model"),
     idCol0    = c("scenario_id"),
@@ -480,8 +509,8 @@ format_slrImpacts <- function(
   sort0  <- group0 |> c(yrCol0, yCol0, modCol0)
   group0 <- group0 |> c(idCol0)
   df0    <- df0    |> 
-    get_scenario_id(include=c("region", "state", "postal"), col0=idCol0) |>
-    mutate_at(c(scenario_id), paste0, "_" |> paste0(modStr0)) |>
+    get_scenario_id(include=c("region", "postal"), col0=idCol0) |>
+    mutate_at (c(idCol0), paste0, "_" |> paste0(modStr0)) |>
     mutate_at (c(modCol0), function(x, y=modLvls0){x |> factor(y)}) |>
     arrange_at(c(sort0)) |>
     group_by_at(c(group0))
@@ -555,7 +584,7 @@ get_slrExtValues <- function(
   df0    <- dfKeys |> left_join(df0, by=join0) |> 
     arrange_at(c(sort0)) |> 
     group_by_at(c(group0))
-
+  
   ### Return
   return(df0)
 }
@@ -605,44 +634,53 @@ fun_formatScalars <- function(
     years0   = 2010:2300,
     yrCol0   = c("year"),
     valCol0  = c("value"),
+    idCol0   = c("groupId"),
     # regCols0 = c("region", "state", "postal"),
     regCols0 = c("region", "postal"),
-    scCols0  = c("scalarType", "scalarName"),
+    # scCols0  = c("scalarType", "scalarName"),
     natStr0  = c("US"),
+    noneStr0 = c("none"),
+    noneVal0 = 1,
     rule0    = 2
 ){
   ### Columns
   rCol0    <- "regional"
   dCol0    <- "dynamic"
-  idCol0   <- "group_id"
+  # idCol0   <- "group_id"
+  typeCol0 <- "scalarType"
+  nameCol0 <- "scalarName"
+  scCols0  <- c(typeCol0, nameCol0)
   
   ### Select Info
   # df0 |> glimpse(); df1 |> glimpse()
-  select0  <- c(scCols0, regCols0, yrCol0, valCol0)
-  select1  <- c(scCols0, rCol0, dCol0)
-  df0      <- df0 |> select(all_of(select0))
-  df1      <- df1 |> select(all_of(idCols0))
-  rm(join0)
+  select0  <- scCols0 |> c(regCols0, yrCol0, valCol0)
+  select1  <- scCols0 |> c(rCol0, dCol0)
+  df0      <- df0 |> select(any_of(select0))
+  df1      <- df1 |> select(any_of(idCols0))
+  rm(join0, select0, select1)
   
   ### Add "none" as scalar types:
   ### - Get data frame with type and scalarName == "none"
   ### - Get national region info
-  dfTypes0 <- df1 |> 
+  noneStr0 <- "none"
+  noneVal0 <- 1
+  dfNone0  <- df1 |> 
     select(all_of(scCols0)) |>
-    filter(scalarName %in% "none") |>
+    filter_at(c(nameCol0), function(x, y=noneStr0){x %in% y}) |>
     distinct()
   ### - Get national region info
+  select0  <- c(regCols0, valCol0)
   dfNat0   <- df0 |> 
-    select(all_of(regCols0)) |>
     filter(postal %in% natStr0) |>
+    mutate_at(c(valCol0), function(x, y=noneVal0){y}) |>
+    select(all_of(select0)) |>
     distinct()
   ### - Cross-join info
-  dfNone0  <- dfTypes0 |> 
+  dfNone0  <- dfNone0 |> 
     cross_join(dfNat0) |> 
-    mutate(value = 1) |> 
     cross_join(tibble(year = years0)) |>
     relocate(all_of(yrCol0), .before=all_of(valCol0))
-  rm(dfTypes0, dfNat0)
+  rm(dfNat0)
   
   ### Bind dfNone with df0 and join info
   df0      <- df0 |> bind_rows(dfNone)
@@ -651,50 +689,45 @@ fun_formatScalars <- function(
   
   ### Arrange and get groups
   ### Add column indicating method
-  group0   <- c(dCol0, rCol0, scCols0, regCols0)
+  # idCols0  <- c(typeCol0, rCol0, nameCol0, regCols0)
+  # group0   <- c(typeCol0, rCol0, idCols0)
+  idCols0  <- c(nameCol0, regCols0)
+  group0   <- idCols0
+  sort0    <- group0  |> c(yrCol0)
   df0      <- df0 |>
-    arrange_at(c(group0, yrCol0)) |> 
-    mutate(group_id = df0 |> select(all_of(group0)) |> apply(1, function(x){
+    arrange_at(c(sort0)) |> 
+    mutate(group_id = df0 |> select(all_of(idCols0)) |> apply(1, function(x){
       x |> as.vector() |> paste(collapse=sep0)
     }) |> unlist()) |>
+    rename_at(c("group_id"), ~idCol0) |>
     group_by_at(c(group0, idCol0)) |> 
     mutate(method0 = case_when(dynamic == 0 ~ "constant", .default="linear"))
   
   ### Iterate over groups
-  select0  <- c(idCol0, yrCol0, valCol0)
-  dfKeys0  <- df0 |> group_keys()
-  groups0  <- dfKeys0 |> pull(all_of(idCol0))
+  # select0  <- c(idCol0, yrCol0, valCol0)
+  # dfKeys0  <- df0     |> group_keys()
+  # groups0  <- dfKeys0 |> pull(all_of(idCol0))
   # df0       <- df0 |> ungroup() |> select(all_of(select0))
   ### Get unique names & types
-  # group0  <- select0 |> c("byState")
-  # group0  <- c(scCols0, rCol0, dCol0, regCols0)
-  df0      <- df0 |>
-    group_map(function(.x, .y){
-      typeX  <- .x |> pull(method0)
-      inX    <- .x |> pull(all_of(yrCol0 ))
-      inY    <- .x |> pull(all_of(valCol0))
-      valsX  <- approx(x=inX, y=inY, xout=years0, rule=rule0, method=typeX) 
-      dfX    <- tibble() |>
-        mutate(year  = years0) |>
-        mutate(value = valsX)
-      return(dfX)
-    }) |> set_names(groups0) |>
-    bind_rows(.id=idCol0) |>
-    ungroup() |>
-    select(all_of(select0))
-  rm(select0)
+  df0      <- df0 |> group_map( 
+    interpolate_byGroup,
+    xCol0     = yrCol0,
+    yCol0     = valCol0,
+    xOut0     = years0,
+    method0   = .y |> pull(method0) |> unique(),
+    rule0     = rule0
+  ) |>
+    # bind_rows(.id=idCol0) |>
+    bind_rows() |>
+    ungroup() |> 
+    # select(all_of(select0)) |>
+    group_by_at(c(nameCol0, idCol0))
+  # rm(select0)
   # df0 |> glimpse()
-  
-  ### Add "none" as scalar types
-  # select0  <- 
-  dfNone   <- df0 |> 
-    
-  
-  ### Join with group keys and drop ID col
-  join0    <- c(idCol0, yrCol0)
-  df0      <- dfKeys |> 
-    left_join(df0, by=join0) |>
-    arrange_at(c(join0))
+  # 
+  # df0      <- dfKeys |> 
+  #   left_join(df0, by=join0) |>
+  #   arrange_at(c(join0))
   
   ### Return
   return(df0)
@@ -837,11 +870,11 @@ get_impactFunctions <- function(
   
   ### Get Impact Functions
   list0    <- df0 |> group_map(function(.x, .y){
-      inX  <- .x |> pull(all_of(xCol))
-      inY  <- .y |> pull(all_of(yCol))
-      funX <- approxfun(x=inX, y=inY, method=method0, rule=rule0)
-      return(funX)
-    }) |> set_names(groups0)
+    inX  <- .x |> pull(all_of(xCol))
+    inY  <- .y |> pull(all_of(yCol))
+    funX <- approxfun(x=inX, y=inY, method=method0, rule=rule0)
+    return(funX)
+  }) |> set_names(groups0)
   
   ### Return the list (i.e., list0)
   gc()

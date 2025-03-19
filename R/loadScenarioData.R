@@ -10,6 +10,7 @@
 # ), ### End list
 loadScenarioData <- function(
     dfScenarios, ### Data frame with info on scenarios
+    configData , ### Output of configureControlTables()
     scenarioDir = "." |> file.path("inst", "extdata", "scenarios") |> file.path(), ### Path to scenarios
     scenarioExt = "csv",
     # dfScenarios, ### Data frame with info on scenarios
@@ -26,7 +27,9 @@ loadScenarioData <- function(
   
   ### Columns and values ----------------
   ### Columns
-  regCols0      <- c("region", "state", "postal")
+  stateCol0     <- "state"
+  regCols0      <- c("area", "region", "postal")
+  # regCols0      <- c("region", "state", "postal")
   yrCol0        <- "year"
   typeCol0      <- "inputName"
   idCol0        <- "scenarioName"
@@ -34,6 +37,13 @@ loadScenarioData <- function(
   
   ### Values
   types0        <- dfScenario  |> pull(inputName) |> unique()
+  # projectDir |> devtools::load_all()
+  configVals0   <- frediConfig()
+  minYr0        <- configVals0[["minYear0"]]
+  maxYr0        <- configVals0[["maxYear0"]]
+  
+  ### Tables
+  co_states     <- configData[["co_states"]]
   
   ### Load Data ----------------
   ### Scenarios list
@@ -66,7 +76,7 @@ loadScenarioData <- function(
     argCol0  = c("inputArgVal"),
     valCol0  = c("valueCol"),
     yrCol0   = yrCol0,
-    method0  = c("linear")
+    method0  = c("linear"),
     rule0    = 1,
     msg0     = 0
   ) |> set_names(types0)
@@ -78,11 +88,15 @@ loadScenarioData <- function(
   
   ### Interpolate Data ----------------
   ### Population Ratio Data
-  sort0        <- "area" |> c(regCols0, yrCol0)
+  sort0        <- c("fips") |> c(yrCol0)
+  join0        <- c("state")
+  drop0        <- c("area", "region", "postal")
   popRatioFile <- "state_population_ratios" |> paste0(".", fExt0)
   popRatioPath <- scenarioDir |> file.path(popRatioFile)
   popRatioData <- popRatioPath |> read.csv() |> 
-    extend_data(to0=2300) |> 
+    select(-(any_of(drop0))) |> 
+    left_join(co_states, by=join0) |>
+    extend_data(to0=maxYr0) |>
     arrange_at(c(sort0))
   ### Add to list
   # dataList[["testScenarios"]] <- inputsList
