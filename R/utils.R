@@ -27,10 +27,12 @@ get_years_fromData <- function(years0, by=1){
 loadScenarioData_byType <- function(
     type0    = "temp",
     info0,   ### co_scenarios from configureScenarioData
-    dir0     = "inst" |> file.path("extdata", "scenarios"), 
+    dir0     = "." |> file.path("inst", "extdata", "scenarios"), 
     ext0     = "csv",
     typeCol0 = "inputName",
+    yrCol0   = c("year"),
     idCol0   = c("scenarioName"),
+    silent   = TRUE,
     msg0     = 0
 ){
   ### Filter to data
@@ -39,16 +41,30 @@ loadScenarioData_byType <- function(
     filter_at(c(typeCol0), function(x, y=type0){x %in% y}) |>
     group_by_at(c(names0))
   ids0   <- info0 |> pull(all_of(idCol0))
+  # dir0 |> print()
   ### Read in files and bind data
   if (!silent) msg0 |> get_msgPrefix(newline=F) |> paste0("Loading ", type0, "scenario data...") |> message()
-  data0 <- info0 |> group_map(
-    loadScenarioData_byGroup,
-    dir0     = dir0, 
-    ext0     = ext0,
-    typeCol0 = typeCol0,
-    idCol0   = idCol0,
-    msg0     = msg0 + 1
-  ) |> bind_rows()
+  data0 <- info0 |> group_map(function(.x, .y){
+    loadScenarioData_byGroup(
+      .x=.x, 
+      .y=.y,
+      dir0     = dir0, 
+      ext0     = ext0,
+      typeCol0 = typeCol0,
+      idCol0   = idCol0,
+      silent   = silent,
+      msg0     = msg0 + 1
+    ) ### End loadScenarioData_byGroup
+  }) |> bind_rows() |>
+    group_by_at(c(names0))
+  # data0 <- info0 |> group_map(
+  #   loadScenarioData_byGroup,
+  #   dir0     = dir0, 
+  #   ext0     = ext0,
+  #   typeCol0 = typeCol0,
+  #   idCol0   = idCol0,
+  #   msg0     = msg0 + 1
+  # ) |> bind_rows()
   ### Return data
   return(data0)
 }
@@ -61,19 +77,23 @@ loadScenarioData_byGroup <- function(
     .y,
     # type0    = "temp",
     info0,   ### co_scenarios from configureScenarioData
-    dir0     = "inst" |> file.path("extdata", "scenarios"), 
+    dir0     = "." |> file.path("inst", "extdata", "scenarios"), 
     ext0     = "csv",
     typeCol0 = "inputName",
     idCol0   = c("scenarioName"),
+    silent   = TRUE,
     msg0     = 0
 ){
   ### File paths
+  # dir0 |> print()
+  # .x |> glimpse(); .y |> glimpse()
   type0 <- .y |> pull(all_of(typeCol0)) |> unique()
   file0 <- .y |> pull(all_of(idCol0  )) |> unique()
   path0 <- dir0 |> file.path(type0, file0) |> paste0(".", ext0)
+  # path0 |> glimpse()
   ### Read in file
   if (!silent) msg0 |> get_msgPrefix(newline=F) |> paste0("Loading data from ", file0 |> paste0(".", ext0), "...") |> message()
-  data0 <- file0 |> read.csv()
+  data0 <- path0 |> read.csv()
   data0 <- .y |> 
     cross_join(data0) |> 
     filter_all(any_vars(!(. |> is.na())))
@@ -91,15 +111,21 @@ reshapeScenarioData_byType <- function(
     valCol0  = c("valueCol"),
     yrCol0   = c("year"),
     method0  = "linear",
+    silent   = TRUE,
     rule0    = 1,
     msg0     = 0
 ){ 
   ### Filter to data
-  data0  <- list0[[type0]]
+  # doTemp0 <- type0 |> str_detect("temp")
+  data0   <- list0[[type0]]
+  # cols0   <- data |> group_cols()
+  # if(doTemp0) cols0 <- cols0 |> c("scenario")
+  
   ### Read in files and bind data
   if (!silent) msg0 |> get_msgPrefix(newline=F) |> paste0("Reshaping ", type0, "scenario data...") |> message()
   data0 <- data0 |> 
     filter_all(any_vars(!(. |> is.na()))) |>
+    # group_by_at(c(cols0)) |>
     group_map(
       reshapeScenarioData_byGroup,
       typeCol0 = typeCol0,
@@ -109,6 +135,7 @@ reshapeScenarioData_byType <- function(
       idCol0   = idCol0,
       method0  = method0,
       rule0    = rule0,
+      silent   = silent,
       msg0     = msg0 + 1
     ) |> bind_rows()
   ### Return data
@@ -127,19 +154,26 @@ reshapeScenarioData_byGroup <- function(
     yrCol0   = c("year"),
     method0  = "linear",
     rule0    = 1,
+    silent   = TRUE,
     msg0     = 0
 ){
   ### File paths
+  # .x |> glimpse(); 
+  # .y |> glimpse()
+  gCols0 <- .y |> names()
   type0  <- .y |> pull(all_of(typeCol0)) |> unique()
   name0  <- .y |> pull(all_of(idCol0  )) |> unique()
   yCol0  <- .y |> pull(all_of(valCol0 )) |> unique() 
   arg0   <- .y |> pull(all_of(argCol0 )) |> unique() 
-  group0 <- .x |> names() |> get_matches(y=c(yrCol0, valCol0), matches=F)
+  group0 <- .x |> names() |> get_matches(y=c(yrCol0, yCol0), matches=F)
+  # .x |> names() |> print(); group0 |> print()
+  # doTemp <- type0 |> str_detect("temp")
   sort0  <- group0 |> c(yrCol0)
   df0    <- .x |> 
+    filter_all(any_vars(!(. |> is.na()))) |>
     arrange_at(c(sort0)) |> 
     group_by_at(c(group0))
-  
+  # df0 |> glimpse()
   ### Interpolate data
   if (!silent) msg0 |> get_msgPrefix(newline=F) |> paste0("Reshaping ", name0, "...") |> message()
   
@@ -149,6 +183,7 @@ reshapeScenarioData_byGroup <- function(
     df0 <- df0 |> group_map(
       format_tempData_byGroup,
       tempCol0  = yCol0,
+      typeCol0  = "tempType", 
       yrCol0    = yrCol0,
       method0   = method0,
       rule0     = rule0
@@ -158,11 +193,13 @@ reshapeScenarioData_byGroup <- function(
       interpolate_byGroup,
       xCol0     = yrCol0,
       yCol0     = yCol0,
-      yrCol0    = yrCol0,
       method0   = method0,
       rule0     = rule0
     ) |> bind_rows()
   } ### End if(doTemp0)  
+  
+  ### Join data
+  df0    <- .y |> cross_join(df0)
   
   ### Return data
   return(df0)
@@ -173,7 +210,7 @@ reshapeScenarioData_byGroup <- function(
 formatGroupedTempData <- function(
     df0,      ### Original GCAM data
     tempCol0  = "temp_C_global",
-    typeCol0  = "inputArgValue",
+    typeCol0  = "inputArgVal",
     # tempType0 = "global",
     yrCol0    = "year",
     group0    = c("scenario", "model"),
@@ -194,6 +231,7 @@ formatGroupedTempData <- function(
   df0     <- df0 |> group_map(
     format_tempData_byGroup,
     tempCol0  = tempCol0,
+    typeCol0  = typeCol0,
     # tempType0 = tempType0,
     yrCol0    = yrCol0,
     method0   = method0,
@@ -215,40 +253,44 @@ format_tempData_byGroup <- function(
     .x,       ### Data, filtered to a scenario
     .y,       ### Group info
     tempCol0  = "temp_C_global",
-    typeCol0  = "inputArgValue", ### Column to look for tempType
-    tempType0 = "global",
+    typeCol0  = "inputArgVal", ### Column to look for tempType
+    # tempType0 = "global",
     yrCol0    = "year",
     method0   = "linear",
     rule0     = 1,
     globalStr = "global",
     conusStr  = "conus"
 ){
+  # .x |> glimpse(); .y |> glimpse()
   ### Group info
-  tempType0 <- .y |> pull(all_of(tempType0)) |> unique()
-  yrs0      <- .x |> pull(all_of(yrCol0)) |> unique()
+  tempType0 <- .y   |> pull(all_of(typeCol0)) |> unique() |> tolower()
+  yrs0      <- .x   |> pull(all_of(yrCol0  )) |> unique()
   minYr0    <- yrs0 |> min(na.rm=T)
   maxYr0    <- yrs0 |> max(na.rm=T)
+  # yrs0 |> range() |> print()
   ### Sort data
   .x        <- .x |> 
     filter_all(any_vars(!(. |> is.na()))) |>
     arrange_at(c(yrCol0))
   
   ### Values and columns
-  doGlobal  <- tempType0 |> tolower() |> str_detect(globalStr)
-  tempType1 <- tempType0 |> tolower()
+  doGlobal  <- tempType0 |> str_detect(globalStr)
+  tempType1 <- tempType0
   tempType2 <- case_when(doGlobal ~ conusStr, .default = globalStr)
   ### Interpolate values, convert temperatures, calculate slr_cm
   # .y |> glimpse()
   x0        <- .x |> pull(all_of(yrCol0  ))
   y0        <- .x |> pull(all_of(tempCol0))
   xVals0    <- minYr0:maxYr0
-  yVals0    <- x0 |> approx(y=y0, xout=xVals0, method=method0, rule=rule0)
-  ### Create tibble with results
-  old0      <- c("xVal", "yVal1", "yVal2")
+  old0      <- c("x", "y", "y2")
   new0      <- yrCol0 |> c("temp_C_" |> paste0(c(tempType1, tempType2)))
-  df0       <- tibble(xVal=xVals0, yVal1=yVals0) |> 
-    mutate(yVal2 = yVal1 |> convertTemps(from=tempType0)) |>
+  df0       <- x0 |> 
+    approx(y=y0, xout=xVals0, method=method0, rule=rule0) |> 
+    as.data.frame() |> 
+    as_tibble() |> 
+    mutate(y2 = y |> convertTemps(from=tempType0)) |>
     rename_at(c(old0), ~new0)
+  # df0 |> glimpse()
   ### Calculate SLR
   slrVals0  <- df0 |> pull(temp_C_global) |> temps2slr(years=xVals0)
   df0       <- df0 |> mutate(slr_cm = slrVals0)

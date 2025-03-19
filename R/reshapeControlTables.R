@@ -19,7 +19,7 @@ reshapeControlTables <- function(
   #### Messaging ----------------
   msgN          <- "\n"
   # msg1          <- msg0 |> paste("\t")  
-  msg0 <- msg0 |> str_count("t")
+  # msg0 <- msg0 |> str_count("t")
   msg1 <- msg0 + 1
   msg2 <- msg0 + 2
   msg0 |> get_msgPrefix(newline=T) |> paste0("Running reshapeControlTables()...") |> message()
@@ -97,9 +97,9 @@ reshapeControlTables <- function(
     df1   = co_inputInfo,
     join0 = "inputName"
   ){
-    df0 |> 
-      left_join(df1, by=join0)
-  })() # ; co_moduleAreas |> glimpse
+    df0 |> left_join(df1, by=join0)
+  })() 
+  # co_scenarios |> glimpse()
   dataList[["co_scenarios"]] <- co_scenarios
   
   #### 5. SLR Scenario Info ----------------
@@ -136,6 +136,6 @@ reshapeControlTables <- function(
   ### Return ----------------
   ### Return the list of dataframes
   msg0 |> get_msgPrefix(newline=F) |> paste0("...Finished running reshapeControlTables().", msgN) |> message()
-  msg0 |> get_msgPrefix(newline=T) |> paste0(msgN)
+  msg0 |> get_msgPrefix(newline=T) |> message()
   return(dataList)
 }

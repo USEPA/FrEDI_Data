@@ -25,15 +25,16 @@ configureControlTables <- function(
   return      = TRUE , ### Whether to return object
   ### Info on messaging
   silent      = TRUE , ### Level of messaging
-  msg0        = ""
+  msg0        = 0
 ){
   ### Set Up Environment ----------------
   #### Messaging ----------------
-  # msgN <- "\n"
+  msgN <- "\n"
   # msgN |> paste0(msg0, "Running configureControlTables()...") |> message()
   # msg1 <- msg0 |> paste0("\t")
   # msg2 <- msg1 |> paste0("\t")
-  msg0 <- msg0 |> str_count("t")
+  # msg0 <- msg0 |> str_count("t")
+  msg0 |> print()
   msg1 <- msg0 + 1
   msg2 <- msg0 + 2
   msg0 |> get_msgPrefix(newline=T) |> paste0("Running configureControlTables()...") |> message()
@@ -76,6 +77,7 @@ configureControlTables <- function(
   ) ### End loadData
   # gc()
   # return(controlData)
+  # "got here1" |> print()
   
   ### 3. Reshape Loaded Data ----------------
   ### Reshape state data
@@ -87,6 +89,8 @@ configureControlTables <- function(
     silent = silent, 
     msg0   = msg1
   ) ### End reshapeConfigData
+  # controlData[["co_scenarios"]] |> glimpse()
+  # "got here2" |> print()
   
   ### 4. Save Data to File ----------------
   ### Save R Data objects
@@ -105,7 +109,7 @@ configureControlTables <- function(
   ### Return ----------------
   msg0 |> get_msgPrefix(newline=F) |> paste0("...Finished running configureControlTables().") |> message()
   msg0 |> get_msgPrefix(newline=T) |> message()
-  if(return0) {return(controlTables)}
+  if(return0) {return(controlData)}
   # return(returnList)
 }
 
