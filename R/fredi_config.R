@@ -1,33 +1,32 @@
 ### This file contains hard coded values for constants used throughout the temperature binning process
-###### Config List for createSystemData ######
+## Config List for createSystemData ######
 frediConfig <- function(
     minYear0 = 2010, 
     maxYear0 = 2100, 
     npdYear0 = 2300
 ){
-  ###### Constants ######
-  ###### Named constant values that are used frequently in the model
+  ### Constants ----------------
+  ### Named constant values that are used frequently in the model
   ### Millions, billions
   # fredi_config[["k_million"]] <- 10**6
   # fredi_config[["k_billion"]] <- 10**9
   list0 <- list()
   
-  ###### Data Years ######
+  ###### Data Years ----------------
   ### Min year, max year
-  list0[["minYear0" ]] <- 2010
-  list0[["maxYear0" ]] <- 2100
-  list0[["npdYear0" ]] <- 2300
+  list0[["minYear0" ]] <- minYear0
+  list0[["maxYear0" ]] <- maxYear0
+  list0[["npdYear0" ]] <- npdYear0
   
   
-  ###### Default values ######
+  ### Default values ----------------
   ### Base year, discount rate
   ### Types of aggregation
   list0[["elasticity0"]] <- 1
   list0[["aggList0"   ]] <- c("national", "modelaverage", "impactyear", "impacttype")
   list0[["groupLvls0" ]] <- c("sector", "variant", "impactYear", "impactType", "model_type", "model", "region", "state", "postal")
   
-  
-  ###### temps2slr constants ###### 
+  ### temps2slr constants ----------------
   ### - Phi: (i.e., "c", above) is a temperature-independent rate term with e-folding time tau2. I.e., phi is the multi-millennial contribution to GMSL in mm/year.
   ### - Scalar: Sensitivity of the GSL rate to a deviation of T(t) from an equilibrium temperature of Te(t).
   ### - Alpha: The value obtained in Mann et al. posterior distribution (Kopp et al., 2016 Figure S5a for "a").
@@ -38,7 +37,12 @@ frediConfig <- function(
   list0[["tau1" ]] <- 174
   list0[["tau2" ]] <- 4175
   
-  ###### Messages for createSystemData ######
+  ### Messaging ----------------
+  list0[["msgN" ]] <- "\n"
+  list0[["msgT" ]] <- "\t"
+  list0[["dotsStr0"]] <- "..."
+  
+  ### Messages for createSystemData ----------------
   ### Initialize list
   messages_data    <- list()
   ### Populate list
@@ -53,7 +57,7 @@ frediConfig <- function(
   ### Update in list
   list0[["messages_data"]] <- messages_data
   
-  ###### Configuration Messages ######
+  ### Configuration Messages ----------------
   ### List of messages for run_fredi
   list_messages = list()
   list_messages[["loadPackages" ]] <- "Loading required packages..."
@@ -72,6 +76,6 @@ frediConfig <- function(
   list0[["list_messages"]] <- list_messages
 
   
-  ###### Return ######
+  ### Return ######
   return(list0)
 }

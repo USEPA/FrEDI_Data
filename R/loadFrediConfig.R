@@ -6,7 +6,7 @@ loadFrediConfig <- function(
     silent      = FALSE,               ### Level of messaging
     msg0        = 0                    ### Messaging index level
 ) {
-  ###### Messaging ######
+  ### Messaging ----------------
   msgUser       <- !silent
   msgN          <- "\n"
   # msg1          <- msg0 |> paste("\t")  
@@ -15,12 +15,12 @@ loadFrediConfig <- function(
   if(msgUser) msg0 |> get_msgPrefix(newline=F) |> paste0("Running loadFrediConfig()...") |> message()
   # if(msgUser) msg0 |> get_msgPrefix(newline=T) |> paste0("Running loadFrediConfig...") |> message()
   
-  ###### File Paths ######
+  ### File Paths ----------------
   ### Config file
   configPath    <- configDir |> file.path(configFile)
   if(msgUser) {configDir |> c(configFile) |> print(); configDir |> list.files() |> print(); configSheet |> print()}
   
-  ###### Load Table of Tables ######
+  ### Load Table of Tables ----------------
   ### Load table with names of data tables
   # frediFile |> print()
   df_tables     <- configPath |> openxlsx::read.xlsx(
@@ -38,7 +38,7 @@ loadFrediConfig <- function(
   ### Number of data tables
   nTables       <- df_tables |> nrow()
   
-  ###### Load Each Table ######
+  ### Load Each Table ----------------
   ### Iterate over the list of data tables: Read them them and add them to the list of tables
   ### Initialize the list
   dataList      <- list()
@@ -82,7 +82,7 @@ loadFrediConfig <- function(
     rm(table_i, info_i, name_i)
   } ### End for (i in 1:nTables)
   
-  ###### Return ######
+  ### Return ----------------
   if(msgUser) msg1 |> get_msgPrefix(newline=F) |> paste0("...Fnished running loadFrediConfig().") |> message()
   if(msgUser) msg1 |> get_msgPrefix(newline=T) |> message()
   return(dataList)

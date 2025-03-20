@@ -8,12 +8,13 @@
 #'
 #' @examples
 reshapeConfigData <- function(
-    dataList   = NULL, ### List of data (e.g., as returned from FrEDI_Data::loadData())
-    dataTables = NULL, ### List with configured control tables (outputs of reshapeControlTables)
-    minYr0     = 2010,
-    maxYr0     = 2300,
-    silent     = TRUE, ### Level of messaging
-    msg0       = "\t"  ### Prefix for messaging
+    module      = "fredi",
+    dataList    = NULL, ### List of data (e.g., as returned from FrEDI_Data::loadData())
+    controlData = NULL, ### List with configured control tables (outputs of reshapeControlTables)
+    minYr0      = 2010,
+    maxYr0      = 2300,
+    silent      = TRUE, ### Level of messaging
+    msg0        = "\t"  ### Prefix for messaging
 ) {
   ### Set up Environment ----------------
   #### Messaging ----------------
@@ -38,29 +39,33 @@ reshapeConfigData <- function(
   ### Assign tables in dataList to object in local environment
   # listNames     <- dataList |> names()
   # listNames |> print()
-  for(name_i in dataList   |> names()) {name_i |> assign(dataList  [[name_i]]); rm(name_i)}
-  for(name_i in dataTables |> names()) {name_i |> assign(dataTables[[name_i]]); rm(name_i)}
+  for(name_i in dataList    |> names()) {name_i |> assign(dataList  [[name_i]]); rm(name_i)}
+  for(name_i in controlData |> names()) {name_i |> assign(controlData[[name_i]]); rm(name_i)}
   # dataList |> list2env(envir = environment())
   
-  #### Columns ----------------
+  #### Columns * Value ----------------
   ### Region and state level columns to use
   # stateCols0    <- c("state", "postal")
-  
+  areas0  <- controlTables$co_moduleAreas |> 
+    filter_at(c("module"), function(x, y=module){x %in% y}) |>
+    pull(area)
+  mTypes0 <- co_moduleModTypes |> 
+    filter_at(c("module"), function(x, y=module){x %in% y}) |>
+    pull(model_type)
   
   ### Modify Tables and Update in List ----------------
   #### 1. Sectors ----------------
-  ### Filter to those tables to include
   ### Make a copy of the sectors list to include variants
-  co_sectorsRef <- co_sectors
+  dataList[["co_sectorsRef"]] <- co_sectors
+  ### Drop other columns
   co_sectors    <- co_sectors |> (function(
     df0,
     drop0 = c("include", "variants", "impactYears", "impactTypes")
   ){
     df0 |> select(-any_of(drop0))
   })()
-  ### Update values in list, drop intermediate variables
-  dataList[["co_sectorsRef"]] <- co_sectorsRef
-  dataList[["co_sectors"   ]] <- co_sectors
+  ### Update values in list
+  dataList[["co_sectors"]] <- co_sectors
   
   #### 2. Misc ----------------
   ### No changes to variants
@@ -136,19 +141,19 @@ reshapeConfigData <- function(
   ### Combine sectors with co_variants, co_impactTypes, co_impactYears to get group options
   # get_co_sectorsInfo <- utils::getFromNamespace("get_co_sectorsInfo", "FrEDI")
   co_sectorsInfo <- co_sectors |> pull(sector) |> get_co_sectorsInfo(
-    addRegions = TRUE, ### Whether to include regions & states
-    addModels  = TRUE, ### Whether to include models
-    addIds     = TRUE, ### Add scenario Ids
+    # addRegions = TRUE, ### Whether to include regions & states
+    # addModels  = TRUE, ### Whether to include models
+    # addIds     = TRUE, ### Add scenario Ids
     # include    = c("region", "state", "postal", "model"), ### Other columns to include
-    colTypes   = c("ids", "labels", "extra"), 
-    slrStr     = "Interpolation",
+    # colTypes   = c("ids", "labels", "extra"), 
+    # slrStr     = "Interpolation",
     dfSects    = co_sectors,
     dfVars     = co_variants,
     dfITypes   = co_impactTypes,
     dfIYears   = co_impactYears,
-    dfMTypes   = co_modelTypes,
+    dfMTypes   = co_modelTypes |> filter(model_type %in% mTypes0),
     # dfReg      = co_regions,
-    dfStates   = co_states,
+    dfStates   = co_states |> filter(area %in% areas0),
     dfModels   = co_models
   ) ### End get_co_sectorsInfo()
   ### Update in list, drop intermediate values
@@ -163,14 +168,20 @@ reshapeConfigData <- function(
     idCols0  = c("sector"),
     typeCol0 = c("scalarType"),
     nameCol0 = c("scalarName"),
+    nameStr0 = c("Name"),
     types0   = co_scalarTypes |> pull(all_of(typeCol0))
   ){
     ### Select columns
     ### Pivot longer
-    select0    <- idCols0 |> c(types0 |> paste0("Name"))
+    nameCols0  <- types0  |> paste0(nameStr0)
+    select0    <- idCols0 |> c(nameCols0)
     df0        <- df0 |> 
       select(all_of(select0)) |> distinct() |> 
-      pivot_longer(-c(idCols0), names_to=typeCol0, values_to=nameCol0) |> 
+      pivot_longer(
+        -any_of(idCols0), 
+        names_to = typeCol0, 
+        values_to = nameCol0
+      ) |> 
       mutate_at(c(mutate0), str_replace, "Name", "")
     ### Return
     return(df0)
@@ -178,36 +189,7 @@ reshapeConfigData <- function(
   ### Update() in list, drop intermediate values
   # co_sectorsInfo |> glimpse()
   dataList[["co_sectorScalars"]] <- co_sectorScalars
-  
-  
-  #### 9. SLR Scenario Info ----------------
-  # ### Gather slr_cm columns
-  # slr_cm  <- slr_cm |> reshape_slrCm(
-  #   modLvls0 = co_slrCm |> pull(model) |> levels(),
-  #   xCol0    = "xRef",
-  #   yrCol0   = "year", 
-  #   modCol0  = "model"
-  # ) |> extend_data(to0 = maxYr0) ### End reshape_slrCm
-  # # slr_cm |> glimpse()
-  # dataList[["slr_cm"]] <- slr_cm
-  # 
-  # ### Reshape/format slr_cm for use with SLR extremes
-  # slrCmExtremes <- slr_cm |> get_slrCmExtremes(
-  #   xCol0    = "xRef",
-  #   yrCol0   = "year", 
-  #   modCol0  = "model"
-  # ) ### End reshape_slrCm
-  # # slr_cm |> glimpse()
-  # dataList[["slrCmExtremes"]] <- slrCmExtremes
-  # 
-  # ### Reshape/format slr_cm for use with main SLR interpolation
-  # slrCmMain <- slr_cm |> get_slrCmMain(
-  #   xCol0    = "xRef",
-  #   yrCol0   = "year", 
-  #   modCol0  = "model"
-  # ) ### End get_slrCmMain
-  # # slr_cm |> glimpse()
-  # dataList[["slrCmMain"]] <- slrCmMain
+
   
   
   ### Return ----------------

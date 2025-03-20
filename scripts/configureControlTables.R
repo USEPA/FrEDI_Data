@@ -41,7 +41,6 @@ configureControlTables <- function(
   
   #### Values ----------------
   ### Parameters for saving tests
-  reshape0    <- reshape
   save0       <- save
   return0     <- return
   msgUser     <- !silent
