@@ -34,18 +34,18 @@ extend_data <- function(
   # df0 |> glimpse()
   from0  <- df0 |> pull(all_of(xCol0)) |> max()
   vals0  <- ((from0 + 1):to0) |> as.numeric()
-  dfNew0 <- tibble(xVal = vals0) |> rename_at(c(xVal), ~xCol0)
+  dfNew0 <- tibble(xVal = vals0) |> rename_at(c("xVal"), ~xCol0)
   # vals0 |> print(); dfNew0 |> glimpse()
   
   ### Data to extend
   dfNew0 <- df0 |> 
-    filter_at(c(xCol0), function(x, y=from0){x %in% y)) |> 
+    filter_at(c(xCol0), function(x, y=from0){x %in% y}) |> 
     select(-any_of(xCol0)) |> 
     cross_join(dfNew0)
 
   ### Bind extended data
   df0    <- df0 |> 
-    filter_at(c(xCol0), function(x, y=from0){x <= y)) |> 
+    filter_at(c(xCol0), function(x, y=from0){x <= y}) |> 
     bind_rows(dfNew0)
   
   ### Return
@@ -786,8 +786,13 @@ fun_formatScalars <- function(
     rule0    = 2
 ){
   ### Columns
+  regCol0   <- "region"
+  postCol0  <- "postal"
+  stateCol0 <- "state"
+  ### Method columns
   rCol0    <- "regional"
   dCol0    <- "dynamic"
+  mCol0    <- "method"
   # idCol0   <- "group_id"
   typeCol0 <- "scalarType"
   nameCol0 <- "scalarName"
@@ -798,78 +803,80 @@ fun_formatScalars <- function(
   select0  <- scCols0 |> c(regCols0, yrCol0, valCol0)
   select1  <- scCols0 |> c(rCol0, dCol0)
   df0      <- df0 |> select(any_of(select0))
-  df1      <- df1 |> select(any_of(idCols0))
-  rm(join0, select0, select1)
+  df1      <- df1 |> select(any_of(select1))
+  # df0 |> glimpse(); df1 |> glimpse()
+  rm(select0, select1)
   
   ### Add "none" as scalar types:
   ### - Get data frame with type and scalarName == "none"
   ### - Get national region info
   noneStr0 <- "none"
   noneVal0 <- 1
-  dfNone0  <- df1 |> 
-    select(all_of(scCols0)) |>
-    filter_at(c(nameCol0), function(x, y=noneStr0){x %in% y}) |>
-    distinct()
   ### - Get national region info
-  select0  <- c(regCols0, valCol0)
-  dfNat0   <- df0 |> 
-    filter(postal %in% natStr0) |>
-    mutate_at(c(valCol0), function(x, y=noneVal0){y}) |>
-    select(all_of(select0)) |>
-    distinct()
-  ### - Cross-join info
-  dfNone0  <- dfNone0 |> 
-    cross_join(dfNat0) |> 
-    cross_join(tibble(year = years0)) |>
-    relocate(all_of(yrCol0), .before=all_of(valCol0))
-  rm(dfNat0)
+  select0  <- c(regCols0)
+  dfNone   <- df0 |>
+    filter_at(c(postCol0), function(x, y=natStr0){x %in% y}) |>
+    select(all_of(select0)) |> distinct() |> 
+    mutate(scalarName = noneStr0) |>
+    mutate(value = noneVal0) |>
+    rename_at(c("value"), ~valCol0) |> 
+    cross_join(tibble(year = years0))
+  ### Bind dfNone with df0
+  df0      <- df0 |> bind_rows(dfNone)
+  # df0 |> glimpse(); 
+  rm(dfNone)
+  
   
   ### Bind dfNone with df0 and join info
-  df0      <- df0 |> bind_rows(dfNone)
-  df0      <- df0 |> left_join(df1, by=scCols0)
-  rm(dfNone, df1)
+  move0    <- c(scCols0, rCol0, dCol0)
+  sort0    <- c(dCol0, rCol0, typeCol0, nameCol0, regCols0, yrCol0)
+  df0      <- df0 |> 
+    left_join(df1, by=nameCol0) |>
+    relocate(all_of(move0)) |>
+    arrange_at(c(sort0))
+  rm(df1)
+  # df0 |> pull(all_of(typeCol0)) |> unique() |> print()
+  # df0 |> filter(scalarType |> is.na()) |> select(any_of(nameCol0)) |> glimpse()
   
   ### Arrange and get groups
   ### Add column indicating method
-  # idCols0  <- c(typeCol0, rCol0, nameCol0, regCols0)
-  # group0   <- c(typeCol0, rCol0, idCols0)
-  idCols0  <- c(nameCol0, regCols0)
-  group0   <- idCols0
-  sort0    <- group0  |> c(yrCol0)
+  idCols0  <- c(typeCol0, nameCol0, regCols0)
+  group0   <- c(idCols0, idCol0, dCol0, rCol0, mCol0) |> c("regional")
   df0      <- df0 |>
     arrange_at(c(sort0)) |> 
     mutate(group_id = df0 |> select(all_of(idCols0)) |> apply(1, function(x){
-      x |> as.vector() |> paste(collapse=sep0)
+      x |> as.vector() |> paste(collapse="_")
     }) |> unlist()) |>
     rename_at(c("group_id"), ~idCol0) |>
-    group_by_at(c(group0, idCol0)) |> 
-    mutate(method0 = case_when(dynamic == 0 ~ "constant", .default="linear"))
+    mutate(method = case_when(
+      dynamic == 0 ~ "constant", 
+      .default="linear"), 
+      .before=all_of(yrCol0)
+    ) |> group_by_at(c(group0))
   
   ### Iterate over groups
-  # select0  <- c(idCol0, yrCol0, valCol0)
-  # dfKeys0  <- df0     |> group_keys()
-  # groups0  <- dfKeys0 |> pull(all_of(idCol0))
-  # df0       <- df0 |> ungroup() |> select(all_of(select0))
-  ### Get unique names & types
-  df0      <- df0 |> group_map( 
-    interpolate_byGroup,
-    xCol0     = yrCol0,
-    yCol0     = valCol0,
-    xOut0     = years0,
-    method0   = .y |> pull(method0) |> unique(),
-    rule0     = rule0
-  ) |>
-    # bind_rows(.id=idCol0) |>
-    bind_rows() |>
-    ungroup() |> 
-    # select(all_of(select0)) |>
-    group_by_at(c(nameCol0, idCol0))
-  # rm(select0)
-  # df0 |> glimpse()
-  # 
-  # df0      <- dfKeys |> 
-  #   left_join(df0, by=join0) |>
-  #   arrange_at(c(join0))
+  methods0 <- df0      |> pull(all_of(mCol0)) |> unique() |> sort()
+  df0      <- methods0 |> map(function(methodX){
+    df0 |>
+      filter_at(c(mCol0), function(x, y=methodX){x %in% y}) |>
+      group_map(function(.x, .y){
+        # mX  <- .y |> pull(method0) |> unique()
+        # .y |> pull(all_of(idCol0)) |> paste0(":", mX) |> print()
+        .x |> interpolate_byGroup(
+          .y      = .y,
+          xCol0   = yrCol0,
+          yCol0   = valCol0,
+          xOut0   = years0,
+          method0 = methodX,
+          rule0   = rule0
+        ) ### End interpolate_byGroup
+      }) |> bind_rows()
+  }) |> bind_rows()
+
+  ### Drop values
+  df0      <- df0 |>
+    ungroup() |>
+    select(-any_of(mCol0))
   
   ### Return
   return(df0)

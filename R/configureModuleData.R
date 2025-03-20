@@ -5,15 +5,16 @@ configureModuleData <- function(
     configSheet = "tableNames",        ### Sheet with table info
     outDir      = "." |> file.path("data", "fredi"),
     outExt      = "rda",
-    controlData = NULL   , ### Output of configureControlTables
+    controlData = NULL , ### Output of configureControlTables
     configList  = frediConfig(),
-    doScalars   = TRUE   , ### Whether to load scalars
+    doScalars   = TRUE ,  ### Whether to load scalars
     extend_all  = TRUE ,  ### Whether to extend all GCM model observations to maximum range
     reshape     = TRUE ,  ### Whether to include reshaped data items in data list (for testing)
     silent      = TRUE ,  ### Level of messaging 
     return      = TRUE ,  ### Whether to return the data list
     save        = TRUE ,  ### Whether to save the file
-    msg0        = 0       ### Message prefix
+    msg0        = 0    ,  ### Message prefix
+    .testing    = FALSE
 ){
   ### Set Up Environment ----------------
   #### Messaging ----------------
@@ -65,7 +66,7 @@ configureModuleData <- function(
   ### 1. Load Excel Data ----------------
   ### Load state data
   # if(!silent) 
-  msg1 |> get_msgPrefix(newline=F) |> paste0("Loading data...") |> message()
+  # msg1 |> get_msgPrefix(newline=F) |> paste0("Loading data...") |> message()
   dataList      <- module |> loadModuleData(
     dataDir     = dataDir,
     configFile  = configFile,  ### Name of excel file with config information
@@ -73,9 +74,11 @@ configureModuleData <- function(
     controlData = controlData,
     doScalars   = doScalars,
     silent      = silent,
-    msg0        = msg1
+    msg0        = msg1,
+    .testing    = .testing
   ) ### End loadData
-  gc()
+  # gc()
+  return(dataList)
   
   ### 2. Reshape Data ----------------
   # if(!silent) 
@@ -84,10 +87,9 @@ configureModuleData <- function(
     dataList  <- module |> reshapeFrediData(
       dataList    = dataList,
       controlData = controlData,
-      configList  = configList,
       doScalars   = doScalars,
       silent      = silent, 
-      msg0        = msg1
+      msg0        = msg2
     ) ### End reshapeFrediData
   } else if(doGHG) {
     dataList  <- dataList |> reshapeGhgData  (silent=silent, msg0=msg1)

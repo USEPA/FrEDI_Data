@@ -102,7 +102,27 @@ reshapeControlTables <- function(
   # co_scenarios |> glimpse()
   dataList[["co_scenarios"]] <- co_scenarios
   
-  #### 5. SLR Scenario Info ----------------
+  
+  #### 5. States ----------------
+  ### Join info on scenarios with input info
+  co_states <- co_states |> (function(
+    df0,
+    df1   = co_regions,
+    df2   = co_areas
+  ){
+    join0 <- df0 |> names() |> get_matches(y=df1 |> names())
+    df0   <- df0 |> left_join(df1, by=join0)
+    
+    join0 <- df0 |> names() |> get_matches(y=df2 |> names())
+    df0   <- df0 |> left_join(df2, by=join0)
+    
+    return(df0)
+  })() 
+  # co_scenarios |> glimpse()
+  dataList[["co_states"]] <- co_states
+  
+  
+  #### 6. SLR Scenario Info ----------------
   ### Gather slr_cm columns
   # slr_cm |> glimpse()
   # co_slrCm |> pull(model) |> print()

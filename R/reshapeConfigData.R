@@ -14,14 +14,16 @@ reshapeConfigData <- function(
     minYr0      = 2010,
     maxYr0      = 2300,
     silent      = TRUE, ### Level of messaging
-    msg0        = "\t"  ### Prefix for messaging
+    msg0        = 0     ### Prefix for messaging
 ) {
   ### Set up Environment ----------------
   #### Messaging ----------------
+  msgUser       <- !silent
   msgN          <- "\n"
-  msg1          <- msg0 |> paste("\t")  
-  if (!silent) paste0(msg0, "Running reshapeConfigData...") |> message()
-  if (!silent) paste0(msg1, "Reshaping data from FrEDI config file...") |> message()
+  msg1          <- msg0 + 1
+  msg2          <- msg0 + 2
+  if (msgUser) msg0 |> get_msgPrefix(newline=F) |> paste0("Running reshapeConfigData...") |> message()
+  # if (msgUser) paste0(msg1, "Reshaping data from FrEDI config file...") |> message()
   
   ### Import Functions from FrEDI ----------------
   # get_matches        <- "get_matches"        |> utils::getFromNamespace("FrEDI")
@@ -46,12 +48,17 @@ reshapeConfigData <- function(
   #### Columns * Value ----------------
   ### Region and state level columns to use
   # stateCols0    <- c("state", "postal")
-  areas0  <- controlTables$co_moduleAreas |> 
+  areas0  <- co_moduleAreas |> 
     filter_at(c("module"), function(x, y=module){x %in% y}) |>
     pull(area)
   mTypes0 <- co_moduleModTypes |> 
     filter_at(c("module"), function(x, y=module){x %in% y}) |>
     pull(model_type)
+  
+  co_states     <- co_states     |> filter(area %in% areas0)
+  co_modelTypes <- co_modelTypes |> filter(model_type %in% mTypes0)
+  # co_states |> glimpse()
+  # co_modelTypes |> glimpse()
   
   ### Modify Tables and Update in List ----------------
   #### 1. Sectors ----------------
@@ -74,7 +81,7 @@ reshapeConfigData <- function(
   #### 3. Impact Types Info ----------------
   ### Drop damage adjustment names (present in variants)
   co_impactTypes <- co_impactTypes |> (function(
-    df, 
+    df0, 
     drop0=c("damageAdjName")
   ){
     df0 |> select(-any_of(drop0))
@@ -140,20 +147,14 @@ reshapeConfigData <- function(
   #### 7. Scenario Info ----------------
   ### Combine sectors with co_variants, co_impactTypes, co_impactYears to get group options
   # get_co_sectorsInfo <- utils::getFromNamespace("get_co_sectorsInfo", "FrEDI")
+  # co_modelTypes |> glimpse()
   co_sectorsInfo <- co_sectors |> pull(sector) |> get_co_sectorsInfo(
-    # addRegions = TRUE, ### Whether to include regions & states
-    # addModels  = TRUE, ### Whether to include models
-    # addIds     = TRUE, ### Add scenario Ids
-    # include    = c("region", "state", "postal", "model"), ### Other columns to include
-    # colTypes   = c("ids", "labels", "extra"), 
-    # slrStr     = "Interpolation",
     dfSects    = co_sectors,
     dfVars     = co_variants,
     dfITypes   = co_impactTypes,
     dfIYears   = co_impactYears,
-    dfMTypes   = co_modelTypes |> filter(model_type %in% mTypes0),
-    # dfReg      = co_regions,
-    dfStates   = co_states |> filter(area %in% areas0),
+    dfStates   = co_states,
+    dfMTypes   = co_modelTypes,
     dfModels   = co_models
   ) ### End get_co_sectorsInfo()
   ### Update in list, drop intermediate values
@@ -161,7 +162,22 @@ reshapeConfigData <- function(
   dataList[["co_sectorsInfo"]] <- co_sectorsInfo
 
   
-  #### 8. Sector Scalar Info ----------------
+  #### 8. Scalar Info ----------------
+  ### Scalar info
+  co_scalarInfo  <- co_scalarInfo  |> (function(
+    df0,
+    move0    = c("scalarType", "scalarName", "regional", "dynamic"),
+    sort0    = c("regional", "dynamic", "scalarType", "scalarName")
+  ){
+    df0 |> 
+      relocate(all_of(move0)) |> 
+      arrange_at(c(sort0))
+  })()
+  ### Update() in list, drop intermediate values
+  # co_scalarInfo  |> glimpse()
+  dataList[["co_scalarInfo "]] <- co_scalarInfo 
+  
+  ### Sector scalar info
   co_sectorScalars <- co_sectorsInfo |> (function(
     df0,
     # df1      = co_scalarTypes,
@@ -176,13 +192,14 @@ reshapeConfigData <- function(
     nameCols0  <- types0  |> paste0(nameStr0)
     select0    <- idCols0 |> c(nameCols0)
     df0        <- df0 |> 
+      ungroup() |>
       select(all_of(select0)) |> distinct() |> 
       pivot_longer(
         -any_of(idCols0), 
-        names_to = typeCol0, 
+        names_to  = typeCol0, 
         values_to = nameCol0
       ) |> 
-      mutate_at(c(mutate0), str_replace, "Name", "")
+      mutate_at(c(typeCol0), str_replace, "Name", "")
     ### Return
     return(df0)
   })()
@@ -194,6 +211,6 @@ reshapeConfigData <- function(
   
   ### Return ----------------
   ### Return the list of dataframes
-  if (!silent) paste0(msg0, "...Finished running reshapeConfigData().", msgN) |> message()
+  if (msgUser) msg1 |> get_msgPrefix(newline=F) |> paste0("...Finished running reshapeConfigData().", msgN) |> message()
   return(dataList)
 }

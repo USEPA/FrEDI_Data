@@ -67,17 +67,19 @@ reshapeFrediData <- function(
   ### Reshape scalar data
   # stateData |> names() |> print()
   # scalarData |> glimpse()
-  scalarData <- dataList[[stateLStr0]][["scalarData"]] |> 
-    reshapeScalarData(
-      scalarInfo = configData[["co_scalarInfo"]], 
-      minYr0     = minYr0,
-      maxYr0     = maxYr0,
-      yrCol0     = "year",
-      valCol0    = "value",
-      natStr0    = "US",
-      silent     = silent, 
-      msg0       = msg1
-    ) ### End reshapeScalarData
+  # dataList[[stateLStr0]] |> glimpse()
+  # return()
+  scalarData <- dataList[[stateLStr0]][["scalarData"]] |> reshapeScalarData(
+    controlData = controlData,
+    scalarInfo  = configData[["co_scalarInfo"]],
+    minYr0      = minYr0,
+    maxYr0      = maxYr0,
+    yrCol0      = "year",
+    valCol0     = "value",
+    natStr0     = "US",
+    silent      = silent, 
+    msg0        = msg1
+  ) ### End reshapeScalarData
   # stateData[["df_scalars"]] <- scalarData
   # dataList[[stateLStr0]][["scalarData"]] <- scalarData
   stateData[["scalarData"]] <- scalarData
@@ -94,15 +96,17 @@ reshapeFrediData <- function(
   # slrData <- dataList[[stateLStr0]][["slrData"]] |> reshapeScaledImpacts(frediData=frediData, type0="gcm", silent=silent, msg0=msg1)
   # dataList[[stateLStr0]][["slrData"]] <- slrData
   # rm(slrData)
-  msg1 |> get_msgPrefix(newline=F) |> paste0("Reshaping scaled impacts...") |> message()
+  if(msgUser) msg1 |> get_msgPrefix(newline=F) |> paste0("Reshaping scaled impacts...") |> message()
   modTypes0     <- controlData[["co_moduleModTypes"]] |> 
     filter(module %in% moduleLC) |> 
     pull(model_type) |> unique() |> 
     tolower()
   impactNames   <- modTypes0 |> paste0("Data")
-  impactData    <- modTypes0 |> map(function(type0){
+  # dataList[[stateLStr0]] |> glimpse()
+  # dataList[[stateLStr0]][impactNames] |> glimpse()
+  impactData    <- list(type0=modTypes0, name0=impactNames) |> pmap(function(type0, name0){
     type0 |> reshapeScaledImpacts(
-      impacts0    = dataList[[stateLStr0]][[type0]], 
+      impacts     = dataList[[stateLStr0]][[name0]], 
       controlData = controlData, 
       xCol0       = case_when(type0 |> str_detect("slr") ~ "year", .default = "modelUnitValue"),
       yCol0       = "scaled_impacts",
@@ -121,6 +125,7 @@ reshapeFrediData <- function(
   rm(impactData)
   
   ### Update Sectors Info ----------------
+  if(msgUser) msg1 |> get_msgPrefix(newline=F) |> paste0("Updating sector info...") |> message()
   sectorsInfo   <- modTypes0 |> update_sectorInfo(
     df0      = dataList[[configLStr0]][["co_sectorsInfo"]], ### co_sectorsInfo output from reshapeConfigData
     list0    = stateData[impactNames], ### Impacts list output from reshapeScaledImpacts

@@ -32,26 +32,34 @@ reshapeScalarData <- function(
   ### Assign Objects ----------------
   ### Assign tables in dataList to object in local environment
   # frediData |> names() |> print()
-  regCols0   
-  co_states  <- controlData[["co_states"]] |> select(all_of())
+  # regCols0   <- c("region", "postal")
+  # co_states  <- controlData[["co_states"]] |> select(all_of(regCols0))
   # scalarInfo <- configData [["co_scalarInfo"]]
   # co_states  |> glimpse(); scalarInfo |> glimpse()
 
   ### Join with State/Region Info ----------------
   ### Add region to scalar data frame
+  # "got here0" |> print()
   regCol0    <- "region"
   postCol0   <- "postal"
   stateCol0  <- "state"
-  regCols0   <= c(regCol0, postCol0)
+  regCols0   <- c(regCol0, postCol0)
   # naStr0     <- "US"
   # select0    <- c("area", "region", "state", "postal", "fips")
-  select0    <- c("region", "state", "postal", "fips")
+  # "got here1" |> print()
+  # select0    <- c("region", "state", "postal", "fips")
   co_states  <- controlData[["co_states"]] |> select(all_of(regCols0))
+  # co_states |> glimpse()
+  # scalarData |> glimpse()
   join0      <- co_states  |> names() |> get_matches(y=scalarData |> names())
+  move0      <- c("scalarName") |> c(regCols0, yrCol0)
   scalarData <- scalarData |> 
-    select(-any_of(stateCol0)) |>
+    select(-any_of(regCol0), any_of(stateCol0)) |>
     mutate_at(c(postCol0), replace_na, natStr0) |>
-    left_join(co_states, by=join0)
+    left_join(co_states, by=postCol0) |> 
+    relocate(any_of(move0))
+  # "got here2" |> print()
+  # scalarData |> glimpse()
   
   ### Format scalars
   scalarData <- scalarData |> fun_formatScalars(
@@ -60,6 +68,7 @@ reshapeScalarData <- function(
     natStr0  = natStr0,
     rule0    = 2
   ) ### End fun_formatScalars
+  # "got here3" |> print()
   
   ### Return ----------------
   ### Return the list of dataframes

@@ -4,7 +4,8 @@ loadFrediConfig <- function(
     configFile  = "FrEDI_config.xlsx", ### Name of Excel file with config information, relative to frediDir
     configSheet = "tableNames",        ### Name of sheet in configFile containing table with info about tables
     silent      = FALSE,               ### Level of messaging
-    msg0        = 0                    ### Messaging index level
+    msg0        = 0,                   ### Messaging index level
+    .testing    = FALSE
 ) {
   ### Messaging ----------------
   msgUser       <- !silent
@@ -18,7 +19,7 @@ loadFrediConfig <- function(
   ### File Paths ----------------
   ### Config file
   configPath    <- configDir |> file.path(configFile)
-  if(msgUser) {configDir |> c(configFile) |> print(); configDir |> list.files() |> print(); configSheet |> print()}
+  if(.testing) {configDir |> c(configFile) |> print(); configDir |> list.files() |> print(); configSheet |> print()}
   
   ### Load Table of Tables ----------------
   ### Load table with names of data tables

@@ -13,7 +13,7 @@
 #' 
 reshapeScaledImpacts <- function(
     type0       = "gcm", ### Model type
-    impacts0    = NULL , ### Tibble with scaled impacts data for type
+    impacts     = NULL , ### Tibble with scaled impacts data for type
     # dataList    = NULL , ### List of config data for module (outputs of reshapeFrediConfig())
     controlData = NULL , ### Control tables (output of configureControlTables)
     xCol0       = "modelUnitValue",
@@ -66,12 +66,15 @@ reshapeScaledImpacts <- function(
   ### Mutate special characters in model
   # select0    <- mainCols0 |> c(regCols0, mTypeCol0, modCol0, xCol0, yCol0)
   drop0      <- c("region", "state")
-  impacts    <- impacts |> select(-all_of(drop0))
+  # impacts |> glimpse()
+  impacts    <- impacts |> select(-any_of(drop0))
   
   ### Join data with states
   names0     <- impacts |> names()
   mutate0    <- c(idCols0, modCol0, mTypeCol0) |> get_matches(y=names0)
   join0      <- regCols0 |> get_matches(y=names0)
+  names0 |> print(); mutate0 |> print(); join0 |> print()
+  impacts |> glimpse()
   impacts    <- impacts |> 
     mutate_at(c(mutate0), as.character) |>
     mutate_at(c(idCols0), function(x, y=naRepl0, z=naStr0){
@@ -81,6 +84,7 @@ reshapeScaledImpacts <- function(
     relocate(all_of(valCol0), .after=all_of(xCol0)) |> 
     rename_at(c(valCol0), ~yCol0)
   rm(join0)
+  "got here" |> print()
   
   ### Format SLR Values ----------------
   if(doSlr) {

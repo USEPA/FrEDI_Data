@@ -19,7 +19,8 @@ loadModuleData <- function(
     controlData = NULL   , ### Output of configureControlTables
     doScalars   = TRUE   , ### Whether to load scalars
     silent      = FALSE  , ### Level of messaging
-    msg0        = 0        ### Message index
+    msg0        = 0      , ### Message index
+    .testing    = FALSE
 ) {
   ### Set Up Environment ----------------
   #### Messaging ----------------
@@ -27,7 +28,8 @@ loadModuleData <- function(
   msg1          <- msg0 + 1
   msg2          <- msg0 + 2
   msgUser       <- !silent
-  if(msgUser) msg0 |> get_msgPrefix(newline=F) |> paste0("Running loadModuleData()...") |> message()
+  # if(msgUser) 
+  msg0 |> get_msgPrefix(newline=F) |> paste0("Loading module data...") |> message()
 
   #### Columns & Values ----------------
   moduleLC      <- module   |> tolower()
@@ -53,7 +55,8 @@ loadModuleData <- function(
     configFile  = configFile , ### Name of Excel file with config information, relative to frediDir
     configSheet = configSheet, ### Name of sheet in configFile containing table with info about tables
     silent      = silent     , ### Level of messaging
-    msg0        = msg1
+    msg0        = msg1,
+    .testing    = .testing
   ) ### End loadFrediConfig
   ### Add to dataList
   dataList[[configLStr0]] <- configList
@@ -75,10 +78,11 @@ loadModuleData <- function(
     filter(module %in% moduleLC) |> 
     pull(model_type) |> unique() |> 
     tolower()
-  impactData    <- modTypes0 |> map(function(type0, dir0=dataDir){
+  impactNames   <- modTypes0 |> paste0("Data")
+  impactData    <- modTypes0 |> map(function(type0){
     if (!silent) msg2 |> get_msgPrefix(newline=F) |> paste0("Loading ", type0, " scaled impacts...") |> message()
     dataDir |> file.path(type0) |> loadFrediImpacts(type=type0)
-  }) |> set_names(modTypes0 |> paste0("Data"))
+  }) |> set_names(impactNames)
   stateData <- stateData |> c(impactData)
   rm(impactData)
 
@@ -88,6 +92,6 @@ loadModuleData <- function(
   rm(stateData)
   
   ### Return ----------------
-  msg0 |> get_msgPrefix(newline=F) |> paste0("...Finished running loadModuleData().", msgN) |> message()
+  msg0 |> get_msgPrefix(newline=F) |> paste0("...Finished loading module data.", msgN) |> message()
   return(dataList)
 }
