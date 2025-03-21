@@ -29,8 +29,8 @@ reshapeFrediData <- function(
   ### Module and list object names
   moduleLC      <- module   |> tolower()
   # listStr0      <- "rDataList"
+  # listStr0      <- moduleLC |> paste0("Data")
   # configLStr0   <- moduleLC |> paste0("Data")
-  listStr0      <- moduleLC |> paste0("Data")
   fConfigStr0   <- "fredi_config"
   configLStr0   <- "configData"
   stateLStr0    <- "stateData"
@@ -83,9 +83,10 @@ reshapeFrediData <- function(
   # stateData[["df_scalars"]] <- scalarData
   # dataList[[stateLStr0]][["scalarData"]] <- scalarData
   stateData[["scalarData"]] <- scalarData
+  # dataList[[stateLStr0]] <- stateData
   rm(scalarData)
-  # dataList[["stateData"]] <- stateData
   # return(dataList)
+  
   
   ### Reshape Scaled Impacts ----------------
   ### GCM Scaled Impacts 
@@ -138,7 +139,7 @@ reshapeFrediData <- function(
   ) ### End update_sectorInfo
   dataList[[configLStr0]][["co_sectorsInfo"]] <- sectorsInfo
   
-  ### Update state data ----------------
+  ### Update State Data ----------------
   dataList[["stateData"]] <- stateData
   # dataList[["frediData"]] |> names() |> print()
   

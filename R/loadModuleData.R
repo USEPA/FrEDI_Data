@@ -34,6 +34,7 @@ loadModuleData <- function(
   #### Columns & Values ----------------
   moduleLC      <- module   |> tolower()
   # configLStr0   <- moduleLC |> paste0("Data")
+  fConfigStr0   <- "fredi_config"
   configLStr0   <- "configData"
   stateLStr0    <- "stateData"
   
@@ -42,8 +43,8 @@ loadModuleData <- function(
   stateData     <- list()
   
   ### Add config data to list
-  fredi_config  <- frediConfig()
-  dataList[["fredi_config"]] <- fredi_config
+  moduleConfig  <- frediConfig()
+  dataList[[fConfigStr0]] <- moduleConfig
   
   ### Load Data ----------------
   #### Load Config Data ----------------
@@ -88,7 +89,7 @@ loadModuleData <- function(
 
   
   ### Add stateData to Data List ----------------
-  dataList[["stateData"]] <- stateData
+  dataList[[stateLStr0]] <- stateData
   rm(stateData)
   
   ### Return ----------------

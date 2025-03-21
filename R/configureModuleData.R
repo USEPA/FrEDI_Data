@@ -9,7 +9,8 @@ configureModuleData <- function(
     configList  = frediConfig(),
     doScalars   = TRUE ,  ### Whether to load scalars
     extend_all  = TRUE ,  ### Whether to extend all GCM model observations to maximum range
-    reshape     = TRUE ,  ### Whether to include reshaped data items in data list (for testing)
+    reshape     = TRUE ,  ### Whether to include reshaped data items in data list (for testing),
+    dropImpData = TRUE , 
     silent      = TRUE ,  ### Level of messaging 
     return      = TRUE ,  ### Whether to return the data list
     save        = TRUE ,  ### Whether to save the file
@@ -44,6 +45,7 @@ configureModuleData <- function(
   # listStr0      <- "rDataList"
   # configLStr0   <- moduleLC |> paste0("Data")
   listStr0      <- moduleLC |> paste0("Data")
+  fConfigStr0   <- "fredi_config"
   configLStr0   <- "configData"
   stateLStr0    <- "stateData"
   rsLStr0       <- "rsData"
@@ -107,9 +109,9 @@ configureModuleData <- function(
   # if(!silent) 
   msg1 |> get_msgPrefix(newline=F) |> paste0("Configuring data...") |> message()
   if(doFredi | doExtremes) {
-    dataList  <- dataList |> formatFrediData(
+    dataList  <- module |> formatFrediData(
+      dataList    = dataList,
       controlData = controlData,
-      configList  = configList,
       extend_all  = extend_all, 
       silent      = silent, 
       msg0        = msg1

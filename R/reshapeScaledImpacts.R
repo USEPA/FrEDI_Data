@@ -74,6 +74,7 @@ reshapeScaledImpacts <- function(
   mutate0    <- c(idCols0, modCol0, mTypeCol0) |> get_matches(y=names0)
   # mutate0    <- c(idCols0, modCol0, mTypeCol0) |> get_matches(y=names0)
   join0      <- regCols0 |> get_matches(y=names0)
+  # "gotHere1" |> print(); impacts |> nrow() |> print()
   impacts    <- impacts  |> 
     # mutate_at(c(mutate0), as.character) |>
     mutate_at(c(idCols0  |> get_matches(y=names0)), function(x, y=naRepl0, z=naStr0){
@@ -84,6 +85,7 @@ reshapeScaledImpacts <- function(
     rename_at(c(valCol0), ~yCol0)
   rm(join0)
   # "got here" |> print()
+  # "gotHere2" |> print(); impacts |> nrow() |> print()
   
   ### Format SLR Values ----------------
   if(doSlr) {
@@ -100,6 +102,7 @@ reshapeScaledImpacts <- function(
         xCol0 = xCol0
       ) ### End zeroSlrValues
   } ### End if doSlr
+  # "gotHere6" |> print(); impacts |> nrow() |> print()
   
   ### Standardize Data ----------------
   impacts    <- impacts |> reshape_modelImpacts(
@@ -108,7 +111,7 @@ reshapeScaledImpacts <- function(
     yCol0     = yCol0,
     idCol0    = idCol0,
     modCol0   = modCol0,
-    idCols0   = idCols0, 
+    idCols0   = idCols0,
     modStr0   = "Interpolation"
   ) ### End reshape_modelImpacts
   

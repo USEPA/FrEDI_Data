@@ -1,13 +1,13 @@
 ### FrEDI Data Utilities
 ## Import functions from FrEDI namespace ----------------
-convertTemps       <- "convertTemps"       |> utils::getFromNamespace("FrEDI")
-get_matches        <- "get_matches"        |> utils::getFromNamespace("FrEDI")
-get_msgPrefix      <- "get_msgPrefix"      |> utils::getFromNamespace("FrEDI")
-get_scenario_id    <- "get_scenario_id"    |> utils::getFromNamespace("FrEDI")
-# interpolate_annual <- "interpolate_annual" |> utils::getFromNamespace("FrEDI")
-# match_scalarValues <- "match_scalarValues" |> utils::getFromNamespace("FrEDI")
-temps2slr          <- "temps2slr"          |> utils::getFromNamespace("FrEDI")
-# update_popScalars  <- "update_popScalars"  |> utils::getFromNamespace("FrEDI")
+# convertTemps       <- "convertTemps"       |> utils::getFromNamespace("FrEDI")
+# get_matches        <- "get_matches"        |> utils::getFromNamespace("FrEDI")
+# get_msgPrefix      <- "get_msgPrefix"      |> utils::getFromNamespace("FrEDI")
+# get_scenario_id    <- "get_scenario_id"    |> utils::getFromNamespace("FrEDI")
+# # interpolate_annual <- "interpolate_annual" |> utils::getFromNamespace("FrEDI")
+# # match_scalarValues <- "match_scalarValues" |> utils::getFromNamespace("FrEDI")
+# temps2slr          <- "temps2slr"          |> utils::getFromNamespace("FrEDI")
+# # update_popScalars  <- "update_popScalars"  |> utils::getFromNamespace("FrEDI")
 
 ### For SV
 calc_countyPop     <- "calc_countyPop" |> utils::getFromNamespace("FrEDI")
@@ -337,7 +337,7 @@ format_tempData_byGroup <- function(
 ### Function to get SLR lvls from model column
 get_slrLevels <- function(
     df0, 
-    modCol0,
+    modCol0 = "model",
     addZero = T,
     addUnit = T
 ){
@@ -375,24 +375,30 @@ zeroSlrValues <- function(
   } ### End if(hasLvls0)
   
   ### Get Unit
-  unit0    <- lvls0 |> first() |> (function(lvlX){
-    lvlX |> str_replace(lvlX |> parse_number() |> as.character(), "")
-  })()
-  minStr0  <- min0 |> paste0(unit0) 
-  newStr0  <- new0 |> paste0(unit0) 
+  lvl0     <- lvls0 |> tail(2) |> first()
+  unit0    <- lvl0  |> str_replace(lvl0 |> parse_number() |> as.character(), "")
+  minStr0  <- min0  |> paste0(unit0) 
+  newStr0  <- new0  |> paste0(unit0) 
   # df0 |> pull(all_of(modCol0)) |> unique() |> print(); lvls0 |> print(); unit0 |> print()
   
+  ### Convert to character and filter
+  # df0 |> nrow() |> print()
+  df0      <- df0 |> mutate_at(c(modCol0), as.character)
+  dfMin0   <- df0 |> filter_at(c(modCol0), function(x, y=minStr0){x %in% y})
+  df0      <- df0 |> filter_at(c(modCol0), function(x, y=newStr0){!(x %in% y)})
+  # "gotHere3" |> print(); dfMin0 |> nrow() |> print();  df0 |> nrow() |> print()
+  
   ### Zero out column
-  dfMin0 <- df0 |> 
-    mutate_at(c(modCol0), as.character) |>
-    filter_at(c(modCol0), function(x, y=minStr0){x %in% y}) |>
+  dfMin0   <- dfMin0 |> 
     mutate_at(c(modCol0), function(x, y=newStr0){y}) |>
     mutate_at(c(modCol0), factor, lvls0) |>
     mutate_at(c(yCol0  ), function(x, y=new0){y})
+  # "gotHere5" |> print(); dfMin0 |> nrow() |> print();  
   
   ### Bind values
-  df0    <- df0    |> filter_at(c(modCol0), function(x, y=newStr0){!(x %in% y)})
-  df0    <- dfMin0 |> bind_rows(df0)
+  # df0    <- df0    |> filter_at(c(modCol0), function(x, y=newStr0){!(x %in% y)})
+  df0      <- dfMin0 |> bind_rows(df0)
+  # "gotHere5" |> print(); df0 |> nrow() |> print()
   
   ### Return
   return(df0)
@@ -649,31 +655,36 @@ reshape_modelImpacts <- function(
   df0      <- df0    |> 
     mutate(model_type = type0) |>
     mutate(modelTemp = case_when(model_type |> str_detect("slr") ~ modStr0, .default=model)) |>
-    get_scenario_id(include=idCols0 |> c(tmpCol0), col0="id") |>
+    get_scenario_id(include0=idCols0 |> c(tmpCol0), idCol0="id") |>
     rename_at (c("id"), ~idCol0) |>
     relocate(all_of(idCol0), .before=all_of(xCol0)) |>
     select(-any_of(tmpCol0), -any_of(typeCol0))
+  # "gotHere8" |> print(); df0 |> nrow() |> print()
    
   ### Figure out which have no impacts
   cols0    <- idCol0 |> c("hasScenario")
-  dfNA     <- df0    |> 
+  dfNA     <- df0    |>
     filter_at(c(yCol0), function(x){!(x |> is.na())}) |>
     mutate(hasScenario = 1) |>
-    select(all_of(cols0))
+    select(all_of(cols0)) |>
+    distinct()
+  # dfNA |> glimpse()
+  
+  # return(list(df0=df0, dfNA=dfNA))
   
   ### Add scenario info
-  df0      <- df0    |> 
+  df0      <- df0    |>
     left_join(dfNA, by=idCol0) |>
     mutate(hasScenario = hasScenario |> replace_na(0), .after=all_of(idCol0)) |>
     filter(hasScenario == 1)
   rm(dfNA)
-  
+
   ### Arrange and group
   group0   <- group0 |> c(idCol0)
-  df0      <- df0    |> 
+  df0      <- df0    |>
     arrange_at (c(sort0 )) |>
     group_by_at(c(group0))
-  
+
   ### Return
   return(df0)
 }
@@ -880,7 +891,6 @@ fun_formatScalars <- function(
   # df0 |> glimpse(); 
   rm(dfNone)
   
-  
   ### Bind dfNone with df0 and join info
   move0    <- c(scCols0, rCol0, dCol0)
   sort0    <- c(dCol0, rCol0, typeCol0, nameCol0, regCols0, yrCol0)
@@ -935,7 +945,6 @@ fun_formatScalars <- function(
   ### Return
   return(df0)
 }
-
 
 ## Format GCM Scaled Impacts ----------------
 ### Extrapolate Impact Function
@@ -1106,7 +1115,7 @@ mapFormatScaledImpacts <- function(
   msg1          <- msg0 + 1
   msg2          <- msg0 + 2
   
-  msg0 |> get_msgPrefix() |> paste("Formatting ", type0 |> toupper(), " impacts...") |> message()
+  msg0 |> get_msgPrefix() |> paste0("Formatting ", type0 |> toupper(), " impacts...") |> message()
   
   #### Columns & Values ----------------
   
@@ -1131,7 +1140,7 @@ mapFormatScaledImpacts <- function(
   list0  <- list()
   if(doSlr0) {
     ### Format impacts
-    if(msgUser) msg1 |> get_msgPrefix() |> paste("...Formatting SLR impact values...") |> message()
+    if(msgUser) msg1 |> get_msgPrefix() |> paste0("...Formatting SLR impact values...") |> message()
     dfX1    <- data0 |> format_slrImpacts(
       modLvls0 = controlData[["co_slrCm"]] |> pull(all_of(modCol0)), 
       xCol0    = xCol0,
@@ -1144,7 +1153,7 @@ mapFormatScaledImpacts <- function(
     list0[["slrImpacts"]] <- dfX1
     
     ### Format extremes
-    if(msgUser) msg1 |> get_msgPrefix() |> paste("...Creating extreme SLR impact values...") |> message()
+    if(msgUser) msg1 |> get_msgPrefix() |> paste0("...Creating extreme SLR impact values...") |> message()
     dfX2    <- dfX1 |> get_slrExtValues(
       df1      = controlData[["slrCmExtremes"]],
       xCol0    = yrCol0,
@@ -1186,7 +1195,7 @@ mapFormatScaledImpacts <- function(
     rm(data0, funs0)
   } ### End if(doSlr0)
   ### Return
-  msg0 |> get_msgPrefix() |> paste("...Finished formatting ", type0 |> toupper(), " impacts...") |> message()
+  msg0 |> get_msgPrefix() |> paste0("...Finished formatting ", type0 |> toupper(), " impacts...") |> message()
   return(list0)
 }
 

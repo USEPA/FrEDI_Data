@@ -199,7 +199,7 @@ reshapeConfigData <- function(
         names_to  = typeCol0, 
         values_to = nameCol0
       ) |> 
-      mutate_at(c(typeCol0), str_replace, "Name", "")
+      mutate_at(c(typeCol0), str_replace, nameStr0, "")
     ### Return
     return(df0)
   })()
