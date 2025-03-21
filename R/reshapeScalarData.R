@@ -72,6 +72,6 @@ reshapeScalarData <- function(
   
   ### Return ----------------
   ### Return the list of dataframes
-  if (!silent) msg1 |> get_msgPrefix(newline=F) |> paste0("...Finished running reshapeScalarData().", msgN) |> message()
+  if (!silent) msg1 |> get_msgPrefix(newline=F) |> paste0("...Finished reshaping scalar data.", msgN) |> message()
   return(scalarData)
 }

@@ -78,7 +78,7 @@ configureModuleData <- function(
     .testing    = .testing
   ) ### End loadData
   # gc()
-  return(dataList)
+  # return(dataList)
   
   ### 2. Reshape Data ----------------
   # if(!silent) 
@@ -95,6 +95,7 @@ configureModuleData <- function(
     dataList  <- dataList |> reshapeGhgData  (silent=silent, msg0=msg1)
   } ### End if(doFredi | doExtremes)
   gc()
+  return(dataList)
   
   ### If reshape, save a copy of the reshaped data
   if(reshape) {reshapeData0 <- dataList} 

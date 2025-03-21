@@ -72,51 +72,49 @@ reshapeScaledImpacts <- function(
   ### Join data with states
   names0     <- impacts |> names()
   mutate0    <- c(idCols0, modCol0, mTypeCol0) |> get_matches(y=names0)
+  # mutate0    <- c(idCols0, modCol0, mTypeCol0) |> get_matches(y=names0)
   join0      <- regCols0 |> get_matches(y=names0)
-  names0 |> print(); mutate0 |> print(); join0 |> print()
-  impacts |> glimpse()
-  impacts    <- impacts |> 
-    mutate_at(c(mutate0), as.character) |>
-    mutate_at(c(idCols0), function(x, y=naRepl0, z=naStr0){
+  impacts    <- impacts  |> 
+    # mutate_at(c(mutate0), as.character) |>
+    mutate_at(c(idCols0  |> get_matches(y=names0)), function(x, y=naRepl0, z=naStr0){
       case_when(x |> str_detect(y) ~ NA, .default=x) |> replace_na(z)
     }) |> 
     left_join(co_states, by=join0) |>
     relocate(all_of(valCol0), .after=all_of(xCol0)) |> 
     rename_at(c(valCol0), ~yCol0)
   rm(join0)
-  "got here" |> print()
+  # "got here" |> print()
   
   ### Format SLR Values ----------------
   if(doSlr) {
     ### Zero out values 
-    impacts  <- impacts |> zeroSlrValues(
-      min0    = 30, 
-      new0    = 0 , 
-      modCol0 = modCol0,
-      xCol0   = xCol0,
-      unit0   = "cm"
-    ) |> extend_data(
-      to0   = maxYr0, ### Year to extend to
-      xCol0 = xCol0
-    ) ### End zeroSlrValues
+    impacts  <- impacts |> 
+      # mutate_at(c(modCol0), factor, modLvls0) |>
+      zeroSlrValues(
+        modCol0 = modCol0,
+        yCol0   = yCol0,
+        min0    = 30, 
+        new0    = 0 
+      ) |> extend_data(
+        to0   = maxYr0, ### Year to extend to
+        xCol0 = xCol0
+      ) ### End zeroSlrValues
   } ### End if doSlr
   
   ### Standardize Data ----------------
   impacts    <- impacts |> reshape_modelImpacts(
-    df0,      ### Tibble of model scaled impacts
     type0     = type0, ### Model Type
     xCol0     = xCol0,
     yCol0     = yCol0,
     idCol0    = idCol0,
     modCol0   = modCol0,
     idCols0   = idCols0, 
-    modLvls0  = modLvls0, ### Model levels to use for factoring...from co_slrCm
     modStr0   = "Interpolation"
   ) ### End reshape_modelImpacts
   
   
   ### Return ----------------
   ### Return the list of dataframes
-  if (!silent) msg1 |> get_msgPrefix(newline=F) |> paste0("...Finished reshaping", type0 |> toupper(), " scaled impacts...", msgN) |> message()
+  if (!silent) msg1 |> get_msgPrefix(newline=F) |> paste0("...Finished reshaping ", type0 |> toupper(), " scaled impacts...", msgN) |> message()
   return(impacts)
 }

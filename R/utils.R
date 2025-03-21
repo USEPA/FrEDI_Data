@@ -13,7 +13,7 @@ temps2slr          <- "temps2slr"          |> utils::getFromNamespace("FrEDI")
 calc_countyPop     <- "calc_countyPop" |> utils::getFromNamespace("FrEDI")
 
 ## Misc FrEDI Data Utilities  ----------------
-###### Function to get years from data
+### Function to get years from data
 ### Get a sequence from a set of years
 get_years_fromData <- function(years0, by=1){
   min0 <- years0 |> min(na.rm=T)
@@ -334,6 +334,71 @@ format_tempData_byGroup <- function(
 
 
 ## Reshape/Format SLR Height/Scenario Data ----------------
+### Function to get SLR lvls from model column
+get_slrLevels <- function(
+    df0, 
+    modCol0,
+    addZero = T,
+    addUnit = T
+){
+  ### Get unique model values
+  # str0  <- " |cm"
+  # str1  <- ""
+  vals0 <- df0   |> pull(all_of(modCol0)) |> as.character() |> unique() 
+  nums0 <- vals0 |> parse_number()
+  lvls0 <- nums0 |> sort()
+  if(addZero) lvls0 <- 0 |> c(lvls0) |> unique()
+  if(addUnit) {
+    unit0 <- vals0 |> first() |> str_replace(nums0 |> first() |> as.character(), "")
+    lvls0 <- lvls0 |> paste0(unit0)
+  } ### End if(addUnit)
+  ### Return
+  return(lvls0)
+}
+
+### Zero SLR values
+zeroSlrValues <- function(
+    df0, 
+    yCol0   = "value",
+    modCol0 = "model",
+    min0    = 30, 
+    new0    = 0
+){
+  ### Determine if model has already been factored
+  hasLvls0 <- df0 |> pull(all_of(modCol0)) |> is.factor()
+  ### Factor model if !hasLvls
+  if(hasLvls0) {
+    lvls0  <- df0 |> pull(all_of(modCol0)) |> levels()
+  } else{
+    lvls0  <- df0 |> get_slrLevels(modCol0=modCol0, addZero=T, addUnit=T)
+    df0    <- df0 |> mutate_at(c(modCol0), factor, lvls0)
+  } ### End if(hasLvls0)
+  
+  ### Get Unit
+  unit0    <- lvls0 |> first() |> (function(lvlX){
+    lvlX |> str_replace(lvlX |> parse_number() |> as.character(), "")
+  })()
+  minStr0  <- min0 |> paste0(unit0) 
+  newStr0  <- new0 |> paste0(unit0) 
+  # df0 |> pull(all_of(modCol0)) |> unique() |> print(); lvls0 |> print(); unit0 |> print()
+  
+  ### Zero out column
+  dfMin0 <- df0 |> 
+    mutate_at(c(modCol0), as.character) |>
+    filter_at(c(modCol0), function(x, y=minStr0){x %in% y}) |>
+    mutate_at(c(modCol0), function(x, y=newStr0){y}) |>
+    mutate_at(c(modCol0), factor, lvls0) |>
+    mutate_at(c(yCol0  ), function(x, y=new0){y})
+  
+  ### Bind values
+  df0    <- df0    |> filter_at(c(modCol0), function(x, y=newStr0){!(x %in% y)})
+  df0    <- dfMin0 |> bind_rows(df0)
+  
+  ### Return
+  return(df0)
+}
+
+
 ### Function to perform initial formatting/reshaping of slr_cm
 ### Function to get main SLR heights
 reshape_slrCm <- function(
@@ -364,6 +429,7 @@ reshape_slrCm <- function(
   ### Return
   return(df0)
 }
+
 
 ### Function to get main SLR heights
 get_slrCmMain <- function(
@@ -454,29 +520,6 @@ get_slrCmExtremes <- function(
   ### Calculate xRef
   df0    <- df0 |> mutate(xRef = case_when(xHi > xLo ~ xHi, .default=xLo))
   
-  ### Return
-  return(df0)
-}
-
-### Zero SLR values
-zeroSlrValues <- function(
-    df0, 
-    # yCol0   = "value"
-    yCol0   = "value",
-    modCol0 = "model",
-    unit0   = "cm",
-    min0    = 30, 
-    new0    = 0 
-){
-  ### Zero out column
-  dfMin0 <- df0 |> 
-    filter_at(c(modCol0), function(x, y=min0 |> paste0(unit0)){x %in% y}) |>
-    mutate_at(c(modCol0), function(x, y=new0 |> paste0(unit0)){x %in% y}) |>
-    mutate_at(c(yCol0  ), function(x, y=new0){y})
-  ### Bind values
-  df0    <- df0 |> 
-    filter_at(c(modCol0), function(x, y=new0 |> paste0(unit0)){!(x %in% y)}) |>
-    bind_rows(dfMin0)
   ### Return
   return(df0)
 }
@@ -573,13 +616,14 @@ reshape_modelImpacts <- function(
     idCol0    = c("scenario_id"),
     modCol0   = c("model"),
     idCols0   = c("sector", "variant", "impactType", "impactYear", "region", "postal"), 
-    modLvls0  = c(0, 30,  50, 100, 150, 200, 250) |> paste0("cm"), ### Model levels to use for factoring...from co_slrCm
+    # modLvls0  = c(0, 30,  50, 100, 150, 200, 250) |> paste0("cm"), ### Model levels to use for factoring...from co_slrCm
     modStr0   = c("Interpolation")
 ){
   ### Add scenario_id, sort, group 
-  doSlr0 <- type0   |> str_detect("slr")
-  doGcm0 <- type0   |> str_detect("gcm")
-  group0 <- idCols0
+  doSlr0   <- type0   |> str_detect("slr")
+  doGcm0   <- type0   |> str_detect("gcm")
+  type0    <- type0 |> tolower()
+  group0   <- idCols0
   if(doSlr0) {
     group0 <- group0 |> c(xCol0) |> unique()
     sort0  <- group0 |> c(yCol0, modCol0) |> unique()
@@ -589,37 +633,47 @@ reshape_modelImpacts <- function(
   } else{
     sort0  <- group0 |> c(xCol0) |> unique()
   } ### End if(doSlr0)
+  
+  ### Factor model### Determine if model has already been factored
+  hasLvls0 <- df0 |> pull(all_of(modCol0)) |> is.factor()
+  ### Factor model if !hasLvls
+  if(!hasLvls0 & doSlr0){
+    lvls0  <- df0 |> get_slrLevels(modCol0=modCol0, addZero=T, addUnit=T)
+    df0    <- df0 |> mutate_at(c(modCol0), factor, lvls0)
+  } ### End if(!hasLvls0)
+  
+  ### Add scenario ID
+  tmpCol0  <- "modelTemp"
+  typeCol0 <- "model_type"
   # sort0  <- group0 |> c(xCol0, yCol0, modCol0)
-  df0    <- df0    |> 
-    # get_scenario_id(include=c("region", "postal"), col0="id") |>
-    get_scenario_id(include=idCols0, col0="id") |>
-    mutate    (id = id |> paste0("_", case_when(
-      doSlr0 ~ modStr0, 
-      .default=df0 |> pull(all_of(modCol0))
-    )), .before=all_of(xCol0)) |>
-    rename_at (c("id"), ~idCol0)
+  df0      <- df0    |> 
+    mutate(model_type = type0) |>
+    mutate(modelTemp = case_when(model_type |> str_detect("slr") ~ modStr0, .default=model)) |>
+    get_scenario_id(include=idCols0 |> c(tmpCol0), col0="id") |>
+    rename_at (c("id"), ~idCol0) |>
+    relocate(all_of(idCol0), .before=all_of(xCol0)) |>
+    select(-any_of(tmpCol0), -any_of(typeCol0))
    
   ### Figure out which have no impacts
-  cols0  <- idCol0 |> c("hasScenario")
-  dfNA   <- df0    |> 
+  cols0    <- idCol0 |> c("hasScenario")
+  dfNA     <- df0    |> 
     filter_at(c(yCol0), function(x){!(x |> is.na())}) |>
     mutate(hasScenario = 1) |>
     select(all_of(cols0))
+  
   ### Add scenario info
-  df0    <- df0    |> 
+  df0      <- df0    |> 
     left_join(dfNA, by=idCol0) |>
     mutate(hasScenario = hasScenario |> replace_na(0), .after=all_of(idCol0)) |>
     filter(hasScenario == 1)
   rm(dfNA)
-  ### Factor model
-  if(doSlr) {
-    df0   <- df0   |> mutate_at (c(modCol0), function(x, y=modLvls0){x |> factor(y)})
-  } ### End if(doSlr)
+  
   ### Arrange and group
-  group0 <- group0 |> c(idCol0)
-  df0    <- df0    |> 
+  group0   <- group0 |> c(idCol0)
+  df0      <- df0    |> 
     arrange_at (c(sort0 )) |>
     group_by_at(c(group0))
+  
   ### Return
   return(df0)
 }
@@ -760,7 +814,7 @@ update_sectorInfo <- function(
       dfX0 <- df0   |> 
         filter_at(c(typeCol0), function(x, y=typeX){(x |> tolower()) %in% y}) |>
         left_join(dfX1, by=idCol0) |>
-        mutate_at(c(valCol0), na_replace, 0)
+        mutate_at(c(valCol0), replace_na, 0)
       ### Return
       return(dfX0)
     }) |> bind_rows()

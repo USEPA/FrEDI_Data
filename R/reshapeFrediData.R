@@ -84,6 +84,8 @@ reshapeFrediData <- function(
   # dataList[[stateLStr0]][["scalarData"]] <- scalarData
   stateData[["scalarData"]] <- scalarData
   rm(scalarData)
+  # dataList[["stateData"]] <- stateData
+  # return(dataList)
   
   ### Reshape Scaled Impacts ----------------
   ### GCM Scaled Impacts 
@@ -143,6 +145,6 @@ reshapeFrediData <- function(
   ### Return ----------------
   ### Return the list of dataframes
   # if(!silent) 
-  paste0(msg0, "...Finished running reshapeFrediData().", msgN) |> message()
+  msg0 |> get_msgPrefix(newline=F) |> paste0("...Finished running reshapeFrediData().", msgN) |> message()
   return(dataList)
 }
