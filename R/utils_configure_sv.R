@@ -284,7 +284,7 @@ get_svPopList <- function(
     infoTable  = "iclusDataInfo",
     # svDataList = NULL,
     svData     = NULL,
-    outFile    = "svPopData",
+    outFile    = "svPopList",
     outPath    = getwd() |> file.path("R"),
     rDataExt   = "rda", ### R data extension
     save       = F,
