@@ -1303,4 +1303,53 @@ format_gcmScaledImpacts <- function(
   return(list0)
 }
 
+### SAve Data ----------------
+### Save Objects to sys data
+fun_saveSysData <- function(
+  dataDir     = "." |> file.path("data"),
+  controlFile = "controlData",
+  outFile     = "tmp_sysData",
+  modules     = c("fredi", "ghg", "sv"),
+  extStrs     = c("rda", "rds")
+){
+  ### Extensions
+  strSep0    <- "|"
+  dotStr0    <- "\\."
+  extStr0    <- extStrs |> paste(collapse=strSep0)
+  extStr1    <- dotStr0 |> paste0(extStrs) |> paste(collapse=strSep0)
+  
+  ### Load files
+  ### - Control path
+  modFiles   <- dataDir |> file.path(modules) |> 
+    map(list.files, pattern=extStr0, full.names=F) |> 
+    set_names(modules)
+  modNames   <- modFiles |>
+    map(str_replace, pattern=extStr1, "") |> 
+    unlist()
+  # modFiles |> print()
+  # modNames |> unlist() |> print()
+  
+  ### Data names
+  dataNames  <- controlFile |> c(modNames |> unlist())
+  
+  ### Load data
+  ### - Load control data
+  dataDir |> list.files() |> print()
+  ctrlPath   <- dataDir |> list.files(pattern=controlFile, full.names=T)
+  # ctrlPath |> print()
+  ctrlPath |> load()
+  ### - Module data
+  for(mod_i in modules){
+    files_i <- modFiles[[mod_i]]
+    for(file_j in files_i){
+      dataDir |> file.path(mod_i, file_j) |> load()
+    }
+  }
 
+  ### Save data
+  outPath <- dataDir |> file.path(outFile) |> paste0(".", "rda")
+  save(list=c(dataNames), file=outPath)
+
+  ### Return
+  return("Success")
+}
