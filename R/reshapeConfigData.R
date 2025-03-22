@@ -41,7 +41,7 @@ reshapeConfigData <- function(
   ### Assign tables in dataList to object in local environment
   # listNames     <- dataList |> names()
   # listNames |> print()
-  for(name_i in dataList    |> names()) {name_i |> assign(dataList  [[name_i]]); rm(name_i)}
+  for(name_i in dataList    |> names()) {name_i |> assign(dataList   [[name_i]]); rm(name_i)}
   for(name_i in controlData |> names()) {name_i |> assign(controlData[[name_i]]); rm(name_i)}
   # dataList |> list2env(envir = environment())
   

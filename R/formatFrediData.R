@@ -15,6 +15,7 @@ formatFrediData <- function(
   msgN          <- "\n"
   msg1          <- msg0 + 1
   msg2          <- msg0 + 2
+  msg3          <- msg0 + 3
   msg0 |> get_msgPrefix(newline=F) |> paste0("Running formatFrediData()...") |> message()
   
   
@@ -56,28 +57,27 @@ formatFrediData <- function(
   
   #### Configuration Data ----------------
   ### Assign configuration data to environment and add to list
-  if(msgUser) msg1 |> get_msgPrefix() |> paste0("Loading configuration info...") |> message()
-  configList <- dataList[[fConfigStr0]]
-  for(name_i in configList |> names()) {
-    name_i |> assign(configList); rm(name_i)
-  } ### End for
+  # if(msgUser) msg1 |> get_msgPrefix() |> paste0("Assigning configuration info...") |> message()
+  # configList <- dataList[[fConfigStr0]]
+  # for(name_i in configList |> names()) {name_i |> assign(configList); rm(name_i)}
   # dataList[["fredi_config"]] <- configList
-  # fredi_config |> list2env(envir = environment())
- 
+  
   
   ### Format Scaled Impacts ----------------
   # dataList |> glimpse()
+  msg1 |> get_msgPrefix() |> paste0("Formatting scaled impacts...") |> message()
   stateData   <- dataList[[stateLStr0]]
   dataList    <- dataList[dataList |> names() |> get_matches(y=stateLStr0, matches=F)]
   modNames0   <- modTypes0 |> map(function(x, y=stateData |> names()){
     y[y |> str_detect(x)]
   }) |> unlist()
   listImpacts <- list(type0=modTypes0, name0=modNames0) |> pmap(function(type0, name0){
-    msg1 |> get_msgPrefix() |> paste("Formatting ", type0 |> toupper(), " impacts...") |> message()
+    msg2 |> get_msgPrefix() |> paste0("Formatting ", type0 |> toupper(), " impacts...") |> message()
     ### Values
     doSlr0 <- type0 |> str_detect(slrStr0)
     # name1  <- type0 |> paste0("Impacts")
-    name1  <- type0 |> paste0(case_when(doSlr0 ~ "Data", .default="Funs"))
+    # name1  <- type0 |> paste0(case_when(doSlr0 ~ "Impacts", .default="Data"))
+    name1  <- type0 |> paste0("Data")
     name2  <- type0 |> paste0(case_when(doSlr0 ~ "Extremes", .default="Funs"))
     
     ### Initialize data
@@ -94,67 +94,43 @@ formatFrediData <- function(
     ### Otherwise, do model types
     if(doSlr0) {
       ### Format impacts
-      if(msgUser) msg2 |> get_msgPrefix() |> paste("...Formatting SLR impact values...") |> message()
-      dfX1    <- df0 |> format_slrImpacts(
-        yrCol0   = yrCol0,
+      # if(msgUser) msg2 |> get_msgPrefix() |> paste("Formatting SLR impact values...") |> message()
+      list0 <- df0 |> format_slrScaledImpacts(
+        dfExt0   = controlData[["slrCmExtremes"]],
+        xCol0    = yrCol0,
         yCol0    = impactsCol0,
         idCol0   = idCol0,
         modCol0  = modCol0,
         group0   = groupCols0,
-        modStr0  = "Interpolation"
-      ) ### End format_slrImpacts
+        modStr0  = "Interpolation",
+        silent   = silent,
+        msg0     = msg2
+      ) |> set_names(c(name1, name2)) ### End format_slrImpacts
       rm(df0)
-      list0[[name1]] <- dfX1
-      
-      ### Format extremes
-      if(msgUser) msg2 |> get_msgPrefix() |> paste("...Creating extreme SLR impact values...") |> message()
-      dfX2    <- dfX1 |> get_slrExtValues(
-        df1      = controlData[["slrCmExtremes"]],
-        xCol0    = yrCol0,
-        yCol0    = impactsCol0,
-        idCol0   = idCol0,
-        modCol0  = modCol0
-      ) |> fun_slrConfigExtremes() 
-      list0[[name2]] <- dfX2
-      rm(dfX1, dfX2)
     } else {
       ### Extrapolate values
       ### - Value to extend to
       extend0 <- controlData[["co_modelTypes"]] |> 
         filter(model_type %in% type0) |> 
         pull(driverMaxOutput) |> 
-        unique()
+        unique() |> as.numeric()
       ### Extend values
-      df0     <- df0 |> extrapolate_gcmImpacts(
-        groupCol   = idCol0, 
-        xCol       = unitCol0, 
-        yCol       = impactsCol0, 
-        extend_to  = extend0,
-        extend_all = extend_all,
-        method0    = "linear",
-        rule0      = 1
-      ) ### End extrapolate_gcmImpacts
-      list0[[name1]] <- data0
-      
-      ### Get impact functions
-      funs0   <- df0 |> get_impactFunctions(
-        groupCol   = idCol0,
-        xCol       = unitCol0,
-        yCol       = impactsCol0,
-        method0    = "linear",
-        rule0      = 1
-      ) ### get_impactFunctions
-      # list0[["gcmImpFuncs" ]] <- funs0
-      list0[[name2]] <- funs0
-      rm(df0, funs0)
+      list0   <- df0 |> format_gcmScaledImpacts(
+        xCol0   = unitCol0, 
+        yCol0   = impactsCol0, 
+        idCol0  = idCol0, 
+        to0     = extend0, ### Value to extend values to
+        all0    = extend_all, ### Whether to extrapolate cold models, too
+        method0 = "linear",
+        rule0   = 1,
+        silent   = silent,
+        msg0     = msg2
+      )|> set_names(c(name1, name2)) ### End extrapolate_gcmImpacts
     } ### End if(doSlr0)
     ### Return
-    msg1 |> get_msgPrefix() |> paste("...Finished formatting ", type0 |> toupper(), " impacts...") |> message()
+    msg3 |> get_msgPrefix() |> paste0("...Finished formatting ", type0 |> toupper(), " impacts...") |> message()
     return(list0)
-  }) |> 
-    # set_names(modNames0)
-    unlist(recursive=F)
-  
+  }) |> unlist(recursive=F)
   
   
   ### Format Lists ----------------
@@ -176,4 +152,83 @@ formatFrediData <- function(
 } ### End function
 
 
-
+# listImpacts <- list(type0=modTypes0, name0=modNames0) |> pmap(function(type0, name0){
+#   msg2 |> get_msgPrefix() |> paste("Formatting ", type0 |> toupper(), " impacts...") |> message()
+#   ### Values
+#   doSlr0 <- type0 |> str_detect(slrStr0)
+#   # name1  <- type0 |> paste0("Impacts")
+#   name1  <- type0 |> paste0(case_when(doSlr0 ~ "Data", .default="Funs"))
+#   name2  <- type0 |> paste0(case_when(doSlr0 ~ "Extremes", .default="Funs"))
+#   
+#   ### Initialize data
+#   list0  <- list()
+#   df0    <- stateData[[name0]]
+#   nRow0  <- df0 |> nrow() 
+#   ### If there is no data, return
+#   if(!nRow0) {
+#     list0[[name1]] <- df0
+#     list0[[name2]] <- df0
+#     return(list0)
+#   } ### End if(!nRow0)
+#   
+#   ### Otherwise, do model types
+#   if(doSlr0) {
+#     ### Format impacts
+#     # if(msgUser) msg2 |> get_msgPrefix() |> paste("Formatting SLR impact values...") |> message()
+#     dfX1    <- df0 |> format_slrImpacts(
+#       yrCol0   = yrCol0,
+#       yCol0    = impactsCol0,
+#       idCol0   = idCol0,
+#       modCol0  = modCol0,
+#       group0   = groupCols0,
+#       modStr0  = "Interpolation"
+#     ) ### End format_slrImpacts
+#     rm(df0)
+#     list0[[name1]] <- dfX1
+#     
+#     ### Format extremes
+#     # if(msgUser) msg2 |> get_msgPrefix() |> paste("Creating extreme SLR impact values...") |> message()
+#     dfX2    <- dfX1 |> get_slrExtValues(
+#       df1      = controlData[["slrCmExtremes"]],
+#       xCol0    = yrCol0,
+#       yCol0    = impactsCol0,
+#       idCol0   = idCol0,
+#       modCol0  = modCol0
+#     ) |> fun_slrConfigExtremes() 
+#     list0[[name2]] <- dfX2
+#     rm(dfX1, dfX2)
+#   } else {
+#     ### Extrapolate values
+#     ### - Value to extend to
+#     extend0 <- controlData[["co_modelTypes"]] |> 
+#       filter(model_type %in% type0) |> 
+#       pull(driverMaxOutput) |> 
+#       unique()
+#     ### Extend values
+#     df0     <- df0 |> extrapolate_gcmImpacts(
+#       idCol0     = idCol0, 
+#       xCol0      = unitCol0, 
+#       yCol0      = impactsCol0, 
+#       extend_to  = extend0,
+#       extend_all = extend_all,
+#       method0    = "linear",
+#       rule0      = 1
+#     ) ### End extrapolate_gcmImpacts
+#     list0[[name1]] <- data0
+#     
+#     ### Get impact functions
+#     funs0   <- df0 |> get_impactFunctions(
+#       idCol0  = idCol0,
+#       xCol0   = unitCol0,
+#       yCol0   = impactsCol0,
+#       method0 = "linear",
+#       rule0   = 1
+#     ) ### get_impactFunctions
+#     # list0[["gcmImpFuncs" ]] <- funs0
+#     list0[[name2]] <- funs0
+#     rm(df0, funs0)
+#   } ### End if(doSlr0)
+#   ### Return
+#   msg2 |> get_msgPrefix() |> paste("...Finished formatting ", type0 |> toupper(), " impacts...") |> message()
+#   return(list0)
+# })

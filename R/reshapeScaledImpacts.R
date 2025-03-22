@@ -80,6 +80,7 @@ reshapeScaledImpacts <- function(
     mutate_at(c(idCols0  |> get_matches(y=names0)), function(x, y=naRepl0, z=naStr0){
       case_when(x |> str_detect(y) ~ NA, .default=x) |> replace_na(z)
     }) |> 
+    mutate_at(c(modCol0), str_replace_all, pattern0, replace0) |>
     left_join(co_states, by=join0) |>
     relocate(all_of(valCol0), .after=all_of(xCol0)) |> 
     rename_at(c(valCol0), ~yCol0)

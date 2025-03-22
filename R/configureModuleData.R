@@ -122,9 +122,9 @@ configureModuleData <- function(
   
   
   ### 6. Add Reshaped Data ----------------
-  if(reshape) {
-    dataList[[rsLStr0]] <- reshapeData0
-  } ### End if(!reshape) 
+  # if(reshape) {
+  #   dataList[[rsLStr0]] <- reshapeData0
+  # } ### End if(!reshape) 
   
   ### Save to File ----------------
   ### Save R Data objects
@@ -136,6 +136,7 @@ configureModuleData <- function(
     msg1 |> get_msgPrefix(newline=F) |> paste0("Saving results to ", outDir, "...") |> message()
     pathExists <- outDir |> dir.exists()
     if(!pathExists) {createDir <- outDir |> dir.create(recursive=T)}
+    outPath    <- outDir |> file.path(listStr0) |> paste0(".", outExt)
     listStr0 |> assign(dataList)
     save(list=c(listStr0), file=outPath)
   } else {

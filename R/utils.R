@@ -663,34 +663,22 @@ reshape_modelImpacts <- function(
    
   ### Figure out which have no impacts
   cols0    <- idCol0 |> c("hasScenario")
-  dfNA     <- df0    |>
-    filter_at(c(yCol0), function(x){!(x |> is.na())}) |>
-    mutate(hasScenario = 1) |>
-    select(all_of(cols0)) |>
-    distinct()
-  # dfNA |> glimpse()
-  
-  # return(list(df0=df0, dfNA=dfNA))
-  
-  ### Add scenario info
   df0      <- df0    |>
-    left_join(dfNA, by=idCol0) |>
-    mutate(hasScenario = hasScenario |> replace_na(0), .after=all_of(idCol0)) |>
-    filter(hasScenario == 1)
-  rm(dfNA)
+    filter_at(c(yCol0), function(x){!(x |> is.na())}) |>
+    mutate(hasScenario = 1)
 
   ### Arrange and group
-  group0   <- group0 |> c(idCol0)
+  # group0   <- group0 |> c(idCol0)
   df0      <- df0    |>
     arrange_at (c(sort0 )) |>
-    group_by_at(c(group0))
+    group_by_at(c(group0, idCol0))
 
   ### Return
   return(df0)
 }
 
 ### Reshape/Format SLR Impacts
-format_slrImpacts <- function(
+format_slrData <- function(
     df0,      ### Tibble of reshaped SLR scaled impacts (output of reshape_modelImpacts)
     xCol0     = c("year"),
     yCol0     = c("scaled_impacts"),
@@ -713,11 +701,79 @@ format_slrImpacts <- function(
     # arrange_at (c(sort0  )) |>
     group_by_at(c(yCol0), .add=T) |>
     # group_by_at(c(group0), .add=F) |>
-    slice_head(1)
+    slice_head(n=1)
   ### Return
   return(df0)
 }
 
+
+# ### Function to iterate over in fun_slrConfigExtremes
+# get_slrExtValues <- function(
+#     df0,      ### Tibble of SLR impacts
+#     df1,      ### Tibble of SLR max heights (outputs of get_slrMaxHeights)
+#     xCol0     = c("year"),
+#     yCol0     = c("scaled_impacts"),
+#     idCol0    = c("scenario_id"),
+#     modCol0   = c("model")
+#     # idCol0    = c("scenario_id", "hasScenario"),
+#     # modCol0   = c("model"),
+#     # group0    = c("sector", "variant", "impactType", "impactYear", "region", "postal")
+# ){
+#   ### Strings
+#   loStr0   <- "Lo"
+#   hiStr0   <- "Hi"
+#   bounds0  <- c(loStr0, hiStr0)
+#   xStr0    <- "x"
+#   yStr0    <- "y"
+#   xRef0    <- "xRef"
+#   
+#   ### Select data
+#   select0  <- c(idCol0, xCol0, yCol0, modCol0)
+#   keys0    <- df0   |> group_keys()
+#   keys0 |> glimpse()
+#   ids0     <- keys0 |> pull(all_of(idCol0)) |> head(5)
+#   group0   <- keys0 |> names()
+#   # df0      <- df0   |> ungroup() |> select(all_of(select0)) |> rename_at(c(yCol0), ~yStr0)
+#   keys0    <- keys0 |> filter_at(c(idCol0), function(x, y=ids0){x %in% y})
+#   df0      <- df0   |> filter_at(c(idCol0), function(x, y=ids0){x %in% y}) |> filter(year %in% 2050)
+#   df0 |> glimpse()
+#   df0      <- df0  |> group_map(function(.x, .y){
+#     .x |> 
+#       arrange_at(c(xCol0, yCol0, modCol0)) |>
+#       group_by_at(c(xCol0, yCol0)) |>
+#       
+#   })
+#   ### Join data
+#   old0     <- c(modCol0)
+#   joinLo0  <- c(old0, xStr0) |> paste0(loStr0)
+#   joinHi0  <- c(old0, xStr0) |> paste0(hiStr0) |> c(idCol0, xRef0)
+#   # df0      <- df1 |> 
+#   #   left_join(df0 |> rename_at(c(old0), ~old0 |> paste0(loStr0)), by=joinLo0) |> 
+#   #   left_join(df0 |> rename_at(c(old0), ~old0 |> paste0(hiStr0)), by=joinHi0) |> 
+#   df1
+#   df1      <- df1 |> 
+#     filter(year %in% 2050) |>
+#     left_join(df0 |> rename_at(c(old0), ~old0 |> paste0(loStr0)), by=joinLo0)
+#   df0 |> glimpse()
+#   df1 |> glimpse()
+#   df0      <- df1 |> 
+#     left_join(df0 |> rename_at(c(old0), ~old0 |> paste0(hiStr0)), by=joinHi0) |>
+#     relocate(all_of(idCol0))
+#   df0 |> glimpse()
+#   rm(old0, joinLo0, joinHi0, df1)
+#   
+#   ### Join group keys, arrange
+#   # sort0  <- c(bounds0, group0, xCol0, yCol0, modCol0) |> unique()
+#   join0  <- c(idCol0)
+#   sort0  <- c(idCol0, xCol0, yCol0, modCol0) |> unique()
+#   df0    <- keys0 |> 
+#     left_join(df0, by=join0) |> 
+#     arrange_at (c(sort0)) |> 
+#     group_by_at(c(group0))
+#   
+#   ### Return
+#   return(df0)
+# }
 
 ### Function to iterate over in fun_slrConfigExtremes
 get_slrExtValues <- function(
@@ -741,29 +797,71 @@ get_slrExtValues <- function(
   
   ### Select data
   select0  <- c(idCol0, xCol0, yCol0, modCol0)
-  group0   <- df0 |> group_cols()
-  keys0    <- df0 |> group_keys()
-  df0      <- df0 |> ungroup() |> select(all_of(select0)) |> rename_at(c(yCol0), ~yStr0)
-  ids0     <- keys0 |> pull(all_of(idCol0))
+  keys0    <- df0   |> group_keys()
+  # keys0 |> glimpse()
+  ids0     <- keys0 |> pull(all_of(idCol0)) |> head(5)
+  group0   <- keys0 |> names()
+  # keys0    <- keys0 |> filter_at(c(idCol0), function(x, y=ids0){x %in% y})
+  # df0      <- df0   |> filter_at(c(idCol0), function(x, y=ids0){x %in% y})
+  # keys0    <- keys0 |> filter(year %in% 2050)
+  # df0      <- df0   |> filter(year %in% 2050)
+  # df1      <- df1   |> filter(year %in% 2050) # |> select(-any_of(xRef0))
+  df0      <- df0   |> ungroup() |> select(any_of(select0))
+  # keys0 |> glimpse(); 
+  # df0 |> glimpse(); df1 |> glimpse()
   
   ### Join data
-  old0     <- c(modCol0, yStr0)
-  joinLo0  <- c(modCol0, xStr0) |> paste0(loStr0)
-  joinHi0  <- c(modCol0, xStr0) |> paste0(hiStr0) |> c(idCol0, xRef0)
-  df1      <- df1 |> 
-    left_join(df0 |> rename_at(c(old0), ~old0 |> paste0(loStr0)), by=joinLo0) |> 
-    left_join(df0 |> rename_at(c(old0), ~old0 |> paste0(hiStr0)), by=joinHi0) |> 
-    relocate(all_of(idCol0))
-  rm(old0, joinLo0, joinHi0, df1)
+  # join0    <- c(idCol0, xCol0)
+  df0      <- bounds0 |> map(function(
+    boundX, 
+    modX   = modCol0,
+    yColX  = yCol0,
+    xColX  = xCol0
+  ){
+    ### Columns
+    oldX  <- c(modX, yColX)
+    newX  <- c(modX, yStr0)  |> paste0(boundX)
+    colsX <- xColX |> c(c(modX, xStr0)  |> paste0(boundX))
+
+    ### Join values
+    # df1 |> select(all_of(colsX)) |> glimpse(); df0 |> rename_at(c(oldX), ~newX) |> glimpse()
+    dfX   <- df1  |> 
+      select(all_of(colsX)) |> 
+      left_join(
+        df0  |> rename_at(c(oldX), ~newX), 
+        by=xCol0 |> c(modX |> paste0(boundX))
+      ) ### End left_join()
+
+    ### Relocate columns
+    moveX <- c(idCol0, xColX) |> c(c(xStr0, yStr0, modCol0) |> paste0(boundX))
+    dfX   <- dfX |> relocate(any_of(moveX))
+    # dfX |> glimpse()
+    
+    ### Return
+    return(dfX)
+  }) |> reduce(left_join, by=c(idCol0, xCol0))
+  # return(list(keys0=keys0, df1=df1, df0=df0))
+  # df0 |> glimpse()
+  
+  ### Reduce and join with xRef values
+  select0  <- c(xCol0, xRef0)
+  df1      <- df1 |> select(any_of(select0), any_of(xRef0))
+  df0      <- df0 |> 
+    left_join(df1, by=xCol0) |>
+    relocate(any_of(xRef0), .after=all_of(xCol0))
+  # df0 |> glimpse()
+  rm(select0, df1)
   
   ### Join group keys, arrange
-  # sort0  <- c(bounds0, group0, xCol0, yCol0, modCol0) |> unique()
-  join0  <- c(idCol0)
-  sort0  <- c(idCol0, xCol0, yCol0, modCol0) |> unique()
+  join0  <- c(idCol0, xCol0)
+  group0 <- group0 |> get_matches(y=c(xCol0, yCol0, modCol0), matches=F)
+  # df0 |> glimpse(); keys0 |> glimpse()
   df0    <- keys0 |> 
-    left_join(df0, by=join0) |> 
-    arrange_at (c(sort0)) |> 
-    group_by_at(c(group0))
+    left_join(df0, by=join0) |>
+    arrange_at (c(join0)) |> 
+    group_by_at(c(group0)) |> 
+    relocate(any_of(idCol0), .before=all_of(xCol0))
+  # df0 |> glimpse()
   
   ### Return
   return(df0)
@@ -771,7 +869,8 @@ get_slrExtValues <- function(
 
 ### Function for dealing with SLR values above the maximum
 fun_slrConfigExtremes <- function(
-    df0 ### Outputs of get_slrExtValues()
+    df0, ### Outputs of get_slrExtValues()
+    modCol0 = "model"
 ){
   ### Strings
   loStr0  <- "Lo"
@@ -788,16 +887,17 @@ fun_slrConfigExtremes <- function(
     ### Calculate deltas and convert to absolute
     mutate(xDelta = xHi - xLo) |> 
     mutate(yDelta = yHi - yLo) |> 
-    mutate_at(c(delCols), abs) |>
+    mutate_at(c(dCols), abs) |>
     ### Calculate slope & replace zeros
     mutate(slope     = case_when(xHi == xLo ~ 0, .default = yDelta / xDelta)) |> 
     ### Calculate intercept
     mutate(intercept = case_when(yHi > yLo ~ yHi, .default=yLo))
+    # mutate(intercept = case_when(yHi < yLo ~ yHi, .default=yLo))
   # df0 |> glimpse()
   
   ### Drop columns
-  drop0   <- c(modCol0, xStr0, yStr0) |> map(paste, bounds0) |> c(dCols)
-  df0     <- df0 |> select(-any_of(drop0))
+  # drop0   <- c(xStr0, yStr0, modCol0) |> map(paste0, bounds0) |> unlist() |> c(dCols)
+  # df0     <- df0 |> select(-any_of(drop0))
   
   ### Return
   return(df0)
@@ -899,8 +999,6 @@ fun_formatScalars <- function(
     relocate(all_of(move0)) |>
     arrange_at(c(sort0))
   rm(df1)
-  # df0 |> pull(all_of(typeCol0)) |> unique() |> print()
-  # df0 |> filter(scalarType |> is.na()) |> select(any_of(nameCol0)) |> glimpse()
   
   ### Arrange and get groups
   ### Add column indicating method
@@ -924,8 +1022,6 @@ fun_formatScalars <- function(
     df0 |>
       filter_at(c(mCol0), function(x, y=methodX){x %in% y}) |>
       group_map(function(.x, .y){
-        # mX  <- .y |> pull(method0) |> unique()
-        # .y |> pull(all_of(idCol0)) |> paste0(":", mX) |> print()
         .x |> interpolate_byGroup(
           .y      = .y,
           xCol0   = yrCol0,
@@ -951,54 +1047,51 @@ fun_formatScalars <- function(
 ### Function to extrapolate an impact function
 extrapolate_gcmImpacts_byGroup <- function(
     df0,
-    xCol        = "xIn", ### Which column to use for x (default = temp_C)
-    yCol        = "yIn", ### Which column to use for y
-    xMin        = 0,     ### Minimum value for x
-    yMin        = 0,     ### Value of y at minimum value of x 
+    xCol0 = "xIn", ### Which column to use for x (default = temp_C)
+    yCol0 = "yIn", ### Which column to use for y
+    xMin0 = 0,     ### Minimum value for x
+    yMin0 = 0,     ### Value of y at minimum value of x 
+    from0 = NULL,  ### Maximum value for model type to extend from, if not missing
+    to0   = 30  ,   ### Extend last points for x
+    all0  = FALSE  ### Whether to extend all models or just those that go to the max model value
+    # all0  = FALSE,  ### Whether to extend all models or just those that go to the max model value
+    # unitScale   = 0.5 ,   ### Scale between values,
     # extrapolate = TRUE,
-    extend_from = NULL,  ### Maximum value for model type to extend from, if not missing
-    extend_to   = 30  ,   ### Extend last points for x
-    unitScale   = 0.5 ,   ### Scale between values,
-    extend_all  = FALSE  ### Whether to extend all models or just those that go to the max model value
 ){
   ### Filter to values greater than the reference
   ### Select columns and filter out NA values
-  cols0     <- c(xCol, yCol)
+  old0   <- c(xCol0, yCol0)
+  new0   <- c("xIn", "yIn")
   
   ### Standardize minimum value, then get unique values
-  df0       <- df0 |>
+  df0    <- df0 |> 
+    arrange_at(c(xCol0)) |>
     head(1) |> 
-    mutate_at(c(xCol), function(x, y=xMin){y}) |> 
-    mutate_at(c(yCol), function(x, y=yMin){y}) |> 
-    bind_rows(df0)
+    mutate_at(c(xCol0), function(x, y=xMin0){y}) |> 
+    mutate_at(c(yCol0), function(x, y=yMin0){y}) |> 
+    bind_rows(df0 |> filter_at(c(xCol0), function(x, y=xMin0){x > xMin0}))
   
   ### Extend from/to
   ### Get max value from which to extend values
-  extendTo  <- extend_to |> as.character() |> as.numeric()
-  tail0     <- df0 |> tail(2)
-  
-  ### Arrange by x values
-  ### - Get max x value for which is there a non-missing y-value
-  ### - Get maximum value
-  df0       <- df0 |> arrange_at(vars("xIn"))
-  xInMax0   <- tail0 |> pull(all_of(xIn)) |> last()
-  # xOut_min  <- xIn_max + unitScale
-  xOut_max  <- extendTo
-  xOut      <- xOut_max
+  # extendTo  <- to0 |> as.character() |> as.numeric()
+  xMax0  <- df0 |> pull(all_of(xCol0)) |> max(na.rm=T)
+  tail0  <- df0 |> tail(2) |> rename_at(c(old0), ~new0)
+  doExt0 <- xMax0 < to0 | all0
+  if(tail0 |> pull(yIn) |> is.na() |> all()) tail0 |> glimpse()
   
   ### If extrapolate:
-  doExtrap  <- xInMax0 < extendTo | extend_all
-  if(doExtrap){
+  if(doExt0){
     ### Get linear trend
-    lm_ex    <- lm(yIn~xIn, data=tail0)
-    slope0   <- lm_ex$coefficients[[2]]
-    int0     <- lm_ex$coefficients[[1]]
+    lm0    <- lm(yIn~xIn, data=tail0)
+    int0   <- lm0$coefficients[[1]]
+    slope0 <- lm0$coefficients[[2]]
     ### Create data
-    dfExt    <- tibble() |> 
-      tibble(xIn = extendTo) |>
-      mutate(yIn = xIn * slope0 + int0)
+    dfNew  <- tibble() |> 
+      tibble(xIn = to0) |>
+      mutate(yIn = int0 + xIn * slope0) |> 
+      rename_at(c(new0), ~old0)
     ### Extend values, then bind with earlier observations
-    df0      <- df0 |> bind_rows(dfExt)
+    df0    <- df0 |> bind_rows(dfNew)
   } ### End if(doExtrap)
   
   ### Return
@@ -1008,56 +1101,69 @@ extrapolate_gcmImpacts_byGroup <- function(
 
 ### Function to extend GCM Impacts for interpolation
 extrapolate_gcmImpacts <- function(
-    df0,        ### Data frame with scaled impacts data
-    groupCol    = "scenario_id"   , ### Which column to look for the scenario column name (default =  )
-    xCol        = "modelUnitValue", ### Which column to use for x (default = temp_C)
-    yCol        = "scaled_impacts", ### Which column to use for y
-    xMin        = 0,    ### Minimum value for x
-    yMin        = 0,    ### Value of y at minimum value of x 
+    df0,    ### Data frame with scaled impacts data
+    idCol0  = "scenario_id"   , ### Which column to look for the scenario column name (default =  )
+    xCol0   = "modelUnitValue", ### Which column to use for x (default = temp_C)
+    yCol0   = "scaled_impacts", ### Which column to use for y
+    xMin0   = 0    , ### Minimum value for x
+    yMin0   = 0    , ### Value of y at minimum value of x 
+    from0   = NULL , ### Maximum value for model type to extend from, if not missing
+    to0     = 30   , ### Extend last points for x
+    all0    = FALSE, ### Whether to extend all models or just those that go to the max model value
+    method0 = "linear",
+    rule0   = 1
+    # rule0       = 1,
     # extrapolate = FALSE, ### Whether to extrapolate by default
     # unitScale   = NULL,  ### Scale between values
-    extend_from = NULL ,  ### Maximum value for model type to extend from, if not missing
-    extend_to   = 30,  ### Extend last points for x
-    extend_all  = FALSE,  ### Whether to extend all models or just those that go to the max model value
-    method0     = "linear",
-    rule0       = 1
 ){
   ### Groups ----------------
   ### - Create groups and get group keys
   ### - Filter out NA values
-  ### - Filter to values greater than xMin
+  ### - Filter to values greater than xMin0
   ### - Rename columns
-  old0      <- c(xCol, yCol)
-  new0      <- c("x", "y") |> paste0("In")
-  # df0 |> glimpse(); c(groupCol, xCol, yCol) |> print()
-  df0      <- df0 |> 
-    arrange_at (c(groupCol, xCol)) |> 
-    group_by_at(c(groupCol)) |> 
-    filter_all(all_vars(!(. |> is.na()))) |>
-    filter_at(c(xCol0), function(x){x > xMin}) |>
-    rename_at(c(old0), ~new0)
+  cols0  <- c(xCol0, yCol0)
+  keys0  <- df0   |> group_keys()
+  group0 <- keys0 |> names()
+  ids0   <- keys0 |> pull(all_of(idCol0)) |> unique()
+  # ids0   <- ids0  |> head(5)
+  # keys0  <- keys0 |> filter_at(c(idCol0), function(x, y=ids0){x %in% y})
+  # keys0  <- df0   |> filter_at(c(idCol0), function(x, y=ids0){x %in% y})
+  # ids0 |> print(); df0 |> glimpse(); keys0 |> glimpse()
+
+  ### Filter and Arrange Data ----------------
+  df0    <- df0 |> 
+    arrange_at(c(idCol0, xCol0)) |> 
+    filter_at (c(idCol0), function(x, y=ids0){x %in% y}) |>
+    filter_at (c(yCol0), function(x){!(x |> is.na())}) |>
+    filter_at (c(xCol0), function(x){x > xMin0})
+  # df0 |> glimpse()
   
   ### Extrapolate Data ----------------
   ### Extrapolate values
-  dfKeys0  <- df0     |> group_keys()
-  groups0  <- dfKeys0 |> pull(all_of(groupCol))
-  df0      <- df0     |> group_map(function(.x, .y){
-    .x |> extrapolate_gcmImpacts_byGroup(
-      xCol        = "xIn", 
-      yCol        = "yIn", 
-      xMin        = xMin, 
-      yMin        = yMin, 
-      extend_from = extend_from,
-      extend_to   = extend_to,  
-      extend_all  = extend_all  
-    ) ### extrapolate_impFunction
-  }) |> set_names(groups0) |> bind_rows(.id=groupCol)
+  cols0    <- c(xCol0, yCol0)
+  df0      <- df0 |> group_map(function(.x, .y){
+    .x |> 
+      ungroup() |>
+      select(all_of(cols0)) |> 
+      extrapolate_gcmImpacts_byGroup(
+        xCol0 = xCol0, 
+        yCol0 = yCol0, 
+        xMin0 = xMin0, 
+        yMin0 = yMin0, 
+        from0 = from0,
+        to0   = to0,  
+        all0  = all0  
+      ) ### extrapolate_impFunction
+  }) |> set_names(ids0) |> 
+    bind_rows(.id=idCol0)
   
-  ### Join Data ----------------
+  ### Join Group Info ----------------
   ### Join data and rename columns
-  df0      <- dfKeys0 |> 
-    left_join(df0, by=idCol0) |> 
-    rename_at(c(new0), ~old0)
+  df0      <- keys0 |> 
+    filter_at(c(idCol0), function(x, y=ids0){x %in% y}) |>
+    left_join(df0, by=idCol0) |>
+    arrange_at(c(idCol0, xCol0)) |>
+    group_by_at(c(group0))
   
   ### Return ----------------
   gc()
@@ -1069,24 +1175,25 @@ extrapolate_gcmImpacts <- function(
 ###    rule = 1 (Returns NA for x-values outside range)
 ###    ties = mean (take the average of multiple values)
 get_impactFunctions <- function(
-    df0,        ### Tibble with extended/grouped GCM scaled impacts (output of extend_gcmImpacts)
-    groupCol    = "scenario_id"   , ### Which column to look for the scenario column name (default =  )
-    xCol        = "modelUnitValue", ### Which column to use for x (default = temp_C)
-    yCol        = "scaled_impacts", ### Which column to use for y
-    method0     = "linear",
-    rule0       = 1
+    df0,    ### Tibble with extended/grouped GCM scaled impacts (output of extend_gcmImpacts)
+    idCol0  = "scenario_id"   , ### Which column to look for the scenario column name (default =  )
+    xCol0   = "modelUnitValue", ### Which column to use for x (default = temp_C)
+    yCol0   = "scaled_impacts", ### Which column to use for y
+    method0 = "linear",
+    rule0   = 1
 ){
   ### Groups
-  df0      <- df0 |> arrange_at (c(groupCol, xCol))
-  groups0  <- df0 |> group_keys() |> pull(all_of(groupCol))
+  df0   <- df0   |> arrange_at (c(idCol0, xCol0))
+  keys0 <- df0   |> group_keys()
+  ids0  <- keys0 |> pull(all_of(idCol0))
   
   ### Get Impact Functions
-  list0    <- df0 |> group_map(function(.x, .y){
-    inX  <- .x |> pull(all_of(xCol))
-    inY  <- .y |> pull(all_of(yCol))
+  list0 <- df0 |> group_map(function(.x, .y){
+    inX  <- .x |> pull(all_of(xCol0))
+    inY  <- .x |> pull(all_of(yCol0))
     funX <- approxfun(x=inX, y=inY, method=method0, rule=rule0)
     return(funX)
-  }) |> set_names(groups0)
+  }) |> set_names(ids0)
   
   ### Return the list (i.e., list0)
   gc()
@@ -1094,108 +1201,106 @@ get_impactFunctions <- function(
 }
 
 
-mapFormatScaledImpacts <- function(
-    type0,
-    dataList    = NULL, ### List of state data, output of reshapeModuleData
-    controlData = NULL, 
-    xCol0       = "year",
-    yCol0       = "scaled_impacts",
-    idCol0      = "scenario_id",
-    idCols0     = c("sector", "variant", "impactType", "impactYear", "region", "postal"),
-    modCol0     = "model",
-    oldStr0     = "Data",
-    newStr0     = "Impacts",
-    msg0        = 0
+### Function to format SLR values
+format_slrScaledImpacts <- function(
+    df0, 
+    dfExt0, ### Extrems data (controlData[["slrCmExtremes"]])
+    xCol0    = "year",
+    yCol0    = "scaled_impacts",
+    idCol0   = "scenario_id", 
+    modCol0  = "model",
+    group0   = c("sector", "variant", "impactType", "impactYear", "region", "postal"),
+    modStr0  = "Interpolation",
+    silent   = TRUE,
+    msg0     = 0
 ){
-  ### Set up the environment ----------------
-  #### Messaging ----------------
-  ### Level of messaging (default is to message the user) and save behavior
-  msgUser       <- !silent
-  msgN          <- "\n"
-  msg1          <- msg0 + 1
-  msg2          <- msg0 + 2
+  ### Msg0
+  msgUser <- !silent
+  msg0    <- msg0 + 1
   
-  msg0 |> get_msgPrefix() |> paste0("Formatting ", type0 |> toupper(), " impacts...") |> message()
+  ### Initialize list
+  list0   <- list()
+  ### Format impacts
+  if(msgUser) msg0 |> get_msgPrefix() |> paste("Formatting SLR impact values...") |> message()
+  # df1     <- df0 |> format_slrData(
+  #   xCol0    = xCol0,
+  #   yCol0    = yCol0,
+  #   idCol0   = idCol0,
+  #   modCol0  = modCol0,
+  #   # group0   = group0,
+  #   modStr0  = "Interpolation"
+  # ) ### End format_slrImpacts
+  # list0[["slrImpacts"]] <- df1
+  list0[["slrData"]] <- df0
+  # rm(df0)
   
-  #### Columns & Values ----------------
+  ### Format extremes
+  if(msgUser) msg0 |> get_msgPrefix() |> paste("Creating extreme SLR impact values...") |> message()
+  # df2     <- df1 |> get_slrExtValues(
+  df2     <- df0 |> get_slrExtValues(
+    df1      = dfExt0,
+    xCol0    = xCol0,
+    yCol0    = yCol0,
+    idCol0   = idCol0,
+    modCol0  = modCol0
+  ) |> fun_slrConfigExtremes() 
+  list0[["slrExtremes"]] <- df2
+  rm(df2)
   
-  ### Values
-  type0  <- type0 |> tolower()
-  doSlr0 <- type0 |> str_detect(slrStr0)
-  doGcm0 <- type0 |> str_detect(gcmStr0)
-  
-  ### Object names
-  name0  <- type0 |> paste0(oldStr0)
-  name1  <- type0 |> paste0(newStr0)
-  name2  <- type0 |> paste0(case_when(doSlr0 ~ "Extremes", .default = "Funs"))
-  
-  #### Data ----------------
-  data0  <- dataList[[name0]]
-  nRow0  <- data |> nrow() 
-  ### If there is no data, return
-  if(!nRow0) {return(NULL)}
-  
-  ### Format Data ----------------
-  ### Otherwise, do model types
-  list0  <- list()
-  if(doSlr0) {
-    ### Format impacts
-    if(msgUser) msg1 |> get_msgPrefix() |> paste0("...Formatting SLR impact values...") |> message()
-    dfX1    <- data0 |> format_slrImpacts(
-      modLvls0 = controlData[["co_slrCm"]] |> pull(all_of(modCol0)), 
-      xCol0    = xCol0,
-      yCol0    = yCol0,
-      idCol0   = idCol0,
-      modCol0  = modCol0,
-      group0   = idCols0,
-      modStr0  = "Interpolation"
-    ) ### End format_slrImpacts
-    list0[["slrImpacts"]] <- dfX1
-    
-    ### Format extremes
-    if(msgUser) msg1 |> get_msgPrefix() |> paste0("...Creating extreme SLR impact values...") |> message()
-    dfX2    <- dfX1 |> get_slrExtValues(
-      df1      = controlData[["slrCmExtremes"]],
-      xCol0    = yrCol0,
-      yCol0    = impactsCol0,
-      idCol0   = idCol0,
-      modCol0  = modCol0
-    ) |> fun_slrConfigExtremes() 
-    list0[["slrExtremes"]] <- dfX2
-    rm(dfX1, dfX2)
-  } else if(doGcm0) {
-    ### Extrapolate values
-    ### - Value to extend to
-    extend0 <- controlData[["co_modelTypes"]] |> 
-      filter(model_type %in% gcmStr0) |> 
-      pull(driverMaxOutput) |> 
-      unique()
-    ### Extend values
-    data0   <- data0 |> extrapolate_gcmImpacts(
-      groupCol   = idCol0, 
-      xCol       = unitCol0, 
-      yCol       = impactsCol0, 
-      extend_to  = extend0,
-      extend_all = extend_all,
-      method0    = "linear",
-      rule0      = 1
-    ) ### End extrapolate_gcmImpacts
-    list0[["gcmImpacts"]] <- data0
-    
-    ### Get impact functions
-    funs0   <- data0 |> get_impactFunctions(
-      groupCol   = idCol0,
-      xCol       = unitCol0,
-      yCol       = impactsCol0,
-      method0    = "linear",
-      rule0      = 1
-    ) ### get_impactFunctions
-    # list0[["gcmImpFuncs" ]] <- funs0
-    list0[["gcmFunctions"]] <- funs0
-    rm(data0, funs0)
-  } ### End if(doSlr0)
   ### Return
-  msg0 |> get_msgPrefix() |> paste0("...Finished formatting ", type0 |> toupper(), " impacts...") |> message()
   return(list0)
 }
+
+### Function to format SLR values
+format_gcmScaledImpacts <- function(
+    df0, 
+    xCol0   = "modelUnitValue",
+    yCol0   = "scaled_impacts",
+    idCol0  = "scenario_id", 
+    modCol0 = "model",
+    group0  = c("sector", "variant", "impactType", "impactYear", "region", "postal"),
+    modStr0 = "Interpolation",
+    to0     = 30  , ### Value to extend values to
+    all0    = TRUE, ### Whether to extrapolate cold models, too
+    method0 = "linear",
+    rule0   = 1   , ### Rule for extrapolation
+    silent  = TRUE,
+    msg0    = 0
+){
+  ### Msg0
+  msgUser <- !silent
+  msg0    <- msg0 + 1
+  
+  ### Initialize list
+  list0  <- list()
+  ### Format impacts
+  ### Extend values
+  if(msgUser) msg0 |> get_msgPrefix() |> paste("Extending GCM impact values...") |> message()
+  df0    <- df0 |> extrapolate_gcmImpacts(
+    xCol0   = xCol0, 
+    yCol0   = yCol0, 
+    idCol0  = idCol0,
+    to0     = to0,
+    all0    = all0,
+    method0 = method0,
+    rule0   = rule0
+  ) ### End extrapolate_gcmImpacts
+  list0[["gcmData"]] <- df0
+  
+  ### Get impact functions
+  if(msgUser) msg0 |> get_msgPrefix() |> paste("Creating GCM impact functions...") |> message()
+  funs0  <- df0 |> get_impactFunctions(
+    idCol0  = idCol0,
+    xCol0   = xCol0,
+    yCol0   = yCol0,
+    method0 = method0,
+    rule0   = rule0
+  ) ### get_impactFunctions
+  list0[["gcmFuns"]] <- funs0
+  rm(df0)
+  
+  ### Return
+  return(list0)
+}
+
 
