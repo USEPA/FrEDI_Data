@@ -53,168 +53,360 @@ extend_data <- function(
 }
 
 ## Scenario Functions ----------------
-## Function to load data of specific type
+# ## Function to load data of specific type
 loadScenarioData_byType <- function(
-    type0    = "temp",
-    info0,   ### co_scenarios from configureScenarioData
-    dir0     = "." |> file.path("inst", "extdata", "scenarios"), 
-    ext0     = "csv",
+    .x, 
+    .y,
     typeCol0 = "inputName",
-    yrCol0   = c("year"),
-    idCol0   = c("scenarioName"),
+    nameCol0 = "name0",
+    pathCol0 = "path0",
     silent   = TRUE,
     msg0     = 0
 ){
-  ### Filter to data
-  names0 <- info0 |> names()
-  info0  <- info0 |> 
-    filter_at(c(typeCol0), function(x, y=type0){x %in% y}) |>
-    group_by_at(c(names0))
-  ids0   <- info0 |> pull(all_of(idCol0))
-  # dir0 |> print()
+  ### Messaging
+  msgUser    <- !silent
+  msgN       <- "\n"
+  msg1       <- msg0 + 1
+  
+  ### Type
+  type0      <- .y |> pull(all_of(typeCol0)) |> unique()
+  names0     <- .x |> pull(all_of(nameCol0))
+  
   ### Read in files and bind data
-  if (!silent) msg0 |> get_msgPrefix(newline=F) |> paste0("Loading ", type0, "scenario data...") |> message()
-  data0 <- info0 |> group_map(function(.x, .y){
-    loadScenarioData_byGroup(
-      .x=.x, 
-      .y=.y,
-      dir0     = dir0, 
-      ext0     = ext0,
-      typeCol0 = typeCol0,
-      idCol0   = idCol0,
-      silent   = silent,
-      msg0     = msg0 + 1
-    ) ### End loadScenarioData_byGroup
-  }) |> bind_rows() |>
-    group_by_at(c(names0))
-  # data0 <- info0 |> group_map(
-  #   loadScenarioData_byGroup,
-  #   dir0     = dir0, 
-  #   ext0     = ext0,
-  #   typeCol0 = typeCol0,
-  #   idCol0   = idCol0,
-  #   msg0     = msg0 + 1
-  # ) |> bind_rows()
+  if (msgUser) msg0 |> get_msgPrefix(newline=F) |> paste0("Loading ", type0, " scenario data...") |> message()
+  list0      <- .x |> pmap(function(name0, path0){
+    msg1  |> get_msgPrefix(newline=F) |> paste0("Loading ", name0, " scenario data...") |> message()
+    path0 |> read.csv()
+  }) |> set_names(names0)
+  
   ### Return data
-  return(data0)
+  return(list0)
 }
 
 ### Load scenario by scenarioName
 ## .x = group data
 ## .y = group key data
-loadScenarioData_byGroup <- function(
-    .x, 
-    .y,
-    # type0    = "temp",
-    info0,   ### co_scenarios from configureScenarioData
-    dir0     = "." |> file.path("inst", "extdata", "scenarios"), 
-    ext0     = "csv",
-    typeCol0 = "inputName",
-    idCol0   = c("scenarioName"),
-    silent   = TRUE,
-    msg0     = 0
+# loadScenarioData_byGroup <- function(
+    #     .x, 
+#     .y,
+#     # type0    = "temp",
+#     info0,   ### co_scenarios from configureScenarioData
+#     dir0     = "." |> file.path("inst", "extdata", "scenarios"), 
+#     ext0     = "csv",
+#     typeCol0 = "inputName",
+#     idCol0   = c("scenarioName"),
+#     silent   = TRUE,
+#     msg0     = 0
+# ){
+#   ### File paths
+#   # dir0 |> print()
+#   # .x |> glimpse(); .y |> glimpse()
+#   type0 <- .y |> pull(all_of(typeCol0)) |> unique()
+#   file0 <- .y |> pull(all_of(idCol0  )) |> unique()
+#   path0 <- dir0 |> file.path(type0, file0) |> paste0(".", ext0)
+#   # path0 |> glimpse()
+#   ### Read in file
+#   if (!silent) msg0 |> get_msgPrefix(newline=F) |> paste0("Loading data from ", file0 |> paste0(".", ext0), "...") |> message()
+#   data0 <- path0 |> read.csv()
+#   data0 <- .y |> 
+#     cross_join(data0) |> 
+#     filter_all(any_vars(!(. |> is.na())))
+#   ### Return data
+#   return(data0)
+# }
+
+
+### Format population ratio data
+format_popRatioData <- function(
+    df0,
+    df1,    ### States data
+    group0  = c("area", "region", "state", "postal", "fips", "state_order"), ### Grouping columns
+    xCol0   = c("year"), ### X columns
+    yCols0  = c("area2nat", "reg2area", "state2reg"), ### Columns to interpolate
+    from0   = NULL,
+    to0     = 2300, ### Interpolate values to
+    method0 = "linear",
+    rule0   = 2, 
+    silent  = TRUE,
+    msg0    = 0
 ){
-  ### File paths
-  # dir0 |> print()
-  # .x |> glimpse(); .y |> glimpse()
-  type0 <- .y |> pull(all_of(typeCol0)) |> unique()
-  file0 <- .y |> pull(all_of(idCol0  )) |> unique()
-  path0 <- dir0 |> file.path(type0, file0) |> paste0(".", ext0)
-  # path0 |> glimpse()
-  ### Read in file
-  if (!silent) msg0 |> get_msgPrefix(newline=F) |> paste0("Loading data from ", file0 |> paste0(".", ext0), "...") |> message()
-  data0 <- path0 |> read.csv()
-  data0 <- .y |> 
-    cross_join(data0) |> 
-    filter_all(any_vars(!(. |> is.na())))
-  ### Return data
-  return(data0)
+  
+  ### Messaging
+  msgUser    <- !silent
+  msgN       <- "\n"
+  msg1       <- msg0 + 1
+  if (msgUser) msg0 |> get_msgPrefix(newline=F) |> paste0("Formatting population ratio data...") |> message()
+  
+  ### Population Ratio Data
+  drop0      <- c(areaCol0, regCol0)
+  join0      <- c(stateCol0)
+  sort0      <- c(orderCol0, yrCol0)
+  df0        <- df0 |> 
+    select(-any_of(drop0)) |> 
+    left_join(df1, by=join0) |>
+    # extend_data(to0=to0) |>
+    arrange_at(c(sort0)) |> 
+    group_by_at(c(group0))
+  
+  ### Get group keys
+  df0        <- df0 |> group_map(
+    interpolate_byGroup,
+    xCol0     = xCol0,
+    yCols0    = yCols0,
+    method0   = method0,
+    rule0     = rule0
+  ) |> bind_rows()
+  
+  ### Return
+  return(df0)
+}
+
+
+### Function to format groupCols column
+format_groupColsColumn <- function(x0){
+  x0 <- x0 |> trimws()
+  x0 <- x0 |> paste0("'", "'")
+  x0 <- x0 |> str_replace(",", "','")
+  x0 <- x0 |> str_replace(" ", "")
+  return(x0)
+}
+
+parse_groupColsColumn <- function(x0){
+  x0 <- x0 |> trimws()
+  x0 <- x0 |> paste0("c(", ")")
+  x0 <- parse(text=x0)
+  return(x0)
 }
 
 ### Reshape specific scenarios
-reshapeScenarioData_byType <- function(
-    type0    = "temp",
-    list0, ### List of data with types
-    typeCol0 = c("inputName"),
-    idCol0   = c("scenarioName"),
-    argCol0  = c("inputArgVal"),
-    valCol0  = c("valueCol"),
-    yrCol0   = c("year"),
-    method0  = "linear",
+formatScenarioData_byType <- function(
+    .x, 
+    .y,
+    df1, ### States info
+    typeCol0 = "inputName",
+    idCol0   = "scenarioName",
+    # tempId0  = "scenario",
+    xCol0    = "year",
+    valCol0  = "valueCol",
+    argCol0  = "inputArgVal",
+    regCols0 = c("area", "region", "state", "postal", "fips", "state_order"),
     silent   = TRUE,
-    rule0    = 1,
     msg0     = 0
-){ 
-  ### Filter to data
-  # doTemp0 <- type0 |> str_detect("temp")
-  data0   <- list0[[type0]]
-  # cols0   <- data |> group_cols()
-  # if(doTemp0) cols0 <- cols0 |> c("scenario")
+){
+  ### Messaging
+  msgUser    <- !silent
+  msgN       <- "\n"
+  msg1       <- msg0 + 1
+  
+  ### Type
+  type0      <- .y |> pull(all_of(typeCol0)) |> unique() |> tolower()
+  yCol0      <- .y |> pull(all_of(valCol0)) |> unique()
+  refYr0     <- .y |> pull(refYear) |> unique()
+  minVal0    <- .y |> pull(inputMin) |> unique()
+  reg0       <- .y |> pull(regional) |> unique()
+  # argType0   <- .y |> pull(inputArgType)
+  # argVal0    <- .y |> pull(inputArgType)
+  groupCols0 <- .y |> pull(inputArgType) |> 
+    format_groupColsColumn() |>
+    parse_groupColsColumn()
+  
+  ### Conditionals
+  doReg0     <- reg0 == 1
+  doTemp0    <- type0 |> str_detect("temp")
+  
+  ### Group x by remaining names
+  list0      <- list0[[type0]]
+  names0     <- .x |> pull(all_of(idCol0))
+  .x         <- .x |> group_by_at(c(idCol0))
   
   ### Read in files and bind data
-  if (!silent) msg0 |> get_msgPrefix(newline=F) |> paste0("Reshaping ", type0, "scenario data...") |> message()
-  data0 <- data0 |> 
-    filter_all(any_vars(!(. |> is.na()))) |>
-    # group_by_at(c(cols0)) |>
-    group_map(
-      reshapeScenarioData_byGroup,
-      typeCol0 = typeCol0,
-      argCol0  = argCol0,
-      valCol0  = valCol0,
-      yrCol0   = yrCol0,
+  if (msgUser) msg0 |> get_msgPrefix(newline=F) |> paste0("Reshaping ", type0, " scenario data...") |> message()
+  list0      <- .x |> group_map(function(.x, .y){
+    .x |> reshapeScenarioData_byGroup(
+      .y       = .y,
+      df1      = df1,
+      list0    = list0,
       idCol0   = idCol0,
-      method0  = method0,
-      rule0    = rule0,
+      xCol0    = xCol0,
+      yCol0    = yCol0,
+      refYr0   = refYr0,
+      minVal0  = minVal0,
+      group0   = group0,
+      regCols0 = regCols0,
+      doReg0   = doReg0,
+      doTemp0  = doTemp0,
       silent   = silent,
-      msg0     = msg0 + 1
-    ) |> bind_rows()
+      msg0     = msg1
+    ) ### End reshapeScenarioData_byGroup
+  }) |> set_names(names0)
+  
+  ### Format data
+  df0        <- .x |> group_map(function(.x, .y){
+    .x |> interpolateScenarioData_byGroup(
+      .y       = .y,
+      list0    = list0,
+      idCol0   = idCol0,
+      xCol0    = xCol0,
+      yCol0    = yCol0,
+      argCol0  = argCol0,
+      doTemp0  = doTemp0,
+      silent   = silent,
+      msg0     = msg1
+    ) ### End reshapeScenarioData_byGroup
+  }) |> set_names(names0)
+  
   ### Return data
-  return(data0)
-} ### End if(doTemp0)  
+  return(df0)
+}
+
+### Reshape population data
+### May need to add steps in the future if not a state population scenario
+reshape_regScenario <- function(
+    df0,
+    df1,     ### States info
+    xCol0    = c("year"),
+    yCol0    = c("pop"),
+    group0   = c(),
+    regCols0 = c("area", "region", "state", "postal", "fips", "state_order"),
+    join0    = c("state", "postal"),
+    popType  = "state",
+    silent   = TRUE,
+    msg0     = 0
+){
+  ### Messaging
+  msgUser    <- !silent
+  msgN       <- "\n"
+  msg1       <- msg0 + 1
+  ### Join by state or postal
+  names0     <- df0    |> names()
+  join0      <- join0  |> get_matches(names0)
+  group0     <- group0 |> get_matches(names0) |> get_matches(y=join0, matches=F)
+  select0    <- join0  |> c(group0) |> unique() |> c(xCol0, yCol0)
+  group0     <- regCols0 |> c(group0) |> unique()
+  sort0      <- group0 |> c(xCol0) |> unique()
+  df0        <- df0    |> 
+    select(all_of(select0)) |>
+    left_join(df1, by=join0) |>
+    arrange_at(c(sort0)) |>
+    group_by_at(c(group0))
+  ### Return
+  return(df0)
+}
+
 
 
 ### Reshape specific scenarios
 reshapeScenarioData_byGroup <- function(
     .x, 
     .y,
-    typeCol0 = c("inputName"),
-    idCol0   = c("scenarioName"),
-    argCol0  = c("inputArgVal"),
-    valCol0  = c("valueCol"),
-    yrCol0   = c("year"),
-    method0  = "linear",
-    rule0    = 1,
+    df1,     ### State info
+    list0,   ### List with data
+    idCol0   = idCol0,
+    xCol0    = "year",
+    yCol0    = "temp_C",
+    refYr0   = refYr0,
+    minVal0  = minVal0,
+    group0   = group0,
+    regCols0 = c("area", "region", "state", "postal", "fips", "state_order"),
+    doReg0   = doReg0,
+    doTemp0  = doTemp0,
     silent   = TRUE,
     msg0     = 0
 ){
-  ### File paths
+  ### Messaging
+  msgUser    <- !silent
+  msgN       <- "\n"
+  msg1       <- msg0 + 1
+  
+  ### Values
   # .x |> glimpse(); 
   # .y |> glimpse()
-  gCols0 <- .y |> names()
-  type0  <- .y |> pull(all_of(typeCol0)) |> unique()
-  name0  <- .y |> pull(all_of(idCol0  )) |> unique()
-  yCol0  <- .y |> pull(all_of(valCol0 )) |> unique() 
-  arg0   <- .y |> pull(all_of(argCol0 )) |> unique() 
-  group0 <- .x |> names() |> get_matches(y=c(yrCol0, yCol0), matches=F)
-  # .x |> names() |> print(); group0 |> print()
-  # doTemp <- type0 |> str_detect("temp")
-  sort0  <- group0 |> c(yrCol0)
-  df0    <- .x |> 
-    filter_all(any_vars(!(. |> is.na()))) |>
-    arrange_at(c(sort0)) |> 
-    group_by_at(c(group0))
-  # df0 |> glimpse()
-  ### Interpolate data
-  if (!silent) msg0 |> get_msgPrefix(newline=F) |> paste0("Reshaping ", name0, "...") |> message()
+  name0      <- .y |> pull(all_of(idCol0)) |> unique()
+  if (msgUser) msg0 |> get_msgPrefix(newline=F) |> paste0("Reshaping ", name0, " scenario...") |> message()
   
-  ### Conditionals
-  doTemp <- type0 |> str_detect("temp")
+  ### Data
+  df0        <- list0[[name0]]
+  
+  ### If doTemp, add scenario if not present
+  if(doTemp) {
+    hasGrp0 <- group0 |> get_matches(y=df0 |> names()) |> length()
+    if(!hasGrp0) df0[[group0]] <- name0
+  } ### End if(doTemp)
+  
+  ### If doReg, standardize region/state info
+  if(doReg) {
+    df0 <- df0 |> reshape_regScenario(
+      df1      = df1,     ### States info
+      xCol0    = xCol0,
+      yCol0    = yCol0,
+      group0   = group0,
+      regCols0 = regCols0,
+      silent   = TRUE,
+      msg0     = 0
+    ) ### End reshape_regScenario
+  } ### End if(doReg)
+  
+  ### Group columns and filter out missing values
+  select0    <- group0 |> c(xCol0, yCol0)
+  sort0      <- group0 |> c(xCol0)
+  df0        <- df0 |>
+    filter_at(c(xCol0, yCol0), function(x){!{x |> is.na()}}) |> 
+    select(any_of(select0)) |>
+    arrange_at(c(sort0)) |>
+    group_by_at(c(group0))
+  
+  ### If ref year is not missing, add a reference value
+  doRef0     <- !(refYr0 |> is.na())
+  if(doRef0) {
+    df0 <- df0 |> filter_at(c(xCol0), function(x, y=refYr0){x > y})
+    df0 <- df0 |> 
+      summarize_at(c(xCol0), min) |> 
+      mutate_at(c(xCol0), function(x, y=refYr0 ){y}) |> 
+      mutate_at(c(yCol0), function(x, y=minVal0){y}) |> 
+      bind_rows(df0) |>
+      arrange_at(c(sort0))
+  } ### End if(doRef0)
+  
+  ### Return data
+  return(df0)
+}
+
+
+### Reshape specific scenarios
+interpolateScenarioData_byGroup <- function(
+    .x, 
+    .y,
+    list0,   ### List with data
+    idCol0   = idCol0,
+    xCol0    = "year",
+    yCol0    = "temp_C",
+    argCol0  = "inputArgVal",
+    doTemp0  = doTemp0,
+    silent   = TRUE,
+    msg0     = 0
+){
+  ### Messaging
+  msgUser    <- !silent
+  msgN       <- "\n"
+  msg1       <- msg0 + 1
+  
+  ### Values
+  # .x |> glimpse(); 
+  # .y |> glimpse()
+  name0      <- .y |> pull(all_of(idCol0)) |> unique()
+  argVal0    <- .x |> pull(all_of(argCol0)) |> unique()
+  if (msgUser) msg0 |> get_msgPrefix(newline=F) |> paste0("Interpolating values for ", name0, " scenario...") |> message()
+  
+  ### Data
+  df0        <- list0[[name0]]
+  
+  ### If doTemp, use one function, otehrwise, use the other
   if(doTemp){
     df0 <- df0 |> group_map(
       format_tempData_byGroup,
-      tempCol0  = yCol0,
-      typeCol0  = "tempType", 
-      yrCol0    = yrCol0,
+      xCol0     = xCol0,
+      yCol0     = yCol0,
+      argCol0   = argCol0,
       method0   = method0,
       rule0     = rule0
     ) |> bind_rows()
@@ -228,8 +420,11 @@ reshapeScenarioData_byGroup <- function(
     ) |> bind_rows()
   } ### End if(doTemp0)  
   
-  ### Join data
-  df0    <- .y |> cross_join(df0)
+  ### Join data with input col
+  df0        <- .y |> 
+    select(any_of(idCol0)) |> 
+    distinct() |>
+    cross_join(df0)
   
   ### Return data
   return(df0)
@@ -282,10 +477,9 @@ formatGroupedTempData <- function(
 format_tempData_byGroup <- function(
     .x,       ### Data, filtered to a scenario
     .y,       ### Group info
-    tempCol0  = "temp_C_global",
-    typeCol0  = "inputArgVal", ### Column to look for tempType
-    # tempType0 = "global",
-    yrCol0    = "year",
+    yCol0     = "temp_C_global",
+    xCol0     = "year",
+    argCol0   = "inputArgVal", ### Column to look for tempType
     method0   = "linear",
     rule0     = 1,
     globalStr = "global",
@@ -294,14 +488,14 @@ format_tempData_byGroup <- function(
   # .x |> glimpse(); .y |> glimpse()
   ### Group info
   tempType0 <- .y   |> pull(all_of(typeCol0)) |> unique() |> tolower()
-  yrs0      <- .x   |> pull(all_of(yrCol0  )) |> unique()
+  yrs0      <- .x   |> pull(all_of(xCol0  )) |> unique()
   minYr0    <- yrs0 |> min(na.rm=T)
   maxYr0    <- yrs0 |> max(na.rm=T)
   # yrs0 |> range() |> print()
   ### Sort data
   .x        <- .x |> 
     filter_all(any_vars(!(. |> is.na()))) |>
-    arrange_at(c(yrCol0))
+    arrange_at(c(xCol0))
   
   ### Values and columns
   doGlobal  <- tempType0 |> str_detect(globalStr)
@@ -309,11 +503,11 @@ format_tempData_byGroup <- function(
   tempType2 <- case_when(doGlobal ~ conusStr, .default = globalStr)
   ### Interpolate values, convert temperatures, calculate slr_cm
   # .y |> glimpse()
-  x0        <- .x |> pull(all_of(yrCol0  ))
-  y0        <- .x |> pull(all_of(tempCol0))
+  x0        <- .x |> pull(all_of(xCol0  ))
+  y0        <- .x |> pull(all_of(yCol0))
   xVals0    <- minYr0:maxYr0
   old0      <- c("x", "y", "y2")
-  new0      <- yrCol0 |> c("temp_C_" |> paste0(c(tempType1, tempType2)))
+  new0      <- xCol0 |> c("temp_C_" |> paste0(c(tempType1, tempType2)))
   df0       <- x0 |> 
     approx(y=y0, xout=xVals0, method=method0, rule=rule0) |> 
     as.data.frame() |> 
@@ -1308,6 +1502,7 @@ format_gcmScaledImpacts <- function(
 fun_saveSysData <- function(
   dataDir     = "." |> file.path("data"),
   controlFile = "controlData",
+  scenarioDir = "scenarios",
   outFile     = "tmp_sysData",
   modules     = c("fredi", "ghg", "sv"),
   extStrs     = c("rda", "rds")
@@ -1318,8 +1513,11 @@ fun_saveSysData <- function(
   extStr0    <- extStrs |> paste(collapse=strSep0)
   extStr1    <- dotStr0 |> paste0(extStrs) |> paste(collapse=strSep0)
   
-  ### Load files
-  ### - Control path
+  ### Load scenario files
+  scenDir    <- dataDir   |> file.path(scenarioDir)
+  scenFiles  <- scenDir   |> list.files(pattern=extStr0, full.names=F)
+  scenNames  <- scenFiles |> str_replace(pattern=extStr1, "")
+  ### - Module Files
   modFiles   <- dataDir |> file.path(modules) |> 
     map(list.files, pattern=extStr0, full.names=F) |> 
     set_names(modules)
@@ -1330,14 +1528,21 @@ fun_saveSysData <- function(
   # modNames |> unlist() |> print()
   
   ### Data names
-  dataNames  <- controlFile |> c(modNames |> unlist())
+  dataNames  <- c(controlFile, scenNames) |> c(modNames |> unlist())
   
   ### Load data
   ### - Load control data
   dataDir |> list.files() |> print()
   ctrlPath   <- dataDir |> list.files(pattern=controlFile, full.names=T)
-  # ctrlPath |> print()
   ctrlPath |> load()
+  # ctrlPath |> print()
+  
+  ### - Scenarios
+  for(file_j in scenFiles){
+    scenDir |> file.path(file_j) |> load()
+  }
+  
+  
   ### - Module data
   for(mod_i in modules){
     files_i <- modFiles[[mod_i]]

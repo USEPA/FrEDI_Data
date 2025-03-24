@@ -16,29 +16,19 @@ configureScenarios <- function(
   ### Saving
   outDir      = "." |> file.path("data", "scenarios"), ### Directory to save data, relative to dataDir
   outFile     = "scenarioData" |> paste0(".", "rda" ), 
-  save        = TRUE , ### Whether to save the data
-  return      = TRUE , ### Whether to return object
+  save0       = TRUE , ### Whether to save the data
+  return0     = TRUE , ### Whether to return object
   ### Info on messaging
-  silent      = TRUE , ### Level of messaging
+  silent0     = TRUE , ### Level of messaging
   msg0        = 0
 ){
   ### Set Up Environment ----------------
   #### Messaging ----------------
-  msgN <- "\n"
-  # msgN |> paste0(msg0, "Running configureScenarios()...") |> message()
-  # msg1 <- msg0 |> paste0("\t")
-  # msg2 <- msg1 |> paste0("\t")
-  # msg0 <- msg0 |> str_count("t")
-  msg1 <- msg0 + 1
-  msg2 <- msg0 + 2
-  msg0 |> get_msgPrefix(newline=T) |> paste0("Running configureScenarios()...") |> message()
-  
-  #### Values ----------------
-  ### Parameters for saving tests
-  save0       <- save
-  return0     <- return
-  msgUser     <- !silent
-  rm(save, return)
+  msgUser <- !silent
+  msgN    <- "\n"
+  msg1    <- msg0 + 1
+  msg2    <- msg0 + 2
+  msg0 |> get_msgPrefix(newline=T) |> paste0("Configuring scenarios...") |> message()
   
   #### Set Paths ----------------
   ### Adjust paths
@@ -52,13 +42,9 @@ configureScenarios <- function(
   minYr0      <- configVals0[["minYear0"]]
   maxYr0      <- configVals0[["npdYear0"]]
   
-  ### 1. Read in Tables from Excel ----------------
-  ### Initialize list of objects to return
-  # controlTables     <- list()
-  
   ### 2. Load Excel Data ----------------
   ### Load state data
-  # if(!silent) 
+  # if(msgUser) 
   msg1 |> get_msgPrefix(newline=F) |> paste0("Loading scenario data...") |> message()
   # controlTables <- list()
   scenarioData <- dataDir |> loadScenarioData(
@@ -74,7 +60,7 @@ configureScenarios <- function(
   
   ### 3. Reshape Loaded Data ----------------
   ### Reshape state data
-  # if(!silent) 
+  # if(msgUser) 
   # paste0(msg1, "Reshaping control tables...") |> message()
   # scenarioData <- scenarioData |> reshapeScenarios(
   #   minYr0 = minYr0,

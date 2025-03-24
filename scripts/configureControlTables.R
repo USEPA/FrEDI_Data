@@ -21,30 +21,20 @@ configureControlTables <- function(
   ### Saving
   outDir      = "." |> file.path("data"), ### Directory to save data, relative to dataDir
   outFile     = "controlTables" |> paste0(".", "rda" ), ### Name of file to which to save results
-  save        = TRUE , ### Whether to save the data
-  return      = TRUE , ### Whether to return object
+  save0       = TRUE , ### Whether to save the data
+  return0     = TRUE , ### Whether to return object
   ### Info on messaging
   silent      = TRUE , ### Level of messaging
-  msg0        = 0
+  msg0        = 0,
+  .testing    = FALSE
 ){
   ### Set Up Environment ----------------
   #### Messaging ----------------
-  msgN <- "\n"
-  # msgN |> paste0(msg0, "Running configureControlTables()...") |> message()
-  # msg1 <- msg0 |> paste0("\t")
-  # msg2 <- msg1 |> paste0("\t")
-  # msg0 <- msg0 |> str_count("t")
-  msg0 |> print()
-  msg1 <- msg0 + 1
-  msg2 <- msg0 + 2
-  msg0 |> get_msgPrefix(newline=T) |> paste0("Running configureControlTables()...") |> message()
-  
-  #### Values ----------------
-  ### Parameters for saving tests
-  save0       <- save
-  return0     <- return
   msgUser     <- !silent
-  rm(save, return)
+  msgN        <- "\n"
+  msg1        <- msg0 + 1
+  msg2        <- msg0 + 2
+  msg0 |> get_msgPrefix(newline=T) |> paste0("Configuring control tables...") |> message()
   
   #### Set Paths ----------------
   ### Adjust paths
@@ -72,7 +62,8 @@ configureControlTables <- function(
     configFile  = configFile,  ### Name of excel file with config information
     configSheet = configSheet, ### Sheet with info about tables in config file
     silent      = silent,
-    msg0        = msg1
+    msg0        = msg1,
+    .testing    = .testing
   ) ### End loadData
   # gc()
   # return(controlData)
@@ -106,8 +97,8 @@ configureControlTables <- function(
   
   
   ### Return ----------------
-  msg0 |> get_msgPrefix(newline=F) |> paste0("...Finished running configureControlTables().") |> message()
-  msg0 |> get_msgPrefix(newline=T) |> message()
+  msg1 |> get_msgPrefix(newline=F) |> paste0("...Finished configuring control tables.") |> message()
+  msg1 |> get_msgPrefix(newline=T) |> message()
   if(return0) {return(controlData)}
   # return(returnList)
 }

@@ -9,113 +9,81 @@
 #   pop  = "rff_state_pop_mean" |> paste0(".csv")
 # ), ### End list
 loadScenarioData <- function(
-    # dfScenarios, ### Data frame with info on scenarios
+    dfScenarios, 
     dataDir     = "." |> file.path("inst", "extdata", "scenarios") |> file.path(), ### Path to scenarios
     dataExt     = "csv",
-    controlData, ### Output of configureControlTables()
-    minYr0      = 2010,
-    maxYr0      = 2300,
-    # dfScenarios, ### Data frame with info on scenarios
     popRatios   = "state_population_ratios",
     ratiosName  = "popRatios",
-    # outDir      = "." |> file.path("data", "scenarios"),
     silent      = FALSE, ### Level of messaging
     msg0        = 0   ### Messaging prefix
 ) {
-  ### Messaging ----------------
+  ### Set up Environment ----------------
+  #### Messaging ----------------
   msgUser       <- !silent
   msgN          <- "\n"
-  # msg1          <- msg0 |> paste("\t")  
-  # msg2          <- msg1 |> paste("\t")  
-  msg1 <- msg0 + 1
-  msg2 <- msg0 + 2
-  if(msgUser) msg0 |> get_msgPrefix(newline=T) |> paste0("In loadScenarioData():") |> message()
+  msg1          <- msg0 + 1
+  msg2          <- msg0 + 2
+  if(msgUser) msg0 |> get_msgPrefix(newline=T) |> paste0("Loading scenario data...") |> message()
   
-  ### Columns and values ----------------
+  #### Columns and values ----------------
   ### Columns
+  areaCol0      <- "area"
+  regCol0       <- "region"
+  postCol0      <- "postal"
   stateCol0     <- "state"
-  regCols0      <- c("area", "region", "postal")
-  # regCols0      <- c("region", "state", "postal")
+  fipsCol0      <- "fips"
+  orderCol0     <- "state_order"
+  regCols0      <- c(areaCol0, regCol0, fipsCol0)
   yrCol0        <- "year"
   typeCol0      <- "inputName"
   idCol0        <- "scenarioName"
   tempIdCol0    <- "scenario"
   
-  ### Values
-  dfScenario    <- controlData[["co_scenarios"]]
-  types0        <- dfScenario  |> pull(inputName) |> unique()
-  # # projectDir |> devtools::load_all()
-  # configVals0   <- frediConfig()
-  # minYr0        <- configVals0[["minYear0"]]
-  # maxYr0        <- configVals0[["maxYear0"]]
-  
-  ### Tables
-  co_states     <- controlData[["co_states"]]
+  ### Input Scenarios ----------------
+  ### Group main input scenarios
+  select0       <- c(typeCol0, idCol0)
+  dfScenarios   <- dfScenarios |> 
+    select(all_of(select0)) |> 
+    distinct() |> 
+    arrange_at(c(typeCol0, idCol0)) |>
+    group_by_at(c(typeCol0))
+    rename_at(c(idCol0), ~"name0") |> 
+    mutate(file0 = name0 |> paste0(".", ext0)) |>
+    mutate(path0 = dir0  |> file.path(file0))
+  rm(select0)
+
+  ### Iterate over groups, loading scenarios
+  types0        <- dfScenarios |> group_keys() |> pull(all_of(typeCol0))
+  dataList      <- dfScenarios |> group_map(function(.x, .y){
+    .x |> loadScenarioData_byType(
+      .y       = .y,
+      typeCol0 = typeCol0,
+      nameCol0 = "name0",
+      pathCol0 = "path0",
+      silent   = TRUE,
+      msg0     = 0
+    ) ### End loadScenarioData_byType
+  }) |> set_names(types0)
   
   
   ### Population Ratios ----------------
-  ### Population Ratio Data
-  sort0        <- c("fips") |> c(yrCol0)
-  join0        <- c("state")
-  drop0        <- c("area", "region", "postal")
-  popRatioFile <- "state_population_ratios" |> paste0(".", dataExt)
-  popRatioPath <- dataDir |> file.path(popRatioFile)
-  popRatioData <- popRatioPath |> read.csv() |> 
-    select(-(any_of(drop0))) |> 
-    left_join(co_states, by=join0) |>
-    extend_data(to0=maxYr0) |>
-    arrange_at(c(sort0))
-  ### Add to list
-  # dataList[["testScenarios"]] <- inputsList
-  # dataList[["popRatios"]] <- popRatioData
-  
-  ### Load Data ----------------
-  ### Scenarios list
-  # scenarioDir |> list.files() |> print()
-  # scenarioNames <- c("gcam", "gdp", "pop", "popRatios")
-  dataList  <- types0 |> map(
-    loadScenarioData_byType,
-    info0    = dfScenario,
-    dir0     = dataDir, 
-    ext0     = dataExt,
-    typeCol0 = typeCol0,
-    idCol0   = idCol0,
-    silent   = silent,
-    msg0     = msg1
-  ) |> set_names(types0)
-  # dataList |> glimpse()
-  
-  ### Interpolate Data ----------------
-  ### Create list of file names
-  # listData      <- list()
-  # listFiles     <- list()
-  # listFiles[["gcam"     ]] <- gcamFile
-  # listFiles[["gdp"      ]] <- gdpFile
-  # listFiles[["pop"      ]] <- popFile
-  # listFiles[["popRatios"]] <- ratiosFile
-  if(msgUser) msg0 |> get_msgPrefix(newline=T) |> paste0("Reshaping scenarios...") |> message()
-  dataList  <- types0 |> map(
-    reshapeScenarioData_byType,
-    list0    = dataList,
-    typeCol0 = typeCol0,
-    idCol0   = idCol0,
-    argCol0  = c("inputArgVal"),
-    valCol0  = c("valueCol"),
-    yrCol0   = yrCol0,
-    method0  = c("linear"),
-    rule0    = 1,
-    silent   = silent,
-    msg0     = msg1
-  ) |> set_names(types0)
-  # dataList |> glimpse()
-  
   ### Add additional values
   # dataList[["gcam"     ]] <- dataList[["temp"]] |> filter_at(c(idCol0), function(x, y="Hector_v5.3_GCAM"){x %in% y})
   # dataList[["gdp"      ]] <- dataList[["gdp" ]] |> filter_at(c(idCol0), function(x, y="EPPA_v6_GDP"){x %in% y})
   # dataList[["pop"      ]] <- dataList[["pop" ]] |> filter_at(c(idCol0), function(x, y="ICLUS_State_Population"){x %in% y})
-  dataList[["popRatios"]] <- popRatioData
+  
+  ### Population Ratio Data
+  # sort0        <- c("state_order") |> c(yrCol0)
+  # join0        <- c("state")
+  # drop0        <- c("area", "region", "fips")
+  popRFile     <- "state_population_ratios" |> paste0(".", dataExt)
+  popRPath     <- dataDir  |> file.path(popRFile)
+  popRData     <- popRPath |> read.csv()
+  ### Add to list
+  dataList[[ratiosName]] <- popRData
+  
   
   ###### Return ----------------
-  if (msgUser) msg1 |> get_msgPrefix(newline=T) |> paste0("...Finished running loadScenarioData().") |> message()
+  if (msgUser) msg1 |> get_msgPrefix(newline=T) |> paste0("...Finished loading scenario data.") |> message()
   return(dataList)
 }
