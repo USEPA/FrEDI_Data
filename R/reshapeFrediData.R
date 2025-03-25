@@ -33,7 +33,7 @@ reshapeFrediData <- function(
   
   ###### FrEDI Data  ######
   ### Control Tables
-  frediData  <- frediData |> reshapeConfigData(silent=silent, msg0=msg1)
+  frediData  <-  reshapeConfigData( dataList = frediData, silent=silent, msg0=msg1)
   dataList[["frediData"]] <- frediData
   # dataList[["frediData"]] |> names() |> print()
   

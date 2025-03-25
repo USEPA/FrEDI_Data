@@ -62,9 +62,12 @@ configureSystemData <- function(
       DBI::dbWriteTable(conn = con, name = names(loadData0[["stateData"   ]][i]), value = loadData0[["stateData"   ]][[i]], overwrite = TRUE)
     }
     
-    for(i in 1:length(loadData0[["scenarioData"   ]])){
-      DBI::dbWriteTable(conn = con, name = names(loadData0[["scenarioData"]][i]), value = loadData0[["scenarioData"]][[i]], overwrite = TRUE)
-    }
+    
+    dbExecute(conn = con,"DROP TABLE IF EXISTS scenarioData")
+    dbExecute(conn = con,"CREATE TABLE scenarioData (value BLOB)")
+    dbExecute(con, 'INSERT INTO scenarioData (value) VALUES (:value)', 
+              params = list(value = list(serialize(loadData0[["scenarioData"]], connection = NULL)))
+    )
 
   }
   ### Update data in list
@@ -81,7 +84,7 @@ configureSystemData <- function(
   ### Reshape state data
   # if(!silent) 
   paste0(msg1, "Reshaping data...") |> message()
-  reshapeData0  <- loadData0 |> reshapeFrediData(silent=silent, msg0=msg1)
+  reshapeData0  <-  reshapeFrediData(dataList = loadData0, silent=silent, msg0=msg1)
   gc()
   rm(loadData0)
   ### If reshape, save the reshaped data separately
@@ -131,8 +134,8 @@ configureSystemData <- function(
     
     dbExecute(conn = con,"DROP TABLE IF EXISTS fredi_config")
     dbExecute(conn = con,"CREATE TABLE fredi_config (value BLOB)")
-    dbExecute(con, 'INSERT INTO fredi_config (value) VALUES (:value)', params = list(value = list(serialize(sysDataList0[["fredi_config"]], connection = NULL))
-                                                                                             )
+    dbExecute(con, 'INSERT INTO fredi_config (value) VALUES (:value)', 
+              params = list(value = list(serialize(sysDataList0[["fredi_config"]], connection = NULL)))
               )
     
     

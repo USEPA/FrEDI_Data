@@ -139,10 +139,11 @@ reshapeConfigData <- function(
   ###### ** 7. Scenario Info ######
   ### Combine sectors with co_variants, co_impactTypes, co_impactYears to get group options
   get_co_sectorsInfo <- utils::getFromNamespace("get_co_sectorsInfo", "FrEDI")
-  co_sectorsInfo <- co_sectors |> pull(sector_id) |> get_co_sectorsInfo(
+  co_sectorsInfo <-   get_co_sectorsInfo(
+    sectors0 =   co_sectors |> pull(sector_id),
     addRegions = TRUE, ### Whether to include regions & states
     addModels  = TRUE, ### Whether to include models
-    addIds     = TRUE, ### Add scenario Ids
+    addId     = TRUE, ### Add scenario Ids
     include    = c("region", "state", "postal", "model"), ### Other columns to include
     colTypes   = c("ids", "labels", "extra"), 
     dfSects  = co_sectors,
@@ -172,7 +173,7 @@ reshapeConfigData <- function(
     df0        <- df0 |> mutate_at(c(mutate0), str_replace, "Name", "")
     ### Return
     return(df0)
-  })
+  })()
   ### Update in list, drop intermediate values
   # co_sectorsInfo |> glimpse()
   dataList[["co_sectorScalars"]] <- co_sectorScalars
