@@ -484,67 +484,67 @@ interpolateScenarioData_byGroup <- function(
 ### scenCol0  = Scenario column
 ### tempCol0  = Temperature column
 ### tempType0 = Temperature type
-format_tempData_byGroup <- function(
-    .x,       ### Data, filtered to a scenario
-    .y,       ### Group info
-    xCol0     = "year",
-    yCol0     = "temp_C",
-    tempType0 = "global",
-    # argCol0   = "inputArgVal", ### Column to look for tempType
-    method0   = "linear",
-    rule0     = 1,
-    globalStr = "global",
-    conusStr  = "conus"
-){
-  # .x |> glimpse(); .y |> glimpse()
-  # ### Sort data
-  # .x        <- .x |> 
-  #   filter_at(c(xCol0, yCol0), function(x){!(x |> is.na())}) |>
-  #   arrange_at(c(xCol0))
-  # 
-  ### Group info
-  # tempType0 <- .y   |> pull(all_of(typeCol0)) |> unique() |> tolower()
-  # xVals0 |> range() |> print()
-  
-  
-  ### Values and columns
-  doGlobal  <- tempType0 |> str_detect(globalStr)
-  tempType1 <- tempType0
-  tempType2 <- case_when(doGlobal ~ conusStr, .default = globalStr)
-  
-  ### Interpolate values
-  .x        <- .x |> interpolate_byGroup(
-    .y        = .y,
-    xCol0     = xCol0,
-    yCols0    = yCol0,
-    method0   = method0,
-    rule0     = rule0
-  ) ### End interpolate_byGroup
-  
-  ### Interpolate values, convert temperatures, calculate slr_cm
-  ### Calculate SLR
-  old0      <- yCol0 |> c("y2")
-  new0      <- c("temp_C_" |> paste0(c(tempType1, tempType2)))
-  .x        <- .x |> 
-    mutate(y2 = .x |> pull(all_of(yCol0)) |> convertTemps(from=tempType0)) |>
-    rename_at(c(old0), ~new0)
-  # .x |> glimpse()
-  
-  ### Slr values
-  dfSlr     <- .x    |> 
-    pull(temp_C_global) |> 
-    temps2slr(years=.x |> pull(all_of(xCol0))) |> 
-    rename_at(c("year"), ~xCol0) |>
-    left_join(.x, by=xCol0) |>
-    filter(!(slr_cm |> is.na())) 
-  # df0 |> glimpse()
-
-  # ### Add model data
-  # .x        <- .y |> cross_join(.x)
-  
-  ### Return
-  return(.x)
-}
+# format_tempData_byGroup <- function(
+#     .x,       ### Data, filtered to a scenario
+#     .y,       ### Group info
+#     xCol0     = "year",
+#     yCol0     = "temp_C",
+#     tempType0 = "global",
+#     # argCol0   = "inputArgVal", ### Column to look for tempType
+#     method0   = "linear",
+#     rule0     = 1,
+#     globalStr = "global",
+#     conusStr  = "conus"
+# ){
+#   # .x |> glimpse(); .y |> glimpse()
+#   # ### Sort data
+#   # .x        <- .x |> 
+#   #   filter_at(c(xCol0, yCol0), function(x){!(x |> is.na())}) |>
+#   #   arrange_at(c(xCol0))
+#   # 
+#   ### Group info
+#   # tempType0 <- .y   |> pull(all_of(typeCol0)) |> unique() |> tolower()
+#   # xVals0 |> range() |> print()
+#   
+#   
+#   ### Values and columns
+#   doGlobal  <- tempType0 |> str_detect(globalStr)
+#   tempType1 <- tempType0
+#   tempType2 <- case_when(doGlobal ~ conusStr, .default = globalStr)
+#   
+#   ### Interpolate values
+#   .x        <- .x |> interpolate_byGroup(
+#     .y        = .y,
+#     xCol0     = xCol0,
+#     yCols0    = yCol0,
+#     method0   = method0,
+#     rule0     = rule0
+#   ) ### End interpolate_byGroup
+#   
+#   ### Interpolate values, convert temperatures, calculate slr_cm
+#   ### Calculate SLR
+#   old0      <- yCol0 |> c("y2")
+#   new0      <- c("temp_C_" |> paste0(c(tempType1, tempType2)))
+#   .x        <- .x |> 
+#     mutate(y2 = .x |> pull(all_of(yCol0)) |> convertTemps(from=tempType0)) |>
+#     rename_at(c(old0), ~new0)
+#   # .x |> glimpse()
+#   
+#   ### Slr values
+#   dfSlr     <- .x    |> 
+#     pull(temp_C_global) |> 
+#     temps2slr(years=.x |> pull(all_of(xCol0))) |> 
+#     rename_at(c("year"), ~xCol0) |>
+#     left_join(.x, by=xCol0) |>
+#     filter(!(slr_cm |> is.na())) 
+#   # df0 |> glimpse()
+# 
+#   # ### Add model data
+#   # .x        <- .y |> cross_join(.x)
+#   
+#   ### Return
+#   return(.x)
+# }
 
 
 
