@@ -64,6 +64,7 @@ reshapeControlTables <- function(
     df0,
     df1    = co_inputInfo,
     idCol0 = "inputName",
+    join0  = "inputName",
     sort0  = c("inputName", "scenarioName")
   ){
     df0 |> 

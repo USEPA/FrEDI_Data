@@ -23,7 +23,8 @@ loadScenarioData <- function(
   msgN          <- "\n"
   msg1          <- msg0 + 1
   msg2          <- msg0 + 2
-  if(msgUser) msg0 |> get_msgPrefix(newline=T) |> paste0("Loading scenario data...") |> message()
+  # if(msgUser) 
+  msg0 |> get_msgPrefix(newline=T) |> paste0("Loading scenario data...") |> message()
   
   #### Columns and values ----------------
   ### Columns
@@ -41,27 +42,34 @@ loadScenarioData <- function(
   
   ### Input Scenarios ----------------
   ### Group main input scenarios
+  ### - Get distinct values
   select0       <- c(typeCol0, idCol0)
+  # dfScenarios |> glimpse()
   dfScenarios   <- dfScenarios |> 
     select(all_of(select0)) |> 
-    distinct() |> 
+    distinct()
+  
+  ### Add information for files
+  dfScenarios <- dfScenarios |> 
     arrange_at(c(typeCol0, idCol0)) |>
-    group_by_at(c(typeCol0))
-    rename_at(c(idCol0), ~"name0") |> 
-    mutate(file0 = name0 |> paste0(".", ext0)) |>
-    mutate(path0 = dir0  |> file.path(file0))
+    group_by_at(c(typeCol0)) |>
+    rename_at(c(typeCol0, idCol0), ~c("type0", "name0")) |>
+    mutate(file0 = name0   |> paste0(".", dataExt)) |>
+    mutate(dir0  = dataDir |> file.path(type0)) |>
+    mutate(path0 = dir0    |> file.path(file0))
   rm(select0)
 
+  # "got here" |> print()
   ### Iterate over groups, loading scenarios
-  types0        <- dfScenarios |> group_keys() |> pull(all_of(typeCol0))
+  types0        <- dfScenarios |> group_keys() |> pull(type0)
   dataList      <- dfScenarios |> group_map(function(.x, .y){
     .x |> loadScenarioData_byType(
       .y       = .y,
-      typeCol0 = typeCol0,
+      typeCol0 = "type0",
       nameCol0 = "name0",
       pathCol0 = "path0",
       silent   = TRUE,
-      msg0     = 0
+      msg0     = msg1
     ) ### End loadScenarioData_byType
   }) |> set_names(types0)
   
@@ -84,6 +92,7 @@ loadScenarioData <- function(
   
   
   ###### Return ----------------
-  if (msgUser) msg1 |> get_msgPrefix(newline=T) |> paste0("...Finished loading scenario data.") |> message()
+  # if (msgUser) 
+  msg1 |> get_msgPrefix(newline=T) |> paste0("...Finished loading scenario data.") |> message()
   return(dataList)
 }

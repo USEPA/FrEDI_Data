@@ -34,7 +34,8 @@ reshapeScenarioData <- function(
   msgN          <- "\n"
   msg1          <- msg0 + 1
   msg2          <- msg0 + 2
-  if(msgUser) msg0 |> get_msgPrefix(newline=T) |> paste0("Reshaping scenario data...") |> message()
+  # if(msgUser) 
+  msg0 |> get_msgPrefix(newline=T) |> paste0("Reshaping scenario data...") |> message()
   
   #### Columns and values ----------------
   ### Columns
@@ -58,7 +59,6 @@ reshapeScenarioData <- function(
   ### Reshape Population Ratios ----------------
   ### Format Population Ratio Data
   popRData     <- scenarioData[[ratiosName]] |> format_popRatioData(
-    df0,
     df1     = co_states,    ### States data
     group0  = c(areaCol0, regCol0, stateCol0, postCol0, fipsCol0, orderCol0), ### Grouping columns
     xCol0   = c(yrCol0), ### X columns
@@ -76,31 +76,37 @@ reshapeScenarioData <- function(
   ### Scenarios data
   ### Scenarios
   dfScenarios   <- dfScenarios |> 
-    select(all_of(select0)) |> distinct() |> 
+    # select(all_of(select0)) |> distinct() |> 
     arrange_at(c(typeCol0, idCol0)) |> 
     group_by_at(c(typeCol0))
-  types0        <- dfScenarios  |> pull(inputName) |> unique()
-  scenarioData[types0]
+  types0        <- dfScenarios  |> pull(any_of(typeCol0)) |> unique()
+  
   ### Iterate over list
   dataList     <- dfScenarios |> group_map(function(.x, .y){
-    .x |> reshapeScenarioData_byType(
+    .x |> formatScenarioData_byType(
       .y       = .y,
+      df1      = co_states,
       typeCol0 = typeCol0,
       idCol0   = idCol0,
-      xCol0    = xCol0,
+      xCol0    = yrCol0,
       valCol0  = "valueCol",
+      grpCol0  = "groupCols",
       regCols0 = stateCols0,
       list0    = scenarioData,
+      method0  = "linear",
+      rule0    = 1,
       silent   = silent,
       msg0     = msg1
     ) ### End reshapeScenarioData_byType
   }) |> set_names(types0)
   ### Update in list
-  scenarioData <- scenarioData[scenarioData |> names() |> get_matches(y=types0, matches=F, type="matches")]
-  scenarioData <- dataList |> c(scenarioData)
+  # scenarioData <- scenarioData[scenarioData |> names() |> get_matches(y=types0, matches=F, type="matches")]
+  scenarioData <- dataList |> c(scenarioData["popRatios"])
+  rm(dataList)
   # dataList |> glimpse()
   
-  ###### Return ----------------
-  if (msgUser) msg1 |> get_msgPrefix(newline=T) |> paste0("...Finished reshaping scenario data.") |> message()
-  return(dataList)
+  ### Return ----------------
+  # if (msgUser) 
+  msg1 |> get_msgPrefix(newline=T) |> paste0("...Finished reshaping scenario data.") |> message()
+  return(scenarioData)
 }
