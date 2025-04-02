@@ -35,7 +35,7 @@ createSVData <- function(
   sv_filePath <- outPath_sv |> file.path(sv_fileName)
   
   ###### Import Functions from ciraTempBin ######
-  calc_countyPop  <- utils::getFromNamespace("calc_countyPop", "FrEDI")
+  # calc_countyPop  <- utils::getFromNamespace("calc_countyPop", "FrEDI")
   # outPath     = file.path(getwd(), "..", "FrEDI", "R"),
   # getwd() %>% file.path("..", "FrEDI", "R", "utils_sv.R") %>% source
   
