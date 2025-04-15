@@ -63,7 +63,8 @@ configureScenarios <- function(
   ### Reshape state data
   # if(msgUser)
   # msg1 |> get_msgPrefix(newline=T) |> paste0("Reshaping scenarios...") |> message()
-  scenarioData <- controlData[["co_scenarios"]] |> reshapeScenarioData(
+  scenarioData <-  reshapeScenarioData(
+    dfScenarios  = controlData[["co_scenarios"]],
     scenarioData = scenarioData,
     controlData  = controlData, ### Output of configureControlTables()
     minYr0       = minYr0,

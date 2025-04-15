@@ -62,7 +62,8 @@ reshapeScalarData <- function(
   # scalarData |> glimpse()
   
   ### Format scalars
-  scalarData <- scalarData |> fun_formatScalars(
+  scalarData <- fun_formatScalars(
+    df0      = scalarData,
     df1      = scalarInfo, 
     years0   = minYr0:maxYr0,
     natStr0  = natStr0,

@@ -83,7 +83,8 @@ reshapeScenarioData <- function(
   
   ### Iterate over list
   dataList     <- dfScenarios |> group_map(function(.x, .y){
-    .x |> formatScenarioData_byType(
+    formatScenarioData_byType(
+      .x       = .x,
       .y       = .y,
       df1      = co_states,
       typeCol0 = typeCol0,

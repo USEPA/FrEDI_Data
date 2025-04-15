@@ -189,7 +189,6 @@ formatScenarioData_byType <- function(
   msgUser    <- !silent
   msgN       <- "\n"
   msg1       <- msg0 + 1
-  
   ### Type
   type0      <- .y |> pull(all_of(typeCol0)) |> unique() |> tolower()
   yCol0      <- .x |> pull(all_of(valCol0)) |> unique()
@@ -252,6 +251,7 @@ formatScenarioData_byType <- function(
   
   ### Return data
   if (msgUser) msg1 |> get_msgPrefix(newline=F) |> paste0("Finished formatting ", type0, " scenario data...") |> message()
+  print(df0)
   return(df0)
 }
 
@@ -313,7 +313,6 @@ reshapeScenarioData_byGroup <- function(
   msgUser    <- !silent
   msgN       <- "\n"
   msg1       <- msg0 + 1
-  
   ### Values
   # .x |> glimpse(); .y |> glimpse()
   name0      <- .y |> pull(all_of(idCol0)) |> unique()
@@ -1241,7 +1240,7 @@ fun_formatScalars <- function(
         .x |> interpolate_byGroup(
           .y      = .y,
           xCol0   = yrCol0,
-          yCol0   = valCol0,
+          yCols0   = valCol0,
           xOut0   = years0,
           method0 = methodX,
           rule0   = rule0

@@ -68,7 +68,8 @@ reshapeFrediData <- function(
   # scalarData |> glimpse()
   # dataList[[stateLStr0]] |> glimpse()
   # return()
-  scalarData <- dataList[[stateLStr0]][["scalarData"]] |> reshapeScalarData(
+  scalarData <-  reshapeScalarData(
+    scalarData  = dataList[[stateLStr0]][["scalarData"]],
     controlData = controlData,
     scalarInfo  = configData[["co_scalarInfo"]],
     minYr0      = minYr0,
