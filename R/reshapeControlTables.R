@@ -20,7 +20,7 @@ reshapeControlTables <- function(
   msgN        <- "\n"
   msg1        <- msg0 + 1
   msg2        <- msg0 + 2
-  msg0 |> get_msgPrefix(newline=T) |> paste0("Reshaping control tables...") |> message()
+  msg0 |> get_msgPrefix(newline=F) |> paste0("Running reshapeControlTables()...") |> message()
   
   ### Import Functions from FrEDI ----------------
   # get_matches        <- "get_matches"        |> utils::getFromNamespace("FrEDI")
@@ -58,45 +58,72 @@ reshapeControlTables <- function(
   
   
   #### 2. Default Scenarios ----------------
-  ##### Input Scenarios ----------------
-  ### Join info on scenarios with input info
-  co_scenarios <- co_scenarios |> (function(
-    df0,
-    df1    = co_inputInfo,
-    idCol0 = "inputName",
-    join0  = "inputName",
-    sort0  = c("inputName", "scenarioName")
-  ){
-    df0 |> 
-      left_join(df1, by=join0) |>
-      arrange_at(c(sort0))
-  })() 
-  # co_scenarios |> glimpse()
-  dataList[["co_scenarios"]] <- co_scenarios
-  
-  ### Module scenarios
+  ##### Module Scenarios ----------------
   co_moduleScenarios <- co_moduleScenarios |> (function(
     df0,
-    df1      = co_scenarios,
+    df1      = co_inputInfo,
     idCols0  = c("inputName", "idCol0"),
     nameCol0 = "module",
     valCol0  = "scenarioName",
     join0    = "inputName"
   ){
     ### Pivot longer
-    df0 <- df0 |> 
-      pivot_longer(-c(idCols0), names_to=nameCol0, values_to=valCol0) |>
+    df0 <- df0 |> pivot_longer(
+        -any_of(idCols0), 
+        names_to  = nameCol0, 
+        values_to = valCol0
+      ) |>
       filter_at(c(valCol0), function(x){!(x |> is.na())}) |>
       arrange_at(c(nameCol0, idCols0))
+    # df0 |> glimpse(); df1 |> glimpse()
+    
+    ### Join with scenario info and input info
+    df0 <- df0 |> left_join(df1, by=join0)
+    
+    ### Return
+    return(df0)
+  })() |> (function(
+    df0,
+    df1      = co_scenarios,
+    drop1    = c("inputName"),
+    join0    = c("scenarioName"),
+    sort0    = c("module", "inputName", "scenarioName")
+    # join0    = "inputName"
+  ){
+    ### Drop input name
+    df1 <- df1 |> select(-any_of(drop1))
+    
     ### Join with scenario info and input info
     df0 <- df0 |> 
-      left_join(df1, by=c(join0, valCol0)) |>
-      arrange_at(c(nameCol0, join0, valCol0))
+      # left_join(df1, by=c(join0, valCol0)) |>
+      left_join(df1, by=join0) |>
+      arrange_at(c(sort0))
+    # df0 |> glimpse()
+    
     ### Return
     return(df0)
   })()
   ### Update values in list, drop intermediate variables
   dataList[["co_moduleScenarios"]] <- co_moduleScenarios
+  
+  ##### Input Scenarios ----------------
+  ### Join info on scenarios with input info
+  co_scenarios <- co_scenarios |> (function(
+    df0,
+    df1     = co_inputInfo,
+    # select0 = c("scenarioName", "inputName", "inputArgType", "inputArgVal"),
+    idCol0  = "inputName",
+    join0   = "inputName",
+    sort0   = c("inputName", "scenarioName")
+  ){
+    # df0 |> glimpse(); df1 |> glimpse()
+    df0 |> 
+      left_join(df1, by=join0) |>
+      arrange_at(c(sort0))
+    # df0 |> glimpse()
+  })() 
+  # co_scenarios |> glimpse()
+  dataList[["co_scenarios"]] <- co_scenarios
   
   #### 3. Module Areas, States, & Regions ----------------
   ##### Module Areas ----------------
@@ -170,7 +197,7 @@ reshapeControlTables <- function(
   
   ### Return ----------------
   ### Return the list of dataframes
-  msg0 |> get_msgPrefix(newline=F) |> paste0("...Finished reshaping control tables.", msgN) |> message()
+  msg0 |> get_msgPrefix(newline=F) |> paste0("...Finished running reshapeControlTables().", msgN) |> message()
   msg0 |> get_msgPrefix(newline=T) |> message()
   return(dataList)
 }
