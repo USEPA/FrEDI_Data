@@ -62,7 +62,7 @@ reshapeControlTables <- function(
   co_moduleScenarios <- co_moduleScenarios |> (function(
     df0,
     df1      = co_inputInfo,
-    idCols0  = c("inputName", "idCol0"),
+    idCols0  = c("inputName"),
     nameCol0 = "module",
     valCol0  = "scenarioName",
     join0    = "inputName"
