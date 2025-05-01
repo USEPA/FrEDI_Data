@@ -56,6 +56,22 @@ reshapeControlTables <- function(
   ### Update values in list, drop intermediate variables
   dataList[["co_moduleModTypes"]] <- co_moduleModTypes
   
+  #### 2. Input Info ----------------
+  co_inputInfo <- co_inputInfo |> (function(
+    df0,
+    idCols0  = "module",
+    nameCol0 = "model_type",
+    valCol0  = "value"
+  ){
+    df0 |>
+      mutate(doReg0   = regional  |> as.logical()) |>
+      mutate(doTemp0  = inputName |> str_detect("temp")) |>
+      mutate(doPop0   = inputName |> str_detect("pop")) |>
+      mutate(doO3     = inputName |> str_detect("o3"))
+  })()
+  ### Update values in list, drop intermediate variables
+  dataList[["co_inputInfo"]] <- co_inputInfo
+  
   
   #### 2. Default Scenarios ----------------
   ##### Module Scenarios ----------------
