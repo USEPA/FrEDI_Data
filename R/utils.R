@@ -190,7 +190,8 @@ formatScenarioData_byType <- function(
   msgN       <- "\n"
   msg1       <- msg0 + 1
   
-  ### Type
+  ### Columns & Values
+  # "got here2" |> print(); .y |> glimpse(); # .x |> glimpse();  
   type0      <- .y |> pull(all_of(typeCol0)) |> unique() |> tolower()
   yCol0      <- .x |> pull(all_of(valCol0)) |> unique()
   refYr0     <- .x |> pull(refYear ) |> unique()
@@ -198,10 +199,21 @@ formatScenarioData_byType <- function(
   reg0       <- .x |> pull(regional) |> unique()
   # argType0   <- .y |> pull(inputArgType)
   # argVal0    <- .y |> pull(inputArgType)
+  
+  ### IDs
+  # id0        <- .x |> pull(all_of(idCol0 )) |> unique()
+  # idColNew   <- .x |> pull(idCol0) |> unique()
+  # idColNew   <- "idCol0"
+  # idCols0    <- idCol0 |> c(idColNew) |> unique()
+  
+  ### Group columns
   groupCols0 <- .x |> pull(all_of(grpCol0)) |> 
     format_groupColsColumn() |>
-    parse_groupColsColumn()
-  # groupCols0 |> print()
+    parse_groupColsColumn() |> 
+    unique()
+  # groupCols0 <- .x |> pull(idCol0) |> c(groupCols0) |> unique()
+  # groupCols0 <- idCol0 |> c(groupCols0) |> unique()
+  type0 |> print(); groupCols0 |> print()
   
   ### Conditionals
   doReg0     <- reg0 == 1
@@ -209,17 +221,24 @@ formatScenarioData_byType <- function(
   
   ### Group x by remaining names
   list0      <- list0[[type0]]
-  names0     <- .x |> pull(all_of(idCol0))
-  .x         <- .x |> group_by_at(c(idCol0))
+  group0     <- idCol0
+  # group0     <- idColNew
+  .x         <- .x |> group_by_at(c(group0))
+  names0     <- .x |> group_keys() |> pull(all_of(group0)) |> unique()
+  # names0 |> print()
+  # "got here3" |> print(); .x |> glimpse();  
+  # return()
   
   ### Read in files and bind data
   if (msgUser) msg0 |> get_msgPrefix(newline=F) |> paste0("Formatting ", type0, " scenario data...") |> message()
-  list0      <- .x |> group_map(function(.x, .y){
-    .x |> reshapeScenarioData_byGroup(
-      .y       = .y,
+  list0      <- .x |> group_map(function(.x1, .y1){
+    .x1 |> reshapeScenarioData_byGroup(
+      .y       = .y1,
       df1      = df1,
       list0    = list0,
       idCol0   = idCol0,
+      # idCol0   = "idCol0",
+      # idCol0   = idColNew,
       xCol0    = xCol0,
       yCol0    = yCol0,
       refYr0   = refYr0,
@@ -230,15 +249,20 @@ formatScenarioData_byType <- function(
       doTemp0  = doTemp0,
       silent   = silent,
       msg0     = msg1
-    ) ### End reshapeScenarioData_byGroup
+    ) |> 
+      group_by_at(c(groupCols0)) ### End reshapeScenarioData_byGroup
   }) |> set_names(names0)
+  # return(list0)
   
   ### Format data
-  df0        <- .x |> group_map(function(.x, .y){
-    .x |> interpolateScenarioData_byGroup(
-      .y       = .y,
+  # "got here4" |> print(); list0 |> glimpse()
+  df0        <- .x |> group_map(function(.x1, .y1){
+    .x1 |> interpolateScenarioData_byGroup(
+      .y       = .y1,
       list0    = list0,
       idCol0   = idCol0,
+      # idCol0   = "idCol0",
+      # idCol0   = idColNew,
       xCol0    = xCol0,
       yCol0    = yCol0,
       argCol0  = argCol0,
@@ -248,7 +272,7 @@ formatScenarioData_byType <- function(
       silent   = silent,
       msg0     = msg1
     ) ### End reshapeScenarioData_byGroup
-  }) |> set_names(names0)
+  }) |> bind_rows()
   
   ### Return data
   if (msgUser) msg1 |> get_msgPrefix(newline=F) |> paste0("Finished formatting ", type0, " scenario data...") |> message()
@@ -315,7 +339,8 @@ reshapeScenarioData_byGroup <- function(
   msg1       <- msg0 + 1
   
   ### Values
-  # .x |> glimpse(); .y |> glimpse()
+  # list0 |> names() |> print(); idCol0 |> print()
+  # .y |> glimpse(); .x |> glimpse(); 
   name0      <- .y |> pull(all_of(idCol0)) |> unique()
   df0        <- list0[[name0]]
   
@@ -327,13 +352,18 @@ reshapeScenarioData_byGroup <- function(
     if(!hasGrp0) df0[[group0]] <- name0
   } ### End if(doTemp0)
   
+  ### Group columns
+  groupCols0 <- idCol0 |> c(group0) |> unique()
+  # groupCols0 |> print()
+  
   ### If doReg, standardize region/state info
   if(doReg0) {
     df0 <- df0 |> reshape_regScenario(
       df1      = df1,     ### States info
       xCol0    = xCol0,
       yCol0    = yCol0,
-      group0   = group0,
+      # group0   = group0,
+      group0   = groupCols0,
       regCols0 = regCols0,
       silent   = TRUE,
       msg0     = 0
@@ -393,21 +423,13 @@ interpolateScenarioData_byGroup <- function(
   msg1       <- msg0 + 1
   
   ### Values
-  # .x |> glimpse(); 
-  # .y |> glimpse()
-  name0      <- .y |> pull(all_of(idCol0)) |> unique()
+  # .y |> glimpse(); .x |> glimpse();
+  name0      <- .y |> pull(all_of(idCol0 )) |> unique()
   argVal0    <- .x |> pull(all_of(argCol0)) |> unique()
   if (msgUser) msg0 |> get_msgPrefix(newline=F) |> paste0("Interpolating values for ", name0, " scenario...") |> message()
   
   ### Data
   df0        <- list0[[name0]]
-  # df0        <- df0 |> group_map(
-  #   interpolate_byGroup,
-  #   xCol0     = xCol0,
-  #   yCols0    = yCol0,
-  #   method0   = method0,
-  #   rule0     = rule0
-  # ) |> bind_rows()
   
   ### If doTemp, use one function, otehrwise, use the other
   if(doTemp0){
@@ -430,6 +452,7 @@ interpolateScenarioData_byGroup <- function(
   } ### End if(doTemp0)  
   
   ### Join data with input col
+  # df0 |> glimpse(); 
   df0        <- .y |> 
     select(any_of(idCol0)) |> 
     distinct() |>

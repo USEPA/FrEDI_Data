@@ -77,13 +77,20 @@ reshapeScenarioData <- function(
   ### Scenarios
   dfScenarios   <- dfScenarios |> 
     # select(all_of(select0)) |> distinct() |> 
-    arrange_at(c(typeCol0, idCol0)) |> 
+    arrange_at (c(typeCol0, idCol0)) |> 
     group_by_at(c(typeCol0))
   types0        <- dfScenarios  |> pull(any_of(typeCol0)) |> unique()
   
   ### Iterate over list
+  # dfScenarios |> glimpse()
+  # return(scenarioData)
+  # idCol0 |> print()
   dataList     <- dfScenarios |> group_map(function(.x, .y){
-    .x |> formatScenarioData_byType(
+    # "got here1" |> print()
+    # .y |> glimpse(); .x |> glimpse();  
+    .x |>
+      formatScenarioData_byType(
+      # .x       = .x,
       .y       = .y,
       df1      = co_states,
       typeCol0 = typeCol0,
