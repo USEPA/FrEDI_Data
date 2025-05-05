@@ -1213,10 +1213,13 @@ fun_formatScalars <- function(
   rm(dfNone)
   
   ### Bind dfNone with df0 and join info
+  # join0    <- c(typeCol0, nameCol0)
+  join0    <- c(nameCol0)
   move0    <- c(scCols0, rCol0, dCol0)
   sort0    <- c(dCol0, rCol0, typeCol0, nameCol0, regCols0, yrCol0)
+  df0 |> glimpse(); df1 |> glimpse(); nameCol0 |> print(); move0 |> print(); sort0 |> print()
   df0      <- df0 |> 
-    left_join(df1, by=nameCol0) |>
+    left_join(df1, by=join0) |>
     relocate(all_of(move0)) |>
     arrange_at(c(sort0))
   rm(df1)
@@ -1243,10 +1246,11 @@ fun_formatScalars <- function(
     df0 |>
       filter_at(c(mCol0), function(x, y=methodX){x %in% y}) |>
       group_map(function(.x, .y){
+        # .y |> glimpse()
         .x |> interpolate_byGroup(
           .y      = .y,
           xCol0   = yrCol0,
-          yCol0   = valCol0,
+          yCols0  = valCol0,
           xOut0   = years0,
           method0 = methodX,
           rule0   = rule0
