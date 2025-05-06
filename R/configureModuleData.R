@@ -80,7 +80,7 @@ configureModuleData <- function(
     .testing    = .testing
   ) ### End loadData
   # gc()
-  return(dataList)
+  # return(dataList)
   
   ### 2. Reshape Data ----------------
   # if(!silent) 
@@ -100,8 +100,8 @@ configureModuleData <- function(
   # return(dataList)
   
   ### If reshape, save a copy of the reshaped data
-  if(reshape) {reshapeData0 <- dataList} 
-  else        {reshapeData0 <- NULL  }
+  if(reshape0) {reshapeData0 <- dataList} 
+  else         {reshapeData0 <- NULL  }
   
   
   ### 4. Configure Data ----------------

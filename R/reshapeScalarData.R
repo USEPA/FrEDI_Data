@@ -59,7 +59,7 @@ reshapeScalarData <- function(
   # "got here1" |> print()
   # select0    <- c("region", "state", "postal", "fips")
   co_states  <- controlData[["co_states"]] |> select(all_of(regCols0))
-  co_states |> glimpse()
+  # co_states |> glimpse()
   # scalarData |> glimpse()
   
   # drop0      <- c(areaCol0, regCol0)
@@ -88,7 +88,7 @@ reshapeScalarData <- function(
   ### Standardize values by state/region
   # co_states  <- co_states  |> select(all_of(postCol0))
   scNames0   <- scalarData  |> pull(all_of(nameCol0)) |> unique()
-  scalarData |> glimpse()
+  # scalarData |> glimpse()
   scalarData <- scNames0 |> map(function(nameX){
     ### Get unique values by year
     dropX <- "groupID"

@@ -1217,7 +1217,7 @@ fun_formatScalars <- function(
   join0    <- c(nameCol0)
   move0    <- c(scCols0, rCol0, dCol0)
   sort0    <- c(dCol0, rCol0, typeCol0, nameCol0, regCols0, yrCol0)
-  df0 |> glimpse(); df1 |> glimpse(); nameCol0 |> print(); move0 |> print(); sort0 |> print()
+  # df0 |> glimpse(); df1 |> glimpse(); nameCol0 |> print(); move0 |> print(); sort0 |> print()
   df0      <- df0 |> 
     left_join(df1, by=join0) |>
     relocate(all_of(move0)) |>
@@ -1302,19 +1302,27 @@ extrapolate_gcmImpacts_byGroup <- function(
   xMax0  <- df0 |> pull(all_of(xCol0)) |> max(na.rm=T)
   tail0  <- df0 |> tail(2) |> rename_at(c(old0), ~new0)
   doExt0 <- xMax0 < to0 | all0
+  # tail0 |> glimpse(); doExt0 |> print()
   if(tail0 |> pull(yIn) |> is.na() |> all()) tail0 |> glimpse()
   
   ### If extrapolate:
   if(doExt0){
     ### Get linear trend
     lm0    <- lm(yIn~xIn, data=tail0)
-    int0   <- lm0$coefficients[[1]]
-    slope0 <- lm0$coefficients[[2]]
+    k0     <- lm0[["coefficients"]] |> unlist()
+    int0   <- k0[[1]]
+    slope0 <- k0[[2]]
+    # int0   <- lm0$coefficients[[1]]
+    # slope0 <- lm0$coefficients[[2]]
+    # c(int0, slope0) |> print()
     ### Create data
-    dfNew  <- tibble() |> 
-      tibble(xIn = to0) |>
+    # xNew   <- to0
+    # yNew   <- int0 + xNew * slope0
+    # c(xNew, yNew) |> print()
+    dfNew  <- tibble(xIn = to0) |>
       mutate(yIn = int0 + xIn * slope0) |> 
       rename_at(c(new0), ~old0)
+    # dfNew |> glimpse()
     ### Extend values, then bind with earlier observations
     df0    <- df0 |> bind_rows(dfNew)
   } ### End if(doExtrap)
@@ -1341,6 +1349,13 @@ extrapolate_gcmImpacts <- function(
     # extrapolate = FALSE, ### Whether to extrapolate by default
     # unitScale   = NULL,  ### Scale between values
 ){
+  ### Filter and Arrange Data ----------------
+  df0    <- df0 |> 
+    # filter_at (c(idCol0), function(x, y=ids0){x %in% y}) |>
+    filter_at  (c(yCol0), function(x){!(x |> is.na())}) |>
+    filter_at  (c(xCol0), function(x){x > xMin0}) |> 
+    arrange_at (c(idCol0, xCol0))
+  
   ### Groups ----------------
   ### - Create groups and get group keys
   ### - Filter out NA values
@@ -1349,27 +1364,27 @@ extrapolate_gcmImpacts <- function(
   cols0  <- c(xCol0, yCol0)
   keys0  <- df0   |> group_keys()
   group0 <- keys0 |> names()
+  # keys0 |> glimpse()
   ids0   <- keys0 |> pull(all_of(idCol0)) |> unique()
   # ids0   <- ids0  |> head(5)
   # keys0  <- keys0 |> filter_at(c(idCol0), function(x, y=ids0){x %in% y})
   # keys0  <- df0   |> filter_at(c(idCol0), function(x, y=ids0){x %in% y})
   # ids0 |> print(); df0 |> glimpse(); keys0 |> glimpse()
-
-  ### Filter and Arrange Data ----------------
-  df0    <- df0 |> 
-    arrange_at(c(idCol0, xCol0)) |> 
-    filter_at (c(idCol0), function(x, y=ids0){x %in% y}) |>
-    filter_at (c(yCol0), function(x){!(x |> is.na())}) |>
-    filter_at (c(xCol0), function(x){x > xMin0})
-  # df0 |> glimpse()
+  
+  ### For testing ----------------
+  # df0   <- df0   |> filter(scenario_id %in% ids0[1])
+  # keys0 <- df0   |> group_keys()
+  # ids0  <- keys0 |> pull(all_of(idCol0))
   
   ### Extrapolate Data ----------------
   ### Extrapolate values
-  cols0    <- c(xCol0, yCol0)
+  # cols0    <- c(xCol0, yCol0)
+  # all0 |> print()
   df0      <- df0 |> group_map(function(.x, .y){
+    # .x |> glimpse(); .y |> glimpse()
     .x |> 
-      ungroup() |>
-      select(all_of(cols0)) |> 
+      # ungroup() |>
+      select(all_of(cols0)) |>
       extrapolate_gcmImpacts_byGroup(
         xCol0 = xCol0, 
         yCol0 = yCol0, 
@@ -1378,20 +1393,28 @@ extrapolate_gcmImpacts <- function(
         from0 = from0,
         to0   = to0,  
         all0  = all0  
-      ) ### extrapolate_impFunction
+      ) |>  ### extrapolate_impFunction
+      cross_join(.y)
   }) |> set_names(ids0) |> 
     bind_rows(.id=idCol0)
   
   ### Join Group Info ----------------
   ### Join data and rename columns
-  df0      <- keys0 |> 
-    filter_at(c(idCol0), function(x, y=ids0){x %in% y}) |>
-    left_join(df0, by=idCol0) |>
-    arrange_at(c(idCol0, xCol0)) |>
-    group_by_at(c(group0))
+  names0   <- keys0 |> names()
+  df0      <- df0   |> 
+    # left_join(keys0, by=idCol0) |>
+    relocate(any_of(names0)) |>
+    arrange_at(c(idCol0, xCol0)) |> 
+    group_by_at(c(names0))
+  # df0 |> glimpse()
+  # df0      <- keys0 |> 
+  #   filter_at(c(idCol0), function(x, y=ids0){x %in% y}) |>
+  #   left_join(df0, by=idCol0) |>
+  #   arrange_at(c(idCol0, xCol0)) |>
+  #   group_by_at(c(group0))
   
   ### Return ----------------
-  gc()
+  # gc()
   return(df0)
 }
 
@@ -1408,6 +1431,7 @@ get_impactFunctions <- function(
     rule0   = 1
 ){
   ### Groups
+  # df0 |> glimpse()
   df0   <- df0   |> arrange_at (c(idCol0, xCol0))
   keys0 <- df0   |> group_keys()
   ids0  <- keys0 |> pull(all_of(idCol0))
@@ -1511,6 +1535,7 @@ format_gcmScaledImpacts <- function(
     rule0   = rule0
   ) ### End extrapolate_gcmImpacts
   list0[["gcmData"]] <- df0
+  # df0 |> filter_at(c(xCol0), function(x, y=6){x>y}) |> glimpse()
   
   ### Get impact functions
   if(msgUser) msg0 |> get_msgPrefix() |> paste("Creating GCM impact functions...") |> message()

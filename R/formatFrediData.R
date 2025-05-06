@@ -3,7 +3,7 @@ formatFrediData <- function(
     module      = "fredi",
     dataList    = list(), ### List of data created by reshapeData
     controlData = list(),
-    extend_all  = FALSE, ### Whether to extend all GCM model observations to maximum range
+    extend_all  = TRUE, ### Whether to extend all GCM model observations to maximum range
     # dropImpData = TRUE , ### Whether to drop original impact data
     silent      = FALSE, ### Level of messaging 
     msg0        = 0      ### Prefix for messaging
@@ -110,6 +110,7 @@ formatFrediData <- function(
     } else {
       ### Extrapolate values
       ### - Value to extend to
+      # extend_all |> print()
       extend0 <- controlData[["co_modelTypes"]] |> 
         filter(model_type %in% type0) |> 
         pull(driverMaxOutput) |> 
