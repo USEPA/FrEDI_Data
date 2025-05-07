@@ -8,217 +8,211 @@
 #'
 #' @examples
 reshapeConfigData <- function(
-    dataList = NULL,   ### List of data (e.g., as returned from FrEDI_Data::loadData())
-    silent   = TRUE,   ### Level of messaging
-    msg0     = "\t"    ### Prefix for messaging
+    module      = "fredi",
+    dataList    = NULL, ### List of data (e.g., as returned from FrEDI_Data::loadData())
+    controlData = NULL, ### List with configured control tables (outputs of reshapeControlTables)
+    minYr0      = 2010,
+    maxYr0      = 2300,
+    silent      = TRUE, ### Level of messaging
+    msg0        = 0     ### Prefix for messaging
 ) {
-  ###### Messaging ######
+  ### Set up Environment ----------------
+  #### Messaging ----------------
+  msgUser       <- !silent
   msgN          <- "\n"
-  msg1          <- msg0 |> paste("\t")  
-  if (!silent) paste0(msg0, "Running reshapeConfigData...") |> message()
-  if (!silent) paste0(msg1, "Reshaping data from FrEDI config file...") |> message()
+  msg1          <- msg0 + 1
+  msg2          <- msg0 + 2
+  if (msgUser) msg0 |> get_msgPrefix(newline=F) |> paste0("Running reshapeConfigData...") |> message()
+  # if (msgUser) paste0(msg1, "Reshaping data from FrEDI config file...") |> message()
   
-  ###### Assign Objects ######
+  ### Import Functions from FrEDI ----------------
+  # get_matches        <- "get_matches"        |> utils::getFromNamespace("FrEDI")
+  # get_co_sectorsInfo <- "get_co_sectorsInfo" |> utils::getFromNamespace("FrEDI")
+  
+  ### 0. Load FrEDI Data Code ----------------
+  # ### Load FrEDI Data Code
+  # # projectDir |> devtools::load_all()
+  # configVals0 <- frediConfig()
+  # minYr0      <- configVals0[["minYear0"]]
+  # maxYr0      <- configVals0[["maxYear0"]]
+  
+  #### Assign Objects ----------------
   # dataList0 <- dataList
   ### Assign tables in dataList to object in local environment
-  listNames     <- dataList |> names()
+  # listNames     <- dataList |> names()
   # listNames |> print()
-  for(name_i in listNames) {name_i |> assign(dataList[[name_i]]); rm(name_i)}
+  for(name_i in dataList    |> names()) {name_i |> assign(dataList   [[name_i]]); rm(name_i)}
+  for(name_i in controlData |> names()) {name_i |> assign(controlData[[name_i]]); rm(name_i)}
   # dataList |> list2env(envir = environment())
   
-
-  ###### Columns  ######
+  #### Columns * Value ----------------
   ### Region and state level columns to use
-  stateCols0    <- c("state", "postal")
+  # stateCols0    <- c("state", "postal")
+  areas0  <- co_moduleAreas |> 
+    filter_at(c("module"), function(x, y=module){x %in% y}) |>
+    pull(area)
+  mTypes0 <- co_moduleModTypes |> 
+    filter_at(c("module"), function(x, y=module){x %in% y}) |>
+    pull(model_type)
   
+  co_states     <- co_states     |> filter(area %in% areas0)
+  co_modelTypes <- co_modelTypes |> filter(model_type %in% mTypes0)
+  # co_states |> glimpse()
+  # co_modelTypes |> glimpse()
   
-  ###### Modify Tables and Update in List ######
-  ###### ** 1. Sectors     ######
-  ### Filter to those tables to include
+  ### Modify Tables and Update in List ----------------
+  #### 1. Sectors ----------------
   ### Make a copy of the sectors list to include variants
-  drop0         <- c("include", "variants", "impactYears", "impactTypes")
-  co_sectorsRef <- co_sectors
-  co_sectors    <- co_sectors |> select(-all_of(drop0))
-  ### Update values in list, drop intermediate variables
-  dataList[["co_sectorsRef"]] <- co_sectorsRef
-  dataList[["co_sectors"   ]] <- co_sectors
-  rm(drop0)
+  dataList[["co_sectorsRef"]] <- co_sectors
+  ### Drop other columns
+  co_sectors    <- co_sectors |> (function(
+    df0,
+    drop0 = c("include", "variants", "impactYears", "impactTypes")
+  ){
+    df0 |> select(-any_of(drop0))
+  })()
+  ### Update values in list
+  dataList[["co_sectors"]] <- co_sectors
   
-  
-  ###### ** 2. Misc ######
+  #### 2. Misc ----------------
   ### No changes to variants
-  ### No changes to model types
   ### No changes to input scenario info
   
-  
-  ###### ** 3. Variants ######
-  # ### Change NA to "NA"
-  # mutate0     <- c(variant)
-  # co_variants <- co_variants |> mutate_at(c(mutate0), replace_na, "NA")
-  # ### Update in list, drop intermediate values
-  # dataList[["co_variants"]] <- co_variants
-  
-  
-  ###### ** 3. Impact Types Info ######
+  #### 3. Impact Types Info ----------------
   ### Drop damage adjustment names (present in variants)
-  drop0          <- c("damageAdjName")
-  co_impactTypes <- co_impactTypes |> select(-all_of(drop0)) # ; co_impactTypes |> glimpse
-  ### Update in list, drop intermediate values
+  co_impactTypes <- co_impactTypes |> (function(
+    df0, 
+    drop0=c("damageAdjName")
+  ){
+    df0 |> select(-any_of(drop0))
+  })() # ; co_impactTypes |> glimpse
   dataList[["co_impactTypes"]] <- co_impactTypes
-  rm(drop0)
   
   
-  ###### ** 4. Impact Years ######
+  #### 4. Impact Years ----------------
   ### Load data and gather the data by impact year levels
-  idCols0     <- c("sector_id")
-  impYearLvls <- co_impactYears |> select(-all_of(idCols0)) |> names()
-  co_impactYears <- co_impactYears |> (function(df0, mutate0=impYearLvls, cols0=idCols0){
-    ### Convert to character
-    df0     <- df0 |> mutate_at(c(mutate0), as.character)
-    rm(mutate0)
-    
-    ### Reshape impact years: gather the data by impact year levels
-    df0     <- df0 |> pivot_longer(
-      cols      = -all_of(cols0),
-      names_to  = "impactYear_id", 
-      values_to = "impactYear"
-    ) ### End pivot_longer
-    
-    ### Mutate values
-    mutate0 <- c("impactYear_id") 
-    df0     <- df0 |> mutate_at(c(mutate0), na_if     , "X3")
-    df0     <- df0 |> mutate_at(c(mutate0), replace_na, "NA")
-    
-    ### Drop values with missing `impactYear` and then drop column
-    drop0 <- "impactYear"
-    df0   <- df0 |> filter(!(impactYear |> is.na()))
-    df0   <- df0 |> select(-all_of(drop0))
-    
-    ### Get impact year label
-    df0   <- df0 |> mutate(impactYear_label = impactYear_id |> str_replace("NA", "N/A"))
-    
+  # # lblCol0   = c("impactYear_label"),
+  # impYrs0   = c(2010, 2090),
+  # naStr0    = c("NA"),
+  # naLbl0    = c("N/A")
+  co_impactYears <- co_impactYears |> (function(
+    df0, 
+    df1       = co_impYrLvls,
+    col0      = c("impactYear"), 
+    idCols0   = c("sector")
+  ){
+    ### Select Columns
+    cols1     <- col0 |> paste0(c("", "_label"))
+    df1       <- df1  |> select(all_of(cols1))
+    ### Convert to character and pivot longer by impact year levels
+    valCol0   <- "value"
+    df0       <- df0 |> pivot_longer(
+        cols      = -all_of(idCols0),
+        names_to  = col0, 
+        values_to = valCol0
+      ) |> ### End pivot_longer
+      mutate_at(c(col0), na_if, "X3") |>
+      mutate_at(c(col0), replace_na, "NA") |>
+      filter_all(all_vars(!is.na(.))) |>
+      select(-all_of(valCol0)) |>
+      left_join(df1, by=col0)
     ### Return
     return(df0)
   })() 
-  
-  
-  ### Create info on impact year levels
-  select0 <- c("impactYear_id", "impactYear_label")
-  co_impYearLvls <- co_impactYears |> (function(df0, cols0=select0){
-    df0 <- df0 |> select(all_of(cols0))
-    df0 <- df0 |> unique()
-    return(df0)
-  })() 
-  
   ### Update/add tables in/to list, drop intermediate values
-  dataList[["co_impactYears"     ]] <- co_impactYears
-  dataList[["co_impYearLvls"]] <- co_impYearLvls
-  rm(idCols0, impYearLvls)
+  dataList[["co_impactYears"]] <- co_impactYears
   
 
-  ###### ** 5. Models & Model Types ######
-  ### Combine with model types and update data list
-  join0          <- c("modelType")
-  co_models      <- co_models |> left_join(co_modelTypes, by = join_by(modelType == modelType_id)) 
-  # co_models |> glimpse
-  ### Update in list, drop intermediate values
-  dataList[["co_models"]] <- co_models
-  rm(join0)
+  #### 5. Models & Model Types ----------------
+  # ### Update/add tables in/to list, drop intermediate values
+  # co_slrCm <- co_slrCm |> (function(
+  #   df0, 
+  #   modCol0 = "model"
+  # ){
+  #   df0 |> mutate_at(c(model), factor, df0 |> pull(all_of(modCol0)))
+  # })()
+  # ### Update in list
+  # dataList[["co_slrCm"]] <- co_slrCm
   
   
-  ###### ** 6. Regions & States ######
+  #### 6. Regions & States ----------------
   ### Combine and add to data list...also a copy with info on national data
   ### Update in list
   # co_regions <- co_regions |> mutate(region = region_id)
   # dataList[["co_regions"]] <- co_regions
-  co_states  <- co_states |> mutate(region = region |> str_replace_all(" ", ""))
-  co_states  <- co_states |> mutate(region = region |> str_replace_all("\\.", ""))
-  dataList[["co_states"]] <- co_states
+  # co_states  <- co_states |> 
+  #   mutate(region = region |> str_replace_all(" ", "")) |> 
+  #   mutate(region = region |> str_replace_all("\\.", ""))
+  # dataList[["co_states"]] <- co_states
   
   
-  ###### ** 7. Scenario Info ######
+  #### 7. Scenario Info ----------------
   ### Combine sectors with co_variants, co_impactTypes, co_impactYears to get group options
-  get_co_sectorsInfo <- utils::getFromNamespace("get_co_sectorsInfo", "FrEDI")
-  co_sectorsInfo <- co_sectors |> pull(sector_id) |> get_co_sectorsInfo(
-    addRegions = TRUE, ### Whether to include regions & states
-    addModels  = TRUE, ### Whether to include models
-    addIds     = TRUE, ### Add scenario Ids
-    include    = c("region", "state", "postal", "model"), ### Other columns to include
-    colTypes   = c("ids", "labels", "extra"), 
-    dfSects  = co_sectors,
-    dfVars   = co_variants,
-    dfITypes = co_impactTypes,
-    dfIYears = co_impactYears,
-    dfMTypes = co_modelTypes,
-    dfReg    = co_regions,
-    dfStates = co_states,
-    dfModels = co_models
+  # get_co_sectorsInfo <- utils::getFromNamespace("get_co_sectorsInfo", "FrEDI")
+  # co_modelTypes |> glimpse()
+  co_sectorsInfo <- co_sectors |> pull(sector) |> get_co_sectorsInfo(
+    dfSects    = co_sectors,
+    dfVars     = co_variants,
+    dfITypes   = co_impactTypes,
+    dfIYears   = co_impactYears,
+    dfStates   = co_states,
+    dfMTypes   = co_modelTypes,
+    dfModels   = co_models
   ) ### End get_co_sectorsInfo()
   ### Update in list, drop intermediate values
   # co_sectorsInfo |> glimpse()
   dataList[["co_sectorsInfo"]] <- co_sectorsInfo
 
   
-  ###### ** 8. Sector Scalar Info ######
-  co_sectorScalars <- co_sectorsInfo |> (function(df0){
+  #### 8. Scalar Info ----------------
+  ### Scalar info
+  co_scalarInfo  <- co_scalarInfo  |> (function(
+    df0,
+    move0    = c("scalarType", "scalarName", "regional", "dynamic"),
+    sort0    = c("regional", "dynamic", "scalarType", "scalarName")
+  ){
+    df0 |> 
+      relocate(all_of(move0)) |> 
+      arrange_at(c(sort0))
+  })()
+  ### Update() in list, drop intermediate values
+  # co_scalarInfo  |> glimpse()
+  dataList[["co_scalarInfo "]] <- co_scalarInfo 
+  
+  ### Sector scalar info
+  co_sectorScalars <- co_sectorsInfo |> (function(
+    df0,
+    # df1      = co_scalarTypes,
+    idCols0  = c("sector"),
+    typeCol0 = c("scalarType"),
+    nameCol0 = c("scalarName"),
+    nameStr0 = c("Name"),
+    types0   = co_scalarTypes |> pull(all_of(typeCol0))
+  ){
     ### Select columns
     ### Pivot longer
-    ### Drop "Name" string from scalarType
-    idCols0    <- c("sector")
-    colsScalar <- c("physScalar", "physAdj", "damageAdj", "econScalar", "econMultiplier")
-    select0    <- c(idCols0, colsScalar |> paste0("Name"))
-    df0        <- df0 |> select(all_of(select0)) |> distinct()
-    df0        <- df0 |> pivot_longer(-c(idCols0), names_to="scalarType", values_to="scalarName")
-    df0        <- df0 |> mutate_at(c(mutate0), str_replace, "Name", "")
-    ### Return
-    return(df0)
-  })
-  ### Update in list, drop intermediate values
-  # co_sectorsInfo |> glimpse()
-  dataList[["co_sectorScalars"]] <- co_sectorScalars
-  
-  
-  ###### ** 9. SLR Scenario Info ######
-  ### Gather slr_cm columns
-  # slr_cm |> names() |> print()
-  slr_cm  <- slr_cm |> (function(df0, df1=co_models, cols0=c("year")){
-    ### Gather slr_cm columns
-    df0    <- df0 |> pivot_longer(
-      cols      = -all_of(cols0), 
-      names_to  = "model",
-      values_to = "driverValue"
-    ) ### End pivot_longer
-    
-    ### Add model type
-    df0    <- df0 |> mutate(model_type = "slr")
-    
-    ### Zero out values and bind with other values
-    df0_0cm <- df0     |> filter(model == "30cm")
-    df0_0cm <- df0_0cm |> mutate(model = "0cm")
-    df0_0cm <- df0_0cm |> mutate(driverValue = 0)
-    df0     <- df0     |> filter(model != "0cm")
-    df0     <- df0_0cm |> rbind(df0)
-    rm(df0_0cm)
-    
-    ### Add model type
-    drop0   <- c("model_type")
-    df0     <- df0 |> select(-any_of(drop0))
-    df0     <- df0 |> mutate(modelType = "slr" |> as.character())
-    
-    ### Arrange
-    cols0   <- c("model", "year")
-    df0     <- df0 |> arrange_at(vars(cols0))
-    
+    nameCols0  <- types0  |> paste0(nameStr0)
+    select0    <- idCols0 |> c(nameCols0)
+    df0        <- df0 |> 
+      ungroup() |>
+      select(all_of(select0)) |> distinct() |> 
+      pivot_longer(
+        -any_of(idCols0), 
+        names_to  = typeCol0, 
+        values_to = nameCol0
+      ) |> 
+      mutate_at(c(typeCol0), str_replace, nameStr0, "")
     ### Return
     return(df0)
   })()
-  ### Update in data list, drop intermediate values
-  # slr_cm |> names() |> print()
-  dataList[["slr_cm"]] <- slr_cm
-  # dataList |> names() |> print()
+  ### Update() in list, drop intermediate values
+  # co_sectorsInfo |> glimpse()
+  dataList[["co_sectorScalars"]] <- co_sectorScalars
+
   
-  ###### Return ######
+  
+  ### Return ----------------
   ### Return the list of dataframes
-  if (!silent) paste0(msg0, "...Finished running reshapeConfigData().", msgN) |> message()
+  if (msgUser) msg1 |> get_msgPrefix(newline=F) |> paste0("...Finished running reshapeConfigData().", msgN) |> message()
   return(dataList)
 }

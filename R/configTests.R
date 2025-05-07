@@ -519,38 +519,40 @@ general_config_test <- function(
 
 
 ###### New Sector Plot Function ######
-get_fredi_sectorOptions <- function(
-    dfGroups  ### rDataList$stateData$nonNAGroups, where rDataList is output from configureSystemData()
-){
-  ### Load scenario ID function
-  get_scenario_id <- utils::getFromNamespace("get_scenario_id", "FrEDI")
-  
-  ### Add scenario ID
-  include0   <- c("region") |> c("state", "postal") |> c("model")
-  dfGroups   <- dfGroups    |> get_scenario_id(include=c(include0))
-  
-  ### Return
-  return(dfGroups)
-}
+# get_fredi_sectorOptions <- function(
+#     dfGroups  ### rDataList$stateData$nonNAGroups, where rDataList is output from configureSystemData()
+# ){
+#   ### Load scenario ID function
+#   # get_scenario_id <- utils::getFromNamespace("get_scenario_id", "FrEDI")
+#   
+#   ### Add scenario ID
+#   # include0   <- c("region") |> c("state", "postal") |> c("model")
+#   include0   <- c("region", "state", "model")
+#   dfGroups   <- dfGroups |> get_scenario_id(include0=include0)
+#   
+#   ### Return
+#   return(dfGroups)
+# }
 
 
-get_fredi_sectorOptions_results <- function(
+get_fredi_sectorOptions_results_old <- function(
     dataList ### Data list, rDataList produced by createSystemData
 ){
-  
-  ###### Data Lists ######
-  frediData  <- dataList[["frediData"]]
+
+  ### Data Lists
+  # configData <- dataList[["frediData"]]
+  configData <- dataList[["configData"]]
   dataList   <- dataList[["stateData"]]
-  
+
   ### State Columns
   stateCols  <- c("state", "postal")
-  
-  ###### Sector Options ######
+
+  ### Sector Options
   df0        <- dataList[["nonNAGroups"]] |> get_fredi_sectorOptions()
   names0     <- df0 |> names()
   # df0 |> glimpse()
-  
-  ###### Split Data ######
+
+  ### Split Data
   ### Split sectors by model type
   df_gcm     <- df0 |> filter(modelType=="gcm")
   df_slr     <- df0 |> filter(modelType=="slr")
@@ -560,11 +562,11 @@ get_fredi_sectorOptions_results <- function(
   ### Whether to do GCM and/or SLR
   do_gcm     <- n_gcm > 0
   do_slr     <- n_slr > 0
-  
-  ###### Initialize Tibble ######
+
+  ### Initialize Tibble
   df0        <- tibble()
-  
-  ###### Do SLR Results ######
+
+  ### Do SLR Results
   if(do_slr){
     ### Load SLR data
     ### Join df_slr with impacts
@@ -576,7 +578,7 @@ get_fredi_sectorOptions_results <- function(
     # slrImp |> glimpse(); df_slr |> glimpse()
     df_slr  <- df_slr |> left_join(slrImp, by=c(names0))
     rm(select0, slrImp)
-    
+
     ### Add driverValue
     ### Relocate columns
     move0      <- c("driverValue", "scaled_impacts")
@@ -585,19 +587,19 @@ get_fredi_sectorOptions_results <- function(
     df_slr     <- df_slr |> relocate(all_of(move0), .after=all_of(after0))
     rm(move0, after0)
     # df_slr |> glimpse()
-    
+
     ### Bind with initial results
     df0        <- df0 |> rbind(df_slr)
     rm(df_slr)
   } ### End if(do_slr)
-  
-  ###### Do GCM Results ######
+
+  ### Do GCM Results
   if(do_gcm){
     ### Get function list
     funList    <- dataList[["gcmImpFuncs"]]
     funNames   <- funList  |> names()
     nFunctions <- funNames |> length()
-    
+
     ### Create temperature scenario
     ### Execute the impact functions across new sectors (creates a wide tibble)
     ### Add temperatures
@@ -606,16 +608,16 @@ get_fredi_sectorOptions_results <- function(
     df_temps   <- tibble(temp_C = -1:11)
     df_vals    <- df_temps |> map_df(~ funList |> map_df(exec,.x))
     rm(funList, funNames, nFunctions)
-    
+
     ### Mutate and pivot
     df_vals    <- df_vals  |> mutate(driverValue = df_temps |> pull(temp_C))
     df_vals    <- df_vals  |> pivot_longer(
-      all_of(keyCols0), 
+      all_of(keyCols0),
       names_to  = "scenario_id",
       values_to = "scaled_impacts"
     ) ### End pivot_longer
     rm(keyCols0)
-    
+
     ### Join with df_gcm
     # df_vals |> names() |> print(); df_gcm |> names() |> print()
     join0      <- c("scenario_id")
@@ -624,7 +626,7 @@ get_fredi_sectorOptions_results <- function(
     df_gcm     <- df_gcm  |> relocate(all_of(select0))
     rm(df_vals, select0, join0)
     # df_gcm |> glimpse()
-    
+
     ### Add year
     ### Relocate columns
     move0      <- c("year")
@@ -632,54 +634,181 @@ get_fredi_sectorOptions_results <- function(
     df_gcm     <- df_gcm |> mutate(year = impactYear |> na_if("NA") |> as.numeric())
     df_gcm     <- df_gcm |> relocate(all_of(move0), .before=all_of(before0))
     rm(move0, before0)
-    
+
     ### Bind with initial results
     # df0 |> names() |> print(); df_gcm |> names() |> print()
     # select0    <- df_gcm |> names() |> (function(x, y=df0 |> names()){x[x %in% y]})()
     df0        <- df0 |> rbind(df_gcm)
     rm(df_gcm)
   } ### End if(do_gcm)
-  
-  ###### Add Model Type Info ######
+
+  ### Add Model Type Info
   renameAt0  <- c("modelType_id", "modelUnit_label")
   renameTo0  <- c("modelType", "modelUnit")
   move0      <- c("modelUnitDesc", "modelUnitScale")
   after0     <- c("model")
   join0      <- c("modelType")
   select0    <- renameTo0 |> c(move0)
-  df_mTypes  <- frediData[["co_modelTypes"]]
+  df_mTypes  <- configData[["co_modelTypes"]]
   df_mTypes  <- df_mTypes |> rename_at(c(renameAt0), ~c(renameTo0))
   df_mTypes  <- df_mTypes |> select(all_of(select0))
   df0        <- df0       |> left_join(df_mTypes, by=c(join0))
   df0        <- df0       |> relocate(all_of(select0), .after=all_of(after0))
   rm(renameAt0, renameTo0, select0, move0, after0, join0)
 
-  ###### Add Model Info ######
+  ### Add Model Info
   renameAt0  <- c("model_id")
   renameTo0  <- c("model")
   move0      <- c("maxUnitValue")
   after0     <- c("modelUnitScale")
   join0      <- c("model")
   select0    <- renameTo0 |> c(move0)
-  df_models  <- frediData[["co_models"]]
+  df_models  <- configData[["co_models"]]
   df_models  <- df_models |> rename_at(c(renameAt0), ~c(renameTo0))
   df_models  <- df_models |> select(all_of(select0))
   df0        <- df0       |> left_join(df_models, by=c(join0))
   df0        <- df0       |> relocate(all_of(select0), .after=all_of(after0))
   rm(renameAt0, renameTo0, select0, move0, after0, join0)
 
-  
-  ###### Select Columns ######
+
+  ### Select Columns
   # arrange0   <- c("sector", "variant", "impactType", "impactYear", "region", stateCols, "modelType", "model")
   select0    <- c("scenario_id") |> c(names0) |> c("modelUnit", "modelUnitDesc", "modelUnitScale", "maxUnitValue", "driverValue", "year", "scaled_impacts")
   df0        <- df0 |> select(all_of(select0))
   df0        <- df0 |> arrange_at(c(names0))
   df0        <- df0 |> mutate(modelType = modelType |> toupper())
-  
-  ###### Return ######
+
+  ### Return
   return(df0)
 }
 
+
+### Updated version
+get_fredi_sectorOptions_results <- function(
+    module = "fredi",
+    dataList, ### Data list, rDataList produced by createSystemData
+    controlData,
+    yCol0  = "scaled_impacts",
+    idCol0 = "scenario_id"
+){
+  ### Set up the environment ----------------
+  #### Messaging ----------------
+  ### Level of messaging (default is to message the user) and save behavior
+  msgUser       <- !silent
+  msgN          <- "\n"
+  msg1          <- msg0 + 1
+  msg2          <- msg0 + 2
+  msg0 |> get_msgPrefix(newline=F) |> paste0("Running formatFrediData()...") |> message()
+  
+  
+  #### Columns & Values ----------------
+  ### Module and list object names
+  moduleLC      <- module   |> tolower()
+  # listStr0      <- "rDataList"
+  # listStr0      <- moduleLC |> paste0("Data")
+  # configLStr0   <- moduleLC |> paste0("Data")
+  fConfigStr0   <- "fredi_config"
+  configLStr0   <- "configData"
+  stateLStr0    <- "stateData"
+  
+  #### Columns
+  # stateCols0    <- c("state", "postal")
+  mainCols0     <- c("sector", "variant", "impactType", "impactYear")
+  regCols0      <- c("region", "postal")
+  groupCols0    <- mainCols0 |> c(regCols0)
+  mTypeCol0     <- c("model_type")
+  modCol0       <- c("model")
+  popCol0       <- c("pop")
+  yrCol0        <- c("year")
+  unitCol0      <- c("modelUnitValue")
+  impactsCol0   <- c("scaled_impacts")
+  idCol0        <- c("scenario_id")
+  
+  #### Values
+  # sectors0   <- co_sectors |> pull() |> unique()
+  # national0     <- c("NationalTotal")
+  slrStr0       <- c("slr")
+  gcmStr0       <- c("gcm")
+  
+  #### Model types
+  modTypes0     <- controlData[["co_moduleModTypes"]] |> 
+    pull(all_of(mTypeCol0)) |> 
+    unique() |>
+    tolower()
+  dfModTypes    <- tibble(model_type = modTypes0) |>
+    mutate(type0 = model_type) |> 
+    mutate(name0 = model_type |> paste0(case_when(
+      model_type |> str_detect(gcmStr0) ~ "Funs"), 
+      .default="Data"
+    )) |> 
+    mutate(xCol0 = case_when(
+      model_type |> str_detect(gcmStr0 ~ "modelUnitValue"), 
+      .default="Year"
+    )) |>
+    rename_at(c("model_type"), ~mTypeCol0)
+  
+  ### Data Lists  ----------------
+  # configData <- dataList[["frediData"]]
+  configData <- dataList[[configLStr0]]
+  dataList   <- dataList[[stateLStr0]]
+  dfInfo0    <- configData[["co_sectorInfo"]]
+  
+  ### Get Scaled Impacts  ----------------
+  ### Get Impacts
+  ### Module object names
+  dfResults   <- dfModTypes |>
+    select(-any_of(mTypeCol0)) |> 
+    pmap(function(type0, name0, xCol0, dfInfo=dfInfo, dataList=dataList, xTemps=-1:11){
+      ### Check which to do
+      doSlr0  <- type0 |> str_detect(slrStr0)
+      info0   <- dfInfo |> filter_at(c(mTypeCol0), function(x, y=type0){x %in% y})
+      obj0    <- dataList[[name0]]
+      
+      ### Filter values
+      if(doSlr0) {
+        sort0   <- c(idCol0, modCol0, xCol0)
+        select0 <- sort0 |> c(yCol0)  
+        obj0    <- obj0 |> 
+          select(any_of(select0)) |> 
+          arrange_at(c(sort0)) |> 
+          mutate(driverValue = model |> as.character() |> parse_number())
+        rm(sort0, select0)
+        ### Get unique models and driver values
+        select0 <- c(modCol0, xCol0)
+        dfXVals <- obj0  |> 
+          select(all_of(select0)) |> 
+          distinct() |> 
+          arrange_at(c(select0))
+        ### Drop model column
+        info0   <- info0 |> select(-any_of(modCol0))
+      } else{
+        obj0    <- obj0 |> 
+          map(function(fun0, x0=xTemps){x0 |> fun0()}) |>
+          set_names(obj0 |> names()) |>
+          bind_rows(.id=idCol0) |>
+          rename_at(c("x", "y"), ~"driverValue" |> c(yCol0))
+        dfXVals <- tibble(x = xTemps) |> 
+          rename_at(c("x"), ~"driverValue") |>
+          mutate(year = NA)
+      } ### End if(doSlr0)
+      
+      ### Join with info
+      join0   <- c(idCol0, modCol0, xCol0)
+      move0   <- c(idCol0) |> c("hasScenario")
+      df0     <- info0 |> 
+        left_join(dfXVals, by=join0) |> 
+        arrange_at(c(idCol0, modCol0) |> c("year", "driverValue")) |>
+        relocate(any_of(move0))
+      
+      ### Return
+      return(df0)
+    }) |> bind_rows()
+    
+  ### Return
+  return(dfResults)
+  
+} 
+  
 
 
 #### Plot information by model type

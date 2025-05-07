@@ -17,8 +17,9 @@ loadFrediImpacts <- function(
   mainCols   <- mainCols |> c(sumCols)
   
   ### Get files:
-  fpath      <- fpath |> file.path(type)
+  # fpath      <- fpath |> file.path(type)
   fPaths     <- fpath |> list.files(full.names=T)
+  # fPaths |> head() |> print()
   # fPaths |> head() |> print() 
   # fPaths |> file.exists() |> head() |> print()
   ### Impacts data

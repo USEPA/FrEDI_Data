@@ -10,59 +10,116 @@
 #'
 #' @examples
 reshapeScalarData <- function(
-    scalarData = NULL , ### Tibble with scalars data
-    frediData  = NULL , ### List of FrEDI configuration data
-    silent     = TRUE , ### Level of messaging
-    msg0       = "\t"   ### Prefix for messaging
+    scalarData  = NULL, ### Tibble with scalars data
+    controlData = NULL, ### Output of configControlTables
+    scalarInfo  = NULL , ### List of FrEDI configuration data
+    minYr0      = 2010,
+    maxYr0      = 2300,
+    yrCol0      = "year",
+    valCol0     = "value",
+    natStr0     = "US",
+    # dropCols0   = "state", ### Drop state
+    silent      = TRUE , ### Level of messaging
+    msg0        = 0      ### Prefix for messaging
 ) {
-  ###### Messaging ######
-  msgN       <- "\n"
-  msg1       <- msg0 |> paste("\t")  
-  if (!silent) paste0(msg0, "In reshapeScalarData:"   ) |> message()
-  if (!silent) paste0(msg1, "Reshaping scalar data...") |> message()
+  ### Messaging ----------------
+  msgUser       <- !silent
+  msgN          <- "\n"
+  msg1          <- msg0 + 1
+  msg2          <- msg0 + 2
+  if (!silent) msg0 |> get_msgPrefix(newline=F) |> paste0("Reshaping scalar data...") |> message()
   
-  ###### Assign Objects ######
+  ### Assign Objects ----------------
   ### Assign tables in dataList to object in local environment
   # frediData |> names() |> print()
-  co_states  <- frediData[["co_states"    ]]
-  scalarInfo <- frediData[["co_scalarInfo"]]
+  # regCols0   <- c("region", "postal")
+  # co_states  <- controlData[["co_states"]] |> select(all_of(regCols0))
+  # scalarInfo <- configData [["co_scalarInfo"]]
   # co_states  |> glimpse(); scalarInfo |> glimpse()
 
+  ### Columns & Values ----------------
+  areaCol0   <- "area"
+  regCol0    <- "region"
+  stateCol0  <- "state"
+  postCol0   <- "postal"
+  fipsCol0   <- "fips"
+  yrCol0     <- "year"
+  regCols0   <- c(regCol0, postCol0)
   
-  ###### Join with State/Region Info ######
+  typeCol0   <- "scalarType"
+  nameCol0   <- "scalarName"
+  
+  ### Join with State/Region Info ----------------
   ### Add region to scalar data frame
-  # scalarDataframe |> glimpse()
+  # "got here0" |> print()
+  
+  
+  # naStr0     <- "US"
+  # select0    <- c("area", "region", "state", "postal", "fips")
+  # "got here1" |> print()
+  # select0    <- c("region", "state", "postal", "fips")
+  co_states  <- controlData[["co_states"]] |> select(all_of(regCols0))
+  # co_states |> glimpse()
   # scalarData |> glimpse()
-  stateCols0 <- c("state", "postal")
-  select0    <- c("region") |> c(stateCols0)
-  join0      <- stateCols0
-  scalarData <- scalarData |> left_join(co_states |> select(all_of(select0)), by=c(join0))
-  rm(select0, join0)
   
-  ### Replace data with NA values
-  scalarData <- scalarData |> mutate(region = region |> str_replace_all("\\.", ""))
-  scalarData <- scalarData |> mutate(region = region |> str_replace_all(" ", ""))
-  scalarData <- scalarData |> mutate(state  = state  |> na_if("National Total"))
-  scalarData <- scalarData |> mutate(region = region |> replace_na("National"))
-  scalarData <- scalarData |> mutate(state  = state  |> replace_na("N/A"))
-  scalarData <- scalarData |> mutate(postal = postal |> replace_na("N/A"))
+  # drop0      <- c(areaCol0, regCol0)
+  drop0      <- c(areaCol0, regCol0, stateCol0, fipsCol0)
+  join0      <- co_states  |> names() |> get_matches(y=scalarData |> names())
+  move0      <- nameCol0 |> c(regCols0, yrCol0)
+  scalarData <- scalarData |> 
+    select(-any_of(drop0)) |>
+    mutate_at(c(postCol0), replace_na, natStr0) |>
+    left_join(co_states, by=postCol0) |> 
+    relocate(any_of(move0))
+  # "got here2" |> print()
+  # scalarData |> glimpse()
+  
+  ### Format scalars
+  drop0      <- c("groupId")
+  scalarData <- scalarData |> fun_formatScalars(
+    df1      = scalarInfo, 
+    years0   = minYr0:maxYr0,
+    natStr0  = natStr0,
+    rule0    = 2
+  ) |> select(-any_of(drop0)) ### End fun_formatScalars
+  # "got here3" |> print()
   
   
-  ### Join scalar data frame with scalar info
-  select0    <- c("scalarName", "scalarLabel", "scalarType")
-  join0      <- c("scalarName")
-  scalarData <- scalarData |> left_join(scalarInfo |> select(all_of(select0)), by=c(join0))
-  rm(select0, join0)
+  ### Standardize values by state/region
+  # co_states  <- co_states  |> select(all_of(postCol0))
+  scNames0   <- scalarData  |> pull(all_of(nameCol0)) |> unique()
+  # scalarData |> glimpse()
+  scalarData <- scNames0 |> map(function(nameX){
+    ### Get unique values by year
+    dropX <- "groupID"
+    dfX   <- scalarData |> 
+      select(-any_of(dropX)) |>
+      filter_at(c(nameCol0), function(x, y=nameX){x %in% y})
+    
+    ### Whether do regional
+    doRegX <- dfX |> pull(regional) |> unique() |> as.logical()
+    if(!doRegX) return(dfX)
+    
+    ### Unique values
+    ### Cross Join, standardizing values
+    colsY <- c(typeCol0, nameCol0) |> c("dynamic", "regional") |> c(yrCol0)
+    moveY <- colsY     |> get_matches(y=yrCol0, matches=F)
+    dfY   <- dfX       |> select(all_of(colsY)) |> distinct()
+    dfZ   <- co_states |> cross_join(dfY) |> relocate(all_of(moveY))
+    # dfZ |> glimpse(); dfX |> glimpse()
+    
+    ### Join, standardizing values
+    joinZ <- c(colsY) |> c(regCols0)
+    dfZ   <- dfZ       |> left_join(dfX, by=joinZ, relationship="many-to-many")
+    ### return
+    return(dfZ)
+  }) |> bind_rows() |> 
+    arrange_at(c(typeCol0, nameCol0, postCol0, yrCol0))
+  # scalarData |> glimpse()
+
   
-  
-  ### Standardize region name, then select columns
-  select0    <- c("scalarType", "scalarLabel", "scalarName", "region") |> c(stateCols0) |> c("year", "value")
-  scalarData <- scalarData |> select(all_of(select0))
-  rm(select0)
-  # scalarData |> names() |> print()
-  
-  ###### Return ######
+  ### Return ----------------
   ### Return the list of dataframes
-  if (!silent) paste0(msg0, "...Finished running reshapeScalarData().", msgN) |> message()
+  if (!silent) msg1 |> get_msgPrefix(newline=F) |> paste0("...Finished reshaping scalar data.", msgN) |> message()
   return(scalarData)
 }

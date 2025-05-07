@@ -1,91 +1,98 @@
 ### Load and format FrEDI default scenarios
+# gcamFile    = "Hector_v5.3_GCAM" |> paste0(".csv"), ### File in scenarioDir containing temperature scenarios
+# gdpFile     = "EPPA_v6_GDP"      |> paste0(".csv"), ### File in scenarioDir containing GDP scenarios
+# popFile     = "ICLUS_State_Population"  |> paste0(".csv"), ### File in scenarioDir containing population scenarios
+# ratiosFile  = "state_population_ratios" |> paste0(".csv"), ### File in scenarioDir containing population ratios
+# testFiles   = list(
+#   temp = "temp_0to6_to2300"   |> paste0(".csv"),
+#   gdp  = "rff_gdp_mean"       |> paste0(".csv"),
+#   pop  = "rff_state_pop_mean" |> paste0(".csv")
+# ), ### End list
 loadScenarioData <- function(
-    scenarioDir = "." |> file.path("inst", "extdata", "scenarios") |> file.path(), ### Path to scenarios
-    gcamFile    = "Hector_v5.3_GCAM" |> paste0(".csv"), ### File in scenarioDir containing temperature scenarios
-    gdpFile     = "EPPA_v6_GDP"      |> paste0(".csv"), ### File in scenarioDir containing GDP scenarios
-    popFile     = "ICLUS_State_Population"  |> paste0(".csv"), ### File in scenarioDir containing population scenarios
-    ratiosFile  = "state_population_ratios" |> paste0(".csv"), ### File in scenarioDir containing population ratios
-    testFiles   = list(
-      temp = "temp_0to6_to2300"   |> paste0(".csv"),
-      gdp  = "rff_gdp_mean"       |> paste0(".csv"),
-      pop  = "rff_state_pop_mean" |> paste0(".csv")
-    ), ### End list
+    dfScenarios, 
+    dataDir     = "." |> file.path("inst", "extdata", "scenarios") |> file.path(), ### Path to scenarios
+    dataExt     = "csv",
+    popRatios   = "state_population_ratios",
+    ratiosName  = "popRatios",
     silent      = FALSE, ### Level of messaging
-    msg0        = "\t"   ### Messaging prefix
+    msg0        = 0   ### Messaging prefix
 ) {
-  ###### Messaging ######
+  ### Set up Environment ----------------
+  #### Messaging ----------------
+  msgUser       <- !silent
   msgN          <- "\n"
-  msg1          <- msg0 |> paste("\t")  
-  if (!silent) paste0(msg0, "In loadScenarioData:") |> message()
+  msg1          <- msg0 + 1
+  msg2          <- msg0 + 2
+  # if(msgUser) 
+  msg0 |> get_msgPrefix(newline=T) |> paste0("Loading scenario data...") |> message()
   
-  ###### File Paths ######
-  ### Scenarios list
-  # scenarioDir |> list.files() |> print()
-  scenarioNames <- c("gcam", "gdp", "pop", "popRatios")
+  #### Columns and values ----------------
+  ### Columns
+  areaCol0      <- "area"
+  regCol0       <- "region"
+  postCol0      <- "postal"
+  stateCol0     <- "state"
+  fipsCol0      <- "fips"
+  orderCol0     <- "state_order"
+  regCols0      <- c(areaCol0, regCol0, fipsCol0)
+  yrCol0        <- "year"
+  typeCol0      <- "inputName"
+  idCol0        <- "scenarioName"
+  tempIdCol0    <- "scenario"
   
-  ### Create list of file names
-  listFiles     <- list()
-  listFiles[["gcam"     ]] <- gcamFile
-  listFiles[["gdp"      ]] <- gdpFile
-  listFiles[["pop"      ]] <- popFile
-  listFiles[["popRatios"]] <- ratiosFile
+  ### Input Scenarios ----------------
+  ### Group main input scenarios
+  ### - Get distinct values
+  select0       <- c(typeCol0, idCol0)
+  # dfScenarios |> glimpse()
+  dfScenarios   <- dfScenarios |> 
+    select(all_of(select0)) |> 
+    distinct()
   
-  # ### Create list of file paths
-  # listPaths     <- scenarioNames |> map(function(name_i, file_i=listFiles[[name_i]], dir_i=scenarioDir){
-  #   if (!silent) paste0(msg1, "Loading ", name_i, " data...") |> message()
-  #   dir_i |> file.path(file_i)
-  # }) |> set_names(scenarioNames)
-  # # listPaths |> unlist() |> print()
-  # 
-  # ### Iterate over list to get data
-  # dataList      <- listPaths |> map(function(file_i){
-  #   file_i |> read.csv() |> as_tibble()
-  # }) |> set_names(scenarioNames |> paste0("Data"))
+  ### Add information for files
+  dfScenarios <- dfScenarios |> 
+    arrange_at(c(typeCol0, idCol0)) |>
+    group_by_at(c(typeCol0)) |>
+    rename_at(c(typeCol0, idCol0), ~c("type0", "name0")) |>
+    mutate(file0 = name0   |> paste0(".", dataExt)) |>
+    mutate(dir0  = dataDir |> file.path(type0)) |>
+    mutate(path0 = dir0    |> file.path(file0))
+  rm(select0)
+
+  # "got here" |> print()
+  ### Iterate over groups, loading scenarios
+  types0        <- dfScenarios |> group_keys() |> pull(type0)
+  dataList      <- dfScenarios |> group_map(function(.x, .y){
+    .x |> loadScenarioData_byType(
+      .y       = .y,
+      typeCol0 = "type0",
+      nameCol0 = "name0",
+      pathCol0 = "path0",
+      silent   = TRUE,
+      msg0     = msg1
+    ) ### End loadScenarioData_byType
+  }) |> set_names(types0)
   
-  # ### Create list of file paths
-  # listPaths     <- scenarioNames |> map(function(
-  #   name_i, 
-  #   dir_i  = scenarioDir, 
-  #   file_i = listFiles[[name_i]]
-  # ){
-  #   if (!silent) paste0(msg1, "Loading ", name_i, " data...") |> message()
-  #   dir_i |> file.path(file_i)
-  # }) |> set_names(scenarioNames)
-  # # listPaths |> unlist() |> print()
   
-  ### Iterate over list to get data
-  dataList      <- scenarioNames |> map(function(
-    name_i, 
-    dir_i   = scenarioDir, 
-    files_i = listFiles
-  ){
-    if (!silent) paste0(msg1, "Loading ", name_i, " data...") |> message()
-    file_i <- files_i[[name_i]]
-    path_i <- dir_i  |> file.path(file_i)
-    df_i   <- path_i |> read.csv() |> as_tibble()
-    return(df_i)
-  }) |> set_names(scenarioNames |> paste0("Data"))
+  ### Population Ratios ----------------
+  ### Add additional values
+  # dataList[["gcam"     ]] <- dataList[["temp"]] |> filter_at(c(idCol0), function(x, y="Hector_v5.3_GCAM"){x %in% y})
+  # dataList[["gdp"      ]] <- dataList[["gdp" ]] |> filter_at(c(idCol0), function(x, y="EPPA_v6_GDP"){x %in% y})
+  # dataList[["pop"      ]] <- dataList[["pop" ]] |> filter_at(c(idCol0), function(x, y="ICLUS_State_Population"){x %in% y})
   
-  ### List of inputs to test
-  ### Iterate over list to get data
-  inputNames <- testFiles |> names()
-  inputsList <- inputNames |> map(function(
-    name_i, 
-    dir_i   = scenarioDir, 
-    files_i = testFiles
-  ){
-    if (!silent) paste0(msg1, "Loading ", name_i, "scenario data...") |> message()
-    file_i <- files_i[[name_i]]
-    path_i <- dir_i  |> file.path(file_i)
-    df_i   <- path_i |> read.csv() |> as_tibble()
-    return(df_i)
-  }) |> set_names(inputNames)
-  
+  ### Population Ratio Data
+  # sort0        <- c("state_order") |> c(yrCol0)
+  # join0        <- c("state")
+  # drop0        <- c("area", "region", "fips")
+  popRFile     <- "state_population_ratios" |> paste0(".", dataExt)
+  popRPath     <- dataDir  |> file.path(popRFile)
+  popRData     <- popRPath |> read.csv()
   ### Add to list
-  dataList[["testScenarios"]] <- inputsList
+  dataList[[ratiosName]] <- popRData
   
   
-  ###### Return ######
-  if (!silent) paste0("...Finished running loadScenarioData().") |> message()
+  ###### Return ----------------
+  # if (msgUser) 
+  msg1 |> get_msgPrefix(newline=T) |> paste0("...Finished loading scenario data.") |> message()
   return(dataList)
 }

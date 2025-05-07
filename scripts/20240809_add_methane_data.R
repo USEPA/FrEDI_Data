@@ -212,8 +212,8 @@ co_modelTypes   <- rDataList$frediData$co_modelTypes |> (function(df0){
     mutate(inputName       = "methane") |> 
     mutate(modelType_label = "GCM") |> 
     mutate(modelUnitDesc   = "Ozone Response") |> 
-    mutate(modelUnit_id    = "pptv/pptb") |> 
-    mutate(modelUnit_label = "pptv/pptb") |> 
+    mutate(modelUnit_id    = "pptv") |> 
+    mutate(modelUnit_label = "pptv/ppbv") |> 
     mutate(modelType_id    = "gcm")
   
   ### Filter to no values
