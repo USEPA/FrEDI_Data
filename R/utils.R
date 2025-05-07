@@ -174,7 +174,6 @@ formatScenarioData_byType <- function(
     list0,   ### scenarioData
     typeCol0 = "inputName",
     idCol0   = "scenarioName",
-    # tempId0  = "scenario",
     xCol0    = "year",
     valCol0  = "valueCol",
     grpCol0  = "groupCols",
@@ -190,33 +189,35 @@ formatScenarioData_byType <- function(
   msgN       <- "\n"
   msg1       <- msg0 + 1
   
-  ### Type
+  ### Columns & Values
+  # "got here2" |> print(); .y |> glimpse(); # .x |> glimpse();  
   type0      <- .y |> pull(all_of(typeCol0)) |> unique() |> tolower()
   yCol0      <- .x |> pull(all_of(valCol0)) |> unique()
   refYr0     <- .x |> pull(refYear ) |> unique()
   minVal0    <- .x |> pull(inputMin) |> unique()
-  reg0       <- .x |> pull(regional) |> unique()
-  # argType0   <- .y |> pull(inputArgType)
-  # argVal0    <- .y |> pull(inputArgType)
+  doReg0     <- .x |> pull(doReg0  ) |> unique()
+  doTemp0    <- .x |> pull(doTemp0 ) |> unique()
+  
+  ### Group columns
   groupCols0 <- .x |> pull(all_of(grpCol0)) |> 
     format_groupColsColumn() |>
-    parse_groupColsColumn()
-  # groupCols0 |> print()
-  
-  ### Conditionals
-  doReg0     <- reg0 == 1
-  doTemp0    <- type0 |> str_detect("temp")
+    parse_groupColsColumn() |> 
+    unique()
+  # type0 |> print(); groupCols0 |> print()
   
   ### Group x by remaining names
   list0      <- list0[[type0]]
-  names0     <- .x |> pull(all_of(idCol0))
-  .x         <- .x |> group_by_at(c(idCol0))
+  group0     <- idCol0
+  .x         <- .x |> group_by_at(c(group0))
+  names0     <- .x |> group_keys() |> pull(all_of(group0)) |> unique()
+  # "got here3" |> print(); .x |> glimpse(); names0 |> print()
+  # return(list0)
   
   ### Read in files and bind data
   if (msgUser) msg0 |> get_msgPrefix(newline=F) |> paste0("Formatting ", type0, " scenario data...") |> message()
-  list0      <- .x |> group_map(function(.x, .y){
-    .x |> reshapeScenarioData_byGroup(
-      .y       = .y,
+  list0      <- .x |> group_map(function(.x1, .y1){
+    .x1 |> reshapeScenarioData_byGroup(
+      .y       = .y1,
       df1      = df1,
       list0    = list0,
       idCol0   = idCol0,
@@ -230,13 +231,16 @@ formatScenarioData_byType <- function(
       doTemp0  = doTemp0,
       silent   = silent,
       msg0     = msg1
-    ) ### End reshapeScenarioData_byGroup
+    ) |> 
+      group_by_at(c(groupCols0)) ### End reshapeScenarioData_byGroup
   }) |> set_names(names0)
+  # return(list0)
   
   ### Format data
-  df0        <- .x |> group_map(function(.x, .y){
-    .x |> interpolateScenarioData_byGroup(
-      .y       = .y,
+  # "got here4" |> print(); list0 |> glimpse()
+  df0        <- .x |> group_map(function(.x1, .y1){
+    .x1 |> interpolateScenarioData_byGroup(
+      .y       = .y1,
       list0    = list0,
       idCol0   = idCol0,
       xCol0    = xCol0,
@@ -248,7 +252,7 @@ formatScenarioData_byType <- function(
       silent   = silent,
       msg0     = msg1
     ) ### End reshapeScenarioData_byGroup
-  }) |> set_names(names0)
+  }) |> bind_rows()
   
   ### Return data
   if (msgUser) msg1 |> get_msgPrefix(newline=F) |> paste0("Finished formatting ", type0, " scenario data...") |> message()
@@ -315,17 +319,24 @@ reshapeScenarioData_byGroup <- function(
   msg1       <- msg0 + 1
   
   ### Values
-  # .x |> glimpse(); .y |> glimpse()
+  # list0 |> names() |> print(); idCol0 |> print()
+  # .y |> glimpse(); .x |> glimpse(); 
   name0      <- .y |> pull(all_of(idCol0)) |> unique()
+  
+  ### Data
+  if (msgUser) msg0 |> get_msgPrefix(newline=F) |> paste0("Reshaping ", name0, " scenario...") |> message()
   df0        <- list0[[name0]]
   
   ### If doTemp, add scenario if not present
-  if (msgUser) msg0 |> get_msgPrefix(newline=F) |> paste0("Reshaping ", name0, " scenario...") |> message()
   # "got here1" |> print(); group0 |> print()
   if(doTemp0) {
     hasGrp0 <- group0 |> get_matches(y=df0 |> names()) |> length()
     if(!hasGrp0) df0[[group0]] <- name0
   } ### End if(doTemp0)
+  
+  ### Group columns
+  groupCols0 <- idCol0 |> c(group0) |> unique()
+  # groupCols0 |> print()
   
   ### If doReg, standardize region/state info
   if(doReg0) {
@@ -333,7 +344,8 @@ reshapeScenarioData_byGroup <- function(
       df1      = df1,     ### States info
       xCol0    = xCol0,
       yCol0    = yCol0,
-      group0   = group0,
+      # group0   = group0,
+      group0   = groupCols0,
       regCols0 = regCols0,
       silent   = TRUE,
       msg0     = 0
@@ -393,21 +405,13 @@ interpolateScenarioData_byGroup <- function(
   msg1       <- msg0 + 1
   
   ### Values
-  # .x |> glimpse(); 
-  # .y |> glimpse()
-  name0      <- .y |> pull(all_of(idCol0)) |> unique()
+  # .y |> glimpse(); .x |> glimpse();
+  name0      <- .y |> pull(all_of(idCol0 )) |> unique()
   argVal0    <- .x |> pull(all_of(argCol0)) |> unique()
   if (msgUser) msg0 |> get_msgPrefix(newline=F) |> paste0("Interpolating values for ", name0, " scenario...") |> message()
   
   ### Data
   df0        <- list0[[name0]]
-  # df0        <- df0 |> group_map(
-  #   interpolate_byGroup,
-  #   xCol0     = xCol0,
-  #   yCols0    = yCol0,
-  #   method0   = method0,
-  #   rule0     = rule0
-  # ) |> bind_rows()
   
   ### If doTemp, use one function, otehrwise, use the other
   if(doTemp0){
@@ -430,6 +434,7 @@ interpolateScenarioData_byGroup <- function(
   } ### End if(doTemp0)  
   
   ### Join data with input col
+  # df0 |> glimpse(); 
   df0        <- .y |> 
     select(any_of(idCol0)) |> 
     distinct() |>
@@ -1208,10 +1213,13 @@ fun_formatScalars <- function(
   rm(dfNone)
   
   ### Bind dfNone with df0 and join info
+  # join0    <- c(typeCol0, nameCol0)
+  join0    <- c(nameCol0)
   move0    <- c(scCols0, rCol0, dCol0)
   sort0    <- c(dCol0, rCol0, typeCol0, nameCol0, regCols0, yrCol0)
+  # df0 |> glimpse(); df1 |> glimpse(); nameCol0 |> print(); move0 |> print(); sort0 |> print()
   df0      <- df0 |> 
-    left_join(df1, by=nameCol0) |>
+    left_join(df1, by=join0) |>
     relocate(all_of(move0)) |>
     arrange_at(c(sort0))
   rm(df1)
@@ -1238,10 +1246,11 @@ fun_formatScalars <- function(
     df0 |>
       filter_at(c(mCol0), function(x, y=methodX){x %in% y}) |>
       group_map(function(.x, .y){
+        # .y |> glimpse()
         .x |> interpolate_byGroup(
           .y      = .y,
           xCol0   = yrCol0,
-          yCol0   = valCol0,
+          yCols0  = valCol0,
           xOut0   = years0,
           method0 = methodX,
           rule0   = rule0
@@ -1293,19 +1302,27 @@ extrapolate_gcmImpacts_byGroup <- function(
   xMax0  <- df0 |> pull(all_of(xCol0)) |> max(na.rm=T)
   tail0  <- df0 |> tail(2) |> rename_at(c(old0), ~new0)
   doExt0 <- xMax0 < to0 | all0
+  # tail0 |> glimpse(); doExt0 |> print()
   if(tail0 |> pull(yIn) |> is.na() |> all()) tail0 |> glimpse()
   
   ### If extrapolate:
   if(doExt0){
     ### Get linear trend
     lm0    <- lm(yIn~xIn, data=tail0)
-    int0   <- lm0$coefficients[[1]]
-    slope0 <- lm0$coefficients[[2]]
+    k0     <- lm0[["coefficients"]] |> unlist()
+    int0   <- k0[[1]]
+    slope0 <- k0[[2]]
+    # int0   <- lm0$coefficients[[1]]
+    # slope0 <- lm0$coefficients[[2]]
+    # c(int0, slope0) |> print()
     ### Create data
-    dfNew  <- tibble() |> 
-      tibble(xIn = to0) |>
+    # xNew   <- to0
+    # yNew   <- int0 + xNew * slope0
+    # c(xNew, yNew) |> print()
+    dfNew  <- tibble(xIn = to0) |>
       mutate(yIn = int0 + xIn * slope0) |> 
       rename_at(c(new0), ~old0)
+    # dfNew |> glimpse()
     ### Extend values, then bind with earlier observations
     df0    <- df0 |> bind_rows(dfNew)
   } ### End if(doExtrap)
@@ -1332,6 +1349,13 @@ extrapolate_gcmImpacts <- function(
     # extrapolate = FALSE, ### Whether to extrapolate by default
     # unitScale   = NULL,  ### Scale between values
 ){
+  ### Filter and Arrange Data ----------------
+  df0    <- df0 |> 
+    # filter_at (c(idCol0), function(x, y=ids0){x %in% y}) |>
+    filter_at  (c(yCol0), function(x){!(x |> is.na())}) |>
+    filter_at  (c(xCol0), function(x){x > xMin0}) |> 
+    arrange_at (c(idCol0, xCol0))
+  
   ### Groups ----------------
   ### - Create groups and get group keys
   ### - Filter out NA values
@@ -1340,27 +1364,27 @@ extrapolate_gcmImpacts <- function(
   cols0  <- c(xCol0, yCol0)
   keys0  <- df0   |> group_keys()
   group0 <- keys0 |> names()
+  # keys0 |> glimpse()
   ids0   <- keys0 |> pull(all_of(idCol0)) |> unique()
   # ids0   <- ids0  |> head(5)
   # keys0  <- keys0 |> filter_at(c(idCol0), function(x, y=ids0){x %in% y})
   # keys0  <- df0   |> filter_at(c(idCol0), function(x, y=ids0){x %in% y})
   # ids0 |> print(); df0 |> glimpse(); keys0 |> glimpse()
-
-  ### Filter and Arrange Data ----------------
-  df0    <- df0 |> 
-    arrange_at(c(idCol0, xCol0)) |> 
-    filter_at (c(idCol0), function(x, y=ids0){x %in% y}) |>
-    filter_at (c(yCol0), function(x){!(x |> is.na())}) |>
-    filter_at (c(xCol0), function(x){x > xMin0})
-  # df0 |> glimpse()
+  
+  ### For testing ----------------
+  # df0   <- df0   |> filter(scenario_id %in% ids0[1])
+  # keys0 <- df0   |> group_keys()
+  # ids0  <- keys0 |> pull(all_of(idCol0))
   
   ### Extrapolate Data ----------------
   ### Extrapolate values
-  cols0    <- c(xCol0, yCol0)
+  # cols0    <- c(xCol0, yCol0)
+  # all0 |> print()
   df0      <- df0 |> group_map(function(.x, .y){
+    # .x |> glimpse(); .y |> glimpse()
     .x |> 
-      ungroup() |>
-      select(all_of(cols0)) |> 
+      # ungroup() |>
+      select(all_of(cols0)) |>
       extrapolate_gcmImpacts_byGroup(
         xCol0 = xCol0, 
         yCol0 = yCol0, 
@@ -1369,20 +1393,28 @@ extrapolate_gcmImpacts <- function(
         from0 = from0,
         to0   = to0,  
         all0  = all0  
-      ) ### extrapolate_impFunction
+      ) |>  ### extrapolate_impFunction
+      cross_join(.y)
   }) |> set_names(ids0) |> 
     bind_rows(.id=idCol0)
   
   ### Join Group Info ----------------
   ### Join data and rename columns
-  df0      <- keys0 |> 
-    filter_at(c(idCol0), function(x, y=ids0){x %in% y}) |>
-    left_join(df0, by=idCol0) |>
-    arrange_at(c(idCol0, xCol0)) |>
-    group_by_at(c(group0))
+  names0   <- keys0 |> names()
+  df0      <- df0   |> 
+    # left_join(keys0, by=idCol0) |>
+    relocate(any_of(names0)) |>
+    arrange_at(c(idCol0, xCol0)) |> 
+    group_by_at(c(names0))
+  # df0 |> glimpse()
+  # df0      <- keys0 |> 
+  #   filter_at(c(idCol0), function(x, y=ids0){x %in% y}) |>
+  #   left_join(df0, by=idCol0) |>
+  #   arrange_at(c(idCol0, xCol0)) |>
+  #   group_by_at(c(group0))
   
   ### Return ----------------
-  gc()
+  # gc()
   return(df0)
 }
 
@@ -1399,6 +1431,7 @@ get_impactFunctions <- function(
     rule0   = 1
 ){
   ### Groups
+  # df0 |> glimpse()
   df0   <- df0   |> arrange_at (c(idCol0, xCol0))
   keys0 <- df0   |> group_keys()
   ids0  <- keys0 |> pull(all_of(idCol0))
@@ -1502,6 +1535,7 @@ format_gcmScaledImpacts <- function(
     rule0   = rule0
   ) ### End extrapolate_gcmImpacts
   list0[["gcmData"]] <- df0
+  # df0 |> filter_at(c(xCol0), function(x, y=6){x>y}) |> glimpse()
   
   ### Get impact functions
   if(msgUser) msg0 |> get_msgPrefix() |> paste("Creating GCM impact functions...") |> message()

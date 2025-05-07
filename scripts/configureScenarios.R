@@ -56,8 +56,8 @@ configureScenarios <- function(
     silent      = silent,
     msg0        = msg1
   ) ### End loadData
-  # gc()
   # return(scenarioData)
+  # gc()
 
   ### 3. Reshape Loaded Data ----------------
   ### Reshape state data

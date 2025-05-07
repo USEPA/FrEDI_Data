@@ -97,11 +97,11 @@ configureModuleData <- function(
     dataList  <- dataList |> reshapeGhgData  (silent=silent, msg0=msg1)
   } ### End if(doFredi | doExtremes)
   gc()
-  return(dataList)
+  # return(dataList)
   
   ### If reshape, save a copy of the reshaped data
-  if(reshape) {reshapeData0 <- dataList} 
-  else        {reshapeData0 <- NULL  }
+  if(reshape0) {reshapeData0 <- dataList} 
+  else         {reshapeData0 <- NULL  }
   
   
   ### 4. Configure Data ----------------

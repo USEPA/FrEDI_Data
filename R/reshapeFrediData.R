@@ -61,6 +61,7 @@ reshapeFrediData <- function(
     msg0        = msg1
   ) ### End reshapeConfigData
   dataList[[configLStr0]] <- configData
+  # return(dataList)
   # dataList[[configLStr0]] |> names() |> print()
   
   ### Reshape Scalar Data ----------------

@@ -111,6 +111,8 @@ reshapeConfigData <- function(
         names_to  = col0, 
         values_to = valCol0
       ) |> ### End pivot_longer
+      mutate_at(c(col0), na_if, "X3") |>
+      mutate_at(c(col0), replace_na, "NA") |>
       filter_all(all_vars(!is.na(.))) |>
       select(-all_of(valCol0)) |>
       left_join(df1, by=col0)

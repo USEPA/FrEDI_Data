@@ -71,17 +71,17 @@ configureControlTables <- function(
   
   ### 3. Reshape Loaded Data ----------------
   ### Reshape state data
-  # if(!silent) 
+  # if(!silent)
   msg1 |> get_msgPrefix(newline=F) |> paste0("Reshaping control tables...") |> message()
   controlData <- controlData |> reshapeControlTables(
     minYr0 = minYr0,
     maxYr0 = maxYr0,
-    silent = silent, 
-    msg0   = msg1
+    silent = silent,
+    msg0   = msg2
   ) ### End reshapeConfigData
   # controlData[["co_scenarios"]] |> glimpse()
   # "got here2" |> print()
-  
+
   ### 4. Save Data to File ----------------
   ### Save R Data objects
   ### If save:
@@ -91,15 +91,19 @@ configureControlTables <- function(
   if(save0) {
     msg1 |> get_msgPrefix(newline=F) |> paste0("Saving results to ", outDir, "...") |> message()
     pathExists <- outDir |> dir.exists()
-    if(!pathExists) {createDir <- outDir |> dir.create(recursive=T)}
+    if(!pathExists) {
+      createDir <- outDir |> dir.create(recursive=T)
+    } ### End if(!pathExists)
     save(list=c("controlData"), file=outPath)
   } ### End if(save)
-  
+
   
   ### Return ----------------
   msg1 |> get_msgPrefix(newline=F) |> paste0("...Finished configuring control tables.") |> message()
   msg1 |> get_msgPrefix(newline=T) |> message()
-  if(return0) {return(controlData)}
+  if(return0) {
+    return(controlData)
+  } ### End if(return0)
   # return(returnList)
 }
 
