@@ -267,7 +267,7 @@ configList[["co_sectors"]] <- co_sectors
 #### Impact Types ----------------
 co_impactTypes  <- tibble(
   sector="mortality", 
-  impactType="NA", 
+  impactType="Excess Mortality", 
   impactType_label="N/A"
 ) |> bind_rows(tibble(
   sector="morbidity", 
@@ -515,51 +515,6 @@ stateData[["base_state_pop"]] <- base_state_pop
 base_state_pop$base_year |> range(); base_state_pop |> pull(postal) |> unique() |> length()
 
 
-#### Age Range percentages ----------------
-### For morbidity
-### - Change column names
-### - Standardize with states
-### - Split the string for age range into new columns, convert to numeric
-listLoad$pop$data$popAge |> glimpse()
-listLoad$pop$data$popAge$newAgeRange |> unique()
-asthmaAgePcts <- listLoad$pop$data$popAge|> (function(
-    df0, 
-    df1=co_states
-){
-  ### Rename values
-  renameAt0 <- c("Year", "State_FIPS", "Population", "Pct.State.Pop")
-  renameTo0 <- c("base_year", "fips", "pop", "ageRange_pctStatePop")
-  df0       <- df0 |> rename_at(c(renameAt0), ~renameTo0)
-  ### Join with states
-  join0     <- "fips"
-  df0       <- df1 |> 
-    left_join(df0, by=join0) |> 
-    arrange_at(c("fips", "ageRange_pctStatePop"))
-  rm(df1)
-  # "got here1" |> print()
-  ### Split age range into new columns
-  # c("0TO17", "18TO99", "0TO17") |> 
-  df1       <- df0 |> 
-    pull(newAgeRange) |> 
-    map(str_split, "TO") |> 
-    map(unlist) |> map(as.list) |> 
-    map(set_names, c("startAge", "endAge")) |> 
-    map(as.data.frame) |>
-    bind_rows()
-  # df1 |> glimpse()
-  ### Bind values with data
-  df0       <- df0 |> 
-    bind_cols(df1) |> 
-    mutate_at(c("startAge", "endAge"), as.numeric) |>
-    relocate(c("startAge", "endAge"), .after=newAgeRange)
-  rm(df1)
-  
-  ### Return
-  return(df0)
-})(); asthmaAgePcts |> glimpse()
-# listData[["asthmaAgeRangePcts"]] <- asthmaAgeRangePcts
-stateData[["asthmaAgePcts"]] <- asthmaAgePcts
-
 
 ### Mortality ----------------
 #### IF Mortality Rate Scalar ----------------
@@ -725,8 +680,85 @@ baseline_mort <- listLoad$mort$data$mortState |> (function(
 stateData[["baseline_state_mort"]] <- baseline_mort
 
 
-### Asthma Incidence ----------------
-#### Baseline Mortality Rate ----------------
+### Morbidity ----------------
+#### Age Range percentages ----------------
+### For morbidity
+### - Change column names
+### - Standardize with states
+### - Split the string for age range into new columns, convert to numeric
+listLoad$pop$data$popAge |> glimpse()
+listLoad$pop$data$popAge$Year |> range()
+listLoad$pop$data$popAge$newAgeRange |> unique()
+asthmaAgePcts <- listLoad$pop$data$popAge|> (function(
+    df0
+){
+  ### Rename values
+  renameAt0 <- c("Year", "State_FIPS", "Population", "Pct.State.Pop")
+  renameTo0 <- c("year", "fips", "ageRefPop", "agePctStatePop")
+  df0       <- df0 |> rename_at(c(renameAt0), ~renameTo0)
+  ### Join with states and years
+  sort0     <- c("fips", "newAgeRange", "year")
+  join0     <- "fips" |> c("year")
+  yrs0      <- df0 |> pull(year) |> unique() |> sort()
+  dfYrs0    <- tibble(year = yrs0)
+  minYr0    <- yrs0 |> min()
+  maxYr0    <- yrs0 |> max()
+  newYrs0   <- minYr0:maxYr0
+  dfJoin0   <- co_states |> cross_join(dfYrs0)
+  df0       <- dfJoin0 |> 
+    left_join(df0, by=join0) |> 
+    arrange_at(c(sort0))
+  # df0 |> glimpse()
+  rm(dfJoin0)
+  ### Group and interpolate
+  sum0      <- c("ageRefPop", "agePctStatePop")
+  names0    <- df0 |> names()
+  group0    <- names0 |> get_matches(y=c(sum0, "year"), matches=F)
+  df0       <- df0 |> group_by_at(c(group0))
+  df0       <- df0 |> group_map(function(.x, .y){
+    .x <- sum0 |> map(function(colX, dfX=.x){
+      xIn  <- .x |> pull(year)
+      yIn  <- .x |> pull(all_of(colX))
+      out0 <- xIn |> approx(y=yIn, xout=newYrs0) |>
+        bind_cols() |>
+        rename_at(c("x", "y"), ~c("year", colX))
+      return(out0)
+    }) |> reduce(left_join, by="year")
+    .x <- .x |> cross_join(.y)
+    return(.x)
+  }) |> bind_rows()
+  ### Relocate and arrange
+  df0       <- df0 |> 
+    relocate(any_of(names0)) |> 
+    arrange_at(c(sort0))
+  ### Interpolate over years
+  # "got here1" |> print()
+  # ### Split age range into new columns
+  # # c("0TO17", "18TO99", "0TO17") |> 
+  # df1       <- df0 |> 
+  #   pull(newAgeRange) |> 
+  #   map(str_split, "TO") |> 
+  #   map(unlist) |> map(as.list) |> 
+  #   map(set_names, c("startAge", "endAge")) |> 
+  #   map(as.data.frame) |>
+  #   bind_rows()
+  # # df1 |> glimpse()
+  # ### Bind values with data
+  # df0       <- df0 |> 
+  #   bind_cols(df1) |> 
+  #   mutate_at(c("startAge", "endAge"), as.numeric) |>
+  #   relocate(c("startAge", "endAge"), .after=newAgeRange)
+  # rm(df1)
+  
+  ### Return
+  return(df0)
+})(); asthmaAgePcts |> glimpse()
+# listData[["asthmaAgeRangePcts"]] <- asthmaAgeRangePcts
+stateData[["asthmaAgePcts"]] <- asthmaAgePcts
+asthmaAgePcts$fips |> range()
+
+
+#### Asthma Incidence/ER Visits ----------------
 ### Rename columns
 ### Standardize with states
 ### Drop multi-model mean
@@ -735,10 +767,12 @@ listLoad$asth$data$asthAsthma$State_FIPS |> unique()
 listLoad$asth$data$asthAsthma$Endpoint |> unique()
 listLoad$asth$data$asthAsthma$Model |> unique()
 listLoad$asth$data$asthAsthma$ModelYear |> range()
+listLoad$asth$data$asthAsthma$ModelYear |> unique()
 # listLoad$asth$data$asthma  |> glimpse()
 
 df_asthmaImpacts <- listLoad$asth$data$asthAsthma |> (function(
-    df0
+    df0, 
+    df1 = asthmaAgePcts
 ){
   ### Rename values
   renameAt0 <- c("State_FIPS", "Endpoint", "Model", "ModelYear", "Start_Age", "End_Age", "State_Results")
@@ -752,6 +786,13 @@ df_asthmaImpacts <- listLoad$asth$data$asthAsthma |> (function(
   dfUnique0 <- df0 |> select(all_of(select0)) |> unique()
   # dfUnique0 |> glimpse()
   dfJoin0   <- co_states |> cross_join(dfUnique0)
+  ### Join with years
+  yrs0      <- df0 |> pull(year) |> unique() |> sort()
+  dfYrs0    <- tibble(year = yrs0)
+  minYr0    <- yrs0 |> min()
+  maxYr0    <- yrs0 |> max()
+  newYrs0   <- minYr0:maxYr0
+  # dfJoin0   <- dfJoin0 |> cross_join(dfYrs0)
   # dfJoin0 |> glimpse()
   # join0     <- c("fips", "year")
   join0     <- select0 |> c("fips")
@@ -780,9 +821,42 @@ df_asthmaImpacts <- listLoad$asth$data$asthAsthma |> (function(
       .default = "childAsthma"
     ), .after="sector")
   
+  ### Group and interpolate
+  sum0      <- c("scaled_impacts")
+  names0    <- df0 |> names()
+  group0    <- names0 |> get_matches(y=c(sum0, "year"), matches=F)
+  df0       <- df0 |> group_by_at(c(group0))
+  df0       <- df0 |> group_map(function(.x, .y){
+    .x <- sum0 |> map(function(colX, dfX=.x){
+      dfX  <- dfX |> filter_at(c(colX), function(x){!(x |> is.na())})
+      doX  <- dfX |> nrow()
+      if(doX) {
+        xIn  <- .x |> pull(year)
+        yIn  <- .x |> pull(all_of(colX))
+        
+        out0 <- xIn |> approx(y=yIn, xout=newYrs0) |> bind_cols()
+      } else{
+        out0 <- tibble(x = newYrs0, y = NA)
+      } ### End if(doX)
+      out0 <- out0 |> rename_at(c("x", "y"), ~c("year", colX))  
+      return(out0)
+    }) |> reduce(left_join, by="year")
+    .x <- .x |> cross_join(.y)
+    return(.x)
+  }) |> bind_rows()
+  ### Relocate and arrange
+  df0       <- df0 |> 
+    relocate(any_of(names0)) |> 
+    arrange_at(c(sort0))
+  
+  ### Join with age ranges
+  join0     <- df0 |> names() |> get_matches(df1 |> names())
+  df0       <- df0 |> left_join(df1, by=join0, relationship="many-to-many")
+  
   ### Return
   return(df0)
 })(); df_asthmaImpacts |> glimpse()
+# 61965*2
 df_asthmaImpacts |> filter(model_label |> is.na()) |> glimpse()
 # listData[["df_asthmaImpacts"]] <- df_asthmaImpacts
 stateData[["df_asthmaImpacts"]] <- df_asthmaImpacts
@@ -1110,7 +1184,8 @@ o3_default$region |> unique(); o3_default$model |> unique()
 scenariosList[["o3_default"]] <- o3_default
 
 
-## Update Data in List & Save List ----------------
+## Save Data ----------------
+### Update Data in List ----------------
 # ghgData[["package"     ]] <- listData
 # ghgData[["scenarioData"]] <- listScenarios
 ghgData[["ghgData"     ]] <- configList
@@ -1123,10 +1198,11 @@ ghgData[["scenarioData"]] <- scenariosList
 # saveFile   <- projDir |> file.path("data", "ghgData.rda")
 saveFile   <- oPath0 |> file.path("ghg", "ghgData") |> paste0(".", "rda")
 save(ghgData, file=saveFile)
-
-### Update in rdata list
+ghgData0 <- ghgData
+# ghgData |> glimpse()
+### Update System Data ----------------
 rDataList  <- rDataList |> (function(list0, names0="ghgData"){list0[!((list0 |> names()) %in% names0)]})()
-rDataList[["ghgData"]] <- ghgData
+# rDataList[["ghgData"]] <- ghgData
 save(rDataList, file=oPath0 |> file.path("sysdata.rda"))
 rDataList |> names()
 projDir |> devtools::load_all()
@@ -1135,6 +1211,7 @@ tmpData     <- projDir |> update_sysdata(
     mainFile  = "sysdata.rda",
     sv        = TRUE ,
     svPath    = oPath0 |> file.path("sv"),
+    ghgPath   = oPath0 |> file.path("ghg"),
     svExt     = "rda",
     save      = TRUE ,
     return    = FALSE
@@ -1148,6 +1225,7 @@ tmpData     <- projDir |> update_sysdata(
 # ) ### End fun_saveSysData
 # dPath0 |> list.files()
 
+# rDataList  <- rDataList |> (function(list0, names0="ghgData"){list0[!((list0 |> names()) %in% names0)]})()
 # saveFile   <- projDir |> file.path("data", "sysdata.rda")
 # save(rDataList, ghgData, svDataList, svPopList, format_styles, file=saveFile)
 
