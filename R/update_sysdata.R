@@ -32,6 +32,7 @@ update_sysdata <- function(
   projectPath <- hasProject  |> ifelse(projectPath, ".")
   dataPath    <- hasDataPath |> ifelse(dataPath, projectPath |> file.path("data")) 
   svPath      <- hasSvPath   |> ifelse(svPath  , dataPath    |> file.path("sv"))
+  ghgPath     <- projectPath |> file.path("ghg")
   
   ### Main FrEDI system data
   sysDataName <- mainFile
