@@ -1,10 +1,11 @@
-###### Packages ######
+## Set Up Environment ----------------
+### Packages ----------------
 require(tidyverse)
 require(devtools)
 require(zoo)
 # require(FrEDI)
 
-###### File Paths ######
+### File Paths ----------------
 ### Project directory
 projDir   <- "."
 "." |> load_all()
@@ -17,7 +18,6 @@ dataFiles <- dataPaths |> basename(); dataFiles
 ### Exclude county results: 6 files
 loadFiles <- dataFiles |> (function(x, str0="County"){x[!(x |> str_detect(str0))]})(); loadFiles
 
-
 ### Examine data
 ### Separate files
 popFiles  <- loadFiles |> (function(x, str0="pop"  ){x[x |> tolower() |> str_detect(str0)]})(); popFiles
@@ -28,8 +28,8 @@ ch4Files  <- loadFiles |> (function(x, str0="ch4"  ){x[x |> tolower() |> str_det
 loadTypes <- c("pop", "o3", "mort","ch4")
 dfLoad    <- tibble(prefix0 = loadTypes) |> mutate(str0 = c("pop", "oz", "mort","ch4"))
 
-###### Load Lists ######
-###### ** List of File Names ######
+### Load Lists ----------------
+#### List of File Names ----------------
 listLoad0  <- dfLoad |> pull(str0) |> map(function(str0, list0=loadFiles){
   list0 <- list0 |> (function(x, strx=str0){x[x |> tolower() |> str_detect(strx)]})(); 
   list0 |> print()
@@ -37,7 +37,7 @@ listLoad0  <- dfLoad |> pull(str0) |> map(function(str0, list0=loadFiles){
 }) |> set_names(dfLoad |> pull(prefix0))
 # listLoad0$pop
 
-###### ** Order File Names ######
+#### Order File Names ----------------
 listLoad1 <- listLoad0 |> 
   (function(list0){
     list(type0 = list0 |> names(), files0=list0)
@@ -91,7 +91,7 @@ listLoad1 <- listLoad0 |>
   }) |> set_names(dfLoad |> pull(prefix0))
 # listLoad1$pop |> names()
 
-###### ** Load Files ######
+#### Load Files ----------------
 listLoad  <- listLoad1 |> 
   (function(list0){
     list(type0 = list0 |> names(), lists0=list0)
@@ -128,7 +128,7 @@ listLoad$pop$data$popAll |> group_by(state, year) |> summarize(n=n(), .groups="d
 # }} ### End for loop
 
 
-###### Initialize Lists ######
+### Initialize Lists ----------------
 # listSave    <- list()
 listMethane <- list()
 listData    <- list()
@@ -138,8 +138,8 @@ listMethane[["original"]] <- listLoad
 listData[["coefficients"]] <- list()
 
 
-###### Reshape ID/Crosswalk Tables ######
-###### ** Regions & States ######
+## Reshape ID/Crosswalk Tables ----------------
+### Regions & States ----------------
 ### Get new regions
 rDataList$frediData$co_regions |> glimpse()
 co_regions  <- rDataList$frediData$co_regions |> (function(df0){
@@ -203,7 +203,7 @@ listLoad$pop$data$popBase |> pull(State_FIPS) |> unique() |> length()
 
 
 
-###### ** Model Types and Models ######
+### Model Types and Models ----------------
 ### Model Types
 rDataList$frediData$co_modelTypes |> glimpse()
 co_modelTypes   <- rDataList$frediData$co_modelTypes |> (function(df0){
@@ -269,7 +269,7 @@ listData[["co_models"]] <- co_models
 
 
 
-###### ** Input Info ######
+### Input Info ----------------
 ### Input Info
 rDataList$frediData$co_inputInfo |> glimpse()
 co_inputInfo   <- rDataList$frediData$co_inputInfo |> (function(df0){
@@ -301,15 +301,15 @@ listData[["co_inputInfo"]] <- co_inputInfo
 
 
 
-###### Coffiecients ######
+### Coffiecients ----------------
 ### Lists of coefficients
 list_coefficients <- list() |> (function(
     list0
 ){
-  ###### Initial List ######
+  #### Initial List ----------------
   list0   <- list()
   
-  ###### ** Other ######
+  #### Other ----------------
   listOth <- list()
   listOth[["minYear0"]] <- 2020
   listOth[["maxYear0"]] <- 2100
@@ -340,14 +340,14 @@ list_coefficients <- list() |> (function(
   ### Update in list
   list0 <- list0 |> c(listOth)
   
-  ###### ** Mortality ######
+  #### Mortality ----------------
   ### Initialize list
   listM   <- list()
   listM[["fun0"]] <- NULL
   ### Update in list
   list0[["Mortality"]] <- listM
   
-  ###### ** Methane ######
+  #### Methane ----------------
   ### CH4, in pptv 
   ### Initialize list
   listCH4   <- list()
@@ -356,7 +356,7 @@ list_coefficients <- list() |> (function(
   ### Update in list
   list0[["CH4"]] <- listCH4
   
-  ###### ** NOx ######
+  #### NOx ----------------
   ### Initialize list
   listNOx   <- list()
   ### NOx coefficients
@@ -383,7 +383,7 @@ list_coefficients <- list() |> (function(
   ### Update in list
   list0[["NOx"]] <- listNOx
   
-  ###### Return ######
+  #### Return ----------------
   return(list0)
 })()
 ### Update list
@@ -394,8 +394,9 @@ listData[["coefficients"]] <- list_coefficients
 
 
 
-###### Reshape Base Data ######
-###### ** Base Population ######
+## Reshape Base Data ----------------
+### Population ----------------
+#### Base Population ----------------
 ### Reshape base population data (from BenMAP runs):
 ### - Change names c("Year", "State_FIPS", "Population") to c("year", "fips", "pop")
 ### - Join with co_states by "fips":
@@ -431,7 +432,7 @@ base_state_pop$base_year |> range(); base_state_pop |> pull(postal) |> unique() 
 
 
 
-###### ** IF Mortality Rate Scalar ######
+#### IF Mortality Rate Scalar ----------------
 ### Form IF Mortality Rate Scalar and join with RFF data
 listLoad$mort$data$mortScalar |> glimpse(); listLoad$mort$data$mortScalar$Years |> range()
 nat_ifScalar <- listLoad$mort$data$mortScalar |> (function(df0){
@@ -456,7 +457,7 @@ listData[["nat_ifScalar"]] <- nat_ifScalar
 
 
 
-###### ** Default Population ######
+#### Default Population ----------------
 ### Reshape default population data (from BenMAP runs):
 ### - Change names c("Year", "State_FIPS", "Population") to c("year", "fips", "pop")
 ### - Join with co_states by "fips":
@@ -487,8 +488,8 @@ def_state_pop$year |> range(); def_state_pop |> pull(postal) |> unique() |> leng
 # def_state_pop$region |> unique()
 
 
-
-###### ** RFF Population & Mortality ######
+### Mortality ----------------
+#### RFF Population & Mortality ----------------
 ### Reshape population & mortality data (from RFF runs):
 ### Then join with IF Scalar Data
 listLoad$pop$data$popRff  |> glimpse()
@@ -560,7 +561,7 @@ calc_mortality <- function(
 listData$coefficients[["Mortality"]][["fun0"]] <- calc_mortality
 
 
-###### ** Baseline Mortality Rate #####
+#### Baseline Mortality Rate ----------------
 listLoad$mort$data$mortBase |> glimpse()
 listLoad$mort$data$mortState |> glimpse()
 
@@ -597,7 +598,7 @@ baseline_mort <- listLoad$mort$data$mortState |> (function(
 })(); baseline_mort |> glimpse()
 listData[["baseline_state_mort"]] <- baseline_mort
 
-###### ** Ozone Response ######
+### Ozone Response ----------------
 ### National O3 reshaping
 listLoad$o3$data$o3Nat |> glimpse()
 ### Use units pptv to ppbv
@@ -694,7 +695,7 @@ listData[["state_o3"]] <- state_o3
 
 
 
-###### ** State Excess Mortality ######
+### State Excess Mortality ----------------
 ### State Excess Mortality reshaping
 ### Model	ModelYear	State_FIPS	State_Results |> rename to: c(model_str, refYear, fips, excess_mortality)
 listLoad$mort$data$mortXm |> glimpse(); listLoad$mort$data$mortXm$ModelYear |> range()
@@ -746,7 +747,7 @@ listData[["state_xMort"]] <- state_xMort
 
 
 
-###### ** Calculate RR Scalar ######
+### Calculate RR Scalar ----------------
 base_state_pop |> glimpse(); state_o3 |> glimpse(); state_xMort |> glimpse(); 
 state_rrScalar <- base_state_pop |> (function(
     df0, 
@@ -784,15 +785,15 @@ listData[["state_rrScalar"]] <- state_rrScalar
 
 
 
-###### Default Scenarios ######
+## Default Scenarios ----------------
 # listData <- listData |> (function(list0, names0=c("ch4_default", "nox_default", "o3_default")){list0[!((list0 |> names()) %in% names0)]})()
 listScenarios <- list()
 
-###### ** GDP ######
+### GDP ----------------
 ### Default GDP scenario = Default FrEDI scenario
 listScenarios[["gdp_default"]] <- rDataList$scenarioData$gdp_default
 
-###### ** Population ######
+### Population ----------------
 ### Default population scenario = make scenario from FrEDI data
 rDataList$scenarioData$popData$region |> unique()
 pop_default <- def_state_pop |> (function(df0){
@@ -802,7 +803,7 @@ pop_default <- def_state_pop |> (function(df0){
 })(); pop_default |> glimpse()
 listScenarios[["pop_default"]] <- pop_default
 
-###### ** Methane ######
+### Methane ----------------
 ### Default methane scenario
 listLoad$ch4$data$ch4Ssp245  |> glimpse()
 ch4_default <- listLoad$ch4$data$ch4Ssp245 |> (function(
@@ -826,7 +827,7 @@ ch4_default <- listLoad$ch4$data$ch4Ssp245 |> (function(
 })(); ch4_default |> glimpse()
 listScenarios[["ch4_default"]] <- ch4_default
 
-###### ** NOx ######
+### NOx ----------------
 ### Default NOx scenario
 nox_default <- list_coefficients$minYear0:list_coefficients$maxYear0 |> (function(
     years0, 
@@ -839,7 +840,7 @@ nox_default <- list_coefficients$minYear0:list_coefficients$maxYear0 |> (functio
 })(); nox_default |> glimpse()
 listScenarios[["nox_default"]] <- nox_default
 
-###### ** O3 ######
+### O3 ----------------
 ### Default O3 scenario
 state_o3 |> glimpse()
 o3_default <- ch4_default |> (function(
@@ -905,13 +906,13 @@ listScenarios[["o3_default"]] <- o3_default
 
 
 
-###### Update Data in List & Save List ######
+## Update Data in List & Save List ----------------
 listMethane[["package"     ]] <- listData
 listMethane[["scenarioData"]] <- listScenarios
 rDataList  <- rDataList |> (function(list0, names0="ghgData"){list0[!((list0 |> names()) %in% names0)]})()
 
 
-###### Update Data in List & Save List ######
+### Update Data in List & Save List
 # saveFile   <- projDir |> file.path("data", "listMethane.rda")
 saveFile   <- projDir |> file.path("data", "ghg", "ghgData") |> paste0(".", "rda")
 save(ghgData, file=saveFile)
@@ -920,4 +921,4 @@ save(ghgData, file=saveFile)
 # save(rDataList, listMethane, svDataList, svPopList, format_styles, file=saveFile)
 
 
-###### End File ######
+## End File ----------------
