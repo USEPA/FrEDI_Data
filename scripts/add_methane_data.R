@@ -1206,23 +1206,24 @@ rDataList  <- rDataList |> (function(list0, names0="ghgData"){list0[!((list0 |> 
 save(rDataList, file=oPath0 |> file.path("sysdata.rda"))
 rDataList |> names()
 projDir |> devtools::load_all()
-tmpData     <- projDir |> update_sysdata(
-    dataPath  = oPath0,
-    mainFile  = "sysdata.rda",
-    sv        = TRUE ,
-    svPath    = oPath0 |> file.path("sv"),
-    ghgPath   = oPath0 |> file.path("ghg"),
-    svExt     = "rda",
-    save      = TRUE ,
-    return    = FALSE
-  ) ### End update_sysdata
-# oPath0 |> fun_saveSysData(
-#   controlFile = "controlData",
-#   outFile     = "tmp_sysData",
-#   scenarioDir = "scenarios",
-#   modules     = c("fredi", "ghg", "sv"),
-#   extStrs     = c("rda", "rds")
-# ) ### End fun_saveSysData
+# tmpData     <- projDir |> update_sysdata(
+#     dataPath  = oPath0,
+#     mainFile  = "sysdata.rda",
+#     sv        = TRUE ,
+#     svPath    = oPath0 |> file.path("sv"),
+#     ghgPath   = oPath0 |> file.path("ghg"),
+#     svExt     = "rda",
+#     save      = TRUE ,
+#     return    = FALSE
+#   ) ### End update_sysdata
+projDir |> devtools::load_all()
+oPath0 |> fun_saveSysData(
+  # controlFile = "controlData",
+  # scenarioDir = "scenarios",
+  modules     = c("fredi", "ghg", "sv"),
+  outFile     = "sysData",
+  extStrs     = c("rda", "rds")
+) ### End fun_saveSysData
 # dPath0 |> list.files()
 
 # rDataList  <- rDataList |> (function(list0, names0="ghgData"){list0[!((list0 |> names()) %in% names0)]})()
