@@ -11,6 +11,7 @@ projDir   <- "."
 "." |> load_all()
 ### Data dir
 ### Get file paths: 9 files, including county results
+codeDir   <- projDir   |> file.path("scripts")
 dataDir   <- projDir   |> file.path("inst", "extdata", "ghg")
 dataPaths <- dataDir   |> list.files(full.names = T, pattern = "\\.csv")
 dataFiles <- dataPaths |> basename(); dataFiles
@@ -19,6 +20,8 @@ oPath0    <- projDir   |> file.path("data")
 
 ### Exclude county results: 6 files
 loadFiles <- dataFiles |> (function(x, str0="County"){x[!(x |> str_detect(str0))]})(); loadFiles
+loadCode  <- function(path0=codeDir, files0="utils_ghg.R"){for(file_i in files0){path0 |> file.path(files0) |> source()}}
+loadCode()
 
 ### Examine data
 ### Separate files
@@ -264,16 +267,32 @@ co_sectors  <- tibble(sector = c("mortality", "morbidity")) |>
 co_sectors |> glimpse()
 configList[["co_sectors"]] <- co_sectors
 
+#### Age Types ----------------
+### Main impact info and add age ranges
+co_ageTypes  <- tibble(ageType = c("all", "child", "adult")) |> 
+  mutate(ageRange = ageType |> factor(c("all", "child", "adult"), c("all", "0TO17", "18TO99")))
+co_ageTypes |> glimpse()
+configList[["co_ageTypes"]] <- co_ageTypes
+
 #### Impact Types ----------------
+### Main impact info and add age ranges
 co_impactTypes  <- tibble(
   sector="mortality", 
-  impactType="Excess Mortality", 
-  impactType_label="N/A"
+  impactType="excessMort", 
+  impactType_label="Excess Mortality"
 ) |> bind_rows(tibble(
   sector="morbidity", 
   impactType="childAsthma" |> c("asthmaER" |> paste0("_", c("child", "adult"))), 
   impactType_label="New Childhood Asthma" |> c("Asthma ER Visits" |> paste0(" (", c("Children", "Adult"), ")"))
-))
+)) |> 
+  mutate(
+    endpoint = case_when(
+      sector %in% "mortality" ~ "NA",
+      impactType |> str_detect("childAsthma") ~ "Incidence, Asthma", 
+      .default="Emergency Room Visits, Asthma")
+  ) |> 
+  mutate(ageType  = impactType |> str_extract("child|adult") |> replace_na("all")) |>
+  left_join(co_ageTypes, by="ageType")
 co_impactTypes |> glimpse()
 configList[["co_impactTypes"]] <- co_impactTypes
 
@@ -388,10 +407,10 @@ co_models   <- rDataList$frediData$co_models |> (function(
   df0       <- df0 |> filter(modelType %in% "gcm")
   
   ### Rename columns
-  renameTo0 <- c("model", "modelUnit")
-  renameAt0 <- c(renameTo0) |> paste0("_id")
-  df0       <- df0 |> rename_at(c(renameAt0 |> c("maxUnitValue")), ~renameTo0 |> c("gcmMaxTemp"))
-  rm(renameAt0, renameTo0)
+  to0   <- c("model", "modelUnit")
+  from0 <- c(to0  ) |> paste0("_id")
+  df0       <- df0 |> rename_at(c(from0 |> c("maxUnitValue")), ~to0   |> c("gcmMaxTemp"))
+  rm(from0, to0  )
   
   ### Select columns
   select0   <- c("model", "model_label", "modelType", "gcmMaxTemp")
@@ -463,9 +482,9 @@ def_state_pop     <- listLoad$pop$data$popAll|> (function(df0, df1=co_states){
   rm(select0)
   
   ### Rename values
-  renameAt0 <- c("state_pop")
-  renameTo0 <- c("pop")
-  df0       <- df0 |> rename_at(c(renameAt0), ~renameTo0)
+  from0 <- c("state_pop")
+  to0   <- c("pop")
+  df0       <- df0 |> rename_at(c(from0), ~to0  )
   
   ### Filter to years
   df0       <- df0 |> filter(year <= 2100)
@@ -490,9 +509,9 @@ listLoad$pop$data$popBase |> glimpse()
 
 base_state_pop     <- listLoad$pop$data$popBase|> (function(df0, df1=co_states){
     ### Rename values
-    renameAt0 <- c("Year", "State_FIPS", "Population")
-    renameTo0 <- c("base_year", "fips", "base_state_pop")
-    df0       <- df0 |> rename_at(c(renameAt0), ~renameTo0)
+    from0 <- c("Year", "State_FIPS", "Population")
+    to0   <- c("base_year", "fips", "base_state_pop")
+    df0       <- df0 |> rename_at(c(from0), ~to0  )
     
     ### Join with states
     drop0     <- c("us_area")
@@ -528,12 +547,12 @@ nat_ifScalar <- listLoad$mort$data$mortScalar |> (function(df0){
   idCols0   <- c("Years", "Region")
   sumCols0  <- c("AllCauseDeathCounts", "RespDeathCounts", "Population", "AllCauseMortRate", "RespMortRate", "RespScalar")
   sumCols1  <- c("AllCauseMort", "RespMort", "Pop", "AllCauseMrate", "RespMrate", "RespScalar")
-  renameAt0 <- c(idCols0) |> c(sumCols0)
-  # renameTo0 <- c("year", "nation_fips") |> c("nat_if" |> paste0(sumCols0))
-  renameTo0 <- c("year", "nation_fips") |> c("if" |> paste0(sumCols1))
-  df0       <- df0 |> rename_at(c(renameAt0), ~renameTo0)
+  from0 <- c(idCols0) |> c(sumCols0)
+  # to0   <- c("year", "nation_fips") |> c("nat_if" |> paste0(sumCols0))
+  to0   <- c("year", "nation_fips") |> c("if" |> paste0(sumCols1))
+  df0       <- df0 |> rename_at(c(from0), ~to0  )
   # df0       <- df0 |> relocate(c("year"), .after=c("nation_fips"))
-  rm(renameAt0, renameTo0)
+  rm(from0, to0  )
   
   ### Return
   return(df0)
@@ -545,16 +564,19 @@ configList[["nat_ifScalar"]] <- nat_ifScalar
 ### Reshape population & mortality data (from RFF runs):
 ### Then join with IF Scalar Data
 listLoad$pop$data$popRff  |> glimpse()
-rff_nat_pop     <- listLoad$pop$data$popRff |> (function(df0, df1=nat_ifScalar){
+rff_nat_pop     <- listLoad$pop$data$popRff |> (function(
+    df0, 
+    df1=nat_ifScalar
+){
   ### Rename values
   idCols0   <- c("Year")
   sumCols0  <- c("pop", "mortality", "mort_rate", "mort_rate_intercept", "mort_rate_slope")
   sumCols1  <- c("Pop", "Mort", "Mrate", "Mrate_intercept", "Mrate_slope")
-  renameAt0 <- c(idCols0) |> c(sumCols0)
-  # renameTo0 <- c("base_year", "base_rff_pop", "base_rff_mort", "base_rff_mort_rate", "mort_intercept", "mort_slope")
-  renameTo0 <- c("year") |> c("rff" |> paste0(sumCols1))
-  df0       <- df0 |> rename_at(c(renameAt0), ~renameTo0)
-  df0       <- df0 |> relocate(all_of(renameTo0))
+  from0 <- c(idCols0) |> c(sumCols0)
+  # to0   <- c("base_year", "base_rff_pop", "base_rff_mort", "base_rff_mort_rate", "mort_intercept", "mort_slope")
+  to0   <- c("year") |> c("rff" |> paste0(sumCols1))
+  df0       <- df0 |> rename_at(c(from0), ~to0  )
+  df0       <- df0 |> relocate(all_of(to0  ))
   
   ### Get tibble with years, join, and linearly interpolate
   join0     <- c("year")
@@ -589,7 +611,7 @@ configList[["rff_nat_pop"]] <- rff_nat_pop
 ### Update coefficients
 ### Function of mortality as a function of population
 calc_mortality <- function(
-    df0, ### Tibble with population and years
+    df0,     ### Tibble with population and years
     df1      = rff_nat_pop, ### Tibble with columns for mortality rate slope and mortality rate intercept
     pCol0    = "national_pop"      , ### Column with national population
     sCol0    = "rffMrate_slope"    , ### Column with mortality rate slope,
@@ -616,57 +638,65 @@ configList$coefficients[["Mortality"]][["fun0"]] <- calc_mortality
 
 
 #### Baseline Mortality Rate ----------------
+### Expand grid, na.approx
 listLoad$mort$data$mortBase  |> glimpse()
 listLoad$mort$data$mortState |> glimpse()
-
+loadCode()
 baseline_mort <- listLoad$mort$data$mortState |> (function(
     df0,
-    mrate = listLoad$mort$data$mortBase |> pull(MortalityIncidence)
+    dfS    = co_states,
+    mrate  = listLoad$mort$data$mortBase |> pull(MortalityIncidence), 
+    maxYr0 = configList$coefficients$maxYear0
 ){
   ### Rename values
-  renameAt0 <- c("Column", "Year")
-  renameTo0 <- c("fips", "year")
-  df0       <- df0 |> rename_at(c(renameAt0), ~renameTo0)
+  from0 <- c("Column", "Year")
+  to0   <- c("fips", "year")
+  df0       <- df0 |> 
+    rename_at(c(from0), ~to0) |>
+    arrange_at(c(to0))
   # df0 |> glimpse()
+  
+  ### New years
+  yrs0      <- df0 |> pull(year) |> unique() |> sort()
+  dfYrs0    <- tibble(year = yrs0)
+  newYrs0   <- yrs0 |> min() |> seq(maxYr0)
+  
   ### Expand values to additional fips
   join0     <- c("fips", "year")
-  newVals0  <- c(2, 15)
-  fipsVals0 <- df0 |> pull(fips) |> unique() |> c(newVals0) |> sort()
-  # yrVals0   <- 2000:2060
-  dfYrs0    <- df0 |> select(year) |> unique() |> arrange_at(c("year"))
+  dfJoin0   <- dfS |> 
+    cross_join(dfYrs0) |>
+    arrange_at(c(join0))
+  
+  ### Join and arrange
   # "gothere1" |> print(); df0 |> glimpse(); dfYrs0 |> glimpse()
-  dfJoin0   <- co_states |> cross_join(dfYrs0) |> arrange_at(c(join0))
-  df0       <- dfJoin0   |> left_join(df0, by=join0)
+  # dfJoin0   <- co_states |> cross_join(dfYrs0) |> arrange_at(c(join0))
+  sort0     <- c("fips", "year")
+  group0    <- c("us_area", "region", "state", "postal", "fips")
+  df0       <- dfJoin0   |> 
+    left_join(df0, by=join0) |> 
+    mutate(StateMortRatio = StateMortRatio |> replace_na(1)) |>
+    arrange_at(c(join0)) |>
+    group_by_at(c(group0))
   rm(dfJoin0)
-  # dfYrs0    <- expand_grid(fips = fipsVals0, year = yrVals0)
-  # df0       <- dfYrs0 |> left_join(df0, by=join0)
-  ### Mutate values
-  df0       <- df0 |> mutate(
-    StateMortRatio = case_when(
-      fips %in% newVals0 ~ 1, 
-      .default = StateMortRatio
-    ) |> na.approx()
-  ) ### End mutate
-  ### Join with states info
   
   ### Extend values to additional years
-  maxYr0    <- df0 |> pull(year) |> max()
-  dfYrs0    <- tibble(year = (maxYr0 + 1):2100)
-  # df1       <- expand_grid(fips = fipsVals0, year = 2060:2100)
-  # df0       <- df0 |> 
+  sum0      <- c("StateMortRatio")
+  df0       <- df0 |> group_map(function(.x, .y){
+    .x |> ghg_groupMap(
+      .y     = .y,
+      yCols0 = sum0  ,  ### Columns to sum
+      xCol0  = "year",  ### X column
+      xOut0  = newYrs0, ### New or x values
+      rule0  = 2
+    ) ### End ghg_groupMap
+  }) |> bind_rows() |> ungroup() |>
+    relocate(any_of(group0)) |>
+    relocate(c("year"), .after="fips")
+  # "gothere1" |> print()
+  # ### Arrange values
+  # df0       <- df0 |>
   #   bind_rows(df1) |> 
-  #   group_by_at(c("fips")) |> 
-  #   fill(StateMortRatio) |> 
-  #   ungroup()
-  df1       <- df0 |> 
-    filter(year %in% maxYr0) |> 
-    select(-c("year")) |> 
-    cross_join(dfYrs0)
-  
-  ### Arrange values
-  df0       <- df0 |>
-    bind_rows(df1) |> 
-    arrange_at(c(join0))
+  #   arrange_at(c(join0))
     
   ### Calculate base mortality rate and join with states
   df0       <- df0 |>
@@ -681,181 +711,53 @@ stateData[["baseline_state_mort"]] <- baseline_mort
 
 
 ### Morbidity ----------------
-#### Age Range percentages ----------------
+#### Affected Population by Age Range ----------------
 ### For morbidity
 ### - Change column names
 ### - Standardize with states
 ### - Split the string for age range into new columns, convert to numeric
+### Interpolate over years
+
+### Glimpse
 listLoad$pop$data$popAge |> glimpse()
 listLoad$pop$data$popAge$Year |> range()
 listLoad$pop$data$popAge$newAgeRange |> unique()
-asthmaAgePcts <- listLoad$pop$data$popAge|> (function(
-    df0
-){
-  ### Rename values
-  renameAt0 <- c("Year", "State_FIPS", "Population", "Pct.State.Pop")
-  renameTo0 <- c("year", "fips", "ageRefPop", "agePctStatePop")
-  df0       <- df0 |> rename_at(c(renameAt0), ~renameTo0)
-  ### Join with states and years
-  sort0     <- c("fips", "newAgeRange", "year")
-  join0     <- "fips" |> c("year")
-  yrs0      <- df0 |> pull(year) |> unique() |> sort()
-  dfYrs0    <- tibble(year = yrs0)
-  minYr0    <- yrs0 |> min()
-  maxYr0    <- yrs0 |> max()
-  newYrs0   <- minYr0:maxYr0
-  dfJoin0   <- co_states |> cross_join(dfYrs0)
-  df0       <- dfJoin0 |> 
-    left_join(df0, by=join0) |> 
-    arrange_at(c(sort0))
-  # df0 |> glimpse()
-  rm(dfJoin0)
-  ### Group and interpolate
-  sum0      <- c("ageRefPop", "agePctStatePop")
-  names0    <- df0 |> names()
-  group0    <- names0 |> get_matches(y=c(sum0, "year"), matches=F)
-  df0       <- df0 |> group_by_at(c(group0))
-  df0       <- df0 |> group_map(function(.x, .y){
-    .x <- sum0 |> map(function(colX, dfX=.x){
-      xIn  <- .x |> pull(year)
-      yIn  <- .x |> pull(all_of(colX))
-      out0 <- xIn |> approx(y=yIn, xout=newYrs0) |>
-        bind_cols() |>
-        rename_at(c("x", "y"), ~c("year", colX))
-      return(out0)
-    }) |> reduce(left_join, by="year")
-    .x <- .x |> cross_join(.y)
-    return(.x)
-  }) |> bind_rows()
-  ### Relocate and arrange
-  df0       <- df0 |> 
-    relocate(any_of(names0)) |> 
-    arrange_at(c(sort0))
-  ### Interpolate over years
-  # "got here1" |> print()
-  # ### Split age range into new columns
-  # # c("0TO17", "18TO99", "0TO17") |> 
-  # df1       <- df0 |> 
-  #   pull(newAgeRange) |> 
-  #   map(str_split, "TO") |> 
-  #   map(unlist) |> map(as.list) |> 
-  #   map(set_names, c("startAge", "endAge")) |> 
-  #   map(as.data.frame) |>
-  #   bind_rows()
-  # # df1 |> glimpse()
-  # ### Bind values with data
-  # df0       <- df0 |> 
-  #   bind_cols(df1) |> 
-  #   mutate_at(c("startAge", "endAge"), as.numeric) |>
-  #   relocate(c("startAge", "endAge"), .after=newAgeRange)
-  # rm(df1)
-  
-  ### Return
-  return(df0)
-})(); asthmaAgePcts |> glimpse()
+loadCode()
+asthmaAgePcts <- listLoad$pop$data$popAge|> format_ghgAsthmaAffectedPop(
+  dfS    = co_states, 
+  dfA    = co_ageTypes, 
+  maxYr0 = configList$coefficients$maxYear0
+); asthmaAgePcts |> glimpse()
 # listData[["asthmaAgeRangePcts"]] <- asthmaAgeRangePcts
 stateData[["asthmaAgePcts"]] <- asthmaAgePcts
-asthmaAgePcts$fips |> range()
+
 
 
 #### Asthma Incidence/ER Visits ----------------
 ### Rename columns
 ### Standardize with states
 ### Drop multi-model mean
+
+### Endpoints c("Incidence, Asthma", "Emergency Room Visits, Asthma")
 listLoad$asth$data$asthAsthma |> glimpse()
-listLoad$asth$data$asthAsthma$State_FIPS |> unique()
 listLoad$asth$data$asthAsthma$Endpoint |> unique()
+listLoad$asth$data$asthAsthma$Start_Age |> unique()
+listLoad$asth$data$asthAsthma$End_Age |> unique()
+listLoad$asth$data$asthAsthma$State_FIPS |> unique()
+
 listLoad$asth$data$asthAsthma$Model |> unique()
 listLoad$asth$data$asthAsthma$ModelYear |> range()
+
 listLoad$asth$data$asthAsthma$ModelYear |> unique()
 # listLoad$asth$data$asthma  |> glimpse()
 
-df_asthmaImpacts <- listLoad$asth$data$asthAsthma |> (function(
-    df0, 
-    df1 = asthmaAgePcts
-){
-  ### Rename values
-  renameAt0 <- c("State_FIPS", "Endpoint", "Model", "ModelYear", "Start_Age", "End_Age", "State_Results")
-  renameTo0 <- c("fips", "endpoint", "model", "year", "startAge", "endAge", "scaled_impacts")
-  df0       <- df0 |> rename_at(c(renameAt0), ~renameTo0)
-  # df0 |> glimpse()
-  ### Expand values to additional fips
-  sort0     <- c("endpoint", "startAge", "endAge", "fips", "model", "year")
-  select0   <- df0 |> names() |> get_matches(y=c("fips", "scaled_impacts"), matches=F)
-  # dfMods0   <- df0 |> select(model) |> unique()
-  dfUnique0 <- df0 |> select(all_of(select0)) |> unique()
-  # dfUnique0 |> glimpse()
-  dfJoin0   <- co_states |> cross_join(dfUnique0)
-  ### Join with years
-  yrs0      <- df0 |> pull(year) |> unique() |> sort()
-  dfYrs0    <- tibble(year = yrs0)
-  minYr0    <- yrs0 |> min()
-  maxYr0    <- yrs0 |> max()
-  newYrs0   <- minYr0:maxYr0
-  # dfJoin0   <- dfJoin0 |> cross_join(dfYrs0)
-  # dfJoin0 |> glimpse()
-  # join0     <- c("fips", "year")
-  join0     <- select0 |> c("fips")
-  df0       <- dfJoin0 |> 
-    left_join(df0, by=join0) |> 
-    relocate(any_of(sort0)) |>
-    arrange_at(c(sort0))
-  rm(dfUnique0, dfJoin0)
-  
-  ### Filter out model = "MMM" (multi-model mean)
-  ### Join with model info
-  # df0 |> glimpse()
-  df0       <- df0 |> 
-    filter_at(c("model"), function(x, y="MMM"){!x %in% y}) |>
-    rename_at(c("model"), ~"model_str") |>
-    left_join(co_models, by="model_str")
-  
-  ### Add sector and impact type
-  df0       <- df0 |> 
-    mutate(sector = "morbidity", .before="endpoint") |>
-    mutate(impactType = case_when(
-      endpoint |> str_detect("Emergency Room") ~ case_when(
-        startAge == 0 ~ "asthmaER_child",
-        .default = "asthmaER_adult"
-      ),
-      .default = "childAsthma"
-    ), .after="sector")
-  
-  ### Group and interpolate
-  sum0      <- c("scaled_impacts")
-  names0    <- df0 |> names()
-  group0    <- names0 |> get_matches(y=c(sum0, "year"), matches=F)
-  df0       <- df0 |> group_by_at(c(group0))
-  df0       <- df0 |> group_map(function(.x, .y){
-    .x <- sum0 |> map(function(colX, dfX=.x){
-      dfX  <- dfX |> filter_at(c(colX), function(x){!(x |> is.na())})
-      doX  <- dfX |> nrow()
-      if(doX) {
-        xIn  <- .x |> pull(year)
-        yIn  <- .x |> pull(all_of(colX))
-        
-        out0 <- xIn |> approx(y=yIn, xout=newYrs0) |> bind_cols()
-      } else{
-        out0 <- tibble(x = newYrs0, y = NA)
-      } ### End if(doX)
-      out0 <- out0 |> rename_at(c("x", "y"), ~c("year", colX))  
-      return(out0)
-    }) |> reduce(left_join, by="year")
-    .x <- .x |> cross_join(.y)
-    return(.x)
-  }) |> bind_rows()
-  ### Relocate and arrange
-  df0       <- df0 |> 
-    relocate(any_of(names0)) |> 
-    arrange_at(c(sort0))
-  
-  ### Join with age ranges
-  join0     <- df0 |> names() |> get_matches(df1 |> names())
-  df0       <- df0 |> left_join(df1, by=join0, relationship="many-to-many")
-  
-  ### Return
-  return(df0)
-})(); df_asthmaImpacts |> glimpse()
+loadCode()
+df_asthmaImpacts <- listLoad$asth$data$asthAsthma |> format_ghgAsthmaExcessCases( 
+  df1 = asthmaAgePcts,
+  dfM = co_models,
+  dfT = co_impactTypes, 
+  maxYr0 = configList$coefficients$maxYear0
+); df_asthmaImpacts |> glimpse()
 # 61965*2
 df_asthmaImpacts |> filter(model_label |> is.na()) |> glimpse()
 # listData[["df_asthmaImpacts"]] <- df_asthmaImpacts
@@ -870,8 +772,8 @@ nat_o3  <- listLoad$o3$data$o3Nat |> (function(
     df0, 
     df1    = co_models, 
     mRate0 = listLoad$mort$data$mortBase |> pull(MortalityIncidence),
-    ch4_0  = listData$coefficients$CH4$base0, ### pptbv
-    nox_0  = listData$coefficients$NOx$base0  ### Mt
+    ch4_0  = configList$coefficients$CH4$base0, ### pptbv
+    nox_0  = configList$coefficients$NOx$base0  ### Mt
     # ch4_0  = 100, ### pptbv
     # nox_0  = 10.528
 ){
@@ -879,10 +781,10 @@ nat_o3  <- listLoad$o3$data$o3Nat |> (function(
   # df0 |> glimpse()
   
   ### Rename values
-  renameAt0 <- c("Model", "OzoneResponse.ppt.ppb.", "DeltaOzone")
-  renameTo0 <- c("model_str", "nat_o3response_pptv_per_ppbv", "base_nat_deltaO3_pptv")
-  df0       <- df0 |> rename_at(c(renameAt0), ~renameTo0)
-  rm(renameAt0, renameTo0)
+  from0 <- c("Model", "OzoneResponse.ppt.ppb.", "DeltaOzone")
+  to0   <- c("model_str", "nat_o3response_pptv_per_ppbv", "base_nat_deltaO3_pptv")
+  df0       <- df0 |> rename_at(c(from0), ~to0  )
+  rm(from0, to0  )
   
   ### Join values with models
   select0   <- c("model", "model_label", "model_str")
@@ -919,15 +821,19 @@ configList[["nat_o3"]] <- nat_o3
 ###   - Mutate co_models: add column "model_str" by using mutate(model_str = model_id |> str_match(pattern=o3State$Model |> unique() |> paste(collapse="|")) |> as.list() |> unlist())
 ###   - Joining with co_models by "model_str"
 listLoad$o3$data$o3State |> glimpse()
-state_o3    <- listLoad$o3$data$o3State |> (function(df0, df1=co_states, df2=nat_o3 ){
+state_o3    <- listLoad$o3$data$o3State |> (function(
+    df0, 
+    df1=co_states, 
+    df2=nat_o3 
+){
   ### Glimpse data
   # df0 |> glimpse()
   
   ### Rename values
-  renameAt0 <- c("State_FIPS", "Model", "OzoneResponse.ppt.ppb.", "DeltaOzone")
-  renameTo0 <- c("fips", "model_str", "state_o3response_pptv_per_ppbv", "base_state_deltaO3_pptv")
-  df0       <- df0 |> rename_at(c(renameAt0), ~renameTo0)
-  rm(renameAt0, renameTo0)
+  from0 <- c("State_FIPS", "Model", "OzoneResponse.ppt.ppb.", "DeltaOzone")
+  to0   <- c("fips", "model_str", "state_o3response_pptv_per_ppbv", "base_state_deltaO3_pptv")
+  df0       <- df0 |> rename_at(c(from0), ~to0  )
+  rm(from0, to0  )
   
   ### Join states with values
   drop0     <- "us_area"
@@ -975,11 +881,11 @@ state_xMort    <- listLoad$mort$data$mortXm |> (function(
   # df0 |> glimpse()
   
   ### Rename values
-  renameAt0 <- c("State_FIPS", "Model", "State_Results", "ModelYear")
-  renameTo0 <- c("fips", "model_str", "base_state_exMort0", "base_year")
-  df0       <- df0 |> rename_at(c(renameAt0), ~renameTo0)
+  from0 <- c("State_FIPS", "Model", "State_Results", "ModelYear")
+  to0   <- c("fips", "model_str", "base_state_exMort0", "base_year")
+  df0       <- df0 |> rename_at(c(from0), ~to0  )
   df0       <- df0 |> relocate(c("base_year"), .after=c("model_str"))
-  rm(renameAt0, renameTo0)
+  rm(from0, to0  )
   
   ### Join states with values
   drop0     <- "us_area"
@@ -1015,40 +921,58 @@ state_xMort    <- listLoad$mort$data$mortXm |> (function(
 stateData[["state_xMort"]] <- state_xMort
 
 
-
-
 ### Calculate RR Scalar ----------------
 base_state_pop |> glimpse(); state_o3 |> glimpse(); state_xMort |> glimpse(); 
+baseline_mort |> glimpse()
 state_rrScalar <- base_state_pop |> (function(
     df0, 
     o3_0 = state_o3, 
     xm_0 = state_xMort,
-    base_mort = baseline_mort |> filter(year == "2020") |> select(-year,-base_respMrate) # Get Base Year baseline mortality adjustment
+    dfT  = co_impactTypes, ### Impact types
+    dfB  = baseline_mort # Get Base Year baseline mortality adjustment
 ){
   ### Glimpse data
   # df0 |> glimpse()
   ### Join state O3 response and state excess mortality data
   drop0     <- c("model_str")
-  join0     <- c("region", "state", "postal") |> c("model") 
+  join0     <- c("region", "state", "postal", "model") 
   o3_0      <- o3_0 |> select(-any_of(drop0))
   o3_0      <- o3_0 |> left_join(xm_0, by=join0)
   rm(join0, xm_0)
   
   ### Join population data with O3 response and excess mortality data
-  join0     <- c("region", "state", "postal") |> c("base_year")
-  joinMort0 <- df0 |> names() |> get_matches(y=base_mort |> names())
+  join0     <- c("region", "state", "postal", "base_year")
   move0     <- c("model", "model_label")
   df0       <- df0 |> left_join(o3_0, by=join0, relationship="many-to-many")
-  df0       <- df0 |> left_join(base_mort, by=joinMort0)
-  df0       <- df0 |> relocate(any_of(move0), .after=c("postal"))
-  rm(join0, move0, o3_0)
   
+  ### Join with base mortality
+  # joinMort0 <- df0 
+  # joinMort0 <- df0 |> names() |> get_matches(y=base_mort |> names())
+  move0     <- c("us_area", "region", "state", "postal", "fips", "model", "model_label")
+  drop0     <- c("base_respMrate", "nat_respMrate") |> c("region", "state")
+  joinB     <- c("postal", "base_year")
+  dfB       <- dfB |> 
+    # filter(year == "2020") |> 
+    rename_at(c("year"), ~"base_year") |>
+    select(-any_of(drop0))
+  # df0 |> glimpse(); dfB |> glimpse()
+  df0       <- df0 |> 
+    left_join(dfB, by=joinB) |> 
+    relocate(any_of(move0))
+  rm(join0, move0, o3_0, dfB)
+  # df0 |> glimpse()
   ### Calculate rr Scalar
   df0       <- df0 |> mutate(state_rrScalar   = base_state_pop * (base_Nat_respMrate * StateMortRatio)  * base_state_deltaO3_pptv)
   df0       <- df0 |> mutate(state_mortScalar = base_state_exMort / state_rrScalar)
   
-  ### Add sector and impact type
-  df0       <- df0 |> mutate(sector = "mortality", impactType = "NA", .before="region")
+  # ### Add sector and impact type
+  # df0    |> glimpse()
+  sort0     <- c("sector", "impactType", "impactType_label", "endpoint", "ageType", "ageRange", "fips", "model")
+  df0       <- df0 |> mutate(sector = "mortality")
+  df0       <- df0 |> 
+    left_join(dfT, by="sector") |>
+    arrange_at(c(sort0)) |>
+    relocate(any_of(sort0))
   
   ### Return
   return(df0)
@@ -1056,7 +980,7 @@ state_rrScalar <- base_state_pop |> (function(
 state_rrScalar$model |> unique()
 # listData[["state_rrScalar"]] <- state_rrScalar
 stateData[["state_rrScalar"]] <- state_rrScalar
-
+# ghgData
 
 
 ## Default Scenarios ----------------
@@ -1092,9 +1016,9 @@ ch4_default <- listLoad$ch4$data$ch4Ssp245 |> (function(
   df1       <- tibble(year=yrs0)
   ### Rename columns
   # df0       <- df0 |> rename("CH4_ppbv" =  ch4_ppb)
-  renameAt0 <- c("ch4_ppb")
-  renameTo0 <- c("CH4_ppbv")
-  df0       <- df0 |> rename_at(c(renameAt0), ~renameTo0)
+  from0 <- c("ch4_ppb")
+  to0   <- c("CH4_ppbv")
+  df0       <- df0 |> rename_at(c(from0), ~to0  )
   ### Filter to 2100
   join0     <- c("year")
   df0       <- df1 |> left_join(df0, by=join0)
@@ -1155,13 +1079,13 @@ o3_default <- ch4_default |> (function(
   # df0       <- df0 |> mutate()
 
   ### Drop region, rename values
-  # renameAt0 <- c(join0)  |> paste0("_label")
-  # renameTo0 <- c(join0)
-  renameTo0 <- c("region", "model")
-  renameAt0 <- c(renameTo0)  |> paste0("_label")
-  drop0     <- c(join0) |> c(renameTo0) |> c("us_area", "fips")
+  # from0 <- c(join0)  |> paste0("_label")
+  # to0   <- c(join0)
+  to0   <- c("region", "model")
+  from0 <- c(to0  )  |> paste0("_label")
+  drop0     <- c(join0) |> c(to0  ) |> c("us_area", "fips")
   df0       <- df0 |> select(-any_of(drop0))
-  df0       <- df0 |> rename_at(c(renameAt0), ~renameTo0)
+  df0       <- df0 |> rename_at(c(from0), ~to0  )
   df0       <- df0 |> relocate(c("model"), .before=c("year"))
 
   ### Calculate NOx ratio, then O3 response
@@ -1170,7 +1094,7 @@ o3_default <- ch4_default |> (function(
   df0       <- df0 |> mutate(nox_factor0 = noxAdj0)
   df0       <- df0 |> mutate(nox_factor  = NOx_Mt |> fun0())
   df0       <- df0 |> mutate(nox_ratio   = nox_factor / nox_factor0)
-  df0       <- df0 |> mutate(O3_pptv     = CH4_ppbv * nox_ratio * state_o3response_pptv_per_ppbv )
+  df0       <- df0 |> mutate(O3_pptv     = CH4_ppbv * nox_ratio * to0   )
   
   ### Arrange
   arrange0  <- c("region", "state", "model", "year")
@@ -1198,28 +1122,17 @@ ghgData[["scenarioData"]] <- scenariosList
 # saveFile   <- projDir |> file.path("data", "ghgData.rda")
 saveFile   <- oPath0 |> file.path("ghg", "ghgData") |> paste0(".", "rda")
 save(ghgData, file=saveFile)
-ghgData0 <- ghgData
+# ghgData0 <- ghgData
 # ghgData |> glimpse()
+
 ### Update System Data ----------------
-rDataList  <- rDataList |> (function(list0, names0="ghgData"){list0[!((list0 |> names()) %in% names0)]})()
-# rDataList[["ghgData"]] <- ghgData
-save(rDataList, file=oPath0 |> file.path("sysdata.rda"))
-rDataList |> names()
-projDir |> devtools::load_all()
-# tmpData     <- projDir |> update_sysdata(
-#     dataPath  = oPath0,
-#     mainFile  = "sysdata.rda",
-#     sv        = TRUE ,
-#     svPath    = oPath0 |> file.path("sv"),
-#     ghgPath   = oPath0 |> file.path("ghg"),
-#     svExt     = "rda",
-#     save      = TRUE ,
-#     return    = FALSE
-#   ) ### End update_sysdata
+# rDataList  <- rDataList |> (function(list0, names0="ghgData"){list0[!((list0 |> names()) %in% names0)]})()
+# # rDataList[["ghgData"]] <- ghgData
+# save(rDataList, file=oPath0 |> file.path("sysdata.rda"))
+# rDataList |> names()
+
 projDir |> devtools::load_all()
 oPath0 |> fun_saveSysData(
-  # controlFile = "controlData",
-  # scenarioDir = "scenarios",
   modules     = c("fredi", "ghg", "sv"),
   outFile     = "sysData",
   extStrs     = c("rda", "rds")
