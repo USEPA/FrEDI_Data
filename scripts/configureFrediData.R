@@ -31,9 +31,10 @@ configureFrediData <- function(
     doScalars   = TRUE , ### Whether or not do format scalars
     doScenarios = TRUE , ### Whether to load scenarios
     ### Info on saving
-    outFile     = "tmp_sysdata" |> paste0(".", "rda" ), ### Name of file to which to save results
+    outFile     = "tmp_sysdata" |> paste0("."), ### Name of file to which to save results
     save        = TRUE , ### Whether to save the data
     return      = TRUE , ### Whether to return object
+    return_type = "db",  ### Whether to return a database or rda object
     ### Info on messaging
     silent      = TRUE , ### Level of messaging
     msg0        = ""
@@ -57,7 +58,7 @@ configureFrediData <- function(
   # configDir   <- dataDir    |> file.path(configDir)
   # scenarioDir <- dataDir    |> file.path(scenarioDir)
   outDir      <- projectDir |> file.path(outDir)
-  outPath     <- outDir     |> file.path(outFile)
+  outPath     <- outDir     |> file.path(paste0(outFile,return_type))
   # ### Path and file name for data inputs
   # dataInDir   <- projectDir     |> file.path("inst", "extdata")
   # dataInName  <- "FrEDI_config" |> paste0(".", "xlsx")
@@ -93,6 +94,7 @@ configureFrediData <- function(
     outPath     = outPath,
     save0       = save0, 
     return0     = return0,
+    return_type = return_type,
     ### Info on messaging
     silent      = silent,
     msg0        = msg0
