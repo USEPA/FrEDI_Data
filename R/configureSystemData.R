@@ -26,7 +26,6 @@ configureSystemData <- function(
   ### Info on messaging
   silent      = TRUE , ### Level of messaging 
   msg0        = ""     ### Message prefix
-
 ){
   ### Messaging
   msgN <- "\n"
@@ -46,20 +45,16 @@ configureSystemData <- function(
   rDataList[["frediData"   ]] <- list(name="frediData"   , data=list())
   rDataList[["stateData"   ]] <- list(name="stateData"   , data=list())
   rDataList[["scenarioData"]] <- list(name="scenarioData", data=list())
-  
+
   
   ###### 1. Load Excel Data ######
   ### Load state data
   # if(!silent) 
   paste0(msg1, "Loading data...") |> message()
   loadData0     <- dataDir |> loadFrediData(
-    configDir   = configDir  , ### Directory containing config file, model impacts, scalars
-    configFile  = configFile , ### Name of excel file with config information
+    configFile  = configFile,  ### Name of excel file with config information
     configSheet = configSheet, ### Sheet with info about tables in config file
-    scenarioDir = scenarioDir, ### Directory containing scenarios
-    testFiles   = testFiles  , ### Files to load for testing
-    doScalars   = doScalars  , ### Whether or not do format scalars
-    doScenarios = doScenarios, ### Whether to load scenarios
+    testFiles   = testFiles,   ### Files to load for testing
     silent      = silent,
     msg0        = msg1
   ) ### End loadData
@@ -101,21 +96,16 @@ configureSystemData <- function(
   ### Reshape state data
   # if(!silent) 
   paste0(msg1, "Reshaping data...") |> message()
-  reshapeData0  <- loadData0 |> reshapeFrediData(
-    doScalars   = doScalars  , ### Whether or not do format scalars
-    doScenarios = doScenarios, ### Whether to load scenarios
-    silent      = silent, 
-    msg0        = msg1
-  ) ### End reshapeFrediData
-  gc()
+  reshapeData0  <- loadData0 |> reshapeFrediData(silent=silent, msg0=msg1)
   rm(loadData0)
-  ### If reshape0, save the reshaped data separately
+  gc()
+  ### If reshape, save the reshaped data separately
   if(reshape0){ 
     rDataList[["rsData"]] <- reshapeData0
   } else{
     rDataList[["rsData"]] <- list(name="rsData", data=list())
   } ### End if(reshape)
-  
+
   ### Update data in DB
   if(return_type == "db"){
     for(i in 1:length(reshapeData0[["frediData"]])){
@@ -133,6 +123,7 @@ configureSystemData <- function(
     )
   } 
   
+
   ### Update data in list
   if(return_type == "rda"){
     rDataList[["frediData"   ]] <- reshapeData0[["frediData"   ]]
@@ -146,16 +137,9 @@ configureSystemData <- function(
   ### Names of objects to combine from reshaped data
   # if(!silent) 
   paste0(msg1, "Configuring data...") |> message()
-  sysDataList0  <- reshapeData0 |> createSystemData(
-    extend_all  = extend_all , ### Whether to extend values to maximum allowable value
-    doScalars   = doScalars  , ### Whether or not do format scalars
-    doScenarios = doScenarios, ### Whether to load scenarios
-    silent = silent, 
-    msg0   = msg1
-  ) ### End createSystemData
-  gc()
+  sysDataList0  <- reshapeData0 |> createSystemData(extend_all=extend_all, silent=silent, msg0=msg1)
   rm(reshapeData0)
-  
+  gc()
   ### Update data in DB
   
   if(return_type == "db"){
@@ -198,7 +182,7 @@ configureSystemData <- function(
     inDrop0       <- (rDataList |> names()) %in% drop0
     rDataList     <- rDataList
     rDataList     <- rDataList[!inDrop0]
-  } ### End if(!reshape0) 
+  } ### End if(!reshape) 
   
   ###### Save to File ######
   ### Save R Data objects
@@ -236,5 +220,5 @@ configureSystemData <- function(
   ###### Return ######
   paste0(msg0, "...Finished running configureSystemData().") |> paste0(msgN) |> message()
   gc()
-  if(return0) return(rDataList)
+  return(rDataList)
 }
