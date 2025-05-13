@@ -9,6 +9,11 @@ require(zoo)
 ### Project directory
 projDir   <- "."
 "." |> load_all()
+### Load utils
+frediDir  <- projDir |> file.path("..", "FrEDI")
+frUtils   <- frediDir |> file.path("R", "utils.R")
+frUtils |> source()
+
 ### Data dir
 ### Get file paths: 9 files, including county results
 codeDir   <- projDir   |> file.path("scripts")
@@ -91,7 +96,7 @@ listLoad1 <- listLoad0 |>
       hasXm0     <- xm0       |> length()
       hasScalar0 <- scalar0   |> length()
       if(hasBase0  ) {list0[["base"  ]] <- base0  }
-      if(hasAdj0   ) {list0[["state" ]] <- stateAdj0  }
+      if(hasAdj0   ) {list0[["state" ]] <- stateAdj0}
       if(hasXm0    ) {list0[["xm"    ]] <- xm0    }
       if(hasScalar0) {list0[["scalar"]] <- scalar0}
     } else if (doch4) { 
@@ -99,9 +104,12 @@ listLoad1 <- listLoad0 |>
       hasssp2450   <- ssp2450   |> length()
       if(hasssp2450) {list0[["ssp245"  ]] <- ssp2450  }
     }  else if (doAsth) { 
-      asthma      <- files0  |> (function(x, strx="Asthma"){x[x |> str_detect(strx)]})()
-      hasAsthma   <- asthma  |> length()
-      if(hasAsthma) {list0[["asthma"]] <- asthma  }
+      excess0     <- files0  |> (function(x, strx="Excess"){x[x |> str_detect(strx)]})()
+      child0      <- files0  |> (function(x, strx="Child"){x[x |> str_detect(strx)]})()
+      hasExcess   <- excess0 |> length()
+      hasChild    <- child0  |> length()
+      if(hasChild ) {list0[["base"]] <- child0}
+      if(hasExcess) {list0[["excess"]] <- excess0}
     } ### End if (doPop )### End if (doPop )
     return(list0)
   }) |> set_names(loadTypes)
@@ -739,20 +747,20 @@ stateData[["asthmaAgePcts"]] <- asthmaAgePcts
 ### Drop multi-model mean
 
 ### Endpoints c("Incidence, Asthma", "Emergency Room Visits, Asthma")
-listLoad$asth$data$asthAsthma |> glimpse()
-listLoad$asth$data$asthAsthma$Endpoint |> unique()
-listLoad$asth$data$asthAsthma$Start_Age |> unique()
-listLoad$asth$data$asthAsthma$End_Age |> unique()
-listLoad$asth$data$asthAsthma$State_FIPS |> unique()
+listLoad$asth$data$asthExcess |> glimpse()
+listLoad$asth$data$asthExcess$Endpoint |> unique()
+listLoad$asth$data$asthExcess$Start_Age |> unique()
+listLoad$asth$data$asthExcess$End_Age |> unique()
+listLoad$asth$data$asthExcess$State_FIPS |> unique()
 
-listLoad$asth$data$asthAsthma$Model |> unique()
-listLoad$asth$data$asthAsthma$ModelYear |> range()
+listLoad$asth$data$asthExcess$Model |> unique()
+listLoad$asth$data$asthExcess$ModelYear |> range()
 
-listLoad$asth$data$asthAsthma$ModelYear |> unique()
+listLoad$asth$data$asthExcess$ModelYear |> unique()
 # listLoad$asth$data$asthma  |> glimpse()
 
 loadCode()
-df_asthmaImpacts <- listLoad$asth$data$asthAsthma |> format_ghgAsthmaExcessCases( 
+df_asthmaImpacts <- listLoad$asth$data$asthExcess |> format_ghgAsthmaExcessCases( 
   df1 = asthmaAgePcts,
   dfM = co_models,
   dfT = co_impactTypes, 
@@ -1094,7 +1102,7 @@ o3_default <- ch4_default |> (function(
   df0       <- df0 |> mutate(nox_factor0 = noxAdj0)
   df0       <- df0 |> mutate(nox_factor  = NOx_Mt |> fun0())
   df0       <- df0 |> mutate(nox_ratio   = nox_factor / nox_factor0)
-  df0       <- df0 |> mutate(O3_pptv     = CH4_ppbv * nox_ratio * to0   )
+  df0       <- df0 |> mutate(O3_pptv     = CH4_ppbv * nox_ratio * state_o3response_pptv_per_ppbv)
   
   ### Arrange
   arrange0  <- c("region", "state", "model", "year")
@@ -1131,7 +1139,8 @@ save(ghgData, file=saveFile)
 # save(rDataList, file=oPath0 |> file.path("sysdata.rda"))
 # rDataList |> names()
 
-projDir |> devtools::load_all()
+# projDir |> devtools::load_all()
+projDir |> file.path("R", "fun_saveSysData.R") |> source()
 oPath0 |> fun_saveSysData(
   modules     = c("fredi", "ghg", "sv"),
   outFile     = "sysData",

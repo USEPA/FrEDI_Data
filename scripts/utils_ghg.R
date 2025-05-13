@@ -50,7 +50,8 @@ format_ghgAsthmaAffectedPop <- function(
 ){
   ### Rename values
   from0   <- c("State_FIPS", "newAgeRange", "Population", "Pct.State.Pop", "Year")
-  to0     <- c("fips", "ageRange", "statePopRef", "ageRangePct", "year")
+  # to0     <- c("fips", "ageRange", "statePopRef", "ageRangePct", "year")
+  to0     <- c("fips", "ageRange", "affectedPop", "ageRangePct", "year")
   sort0   <- c("ageRange", "fips", "year")
   lvls0   <- co_ageTypes |> pull(ageRange) |> levels()
   df0     <- df0 |> 
@@ -67,7 +68,8 @@ format_ghgAsthmaAffectedPop <- function(
   dfYrs0  <- tibble(year = newYrs0)
   
   ### Group and interpolate
-  sum0    <- c("statePopRef", "ageRangePct")
+  # sum0    <- c("statePopRef", "ageRangePct")
+  sum0    <- c("affectedPop", "ageRangePct")
   group0  <- c("ageRange", "fips")
   # names0  <- df0 |> names()
   # group0  <- names0 |> get_matches(y=c(sum0, "year"), matches=F)
@@ -99,8 +101,9 @@ format_ghgAsthmaAffectedPop <- function(
   df0       <- dfJoin0 |> 
     left_join(df0, by=join0) |> 
     arrange_at(c(sort0)) |> 
-    group_by_at(c(group0)) |>
-    mutate(affectedPop = ageRangePct * statePopRef)
+    group_by_at(c(group0))
+    # group_by_at(c(group0)) |>
+    # mutate(affectedPop = ageRangePct * statePopRef)
   rm(dfJoin0)
   # df0 |> glimpse()
   
