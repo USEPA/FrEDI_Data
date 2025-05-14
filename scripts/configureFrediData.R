@@ -61,7 +61,7 @@ configureFrediData <- function(
   ###### Adjust paths
   # configDir   <- dataDir    |> file.path(configDir)
   # scenarioDir <- dataDir    |> file.path(scenarioDir)
-  outDir      <- projectDir |> file.path(outDir)
+  outDir      <- projectDir |> file.path(outDir,configDir)
   outPath     <- outDir     |> file.path(paste0(outFile,return_type))
   # ### Path and file name for data inputs
   # dataInDir   <- projectDir     |> file.path("inst", "extdata")

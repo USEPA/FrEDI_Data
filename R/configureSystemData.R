@@ -19,7 +19,7 @@ configureSystemData <- function(
   doScalars   = TRUE , ### Whether or not do format scalars
   doScenarios = TRUE , ### Whether to load scenarios
   ### Info on saving
-  outPath     = "." |> file.path("data", "tmp_sysdata"),  ### Where to save data
+  outPath     = "." |> file.path("data","fredi","fredi_data"),  ### Where to save data
   save0       = FALSE, ### Whether to save the file
   return0     = TRUE , ### Whether to return the data list
   return_type = "db", ### Whether to return a database or rda object
@@ -62,7 +62,7 @@ configureSystemData <- function(
   
   if(return_type == "db"){
     
-    con <- DBI::dbConnect(RSQLite::SQLite(), paste0(sysDataFile,".db"))
+    con <- DBI::dbConnect(RSQLite::SQLite(), paste0(sysDataFile))
     
     for(i in 1:length(loadData0[["frediData"]])){
       DBI::dbWriteTable(conn = con, name = names(loadData0[["frediData"   ]][i]), value = loadData0[["frediData"   ]][[i]], overwrite = TRUE)

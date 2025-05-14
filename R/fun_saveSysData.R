@@ -3,8 +3,8 @@ fun_saveSysData <- function(
     dataDir     = "." |> file.path("data"),
     # controlFile = "controlData",
     # scenarioDir = "scenarios",
-    outFile     = "tmp_sysData",
-    modules     = c("fredi", "ghg", "sv"),
+    outFile     = "sysdata",
+    modules     = c("ghg", "sv"),
     extStrs     = c("rda", "rds")
 ){
   ### Extensions
@@ -12,7 +12,7 @@ fun_saveSysData <- function(
   dotStr0    <- "\\."
   extStr0    <- extStrs |> paste(collapse=strSep0)
   extStr1    <- dotStr0 |> paste0(extStrs) |> paste(collapse=strSep0)
-
+  #browser()
   # ### Load scenario files
   # scenDir    <- dataDir   |> file.path(scenarioDir)
   # scenFiles  <- scenDir   |> list.files(pattern=extStr0, full.names=F)
@@ -51,11 +51,29 @@ fun_saveSysData <- function(
       dataDir |> file.path(mod_i, file_j) |> load()
     }
   }
-
+  
+  
   ### Save data
-  outPath <- dataDir |> file.path(outFile) |> paste0(".", "rda")
-  save(list=c(dataNames), file=outPath)
-
+  #outPath <- dataDir |> file.path(outFile) |> paste0(".", "rda")
+  #save(list=c(dataNames), filSe=outPath)
+  ### Update Database
+  db_tmp_path <- file.path(dataDir,"fredi")
+  con <- DBI::dbConnect(RSQLite::SQLite(), file.path(db_tmp_path,"tmp_sysdata.db"))
+  
+  for (dat_i in dataNames){
+  DBI::dbExecute(conn = con, paste0("DROP TABLE IF EXISTS ",dat_i))
+  DBI::dbExecute(conn = con, paste0("CREATE TABLE ",dat_i," (value BLOB)"))
+  DBI::dbExecute(con,paste0("INSERT INTO ",dat_i," (value) VALUES (:value)"), 
+                 params = list(value = list(serialize(eval(parse(text = dat_i)), connection = NULL)))
+  )
+  }
+  
+  DBI::dbDisconnect(con)
+  
+  outPath <- dataDir |> file.path(outFile)
+  zip(zipfile = outPath,files = file.path(db_tmp_path,"tmp_sysdata.db") )
+  
+  
   ### Return
   return("Success")
 }
