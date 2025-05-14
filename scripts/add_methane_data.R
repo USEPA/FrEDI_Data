@@ -481,26 +481,70 @@ configList[["co_inputInfo"]] <- co_inputInfo
 ###   - Note: may need to first edit co_states and co_regions to add in Alaska and HI...
 ###   - Refer to rDataList$scenarioData$popRatioData to get regions, states, and FIPS
 ### Check that pop dataframe has the same values as the FrEDI default scenario
+
+### Glimpse data
+listLoad$pop$data$popAll |> filter_all(all_vars((. |> is.na()))) |> glimpse()
 listLoad$pop$data$popAll |> glimpse()
+listLoad$pop$data$popAll$region |> unique() |> sort()
+listLoad$pop$data$popAll$state |> unique() |> sort()
+listLoad$pop$data$popAll$state |> unique() |> length()
+listLoad$pop$data$popAll$year |> unique() |> length()
+
+co_states |> glimpse()
+co_states$region |> unique() |> sort()
+co_states$state |> unique() |> sort()
 # listLoad$pop$data$popAll |> group_by(state, year) |> summarize(n=n(), .groups="drop") |> filter(n>1) |> glimpse()
-def_state_pop     <- listLoad$pop$data$popAll|> (function(df0, df1=co_states){
+
+def_state_pop     <- listLoad$pop$data$popAll|> (function(
+    df0, 
+    df1    = co_states,
+    minYr0 = configList$coefficients$minYear0, ### 2020
+    maxYr0 = configList$coefficients$maxYear0  ### 2100
+){
+  ### Filter values
+  ### Select and rename columns
   ### Join with states
   select0   <- c("region", "state", "postal", "fips", "year", "state_pop")
-  df0       <- df0 |> select(all_of(select0))
+  from0     <- c("state_pop")
+  to0       <- c("pop")
+  df0       <- df0 |> 
+    # filter(year >= minYr0, year <= maxYr0) |> 
+    filter(year <= maxYr0) |> 
+    select(all_of(select0)) |> 
+    rename_at(c(from0), ~to0) |>
+    mutate(region_id = region |> str_replace_all(" ", ""))
+  df0$region_id |> unique() |> print()
   rm(select0)
   
-  ### Rename values
-  from0 <- c("state_pop")
-  to0   <- c("pop")
-  df0       <- df0 |> rename_at(c(from0), ~to0  )
+  ### Standardize years and states
+  # drop0     <- c("us_area", "region", "state", "postal")
+  drop0     <- c("us_area")
+  from0     <- c("region")
+  to0       <- c("region_id")
+  yrs0      <- df0 |> pull(year) |> unique() |> sort()
+  dfYrs0    <- tibble(year = yrs0)
+  dfJoin0   <- co_states |> 
+    cross_join(dfYrs0) |> 
+    rename_at(c(from0), ~to0) |>
+    select(-any_of(drop0))
+  
+  ### Join standardized years and states with data
+  join0     <- c("region_id", "state", "postal", "fips", "year")
+  df0       <- dfJoin0 |> left_join(df0, by=join0)
   
   ### Filter to years
-  df0       <- df0 |> filter(year <= 2100)
+  # df0       <- df0 |> filter(year <= maxYr0)
   
   ### Return
   return(df0)
 })(); def_state_pop |> glimpse()
 # listData[["def_state_pop"]] <- def_state_pop
+
+def_state_pop |> group_by_at(c("state")) |> summarize(n=n()) |> filter(n < 91)
+def_state_pop |> filter_all(all_vars((. |> is.na()))) |> glimpse()
+def_state_pop$region |> unique() |> sort()
+def_state_pop$state |> unique() |> sort()
+
 stateData[["def_state_pop"]] <- def_state_pop
 def_state_pop$year |> range(); def_state_pop |> pull(postal) |> unique() |> length()
 # def_state_pop$region |> unique()
@@ -515,7 +559,10 @@ def_state_pop$year |> range(); def_state_pop |> pull(postal) |> unique() |> leng
 ### Check that pop dataframe has the same values as the FrEDI default scenario
 listLoad$pop$data$popBase |> glimpse()
 
-base_state_pop     <- listLoad$pop$data$popBase|> (function(df0, df1=co_states){
+base_state_pop     <- listLoad$pop$data$popBase|> (function(
+    df0, 
+    df1 = co_states
+){
     ### Rename values
     from0 <- c("Year", "State_FIPS", "Population")
     to0   <- c("base_year", "fips", "base_state_pop")
@@ -555,9 +602,9 @@ nat_ifScalar <- listLoad$mort$data$mortScalar |> (function(df0){
   idCols0   <- c("Years", "Region")
   sumCols0  <- c("AllCauseDeathCounts", "RespDeathCounts", "Population", "AllCauseMortRate", "RespMortRate", "RespScalar")
   sumCols1  <- c("AllCauseMort", "RespMort", "Pop", "AllCauseMrate", "RespMrate", "RespScalar")
-  from0 <- c(idCols0) |> c(sumCols0)
-  # to0   <- c("year", "nation_fips") |> c("nat_if" |> paste0(sumCols0))
-  to0   <- c("year", "nation_fips") |> c("if" |> paste0(sumCols1))
+  from0     <- c(idCols0) |> c(sumCols0)
+  # to0       <- c("year", "nation_fips") |> c("nat_if" |> paste0(sumCols0))
+  to0       <- c("year", "nation_fips") |> c("if" |> paste0(sumCols1))
   df0       <- df0 |> rename_at(c(from0), ~to0  )
   # df0       <- df0 |> relocate(c("year"), .after=c("nation_fips"))
   rm(from0, to0  )
@@ -574,15 +621,15 @@ configList[["nat_ifScalar"]] <- nat_ifScalar
 listLoad$pop$data$popRff  |> glimpse()
 rff_nat_pop     <- listLoad$pop$data$popRff |> (function(
     df0, 
-    df1=nat_ifScalar
+    df1 = nat_ifScalar
 ){
   ### Rename values
   idCols0   <- c("Year")
   sumCols0  <- c("pop", "mortality", "mort_rate", "mort_rate_intercept", "mort_rate_slope")
   sumCols1  <- c("Pop", "Mort", "Mrate", "Mrate_intercept", "Mrate_slope")
-  from0 <- c(idCols0) |> c(sumCols0)
-  # to0   <- c("base_year", "base_rff_pop", "base_rff_mort", "base_rff_mort_rate", "mort_intercept", "mort_slope")
-  to0   <- c("year") |> c("rff" |> paste0(sumCols1))
+  from0     <- c(idCols0) |> c(sumCols0)
+  # to0       <- c("base_year", "base_rff_pop", "base_rff_mort", "base_rff_mort_rate", "mort_intercept", "mort_slope")
+  to0       <- c("year") |> c("rff" |> paste0(sumCols1))
   df0       <- df0 |> rename_at(c(from0), ~to0  )
   df0       <- df0 |> relocate(all_of(to0  ))
   
@@ -1016,16 +1063,14 @@ ch4_default <- listLoad$ch4$data$ch4Ssp245 |> (function(
     df0,
     minYr0 = list_coefficients$minYear0,
     maxYr0 = list_coefficients$maxYear0
-    # minYr0 = listData$coefficients$minYear0,
-    # maxYr0 = listData$coefficients$maxYear0
 ){
   ### Years 
   yrs0      <- minYr0:maxYr0
   df1       <- tibble(year=yrs0)
   ### Rename columns
   # df0       <- df0 |> rename("CH4_ppbv" =  ch4_ppb)
-  from0 <- c("ch4_ppb")
-  to0   <- c("CH4_ppbv")
+  from0     <- c("ch4_ppb")
+  to0       <- c("CH4_ppbv")
   df0       <- df0 |> rename_at(c(from0), ~to0  )
   ### Filter to 2100
   join0     <- c("year")
@@ -1089,8 +1134,8 @@ o3_default <- ch4_default |> (function(
   ### Drop region, rename values
   # from0 <- c(join0)  |> paste0("_label")
   # to0   <- c(join0)
-  to0   <- c("region", "model")
-  from0 <- c(to0  )  |> paste0("_label")
+  to0       <- c("region", "model")
+  from0     <- c(to0  )  |> paste0("_label")
   drop0     <- c(join0) |> c(to0  ) |> c("us_area", "fips")
   df0       <- df0 |> select(-any_of(drop0))
   df0       <- df0 |> rename_at(c(from0), ~to0  )
