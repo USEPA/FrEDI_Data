@@ -878,15 +878,15 @@ configList[["nat_o3"]] <- nat_o3
 listLoad$o3$data$o3State |> glimpse()
 state_o3    <- listLoad$o3$data$o3State |> (function(
     df0, 
-    df1=co_states, 
-    df2=nat_o3 
+    df1 = co_states, 
+    df2 = nat_o3 
 ){
   ### Glimpse data
   # df0 |> glimpse()
   
   ### Rename values
-  from0 <- c("State_FIPS", "Model", "OzoneResponse.ppt.ppb.", "DeltaOzone")
-  to0   <- c("fips", "model_str", "state_o3response_pptv_per_ppbv", "base_state_deltaO3_pptv")
+  from0     <- c("State_FIPS", "Model", "OzoneResponse.ppt.ppb.", "DeltaOzone")
+  to0       <- c("fips", "model_str", "state_o3response_pptv_per_ppbv", "base_state_deltaO3_pptv")
   df0       <- df0 |> rename_at(c(from0), ~to0  )
   rm(from0, to0  )
   
@@ -925,53 +925,74 @@ stateData[["state_o3"]] <- state_o3
 ### State Excess Mortality ----------------
 ### State Excess Mortality reshaping
 ### Model	ModelYear	State_FIPS	State_Results |> rename to: c(model_str, refYear, fips, excess_mortality)
-listLoad$mort$data$mortXm |> glimpse(); listLoad$mort$data$mortXm$ModelYear |> range()
+listLoad$mort$data$mortXm |> glimpse(); 
+listLoad$mort$data$mortXm$ModelYear |> range()
+baseline_mort |> glimpse()
 state_xMort    <- listLoad$mort$data$mortXm |> (function(
     df0, 
     df1 = co_states, 
     df2 = co_models, 
-    df3 = baseline_mort |> filter(year == "2020") |> select(-c("year", "base_respMrate"))
+    df3 = baseline_mort,
+    baseYr0 = 2020
 ){
   ### Glimpse data
   # df0 |> glimpse()
   
   ### Rename values
-  from0     <- c("State_FIPS", "Model", "State_Results", "ModelYear")
-  to0       <- c("fips", "model_str", "base_state_exMort0", "base_year")
-  df0       <- df0 |> rename_at(c(from0), ~to0  )
-  df0       <- df0 |> relocate(c("base_year"), .after=c("model_str"))
-  rm(from0, to0  )
+  from0     <- c("State_FIPS", "Model", "ModelYear", "State_Results")
+  to0       <- c("fips", "model_str", "base_year", "base_state_exMort0")
+  df0       <- df0 |> 
+    rename_at(c(from0), ~to0) |> 
+    relocate(any_of(to0))
+  rm(from0, to0)
   
   ### Join states with values
   drop0     <- "us_area"
   join0     <- "fips"
-  join1     <- c("region", "state", "fips", "postal")
   df1       <- df1 |> select(-any_of(drop0))
   df0       <- df1 |> left_join(df0, by=join0)
-  df0       <- df0 |> left_join(df3, by=join1)|> select(-any_of(drop0))
-  rm(drop0, join0, join1)
+  rm(drop0, join0, df1)
   
   ### Join values with models
   select0   <- c("model", "model_str")
   join0     <- c("model_str")
-  move0     <- c("model", "model_str")
+  after0    <- c("fips")
   df2       <- df2 |> select(all_of(select0))
-  df0       <- df0 |> left_join(df2, by=join0)
-  df0       <- df0 |> relocate(all_of(move0), .after=c("fips"))
-  df0       <- df0 |> filter(!(model |> is.na()))
-  rm(select0, join0)
+  df0       <- df0 |> 
+    left_join(df2, by=join0) |> 
+    # filter(!(model |> is.na())) |> 
+    relocate(any_of(select0), .after=any_of(after0))
+  df0 |> filter((model |> is.na())) |> glimpse()
+  rm(select0, join0, after0, df2)
+  
+  ### Join with baseline mortality
+  from0     <- c("year")
+  to0       <- c("base_year")
+  drop0     <- c("region", "state", "postal") |> c("baseMrate")
+  join0     <- c("fips", "base_year")
+  # join1     <- c("region", "state", "fips", "postal")
+  df3       <- df3 |>
+    rename_at(c(from0), ~to0) |> 
+    # filter(year == "2020") |> 
+    # select(-c("year", "base_respMrate")) |> 
+    select(-any_of(drop0))
+  # df3 |> glimpse()
+  df0       <- df0 |> left_join(df3, by=join0)
+  rm(from0, to0, drop0, join0)
   
   ### Adjust state Values
-  df0       <- df0 |> mutate(base_state_exMort = base_state_exMort0 * StateMortRatio)
   ### Select and arrange
-  drop0     <- c("model_str", "fips", "base_state_exMort0", "StateMortRatio")
-  arrange0  <- c("region", "state", "model")
-  df0       <- df0 |> select(-any_of(drop0))
-  df0       <- df0 |> arrange_at(c(arrange0))
+  drop0     <- c("fips", "model_str", "base_state_exMort0", "StateMortRatio")
+  sort0     <- c("region", "state", "model")
+  df0       <- df0 |> 
+    mutate(base_state_exMort = base_state_exMort0 * StateMortRatio) |> 
+    select(-any_of(drop0)) |> 
+    arrange_at(c(sort0))
   
   ### Return
   return(df0)
 })(); state_xMort |> glimpse()
+
 # listData[["state_xMort"]] <- state_xMort
 stateData[["state_xMort"]] <- state_xMort
 
