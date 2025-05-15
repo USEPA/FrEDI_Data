@@ -930,14 +930,14 @@ state_xMort    <- listLoad$mort$data$mortXm |> (function(
     df0, 
     df1 = co_states, 
     df2 = co_models, 
-    df3 = baseline_mort |> filter(year == "2020") |> select(-year,-base_respMrate)
+    df3 = baseline_mort |> filter(year == "2020") |> select(-c("year", "base_respMrate"))
 ){
   ### Glimpse data
   # df0 |> glimpse()
   
   ### Rename values
-  from0 <- c("State_FIPS", "Model", "State_Results", "ModelYear")
-  to0   <- c("fips", "model_str", "base_state_exMort0", "base_year")
+  from0     <- c("State_FIPS", "Model", "State_Results", "ModelYear")
+  to0       <- c("fips", "model_str", "base_state_exMort0", "base_year")
   df0       <- df0 |> rename_at(c(from0), ~to0  )
   df0       <- df0 |> relocate(c("base_year"), .after=c("model_str"))
   rm(from0, to0  )
@@ -945,7 +945,7 @@ state_xMort    <- listLoad$mort$data$mortXm |> (function(
   ### Join states with values
   drop0     <- "us_area"
   join0     <- "fips"
-  join1     <- c("region","state","fips","postal")
+  join1     <- c("region", "state", "fips", "postal")
   df1       <- df1 |> select(-any_of(drop0))
   df0       <- df1 |> left_join(df0, by=join0)
   df0       <- df0 |> left_join(df3, by=join1)|> select(-any_of(drop0))
@@ -964,8 +964,8 @@ state_xMort    <- listLoad$mort$data$mortXm |> (function(
   ### Adjust state Values
   df0       <- df0 |> mutate(base_state_exMort = base_state_exMort0 * StateMortRatio)
   ### Select and arrange
-  drop0     <- c("model_str", "fips","base_state_exMort0","StateMortRatio")
-  arrange0  <- c("region", "state") |> c("model")
+  drop0     <- c("model_str", "fips", "base_state_exMort0", "StateMortRatio")
+  arrange0  <- c("region", "state", "model")
   df0       <- df0 |> select(-any_of(drop0))
   df0       <- df0 |> arrange_at(c(arrange0))
   
@@ -1047,9 +1047,39 @@ stateData[["state_rrScalar"]] <- state_rrScalar
 scenariosList[["gdp_default"]] <- rDataList$scenarioData$gdp_default
 
 ### Population ----------------
+#### Extend pop ratios ----------------
+dfPopRatios <- 
+  rDataList$scenarioData$popRatiosData |>
+  # "popRatiosData" |> get_frediDataObj("scenarioData") |> 
+    (function(df0){
+    cols0  <- c("area", "area2nat", "year")
+    group0 <- c("year")
+    sum0   <- c("area2nat")
+    df1    <- df0 |>
+      select(all_of(cols0)) |>
+      distinct() |>
+      filter(area |> tolower() |> str_detect("conus")) |>
+      select(-c("area")) |>
+      rename_at(c("area2nat"), ~"area2nat_conus")
+    # df1 |> glimpse()
+    df0    <- df0 |>
+      left_join(df1, by="year") |>
+      mutate(area2conus = area2nat / area2nat_conus, .after="area2nat") |>
+      select(-c("area2nat_conus"))
+    return(df0)
+  })() |>
+  fun_extendVals(
+    from0 = 2100,
+    to0   = 2300,
+    sort0 = c("area", "region", "state", "year")
+  )
+
 ### Default population scenario = make scenario from FrEDI data
 rDataList$scenarioData$popData$region |> unique()
-pop_default <- def_state_pop |> (function(df0){
+pop_default <- def_state_pop |> (function(
+    df0,
+    df1 = dfPopRatios
+){
   drop0 <- c("fips", "area", "us_area")
   df0   <- df0 |> select(-any_of(drop0))
   df0   <- df0 |> filter(year >= 2020)
