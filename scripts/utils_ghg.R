@@ -46,14 +46,15 @@ format_ghgAsthmaAffectedPop <- function(
     df0, 
     dfS, ### co_states
     dfA, ### co_ageTypes
+    minYr0 = 2010,
     maxYr0 = 2100 ### configList$coefficients$maxYear0
 ){
   ### Rename values
-  from0   <- c("State_FIPS", "newAgeRange", "Population", "Pct.State.Pop", "Year")
+  from0   <- c("newAgeRange", "State_FIPS", "Year", "Population", "Pct.State.Pop")
   # to0     <- c("fips", "ageRange", "statePopRef", "ageRangePct", "year")
-  to0     <- c("fips", "ageRange", "affectedPop", "ageRangePct", "year")
+  to0     <- c("ageRange", "fips", "year", "affectedPop", "ageRangePct")
   sort0   <- c("ageRange", "fips", "year")
-  lvls0   <- co_ageTypes |> pull(ageRange) |> levels()
+  lvls0   <- dfA |> pull(ageRange) |> levels()
   df0     <- df0 |> 
     select(all_of(from0)) |>
     rename_at(c(from0), ~to0) |> 
@@ -61,10 +62,9 @@ format_ghgAsthmaAffectedPop <- function(
     arrange_at(c(sort0))
   
   ### Create tibble of years
-  # dfYrs0  <- df0  |> select(year) |> unique() |> arrange_at(c("year"))
-  # newYrs0 <- df0  |> pull(year) |> (function(x){x |> min() |> seq(x |> max())})()
-  yrs0    <- df0  |> pull(year) |> unique() |> sort()
-  newYrs0 <- yrs0 |> min() |> seq(maxYr0, by=1)
+  # yrs0    <- df0  |> pull(year) |> unique() |> sort()
+  # newYrs0 <- yrs0 |> min() |> seq(maxYr0, by=1)
+  newYrs0 <- minYr0:maxYr0
   dfYrs0  <- tibble(year = newYrs0)
   
   ### Group and interpolate
@@ -77,7 +77,7 @@ format_ghgAsthmaAffectedPop <- function(
   df0     <- df0 |> group_map(function(.x, .y){
     .x |> ghg_groupMap(
       .y     = .y,
-      yCols0 = sum0, ### Columns to sum
+      yCols0 = sum0  , ### Columns to sum
       xCol0  = "year", ### X column
       xOut0  = newYrs0 ### New or x values
     ) ### End ghg_groupMap
@@ -89,8 +89,8 @@ format_ghgAsthmaAffectedPop <- function(
   join0   <- c("ageRange", "fips", "year")
   ages0   <- df0  |> pull(ageRange) |> unique()
   dfA     <- dfA  |> filter(ageRange %in% ages0)
-  dfJoin0 <- dfS  |> 
-    cross_join(dfA) |>
+  dfJoin0 <- dfA  |> 
+    cross_join(dfS) |>
     cross_join(dfYrs0) |> 
     arrange_at(c(sort0)) |> 
     group_by_at(c(group0))
@@ -131,6 +131,7 @@ format_ghgAsthmaExcessCases <- function(
     df1, ### asthmaAgePcts
     dfM, ### co_models
     dfT, ### Impact types
+    minYr0 = 2010,
     maxYr0 = 2100 ### configList$coefficients$maxYear0
 ){
   ### Rename values
@@ -163,10 +164,9 @@ format_ghgAsthmaExcessCases <- function(
     arrange_at(c(sort0))
   
   ### Create tibble of years
-  # dfYrs0  <- df0  |> select(year) |> unique() |> arrange_at(c("year"))
-  # newYrs0 <- df0  |> pull(year) |> (function(x){x |> min() |> seq(x |> max())})()
-  yrs0    <- df1  |> pull(year) |> unique() |> sort()
-  newYrs0 <- yrs0 |> min() |> seq(maxYr0, by=1)
+  # yrs0    <- df1  |> pull(year) |> unique() |> sort()
+  # newYrs0 <- yrs0 |> min() |> seq(maxYr0, by=1)
+  newYrs0 <- minYr0:maxYr0
   dfYrs0  <- tibble(year = newYrs0)
   
   ### Group and interpolate

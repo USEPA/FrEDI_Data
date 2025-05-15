@@ -259,15 +259,12 @@ list_coefficients <- list() |> (function(
   #### Return ----------------
   return(list0)
 })()
-### Update list
-# listData[["coefficients"]] <- list_coefficients
 ### add data to list
 # ghgData [["original"]] <- listLoad
-# listData[["coefficients"]] <- list()
 configList[["coefficients"]] <- list_coefficients
 
 
-## Reshape ID/Crosswalk Tables ----------------
+## Config Tables ----------------
 ### Sector Info ----------------
 #### Sectors ----------------
 co_sectors  <- tibble(sector = c("mortality", "morbidity")) |> 
@@ -334,7 +331,6 @@ co_regions  <- rDataList$frediData$co_regions |> (function(df0){
   ### Return
   return(df0)
 })(); co_regions |> glimpse()
-# listData[["co_regions"]] <- co_regions
 configList[["co_regions"]] <- co_regions
 
 
@@ -363,7 +359,6 @@ co_states   <- rDataList$frediData$co_states |> (function(df0){
   ### Return
   return(df0)
 })(); co_states |> glimpse()
-# listData[["co_states"]] <- co_states
 configList[["co_states"]] <- co_states
 
 ### Check that all states and regions are present in population data
@@ -378,7 +373,7 @@ listLoad$pop$data$popBase |> pull(State_FIPS) |> unique() |> length()
 #### Model Types ----------------
 ### Model Types
 rDataList$frediData$co_modelTypes |> glimpse()
-co_modelTypes   <- rDataList$frediData$co_modelTypes |> (function(df0){
+co_modelTypes <- rDataList$frediData$co_modelTypes |> (function(df0){
   ### Glimpse
   # df0 |> glimpse()
   
@@ -400,7 +395,6 @@ co_modelTypes   <- rDataList$frediData$co_modelTypes |> (function(df0){
   ### Return
   return(df0)
 })(); co_modelTypes |> glimpse()
-# listData[["co_modelTypes"]] <- co_modelTypes
 configList[["co_modelTypes"]] <- co_modelTypes
 
 #### Models ----------------
@@ -435,7 +429,6 @@ co_models   <- rDataList$frediData$co_models |> (function(
   ### Return
   return(df0)
 })(); co_models |> glimpse()
-# listData[["co_models"]] <- co_models
 configList[["co_models"]] <- co_models
 
 
@@ -463,7 +456,6 @@ co_inputInfo   <- rDataList$frediData$co_inputInfo |> (function(df0){
   ### Return
   return(df0)
 })(); co_inputInfo |> glimpse()
-# listData[["co_inputInfo"]] <- co_inputInfo
 configList[["co_inputInfo"]] <- co_inputInfo
 
 
@@ -473,6 +465,102 @@ configList[["co_inputInfo"]] <- co_inputInfo
 
 
 ## Reshape Base Data ----------------
+### Ozone Response ----------------
+### Droped actions
+# df0       <- df0   |> mutate(base_Nat_respMrate = mRate0)
+### National O3 reshaping
+listLoad$o3$data$o3Nat |> glimpse()
+### Use units pptv to ppbv
+nat_o3  <- listLoad$o3$data$o3Nat |> (function(
+    df0, 
+    dfM   = co_models, 
+    ch4_0 = configList$coefficients$CH4$base0, ### pptbv (100)
+    nox_0 = configList$coefficients$NOx$base0  ### Mt (10.528)
+){
+  ### Glimpse data
+  # df0 |> glimpse()
+  
+  ### Rename values
+  drop0     <- c("OzoneResponse.ppb.ppb.")
+  from0     <- c("Model", "OzoneResponse.ppt.ppb.", "DeltaOzone")
+  to0       <- c("model_str", "nat_o3response_pptv_per_ppbv", "base_nat_deltaO3_pptv")
+  df0       <- df0 |> 
+    select(-any_of(drop0)) |> 
+    rename_at(c(from0), ~to0)
+  rm(drop0, from0, to0)
+  
+  ### Join values with models
+  select0   <- c("model", "model_label", "model_str")
+  join0     <- c("model_str")
+  dfM       <- dfM |> select(all_of(select0))
+  df0       <- df0 |> 
+    left_join(dfM, by=join0) |> 
+    # filter(!(model |> is.na())) |> 
+    relocate(any_of(select0)) |>
+    arrange_at(c("model"))
+  rm(select0, join0, dfM)
+  
+  ### Base CH4 and NOx concentrations
+  df0       <- df0 |> 
+    mutate(base_CH4_ppbv = ch4_0) |> 
+    mutate(base_NOx_Mt   = nox_0)
+  
+  
+  ### Return
+  return(df0)
+})(); nat_o3 |> glimpse()
+configList[["nat_o3"]] <- nat_o3
+
+### State Ozone Reshaping
+### - Drop Ozone PPT/PPB
+### - Rename State_FIPS to fips, Model to model_str, Ozone response to o3response_ppb2ppb, DeltaOzone to deltaO3
+### - Standardize model by:
+###   - Mutate co_models: add column "model_str" by using mutate(model_str = model_id |> str_match(pattern=o3State$Model |> unique() |> paste(collapse="|")) |> as.list() |> unlist())
+###   - Joining with co_models by "model_str"
+
+# 5*51
+listLoad$o3$data$o3State |> glimpse()
+state_o3 <- listLoad$o3$data$o3State |> (function(
+    df0, 
+    dfS = co_states, 
+    dfN = nat_o3 
+){
+  ### Glimpse data
+  # df0 |> glimpse()
+  
+  ### Rename values
+  drop0     <- c("OzoneResponse.ppb.ppb.")
+  from0     <- c("State_FIPS", "Model", "OzoneResponse.ppt.ppb.", "DeltaOzone")
+  to0       <- c("fips", "model_str", "state_o3response_pptv_per_ppbv", "base_state_deltaO3_pptv")
+  df0       <- df0 |> 
+    select(-any_of(drop0)) |> 
+    rename_at(c(from0), ~to0)
+  rm(drop0, from0, to0)
+  # df0 |> glimpse()
+  
+  ### Join states with national values
+  join0     <- c("fips", "model_str")
+  move0     <- c("model", "model_label", "model_str")
+  sort0     <- c("region", "state", "model")
+  dfJoin0   <- dfS     |> cross_join(dfN)
+  df0       <- dfJoin0 |> 
+    left_join(df0, by=join0) |> 
+    # filter(!(model |> is.na())) |> 
+    relocate(any_of(move0), .after=c("fips")) |> 
+    arrange_at(c(sort0))
+  rm(dfS, dfN, join0, move0, sort0)
+  
+  ### Return
+  return(df0)
+})(); state_o3 |> glimpse()
+state_o3$model |> unique()
+stateData[["state_o3"]] <- state_o3
+
+
+
+
+
+
 ### Population ----------------
 #### Default Population ----------------
 ### Reshape default population data (from BenMAP runs):
@@ -488,18 +576,19 @@ listLoad$pop$data$popAll |> glimpse()
 listLoad$pop$data$popAll$region |> unique() |> sort()
 listLoad$pop$data$popAll$state |> unique() |> sort()
 listLoad$pop$data$popAll$state |> unique() |> length()
-listLoad$pop$data$popAll$year |> unique() |> length()
+listLoad$pop$data$popAll$year |> range()
 
 co_states |> glimpse()
 co_states$region |> unique() |> sort()
 co_states$state |> unique() |> sort()
 # listLoad$pop$data$popAll |> group_by(state, year) |> summarize(n=n(), .groups="drop") |> filter(n>1) |> glimpse()
 
-def_state_pop     <- listLoad$pop$data$popAll|> (function(
+def_state_pop <- listLoad$pop$data$popAll |> (function(
     df0, 
-    df1    = co_states,
+    # dfS    = co_states,
     minYr0 = configList$coefficients$minYear0, ### 2020
-    maxYr0 = configList$coefficients$maxYear0  ### 2100
+    maxYr0 = 2300
+    # maxYr0 = configList$coefficients$maxYear0  ### 2100
 ){
   ### Filter values
   ### Select and rename columns
@@ -538,14 +627,13 @@ def_state_pop     <- listLoad$pop$data$popAll|> (function(
   ### Return
   return(df0)
 })(); def_state_pop |> glimpse()
-# listData[["def_state_pop"]] <- def_state_pop
+### Update in list
+stateData[["def_state_pop"]] <- def_state_pop
 
 def_state_pop |> group_by_at(c("state")) |> summarize(n=n()) |> filter(n < 91)
 def_state_pop |> filter_all(all_vars((. |> is.na()))) |> glimpse()
 def_state_pop$region |> unique() |> sort()
 def_state_pop$state |> unique() |> sort()
-
-stateData[["def_state_pop"]] <- def_state_pop
 def_state_pop$year |> range(); def_state_pop |> pull(postal) |> unique() |> length()
 # def_state_pop$region |> unique()
 
@@ -557,212 +645,37 @@ def_state_pop$year |> range(); def_state_pop |> pull(postal) |> unique() |> leng
 ###   - Note: may need to first edit co_states and co_regions to add in Alaska and HI...
 ###   - Refer to rDataList$scenarioData$popRatioData to get regions, states, and FIPS
 ### Check that pop dataframe has the same values as the FrEDI default scenario
+
+### View data
 listLoad$pop$data$popBase |> glimpse()
-
-base_state_pop     <- listLoad$pop$data$popBase|> (function(
+listLoad$pop$data$popBase$Year |> unique()
+mortBasePopState <- listLoad$pop$data$popBase |> (function(
     df0, 
-    df1 = co_states
-){
-    ### Rename values
-    from0 <- c("Year", "State_FIPS", "Population")
-    to0   <- c("base_year", "fips", "base_state_pop")
-    df0       <- df0 |> rename_at(c(from0), ~to0  )
-    
-    ### Join with states
-    drop0     <- c("us_area")
-    join0     <- c("fips")
-    df1       <- df1 |> select(-any_of(drop0))
-    df0       <- df1 |> left_join(df0, by=join0)
-    rm(drop0, join0)
-    
-    ### Select
-    drop0     <- c("fips")
-    arrange0  <- c("region", "state")
-    df0       <- df0 |> select(-any_of(drop0))
-    df0       <- df0 |> arrange_at(c(arrange0))
-    
-    ### Return
-    return(df0)
-  })(); base_state_pop |> glimpse()
-# listData[["base_state_pop"]] <- base_state_pop
-stateData[["base_state_pop"]] <- base_state_pop
-base_state_pop$base_year |> range(); base_state_pop |> pull(postal) |> unique() |> length()
-
-
-
-### Mortality ----------------
-#### IF Mortality Rate Scalar ----------------
-### Form IF Mortality Rate Scalar and join with RFF data
-listLoad$mort$data$mortScalar |> glimpse(); listLoad$mort$data$mortScalar$Years |> range()
-nat_ifScalar <- listLoad$mort$data$mortScalar |> (function(df0){
-  ### Glimpse data
-  # df0 |> glimpse()
-  
-  ### Rename values
-  idCols0   <- c("Years", "Region")
-  sumCols0  <- c("AllCauseDeathCounts", "RespDeathCounts", "Population", "AllCauseMortRate", "RespMortRate", "RespScalar")
-  sumCols1  <- c("AllCauseMort", "RespMort", "Pop", "AllCauseMrate", "RespMrate", "RespScalar")
-  from0     <- c(idCols0) |> c(sumCols0)
-  # to0       <- c("year", "nation_fips") |> c("nat_if" |> paste0(sumCols0))
-  to0       <- c("year", "nation_fips") |> c("if" |> paste0(sumCols1))
-  df0       <- df0 |> rename_at(c(from0), ~to0  )
-  # df0       <- df0 |> relocate(c("year"), .after=c("nation_fips"))
-  rm(from0, to0  )
-  
-  ### Return
-  return(df0)
-})(); nat_ifScalar |> glimpse()
-# listData[["nat_ifScalar"]] <- nat_ifScalar
-configList[["nat_ifScalar"]] <- nat_ifScalar
-
-#### RFF Population & Mortality ----------------
-### Reshape population & mortality data (from RFF runs):
-### Then join with IF Scalar Data
-listLoad$pop$data$popRff  |> glimpse()
-rff_nat_pop     <- listLoad$pop$data$popRff |> (function(
-    df0, 
-    df1 = nat_ifScalar
+    dfS = co_states
 ){
   ### Rename values
-  idCols0   <- c("Year")
-  sumCols0  <- c("pop", "mortality", "mort_rate", "mort_rate_intercept", "mort_rate_slope")
-  sumCols1  <- c("Pop", "Mort", "Mrate", "Mrate_intercept", "Mrate_slope")
-  from0     <- c(idCols0) |> c(sumCols0)
-  # to0       <- c("base_year", "base_rff_pop", "base_rff_mort", "base_rff_mort_rate", "mort_intercept", "mort_slope")
-  to0       <- c("year") |> c("rff" |> paste0(sumCols1))
-  df0       <- df0 |> rename_at(c(from0), ~to0  )
-  df0       <- df0 |> relocate(all_of(to0  ))
-  
-  ### Get tibble with years, join, and linearly interpolate
-  join0     <- c("year")
-  years0    <- df0 |> pull(year)
-  minYr0    <- years0 |> min()
-  maxYr0    <- years0 |> max()
-  years     <- minYr0 |> seq(maxYr0, by=1)
-  df0       <- tibble(year = years) |> left_join(df0, by=join0)
-  df0       <- df0 |> mutate_all(zoo::na.approx, na.rm=F)
-  # df0       <- df0 |> mutate(across(df0 |> names(), \(x) na.approx(x,na.rm =FALSE)))
-  rm(join0, years0, minYr0, maxYr0)
-
-  ### Get years for IF data corresponding to RFF data, and linearly extend values
-  join0     <- c("year")
-  fill0     <- df1 |> names() |> (function(x, y=join0){x[!(x %in% y)]})()
-  df1       <- df1 |> filter(year %in% years)
-  df1       <- tibble(year = years) |> left_join(df1, by=join0)
-  df1       <- df1 |> fill(all_of(fill0), .direction="down")
-
-  ### Join df0 and df1
-  join0     <- c("year")
-  df0       <- df1 |> left_join(df0, by=join0)
-  
-  ### Return
-  return(df0)
-})(); rff_nat_pop |> glimpse()
-# listData[["rff_nat_pop"]] <- rff_nat_pop
-configList[["rff_nat_pop"]] <- rff_nat_pop
-
-
-
-### Update coefficients
-### Function of mortality as a function of population
-calc_mortality <- function(
-    df0,     ### Tibble with population and years
-    df1      = rff_nat_pop, ### Tibble with columns for mortality rate slope and mortality rate intercept
-    pCol0    = "national_pop"      , ### Column with national population
-    sCol0    = "rffMrate_slope"    , ### Column with mortality rate slope,
-    iCol0    = "rffMrate_intercept", ### Column with mortality rate intercept,
-    joinCols = c("year") ### Column to join df0 and df1
-){
-  ### Join df0 and df1
-  # join0 <- c("year")
-  join0 <- joinCols
-  df0   <- df0 |> left_join(df1, by=join0)
-  rm(df1)
-  ### Calculate intermediate populations
-  # df0   <- df0 |> mutate(delta_rffPop = national_pop - rffPop)
-  # df0   <- df0 |> mutate(rffFactor    = delta_rffPop * rffMrate_slope + rffMrate_intercept)
-  df0   <- df0 |> mutate(logPop       = (!!sym(pCol0)) |> log())
-  df0   <- df0 |> mutate(rffFactor    = logPop       * !!sym(sCol0) + !!sym(iCol0))
-  df0   <- df0 |> mutate(respMrate    = rffFactor    * ifRespScalar)
-  ### Return data
-  return(df0)
-}
-### Update in list
-# listData$coefficients[["Mortality"]][["fun0"]] <- calc_mortality
-configList$coefficients[["Mortality"]][["fun0"]] <- calc_mortality
-
-
-#### Baseline Mortality Rate ----------------
-### Expand grid, na.approx
-listLoad$mort$data$mortBase  |> glimpse()
-listLoad$mort$data$mortState |> glimpse()
-loadCode()
-baseline_mort <- listLoad$mort$data$mortState |> (function(
-    df0,
-    dfS    = co_states,
-    mrate  = listLoad$mort$data$mortBase |> pull(MortalityIncidence), 
-    maxYr0 = configList$coefficients$maxYear0
-){
-  ### Rename values
-  from0 <- c("Column", "Year")
-  to0   <- c("fips", "year")
+  from0     <- c("State_FIPS", "Year", "Population")
+  to0       <- c("fips", "base_year", "basePopState")
   df0       <- df0 |> 
     rename_at(c(from0), ~to0) |>
-    arrange_at(c(to0))
-  # df0 |> glimpse()
+    relocate(any_of(to0))
+  rm(from0, to0)
   
-  ### New years
-  yrs0      <- df0 |> pull(year) |> unique() |> sort()
-  dfYrs0    <- tibble(year = yrs0)
-  newYrs0   <- yrs0 |> min() |> seq(maxYr0)
+  ### Select
+  join0     <- c("fips")
+  sort0     <- c("region", "state")
+  df0       <- dfS |>
+    left_join(df0, by=join0) |>
+    # select(-any_of(drop0)) |> 
+    arrange_at(c(sort0))
   
-  ### Expand values to additional fips
-  join0     <- c("fips", "year")
-  dfJoin0   <- dfS |> 
-    cross_join(dfYrs0) |>
-    arrange_at(c(join0))
-  
-  ### Join and arrange
-  # "gothere1" |> print(); df0 |> glimpse(); dfYrs0 |> glimpse()
-  # dfJoin0   <- co_states |> cross_join(dfYrs0) |> arrange_at(c(join0))
-  sort0     <- c("fips", "year")
-  group0    <- c("us_area", "region", "state", "postal", "fips")
-  df0       <- dfJoin0   |> 
-    left_join(df0, by=join0) |> 
-    mutate(StateMortRatio = StateMortRatio |> replace_na(1)) |>
-    arrange_at(c(join0)) |>
-    group_by_at(c(group0))
-  rm(dfJoin0)
-  
-  ### Extend values to additional years
-  sum0      <- c("StateMortRatio")
-  df0       <- df0 |> group_map(function(.x, .y){
-    .x |> ghg_groupMap(
-      .y     = .y,
-      yCols0 = sum0  ,  ### Columns to sum
-      xCol0  = "year",  ### X column
-      xOut0  = newYrs0, ### New or x values
-      rule0  = 2
-    ) ### End ghg_groupMap
-  }) |> bind_rows() |> ungroup() |>
-    relocate(any_of(group0)) |>
-    relocate(c("year"), .after="fips")
-  # "gothere1" |> print()
-  # ### Arrange values
-  # df0       <- df0 |>
-  #   bind_rows(df1) |> 
-  #   arrange_at(c(join0))
-    
-  ### Calculate base mortality rate and join with states
-  df0       <- df0 |>
-    mutate(nat_respMrate  = mrate) |>
-    mutate(base_respMrate = StateMortRatio * nat_respMrate)
-    
   ### Return
   return(df0)
-})(); baseline_mort |> glimpse()
-# listData[["baseline_state_mort"]] <- baseline_mort
-stateData[["baseline_state_mort"]] <- baseline_mort
+})(); mortBasePopState |> glimpse()
+stateData[["mortBasePopState"]] <- mortBasePopState
+mortBasePopState$base_year |> range(); mortBasePopState |> pull(postal) |> unique() |> length()
+
+
 
 
 ### Morbidity ----------------
@@ -777,13 +690,16 @@ stateData[["baseline_state_mort"]] <- baseline_mort
 listLoad$pop$data$popAge |> glimpse()
 listLoad$pop$data$popAge$Year |> range()
 listLoad$pop$data$popAge$newAgeRange |> unique()
+# 51 * 2 * (81 + 200) # = 28662
+# 51*2*81
 loadCode()
 asthmaAgePcts <- listLoad$pop$data$popAge|> format_ghgAsthmaAffectedPop(
   dfS    = co_states, 
   dfA    = co_ageTypes, 
-  maxYr0 = configList$coefficients$maxYear0
+  minYr0 = configList$coefficients$minYear0,
+  maxYr0 = 2300
+  # maxYr0 = configList$coefficients$maxYear0
 ); asthmaAgePcts |> glimpse()
-# listData[["asthmaAgeRangePcts"]] <- asthmaAgeRangePcts
 stateData[["asthmaAgePcts"]] <- asthmaAgePcts
 
 
@@ -806,118 +722,316 @@ listLoad$asth$data$asthExcess$ModelYear |> range()
 listLoad$asth$data$asthExcess$ModelYear |> unique()
 # listLoad$asth$data$asthma  |> glimpse()
 
+# 51 * 3 * 5 * (81 + 200) # = 214965
 loadCode()
 df_asthmaImpacts <- listLoad$asth$data$asthExcess |> format_ghgAsthmaExcessCases( 
   df1 = asthmaAgePcts,
   dfM = co_models,
   dfT = co_impactTypes, 
-  maxYr0 = configList$coefficients$maxYear0
+  minYr0 = configList$coefficients$minYear0,
+  maxYr0 = 2300
+  # maxYr0 = configList$coefficients$maxYear0
 ); df_asthmaImpacts |> glimpse()
 # 61965*2
 df_asthmaImpacts |> filter(model_label |> is.na()) |> glimpse()
-# listData[["df_asthmaImpacts"]] <- df_asthmaImpacts
 stateData[["df_asthmaImpacts"]] <- df_asthmaImpacts
 
 
-### Ozone Response ----------------
-### National O3 reshaping
-listLoad$o3$data$o3Nat |> glimpse()
-### Use units pptv to ppbv
-nat_o3  <- listLoad$o3$data$o3Nat |> (function(
+### Mortality ----------------
+#### IF Mortality Rate Scalar ----------------
+### Form IF Mortality Rate Scalar and join with RFF data
+listLoad$mort$data$mortScalar |> glimpse(); 
+listLoad$mort$data$mortScalar$Years |> unique() |> head()
+listLoad$mort$data$mortScalar$Years |> range()
+# nat_ifScalar <- listLoad$mort$data$mortScalar |> (function(
+#     df0,
+#     minYr0 = configList$coefficients$minYear0,
+#     maxYr0 = 2300
+# ){
+#   ### Glimpse data
+#   df0 |> glimpse()
+#   idCols0   <- c("year", "fipsNat")
+#   sumFrom0  <- c("DeathCounts", "MortRate") |> 
+#     map(function(str0, vals0=c("AllCause", "Resp")){
+#       vals0 |> paste0(str0)
+#     }) |> unlist() |> c("Population", "RespScalar")
+#   sumTo0    <- sumFrom0 |> 
+#     str_replace("ulation", "") |> 
+#     str_replace("AllCause", "All") |> 
+#     str_replace("DeathCounts", "Mort") |> 
+#     str_replace("MortRate", "Mrate") |>
+#     (function(val0, str0="if"){str0 |> paste0(val0)})()
+#   from0     <- c("Years", "Region") |> c(sumFrom0)
+#   # to0       <- c("year", "nation_fips") |> c("if" |> paste0(sumCols1))
+#   to0       <- idCols0 |> c(sumTo0)
+#   sumCols0  <- to0     |> get_matches(idCols0, matches=F)
+#   from0 |> print(); to0 |> print(); sumCols0 |> print()
+#   
+#   ### Rename and relocate columns
+#   df0       <- df0 |> 
+#     rename_at(c(from0), ~to0) |> 
+#     relocate(c("ifPop"), .after="year")
+#   
+#   ### Get years
+#   newYrs0 <- minYr0:maxYr0
+#   group0  <- c("group")
+#   sum0    <- sumCols0
+#   df0     <- df0 |> 
+#     mutate(group = "group") |>
+#     group_by_at(c(group0)) |> 
+#     group_map(function(.x, .y){
+#       .x |> ghg_groupMap(
+#         .y     = .y,
+#         yCols0 = sum0  , ### Columns to sum
+#         xCol0  = "year", ### X column
+#         xOut0  = newYrs0 ### New or x values
+#       ) ### End ghg_groupMap
+#     }) |> bind_rows() |> 
+#     ungroup() |>
+#     select(-any_of(group0))
+#   
+#   ### Return
+#   return(df0)
+# })(); nat_ifScalar |> glimpse()
+# # listData[["nat_ifScalar"]] <- nat_ifScalar
+# configList[["nat_ifScalar"]] <- nat_ifScalar
+
+#### RFF Population & Mortality ----------------
+# ### Previous process
+# years0    <- df0 |> pull(year)
+# minYr0    <- years0 |> min()
+# maxYr0    <- years0 |> max()
+# years     <- minYr0 |> seq(maxYr0, by=1)
+# df0       <- tibble(year = years) |> left_join(df0, by=join0)
+# df0       <- df0 |> mutate_all(zoo::na.approx, na.rm=F)
+# ### Get years for IF data corresponding to RFF data, and linearly extend values
+# join0     <- c("year")
+# fill0     <- df1 |> names() |> (function(x, y=join0){x[!(x %in% y)]})()
+# df1       <- df1 |> filter(year %in% years)
+# df1       <- tibble(year = years) |> left_join(df1, by=join0)
+# df1       <- df1 |> fill(all_of(fill0), .direction="down")
+# 
+# ### Join df0 and df1
+# join0     <- c("year")
+# df0       <- df1 |> left_join(df0, by=join0)
+
+### Reshape population & mortality data (from RFF runs):
+### Then join with IF Scalar Data
+listLoad$pop$data$popRff |> glimpse()
+listLoad$pop$data$popRff$Year |> range()
+
+listLoad$mort$data$mortScalar |> glimpse(); 
+listLoad$mort$data$mortScalar$Years |> unique() |> head()
+listLoad$mort$data$mortScalar$Years |> range()
+
+# rff_nat_pop
+natMRateInfo <- listLoad$pop$data$popRff |> (function(
     df0, 
-    df1    = co_models, 
-    mRate0 = listLoad$mort$data$mortBase |> pull(MortalityIncidence),
-    ch4_0  = configList$coefficients$CH4$base0, ### pptbv
-    nox_0  = configList$coefficients$NOx$base0  ### Mt
-    # ch4_0  = 100, ### pptbv
-    # nox_0  = 10.528
+    # dfN    = nat_ifScalar,
+    dfN    = listLoad$mort$data$mortScalar,
+    minYr0 = configList$coefficients$minYear0,
+    maxYr0 = 2300
+    # maxYr0 = configList$coefficients$maxYear0
 ){
-  ### Glimpse data
-  # df0 |> glimpse()
-  
   ### Rename values
-  from0 <- c("Model", "OzoneResponse.ppt.ppb.", "DeltaOzone")
-  to0   <- c("model_str", "nat_o3response_pptv_per_ppbv", "base_nat_deltaO3_pptv")
-  df0       <- df0 |> rename_at(c(from0), ~to0  )
-  rm(from0, to0  )
+  idCols0   <- "year"
+  sumCols0  <- "rff" |> paste0(c("Pop", "Mort", "Mrate", "Mrate_intercept", "Mrate_slope"))
+  from0     <- c("Year", "pop", "mortality", "mort_rate", "mort_rate_intercept", "mort_rate_slope")
+  to0       <- idCols0 |> c(sumCols0)
+  df0       <- df0     |> rename_at(c(from0), ~to0)
   
-  ### Join values with models
-  select0   <- c("model", "model_label", "model_str")
-  join0     <- c("model_str")
-  df0       <- df0 |> left_join(df1 |> select(all_of(select0)), by=join0)
-  df0       <- df0 |> relocate(c("model", "model_label"), .before=c("model_str"))
-  df0       <- df0 |> filter(!(model |> is.na()))
-  rm(select0, join0)
+  ### Get years
+  newYrs0   <- minYr0:maxYr0
+  group0    <- c("group")
+  sum0      <- sumCols0
+  df0       <- df0 |> 
+    mutate(group = "group") |>
+    group_by_at(c(group0)) |> 
+    group_map(function(.x, .y){
+    .x |> ghg_groupMap(
+      .y     = .y,
+      yCols0 = sum0  , ### Columns to sum
+      xCol0  = "year", ### X column
+      xOut0  = newYrs0 ### New or x values
+    ) ### End ghg_groupMap
+  }) |> bind_rows() |> 
+    ungroup() |>
+    select(-any_of(group0))
   
-  ### Base CH4 and NOx concentrations
-  df0       <- df0   |> mutate(base_CH4_ppbv = ch4_0)
-  df0       <- df0   |> mutate(base_NOx_Mt   = nox_0)
+  ### Glimpse data
+  dfN |> glimpse()
+  idCols0   <- c("year", "fipsNat")
+  sumFrom0  <- c("DeathCounts", "MortRate") |> 
+    map(function(str0, vals0=c("AllCause", "Resp")){
+      vals0 |> paste0(str0)
+    }) |> unlist() |> c("Population", "RespScalar")
+  sumTo0    <- sumFrom0 |> 
+    str_replace("ulation", "") |> 
+    str_replace("AllCause", "All") |> 
+    str_replace("DeathCounts", "Mort") |> 
+    str_replace("MortRate", "Mrate") |>
+    (function(val0, str0="if"){str0 |> paste0(val0)})()
+  from0     <- c("Years", "Region") |> c(sumFrom0)
+  # to0       <- c("year", "nation_fips") |> c("if" |> paste0(sumCols1))
+  to0       <- idCols0 |> c(sumTo0)
+  sumCols0  <- to0     |> get_matches(idCols0, matches=F)
+  from0 |> print(); to0 |> print(); sumCols0 |> print()
   
-  ### Base mortality incidence
-  #browser()
-  df0       <- df0   |> mutate(base_Nat_respMrate = mRate0)
+  ### Rename and relocate columns
+  dfN       <- dfN |> 
+    rename_at(c(from0), ~to0) |> 
+    relocate(c("ifPop"), .after="year")
   
-  ### Select and arrange
-  drop0     <- c("OzoneResponse.ppb.ppb.")
-  arrange0  <- c("model")
-  df0       <- df0 |> select(-any_of(drop0))
-  df0       <- df0 |> arrange_at(c(arrange0))
+  ### Get years
+  newYrs0 <- minYr0:maxYr0
+  group0  <- c("group")
+  sum0    <- sumCols0
+  dfN     <- dfN |> 
+    mutate(group = "group") |>
+    group_by_at(c(group0)) |> 
+    group_map(function(.x, .y){
+      .x |> ghg_groupMap(
+        .y     = .y,
+        yCols0 = sum0  , ### Columns to sum
+        xCol0  = "year", ### X column
+        xOut0  = newYrs0 ### New or x values
+      ) ### End ghg_groupMap
+    }) |> bind_rows() |> 
+    ungroup() |>
+    select(-any_of(group0))
+
+  ### Join df0 and dfN
+  join0     <- c("year")
+  names1    <- dfN |> names()
+  df0       <- dfN |> left_join(df0, by=join0)
   
   ### Return
   return(df0)
-})(); nat_o3 |> glimpse()
-# listData[["nat_o3"]] <- nat_o3
-configList[["nat_o3"]] <- nat_o3
+})(); natMRateInfo |> glimpse()
+configList[["natMRateInfo"]] <- natMRateInfo
 
-### State Ozone Reshaping
-### - Drop Ozone PPT/PPB
-### - Rename State_FIPS to fips, Model to model_str, Ozone response to o3response_ppb2ppb, DeltaOzone to deltaO3
-### - Standardize model by:
-###   - Mutate co_models: add column "model_str" by using mutate(model_str = model_id |> str_match(pattern=o3State$Model |> unique() |> paste(collapse="|")) |> as.list() |> unlist())
-###   - Joining with co_models by "model_str"
-listLoad$o3$data$o3State |> glimpse()
-state_o3    <- listLoad$o3$data$o3State |> (function(
-    df0, 
-    df1 = co_states, 
-    df2 = nat_o3 
+
+
+### Update coefficients
+### Function of mortality as a function of population
+# calc_mortality <- function(
+#     df0,     ### Tibble with population and years
+#     df1      = rff_nat_pop, ### Tibble with columns for mortality rate slope and mortality rate intercept
+#     pCol0    = "national_pop"      , ### Column with national population
+#     sCol0    = "rffMrate_slope"    , ### Column with mortality rate slope,
+#     iCol0    = "rffMrate_intercept", ### Column with mortality rate intercept,
+#     joinCols = c("year") ### Column to join df0 and df1
+# ){
+#   ### Join df0 and df1
+#   # join0 <- c("year")
+#   join0 <- joinCols
+#   df0   <- df0 |> left_join(df1, by=join0)
+#   rm(df1)
+#   ### Calculate intermediate populations
+#   # df0   <- df0 |> mutate(delta_rffPop = national_pop - rffPop)
+#   # df0   <- df0 |> mutate(rffFactor    = delta_rffPop * rffMrate_slope + rffMrate_intercept)
+#   df0   <- df0 |> mutate(logPop       = (!!sym(pCol0)) |> log())
+#   df0   <- df0 |> mutate(rffFactor    = logPop       * !!sym(sCol0) + !!sym(iCol0))
+#   df0   <- df0 |> mutate(respMrate    = rffFactor    * ifRespScalar)
+#   ### Return data
+#   return(df0)
+# }
+# ### Update in list
+# # listData$coefficients[["Mortality"]][["fun0"]] <- calc_mortality
+# configList$coefficients[["Mortality"]][["fun0"]] <- calc_mortality
+
+
+#### Baseline Mortality Rate ----------------
+##### National ----------------
+listLoad$mort$data$mortBase  |> glimpse()
+baseMortNat <- listLoad$mort$data$mortBase |> (function(
+    df0
 ){
-  ### Glimpse data
-  # df0 |> glimpse()
-  
   ### Rename values
-  from0     <- c("State_FIPS", "Model", "OzoneResponse.ppt.ppb.", "DeltaOzone")
-  to0       <- c("fips", "model_str", "state_o3response_pptv_per_ppbv", "base_state_deltaO3_pptv")
-  df0       <- df0 |> rename_at(c(from0), ~to0  )
-  rm(from0, to0  )
-  
-  ### Join states with values
-  drop0     <- "us_area"
-  join0     <- "fips"
-  df1       <- df1 |> select(-any_of(drop0))
-  df0       <- df1 |> left_join(df0, by=join0)
+  from0 <- c("MortalityIncidence")
+  to0   <- c("baseMrateNat0")
+  df0   <- df0 |> rename_at(c(from0), ~to0)
   # df0 |> glimpse()
-  rm(drop0, join0)
-  
-  ### Join values with national values
-  join0     <- c("model_str")
-  move0     <- c("model", "model_label", "model_str")
-  df0       <- df0 |> left_join(df2, by=join0)
-  df0       <- df0 |> relocate(all_of(move0), .after=c("fips"))
-  df0       <- df0 |> filter(!(model |> is.na()))
-  rm(join0)
-  
-  ### Select and arrange
-  drop0     <- c("OzoneResponse.ppb.ppb.", "fips")
-  arrange0  <- c("region", "state") |> c("model")
-  df0       <- df0 |> select(-any_of(drop0))
-  df0       <- df0 |> arrange_at(c(arrange0))
-
   ### Return
   return(df0)
-})(); state_o3 |> glimpse()
-state_o3$model |> unique()
-# listData[["state_o3"]] <- state_o3
-stateData[["state_o3"]] <- state_o3
+})(); baseMortNat |> glimpse()
+stateData[["baseMortNat"]] <- baseMortNat
+
+
+### Expand grid, na.approx
+# 51 * 281 # = 14331
+listLoad$mort$data$mortBase  |> glimpse()
+listLoad$mort$data$mortState |> glimpse()
+loadCode()
+baseMortState <- listLoad$mort$data$mortState |> (function(
+    df0,
+    dfS    = co_states,
+    # dfX    = listLoad$mort$data$mortXm, ### By state
+    dfR    = baseMortNat,
+    minYr0 = configList$coefficients$minYear0,
+    maxYr0 = 2300
+    # maxYr0 = configList$coefficients$maxYear0
+){
+  ### Rename values
+  from0     <- c("Column", "Year")
+  to0       <- c("fips", "year")
+  df0       <- df0 |> 
+    rename_at(c(from0), ~to0) |>
+    arrange_at(c(to0))
+  # df0 |> glimpse()
+  
+  ### Mutate excess mortality data
+  
+  ### New years
+  yrs0      <- df0 |> pull(year) |> unique() |> sort()
+  dfYrs0    <- tibble(year = yrs0)
+  newYrs0   <- minYr0:maxYr0
+  # newYrs0   <- yrs0 |> min() |> seq(maxYr0)
+  
+  ### Expand values to additional fips
+  join0     <- c("fips", "year")
+  dfJoin0   <- dfS |> 
+    cross_join(dfYrs0) |>
+    arrange_at(c(join0))
+  
+  ### Join and arrange
+  # "gothere1" |> print(); df0 |> glimpse(); dfYrs0 |> glimpse()
+  # dfJoin0   <- co_states |> cross_join(dfYrs0) |> arrange_at(c(join0))
+  sort0     <- c("fips", "year")
+  group0    <- c("us_area", "region", "state", "postal", "fips")
+  df0       <- dfJoin0 |> 
+    left_join(df0, by=join0) |> 
+    mutate(StateMortRatio = StateMortRatio |> replace_na(1)) |>
+    arrange_at(c(join0)) |>
+    group_by_at(c(group0))
+  rm(dfJoin0)
+  
+  ### Extend values to additional years
+  sum0      <- c("StateMortRatio")
+  df0       <- df0 |> group_map(function(.x, .y){
+    .x |> ghg_groupMap(
+      .y     = .y,
+      yCols0 = sum0  ,  ### Columns to sum
+      xCol0  = "year",  ### X column
+      xOut0  = newYrs0, ### New or x values
+      rule0  = 2
+    ) ### End ghg_groupMap
+  }) |> bind_rows() |> ungroup() |>
+    relocate(any_of(group0)) |>
+    relocate(c("year"), .after="fips")
+    
+  ### Calculate base mortality rate and join with states
+  df0       <- df0 |>
+    cross_join(dfR) |>
+    mutate(baseMrateState = baseMrateNat0 * StateMortRatio)
+    
+  ### Return
+  return(df0)
+})(); baseMortState |> glimpse()
+stateData[["baseMortState"]] <- baseMortState
+baseMortState$baseMrateNat0 |> range()
+baseMortState$baseMrateState |> range()
+
 
 
 
@@ -927,142 +1041,106 @@ stateData[["state_o3"]] <- state_o3
 ### Model	ModelYear	State_FIPS	State_Results |> rename to: c(model_str, refYear, fips, excess_mortality)
 listLoad$mort$data$mortXm |> glimpse(); 
 listLoad$mort$data$mortXm$ModelYear |> range()
-baseline_mort |> glimpse()
-state_xMort    <- listLoad$mort$data$mortXm |> (function(
-    df0, 
-    df1 = co_states, 
-    df2 = co_models, 
-    df3 = baseline_mort,
+baseMortState |> glimpse()
+state_xMort <- listLoad$mort$data$mortXm |> (function(
+    xm0, 
+    dfS = co_states, 
+    dfM = co_models, 
+    dfB = baseMortState,
     baseYr0 = 2020
 ){
   ### Glimpse data
-  # df0 |> glimpse()
+  # xm0 |> glimpse()
   
   ### Rename values
   from0     <- c("State_FIPS", "Model", "ModelYear", "State_Results")
-  to0       <- c("fips", "model_str", "base_year", "base_state_exMort0")
-  df0       <- df0 |> 
+  to0       <- c("fips", "model_str", "base_year", "exMortState0")
+  xm0       <- xm0 |> 
     rename_at(c(from0), ~to0) |> 
     relocate(any_of(to0))
   rm(from0, to0)
   
-  ### Join states with values
-  drop0     <- "us_area"
-  join0     <- "fips"
-  df1       <- df1 |> select(-any_of(drop0))
-  df0       <- df1 |> left_join(df0, by=join0)
-  rm(drop0, join0, df1)
-  
-  ### Join values with models
-  select0   <- c("model", "model_str")
-  join0     <- c("model_str")
-  after0    <- c("fips")
-  df2       <- df2 |> select(all_of(select0))
-  df0       <- df0 |> 
-    left_join(df2, by=join0) |> 
-    # filter(!(model |> is.na())) |> 
-    relocate(any_of(select0), .after=any_of(after0))
-  df0 |> filter((model |> is.na())) |> glimpse()
-  rm(select0, join0, after0, df2)
-  
-  ### Join with baseline mortality
+  ### Mutate base values
   from0     <- c("year")
   to0       <- c("base_year")
-  drop0     <- c("region", "state", "postal") |> c("baseMrate")
-  join0     <- c("fips", "base_year")
-  # join1     <- c("region", "state", "fips", "postal")
-  df3       <- df3 |>
+  drop0     <- c("us_area", "region", "state", "postal")
+  dfB       <- dfB |>
     rename_at(c(from0), ~to0) |> 
     # filter(year == "2020") |> 
-    # select(-c("year", "base_respMrate")) |> 
     select(-any_of(drop0))
-  # df3 |> glimpse()
-  df0       <- df0 |> left_join(df3, by=join0)
-  rm(from0, to0, drop0, join0)
+  rm(from0, to0, drop0)
+  
+  ### Standardize states and models
+  dropM     <- c("modelType", "model_match", "gcmMaxTemp")
+  join0     <- c("fips", "model_str")
+  joinB     <- c("fips", "base_year")
+  dfM       <- dfM |> select(-any_of(dropM))
+  dfJoin0   <- dfS |> cross_join(dfM)
+  dfJoin0   <- dfJoin0 |> left_join(xm0, by=join0)
+  dfJoin0   <- dfJoin0 |> left_join(dfB, by=joinB)
+  dfJoin0 |> filter((model |> is.na())) |> glimpse()
+  rm(dfS, dfM, xm0, dfB, dropM)
   
   ### Adjust state Values
   ### Select and arrange
-  drop0     <- c("fips", "model_str", "base_state_exMort0", "StateMortRatio")
   sort0     <- c("region", "state", "model")
-  df0       <- df0 |> 
-    mutate(base_state_exMort = base_state_exMort0 * StateMortRatio) |> 
-    select(-any_of(drop0)) |> 
+  dfJoin0   <- dfJoin0 |> 
+    mutate(exMortState = exMortState0 * StateMortRatio) |> 
+    # select(-any_of(drop0)) |> 
     arrange_at(c(sort0))
   
   ### Return
-  return(df0)
+  return(dfJoin0)
 })(); state_xMort |> glimpse()
-
-# listData[["state_xMort"]] <- state_xMort
 stateData[["state_xMort"]] <- state_xMort
 
 
 ### Calculate RR Scalar ----------------
-base_state_pop |> glimpse(); state_o3 |> glimpse(); state_xMort |> glimpse(); 
-baseline_mort |> glimpse()
-state_rrScalar <- base_state_pop |> (function(
-    df0, 
+mortBasePopState |> glimpse(); 
+state_o3 |> glimpse(); 
+state_xMort |> glimpse(); 
+baseMortState |> glimpse()
+state_rrScalar <- mortBasePopState |> (function(
+    pop0, 
     o3_0 = state_o3, 
     xm_0 = state_xMort,
     dfT  = co_impactTypes, ### Impact types
-    dfB  = baseline_mort # Get Base Year baseline mortality adjustment
+    dfB  = baseMortState # Get Base Year baseline mortality adjustment
 ){
-  ### Glimpse data
-  # df0 |> glimpse()
-  ### Join state O3 response and state excess mortality data
-  drop0     <- c("model_str")
-  join0     <- c("region", "state", "postal", "model") 
-  o3_0      <- o3_0 |> select(-any_of(drop0))
-  o3_0      <- o3_0 |> left_join(xm_0, by=join0)
-  rm(join0, xm_0)
+  #### Join o3 and excess mortality data
+  drop0     <- c("region", "state", "postal", "us_area") |> 
+    c("model_label", "modelType", "model_match", "model_str")
+  join0     <- c("fips", "model") 
+  joinP     <- c("fips", "base_year")
+  xm_0      <- xm_0 |> select(-any_of(drop0))
+  pop0      <- pop0 |> select(-any_of(drop0))
+  df0       <- o3_0 |> left_join(xm_0, by=join0)
+  df0       <- df0  |> left_join(pop0, by=joinP)
+  rm(drop0, join0, o3_0, xm_0, pop0)
   
-  ### Join population data with O3 response and excess mortality data
-  join0     <- c("region", "state", "postal", "base_year")
-  move0     <- c("model", "model_label")
-  df0       <- df0 |> left_join(o3_0, by=join0, relationship="many-to-many")
-  
-  ### Join with base mortality
-  # joinMort0 <- df0 
-  # joinMort0 <- df0 |> names() |> get_matches(y=base_mort |> names())
-  move0     <- c("us_area", "region", "state", "postal", "fips", "model", "model_label")
-  drop0     <- c("base_respMrate", "nat_respMrate") |> c("region", "state")
-  joinB     <- c("postal", "base_year")
-  dfB       <- dfB |> 
-    # filter(year == "2020") |> 
-    rename_at(c("year"), ~"base_year") |>
-    select(-any_of(drop0))
-  # df0 |> glimpse(); dfB |> glimpse()
-  df0       <- df0 |> 
-    left_join(dfB, by=joinB) |> 
-    relocate(any_of(move0))
-  rm(join0, move0, o3_0, dfB)
-  # df0 |> glimpse()
-  ### Calculate rr Scalar
-  df0       <- df0 |> mutate(state_rrScalar   = base_state_pop * (base_Nat_respMrate * StateMortRatio)  * base_state_deltaO3_pptv)
-  df0       <- df0 |> mutate(state_mortScalar = base_state_exMort / state_rrScalar)
+  #### Calculate rr Scalar
+  df0       <- df0 |> mutate(state_rrScalar   = basePopState * baseMrateState * base_state_deltaO3_pptv)
+  df0       <- df0 |> mutate(state_mortScalar = exMortState0 / state_rrScalar)
   
   # ### Add sector and impact type
   # df0    |> glimpse()
   sort0     <- c("sector", "impactType", "impactType_label", "endpoint", "ageType", "ageRange", "fips", "model")
+  join0     <- c("sector")
+  namesT    <- dfT |> names()
   df0       <- df0 |> mutate(sector = "mortality")
   df0       <- df0 |> 
-    left_join(dfT, by="sector") |>
+    left_join(dfT, by=join0) |>
     arrange_at(c(sort0)) |>
-    relocate(any_of(sort0))
+    relocate(any_of(namesT))
   
   ### Return
   return(df0)
 })(); state_rrScalar |> glimpse()
-state_rrScalar$model |> unique()
-# listData[["state_rrScalar"]] <- state_rrScalar
 stateData[["state_rrScalar"]] <- state_rrScalar
-# ghgData
+state_rrScalar$model |> unique()
 
 
 ## Default Scenarios ----------------
-# listData <- listData |> (function(list0, names0=c("ch4_default", "nox_default", "o3_default")){list0[!((list0 |> names()) %in% names0)]})()
-# scenariosList <- list()
-
 ### GDP ----------------
 ### Default GDP scenario = Default FrEDI scenario
 scenariosList[["gdp_default"]] <- rDataList$scenarioData$gdp_default
@@ -1129,7 +1207,6 @@ ch4_default <- listLoad$ch4$data$ch4Ssp245 |> (function(
   ### Return
   return(df0)
 })(); ch4_default |> glimpse()
-# listScenarios[["ch4_default"]] <- ch4_default
 scenariosList[["ch4_default"]] <- ch4_default
 
 ### NOx ----------------
@@ -1143,7 +1220,6 @@ nox_default <- list_coefficients$minYear0:list_coefficients$maxYear0 |> (functio
   df0 <- df0 |> mutate(NOx_Mt = nox_0)
   return(df0)
 })(); nox_default |> glimpse()
-# listScenarios[["nox_default"]] <- nox_default
 scenariosList[["nox_default"]] <- nox_default
 
 ### O3 ----------------
@@ -1208,45 +1284,28 @@ o3_default <- ch4_default |> (function(
   return(df0)
 })(); o3_default |> glimpse()
 o3_default$region |> unique(); o3_default$model |> unique()
-# listScenarios[["o3_default"]] <- o3_default
 scenariosList[["o3_default"]] <- o3_default
 
 
 ## Save Data ----------------
 ### Update Data in List ----------------
-# ghgData[["package"     ]] <- listData
-# ghgData[["scenarioData"]] <- listScenarios
 ghgData[["ghgData"     ]] <- configList
 ghgData[["stateData"   ]] <- stateData
 ghgData[["scenarioData"]] <- scenariosList
-# ghgData[["scenarioData"]] <- listScenarios
 
 
 ### Update Data in List & Save List
-# saveFile   <- projDir |> file.path("data", "ghgData.rda")
 saveFile   <- oPath0 |> file.path("ghg", "ghgData") |> paste0(".", "rda")
 save(ghgData, file=saveFile)
-# ghgData0 <- ghgData
-# ghgData |> glimpse()
 
 ### Update System Data ----------------
-# rDataList  <- rDataList |> (function(list0, names0="ghgData"){list0[!((list0 |> names()) %in% names0)]})()
-# # rDataList[["ghgData"]] <- ghgData
-# save(rDataList, file=oPath0 |> file.path("sysdata.rda"))
-# rDataList |> names()
-
-# projDir |> devtools::load_all()
-projDir |> file.path("R", "fun_saveSysData.R") |> source()
+# projDir |> file.path("R", "fun_saveSysData.R") |> source()
 oPath0 |> fun_saveSysData(
-  modules     = c("fredi", "ghg", "sv"),
-  outFile     = "sysData",
-  extStrs     = c("rda", "rds")
+  modules = c("fredi", "ghg", "sv"),
+  outFile = "sysData",
+  extStrs = c("rda", "rds")
 ) ### End fun_saveSysData
-# dPath0 |> list.files()
 
-# rDataList  <- rDataList |> (function(list0, names0="ghgData"){list0[!((list0 |> names()) %in% names0)]})()
-# saveFile   <- projDir |> file.path("data", "sysdata.rda")
-# save(rDataList, ghgData, svDataList, svPopList, format_styles, file=saveFile)
 
 
 ## End File ----------------
