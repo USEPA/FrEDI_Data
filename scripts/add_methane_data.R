@@ -262,7 +262,7 @@ list_coefficients <- list() |> (function(
 ### add data to list
 # ghgData [["original"]] <- listLoad
 configList[["coefficients"]] <- list_coefficients
-
+list_coefficients |> glimpse()
 
 ## Config Tables ----------------
 ### Sector Info ----------------
@@ -297,8 +297,17 @@ co_impactTypes  <- tibble(
       .default="Emergency Room Visits, Asthma")
   ) |> 
   mutate(ageType  = impactType |> str_extract("child|adult") |> replace_na("all")) |>
-  left_join(co_ageTypes, by="ageType")
-co_impactTypes |> glimpse()
+  left_join(co_ageTypes, by="ageType") |>
+  mutate(econScalarName     = c("vsl_usd", "aq_newAsthmacost", "aq_EDcostpervisit", "aq_EDcostpervisit")) |> 
+  mutate(econMultiplierName = c("gdp_percap", "gdp_percap", "none", "none")) |> 
+  mutate(c0 = 0) |>
+  mutate(c1 = 1) |>
+  mutate(exp0  = c(0.4, 0.6, 1, 1)) |>
+  mutate(econAdjValue0 = case_when(
+    econMultiplierName %in% "gdp_percap" ~ list_coefficients$vsl_adj0 |> pull(gdp_percap),
+    econMultiplierName %in% "none"    ~ 1, 
+    .default = NA
+  )); co_impactTypes |> glimpse()
 configList[["co_impactTypes"]] <- co_impactTypes
 
 #### Sector Info ----------------
@@ -306,7 +315,27 @@ co_sectorInfo  <- co_sectors |> left_join(co_impactTypes, by="sector")
 co_sectorInfo |> glimpse()
 configList[["co_sectorInfo"]] <- co_sectorInfo
 
-
+#### Scalar Info ----------------
+rDataList$stateData$scalarData |> filter(scalarName %in% co_impactTypes$econScalarName) |> glimpse()
+df_scalars <- co_impactTypes |> (function(
+    dfT, 
+    dfS = rDataList$stateData$scalarData 
+){
+  ### Get distinct scalar names
+  select0 <- c("econScalarName", "econMultiplierName")
+  vals0   <- dfT |> select(all_of(select0)) |> unlist() |> unique() 
+  ### Filter to scalar values
+  drop0   <- c("region", "state", "postal")
+  from0   <- c("year")
+  to0     <- c("year0")
+  dfS     <- dfS |> 
+    filter(scalarName %in% vals0) |> 
+    select(-any_of(drop0)) |> 
+    rename_at(c(from0), ~to0)
+  ### Return
+  return(dfS)
+})(); df_scalars |> glimpse()
+configList[["df_scalars"]] <- df_scalars
 
 ### Regions & States ----------------
 ### Get new regions

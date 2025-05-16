@@ -187,7 +187,7 @@ format_ghgAsthmaExcessCases <- function(
   rm(sum0)
   
   ### Add in base values as placeholders
-  df0       <- df0
+  # df0       <- df0
   
   ### Join with age info
   ### Join with model info
@@ -197,6 +197,8 @@ format_ghgAsthmaExcessCases <- function(
   joinT     <- c("endpoint", "ageRange", "ageType")
   joinM     <- c("model_str")
   # df0 |> nrow() |> print()
+  # dropT     <- c("econScalarName", "econMultiplierName", "c0", "c1", "exp0")
+  # dfT       <- dfT |> select(any_of(dropT))
   df0       <- df0 |> left_join(df1, by=join0)
   # df0 |> nrow() |> print()
   df0       <- df0 |> left_join(dfT, by=joinT)
