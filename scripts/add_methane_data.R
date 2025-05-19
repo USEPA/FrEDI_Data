@@ -302,7 +302,7 @@ co_impactTypes  <- tibble(
   mutate(econMultiplierName = c("gdp_percap", "gdp_percap", "none", "none")) |> 
   mutate(c0 = 0) |>
   mutate(c1 = 1) |>
-  mutate(exp0  = c(0.4, 0.6, 1, 1)) |>
+  mutate(exp0  = c(0.4, 0.06, 1, 1)) |>
   mutate(econAdjValue0 = case_when(
     econMultiplierName %in% "gdp_percap" ~ list_coefficients$vsl_adj0 |> pull(gdp_percap),
     econMultiplierName %in% "none"    ~ 1, 
@@ -986,7 +986,7 @@ baseMortNat <- listLoad$mort$data$mortBase |> (function(
 })(); baseMortNat |> glimpse()
 stateData[["baseMortNat"]] <- baseMortNat
 
-
+##### State ----------------
 ### Expand grid, na.approx
 # 51 * 281 # = 14331
 listLoad$mort$data$mortBase  |> glimpse()
@@ -1061,13 +1061,16 @@ stateData[["baseMortState"]] <- baseMortState
 baseMortState$baseMrateNat0 |> range()
 baseMortState$baseMrateState |> range()
 
-
+ghgData$stateData$baseMortState |> glimpse()
 
 
 
 ### State Excess Mortality ----------------
 ### State Excess Mortality reshaping
 ### Model	ModelYear	State_FIPS	State_Results |> rename to: c(model_str, refYear, fips, excess_mortality)
+# ghgData$ghgData$co_states
+co_states <- ghgData$ghgData$co_states
+co_models <- ghgData$ghgData$co_models
 listLoad$mort$data$mortXm |> glimpse(); 
 listLoad$mort$data$mortXm$ModelYear |> range()
 baseMortState |> glimpse()
@@ -1083,7 +1086,7 @@ state_xMort <- listLoad$mort$data$mortXm |> (function(
   
   ### Rename values
   from0     <- c("State_FIPS", "Model", "ModelYear", "State_Results")
-  to0       <- c("fips", "model_str", "base_year", "exMortState0")
+  to0       <- c("fips", "model_str", "base_year", "exMortStateBase0")
   xm0       <- xm0 |> 
     rename_at(c(from0), ~to0) |> 
     relocate(any_of(to0))
@@ -1113,20 +1116,31 @@ state_xMort <- listLoad$mort$data$mortXm |> (function(
   ### Adjust state Values
   ### Select and arrange
   sort0     <- c("region", "state", "model")
+  from0     <- c("StateMortRatio", "baseMrateState") 
+  to0       <- from0 |> paste0("0")
   dfJoin0   <- dfJoin0 |> 
-    mutate(exMortState = exMortState0 * StateMortRatio) |> 
+    mutate(exMortState0 = exMortStateBase0 * StateMortRatio0) |> 
     # select(-any_of(drop0)) |> 
     arrange_at(c(sort0))
   
   ### Return
   return(dfJoin0)
 })(); state_xMort |> glimpse()
+# state_xMort <- state_xMort |> rename_at(c("exMortState"), ~c("exMortState0"))
+# state_xMort |> glimpse()
 stateData[["state_xMort"]] <- state_xMort
 
 
 ### Calculate RR Scalar ----------------
+
+"mortBasePopState" <- ghgData$stateData[["mortBasePopState"]]
+"baseMortState" <- ghgData$stateData[["baseMortState"]]
+"state_o3" <- ghgData$stateData[["state_o3"]]
+# "state_xMort" <- ghgData$stateData[["state_xMort"]]
+
+### Base year for: mortBasePopState
 mortBasePopState |> glimpse(); 
-state_o3 |> glimpse(); 
+state_o3 |> glimpse();
 state_xMort |> glimpse(); 
 baseMortState |> glimpse()
 state_rrScalar <- mortBasePopState |> (function(
@@ -1144,12 +1158,19 @@ state_rrScalar <- mortBasePopState |> (function(
   xm_0      <- xm_0 |> select(-any_of(drop0))
   pop0      <- pop0 |> select(-any_of(drop0))
   df0       <- o3_0 |> left_join(xm_0, by=join0)
+  # df0       <- xm_0
+  # df0 |> glimpse()
   df0       <- df0  |> left_join(pop0, by=joinP)
+  # df0 |> glimpse()
   rm(drop0, join0, o3_0, xm_0, pop0)
   
   #### Calculate rr Scalar
-  df0       <- df0 |> mutate(state_rrScalar   = basePopState * baseMrateState * base_state_deltaO3_pptv)
-  df0       <- df0 |> mutate(state_mortScalar = exMortState0 / state_rrScalar)
+  # from0     <- c("baseMrateState", "StateMortRatio")
+  # to0       <- from0 |> paste0("0")
+  df0       <- df0 |> 
+    # rename_at(c(from0), ~to0) |>
+    mutate(state_rrScalar   = basePopState * baseMrateState0 * base_state_deltaO3_pptv) |> 
+    mutate(state_mortScalar = exMortState0 / state_rrScalar)
   
   # ### Add sector and impact type
   # df0    |> glimpse()
@@ -1317,13 +1338,17 @@ scenariosList[["o3_default"]] <- o3_default
 
 
 ## Save Data ----------------
-### Update Data in List ----------------
+### Update GHG List Data ----------------
+# configList$co_impactTypes
+# configList |> glimpse()
+# stateData |> glimpse()
+ghgData[["scenarioData"]] <- scenariosList
 ghgData[["ghgData"     ]] <- configList
 ghgData[["stateData"   ]] <- stateData
-ghgData[["scenarioData"]] <- scenariosList
 
-
+### Save GHG Data ----------------
 ### Update Data in List & Save List
+# oPath0 |> file.path("ghg", "ghgData") |> paste0(".", "rda") |> load()
 saveFile   <- oPath0 |> file.path("ghg", "ghgData") |> paste0(".", "rda")
 save(ghgData, file=saveFile)
 
