@@ -209,6 +209,10 @@ configureSystemData <- function(
       if(outPathExists){ 
         # save(fredi_config, rDataList, file=sysDataFile)
         DBI::dbDisconnect(con)
+        
+        zip(zipfile = outPath,files = file.path(sysDataFile) )
+        
+        
       } else{
         paste0(msg1, "Warning: outPath = ", sysDataPath, "doesn't exist!") |> message()
         paste0(msg2, "Exiting without saving...") |> message()
