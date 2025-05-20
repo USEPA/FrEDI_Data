@@ -21,10 +21,10 @@ loadFrediConfig <- function(
   ### Load table with names of data tables
   # frediFile |> print()
   df_tables     <- configPath |> openxlsx::read.xlsx(
-    sheet    = configSheet,
-    rowNames = T,
-    startRow = 2
-  ) ### End read.xlsx
+      sheet    = configSheet,
+      rowNames = T,
+      startRow = 2
+    ) ### End read.xlsx
   
   ### Filter to those for importing and replace NA values in some columns
   mutate0       <- c("excludeCol_ids", "Notes")
