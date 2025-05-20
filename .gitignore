@@ -11,5 +11,7 @@ data/data_tests/*
 data/Tests/*
 data/Data/*
 
+*.db
+
 
 

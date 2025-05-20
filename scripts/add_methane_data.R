@@ -3,6 +3,7 @@
 require(tidyverse)
 require(devtools)
 require(zoo)
+require(DBI)
 # require(FrEDI)
 
 ### File Paths ----------------
@@ -14,6 +15,8 @@ frediDir  <- projDir |> file.path("..", "FrEDI")
 frUtils   <- frediDir |> file.path("R", "utils.R")
 frUtils |> source()
 
+
+
 ### Data dir
 ### Get file paths: 9 files, including county results
 codeDir   <- projDir   |> file.path("scripts")
@@ -23,6 +26,10 @@ dataFiles <- dataPaths |> basename(); dataFiles
 ### File to save results
 oPath0    <- projDir   |> file.path("data")
 
+
+### Connect to FreDI DB
+con <- load_fredi_db(fredi_db_path = file.path(oPath0,"fredi"))
+  
 ### Exclude county results: 6 files
 loadFiles <- dataFiles |> (function(x, str0="County"){x[!(x |> str_detect(str0))]})(); loadFiles
 loadCode  <- function(path0=codeDir, files0="utils_ghg.R"){for(file_i in files0){path0 |> file.path(files0) |> source()}}
@@ -174,6 +181,11 @@ morbData      <- list()
 scenariosList <- list()
 # listData    <- list()
 
+### ScenarioData
+scenarioData    <- DBI::dbReadTable(con,"scenarioData")
+scenarioData    <- unserialize(scenarioData$value |> unlist())
+
+
 ### Coffiecients ----------------
 ### Lists of coefficients
 list_coefficients <- list() |> (function(
@@ -182,13 +194,14 @@ list_coefficients <- list() |> (function(
   #### Initial List ----------------
   list0   <- list()
   
+  
   #### Other ----------------
   listOth <- list()
   listOth[["minYear0"]] <- 2020
   listOth[["maxYear0"]] <- 2100
-  listOth[["vsl_adj0"]] <- rDataList$scenarioData$pop_default |> (function(
+  listOth[["vsl_adj0"]] <- scenarioData$pop_default |> (function(
     df0, 
-    df1   = rDataList$scenarioData$gdp_default,
+    df1   = scenarioData$gdp_default,
     year0 = 2010
   ){
     # df0 |> glimpse(); df1 |> glimpse()
@@ -316,10 +329,14 @@ co_sectorInfo |> glimpse()
 configList[["co_sectorInfo"]] <- co_sectorInfo
 
 #### Scalar Info ----------------
-rDataList$stateData$scalarData |> filter(scalarName %in% co_impactTypes$econScalarName) |> glimpse()
+stateData    <- DBI::dbReadTable(con,"stateData")
+stateData    <- unserialize(stateData$value |> unlist())
+stateData$scalarData |> filter(scalarName %in% co_impactTypes$econScalarName) |> glimpse()
+
+
 df_scalars <- co_impactTypes |> (function(
     dfT, 
-    dfS = rDataList$stateData$scalarData 
+    dfS = stateData$scalarData 
 ){
   ### Get distinct scalar names
   select0 <- c("econScalarName", "econMultiplierName")
@@ -339,7 +356,8 @@ configList[["df_scalars"]] <- df_scalars
 
 ### Regions & States ----------------
 ### Get new regions
-co_regions  <- rDataList$frediData$co_regions |> (function(df0){
+co_regions    <- DBI::dbReadTable(con,"co_regions")
+co_regions  <- co_regions |> (function(df0){
   ### Glimpse
   # df0 |> glimpse()
   
@@ -364,8 +382,9 @@ configList[["co_regions"]] <- co_regions
 
 
 ### Get new states
-rDataList$frediData$co_states |> glimpse()
-co_states   <- rDataList$frediData$co_states |> (function(df0){
+co_states    <- DBI::dbReadTable(con,"co_states")
+co_states |> glimpse()
+co_states   <- co_states |> (function(df0){
   ### Add US area and region
   ### Rename values
   df0       <- df0 |> mutate(us_area = "CONUS")
@@ -401,8 +420,9 @@ listLoad$pop$data$popBase |> pull(State_FIPS) |> unique() |> length()
 ### Model Types and Models ----------------
 #### Model Types ----------------
 ### Model Types
-rDataList$frediData$co_modelTypes |> glimpse()
-co_modelTypes <- rDataList$frediData$co_modelTypes |> (function(df0){
+co_modelTypes    <- DBI::dbReadTable(con,"co_modelTypes")
+co_modelTypes |> glimpse()
+co_modelTypes <- co_modelTypes |> (function(df0){
   ### Glimpse
   # df0 |> glimpse()
   
@@ -428,8 +448,9 @@ configList[["co_modelTypes"]] <- co_modelTypes
 
 #### Models ----------------
 ### Get new models and model types
-rDataList$frediData$co_models |> glimpse()
-co_models   <- rDataList$frediData$co_models |> (function(
+co_models    <- DBI::dbReadTable(con,"co_models")
+co_models |> glimpse()
+co_models   <- co_models |> (function(
     df0,
     df1,
     mod_str0 = listLoad$o3$data$o3Nat$Model |> unique() |> paste(collapse="|")
@@ -464,8 +485,9 @@ configList[["co_models"]] <- co_models
 
 ### Input Info ----------------
 ### Input Info
-rDataList$frediData$co_inputInfo |> glimpse()
-co_inputInfo   <- rDataList$frediData$co_inputInfo |> (function(df0){
+co_inputInfo    <- DBI::dbReadTable(con,"co_inputInfo")
+co_inputInfo |> glimpse()
+co_inputInfo   <- co_inputInfo |> (function(df0){
   ### Create new values to bind
   df1       <- tibble(inputName = c("ch4", "nox", "o3")) |>
     mutate(inputType       = c("methane", "nox", "ozone")) |>
@@ -1194,12 +1216,12 @@ state_rrScalar$model |> unique()
 ## Default Scenarios ----------------
 ### GDP ----------------
 ### Default GDP scenario = Default FrEDI scenario
-scenariosList[["gdp_default"]] <- rDataList$scenarioData$gdp_default
+scenariosList[["gdp_default"]] <- scenarioData$gdp_default
 
 ### Population ----------------
 #### Extend pop ratios ----------------
 dfPopRatios <- 
-  rDataList$scenarioData$popRatiosData |>
+  scenarioData$popRatiosData |>
   # "popRatiosData" |> get_frediDataObj("scenarioData") |> 
     (function(df0){
     cols0  <- c("area", "area2nat", "year")
@@ -1225,7 +1247,7 @@ dfPopRatios <-
   )
 
 ### Default population scenario = make scenario from FrEDI data
-rDataList$scenarioData$popData$region |> unique()
+scenarioData$popData$region |> unique()
 pop_default <- def_state_pop |> (function(
     df0,
     df1 = dfPopRatios
@@ -1353,10 +1375,12 @@ ghgData[["stateData"   ]] <- stateData
 saveFile   <- oPath0 |> file.path("ghg", "ghgData") |> paste0(".", "rda")
 save(ghgData, file=saveFile)
 
+dbDisconnect(con)
+gc()
 ### Update System Data ----------------
 # projDir |> file.path("R", "fun_saveSysData.R") |> source()
 oPath0 |> fun_saveSysData(
-  modules = c("fredi", "ghg", "sv"),
+  modules = c("ghg", "sv"),
   outFile = "sysData",
   extStrs = c("rda", "rds")
 ) ### End fun_saveSysData

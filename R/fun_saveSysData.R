@@ -57,8 +57,8 @@ fun_saveSysData <- function(
   #outPath <- dataDir |> file.path(outFile) |> paste0(".", "rda")
   #save(list=c(dataNames), filSe=outPath)
   ### Update Database
-  db_tmp_path <- file.path(dataDir,"fredi")
-  con <- DBI::dbConnect(RSQLite::SQLite(), file.path(db_tmp_path,"tmp_sysdata.db"))
+  db_tmp_path <- file.path(dataDir, "fredi")
+  con <- load_fredi_db(fredi_db_path = db_tmp_path)
   
   for (dat_i in dataNames){
   DBI::dbExecute(conn = con, paste0("DROP TABLE IF EXISTS ",dat_i))
@@ -71,7 +71,7 @@ fun_saveSysData <- function(
   DBI::dbDisconnect(con)
   
   outPath <- dataDir |> file.path(outFile)
-  zip(zipfile = outPath,files = file.path(db_tmp_path,"tmp_sysdata.db") )
+  zip(zipfile = outPath,files = file.path(db_tmp_path,"fredi_data") )
   
   
   ### Return
