@@ -1061,7 +1061,7 @@ stateData[["baseMortState"]] <- baseMortState
 baseMortState$baseMrateNat0 |> range()
 baseMortState$baseMrateState |> range()
 
-ghgData$stateData$baseMortState |> glimpse()
+#ghgData$stateData$baseMortState |> glimpse()
 
 
 
@@ -1069,8 +1069,8 @@ ghgData$stateData$baseMortState |> glimpse()
 ### State Excess Mortality reshaping
 ### Model	ModelYear	State_FIPS	State_Results |> rename to: c(model_str, refYear, fips, excess_mortality)
 # ghgData$ghgData$co_states
-co_states <- ghgData$ghgData$co_states
-co_models <- ghgData$ghgData$co_models
+#co_states <- ghgData$ghgData$co_states
+#co_models <- ghgData$ghgData$co_models
 listLoad$mort$data$mortXm |> glimpse(); 
 listLoad$mort$data$mortXm$ModelYear |> range()
 baseMortState |> glimpse()
@@ -1118,7 +1118,8 @@ state_xMort <- listLoad$mort$data$mortXm |> (function(
   sort0     <- c("region", "state", "model")
   from0     <- c("StateMortRatio", "baseMrateState") 
   to0       <- from0 |> paste0("0")
-  dfJoin0   <- dfJoin0 |> 
+  dfJoin0   <- dfJoin0 |>
+    rename_at(c(from0), ~to0) |>
     mutate(exMortState0 = exMortStateBase0 * StateMortRatio0) |> 
     # select(-any_of(drop0)) |> 
     arrange_at(c(sort0))
@@ -1133,9 +1134,9 @@ stateData[["state_xMort"]] <- state_xMort
 
 ### Calculate RR Scalar ----------------
 
-"mortBasePopState" <- ghgData$stateData[["mortBasePopState"]]
-"baseMortState" <- ghgData$stateData[["baseMortState"]]
-"state_o3" <- ghgData$stateData[["state_o3"]]
+#"mortBasePopState" <- ghgData$stateData[["mortBasePopState"]]
+#"baseMortState" <- ghgData$stateData[["baseMortState"]]
+#"state_o3" <- ghgData$stateData[["state_o3"]]
 # "state_xMort" <- ghgData$stateData[["state_xMort"]]
 
 ### Base year for: mortBasePopState
@@ -1217,7 +1218,7 @@ dfPopRatios <-
       select(-c("area2nat_conus"))
     return(df0)
   })() |>
-  fun_extendVals(
+  FrEDI:::fun_extendVals(
     from0 = 2100,
     to0   = 2300,
     sort0 = c("area", "region", "state", "year")
