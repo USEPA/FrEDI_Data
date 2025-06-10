@@ -1,13 +1,3 @@
-#' reshapeScenariosData
-#'
-#' @param scenarioData List with scenario data (as output from `loadScenarioData`)
-#' @param silent Indicate level of messaging
-#' @param msg0 Prefix for messaging
-#'
-#' @return
-#' @export
-#'
-#' @examples
 reshapeScenarioData <- function(
     scenarioData = NULL, ### List with scenario data
     silent       = TRUE, ### Level of messaging

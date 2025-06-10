@@ -35,9 +35,11 @@ Depends: R (>= 3.5.0),
     openxlsx,
     devtools,
     ggpubr,
-    zoo
+    zoo,
+    DBI,
+    RSQLite
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.2
 LazyData: TRUE
 Suggests: knitr, rmarkdown, prettydoc,kableExtra
 VignetteBuilder: knitr

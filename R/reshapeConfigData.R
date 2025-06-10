@@ -1,12 +1,3 @@
-#' reshapeData
-#'
-#' @param dataList Outputs from `loadData`
-#' @param silent Indicate level of messaging
-#'
-#' @return
-#' @export
-#'
-#' @examples
 reshapeConfigData <- function(
     dataList = NULL,   ### List of data (e.g., as returned from FrEDI_Data::loadData())
     silent   = TRUE,   ### Level of messaging
