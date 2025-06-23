@@ -492,10 +492,10 @@ co_inputInfo   <- co_inputInfo |> (function(df0){
   df1       <- tibble(inputName = c("ch4", "nox", "o3")) |>
     mutate(inputType       = c("methane", "nox", "ozone")) |>
     mutate(inputDesc       = c("Methane", "NOx", "Ozone")) |>
-    mutate(inputUnit       = c("ppbv"   , "Mt" , "pptv")) |>
+    mutate(inputUnit       = c("ppbv"   , "Mt" , "ppbv")) |>
     mutate(inputMin        = NA) |>
     mutate(inputMax        = NA) |>
-    mutate(valueCol        = c("CH4_ppbv", "NOx_Mt", "O3_pptv")) |>
+    mutate(valueCol        = c("CH4_ppbv", "NOx_Mt", "O3_ppbv")) |>
     mutate(region          = c(0, 0, 1))
 
   ### Filter to no values
@@ -582,7 +582,7 @@ state_o3 <- listLoad$o3$data$o3State |> (function(
   ### Rename values
   drop0     <- c("OzoneResponse.ppb.ppb.")
   from0     <- c("State_FIPS", "Model", "OzoneResponse.ppt.ppb.", "DeltaOzone")
-  to0       <- c("fips", "model_str", "state_o3response_pptv_per_ppbv", "base_state_deltaO3_pptv")
+  to0       <- c("fips", "model_str", "state_o3response_ppbv_per_ppbv", "base_state_deltaO3_ppbv")
   df0       <- df0 |> 
     select(-any_of(drop0)) |> 
     rename_at(c(from0), ~to0)
@@ -1192,7 +1192,7 @@ state_rrScalar <- mortBasePopState |> (function(
   # to0       <- from0 |> paste0("0")
   df0       <- df0 |> 
     # rename_at(c(from0), ~to0) |>
-    mutate(state_rrScalar   = basePopState * baseMrateState0 * base_state_deltaO3_pptv) |> 
+    mutate(state_rrScalar   = basePopState * baseMrateState0 * base_state_deltaO3_ppbv) |> 
     mutate(state_mortScalar = exMortState0 / state_rrScalar)
   
   # ### Add sector and impact type
@@ -1347,7 +1347,7 @@ o3_default <- ch4_default |> (function(
   df0       <- df0 |> mutate(nox_factor0 = noxAdj0)
   df0       <- df0 |> mutate(nox_factor  = NOx_Mt |> fun0())
   df0       <- df0 |> mutate(nox_ratio   = nox_factor / nox_factor0)
-  df0       <- df0 |> mutate(O3_pptv     = CH4_ppbv * nox_ratio * state_o3response_pptv_per_ppbv)
+  df0       <- df0 |> mutate(O3_pptv     = CH4_ppbv * nox_ratio * state_o3response_ppbv_per_ppbv)
   
   ### Arrange
   arrange0  <- c("region", "state", "model", "year")
