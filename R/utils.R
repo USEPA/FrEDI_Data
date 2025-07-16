@@ -99,7 +99,8 @@ create_nationalScenario <- function(gdp0, pop0, natPop0=NULL){
 
 ###### Format GCAM scenarios
 format_gcamData <- function(
-    df0 ### Original GCAM data
+    df0, ### Original GCAM data
+    conn
 ){
   ### Select values
   select0 <- c("year", "temp_C_global", "scenario", "model")
@@ -116,7 +117,7 @@ format_gcamData <- function(
   # scen0 |> print()
   list0   <- list(scen_i=scen0, df0_i=scen0 |> map(function(scen_i){df0 |> filter(scenario == scen_i)}))
   df0     <- list0 |> pmap(function(scen_i, df0_i){
-    df0_i |> format_gcamData_byScenario()
+    df0_i |> format_gcamData_byScenario(conn = conn)
   }) |> bind_rows()
   rm(list0)
   # df0 |> glimpse()
@@ -132,7 +133,8 @@ format_gcamData <- function(
 
 ###### Format GCAM scenario
 format_gcamData_byScenario <- function(
-    df0 ### Original GCAM data, filtered to a specific scenario
+    df0, ### Original GCAM data, filtered to a specific scenario
+    conn
 ){
   ###### Import Functions to Namespace
   convertTemps       <- utils::getFromNamespace("convertTemps"      , "FrEDI")
@@ -153,7 +155,7 @@ format_gcamData_byScenario <- function(
   df0    <- df0 |> relocate(c("temp_C_conus"), .before="temp_C_global")
   
   ### Then, calculate SLR heights
-  df1    <- FrEDI::temps2slr(temps=df0 |> pull(temp_C_global), years=df0 |> pull(year))
+  df1    <- FrEDI::temps2slr(temps=df0 |> pull(temp_C_global), years=df0 |> pull(year),conn = conn)
   df0    <- df0 |> left_join(df1, by=c("year"))
   # df0 |> glimpse()
 
