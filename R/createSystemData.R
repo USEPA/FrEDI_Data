@@ -5,7 +5,8 @@ createSystemData <- function(
     dataList    = list(), ### List of data created by reshapeData
     extend_all  = FALSE,  ### Whether to extend all GCM model observations to maximum range
     silent      = FALSE,  ### Level of messaging 
-    msg0        = ""      ### Prefix for messaging
+    msg0        = "",     ### Prefix for messaging
+    conn = con
 ){
   ###### Set up the environment ######
   ### Level of messaging (default is to message the user) and save behavior
@@ -87,7 +88,7 @@ createSystemData <- function(
   ### Columns, years for interpolation
   gcamData       <- scenarios[["gcamData"]]
   # gcamData |> glimpse()
-  gcam_scenarios <- gcamData       |> format_gcamData()
+  gcam_scenarios <- gcamData       |> format_gcamData(conn = conn)
   gcam_default   <- gcam_scenarios |> filter(year >= refYear0) |> filter(scenario == "ECS_3.0_REF")
   ### Add to list, remove intermediate values
   scenarios[["gcam_scenarios"]] <- gcam_scenarios

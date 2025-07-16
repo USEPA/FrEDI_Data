@@ -137,7 +137,10 @@ configureSystemData <- function(
   ### Names of objects to combine from reshaped data
   # if(!silent) 
   paste0(msg1, "Configuring data...") |> message()
-  sysDataList0  <- reshapeData0 |> createSystemData(extend_all=extend_all, silent=silent, msg0=msg1)
+  sysDataList0  <- createSystemData(dataList=reshapeData0,
+                                    extend_all=extend_all, 
+                                    silent=silent, 
+                                    msg0=msg1)
   rm(reshapeData0)
   gc()
   ### Update data in DB

@@ -1347,7 +1347,7 @@ o3_default <- ch4_default |> (function(
   df0       <- df0 |> mutate(nox_factor0 = noxAdj0)
   df0       <- df0 |> mutate(nox_factor  = NOx_Mt |> fun0())
   df0       <- df0 |> mutate(nox_ratio   = nox_factor / nox_factor0)
-  df0       <- df0 |> mutate(O3_pptv     = CH4_ppbv * nox_ratio * state_o3response_ppbv_per_ppbv)
+  df0       <- df0 |> mutate(O3_ppbv     = CH4_ppbv * nox_ratio * state_o3response_ppbv_per_ppbv)
   
   ### Arrange
   arrange0  <- c("region", "state", "model", "year")
