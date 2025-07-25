@@ -5,7 +5,7 @@ configureSystemData <- function(
   configDir   = "fredi"    , ### Module directory relative to dataDir
   scenarioDir = "scenarios", ### Directory to scenario relative to dataDir
   ### Info on config file
-  configFile  = "FrEDI_config.xlsx", ### Name of excel file with config information
+  configFile  = "FrEDI_config_nat.xlsx", ### Name of excel file with config information
   configSheet = "tableNames",        ### Sheet with table info
   ### Additional scenarios
   testFiles   = list(

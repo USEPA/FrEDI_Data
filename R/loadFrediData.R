@@ -4,7 +4,7 @@
 loadFrediData <- function(
     mainDir     = "." |> file.path("inst", "extdata"),  ### Path to directory containing configuration data
     ### Files
-    configFile  = "FrEDI_config.xlsx",                  ### Name of Excel file with config information, relative to frediDir
+    configFile  = "FrEDI_config_nat.xlsx",                  ### Name of Excel file with config information, relative to frediDir
     configSheet = "tableNames",                         ### Name of sheet in configFile containing table with info about tables
     gcamFile    = "Hector_v5.3_GCAM" |> paste0(".csv"), ### File in scenarioDir containing temperature scenarios
     gdpFile     = "EPPA_v6_GDP"      |> paste0(".csv"), ### File in scenarioDir containing GDP scenarios
