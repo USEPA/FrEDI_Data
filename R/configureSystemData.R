@@ -5,13 +5,13 @@ configureSystemData <- function(
   configDir   = "fredi"    , ### Module directory relative to dataDir
   scenarioDir = "scenarios", ### Directory to scenario relative to dataDir
   ### Info on config file
-  configFile  = "FrEDI_config_nat.xlsx", ### Name of excel file with config information
+  configFile  = "FrEDI_config.xlsx", ### Name of excel file with config information
   configSheet = "tableNames",        ### Sheet with table info
   ### Additional scenarios
   testFiles   = list(
     temp = "temp_0to6_to2300"   |> paste0(".csv"),
     gdp  = "rff_gdp_mean"       |> paste0(".csv"),
-    pop  = "rff_state_pop_mean" |> paste0(".csv")
+    pop  = "rff_"[]"_pop_mean" |> paste0(".csv")
   ), ### Files in inst/extdata/scenarios to load for testing
   ### Conditionals
   reshape0    = TRUE , ### Whether to include reshaped data items in data list (for testing)

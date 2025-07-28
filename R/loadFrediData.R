@@ -4,17 +4,17 @@
 loadFrediData <- function(
     mainDir     = "." |> file.path("inst", "extdata"),  ### Path to directory containing configuration data
     ### Files
-    configFile  = "FrEDI_config_nat.xlsx",                  ### Name of Excel file with config information, relative to frediDir
+    configFile  = "FrEDI_config.xlsx",                  ### Name of Excel file with config information, relative to frediDir
     configSheet = "tableNames",                         ### Name of sheet in configFile containing table with info about tables
     gcamFile    = "Hector_v5.3_GCAM" |> paste0(".csv"), ### File in scenarioDir containing temperature scenarios
     gdpFile     = "EPPA_v6_GDP"      |> paste0(".csv"), ### File in scenarioDir containing GDP scenarios
-    popFile     = "ICLUS_State_Population"  |> paste0(".csv"), ### File in scenarioDir containing population scenarios
+    popFile     = "ICLUS_"[]"_Population"  |> paste0(".csv"), ### File in scenarioDir containing population scenarios
     ### Other args
     ratiosFile  = "state_population_ratios" |> paste0(".csv"), ### File in scenarioDir containing population ratios
     testFiles   = list(
       temp = "temp_0to6_to2300"   |> paste0(".csv"),
       gdp  = "rff_gdp_mean"       |> paste0(".csv"),
-      pop  = "rff_state_pop_mean" |> paste0(".csv")
+      pop  = "rff_"[]"_pop_mean" |> paste0(".csv")
     ), ### Files to load for test scenarios
     silent      = FALSE, ### Level of messaging
     msg0        = "\t"   ### Message index

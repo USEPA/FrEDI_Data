@@ -1,0 +1,249 @@
+"state","postal","sector","model","modelUnitValue","impactYear","impactType","variant","value"
+"National","NAT","ExtremeTemp","CCSM4",1,2010,"cold","Adaptation",-3.3949918879831e-07
+"National","NAT","ExtremeTemp","CanESM2",1,2010,"cold","Adaptation",-3.74866805640094e-07
+"National","NAT","ExtremeTemp","GFDL-CM3",1,2010,"cold","Adaptation",-4.9310190719141e-07
+"National","NAT","ExtremeTemp","GISS-E2-R",1,2010,"cold","Adaptation",-7.87618006573407e-07
+"National","NAT","ExtremeTemp","HadGEM2-ES",1,2010,"cold","Adaptation",-4.28235670114247e-07
+"National","NAT","ExtremeTemp","MIROC5",1,2010,"cold","Adaptation",-2.37082323632524e-07
+"National","NAT","ExtremeTemp","CCSM4",2,2010,"cold","Adaptation",-6.32943505824345e-07
+"National","NAT","ExtremeTemp","CanESM2",2,2010,"cold","Adaptation",-6.63997208446233e-07
+"National","NAT","ExtremeTemp","GFDL-CM3",2,2010,"cold","Adaptation",-6.98418392799446e-07
+"National","NAT","ExtremeTemp","GISS-E2-R",2,2010,"cold","Adaptation",-7.50697011956007e-07
+"National","NAT","ExtremeTemp","HadGEM2-ES",2,2010,"cold","Adaptation",-6.44512734379994e-07
+"National","NAT","ExtremeTemp","MIROC5",2,2010,"cold","Adaptation",-6.18099176779915e-07
+"National","NAT","ExtremeTemp","CCSM4",3,2010,"cold","Adaptation",-7.92223476638931e-07
+"National","NAT","ExtremeTemp","CanESM2",3,2010,"cold","Adaptation",-8.30941956134535e-07
+"National","NAT","ExtremeTemp","GFDL-CM3",3,2010,"cold","Adaptation",-6.84698691108811e-07
+"National","NAT","ExtremeTemp","GISS-E2-R",3,2010,"cold","Adaptation",-8.2552431381483e-07
+"National","NAT","ExtremeTemp","HadGEM2-ES",3,2010,"cold","Adaptation",-7.60286193545266e-07
+"National","NAT","ExtremeTemp","MIROC5",3,2010,"cold","Adaptation",-7.88084893804406e-07
+"National","NAT","ExtremeTemp","CCSM4",4,2010,"cold","Adaptation",-9.66836586950662e-07
+"National","NAT","ExtremeTemp","CanESM2",4,2010,"cold","Adaptation",-7.45314475637764e-07
+"National","NAT","ExtremeTemp","GFDL-CM3",4,2010,"cold","Adaptation",-8.62501529854638e-07
+"National","NAT","ExtremeTemp","HadGEM2-ES",4,2010,"cold","Adaptation",-8.41995991101118e-07
+"National","NAT","ExtremeTemp","MIROC5",4,2010,"cold","Adaptation",-9.23690637798386e-07
+"National","NAT","ExtremeTemp","CCSM4",5,2010,"cold","Adaptation",-9.55062103269239e-07
+"National","NAT","ExtremeTemp","CanESM2",5,2010,"cold","Adaptation",-9.98236032022954e-07
+"National","NAT","ExtremeTemp","GFDL-CM3",5,2010,"cold","Adaptation",-9.39990966360797e-07
+"National","NAT","ExtremeTemp","HadGEM2-ES",5,2010,"cold","Adaptation",-9.62081420818723e-07
+"National","NAT","ExtremeTemp","MIROC5",5,2010,"cold","Adaptation",-9.45467783149633e-07
+"National","NAT","ExtremeTemp","CanESM2",6,2010,"cold","Adaptation",-9.6779588410396e-07
+"National","NAT","ExtremeTemp","GFDL-CM3",6,2010,"cold","Adaptation",-9.5244082861365e-07
+"National","NAT","ExtremeTemp","HadGEM2-ES",6,2010,"cold","Adaptation",-9.90261770688164e-07
+"National","NAT","ExtremeTemp","CCSM4",1,2010,"hot","Adaptation",2.45254158372639e-07
+"National","NAT","ExtremeTemp","CanESM2",1,2010,"hot","Adaptation",9.51478019509735e-07
+"National","NAT","ExtremeTemp","GFDL-CM3",1,2010,"hot","Adaptation",9.38697416169747e-07
+"National","NAT","ExtremeTemp","GISS-E2-R",1,2010,"hot","Adaptation",8.40987251234241e-07
+"National","NAT","ExtremeTemp","HadGEM2-ES",1,2010,"hot","Adaptation",1.01971855213538e-06
+"National","NAT","ExtremeTemp","MIROC5",1,2010,"hot","Adaptation",7.22078320274497e-07
+"National","NAT","ExtremeTemp","CCSM4",2,2010,"hot","Adaptation",1.65219194466943e-06
+"National","NAT","ExtremeTemp","CanESM2",2,2010,"hot","Adaptation",3.49691440984158e-06
+"National","NAT","ExtremeTemp","GFDL-CM3",2,2010,"hot","Adaptation",3.27728016298676e-06
+"National","NAT","ExtremeTemp","GISS-E2-R",2,2010,"hot","Adaptation",3.41429675353888e-06
+"National","NAT","ExtremeTemp","HadGEM2-ES",2,2010,"hot","Adaptation",3.07026396926735e-06
+"National","NAT","ExtremeTemp","MIROC5",2,2010,"hot","Adaptation",1.89938594897635e-06
+"National","NAT","ExtremeTemp","CCSM4",3,2010,"hot","Adaptation",5.57611757310422e-06
+"National","NAT","ExtremeTemp","CanESM2",3,2010,"hot","Adaptation",6.47620005388639e-06
+"National","NAT","ExtremeTemp","GFDL-CM3",3,2010,"hot","Adaptation",1.01043353785442e-05
+"National","NAT","ExtremeTemp","GISS-E2-R",3,2010,"hot","Adaptation",9.67591327178489e-06
+"National","NAT","ExtremeTemp","HadGEM2-ES",3,2010,"hot","Adaptation",8.92585448664648e-06
+"National","NAT","ExtremeTemp","MIROC5",3,2010,"hot","Adaptation",3.39487473506381e-06
+"National","NAT","ExtremeTemp","CCSM4",4,2010,"hot","Adaptation",1.00105848625858e-05
+"National","NAT","ExtremeTemp","CanESM2",4,2010,"hot","Adaptation",1.38520152349348e-05
+"National","NAT","ExtremeTemp","GFDL-CM3",4,2010,"hot","Adaptation",2.08399153907318e-05
+"National","NAT","ExtremeTemp","HadGEM2-ES",4,2010,"hot","Adaptation",1.55945445881171e-05
+"National","NAT","ExtremeTemp","MIROC5",4,2010,"hot","Adaptation",9.37212782781099e-06
+"National","NAT","ExtremeTemp","CCSM4",5,2010,"hot","Adaptation",1.72205146871412e-05
+"National","NAT","ExtremeTemp","CanESM2",5,2010,"hot","Adaptation",2.49022913797345e-05
+"National","NAT","ExtremeTemp","GFDL-CM3",5,2010,"hot","Adaptation",3.08257552410923e-05
+"National","NAT","ExtremeTemp","HadGEM2-ES",5,2010,"hot","Adaptation",2.62170710518533e-05
+"National","NAT","ExtremeTemp","MIROC5",5,2010,"hot","Adaptation",1.75310557483551e-05
+"National","NAT","ExtremeTemp","CanESM2",6,2010,"hot","Adaptation",3.66668460352397e-05
+"National","NAT","ExtremeTemp","GFDL-CM3",6,2010,"hot","Adaptation",4.50388341926412e-05
+"National","NAT","ExtremeTemp","HadGEM2-ES",6,2010,"hot","Adaptation",4.06647668280851e-05
+"National","NAT","ExtremeTemp","CCSM4",1,2010,"cold","No Adaptation",-3.3949918879831e-07
+"National","NAT","ExtremeTemp","CanESM2",1,2010,"cold","No Adaptation",-3.74866805640094e-07
+"National","NAT","ExtremeTemp","GFDL-CM3",1,2010,"cold","No Adaptation",-4.9310190719141e-07
+"National","NAT","ExtremeTemp","GISS-E2-R",1,2010,"cold","No Adaptation",-7.87618006573407e-07
+"National","NAT","ExtremeTemp","HadGEM2-ES",1,2010,"cold","No Adaptation",-4.28235670114247e-07
+"National","NAT","ExtremeTemp","MIROC5",1,2010,"cold","No Adaptation",-2.37082323632524e-07
+"National","NAT","ExtremeTemp","CCSM4",2,2010,"cold","No Adaptation",-6.32943505824345e-07
+"National","NAT","ExtremeTemp","CanESM2",2,2010,"cold","No Adaptation",-6.63997208446233e-07
+"National","NAT","ExtremeTemp","GFDL-CM3",2,2010,"cold","No Adaptation",-6.98418392799446e-07
+"National","NAT","ExtremeTemp","GISS-E2-R",2,2010,"cold","No Adaptation",-7.50697011956007e-07
+"National","NAT","ExtremeTemp","HadGEM2-ES",2,2010,"cold","No Adaptation",-6.44512734379994e-07
+"National","NAT","ExtremeTemp","MIROC5",2,2010,"cold","No Adaptation",-6.18099176779915e-07
+"National","NAT","ExtremeTemp","CCSM4",3,2010,"cold","No Adaptation",-7.92223476638931e-07
+"National","NAT","ExtremeTemp","CanESM2",3,2010,"cold","No Adaptation",-8.30941956134535e-07
+"National","NAT","ExtremeTemp","GFDL-CM3",3,2010,"cold","No Adaptation",-6.84698691108811e-07
+"National","NAT","ExtremeTemp","GISS-E2-R",3,2010,"cold","No Adaptation",-8.2552431381483e-07
+"National","NAT","ExtremeTemp","HadGEM2-ES",3,2010,"cold","No Adaptation",-7.60286193545266e-07
+"National","NAT","ExtremeTemp","MIROC5",3,2010,"cold","No Adaptation",-7.88084893804406e-07
+"National","NAT","ExtremeTemp","CCSM4",4,2010,"cold","No Adaptation",-9.66836586950662e-07
+"National","NAT","ExtremeTemp","CanESM2",4,2010,"cold","No Adaptation",-7.45314475637764e-07
+"National","NAT","ExtremeTemp","GFDL-CM3",4,2010,"cold","No Adaptation",-8.62501529854638e-07
+"National","NAT","ExtremeTemp","HadGEM2-ES",4,2010,"cold","No Adaptation",-8.41995991101118e-07
+"National","NAT","ExtremeTemp","MIROC5",4,2010,"cold","No Adaptation",-9.23690637798386e-07
+"National","NAT","ExtremeTemp","CCSM4",5,2010,"cold","No Adaptation",-9.55062103269239e-07
+"National","NAT","ExtremeTemp","CanESM2",5,2010,"cold","No Adaptation",-9.98236032022954e-07
+"National","NAT","ExtremeTemp","GFDL-CM3",5,2010,"cold","No Adaptation",-9.39990966360797e-07
+"National","NAT","ExtremeTemp","HadGEM2-ES",5,2010,"cold","No Adaptation",-9.62081420818723e-07
+"National","NAT","ExtremeTemp","MIROC5",5,2010,"cold","No Adaptation",-9.45467783149633e-07
+"National","NAT","ExtremeTemp","CanESM2",6,2010,"cold","No Adaptation",-9.6779588410396e-07
+"National","NAT","ExtremeTemp","GFDL-CM3",6,2010,"cold","No Adaptation",-9.5244082861365e-07
+"National","NAT","ExtremeTemp","HadGEM2-ES",6,2010,"cold","No Adaptation",-9.90261770688164e-07
+"National","NAT","ExtremeTemp","CCSM4",1,2010,"hot","No Adaptation",3.64980756249184e-06
+"National","NAT","ExtremeTemp","CanESM2",1,2010,"hot","No Adaptation",6.37217167850906e-06
+"National","NAT","ExtremeTemp","GFDL-CM3",1,2010,"hot","No Adaptation",7.12201362673892e-06
+"National","NAT","ExtremeTemp","GISS-E2-R",1,2010,"hot","No Adaptation",7.34805722991325e-06
+"National","NAT","ExtremeTemp","HadGEM2-ES",1,2010,"hot","No Adaptation",6.84271746650619e-06
+"National","NAT","ExtremeTemp","MIROC5",1,2010,"hot","No Adaptation",3.9128437103114e-06
+"National","NAT","ExtremeTemp","CCSM4",2,2010,"hot","No Adaptation",1.17637960061427e-05
+"National","NAT","ExtremeTemp","CanESM2",2,2010,"hot","No Adaptation",1.78083612828978e-05
+"National","NAT","ExtremeTemp","GFDL-CM3",2,2010,"hot","No Adaptation",1.84752584366218e-05
+"National","NAT","ExtremeTemp","GISS-E2-R",2,2010,"hot","No Adaptation",1.71713122894633e-05
+"National","NAT","ExtremeTemp","HadGEM2-ES",2,2010,"hot","No Adaptation",1.84677966800503e-05
+"National","NAT","ExtremeTemp","MIROC5",2,2010,"hot","No Adaptation",8.65908455435873e-06
+"National","NAT","ExtremeTemp","CCSM4",3,2010,"hot","No Adaptation",2.65492347030124e-05
+"National","NAT","ExtremeTemp","CanESM2",3,2010,"hot","No Adaptation",3.03026508807849e-05
+"National","NAT","ExtremeTemp","GFDL-CM3",3,2010,"hot","No Adaptation",3.93880788108826e-05
+"National","NAT","ExtremeTemp","GISS-E2-R",3,2010,"hot","No Adaptation",3.69659658222556e-05
+"National","NAT","ExtremeTemp","HadGEM2-ES",3,2010,"hot","No Adaptation",3.28824571782436e-05
+"National","NAT","ExtremeTemp","MIROC5",3,2010,"hot","No Adaptation",1.69046880696742e-05
+"National","NAT","ExtremeTemp","CCSM4",4,2010,"hot","No Adaptation",3.86384466788838e-05
+"National","NAT","ExtremeTemp","CanESM2",4,2010,"hot","No Adaptation",5.13689973562946e-05
+"National","NAT","ExtremeTemp","GFDL-CM3",4,2010,"hot","No Adaptation",6.03829125244613e-05
+"National","NAT","ExtremeTemp","HadGEM2-ES",4,2010,"hot","No Adaptation",4.85174185871417e-05
+"National","NAT","ExtremeTemp","MIROC5",4,2010,"hot","No Adaptation",3.44115858937281e-05
+"National","NAT","ExtremeTemp","CCSM4",5,2010,"hot","No Adaptation",5.2945801533086e-05
+"National","NAT","ExtremeTemp","CanESM2",5,2010,"hot","No Adaptation",7.32149160415257e-05
+"National","NAT","ExtremeTemp","GFDL-CM3",5,2010,"hot","No Adaptation",7.80907089268514e-05
+"National","NAT","ExtremeTemp","HadGEM2-ES",5,2010,"hot","No Adaptation",6.67814295031415e-05
+"National","NAT","ExtremeTemp","MIROC5",5,2010,"hot","No Adaptation",5.03010737149298e-05
+"National","NAT","ExtremeTemp","CanESM2",6,2010,"hot","No Adaptation",9.69784909329076e-05
+"National","NAT","ExtremeTemp","GFDL-CM3",6,2010,"hot","No Adaptation",9.94135976150589e-05
+"National","NAT","ExtremeTemp","HadGEM2-ES",6,2010,"hot","No Adaptation",8.75260443026841e-05
+"National","NAT","ExtremeTemp","CCSM4",1,2090,"cold","Adaptation",-3.24220492318819e-07
+"National","NAT","ExtremeTemp","CanESM2",1,2090,"cold","Adaptation",-3.76072275025467e-07
+"National","NAT","ExtremeTemp","GFDL-CM3",1,2090,"cold","Adaptation",-4.758225944537e-07
+"National","NAT","ExtremeTemp","GISS-E2-R",1,2090,"cold","Adaptation",-7.65120966517195e-07
+"National","NAT","ExtremeTemp","HadGEM2-ES",1,2090,"cold","Adaptation",-4.18144214920195e-07
+"National","NAT","ExtremeTemp","MIROC5",1,2090,"cold","Adaptation",-2.31324702282749e-07
+"National","NAT","ExtremeTemp","CCSM4",2,2090,"cold","Adaptation",-6.22771709273366e-07
+"National","NAT","ExtremeTemp","CanESM2",2,2090,"cold","Adaptation",-6.3886984530397e-07
+"National","NAT","ExtremeTemp","GFDL-CM3",2,2090,"cold","Adaptation",-6.78035493840796e-07
+"National","NAT","ExtremeTemp","GISS-E2-R",2,2090,"cold","Adaptation",-7.31764423071757e-07
+"National","NAT","ExtremeTemp","HadGEM2-ES",2,2090,"cold","Adaptation",-6.22175544624221e-07
+"National","NAT","ExtremeTemp","MIROC5",2,2090,"cold","Adaptation",-6.03672347851246e-07
+"National","NAT","ExtremeTemp","CCSM4",3,2090,"cold","Adaptation",-7.74757376492436e-07
+"National","NAT","ExtremeTemp","CanESM2",3,2090,"cold","Adaptation",-8.08630835191673e-07
+"National","NAT","ExtremeTemp","GFDL-CM3",3,2090,"cold","Adaptation",-6.66884466056307e-07
+"National","NAT","ExtremeTemp","GISS-E2-R",3,2090,"cold","Adaptation",-8.10088808365122e-07
+"National","NAT","ExtremeTemp","HadGEM2-ES",3,2090,"cold","Adaptation",-7.428745249194e-07
+"National","NAT","ExtremeTemp","MIROC5",3,2090,"cold","Adaptation",-7.69970956705299e-07
+"National","NAT","ExtremeTemp","CCSM4",4,2090,"cold","Adaptation",-9.50505800611678e-07
+"National","NAT","ExtremeTemp","CanESM2",4,2090,"cold","Adaptation",-7.20118577344569e-07
+"National","NAT","ExtremeTemp","GFDL-CM3",4,2090,"cold","Adaptation",-8.48555757065101e-07
+"National","NAT","ExtremeTemp","HadGEM2-ES",4,2090,"cold","Adaptation",-8.33597354860106e-07
+"National","NAT","ExtremeTemp","MIROC5",4,2090,"cold","Adaptation",-9.02110172205217e-07
+"National","NAT","ExtremeTemp","CCSM4",5,2090,"cold","Adaptation",-9.35079001641043e-07
+"National","NAT","ExtremeTemp","CanESM2",5,2090,"cold","Adaptation",-9.78707833425217e-07
+"National","NAT","ExtremeTemp","GFDL-CM3",5,2090,"cold","Adaptation",-9.22477638313258e-07
+"National","NAT","ExtremeTemp","HadGEM2-ES",5,2090,"cold","Adaptation",-9.42690982828863e-07
+"National","NAT","ExtremeTemp","MIROC5",5,2090,"cold","Adaptation",-9.28407001122208e-07
+"National","NAT","ExtremeTemp","CanESM2",6,2090,"cold","Adaptation",-9.4844031670478e-07
+"National","NAT","ExtremeTemp","GFDL-CM3",6,2090,"cold","Adaptation",-9.30926074233335e-07
+"National","NAT","ExtremeTemp","HadGEM2-ES",6,2090,"cold","Adaptation",-9.70968747396886e-07
+"National","NAT","ExtremeTemp","CCSM4",1,2090,"hot","Adaptation",2.63389042302614e-07
+"National","NAT","ExtremeTemp","CanESM2",1,2090,"hot","Adaptation",1.03322102588894e-06
+"National","NAT","ExtremeTemp","GFDL-CM3",1,2090,"hot","Adaptation",9.67423179885722e-07
+"National","NAT","ExtremeTemp","GISS-E2-R",1,2090,"hot","Adaptation",7.95264450137076e-07
+"National","NAT","ExtremeTemp","HadGEM2-ES",1,2090,"hot","Adaptation",1.11587726592716e-06
+"National","NAT","ExtremeTemp","MIROC5",1,2090,"hot","Adaptation",7.91556058990332e-07
+"National","NAT","ExtremeTemp","CCSM4",2,2090,"hot","Adaptation",1.74105962127654e-06
+"National","NAT","ExtremeTemp","CanESM2",2,2090,"hot","Adaptation",3.78135258336969e-06
+"National","NAT","ExtremeTemp","GFDL-CM3",2,2090,"hot","Adaptation",3.65077550473269e-06
+"National","NAT","ExtremeTemp","GISS-E2-R",2,2090,"hot","Adaptation",3.68956981198318e-06
+"National","NAT","ExtremeTemp","HadGEM2-ES",2,2090,"hot","Adaptation",3.1139885529532e-06
+"National","NAT","ExtremeTemp","MIROC5",2,2090,"hot","Adaptation",2.15042343551467e-06
+"National","NAT","ExtremeTemp","CCSM4",3,2090,"hot","Adaptation",6.03766049432564e-06
+"National","NAT","ExtremeTemp","CanESM2",3,2090,"hot","Adaptation",7.14166115482036e-06
+"National","NAT","ExtremeTemp","GFDL-CM3",3,2090,"hot","Adaptation",1.1113036692599e-05
+"National","NAT","ExtremeTemp","GISS-E2-R",3,2090,"hot","Adaptation",1.02667721334914e-05
+"National","NAT","ExtremeTemp","HadGEM2-ES",3,2090,"hot","Adaptation",8.65388981762005e-06
+"National","NAT","ExtremeTemp","MIROC5",3,2090,"hot","Adaptation",3.88518269808373e-06
+"National","NAT","ExtremeTemp","CCSM4",4,2090,"hot","Adaptation",1.08620090247304e-05
+"National","NAT","ExtremeTemp","CanESM2",4,2090,"hot","Adaptation",1.52784498615629e-05
+"National","NAT","ExtremeTemp","GFDL-CM3",4,2090,"hot","Adaptation",2.24522545240014e-05
+"National","NAT","ExtremeTemp","HadGEM2-ES",4,2090,"hot","Adaptation",1.5440194029653e-05
+"National","NAT","ExtremeTemp","MIROC5",4,2090,"hot","Adaptation",1.04070950221142e-05
+"National","NAT","ExtremeTemp","CCSM4",5,2090,"hot","Adaptation",1.86358041231161e-05
+"National","NAT","ExtremeTemp","CanESM2",5,2090,"hot","Adaptation",2.66536773830289e-05
+"National","NAT","ExtremeTemp","GFDL-CM3",5,2090,"hot","Adaptation",3.23066379582399e-05
+"National","NAT","ExtremeTemp","HadGEM2-ES",5,2090,"hot","Adaptation",2.57562930263141e-05
+"National","NAT","ExtremeTemp","MIROC5",5,2090,"hot","Adaptation",1.91196427503159e-05
+"National","NAT","ExtremeTemp","CanESM2",6,2090,"hot","Adaptation",3.86952250373588e-05
+"National","NAT","ExtremeTemp","GFDL-CM3",6,2090,"hot","Adaptation",4.628676069706e-05
+"National","NAT","ExtremeTemp","HadGEM2-ES",6,2090,"hot","Adaptation",3.99192438991591e-05
+"National","NAT","ExtremeTemp","CCSM4",1,2090,"cold","No Adaptation",-3.24220492318819e-07
+"National","NAT","ExtremeTemp","CanESM2",1,2090,"cold","No Adaptation",-3.76072275025467e-07
+"National","NAT","ExtremeTemp","GFDL-CM3",1,2090,"cold","No Adaptation",-4.758225944537e-07
+"National","NAT","ExtremeTemp","GISS-E2-R",1,2090,"cold","No Adaptation",-7.65120966517195e-07
+"National","NAT","ExtremeTemp","HadGEM2-ES",1,2090,"cold","No Adaptation",-4.18144214920195e-07
+"National","NAT","ExtremeTemp","MIROC5",1,2090,"cold","No Adaptation",-2.31324702282749e-07
+"National","NAT","ExtremeTemp","CCSM4",2,2090,"cold","No Adaptation",-6.22771709273366e-07
+"National","NAT","ExtremeTemp","CanESM2",2,2090,"cold","No Adaptation",-6.3886984530397e-07
+"National","NAT","ExtremeTemp","GFDL-CM3",2,2090,"cold","No Adaptation",-6.78035493840796e-07
+"National","NAT","ExtremeTemp","GISS-E2-R",2,2090,"cold","No Adaptation",-7.31764423071757e-07
+"National","NAT","ExtremeTemp","HadGEM2-ES",2,2090,"cold","No Adaptation",-6.22175544624221e-07
+"National","NAT","ExtremeTemp","MIROC5",2,2090,"cold","No Adaptation",-6.03672347851246e-07
+"National","NAT","ExtremeTemp","CCSM4",3,2090,"cold","No Adaptation",-7.74757376492436e-07
+"National","NAT","ExtremeTemp","CanESM2",3,2090,"cold","No Adaptation",-8.08630835191673e-07
+"National","NAT","ExtremeTemp","GFDL-CM3",3,2090,"cold","No Adaptation",-6.66884466056307e-07
+"National","NAT","ExtremeTemp","GISS-E2-R",3,2090,"cold","No Adaptation",-8.10088808365122e-07
+"National","NAT","ExtremeTemp","HadGEM2-ES",3,2090,"cold","No Adaptation",-7.428745249194e-07
+"National","NAT","ExtremeTemp","MIROC5",3,2090,"cold","No Adaptation",-7.69970956705299e-07
+"National","NAT","ExtremeTemp","CCSM4",4,2090,"cold","No Adaptation",-9.50505800611678e-07
+"National","NAT","ExtremeTemp","CanESM2",4,2090,"cold","No Adaptation",-7.20118577344569e-07
+"National","NAT","ExtremeTemp","GFDL-CM3",4,2090,"cold","No Adaptation",-8.48555757065101e-07
+"National","NAT","ExtremeTemp","HadGEM2-ES",4,2090,"cold","No Adaptation",-8.33597354860106e-07
+"National","NAT","ExtremeTemp","MIROC5",4,2090,"cold","No Adaptation",-9.02110172205217e-07
+"National","NAT","ExtremeTemp","CCSM4",5,2090,"cold","No Adaptation",-9.35079001641043e-07
+"National","NAT","ExtremeTemp","CanESM2",5,2090,"cold","No Adaptation",-9.78707833425217e-07
+"National","NAT","ExtremeTemp","GFDL-CM3",5,2090,"cold","No Adaptation",-9.22477638313258e-07
+"National","NAT","ExtremeTemp","HadGEM2-ES",5,2090,"cold","No Adaptation",-9.42690982828863e-07
+"National","NAT","ExtremeTemp","MIROC5",5,2090,"cold","No Adaptation",-9.28407001122208e-07
+"National","NAT","ExtremeTemp","CanESM2",6,2090,"cold","No Adaptation",-9.4844031670478e-07
+"National","NAT","ExtremeTemp","GFDL-CM3",6,2090,"cold","No Adaptation",-9.30926074233335e-07
+"National","NAT","ExtremeTemp","HadGEM2-ES",6,2090,"cold","No Adaptation",-9.70968747396886e-07
+"National","NAT","ExtremeTemp","CCSM4",1,2090,"hot","No Adaptation",3.62984399520279e-06
+"National","NAT","ExtremeTemp","CanESM2",1,2090,"hot","No Adaptation",6.27612172180795e-06
+"National","NAT","ExtremeTemp","GFDL-CM3",1,2090,"hot","No Adaptation",6.82660019571648e-06
+"National","NAT","ExtremeTemp","GISS-E2-R",1,2090,"hot","No Adaptation",6.71070875439662e-06
+"National","NAT","ExtremeTemp","HadGEM2-ES",1,2090,"hot","No Adaptation",6.52947842828218e-06
+"National","NAT","ExtremeTemp","MIROC5",1,2090,"hot","No Adaptation",3.71107672799773e-06
+"National","NAT","ExtremeTemp","CCSM4",2,2090,"hot","No Adaptation",1.11402830497832e-05
+"National","NAT","ExtremeTemp","CanESM2",2,2090,"hot","No Adaptation",1.71601587787401e-05
+"National","NAT","ExtremeTemp","GFDL-CM3",2,2090,"hot","No Adaptation",1.80149498100926e-05
+"National","NAT","ExtremeTemp","GISS-E2-R",2,2090,"hot","No Adaptation",1.63063730216651e-05
+"National","NAT","ExtremeTemp","HadGEM2-ES",2,2090,"hot","No Adaptation",1.67480198592221e-05
+"National","NAT","ExtremeTemp","MIROC5",2,2090,"hot","No Adaptation",8.49833392734336e-06
+"National","NAT","ExtremeTemp","CCSM4",3,2090,"hot","No Adaptation",2.58107782946539e-05
+"National","NAT","ExtremeTemp","CanESM2",3,2090,"hot","No Adaptation",3.00836048262293e-05
+"National","NAT","ExtremeTemp","GFDL-CM3",3,2090,"hot","No Adaptation",3.85075567766123e-05
+"National","NAT","ExtremeTemp","GISS-E2-R",3,2090,"hot","No Adaptation",3.53923239278573e-05
+"National","NAT","ExtremeTemp","HadGEM2-ES",3,2090,"hot","No Adaptation",3.03472142778184e-05
+"National","NAT","ExtremeTemp","MIROC5",3,2090,"hot","No Adaptation",1.64285078526867e-05
+"National","NAT","ExtremeTemp","CCSM4",4,2090,"hot","No Adaptation",3.76037985568508e-05
+"National","NAT","ExtremeTemp","CanESM2",4,2090,"hot","No Adaptation",5.07904938191416e-05
+"National","NAT","ExtremeTemp","GFDL-CM3",4,2090,"hot","No Adaptation",5.91109964710248e-05
+"National","NAT","ExtremeTemp","HadGEM2-ES",4,2090,"hot","No Adaptation",4.55705251162011e-05
+"National","NAT","ExtremeTemp","MIROC5",4,2090,"hot","No Adaptation",3.33327049519664e-05
+"National","NAT","ExtremeTemp","CCSM4",5,2090,"hot","No Adaptation",5.16378231289238e-05
+"National","NAT","ExtremeTemp","CanESM2",5,2090,"hot","No Adaptation",7.2402994397557e-05
+"National","NAT","ExtremeTemp","GFDL-CM3",5,2090,"hot","No Adaptation",7.61033760043011e-05
+"National","NAT","ExtremeTemp","HadGEM2-ES",5,2090,"hot","No Adaptation",6.30173577962315e-05
+"National","NAT","ExtremeTemp","MIROC5",5,2090,"hot","No Adaptation",4.91785356778459e-05
+"National","NAT","ExtremeTemp","CanESM2",6,2090,"hot","No Adaptation",9.57023736727428e-05
+"National","NAT","ExtremeTemp","GFDL-CM3",6,2090,"hot","No Adaptation",9.72803150191245e-05
+"National","NAT","ExtremeTemp","HadGEM2-ES",6,2090,"hot","No Adaptation",8.34253995816976e-05

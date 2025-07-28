@@ -1,0 +1,16 @@
+"state","postal","model","value","sector","modelUnitValue","impactYear","variant","impactType"
+"National","NAT","CCSM4",434.97982569613,"AsphaltRoads",1,NA,NA,NA
+"National","NAT","CCSM4",1045.06804460838,"AsphaltRoads",2,NA,NA,NA
+"National","NAT","CCSM4",1398.36751007789,"AsphaltRoads",3,NA,NA,NA
+"National","NAT","CCSM4",1591.78617504389,"AsphaltRoads",4,NA,NA,NA
+"National","NAT","MIROC5",371.629308746831,"AsphaltRoads",1,NA,NA,NA
+"National","NAT","MIROC5",790.135107275843,"AsphaltRoads",2,NA,NA,NA
+"National","NAT","MIROC5",1054.57054183986,"AsphaltRoads",3,NA,NA,NA
+"National","NAT","MIROC5",1332.08168547293,"AsphaltRoads",4,NA,NA,NA
+"National","NAT","MIROC5",1568.15803604587,"AsphaltRoads",5,NA,NA,NA
+"National","NAT","CanESM2",404.852607577601,"AsphaltRoads",1,NA,NA,NA
+"National","NAT","CanESM2",936.962743563009,"AsphaltRoads",2,NA,NA,NA
+"National","NAT","CanESM2",1175.57060932765,"AsphaltRoads",3,NA,NA,NA
+"National","NAT","CanESM2",1501.64521169099,"AsphaltRoads",4,NA,NA,NA
+"National","NAT","CanESM2",1759.31432969881,"AsphaltRoads",5,NA,NA,NA
+"National","NAT","CanESM2",2059.92830070793,"AsphaltRoads",6,NA,NA,NA
