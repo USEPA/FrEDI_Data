@@ -11,7 +11,7 @@ configureSystemData <- function(
   testFiles   = list(
     temp = "temp_0to6_to2300"   |> paste0(".csv"),
     gdp  = "rff_gdp_mean"       |> paste0(".csv"),
-    pop  = "rff_"[]"_pop_mean" |> paste0(".csv")
+    pop  = "rff_%_pop_mean" |> paste0(".csv")
   ), ### Files in inst/extdata/scenarios to load for testing
   ### Conditionals
   reshape0    = TRUE , ### Whether to include reshaped data items in data list (for testing)
@@ -51,7 +51,8 @@ configureSystemData <- function(
   ### Load state data
   # if(!silent) 
   paste0(msg1, "Loading data...") |> message()
-  loadData0     <- dataDir |> loadFrediData(
+  loadData0     <- loadFrediData(
+    mainDir     = dataDir,
     configFile  = configFile,  ### Name of excel file with config information
     configSheet = configSheet, ### Sheet with info about tables in config file
     testFiles   = testFiles,   ### Files to load for testing
@@ -133,7 +134,7 @@ configureSystemData <- function(
   # return(rDataList)
   
   
-  ###### 4. Configure Data ######
+  ###### 4. Create Data ######
   ### Names of objects to combine from reshaped data
   # if(!silent) 
   paste0(msg1, "Configuring data...") |> message()
