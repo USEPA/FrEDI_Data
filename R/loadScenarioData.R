@@ -22,8 +22,8 @@ loadScenarioData <- function(
   ### Scenarios list
   # scenarioDir |> list.files() |> print()
   scenarioNames <- c("gcam", "gdp", "pop", "popRatios")
-  
-  ### Create list of file names
+
+    ### Create list of file names
   listFiles     <- list()
   listFiles[["gcam"     ]] <- gcamFile
   listFiles[["gdp"      ]] <- gdpFile
