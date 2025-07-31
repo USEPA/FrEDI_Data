@@ -35,7 +35,7 @@ loadFrediData <- function(
   nat_frediDir      <- nat_mainDir  |> file.path("fredi"    ) ### Path to Excel config file, relative to mainDir
   nat_scenarioDir   <- nat_mainDir  |> file.path("scenarios") ### Path to scenarios, relative to mainDir
   nat_scalarDir     <- nat_mainDir  |> file.path("scalars"  )
-  nat_impactDir     <- frediDir
+  nat_impactDir     <- nat_mainDir
   
   ###### Initialize List ######
   dataList      <- list()
@@ -116,7 +116,7 @@ loadFrediData <- function(
   ### Load SLR scaled impacts
   if (!silent) paste0(msg1, "Loading SLR scaled impacts...") |> message()
   data_slrImpacts <- impactDir |> loadFrediImpacts(type="slr")
-  nat_data_slrImpacts <- impactDir |> loadFrediImpacts_nat(type="slr")
+  nat_data_slrImpacts <- nat_impactDir |> loadFrediImpacts_nat(type="slr")
   
   ### Create a list
   listState       <- list()
