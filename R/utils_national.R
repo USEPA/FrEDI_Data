@@ -53,7 +53,6 @@ loadFrediScalars_nat <- function(
   # fnames |> head() |> print() 
   # fnames |> file.exists() |> head() |> print()
   scalarData <- fnames |> map(function(file_i){
-    print(file_i)
     cols0 <- c( "postal","state", "scalarName", "year", "value")
     df0   <- file_i |> read.csv() |> as_tibble() #|> mutate( value = as.double(value))
     df0   <- df0    |> select(all_of(cols0))

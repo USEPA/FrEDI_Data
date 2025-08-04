@@ -41,6 +41,7 @@ reshapeScalarData <- function(
   select0    <- c("scalarName", "scalarLabel", "scalarType")
   join0      <- c("scalarName")
   scalarData <- scalarData |> left_join(scalarInfo |> select(all_of(select0)), by=c(join0))
+
   rm(select0, join0)
   
   

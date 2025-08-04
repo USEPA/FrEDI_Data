@@ -1,7 +1,8 @@
 reshapeScenarioData <- function(
     scenarioData = NULL, ### List with scenario data
     silent       = TRUE, ### Level of messaging
-    msg0         = "\t"  ### Prefix for messaging
+    msg0         = "\t",  ### Prefix for messaging
+    nat_status = FALSE
 ) {
   ###### Messaging ######
   msgN          <- "\n"
@@ -25,8 +26,15 @@ reshapeScenarioData <- function(
   # ratiosData |> glimpse()
   
   ### Format data
+  if(!nat_status){
   popData    <- popData    |> mutate(region = region |> str_replace("\\.", " "))
   ratiosData <- ratiosData |> mutate(region = region |> str_replace("\\.", " "))
+  }
+  
+  if(nat_status){
+    popData    <- popData 
+    ratiosData <- ratiosData
+  }
   
   ### Update in List
   scenarioData[["gcamData"     ]] <- gcamData

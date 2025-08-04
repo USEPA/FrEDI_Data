@@ -27,6 +27,7 @@ configureSystemData <- function(
   silent      = TRUE , ### Level of messaging 
   msg0        = ""     ### Message prefix
 ){
+  
   ### Messaging
   msgN <- "\n"
   msgN |> paste0(msg0, "Running configureSystemData()...") |> message()
@@ -59,28 +60,7 @@ configureSystemData <- function(
     silent      = silent,
     msg0        = msg1
   ) ### End loadData
-  gc()
-  
-  if(return_type == "db"){
-    
-    con <- DBI::dbConnect(RSQLite::SQLite(), paste0(sysDataFile))
-    
-    for(i in 1:length(loadData0[["frediData"]])){
-      DBI::dbWriteTable(conn = con, name = names(loadData0[["frediData"   ]][i]), value = loadData0[["frediData"   ]][[i]], overwrite = TRUE)
-    }
-    
-    for(i in 1:length(loadData0[["stateData"]])){
-      DBI::dbWriteTable(conn = con, name = names(loadData0[["stateData"   ]][i]), value = loadData0[["stateData"   ]][[i]], overwrite = TRUE)
-    }
-    
-    
-    DBI::dbExecute(conn = con,"DROP TABLE IF EXISTS scenarioData")
-    DBI::dbExecute(conn = con,"CREATE TABLE scenarioData (value BLOB)")
-    DBI::dbExecute(con, 'INSERT INTO scenarioData (value) VALUES (:value)', 
-              params = list(value = list(serialize(loadData0[["scenarioData"]], connection = NULL)))
-    )
-    
-  }
+
   
   ### Update data in list
   ### Update data in list
@@ -97,9 +77,11 @@ configureSystemData <- function(
   ### Reshape state data
   # if(!silent) 
   paste0(msg1, "Reshaping data...") |> message()
-  reshapeData0  <- loadData0 |> reshapeFrediData(silent=silent, msg0=msg1)
-  rm(loadData0)
-  gc()
+  reshapeData0  <- reshapeFrediData( dataList = loadData0,
+                                     silent=silent, 
+                                     msg0=msg1)
+  #rm(loadData0)
+  #gc()
   ### If reshape, save the reshaped data separately
   if(reshape0){ 
     rDataList[["rsData"]] <- reshapeData0
@@ -107,23 +89,6 @@ configureSystemData <- function(
     rDataList[["rsData"]] <- list(name="rsData", data=list())
   } ### End if(reshape)
 
-  ### Update data in DB
-  if(return_type == "db"){
-    for(i in 1:length(reshapeData0[["frediData"]])){
-      DBI::dbWriteTable(conn = con, name = names(reshapeData0[["frediData"   ]][i]), value = reshapeData0[["frediData"   ]][[i]], overwrite = TRUE)
-    }
-    
-    for(i in 1:length(reshapeData0[["stateData"]])){
-      DBI::dbWriteTable(conn = con, name = names(reshapeData0[["stateData"   ]][i]), value = reshapeData0[["stateData"   ]][[i]], overwrite = TRUE)
-    }
-    
-    DBI::dbExecute(conn = con,"DROP TABLE IF EXISTS scenarioData")
-    DBI::dbExecute(conn = con,"CREATE TABLE scenarioData (value BLOB)")
-    DBI::dbExecute(con, 'INSERT INTO scenarioData (value) VALUES (:value)', 
-              params = list(value = list(serialize(reshapeData0[["scenarioData"]], connection = NULL)))
-    )
-  } 
-  
 
   ### Update data in list
   if(return_type == "rda"){
@@ -138,6 +103,7 @@ configureSystemData <- function(
   ### Names of objects to combine from reshaped data
   # if(!silent) 
   paste0(msg1, "Configuring data...") |> message()
+  
   sysDataList0  <- createSystemData(dataList=reshapeData0,
                                     extend_all=extend_all, 
                                     silent=silent, 
@@ -147,7 +113,7 @@ configureSystemData <- function(
   ### Update data in DB
   
   if(return_type == "db"){
-    
+    con <- DBI::dbConnect(RSQLite::SQLite(), paste0(sysDataFile))
     DBI::dbExecute(conn = con,"DROP TABLE IF EXISTS fredi_config")
     DBI::dbExecute(conn = con,"CREATE TABLE fredi_config (value BLOB)")
     DBI::dbExecute(con, 'INSERT INTO fredi_config (value) VALUES (:value)', 
