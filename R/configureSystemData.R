@@ -28,35 +28,35 @@ configureSystemData <- function(
   msg0        = ""     ### Message prefix
 ){
   
-  # ################################################################################################################
-  dataDir     = "." |> file.path("inst", "extdata")
-  configDir   = "fredi"    
-  scenarioDir = "scenarios"
-  ### Info on config file
-  configFile  = "FrEDI_config.xlsx"
-  configSheet = "tableNames"
-  ### Additional scenarios
-  testFiles   = list(
-    temp = "temp_0to6_to2300"   |> paste0(".csv"),
-    gdp  = "rff_gdp_mean"       |> paste0(".csv"),
-    pop  = "rff_%_pop_mean" |> paste0(".csv")
-  ) ### Files in inst/extdata/scenarios to load for testing
-  ### Conditionals
-  reshape0    = TRUE 
-  extend_all  = TRUE
-  doScalars   = TRUE 
-  doScenarios = TRUE 
-  ### Info on saving
-  outPath     = "." |> file.path("data","fredi","fredi_data")
-  save0       = FALSE
-  return0     = TRUE 
-  return_type = "db"
-  ### Info on messaging
-  silent      = TRUE 
-  msg0        = ""    
-  
-  devtools::load_all()
-  #############################################################################################
+  # # ################################################################################################################
+  # dataDir     = "." |> file.path("inst", "extdata")
+  # configDir   = "fredi"    
+  # scenarioDir = "scenarios"
+  # ### Info on config file
+  # configFile  = "FrEDI_config.xlsx"
+  # configSheet = "tableNames"
+  # ### Additional scenarios
+  # testFiles   = list(
+  #   temp = "temp_0to6_to2300"   |> paste0(".csv"),
+  #   gdp  = "rff_gdp_mean"       |> paste0(".csv"),
+  #   pop  = "rff_%_pop_mean" |> paste0(".csv")
+  # ) ### Files in inst/extdata/scenarios to load for testing
+  # ### Conditionals
+  # reshape0    = TRUE 
+  # extend_all  = TRUE
+  # doScalars   = TRUE 
+  # doScenarios = TRUE 
+  # ### Info on saving
+  # outPath     = "." |> file.path("data","fredi","fredi_data")
+  # save0       = FALSE
+  # return0     = TRUE 
+  # return_type = "db"
+  # ### Info on messaging
+  # silent      = TRUE 
+  # msg0        = ""    
+  # 
+  # devtools::load_all()
+  # #############################################################################################
   
   ### Messaging
   msgN <- "\n"
