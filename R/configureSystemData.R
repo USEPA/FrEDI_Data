@@ -177,11 +177,33 @@ configureSystemData <- function(
     )
     )
     
-    DBI::dbExecute(conn = con,"DROP TABLE IF EXISTS nationalData")
-    DBI::dbExecute(conn = con,"CREATE TABLE nationalData (value BLOB)")
-    DBI::dbExecute(con, 'INSERT INTO nationalData (value) VALUES (:value)', params = list(value = list(serialize(sysDataList0_nat, connection = NULL))
+    ####################################################################################
+    nat_con <- DBI::dbConnect(RSQLite::SQLite(), paste0(sysDataFile,"_national"))
+    
+    DBI::dbExecute(conn = nat_con,"DROP TABLE IF EXISTS fredi_config")
+    DBI::dbExecute(conn = nat_con,"CREATE TABLE fredi_config (value BLOB)")
+    DBI::dbExecute(nat_con, 'INSERT INTO fredi_config (value) VALUES (:value)', 
+                   params = list(value = list(serialize(sysDataList0_nat[["fredi_config"]], connection = NULL)))
+    )
+    
+    
+    for(i in 1:length(sysDataList0_nat[["frediData"]])){
+      DBI::dbWriteTable(conn = nat_con, name = names(sysDataList0_nat[["frediData"   ]][i]), value = sysDataList0_nat[["frediData"   ]][[i]], overwrite = TRUE)
+    }
+    
+    
+    DBI::dbExecute(conn = nat_con,"DROP TABLE IF EXISTS stateData")
+    DBI::dbExecute(conn = nat_con,"CREATE TABLE stateData (value BLOB)")
+    DBI::dbExecute(nat_con, 'INSERT INTO stateData (value) VALUES (:value)', params = list(value = list(serialize(sysDataList0_nat[["natData"   ]], connection = NULL))
     )
     )
+    
+    DBI::dbExecute(conn = nat_con,"DROP TABLE IF EXISTS scenarioData")
+    DBI::dbExecute(conn = nat_con,"CREATE TABLE scenarioData (value BLOB)")
+    DBI::dbExecute(nat_con, 'INSERT INTO scenarioData (value) VALUES (:value)', params = list(value = list(serialize(sysDataList0_nat[["scenarioData"   ]], connection = NULL))
+    )
+    )
+    
     
     
   }
@@ -226,9 +248,9 @@ configureSystemData <- function(
       if(outPathExists){ 
         # save(fredi_config, rDataList, file=sysDataFile)
         DBI::dbDisconnect(con)
-        
+        DBI::dbDisconnect(nat_con)
         zip(zipfile = outPath,files = file.path(sysDataFile) )
-        
+        zip(zipfile = paste0(outPath,"_national"),files = file.path(paste0(sysDataFile,"_national")) )
         
       } else{
         paste0(msg1, "Warning: outPath = ", sysDataPath, "doesn't exist!") |> message()
