@@ -28,6 +28,36 @@ configureSystemData <- function(
   msg0        = ""     ### Message prefix
 ){
   
+  # # ################################################################################################################
+  # dataDir     = "." |> file.path("inst", "extdata")
+  # configDir   = "fredi"    
+  # scenarioDir = "scenarios"
+  # ### Info on config file
+  # configFile  = "FrEDI_config.xlsx"
+  # configSheet = "tableNames"
+  # ### Additional scenarios
+  # testFiles   = list(
+  #   temp = "temp_0to6_to2300"   |> paste0(".csv"),
+  #   gdp  = "rff_gdp_mean"       |> paste0(".csv"),
+  #   pop  = "rff_%_pop_mean" |> paste0(".csv")
+  # ) ### Files in inst/extdata/scenarios to load for testing
+  # ### Conditionals
+  # reshape0    = TRUE 
+  # extend_all  = TRUE
+  # doScalars   = TRUE 
+  # doScenarios = TRUE 
+  # ### Info on saving
+  # outPath     = "." |> file.path("data","fredi","fredi_data")
+  # save0       = FALSE
+  # return0     = TRUE 
+  # return_type = "db"
+  # ### Info on messaging
+  # silent      = TRUE 
+  # msg0        = ""    
+  # 
+  # devtools::load_all()
+  # #############################################################################################
+  
   ### Messaging
   msgN <- "\n"
   msgN |> paste0(msg0, "Running configureSystemData()...") |> message()
@@ -104,16 +134,25 @@ configureSystemData <- function(
   # if(!silent) 
   paste0(msg1, "Configuring data...") |> message()
   
+  con <- DBI::dbConnect(RSQLite::SQLite(), paste0(sysDataFile))
+  
   sysDataList0  <- createSystemData(dataList=reshapeData0,
                                     extend_all=extend_all, 
                                     silent=silent, 
                                     msg0=msg1)
+  sysDataList0$national <- NULL
+  
+  sysDataList0_nat  <- createSystemData(dataList=reshapeData0$national,
+                                    extend_all=extend_all, 
+                                    silent=silent, 
+                                    msg0=msg1,
+                                    nat_status = TRUE)
   rm(reshapeData0)
   gc()
   ### Update data in DB
   
   if(return_type == "db"){
-    con <- DBI::dbConnect(RSQLite::SQLite(), paste0(sysDataFile))
+    
     DBI::dbExecute(conn = con,"DROP TABLE IF EXISTS fredi_config")
     DBI::dbExecute(conn = con,"CREATE TABLE fredi_config (value BLOB)")
     DBI::dbExecute(con, 'INSERT INTO fredi_config (value) VALUES (:value)', 
@@ -137,6 +176,36 @@ configureSystemData <- function(
     DBI::dbExecute(con, 'INSERT INTO scenarioData (value) VALUES (:value)', params = list(value = list(serialize(sysDataList0[["scenarioData"   ]], connection = NULL))
     )
     )
+    
+    ####################################################################################
+    nat_con <- DBI::dbConnect(RSQLite::SQLite(), paste0(sysDataFile,"_national"))
+    
+    DBI::dbExecute(conn = nat_con,"DROP TABLE IF EXISTS fredi_config")
+    DBI::dbExecute(conn = nat_con,"CREATE TABLE fredi_config (value BLOB)")
+    DBI::dbExecute(nat_con, 'INSERT INTO fredi_config (value) VALUES (:value)', 
+                   params = list(value = list(serialize(sysDataList0_nat[["fredi_config"]], connection = NULL)))
+    )
+    
+    
+    for(i in 1:length(sysDataList0_nat[["frediData"]])){
+      DBI::dbWriteTable(conn = nat_con, name = names(sysDataList0_nat[["frediData"   ]][i]), value = sysDataList0_nat[["frediData"   ]][[i]], overwrite = TRUE)
+    }
+    
+    
+    DBI::dbExecute(conn = nat_con,"DROP TABLE IF EXISTS stateData")
+    DBI::dbExecute(conn = nat_con,"CREATE TABLE stateData (value BLOB)")
+    DBI::dbExecute(nat_con, 'INSERT INTO stateData (value) VALUES (:value)', params = list(value = list(serialize(sysDataList0_nat[["natData"   ]], connection = NULL))
+    )
+    )
+    
+    DBI::dbExecute(conn = nat_con,"DROP TABLE IF EXISTS scenarioData")
+    DBI::dbExecute(conn = nat_con,"CREATE TABLE scenarioData (value BLOB)")
+    DBI::dbExecute(nat_con, 'INSERT INTO scenarioData (value) VALUES (:value)', params = list(value = list(serialize(sysDataList0_nat[["scenarioData"   ]], connection = NULL))
+    )
+    )
+    
+    
+    
   }
   ### Update data in list
   if(return_type == "rda"){
@@ -179,9 +248,9 @@ configureSystemData <- function(
       if(outPathExists){ 
         # save(fredi_config, rDataList, file=sysDataFile)
         DBI::dbDisconnect(con)
-        
+        DBI::dbDisconnect(nat_con)
         zip(zipfile = outPath,files = file.path(sysDataFile) )
-        
+        zip(zipfile = paste0(outPath,"_national"),files = file.path(paste0(sysDataFile,"_national")) )
         
       } else{
         paste0(msg1, "Warning: outPath = ", sysDataPath, "doesn't exist!") |> message()

@@ -32,10 +32,10 @@ reshapeScenarioData <- function(
   }
   
   if(nat_status){
-    popData    <- popData 
+    popData    <- popData |> mutate( region = "National")
     ratiosData <- ratiosData
   }
-  
+   
   ### Update in List
   scenarioData[["gcamData"     ]] <- gcamData
   scenarioData[["gdpData"      ]] <- gdpData

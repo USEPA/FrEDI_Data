@@ -6,7 +6,8 @@ createSystemData <- function(
     extend_all  = FALSE,  ### Whether to extend all GCM model observations to maximum range
     silent      = FALSE,  ### Level of messaging 
     msg0        = "",     ### Prefix for messaging
-    conn = con
+    conn = con,
+    nat_status = FALSE
 ){
   ###### Set up the environment ######
   ### Level of messaging (default is to message the user) and save behavior
@@ -38,7 +39,7 @@ createSystemData <- function(
   ### Initialize list of data to save
   rDataList  <- list()
   rDataList  <- rDataList |> c(dataList)
-  
+  browser()
   ###### Configuration Data ######
   ### Get config info, add data to list, assign objects to environment
   if(msgUser) msg1 |> paste0("Loading configuration info...") |> message()
@@ -58,7 +59,13 @@ createSystemData <- function(
   msg1 |> paste0("Configuring scenarios...") |> message()
   frediData     <- dataList[["frediData"   ]]
   scenarios     <- dataList[["scenarioData"]]
+  if(!nat_status){
   stateData     <- dataList[["stateData"   ]]
+  }
+  
+  if(nat_status){
+    stateData     <- dataList[["natData"   ]]
+  }
   ### Data names
   frediNames    <- frediData  |> names()
   scenarioNames <- scenarios  |> names()
@@ -263,7 +270,12 @@ createSystemData <- function(
   # if(msgUser) 
   msg1 |> paste0("Updating data in lists...") |> message()
   rDataList[["frediData"   ]] <- frediData
+  if(!nat_status){
   rDataList[["stateData"   ]] <- stateData
+  }
+  if(nat_status){
+    rDataList[["natData"   ]] <- stateData
+  }
   rDataList[["scenarioData"]] <- scenarios
   # scenarios |> names() |> print()
   
