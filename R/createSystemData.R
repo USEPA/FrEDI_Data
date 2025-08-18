@@ -39,7 +39,7 @@ createSystemData <- function(
   ### Initialize list of data to save
   rDataList  <- list()
   rDataList  <- rDataList |> c(dataList)
-  browser()
+  
   ###### Configuration Data ######
   ### Get config info, add data to list, assign objects to environment
   if(msgUser) msg1 |> paste0("Loading configuration info...") |> message()

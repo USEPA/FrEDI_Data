@@ -596,7 +596,7 @@ extrapolate_impFunction <- function(
   select0   <- c(xCol, yCol)
   df0       <- df0 |> select(all_of(select0))
   df0       <- df0 |> filter_all(all_vars(!(. |> is.na())))
-  
+  browser()
   ### Rename values
   renameAt  <- c(xCol, yCol)
   renameTo  <- c("xIn", "yIn")
@@ -690,7 +690,7 @@ get_impactFunctions <- function(
   groups0  <- df0 |> group_keys() |> pull(all_of(groupCol))
   nGroups0 <- groups0 |> length()
   # groups0 |> head() |> print()
-  
+  browser()
   ###### Extrapolate Data ######
   df0      <- df0 |> group_map(function(.x, .y){
     ### Unique group

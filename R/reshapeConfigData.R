@@ -17,6 +17,7 @@ reshapeConfigData <- function(
   for(name_i in listNames) {name_i |> assign(dataList[[name_i]]); rm(name_i)}
   # dataList |> list2env(envir = environment())
   
+ 
 
   ###### Columns  ######
   ### Region and state level columns to use
@@ -52,11 +53,11 @@ reshapeConfigData <- function(
   
   ###### ** 3. Impact Types Info ######
   ### Drop damage adjustment names (present in variants)
-  drop0          <- c("damageAdjName")
-  co_impactTypes <- co_impactTypes |> select(-all_of(drop0)) # ; co_impactTypes |> glimpse
+  #drop0          <- c("damageAdjName")
+  #co_impactTypes <- co_impactTypes |> select(-all_of(drop0)) # ; co_impactTypes |> glimpse
   ### Update in list, drop intermediate values
   dataList[["co_impactTypes"]] <- co_impactTypes
-  rm(drop0)
+  #rm(drop0)
   
   
   
@@ -138,6 +139,7 @@ reshapeConfigData <- function(
     colTypes   = c("ids", "labels", "extra") ### Types of columns to include: IDs, labels, or extra. If only labels, will return labels without the "_label"
   ){
     ### Get functions from FrEDI
+    
     get_matches <- utils::getFromNamespace("get_matches", "FrEDI")
     
     ### Conditionals
@@ -160,7 +162,9 @@ reshapeConfigData <- function(
     colsLabs0   <- colsData0 |> get_matches(y=c("modelType", "state", "postal"), matches=FALSE) |> paste0("_label")
     # colsIds0    <- colsData0[!(colsData0 %in% c("modelType", "state", "postal"))] |> paste0("_id")
     # colsLabs0   <- colsData0[!(colsData0 %in% c("modelType", "state", "postal"))] |> paste0("_label")
-    colsVars    <- c("sectorprimary", "includeaggregate", "damageAdjName")
+    #colsVars    <- c("sectorprimary", "includeaggregate", "damageAdjName")
+    colsVars    <- c("sectorprimary", "includeaggregate")
+    
     colsTypes   <- c("impactType_description", "physicalmeasure") |>
       c(c("physScalar", "physAdj", "econScalar", "econMultiplier") |> paste0("Name")) |>
       c("c0", "c1", "exp0", "year0")
@@ -174,7 +178,7 @@ reshapeConfigData <- function(
     ### Add additional columns
     if(doExtra) {
       colsOth0 <- c(colsVars, colsTypes)
-      if(addModels) colsOth0 <- colsOth0 |> c("maxUnitValue")
+      if(addModels) colsOth0 <- colsOth0 |> c("maxUnitValue","damageAdjName")
     } ### if(doAll)
     
     
@@ -191,7 +195,18 @@ reshapeConfigData <- function(
     join0   <- c("sector_id")
     join1   <- c("modelType")
     df0     <- co_sectors |> left_join(co_variants   , by=c(join0))
-    df0     <- df0        |> left_join(co_impactTypes, by=c(join0), relationship="many-to-many")
+    df0     <- df0        |> full_join(co_impactTypes, by=c(join0), relationship="many-to-many")
+    ### Cleanup dmgAdj issue
+    df0     <- df0 |>
+               mutate(
+                 damageAdjName = case_when(
+                   is.na(damageAdjName.x) ~ damageAdjName.y,
+                   damageAdjName.y == "byVariant" ~ damageAdjName.x,
+                   .default = damageAdjName.y
+               )
+               ) |>
+               select(-damageAdjName.x,-damageAdjName.y)
+    
     df0     <- df0        |> left_join(co_impactYears, by=c(join0), relationship="many-to-many")
     df0     <- df0        |> left_join(co_modTypes   , by=c(join1), relationship="many-to-many")
     rm(join0, join1)
