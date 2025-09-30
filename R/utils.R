@@ -278,6 +278,7 @@ get_slrMaxValues <- function(
 ){
   ### Columns
   # data_x |> glimpse(); data_y |> glimpse()
+  
   yearCol0   <- c("year")
   modCols0   <- c("model", "modelType")
   arrange0   <- c("driverValue")  |> c(modCols0) |> c(yearCol0)
@@ -285,12 +286,24 @@ get_slrMaxValues <- function(
   impCols0   <- impCols0 |> c(yearCol0)
   ### Other values
   bounds0    <- c("lower", "upper")
-  
+  #browser()
   ### Filter data & drop columns
   drop0      <- modCols0
   dfx_i      <- data_x |> filter(year==year_i) |> select(-any_of(drop0))
   dfy_i      <- data_y |> filter(year==year_i) |> select(-any_of(drop0))
   rm(drop0)
+  
+  ### For some sectors the max is not 250
+  #### Add Sector dimenion to data_x
+  sect_dfx_i <- dfy_i |>
+    select(sector, model_cm) |>
+    unique() |>
+    arrange(desc(model_cm)) |>
+    group_by(sector) |>
+    slice(1:2) |>
+    mutate(valueType = ifelse(row_number() == 1,"upper","lower")) |> 
+    ungroup() |> 
+    left_join(dfx_i) 
   
   ### Driver values:
   ### - Get driver values and then unique driver values
@@ -310,7 +323,8 @@ get_slrMaxValues <- function(
   
   ### Join with driver values
   join0     <- c(yearCol0) |> c("model_cm")
-  dfy_i     <- dfy_i |> left_join(dfx_i, by=c(join0))
+  #dfy_i     <- dfy_i |> left_join(dfx_i, by=c(join0))
+  dfy_i <- dfy_i |> left_join(sect_dfx_i, by=c("sector",join0))
   dfy_i     <- dfy_i |> filter(!(valueType |> is.na()))
   rm(join0)
   
@@ -390,19 +404,19 @@ fun_slrConfigExtremes <- function(
   slr_extr <- slr_up |> left_join(slr_lo, by = c(join0))
   rm(slr_up, slr_lo); rm(renameAt)
   # slr_extr |> glimpse()
-  
+  #browser()
   ###### Calculate differences ######
   slr_extr <- slr_extr |> mutate(delta_impacts     = scaled_impacts2 - scaled_impacts1)
   slr_extr <- slr_extr |> mutate(delta_driverValue = driverValue2    - driverValue1)
   ### Calculate absolute values
-  slr_extr <- slr_extr |> mutate(delta_impacts     = delta_impacts     |> abs())
+  slr_extr <- slr_extr |> mutate(delta_impacts     = delta_impacts )
   slr_extr <- slr_extr |> mutate(delta_driverValue = delta_driverValue |> abs())
   ### Calculate intercept
   slr_extr <- slr_extr |> mutate(driverValue_ref   = (driverValue2 > driverValue1) |> ifelse(driverValue2, driverValue1))
-  slr_extr <- slr_extr |> mutate(impacts_intercept = (scaled_impacts2 > scaled_impacts1) |> ifelse(scaled_impacts2, scaled_impacts1))
+  slr_extr <- slr_extr |> mutate(impacts_intercept = scaled_impacts2)
   ### Calculate slope & replace zeros
   slr_extr <- slr_extr |> mutate(impacts_slope = delta_impacts / delta_driverValue)
-  slr_extr <- slr_extr |> mutate(impacts_slope = (delta_driverValue == 0) |> ifelse(0, delta_driverValue))
+  slr_extr <- slr_extr |> mutate(impacts_slope = (delta_driverValue == 0) |> ifelse(0, impacts_slope))
   
   ###### Drop some columns ######
   # slr_extr |> glimpse()
@@ -596,7 +610,7 @@ extrapolate_impFunction <- function(
   select0   <- c(xCol, yCol)
   df0       <- df0 |> select(all_of(select0))
   df0       <- df0 |> filter_all(all_vars(!(. |> is.na())))
-  browser()
+
   ### Rename values
   renameAt  <- c(xCol, yCol)
   renameTo  <- c("xIn", "yIn")
@@ -690,7 +704,6 @@ get_impactFunctions <- function(
   groups0  <- df0 |> group_keys() |> pull(all_of(groupCol))
   nGroups0 <- groups0 |> length()
   # groups0 |> head() |> print()
-  browser()
   ###### Extrapolate Data ######
   df0      <- df0 |> group_map(function(.x, .y){
     ### Unique group

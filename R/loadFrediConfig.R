@@ -38,6 +38,7 @@ loadFrediConfig <- function(
   ###### Load Each Table ######
   ### Iterate over the list of data tables: Read them them and add them to the list of tables
   ### Initialize the list
+  #browser()
   dataList      <- list()
   tableNames    <- df_tables |> pull(Table.Name)
   for (name_i in tableNames) {

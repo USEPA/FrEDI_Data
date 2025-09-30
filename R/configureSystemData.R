@@ -48,11 +48,11 @@ configureSystemData <- function(
   doScenarios = TRUE
   ### Info on saving
   outPath     = "." |> file.path("data","fredi","fredi_data")
-  save0       = FALSE
+  save0       = TRUE
   return0     = TRUE
   return_type = "db"
   ### Info on messaging
-  silent      = TRUE
+  silent      = FALSE
   msg0        = ""
 
   devtools::load_all()

@@ -168,12 +168,22 @@ createSystemData <- function(
   
   ### Create data for extreme values above 250cm
   if(msgUser) msg2 |> paste0("...Creating extreme SLR impact values...") |> message()
-  slrExtremes <- fun_slrConfigExtremes(slr_x=slr_cm, imp_x=slrImpData)
+  
+  slr_scenario_check <- slrImpData |> 
+                        left_join(slr_scenarios, by = c("sector" = "sector_id"))
+
+  slrExtremes_2014 <- fun_slrConfigExtremes(slr_x= slr_cm_2014, imp_x=slr_scenario_check |> filter(scenario_type == "slr_cm_2014"))
+  slrExtremes_2022 <- fun_slrConfigExtremes(slr_x= slr_cm_2022, imp_x=slr_scenario_check |> filter(scenario_type == "slr_cm_2022"))
+  
+  slrExtremes <- bind_rows(slrExtremes_2014,slrExtremes_2022)
+  
   # return(rDataList)
   
   ### Extend/Interpolate SLR Heights, Impacts, and Extremes
   if(msgUser) msg2 |> paste0("...Extending SLR values...") |> message()
-  slr_cm       <- slr_cm      |> extend_slr()
+  slr_cm_14       <- slr_cm_2014      |> extend_slr()
+  slr_cm_22       <- slr_cm_2022      |> extend_slr()
+  
   slrImpacts   <- slrImpData  |> extend_slr()
   slrExtremes  <- slrExtremes |> extend_slr()
   
@@ -188,6 +198,13 @@ createSystemData <- function(
   rm(include0, groups0)
   
   ### Update in data list and remove objects
+  slr_cm <- slr_cm_2014 |>
+            mutate(scenario_type = "slr_cm_2014") |>
+            bind_rows(
+              slr_cm_2022 |>
+                mutate(scenario_type = "slr_cm_2022")
+            )
+  
   frediData[["slr_cm"     ]] <- slr_cm
   stateData[["slrImpacts" ]] <- slrImpacts
   stateData[["slrExtremes"]] <- slrExtremes
