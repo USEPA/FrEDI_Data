@@ -1,14 +1,3 @@
-#' reshapeScalarData
-#'
-#' @param scalarData Tibble with scalars data (as output from `loadFrediScalars`)
-#' @param frediData  List of FrEDI configuration data (as output from `loadFrediData`)
-#' @param silent     Indicate level of messaging
-#' @param msg0       Prefix for messaging
-#'
-#' @return
-#' @export
-#'
-#' @examples
 reshapeScalarData <- function(
     scalarData = NULL , ### Tibble with scalars data
     frediData  = NULL , ### List of FrEDI configuration data
@@ -52,6 +41,7 @@ reshapeScalarData <- function(
   select0    <- c("scalarName", "scalarLabel", "scalarType")
   join0      <- c("scalarName")
   scalarData <- scalarData |> left_join(scalarInfo |> select(all_of(select0)), by=c(join0))
+
   rm(select0, join0)
   
   

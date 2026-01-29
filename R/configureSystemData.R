@@ -1,20 +1,63 @@
 configureSystemData <- function(
-    fileDir     = "." |> file.path("inst", "extdata"),          ### Path to project
-    configFile  = "FrEDI_config.xlsx", ### Name of excel file with config information
-    configSheet = "tableNames",        ### Sheet with table info
-    outPath     = "." |> file.path("data", "tmp_sysdata.rda"),  ### Where to save data
-    testFiles   = list(
-      temp = "temp_0to6_to2300"   |> paste0(".csv"),
-      gdp  = "rff_gdp_mean"       |> paste0(".csv"),
-      pop  = "rff_state_pop_mean" |> paste0(".csv")
-    ), ### Files in inst/extdata/scenarios to load for testing
-    extend_all  = FALSE,  ### Whether to extend all GCM model observations to maximum range
-    reshape     = TRUE ,  ### Whether to include reshaped data items in data list (for testing)
-    silent      = TRUE ,  ### Level of messaging 
-    return      = TRUE ,  ### Whether to return the data list
-    save        = FALSE,  ### Whether to save the file
-    msg0        = ""      ### Message prefix
+  # fileDir     = "." |> file.path("inst", "extdata"),          ### Path to project
+  ### Directories
+  dataDir     = "." |> file.path("inst", "extdata"), ### Path to projectDir
+  configDir   = "fredi"    , ### Module directory relative to dataDir
+  scenarioDir = "scenarios", ### Directory to scenario relative to dataDir
+  ### Info on config file
+  configFile  = "FrEDI_config.xlsx", ### Name of excel file with config information
+  configSheet = "tableNames",        ### Sheet with table info
+  ### Additional scenarios
+  testFiles   = list(
+    temp = "temp_0to6_to2300"   |> paste0(".csv"),
+    gdp  = "rff_gdp_mean"       |> paste0(".csv"),
+    pop  = "rff_%_pop_mean" |> paste0(".csv")
+  ), ### Files in inst/extdata/scenarios to load for testing
+  ### Conditionals
+  reshape0    = TRUE , ### Whether to include reshaped data items in data list (for testing)
+  extend_all  = TRUE , ### Whether to extend all GCM model observations to maximum range
+  doScalars   = TRUE , ### Whether or not do format scalars
+  doScenarios = TRUE , ### Whether to load scenarios
+  ### Info on saving
+  outPath     = "." |> file.path("data","fredi","fredi_data"),  ### Where to save data
+  save0       = FALSE, ### Whether to save the file
+  return0     = TRUE , ### Whether to return the data list
+  return_type = "db", ### Whether to return a database or rda object
+  ### Info on messaging
+  silent      = TRUE , ### Level of messaging 
+  msg0        = ""     ### Message prefix
 ){
+  
+  # # ################################################################################################################
+  dataDir     = "." |> file.path("inst", "extdata")
+  configDir   = "fredi"
+  scenarioDir = "scenarios"
+  ### Info on config file
+  configFile  = "FrEDI_config.xlsx"
+  configSheet = "tableNames"
+  ### Additional scenarios
+  testFiles   = list(
+    temp = "temp_0to6_to2300"   |> paste0(".csv"),
+    gdp  = "rff_gdp_mean"       |> paste0(".csv"),
+    pop  = "rff_%_pop_mean" |> paste0(".csv")
+  ) ### Files in inst/extdata/scenarios to load for testing
+  ### Conditionals
+  reshape0    = TRUE
+  extend_all  = TRUE
+  doScalars   = TRUE
+  doScenarios = TRUE
+  ### Info on saving
+  outPath     = "." |> file.path("data","fredi","fredi_data")
+  save0       = TRUE
+  return0     = TRUE
+  return_type = "db"
+  ### Info on messaging
+  silent      = FALSE
+  msg0        = ""
+
+  devtools::load_all()
+  # #############################################################################################
+  
   ### Messaging
   msgN <- "\n"
   msgN |> paste0(msg0, "Running configureSystemData()...") |> message()
@@ -39,18 +82,23 @@ configureSystemData <- function(
   ### Load state data
   # if(!silent) 
   paste0(msg1, "Loading data...") |> message()
-  loadData0     <- fileDir |> loadFrediData(
+  loadData0     <- loadFrediData(
+    mainDir     = dataDir,
     configFile  = configFile,  ### Name of excel file with config information
     configSheet = configSheet, ### Sheet with info about tables in config file
     testFiles   = testFiles,   ### Files to load for testing
     silent      = silent,
     msg0        = msg1
   ) ### End loadData
-  gc()
+
+  
   ### Update data in list
-  rDataList[["frediData"   ]] <- loadData0[["frediData"   ]]
-  rDataList[["stateData"   ]] <- loadData0[["stateData"   ]]
-  rDataList[["scenarioData"]] <- loadData0[["scenarioData"]]
+  ### Update data in list
+  if(return_type == "rda"){
+    rDataList[["frediData"   ]] <- loadData0[["frediData"   ]]
+    rDataList[["stateData"   ]] <- loadData0[["stateData"   ]]
+    rDataList[["scenarioData"]] <- loadData0[["scenarioData"]]
+  }
   # loadData0[["frediData"   ]] |> names() |> print()
   # loadData0[["stateData"]][["slrImpData"]] |> names() |> print()
   # return(rDataList)
@@ -59,38 +107,118 @@ configureSystemData <- function(
   ### Reshape state data
   # if(!silent) 
   paste0(msg1, "Reshaping data...") |> message()
-  reshapeData0  <- loadData0 |> reshapeFrediData(silent=silent, msg0=msg1)
-  gc()
-  rm(loadData0)
+  reshapeData0  <- reshapeFrediData( dataList = loadData0,
+                                     silent=silent, 
+                                     msg0=msg1)
+  #rm(loadData0)
+  #gc()
   ### If reshape, save the reshaped data separately
-  if(reshape){ 
+  if(reshape0){ 
     rDataList[["rsData"]] <- reshapeData0
   } else{
     rDataList[["rsData"]] <- list(name="rsData", data=list())
   } ### End if(reshape)
+
+
   ### Update data in list
-  rDataList[["frediData"   ]] <- reshapeData0[["frediData"   ]]
-  rDataList[["stateData"   ]] <- reshapeData0[["stateData"   ]]
-  rDataList[["scenarioData"]] <- reshapeData0[["scenarioData"]]
+  if(return_type == "rda"){
+    rDataList[["frediData"   ]] <- reshapeData0[["frediData"   ]]
+    rDataList[["stateData"   ]] <- reshapeData0[["stateData"   ]]
+    rDataList[["scenarioData"]] <- reshapeData0[["scenarioData"]]
+  }
   # return(rDataList)
   
   
-  ###### 4. Configure Data ######
+  ###### 4. Create Data ######
   ### Names of objects to combine from reshaped data
   # if(!silent) 
   paste0(msg1, "Configuring data...") |> message()
-  sysDataList0  <- reshapeData0 |> createSystemData(extend_all=extend_all, silent=silent, msg0=msg1)
-  gc()
-  rm(reshapeData0)
-  ### Update data in list
-  rDataList[["fredi_config"]] <- sysDataList0[["fredi_config"]]
-  rDataList[["frediData"   ]] <- sysDataList0[["frediData"   ]]
-  rDataList[["stateData"   ]] <- sysDataList0[["stateData"   ]]
-  rDataList[["scenarioData"]] <- sysDataList0[["scenarioData"]]
   
+  con <- DBI::dbConnect(RSQLite::SQLite(), paste0(sysDataFile))
+  
+  sysDataList0  <- createSystemData(dataList=reshapeData0,
+                                    extend_all=extend_all, 
+                                    silent=silent, 
+                                    msg0=msg1)
+  sysDataList0$national <- NULL
+  gc()
+  
+  sysDataList0_nat  <- createSystemData(dataList=reshapeData0$national,
+                                    extend_all=extend_all, 
+                                    silent=silent, 
+                                    msg0=msg1,
+                                    nat_status = TRUE)
+  
+  rm(reshapeData0)
+  gc()
+  ### Update data in DB
+  
+  if(return_type == "db"){
+    
+    DBI::dbExecute(conn = con,"DROP TABLE IF EXISTS fredi_config")
+    DBI::dbExecute(conn = con,"CREATE TABLE fredi_config (value BLOB)")
+    DBI::dbExecute(con, 'INSERT INTO fredi_config (value) VALUES (:value)', 
+              params = list(value = list(serialize(sysDataList0[["fredi_config"]], connection = NULL)))
+    )
+    
+    
+    for(i in 1:length(sysDataList0[["frediData"]])){
+      DBI::dbWriteTable(conn = con, name = names(sysDataList0[["frediData"   ]][i]), value = sysDataList0[["frediData"   ]][[i]], overwrite = TRUE)
+    }
+    
+    
+    DBI::dbExecute(conn = con,"DROP TABLE IF EXISTS stateData")
+    DBI::dbExecute(conn = con,"CREATE TABLE stateData (value BLOB)")
+    DBI::dbExecute(con, 'INSERT INTO stateData (value) VALUES (:value)', params = list(value = list(serialize(sysDataList0[["stateData"   ]], connection = NULL))
+    )
+    )
+    
+    DBI::dbExecute(conn = con,"DROP TABLE IF EXISTS scenarioData")
+    DBI::dbExecute(conn = con,"CREATE TABLE scenarioData (value BLOB)")
+    DBI::dbExecute(con, 'INSERT INTO scenarioData (value) VALUES (:value)', params = list(value = list(serialize(sysDataList0[["scenarioData"   ]], connection = NULL))
+    )
+    )
+    
+    ####################################################################################
+    nat_con <- DBI::dbConnect(RSQLite::SQLite(), paste0(sysDataFile,"_national"))
+    
+    DBI::dbExecute(conn = nat_con,"DROP TABLE IF EXISTS fredi_config")
+    DBI::dbExecute(conn = nat_con,"CREATE TABLE fredi_config (value BLOB)")
+    DBI::dbExecute(nat_con, 'INSERT INTO fredi_config (value) VALUES (:value)', 
+                   params = list(value = list(serialize(sysDataList0_nat[["fredi_config"]], connection = NULL)))
+    )
+    
+    
+    for(i in 1:length(sysDataList0_nat[["frediData"]])){
+      DBI::dbWriteTable(conn = nat_con, name = names(sysDataList0_nat[["frediData"   ]][i]), value = sysDataList0_nat[["frediData"   ]][[i]], overwrite = TRUE)
+    }
+    
+    
+    DBI::dbExecute(conn = nat_con,"DROP TABLE IF EXISTS stateData")
+    DBI::dbExecute(conn = nat_con,"CREATE TABLE stateData (value BLOB)")
+    DBI::dbExecute(nat_con, 'INSERT INTO stateData (value) VALUES (:value)', params = list(value = list(serialize(sysDataList0_nat[["natData"   ]], connection = NULL))
+    )
+    )
+    
+    DBI::dbExecute(conn = nat_con,"DROP TABLE IF EXISTS scenarioData")
+    DBI::dbExecute(conn = nat_con,"CREATE TABLE scenarioData (value BLOB)")
+    DBI::dbExecute(nat_con, 'INSERT INTO scenarioData (value) VALUES (:value)', params = list(value = list(serialize(sysDataList0_nat[["scenarioData"   ]], connection = NULL))
+    )
+    )
+    
+    
+    
+  }
+  ### Update data in list
+  if(return_type == "rda"){
+    rDataList[["fredi_config"]] <- sysDataList0[["fredi_config"]]
+    rDataList[["frediData"   ]] <- sysDataList0[["frediData"   ]]
+    rDataList[["stateData"   ]] <- sysDataList0[["stateData"   ]]
+    rDataList[["scenarioData"]] <- sysDataList0[["scenarioData"]]
+  }
   
   ###### 6. Drop Reshaped Data Objects ######
-  if(!reshape) {
+  if(!reshape0) {
     drop0         <- c("rsData")
     inDrop0       <- (rDataList |> names()) %in% drop0
     rDataList     <- rDataList
@@ -103,17 +231,35 @@ configureSystemData <- function(
   ### - Message the user
   ### - Check if the output file directory exists
   ### - If the outpath exists, try to save the file
-  if(save) {
+  if(save0) {
     paste0(msg1, "Saving results to ", sysDataPath, "...") |> message()
     outPathExists <- sysDataPath |> dir.exists()
-    fredi_config  <- rDataList[["frediData"]][["fredi_config"]]
-    if(outPathExists){ 
-      # save(fredi_config, rDataList, file=sysDataFile)
-      save(rDataList, file=sysDataFile)
-    } else{
-      paste0(msg1, "Warning: outPath = ", sysDataPath, "doesn't exist!") |> message()
-      paste0(msg2, "Exiting without saving...") |> message()
-    } ### End if(outPathExists)
+    if(return_type == "rda"){
+      fredi_config  <- rDataList[["frediData"]][["fredi_config"]]
+      if(outPathExists){ 
+        # save(fredi_config, rDataList, file=sysDataFile)
+        save(rDataList, file= paste0(sysDataFile,".rda"))
+      } else{
+        paste0(msg1, "Warning: outPath = ", sysDataPath, "doesn't exist!") |> message()
+        paste0(msg2, "Exiting without saving...") |> message()
+      }  ### End if(outPathExists)
+    }
+    
+    if(return_type == "db"){
+      fredi_config  <- rDataList[["frediData"]][["fredi_config"]]
+      if(outPathExists){ 
+        # save(fredi_config, rDataList, file=sysDataFile)
+        DBI::dbDisconnect(con)
+        DBI::dbDisconnect(nat_con)
+        zip(zipfile = outPath,files = file.path(sysDataFile) )
+        zip(zipfile = paste0(outPath,"_national"),files = file.path(paste0(sysDataFile,"_national")) )
+        
+      } else{
+        paste0(msg1, "Warning: outPath = ", sysDataPath, "doesn't exist!") |> message()
+        paste0(msg2, "Exiting without saving...") |> message()
+      }  ### End if(outPathExists)
+    }
+    
   } ### End if(save)
   
   ###### Return ######

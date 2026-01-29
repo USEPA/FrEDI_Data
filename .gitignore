@@ -3,13 +3,15 @@
 .Rproj.user
 
 .Rhistory
-
+.RData
 analysis/*
 
 data_tests/*
 data/data_tests/*
 data/Tests/*
 data/Data/*
+
+*.db
 
 
 

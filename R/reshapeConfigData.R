@@ -1,12 +1,3 @@
-#' reshapeData
-#'
-#' @param dataList Outputs from `loadData`
-#' @param silent Indicate level of messaging
-#'
-#' @return
-#' @export
-#'
-#' @examples
 reshapeConfigData <- function(
     dataList = NULL,   ### List of data (e.g., as returned from FrEDI_Data::loadData())
     silent   = TRUE,   ### Level of messaging
@@ -26,6 +17,7 @@ reshapeConfigData <- function(
   for(name_i in listNames) {name_i |> assign(dataList[[name_i]]); rm(name_i)}
   # dataList |> list2env(envir = environment())
   
+ 
 
   ###### Columns  ######
   ### Region and state level columns to use
@@ -61,11 +53,11 @@ reshapeConfigData <- function(
   
   ###### ** 3. Impact Types Info ######
   ### Drop damage adjustment names (present in variants)
-  drop0          <- c("damageAdjName")
-  co_impactTypes <- co_impactTypes |> select(-all_of(drop0)) # ; co_impactTypes |> glimpse
+  #drop0          <- c("damageAdjName")
+  #co_impactTypes <- co_impactTypes |> select(-all_of(drop0)) # ; co_impactTypes |> glimpse
   ### Update in list, drop intermediate values
   dataList[["co_impactTypes"]] <- co_impactTypes
-  rm(drop0)
+  #rm(drop0)
   
   
   
@@ -147,6 +139,7 @@ reshapeConfigData <- function(
     colTypes   = c("ids", "labels", "extra") ### Types of columns to include: IDs, labels, or extra. If only labels, will return labels without the "_label"
   ){
     ### Get functions from FrEDI
+    
     get_matches <- utils::getFromNamespace("get_matches", "FrEDI")
     
     ### Conditionals
@@ -169,7 +162,9 @@ reshapeConfigData <- function(
     colsLabs0   <- colsData0 |> get_matches(y=c("modelType", "state", "postal"), matches=FALSE) |> paste0("_label")
     # colsIds0    <- colsData0[!(colsData0 %in% c("modelType", "state", "postal"))] |> paste0("_id")
     # colsLabs0   <- colsData0[!(colsData0 %in% c("modelType", "state", "postal"))] |> paste0("_label")
-    colsVars    <- c("sectorprimary", "includeaggregate", "damageAdjName")
+    #colsVars    <- c("sectorprimary", "includeaggregate", "damageAdjName")
+    colsVars    <- c("sectorprimary", "includeaggregate")
+    
     colsTypes   <- c("impactType_description", "physicalmeasure") |>
       c(c("physScalar", "physAdj", "econScalar", "econMultiplier") |> paste0("Name")) |>
       c("c0", "c1", "exp0", "year0")
@@ -183,7 +178,7 @@ reshapeConfigData <- function(
     ### Add additional columns
     if(doExtra) {
       colsOth0 <- c(colsVars, colsTypes)
-      if(addModels) colsOth0 <- colsOth0 |> c("maxUnitValue")
+      if(addModels) colsOth0 <- colsOth0 |> c("maxUnitValue","damageAdjName")
     } ### if(doAll)
     
     
@@ -200,7 +195,18 @@ reshapeConfigData <- function(
     join0   <- c("sector_id")
     join1   <- c("modelType")
     df0     <- co_sectors |> left_join(co_variants   , by=c(join0))
-    df0     <- df0        |> left_join(co_impactTypes, by=c(join0), relationship="many-to-many")
+    df0     <- df0        |> full_join(co_impactTypes, by=c(join0), relationship="many-to-many")
+    ### Cleanup dmgAdj issue
+    df0     <- df0 |>
+               mutate(
+                 damageAdjName = case_when(
+                   is.na(damageAdjName.x) ~ damageAdjName.y,
+                   damageAdjName.y == "byVariant" ~ damageAdjName.x,
+                   .default = damageAdjName.y
+               )
+               ) |>
+               select(-damageAdjName.x,-damageAdjName.y)
+    
     df0     <- df0        |> left_join(co_impactYears, by=c(join0), relationship="many-to-many")
     df0     <- df0        |> left_join(co_modTypes   , by=c(join1), relationship="many-to-many")
     rm(join0, join1)
@@ -274,7 +280,7 @@ reshapeConfigData <- function(
   ###### ** 8. SLR Scenario Info ######
   ### Gather slr_cm columns
   # slr_cm |> names() |> print()
-  slr_cm  <- slr_cm |> (function(df0, df1=co_models, cols0=c("year")){
+  slr_cm_2014  <- slr_cm_2014 |> (function(df0, df1=co_models, cols0=c("year")){
     ### Gather slr_cm columns
     df0    <- df0 |> pivot_longer(
       cols      = -all_of(cols0), 
@@ -305,9 +311,44 @@ reshapeConfigData <- function(
     ### Return
     return(df0)
   })()
+  
+  slr_cm_2022  <- slr_cm_2022 |> (function(df0, df1=co_models, cols0=c("year")){
+    ### Gather slr_cm columns
+    df0    <- df0 |> pivot_longer(
+      cols      = -all_of(cols0), 
+      names_to  = "model",
+      values_to = "driverValue"
+    ) ### End pivot_longer
+    
+    ### Add model type
+    df0    <- df0 |> mutate(model_type = "slr")
+    
+    ### Zero out values and bind with other values
+    df0_0cm <- df0     |> filter(model == "30cm")
+    df0_0cm <- df0_0cm |> mutate(model = "0cm")
+    df0_0cm <- df0_0cm |> mutate(driverValue = 0)
+    df0     <- df0     |> filter(model != "0cm")
+    df0     <- df0_0cm |> rbind(df0)
+    rm(df0_0cm)
+    
+    ### Add model type
+    drop0   <- c("model_type")
+    df0     <- df0 |> select(-any_of(drop0))
+    df0     <- df0 |> mutate(modelType = "slr" |> as.character())
+    
+    ### Arrange
+    cols0   <- c("model", "year")
+    df0     <- df0 |> arrange_at(vars(cols0))
+    
+    ### Return
+    return(df0)
+  })()
+  
   ### Update in data list, drop intermediate values
   # slr_cm |> names() |> print()
-  dataList[["slr_cm"]] <- slr_cm
+  dataList[["slr_cm_2014"]] <- slr_cm_2014
+  dataList[["slr_cm_2022"]] <- slr_cm_2022
+  
   # dataList |> names() |> print()
   
   ###### Return ######

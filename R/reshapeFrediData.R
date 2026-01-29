@@ -1,13 +1,4 @@
-#' reshapeFrediData
-#'
-#' @param dataList Outputs from `loadData`
-#' @param silent   Indicate level of messaging
-#' @param msg0    Initial messaging prefix
-#'
-#' @return
-#' @export
-#'
-#' @examples
+
 reshapeFrediData <- function(
     dataList = NULL,   ### List of data (e.g., as returned from FrEDI_Data::loadData())
     silent   = TRUE,   ### Level of messaging
@@ -22,45 +13,75 @@ reshapeFrediData <- function(
   
   ###### Assign Objects ######
   ### Assign tables in dataList to object in local environment
-  frediData  <- dataList[["frediData"]]
-  stateData  <- dataList[["stateData"]]
-  scenarios  <- dataList[["scenarioData"]]
-  # stateData |> names() |> print()
-  # stateData[["scalars"]] |> glimpse()
-  # stateData[["gcmImpacts"]] |> glimpse()
-  # stateData[["slrImpacts"]] |> glimpse()
-  
+  frediData  <- dataList$frediData
+  stateData  <- dataList$stateData
+  scenarios  <- dataList$scenarioData
+  national   <- dataList$national
+
   
   ###### FrEDI Data  ######
   ### Control Tables
-  frediData  <- frediData |> reshapeConfigData(silent=silent, msg0=msg1)
-  dataList[["frediData"]] <- frediData
+  frediData     <- reshapeConfigData(
+                          dataList = frediData,
+                           silent=silent, 
+                                      msg0=msg1)
+  
+  frediData_nat <- national$frediData |> 
+                    reshapeConfigData(silent = silent,
+                                      msg0 = msg1)
+  
+  dataList$frediData <- frediData
+  dataList$national$frediData <- frediData_nat
+  
   # dataList[["frediData"]] |> names() |> print()
   
   ###### Scenarios Data  ######
   ### Reshape scenario data
-  scenarios  <- scenarios |> reshapeScenarioData(
+  scenarios  <- reshapeScenarioData(
+    scenarioData = scenarios, ### List with scenario data
     silent    = silent, 
     msg0      = msg1
   ) ### End reshapeScalarData
-  dataList[["scenarioData"]] <- scenarios
   
+  scenarios_nat  <- reshapeScenarioData(
+    scenarioData = national$scenarioData, ### List with scenario data
+    silent    = silent, 
+    msg0      = msg1,
+    nat_status = TRUE
+  ) ### End reshapeScalarData
+  
+  
+  dataList$scenarioData <- scenarios
+  dataList$national$scenarioData <- scenarios_nat
+
   ###### Scalar Data  ######
   ### Reshape scalar data
   # stateData |> names() |> print()
-  scalarData <- stateData[["scalarData"]]
   # scalarData |> glimpse()
-  scalarData <- scalarData |> reshapeScalarData(
+  ######## State Scalar ########
+  scalarData_state <- reshapeScalarData(
+    scalarData = stateData$scalarData,
     frediData = frediData, 
     silent    = silent, 
     msg0      = msg1
   ) ### End reshapeScalarData
-  stateData[["scalarData"]] <- scalarData
+  stateData[["scalarData"]] <- scalarData_state
+  
+  ######## National Scalars #######
+  scalarData_nat <-  reshapeScalarData(
+    scalarData = national$natData$scalarData,
+    frediData = national$frediData, 
+    silent    = silent, 
+    msg0      = msg1
+  ) ### End reshapeScalarData
+  dataList$national$natData$scalarData <- scalarData_nat
+  
+  
   
   ###### GCM Scaled Impacts  ######
   ### Reshape scalar data
-  gcmData <- stateData[["gcmImpData"]]
-  gcmData <- gcmData |> reshapeScaledImpacts(
+  gcmData <- reshapeScaledImpacts(
+    impacts    = stateData$gcmImpData,
     frediData = frediData, 
     type0     = "gcm",
     silent    = silent, 
@@ -68,16 +89,48 @@ reshapeFrediData <- function(
   ) ### End reshapeScalarData
   stateData[["gcmImpData"]] <- gcmData
   
+  ### Reshape National scalar data
+  gcmData_nat <- national$natData$gcmImpData |>
+                 mutate(
+                   state = "National",
+                   postal = "NAT"
+                 )
+  gcmData_nat <- reshapeScaledImpacts(
+    impacts    = gcmData_nat,
+    frediData = national$frediData, 
+    type0     = "gcm",
+    silent    = silent, 
+    msg0      = msg1
+  ) ### End reshapeScalarData
+  dataList$national$natData$gcmImpData <- gcmData_nat
+  
+  
   ###### SLR Scaled Impacts  ######
   ### Reshape scalar data
-  slrData <- stateData[["slrImpData"]]
-  slrData <- slrData |> reshapeScaledImpacts(
+  slrData <- reshapeScaledImpacts(
+    impacts   = stateData$slrImpData,
     frediData = frediData, 
     type0     = "slr",
     silent    = silent, 
     msg0      = msg1
   ) ### End reshapeScalarData
   stateData[["slrImpData"]] <- slrData
+  
+  ### Reshape scalar data
+  slrData_nat <- national$natData$slrImpData|>
+    mutate(
+      state = "National",
+      postal = "NAT"
+    )
+  
+  slrData_nat <- reshapeScaledImpacts(
+    impacts    = slrData_nat,
+    frediData = national$frediData, 
+    type0     = "slr",
+    silent    = silent, 
+    msg0      = msg1
+  ) ### End reshapeScalarData
+  dataList$national$natData$slrImpData <- slrData_nat
   
   ### Update data in list
   dataList[["stateData"]] <- stateData

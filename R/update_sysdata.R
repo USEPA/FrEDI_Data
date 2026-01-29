@@ -6,6 +6,7 @@ update_sysdata <- function(
   mainFile    = "sysdata.rda", ###
   sv          = TRUE , ### Whether to update SV, population, formatting info
   svPath      = dataPath |> file.path("sv"),
+  ghgPath     = dataPath |> file.path("ghg"),
   svExt       = "rda", ### r Object Extension
   silent      = FALSE, ### Whether to message the user
   save        = TRUE , ### Whether to save
@@ -29,9 +30,11 @@ update_sysdata <- function(
   hasProject  <- !(projectPath |> is.null())
   hasDataPath <- !(dataPath    |> is.null())
   hasSvPath   <- !(svPath      |> is.null())
+  hasGhgPath  <- !(ghgPath     |> is.null())
   projectPath <- hasProject  |> ifelse(projectPath, ".")
   dataPath    <- hasDataPath |> ifelse(dataPath, projectPath |> file.path("data")) 
   svPath      <- hasSvPath   |> ifelse(svPath  , dataPath    |> file.path("sv"))
+  ghgPath     <- hasGhgPath  |> ifelse(ghgPath , dataPath    |> file.path("ghg"))
   
   ### Main FrEDI system data
   sysDataName <- mainFile
@@ -72,6 +75,11 @@ update_sysdata <- function(
     ### Message user
     paste0("Warning: File '", sysDataPath, "' does not exist!") |> print()
   } ### End if(hasFile)
+  
+  ### Load ghgData
+  ghgFile <- ghgPath |> file.path("ghgData") |> paste0(".rda")
+  ghgData <- ghgFile |> load()
+  dataList[["ghgData"]] <- ghgData
   
   ###### SV Data  ######
   ### Load SV data objects: svDataList, svPopData, format_styles 

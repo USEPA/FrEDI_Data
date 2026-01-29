@@ -1,15 +1,3 @@
-#' reshapeScaledImpacts
-#'
-#' @param impacts   Tibble of scaled impacts data (as output from `loadFrediImpacts`)
-#' @param frediData List of FrEDI data (as output from `loadFrediData`)
-#' @param type0     Model type (e.g., "gcm" or "slr")
-#' @param silent    Indicate level of messaging
-#' @param msg0      Prefix for messaging
-#'
-#' @return
-#' @export
-#'
-#' @examples
 reshapeScaledImpacts <- function(
     impacts    = NULL , ### Tibble with scalars data
     frediData  = NULL , ### List of data (e.g., as returned from FrEDI_Data::loadData())

@@ -33,10 +33,12 @@ frediConfig <- function(
   ### - Alpha: The value obtained in Mann et al. posterior distribution (Kopp et al., 2016 Figure S5a for "a").
   ### - Tau1: the timescale on which the actual temperature relaxes toward the equilibrium temperature. Value obtained  in Mann et al. posterior distribution (Kopp et al., 2016 Figure S5a for "tau").
   ### - Tau2: e-folding time(scale) for phi. Value obtained  in Mann et al. posterior distribution (Kopp et al., 2016 Figure S5a for "tau_C").
-  list0[["phi0" ]] <- 0.14
-  list0[["alpha"]] <- 4.0
-  list0[["tau1" ]] <- 174
-  list0[["tau2" ]] <- 4175
+  temps2slr <- list()
+  temps2slr[["phi0" ]] <- 0.14
+  temps2slr[["alpha"]] <- 4.0
+  temps2slr[["tau1" ]] <- 174
+  temps2slr[["tau2" ]] <- 4175
+  list0[["temps2slr"]] <- temps2slr
   
   ###### Messages for createSystemData ######
   ### Initialize list

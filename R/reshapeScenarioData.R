@@ -1,17 +1,8 @@
-#' reshapeScenariosData
-#'
-#' @param scenarioData List with scenario data (as output from `loadScenarioData`)
-#' @param silent Indicate level of messaging
-#' @param msg0 Prefix for messaging
-#'
-#' @return
-#' @export
-#'
-#' @examples
 reshapeScenarioData <- function(
     scenarioData = NULL, ### List with scenario data
     silent       = TRUE, ### Level of messaging
-    msg0         = "\t"  ### Prefix for messaging
+    msg0         = "\t",  ### Prefix for messaging
+    nat_status = FALSE
 ) {
   ###### Messaging ######
   msgN          <- "\n"
@@ -35,9 +26,16 @@ reshapeScenarioData <- function(
   # ratiosData |> glimpse()
   
   ### Format data
+  if(!nat_status){
   popData    <- popData    |> mutate(region = region |> str_replace("\\.", " "))
   ratiosData <- ratiosData |> mutate(region = region |> str_replace("\\.", " "))
+  }
   
+  if(nat_status){
+    popData    <- popData |> mutate( region = "National")
+    ratiosData <- ratiosData
+  }
+   
   ### Update in List
   scenarioData[["gcamData"     ]] <- gcamData
   scenarioData[["gdpData"      ]] <- gdpData

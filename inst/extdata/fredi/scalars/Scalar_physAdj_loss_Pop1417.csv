@@ -1,540 +1,540 @@
-state,postal,year,value,scalarName
-Alabama,AL,2000,NA,loss_Pop1417
-Alabama,AL,2010,0.056491321,loss_Pop1417
-Alabama,AL,2020,0.053545782,loss_Pop1417
-Alabama,AL,2030,0.055531799,loss_Pop1417
-Alabama,AL,2040,0.053816503,loss_Pop1417
-Alabama,AL,2050,0.054262148,loss_Pop1417
-Alabama,AL,2060,0.054712985,loss_Pop1417
-Alabama,AL,2070,0.054105029,loss_Pop1417
-Alabama,AL,2080,0.054002553,loss_Pop1417
-Alabama,AL,2090,0.053803516,loss_Pop1417
-Alabama,AL,2300,0.046748029,loss_Pop1417
-Arizona,AZ,2000,NA,loss_Pop1417
-Arizona,AZ,2010,0.057365618,loss_Pop1417
-Arizona,AZ,2020,0.05765,loss_Pop1417
-Arizona,AZ,2030,0.054697835,loss_Pop1417
-Arizona,AZ,2040,0.054396016,loss_Pop1417
-Arizona,AZ,2050,0.054274513,loss_Pop1417
-Arizona,AZ,2060,0.053950479,loss_Pop1417
-Arizona,AZ,2070,0.053691356,loss_Pop1417
-Arizona,AZ,2080,0.05321922,loss_Pop1417
-Arizona,AZ,2090,0.052540825,loss_Pop1417
-Arizona,AZ,2300,0.039875746,loss_Pop1417
-Arkansas,AR,2000,NA,loss_Pop1417
-Arkansas,AR,2010,0.055486962,loss_Pop1417
-Arkansas,AR,2020,0.053895104,loss_Pop1417
-Arkansas,AR,2030,0.053412887,loss_Pop1417
-Arkansas,AR,2040,0.052590847,loss_Pop1417
-Arkansas,AR,2050,0.052451312,loss_Pop1417
-Arkansas,AR,2060,0.052658002,loss_Pop1417
-Arkansas,AR,2070,0.052278323,loss_Pop1417
-Arkansas,AR,2080,0.052077696,loss_Pop1417
-Arkansas,AR,2090,0.051788456,loss_Pop1417
-Arkansas,AR,2300,0.042079879,loss_Pop1417
-California,CA,2000,NA,loss_Pop1417
-California,CA,2010,0.059391008,loss_Pop1417
-California,CA,2020,0.057279404,loss_Pop1417
-California,CA,2030,0.058031406,loss_Pop1417
-California,CA,2040,0.055268755,loss_Pop1417
-California,CA,2050,0.056357893,loss_Pop1417
-California,CA,2060,0.056814199,loss_Pop1417
-California,CA,2070,0.05592892,loss_Pop1417
-California,CA,2080,0.055779567,loss_Pop1417
-California,CA,2090,0.055150343,loss_Pop1417
-California,CA,2300,0.044018596,loss_Pop1417
-Colorado,CO,2000,NA,loss_Pop1417
-Colorado,CO,2010,0.053729434,loss_Pop1417
-Colorado,CO,2020,0.053388218,loss_Pop1417
-Colorado,CO,2030,0.051387816,loss_Pop1417
-Colorado,CO,2040,0.050178272,loss_Pop1417
-Colorado,CO,2050,0.051312956,loss_Pop1417
-Colorado,CO,2060,0.051751835,loss_Pop1417
-Colorado,CO,2070,0.051605562,loss_Pop1417
-Colorado,CO,2080,0.051615851,loss_Pop1417
-Colorado,CO,2090,0.051046499,loss_Pop1417
-Colorado,CO,2300,0.044003794,loss_Pop1417
-Connecticut,CT,2000,NA,loss_Pop1417
-Connecticut,CT,2010,0.055553444,loss_Pop1417
-Connecticut,CT,2020,0.048715496,loss_Pop1417
-Connecticut,CT,2030,0.05238991,loss_Pop1417
-Connecticut,CT,2040,0.05199064,loss_Pop1417
-Connecticut,CT,2050,0.051331274,loss_Pop1417
-Connecticut,CT,2060,0.052971016,loss_Pop1417
-Connecticut,CT,2070,0.052551328,loss_Pop1417
-Connecticut,CT,2080,0.05173355,loss_Pop1417
-Connecticut,CT,2090,0.051868508,loss_Pop1417
-Connecticut,CT,2300,0.042195548,loss_Pop1417
-Delaware,DE,2000,NA,loss_Pop1417
-Delaware,DE,2010,0.055816352,loss_Pop1417
-Delaware,DE,2020,0.054315762,loss_Pop1417
-Delaware,DE,2030,0.054131807,loss_Pop1417
-Delaware,DE,2040,0.052611887,loss_Pop1417
-Delaware,DE,2050,0.052779997,loss_Pop1417
-Delaware,DE,2060,0.0533124,loss_Pop1417
-Delaware,DE,2070,0.052519817,loss_Pop1417
-Delaware,DE,2080,0.052337261,loss_Pop1417
-Delaware,DE,2090,0.052112475,loss_Pop1417
-Delaware,DE,2300,0.042389799,loss_Pop1417
-District of Columbia,DC,2000,NA,loss_Pop1417
-District of Columbia,DC,2010,0.048127793,loss_Pop1417
-District of Columbia,DC,2020,0.060784479,loss_Pop1417
-District of Columbia,DC,2030,0.066080264,loss_Pop1417
-District of Columbia,DC,2040,0.052326325,loss_Pop1417
-District of Columbia,DC,2050,0.062176474,loss_Pop1417
-District of Columbia,DC,2060,0.061191123,loss_Pop1417
-District of Columbia,DC,2070,0.057428534,loss_Pop1417
-District of Columbia,DC,2080,0.060635031,loss_Pop1417
-District of Columbia,DC,2090,0.059041611,loss_Pop1417
-District of Columbia,DC,2300,0.087690382,loss_Pop1417
-Florida,FL,2000,NA,loss_Pop1417
-Florida,FL,2010,0.051230398,loss_Pop1417
-Florida,FL,2020,0.051259657,loss_Pop1417
-Florida,FL,2030,0.052217465,loss_Pop1417
-Florida,FL,2040,0.051238072,loss_Pop1417
-Florida,FL,2050,0.052459911,loss_Pop1417
-Florida,FL,2060,0.052936254,loss_Pop1417
-Florida,FL,2070,0.052721715,loss_Pop1417
-Florida,FL,2080,0.052622072,loss_Pop1417
-Florida,FL,2090,0.052211613,loss_Pop1417
-Florida,FL,2300,0.0547873,loss_Pop1417
-Georgia,GA,2000,NA,loss_Pop1417
-Georgia,GA,2010,0.058211863,loss_Pop1417
-Georgia,GA,2020,0.056243463,loss_Pop1417
-Georgia,GA,2030,0.053591522,loss_Pop1417
-Georgia,GA,2040,0.052547595,loss_Pop1417
-Georgia,GA,2050,0.052468124,loss_Pop1417
-Georgia,GA,2060,0.052528278,loss_Pop1417
-Georgia,GA,2070,0.052344409,loss_Pop1417
-Georgia,GA,2080,0.052052194,loss_Pop1417
-Georgia,GA,2090,0.051695396,loss_Pop1417
-Georgia,GA,2300,0.034589673,loss_Pop1417
-Idaho,ID,2000,NA,loss_Pop1417
-Idaho,ID,2010,0.059075954,loss_Pop1417
-Idaho,ID,2020,0.057192179,loss_Pop1417
-Idaho,ID,2030,0.055306514,loss_Pop1417
-Idaho,ID,2040,0.053499313,loss_Pop1417
-Idaho,ID,2050,0.052458459,loss_Pop1417
-Idaho,ID,2060,0.052436597,loss_Pop1417
-Idaho,ID,2070,0.051622298,loss_Pop1417
-Idaho,ID,2080,0.051114325,loss_Pop1417
-Idaho,ID,2090,0.050830637,loss_Pop1417
-Idaho,ID,2300,0.02918668,loss_Pop1417
-Illinois,IL,2000,NA,loss_Pop1417
-Illinois,IL,2010,0.056670045,loss_Pop1417
-Illinois,IL,2020,0.054801878,loss_Pop1417
-Illinois,IL,2030,0.055606637,loss_Pop1417
-Illinois,IL,2040,0.053707143,loss_Pop1417
-Illinois,IL,2050,0.05410848,loss_Pop1417
-Illinois,IL,2060,0.054650589,loss_Pop1417
-Illinois,IL,2070,0.053874745,loss_Pop1417
-Illinois,IL,2080,0.053687313,loss_Pop1417
-Illinois,IL,2090,0.05337562,loss_Pop1417
-Illinois,IL,2300,0.044727756,loss_Pop1417
-Indiana,IN,2000,NA,loss_Pop1417
-Indiana,IN,2010,0.05795106,loss_Pop1417
-Indiana,IN,2020,0.055137525,loss_Pop1417
-Indiana,IN,2030,0.05699432,loss_Pop1417
-Indiana,IN,2040,0.055334478,loss_Pop1417
-Indiana,IN,2050,0.055321567,loss_Pop1417
-Indiana,IN,2060,0.056521275,loss_Pop1417
-Indiana,IN,2070,0.055730205,loss_Pop1417
-Indiana,IN,2080,0.055694889,loss_Pop1417
-Indiana,IN,2090,0.055835865,loss_Pop1417
-Indiana,IN,2300,0.050283476,loss_Pop1417
-Iowa,IA,2000,NA,loss_Pop1417
-Iowa,IA,2010,0.056373952,loss_Pop1417
-Iowa,IA,2020,0.054559722,loss_Pop1417
-Iowa,IA,2030,0.059873658,loss_Pop1417
-Iowa,IA,2040,0.056188008,loss_Pop1417
-Iowa,IA,2050,0.056825633,loss_Pop1417
-Iowa,IA,2060,0.058995424,loss_Pop1417
-Iowa,IA,2070,0.057245537,loss_Pop1417
-Iowa,IA,2080,0.057637506,loss_Pop1417
-Iowa,IA,2090,0.05812225,loss_Pop1417
-Iowa,IA,2300,0.062711534,loss_Pop1417
-Kansas,KS,2000,NA,loss_Pop1417
-Kansas,KS,2010,0.05680443,loss_Pop1417
-Kansas,KS,2020,0.05540677,loss_Pop1417
-Kansas,KS,2030,0.057957264,loss_Pop1417
-Kansas,KS,2040,0.054241523,loss_Pop1417
-Kansas,KS,2050,0.054563377,loss_Pop1417
-Kansas,KS,2060,0.05588255,loss_Pop1417
-Kansas,KS,2070,0.054284398,loss_Pop1417
-Kansas,KS,2080,0.054469187,loss_Pop1417
-Kansas,KS,2090,0.054645892,loss_Pop1417
-Kansas,KS,2300,0.048979731,loss_Pop1417
-Kentucky,KY,2000,NA,loss_Pop1417
-Kentucky,KY,2010,0.054134167,loss_Pop1417
-Kentucky,KY,2020,0.052810926,loss_Pop1417
-Kentucky,KY,2030,0.05259314,loss_Pop1417
-Kentucky,KY,2040,0.051712697,loss_Pop1417
-Kentucky,KY,2050,0.052298011,loss_Pop1417
-Kentucky,KY,2060,0.052654289,loss_Pop1417
-Kentucky,KY,2070,0.052296655,loss_Pop1417
-Kentucky,KY,2080,0.052346834,loss_Pop1417
-Kentucky,KY,2090,0.052076999,loss_Pop1417
-Kentucky,KY,2300,0.046676933,loss_Pop1417
-Louisiana,LA,2000,NA,loss_Pop1417
-Louisiana,LA,2010,0.056786559,loss_Pop1417
-Louisiana,LA,2020,0.054253635,loss_Pop1417
-Louisiana,LA,2030,0.054627585,loss_Pop1417
-Louisiana,LA,2040,0.052197141,loss_Pop1417
-Louisiana,LA,2050,0.052026895,loss_Pop1417
-Louisiana,LA,2060,0.051979528,loss_Pop1417
-Louisiana,LA,2070,0.051024171,loss_Pop1417
-Louisiana,LA,2080,0.050787242,loss_Pop1417
-Louisiana,LA,2090,0.050438874,loss_Pop1417
-Louisiana,LA,2300,0.033776201,loss_Pop1417
-Maine,ME,2000,NA,loss_Pop1417
-Maine,ME,2010,0.051784567,loss_Pop1417
-Maine,ME,2020,0.046717279,loss_Pop1417
-Maine,ME,2030,0.051429472,loss_Pop1417
-Maine,ME,2040,0.050040554,loss_Pop1417
-Maine,ME,2050,0.05013661,loss_Pop1417
-Maine,ME,2060,0.052689731,loss_Pop1417
-Maine,ME,2070,0.051725305,loss_Pop1417
-Maine,ME,2080,0.051545362,loss_Pop1417
-Maine,ME,2090,0.05200689,loss_Pop1417
-Maine,ME,2300,0.052590487,loss_Pop1417
-Maryland,MD,2000,NA,loss_Pop1417
-Maryland,MD,2010,0.05534728,loss_Pop1417
-Maryland,MD,2020,0.052035153,loss_Pop1417
-Maryland,MD,2030,0.052758382,loss_Pop1417
-Maryland,MD,2040,0.051545343,loss_Pop1417
-Maryland,MD,2050,0.051861686,loss_Pop1417
-Maryland,MD,2060,0.052638613,loss_Pop1417
-Maryland,MD,2070,0.052139582,loss_Pop1417
-Maryland,MD,2080,0.051802945,loss_Pop1417
-Maryland,MD,2090,0.051652643,loss_Pop1417
-Maryland,MD,2300,0.041954219,loss_Pop1417
-Massachusetts,MA,2000,NA,loss_Pop1417
-Massachusetts,MA,2010,0.054794827,loss_Pop1417
-Massachusetts,MA,2020,0.053774765,loss_Pop1417
-Massachusetts,MA,2030,0.057011749,loss_Pop1417
-Massachusetts,MA,2040,0.053537129,loss_Pop1417
-Massachusetts,MA,2050,0.055271107,loss_Pop1417
-Massachusetts,MA,2060,0.056500669,loss_Pop1417
-Massachusetts,MA,2070,0.055230636,loss_Pop1417
-Massachusetts,MA,2080,0.055453303,loss_Pop1417
-Massachusetts,MA,2090,0.055304784,loss_Pop1417
-Massachusetts,MA,2300,0.056643421,loss_Pop1417
-Michigan,MI,2000,NA,loss_Pop1417
-Michigan,MI,2010,0.058561683,loss_Pop1417
-Michigan,MI,2020,0.052835808,loss_Pop1417
-Michigan,MI,2030,0.056438847,loss_Pop1417
-Michigan,MI,2040,0.054639097,loss_Pop1417
-Michigan,MI,2050,0.054201555,loss_Pop1417
-Michigan,MI,2060,0.055516248,loss_Pop1417
-Michigan,MI,2070,0.05462074,loss_Pop1417
-Michigan,MI,2080,0.054240545,loss_Pop1417
-Michigan,MI,2090,0.054356694,loss_Pop1417
-Michigan,MI,2300,0.043318596,loss_Pop1417
-Minnesota,MN,2000,NA,loss_Pop1417
-Minnesota,MN,2010,0.054896289,loss_Pop1417
-Minnesota,MN,2020,0.052708949,loss_Pop1417
-Minnesota,MN,2030,0.054201163,loss_Pop1417
-Minnesota,MN,2040,0.052511369,loss_Pop1417
-Minnesota,MN,2050,0.052379426,loss_Pop1417
-Minnesota,MN,2060,0.053733208,loss_Pop1417
-Minnesota,MN,2070,0.052843825,loss_Pop1417
-Minnesota,MN,2080,0.052757452,loss_Pop1417
-Minnesota,MN,2090,0.052954655,loss_Pop1417
-Minnesota,MN,2300,0.047857863,loss_Pop1417
-Mississippi,MS,2000,NA,loss_Pop1417
-Mississippi,MS,2010,0.05945516,loss_Pop1417
-Mississippi,MS,2020,0.056425903,loss_Pop1417
-Mississippi,MS,2030,0.056726901,loss_Pop1417
-Mississippi,MS,2040,0.054202584,loss_Pop1417
-Mississippi,MS,2050,0.053890562,loss_Pop1417
-Mississippi,MS,2060,0.053670756,loss_Pop1417
-Mississippi,MS,2070,0.052752288,loss_Pop1417
-Mississippi,MS,2080,0.052405548,loss_Pop1417
-Mississippi,MS,2090,0.051989434,loss_Pop1417
-Mississippi,MS,2300,0.032391902,loss_Pop1417
-Missouri,MO,2000,NA,loss_Pop1417
-Missouri,MO,2010,0.055767765,loss_Pop1417
-Missouri,MO,2020,0.053192274,loss_Pop1417
-Missouri,MO,2030,0.054373427,loss_Pop1417
-Missouri,MO,2040,0.052123439,loss_Pop1417
-Missouri,MO,2050,0.052263844,loss_Pop1417
-Missouri,MO,2060,0.053031752,loss_Pop1417
-Missouri,MO,2070,0.052109067,loss_Pop1417
-Missouri,MO,2080,0.052112097,loss_Pop1417
-Missouri,MO,2090,0.052036382,loss_Pop1417
-Missouri,MO,2300,0.042241499,loss_Pop1417
-Montana,MT,2000,NA,loss_Pop1417
-Montana,MT,2010,0.052819456,loss_Pop1417
-Montana,MT,2020,0.04970031,loss_Pop1417
-Montana,MT,2030,0.052803362,loss_Pop1417
-Montana,MT,2040,0.050709671,loss_Pop1417
-Montana,MT,2050,0.050542989,loss_Pop1417
-Montana,MT,2060,0.052049129,loss_Pop1417
-Montana,MT,2070,0.050837545,loss_Pop1417
-Montana,MT,2080,0.050597289,loss_Pop1417
-Montana,MT,2090,0.050817016,loss_Pop1417
-Montana,MT,2300,0.04556061,loss_Pop1417
-Nebraska,NE,2000,NA,loss_Pop1417
-Nebraska,NE,2010,0.055880049,loss_Pop1417
-Nebraska,NE,2020,0.055031845,loss_Pop1417
-Nebraska,NE,2030,0.054717173,loss_Pop1417
-Nebraska,NE,2040,0.053139536,loss_Pop1417
-Nebraska,NE,2050,0.052287772,loss_Pop1417
-Nebraska,NE,2060,0.053229494,loss_Pop1417
-Nebraska,NE,2070,0.052292924,loss_Pop1417
-Nebraska,NE,2080,0.051828446,loss_Pop1417
-Nebraska,NE,2090,0.052017524,loss_Pop1417
-Nebraska,NE,2300,0.041878397,loss_Pop1417
-Nevada,NV,2000,NA,loss_Pop1417
-Nevada,NV,2010,0.054135099,loss_Pop1417
-Nevada,NV,2020,0.052113895,loss_Pop1417
-Nevada,NV,2030,0.049269287,loss_Pop1417
-Nevada,NV,2040,0.049880758,loss_Pop1417
-Nevada,NV,2050,0.050049223,loss_Pop1417
-Nevada,NV,2060,0.050193915,loss_Pop1417
-Nevada,NV,2070,0.05018081,loss_Pop1417
-Nevada,NV,2080,0.049858929,loss_Pop1417
-Nevada,NV,2090,0.049274815,loss_Pop1417
-Nevada,NV,2300,0.036516568,loss_Pop1417
-New Hampshire,NH,2000,NA,loss_Pop1417
-New Hampshire,NH,2010,0.055524243,loss_Pop1417
-New Hampshire,NH,2020,0.048300555,loss_Pop1417
-New Hampshire,NH,2030,0.053142759,loss_Pop1417
-New Hampshire,NH,2040,0.051438883,loss_Pop1417
-New Hampshire,NH,2050,0.05082375,loss_Pop1417
-New Hampshire,NH,2060,0.053434261,loss_Pop1417
-New Hampshire,NH,2070,0.052429607,loss_Pop1417
-New Hampshire,NH,2080,0.051942031,loss_Pop1417
-New Hampshire,NH,2090,0.052496264,loss_Pop1417
-New Hampshire,NH,2300,0.04454782,loss_Pop1417
-New Jersey,NJ,2000,NA,loss_Pop1417
-New Jersey,NJ,2010,0.054177905,loss_Pop1417
-New Jersey,NJ,2020,0.050319449,loss_Pop1417
-New Jersey,NJ,2030,0.050320347,loss_Pop1417
-New Jersey,NJ,2040,0.051488781,loss_Pop1417
-New Jersey,NJ,2050,0.051447091,loss_Pop1417
-New Jersey,NJ,2060,0.052125405,loss_Pop1417
-New Jersey,NJ,2070,0.05249194,loss_Pop1417
-New Jersey,NJ,2080,0.051801144,loss_Pop1417
-New Jersey,NJ,2090,0.051590635,loss_Pop1417
-New Jersey,NJ,2300,0.044799053,loss_Pop1417
-New Mexico,NM,2000,NA,loss_Pop1417
-New Mexico,NM,2010,0.057428131,loss_Pop1417
-New Mexico,NM,2020,0.05609369,loss_Pop1417
-New Mexico,NM,2030,0.058187433,loss_Pop1417
-New Mexico,NM,2040,0.054340175,loss_Pop1417
-New Mexico,NM,2050,0.056045578,loss_Pop1417
-New Mexico,NM,2060,0.05557733,loss_Pop1417
-New Mexico,NM,2070,0.054448966,loss_Pop1417
-New Mexico,NM,2080,0.054177391,loss_Pop1417
-New Mexico,NM,2090,0.053134421,loss_Pop1417
-New Mexico,NM,2300,0.041863434,loss_Pop1417
-New York,NY,2000,NA,loss_Pop1417
-New York,NY,2010,0.054807122,loss_Pop1417
-New York,NY,2020,0.053116678,loss_Pop1417
-New York,NY,2030,0.056303324,loss_Pop1417
-New York,NY,2040,0.053569539,loss_Pop1417
-New York,NY,2050,0.054776811,loss_Pop1417
-New York,NY,2060,0.055425091,loss_Pop1417
-New York,NY,2070,0.054409421,loss_Pop1417
-New York,NY,2080,0.054156431,loss_Pop1417
-New York,NY,2090,0.05377932,loss_Pop1417
-New York,NY,2300,0.051081338,loss_Pop1417
-North Carolina,NC,2000,NA,loss_Pop1417
-North Carolina,NC,2010,0.054740321,loss_Pop1417
-North Carolina,NC,2020,0.053928211,loss_Pop1417
-North Carolina,NC,2030,0.051821449,loss_Pop1417
-North Carolina,NC,2040,0.051463418,loss_Pop1417
-North Carolina,NC,2050,0.051701842,loss_Pop1417
-North Carolina,NC,2060,0.051830248,loss_Pop1417
-North Carolina,NC,2070,0.051830526,loss_Pop1417
-North Carolina,NC,2080,0.051521996,loss_Pop1417
-North Carolina,NC,2090,0.051133599,loss_Pop1417
-North Carolina,NC,2300,0.041665952,loss_Pop1417
-North Dakota,ND,2000,NA,loss_Pop1417
-North Dakota,ND,2010,0.054184125,loss_Pop1417
-North Dakota,ND,2020,0.053699588,loss_Pop1417
-North Dakota,ND,2030,0.059758572,loss_Pop1417
-North Dakota,ND,2040,0.05409113,loss_Pop1417
-North Dakota,ND,2050,0.055148068,loss_Pop1417
-North Dakota,ND,2060,0.057508453,loss_Pop1417
-North Dakota,ND,2070,0.05532584,loss_Pop1417
-North Dakota,ND,2080,0.055863695,loss_Pop1417
-North Dakota,ND,2090,0.056657233,loss_Pop1417
-North Dakota,ND,2300,0.063149139,loss_Pop1417
-Ohio,OH,2000,NA,loss_Pop1417
-Ohio,OH,2010,0.056269126,loss_Pop1417
-Ohio,OH,2020,0.052173968,loss_Pop1417
-Ohio,OH,2030,0.054399964,loss_Pop1417
-Ohio,OH,2040,0.053414767,loss_Pop1417
-Ohio,OH,2050,0.053020753,loss_Pop1417
-Ohio,OH,2060,0.054092271,loss_Pop1417
-Ohio,OH,2070,0.053444824,loss_Pop1417
-Ohio,OH,2080,0.053133432,loss_Pop1417
-Ohio,OH,2090,0.053206561,loss_Pop1417
-Ohio,OH,2300,0.045167329,loss_Pop1417
-Oklahoma,OK,2000,NA,loss_Pop1417
-Oklahoma,OK,2010,0.055826074,loss_Pop1417
-Oklahoma,OK,2020,0.055211476,loss_Pop1417
-Oklahoma,OK,2030,0.054734209,loss_Pop1417
-Oklahoma,OK,2040,0.052411286,loss_Pop1417
-Oklahoma,OK,2050,0.05260886,loss_Pop1417
-Oklahoma,OK,2060,0.052666278,loss_Pop1417
-Oklahoma,OK,2070,0.051694344,loss_Pop1417
-Oklahoma,OK,2080,0.051538554,loss_Pop1417
-Oklahoma,OK,2090,0.051129368,loss_Pop1417
-Oklahoma,OK,2300,0.038800516,loss_Pop1417
-Oregon,OR,2000,NA,loss_Pop1417
-Oregon,OR,2010,0.05257725,loss_Pop1417
-Oregon,OR,2020,0.051037777,loss_Pop1417
-Oregon,OR,2030,0.053451283,loss_Pop1417
-Oregon,OR,2040,0.051495128,loss_Pop1417
-Oregon,OR,2050,0.052462375,loss_Pop1417
-Oregon,OR,2060,0.05368692,loss_Pop1417
-Oregon,OR,2070,0.052588569,loss_Pop1417
-Oregon,OR,2080,0.052759271,loss_Pop1417
-Oregon,OR,2090,0.052628511,loss_Pop1417
-Oregon,OR,2300,0.052763069,loss_Pop1417
-Pennsylvania,PA,2000,NA,loss_Pop1417
-Pennsylvania,PA,2010,0.055207752,loss_Pop1417
-Pennsylvania,PA,2020,0.051241039,loss_Pop1417
-Pennsylvania,PA,2030,0.056336499,loss_Pop1417
-Pennsylvania,PA,2040,0.054162458,loss_Pop1417
-Pennsylvania,PA,2050,0.054330197,loss_Pop1417
-Pennsylvania,PA,2060,0.056405335,loss_Pop1417
-Pennsylvania,PA,2070,0.055228757,loss_Pop1417
-Pennsylvania,PA,2080,0.055108377,loss_Pop1417
-Pennsylvania,PA,2090,0.055461963,loss_Pop1417
-Pennsylvania,PA,2300,0.056129267,loss_Pop1417
-Rhode Island,RI,2000,NA,loss_Pop1417
-Rhode Island,RI,2010,0.057756322,loss_Pop1417
-Rhode Island,RI,2020,0.054359459,loss_Pop1417
-Rhode Island,RI,2030,0.060342571,loss_Pop1417
-Rhode Island,RI,2040,0.05497324,loss_Pop1417
-Rhode Island,RI,2050,0.056094492,loss_Pop1417
-Rhode Island,RI,2060,0.058429727,loss_Pop1417
-Rhode Island,RI,2070,0.056325846,loss_Pop1417
-Rhode Island,RI,2080,0.056463602,loss_Pop1417
-Rhode Island,RI,2090,0.056665941,loss_Pop1417
-Rhode Island,RI,2300,0.053803691,loss_Pop1417
-South Carolina,SC,2000,NA,loss_Pop1417
-South Carolina,SC,2010,0.055530894,loss_Pop1417
-South Carolina,SC,2020,0.053142825,loss_Pop1417
-South Carolina,SC,2030,0.053182704,loss_Pop1417
-South Carolina,SC,2040,0.05161938,loss_Pop1417
-South Carolina,SC,2050,0.05188405,loss_Pop1417
-South Carolina,SC,2060,0.051862535,loss_Pop1417
-South Carolina,SC,2070,0.051439091,loss_Pop1417
-South Carolina,SC,2080,0.051101584,loss_Pop1417
-South Carolina,SC,2090,0.050696896,loss_Pop1417
-South Carolina,SC,2300,0.03800765,loss_Pop1417
-South Dakota,SD,2000,NA,loss_Pop1417
-South Dakota,SD,2010,0.055825197,loss_Pop1417
-South Dakota,SD,2020,0.054735248,loss_Pop1417
-South Dakota,SD,2030,0.057049303,loss_Pop1417
-South Dakota,SD,2040,0.05332135,loss_Pop1417
-South Dakota,SD,2050,0.052864655,loss_Pop1417
-South Dakota,SD,2060,0.053938843,loss_Pop1417
-South Dakota,SD,2070,0.052409677,loss_Pop1417
-South Dakota,SD,2080,0.052258492,loss_Pop1417
-South Dakota,SD,2090,0.052477377,loss_Pop1417
-South Dakota,SD,2300,0.043689348,loss_Pop1417
-Tennessee,TN,2000,NA,loss_Pop1417
-Tennessee,TN,2010,0.054537358,loss_Pop1417
-Tennessee,TN,2020,0.052803743,loss_Pop1417
-Tennessee,TN,2030,0.051986692,loss_Pop1417
-Tennessee,TN,2040,0.051494927,loss_Pop1417
-Tennessee,TN,2050,0.051897429,loss_Pop1417
-Tennessee,TN,2060,0.052146954,loss_Pop1417
-Tennessee,TN,2070,0.051947406,loss_Pop1417
-Tennessee,TN,2080,0.051836844,loss_Pop1417
-Tennessee,TN,2090,0.051472598,loss_Pop1417
-Tennessee,TN,2300,0.043427603,loss_Pop1417
-Texas,TX,2000,NA,loss_Pop1417
-Texas,TX,2010,0.059901363,loss_Pop1417
-Texas,TX,2020,0.059945826,loss_Pop1417
-Texas,TX,2030,0.057200202,loss_Pop1417
-Texas,TX,2040,0.055967914,loss_Pop1417
-Texas,TX,2050,0.056162385,loss_Pop1417
-Texas,TX,2060,0.055836354,loss_Pop1417
-Texas,TX,2070,0.055451908,loss_Pop1417
-Texas,TX,2080,0.054982645,loss_Pop1417
-Texas,TX,2090,0.054298537,loss_Pop1417
-Texas,TX,2300,0.039591116,loss_Pop1417
-Utah,UT,2000,NA,loss_Pop1417
-Utah,UT,2010,0.064490456,loss_Pop1417
-Utah,UT,2020,0.066714333,loss_Pop1417
-Utah,UT,2030,0.056587124,loss_Pop1417
-Utah,UT,2040,0.054271265,loss_Pop1417
-Utah,UT,2050,0.052839304,loss_Pop1417
-Utah,UT,2060,0.050699141,loss_Pop1417
-Utah,UT,2070,0.050402613,loss_Pop1417
-Utah,UT,2080,0.050111172,loss_Pop1417
-Utah,UT,2090,0.049392749,loss_Pop1417
-Utah,UT,2300,0.009761268,loss_Pop1417
-Vermont,VT,2000,NA,loss_Pop1417
-Vermont,VT,2010,0.056148791,loss_Pop1417
-Vermont,VT,2020,0.050150002,loss_Pop1417
-Vermont,VT,2030,0.05784903,loss_Pop1417
-Vermont,VT,2040,0.05452815,loss_Pop1417
-Vermont,VT,2050,0.054732849,loss_Pop1417
-Vermont,VT,2060,0.058218569,loss_Pop1417
-Vermont,VT,2070,0.056416523,loss_Pop1417
-Vermont,VT,2080,0.056380689,loss_Pop1417
-Vermont,VT,2090,0.057232562,loss_Pop1417
-Vermont,VT,2300,0.060077462,loss_Pop1417
-Virginia,VA,2000,NA,loss_Pop1417
-Virginia,VA,2010,0.054096601,loss_Pop1417
-Virginia,VA,2020,0.054765442,loss_Pop1417
-Virginia,VA,2030,0.057651439,loss_Pop1417
-Virginia,VA,2040,0.052735286,loss_Pop1417
-Virginia,VA,2050,0.054719867,loss_Pop1417
-Virginia,VA,2060,0.056051322,loss_Pop1417
-Virginia,VA,2070,0.054604294,loss_Pop1417
-Virginia,VA,2080,0.055234045,loss_Pop1417
-Virginia,VA,2090,0.055166275,loss_Pop1417
-Virginia,VA,2300,0.057974168,loss_Pop1417
-Washington,WA,2000,NA,loss_Pop1417
-Washington,WA,2010,0.054267447,loss_Pop1417
-Washington,WA,2020,0.051424619,loss_Pop1417
-Washington,WA,2030,0.053423879,loss_Pop1417
-Washington,WA,2040,0.051697673,loss_Pop1417
-Washington,WA,2050,0.052294971,loss_Pop1417
-Washington,WA,2060,0.05344911,loss_Pop1417
-Washington,WA,2070,0.052558315,loss_Pop1417
-Washington,WA,2080,0.05254359,loss_Pop1417
-Washington,WA,2090,0.052449128,loss_Pop1417
-Washington,WA,2300,0.04767604,loss_Pop1417
-West Virginia,WV,2000,NA,loss_Pop1417
-West Virginia,WV,2010,0.050655425,loss_Pop1417
-West Virginia,WV,2020,0.051881431,loss_Pop1417
-West Virginia,WV,2030,0.057034993,loss_Pop1417
-West Virginia,WV,2040,0.054769179,loss_Pop1417
-West Virginia,WV,2050,0.056892107,loss_Pop1417
-West Virginia,WV,2060,0.059041014,loss_Pop1417
-West Virginia,WV,2070,0.057699865,loss_Pop1417
-West Virginia,WV,2080,0.05842064,loss_Pop1417
-West Virginia,WV,2090,0.058461622,loss_Pop1417
-West Virginia,WV,2300,0.078952887,loss_Pop1417
-Wisconsin,WI,2000,NA,loss_Pop1417
-Wisconsin,WI,2010,0.055338767,loss_Pop1417
-Wisconsin,WI,2020,0.051799842,loss_Pop1417
-Wisconsin,WI,2030,0.054855023,loss_Pop1417
-Wisconsin,WI,2040,0.053161842,loss_Pop1417
-Wisconsin,WI,2050,0.052931631,loss_Pop1417
-Wisconsin,WI,2060,0.054480292,loss_Pop1417
-Wisconsin,WI,2070,0.05361796,loss_Pop1417
-Wisconsin,WI,2080,0.053323538,loss_Pop1417
-Wisconsin,WI,2090,0.053486455,loss_Pop1417
-Wisconsin,WI,2300,0.048624135,loss_Pop1417
-Wyoming,WY,2000,NA,loss_Pop1417
-Wyoming,WY,2010,0.053361981,loss_Pop1417
-Wyoming,WY,2020,0.05212852,loss_Pop1417
-Wyoming,WY,2030,0.053771736,loss_Pop1417
-Wyoming,WY,2040,0.049921805,loss_Pop1417
-Wyoming,WY,2050,0.050397225,loss_Pop1417
-Wyoming,WY,2060,0.050774701,loss_Pop1417
-Wyoming,WY,2070,0.049370681,loss_Pop1417
-Wyoming,WY,2080,0.0490867,loss_Pop1417
-Wyoming,WY,2090,0.048380911,loss_Pop1417
-Wyoming,WY,2300,0.035305602,loss_Pop1417
+"state","postal","year","value","scalarName"
+"Alabama","AL",2000,NA,"loss_Pop1417"
+"Alabama","AL",2010,0.0564913207968332,"loss_Pop1417"
+"Alabama","AL",2020,0.0535457823778042,"loss_Pop1417"
+"Alabama","AL",2030,0.0555317992989253,"loss_Pop1417"
+"Alabama","AL",2040,0.0538165027571704,"loss_Pop1417"
+"Alabama","AL",2050,0.0542621478139422,"loss_Pop1417"
+"Alabama","AL",2060,0.0547129850967295,"loss_Pop1417"
+"Alabama","AL",2070,0.0541050286958783,"loss_Pop1417"
+"Alabama","AL",2080,0.0540025533438631,"loss_Pop1417"
+"Alabama","AL",2090,0.053803516152022,"loss_Pop1417"
+"Alabama","AL",2300,0.0507708620030408,"loss_Pop1417"
+"Arizona","AZ",2000,NA,"loss_Pop1417"
+"Arizona","AZ",2010,0.0573656175397032,"loss_Pop1417"
+"Arizona","AZ",2020,0.0576500003883801,"loss_Pop1417"
+"Arizona","AZ",2030,0.0546978345886879,"loss_Pop1417"
+"Arizona","AZ",2040,0.0543960163472717,"loss_Pop1417"
+"Arizona","AZ",2050,0.0542745128490431,"loss_Pop1417"
+"Arizona","AZ",2060,0.0539504791870164,"loss_Pop1417"
+"Arizona","AZ",2070,0.0536913555765405,"loss_Pop1417"
+"Arizona","AZ",2080,0.0532192196783732,"loss_Pop1417"
+"Arizona","AZ",2090,0.0525408254425753,"loss_Pop1417"
+"Arizona","AZ",2300,0.0488288623167711,"loss_Pop1417"
+"Arkansas","AR",2000,NA,"loss_Pop1417"
+"Arkansas","AR",2010,0.055486962355241,"loss_Pop1417"
+"Arkansas","AR",2020,0.0538951037708484,"loss_Pop1417"
+"Arkansas","AR",2030,0.0534128867528035,"loss_Pop1417"
+"Arkansas","AR",2040,0.0525908472736599,"loss_Pop1417"
+"Arkansas","AR",2050,0.0524513123145943,"loss_Pop1417"
+"Arkansas","AR",2060,0.0526580021949352,"loss_Pop1417"
+"Arkansas","AR",2070,0.0522783228337956,"loss_Pop1417"
+"Arkansas","AR",2080,0.0520776955661676,"loss_Pop1417"
+"Arkansas","AR",2090,0.0517884564976335,"loss_Pop1417"
+"Arkansas","AR",2300,0.0473503143055342,"loss_Pop1417"
+"California","CA",2000,NA,"loss_Pop1417"
+"California","CA",2010,0.059391008397903,"loss_Pop1417"
+"California","CA",2020,0.0572794039873632,"loss_Pop1417"
+"California","CA",2030,0.0580314059199446,"loss_Pop1417"
+"California","CA",2040,0.0552687553010503,"loss_Pop1417"
+"California","CA",2050,0.0563578932730381,"loss_Pop1417"
+"California","CA",2060,0.0568141988966865,"loss_Pop1417"
+"California","CA",2070,0.055928919922671,"loss_Pop1417"
+"California","CA",2080,0.055779566617086,"loss_Pop1417"
+"California","CA",2090,0.0551503429368266,"loss_Pop1417"
+"California","CA",2300,0.0522978554989617,"loss_Pop1417"
+"Colorado","CO",2000,NA,"loss_Pop1417"
+"Colorado","CO",2010,0.0537294341718567,"loss_Pop1417"
+"Colorado","CO",2020,0.0533882181238112,"loss_Pop1417"
+"Colorado","CO",2030,0.0513878161401919,"loss_Pop1417"
+"Colorado","CO",2040,0.0501782723683486,"loss_Pop1417"
+"Colorado","CO",2050,0.0513129564824202,"loss_Pop1417"
+"Colorado","CO",2060,0.0517518348467658,"loss_Pop1417"
+"Colorado","CO",2070,0.0516055624948022,"loss_Pop1417"
+"Colorado","CO",2080,0.0516158511806075,"loss_Pop1417"
+"Colorado","CO",2090,0.0510464989885027,"loss_Pop1417"
+"Colorado","CO",2300,0.0483566514136107,"loss_Pop1417"
+"Connecticut","CT",2000,NA,"loss_Pop1417"
+"Connecticut","CT",2010,0.0555534444144592,"loss_Pop1417"
+"Connecticut","CT",2020,0.0487154960896266,"loss_Pop1417"
+"Connecticut","CT",2030,0.0523899096258024,"loss_Pop1417"
+"Connecticut","CT",2040,0.0519906397479812,"loss_Pop1417"
+"Connecticut","CT",2050,0.0513312744779595,"loss_Pop1417"
+"Connecticut","CT",2060,0.0529710163951183,"loss_Pop1417"
+"Connecticut","CT",2070,0.052551328027049,"loss_Pop1417"
+"Connecticut","CT",2080,0.0517335501467953,"loss_Pop1417"
+"Connecticut","CT",2090,0.0518685075536716,"loss_Pop1417"
+"Connecticut","CT",2300,0.0438939176024953,"loss_Pop1417"
+"Delaware","DE",2000,NA,"loss_Pop1417"
+"Delaware","DE",2010,0.0558163515639392,"loss_Pop1417"
+"Delaware","DE",2020,0.0543157615806695,"loss_Pop1417"
+"Delaware","DE",2030,0.0541318073554309,"loss_Pop1417"
+"Delaware","DE",2040,0.052611886715889,"loss_Pop1417"
+"Delaware","DE",2050,0.0527799966297718,"loss_Pop1417"
+"Delaware","DE",2060,0.0533123995921706,"loss_Pop1417"
+"Delaware","DE",2070,0.052519816657742,"loss_Pop1417"
+"Delaware","DE",2080,0.0523372610226779,"loss_Pop1417"
+"Delaware","DE",2090,0.0521124751235029,"loss_Pop1417"
+"Delaware","DE",2300,0.0467179705029925,"loss_Pop1417"
+"District of Columbia","DC",2000,NA,"loss_Pop1417"
+"District of Columbia","DC",2010,0.0481277933822557,"loss_Pop1417"
+"District of Columbia","DC",2020,0.0607844791050892,"loss_Pop1417"
+"District of Columbia","DC",2030,0.0660802639868121,"loss_Pop1417"
+"District of Columbia","DC",2040,0.0523263252934164,"loss_Pop1417"
+"District of Columbia","DC",2050,0.0621764738815114,"loss_Pop1417"
+"District of Columbia","DC",2060,0.0611911232100005,"loss_Pop1417"
+"District of Columbia","DC",2070,0.0574285337348272,"loss_Pop1417"
+"District of Columbia","DC",2080,0.0606350311945272,"loss_Pop1417"
+"District of Columbia","DC",2090,0.0590416109230554,"loss_Pop1417"
+"District of Columbia","DC",2300,0.06874102826176,"loss_Pop1417"
+"Florida","FL",2000,NA,"loss_Pop1417"
+"Florida","FL",2010,0.0512303984591314,"loss_Pop1417"
+"Florida","FL",2020,0.0512596572767172,"loss_Pop1417"
+"Florida","FL",2030,0.0522174646789675,"loss_Pop1417"
+"Florida","FL",2040,0.0512380723966798,"loss_Pop1417"
+"Florida","FL",2050,0.0524599106602882,"loss_Pop1417"
+"Florida","FL",2060,0.052936253891779,"loss_Pop1417"
+"Florida","FL",2070,0.0527217153010799,"loss_Pop1417"
+"Florida","FL",2080,0.0526220721276982,"loss_Pop1417"
+"Florida","FL",2090,0.0522116125975233,"loss_Pop1417"
+"Florida","FL",2300,0.0530634278484325,"loss_Pop1417"
+"Georgia","GA",2000,NA,"loss_Pop1417"
+"Georgia","GA",2010,0.0582118625336528,"loss_Pop1417"
+"Georgia","GA",2020,0.0562434631557419,"loss_Pop1417"
+"Georgia","GA",2030,0.0535915216931427,"loss_Pop1417"
+"Georgia","GA",2040,0.0525475945300959,"loss_Pop1417"
+"Georgia","GA",2050,0.0524681237828351,"loss_Pop1417"
+"Georgia","GA",2060,0.052528277698642,"loss_Pop1417"
+"Georgia","GA",2070,0.0523444090380228,"loss_Pop1417"
+"Georgia","GA",2080,0.0520521937299703,"loss_Pop1417"
+"Georgia","GA",2090,0.0516953964385442,"loss_Pop1417"
+"Georgia","GA",2300,0.0463183152465979,"loss_Pop1417"
+"Idaho","ID",2000,NA,"loss_Pop1417"
+"Idaho","ID",2010,0.0590759538258503,"loss_Pop1417"
+"Idaho","ID",2020,0.0571921792588963,"loss_Pop1417"
+"Idaho","ID",2030,0.0553065137904604,"loss_Pop1417"
+"Idaho","ID",2040,0.0534993128634141,"loss_Pop1417"
+"Idaho","ID",2050,0.0524584590883384,"loss_Pop1417"
+"Idaho","ID",2060,0.0524365966938631,"loss_Pop1417"
+"Idaho","ID",2070,0.0516222980358653,"loss_Pop1417"
+"Idaho","ID",2080,0.0511143251068627,"loss_Pop1417"
+"Idaho","ID",2090,0.0508306368244881,"loss_Pop1417"
+"Idaho","ID",2300,0.0416624208931481,"loss_Pop1417"
+"Illinois","IL",2000,NA,"loss_Pop1417"
+"Illinois","IL",2010,0.0566700445769856,"loss_Pop1417"
+"Illinois","IL",2020,0.0548018784508154,"loss_Pop1417"
+"Illinois","IL",2030,0.055606637361761,"loss_Pop1417"
+"Illinois","IL",2040,0.0537071432362814,"loss_Pop1417"
+"Illinois","IL",2050,0.0541084797334208,"loss_Pop1417"
+"Illinois","IL",2060,0.0546505891318218,"loss_Pop1417"
+"Illinois","IL",2070,0.053874745012786,"loss_Pop1417"
+"Illinois","IL",2080,0.0536873126087726,"loss_Pop1417"
+"Illinois","IL",2090,0.0533756201817726,"loss_Pop1417"
+"Illinois","IL",2300,0.0501052206291447,"loss_Pop1417"
+"Indiana","IN",2000,NA,"loss_Pop1417"
+"Indiana","IN",2010,0.0579510602594576,"loss_Pop1417"
+"Indiana","IN",2020,0.0551375249636393,"loss_Pop1417"
+"Indiana","IN",2030,0.0569943201377045,"loss_Pop1417"
+"Indiana","IN",2040,0.0553344782283882,"loss_Pop1417"
+"Indiana","IN",2050,0.0553215671496296,"loss_Pop1417"
+"Indiana","IN",2060,0.0565212754432777,"loss_Pop1417"
+"Indiana","IN",2070,0.0557302049094448,"loss_Pop1417"
+"Indiana","IN",2080,0.0556948885296873,"loss_Pop1417"
+"Indiana","IN",2090,0.0558358646039554,"loss_Pop1417"
+"Indiana","IN",2300,0.0534165229385676,"loss_Pop1417"
+"Iowa","IA",2000,NA,"loss_Pop1417"
+"Iowa","IA",2010,0.0563739515768112,"loss_Pop1417"
+"Iowa","IA",2020,0.0545597224755461,"loss_Pop1417"
+"Iowa","IA",2030,0.0598736580896275,"loss_Pop1417"
+"Iowa","IA",2040,0.0561880077511002,"loss_Pop1417"
+"Iowa","IA",2050,0.0568256331765304,"loss_Pop1417"
+"Iowa","IA",2060,0.0589954240553014,"loss_Pop1417"
+"Iowa","IA",2070,0.0572455374999236,"loss_Pop1417"
+"Iowa","IA",2080,0.0576375062445661,"loss_Pop1417"
+"Iowa","IA",2090,0.058122250216142,"loss_Pop1417"
+"Iowa","IA",2300,0.06014901456503,"loss_Pop1417"
+"Kansas","KS",2000,NA,"loss_Pop1417"
+"Kansas","KS",2010,0.0568044295573108,"loss_Pop1417"
+"Kansas","KS",2020,0.0554067698549845,"loss_Pop1417"
+"Kansas","KS",2030,0.0579572640467708,"loss_Pop1417"
+"Kansas","KS",2040,0.0542415234472009,"loss_Pop1417"
+"Kansas","KS",2050,0.0545633770571873,"loss_Pop1417"
+"Kansas","KS",2060,0.0558825498430629,"loss_Pop1417"
+"Kansas","KS",2070,0.0542843983621538,"loss_Pop1417"
+"Kansas","KS",2080,0.0544691867175504,"loss_Pop1417"
+"Kansas","KS",2090,0.0546458919402709,"loss_Pop1417"
+"Kansas","KS",2300,0.0527327141885578,"loss_Pop1417"
+"Kentucky","KY",2000,NA,"loss_Pop1417"
+"Kentucky","KY",2010,0.0541341667112883,"loss_Pop1417"
+"Kentucky","KY",2020,0.0528109260168166,"loss_Pop1417"
+"Kentucky","KY",2030,0.052593139518045,"loss_Pop1417"
+"Kentucky","KY",2040,0.0517126969597016,"loss_Pop1417"
+"Kentucky","KY",2050,0.0522980110938423,"loss_Pop1417"
+"Kentucky","KY",2060,0.0526542892129825,"loss_Pop1417"
+"Kentucky","KY",2070,0.0522966552624202,"loss_Pop1417"
+"Kentucky","KY",2080,0.0523468335679849,"loss_Pop1417"
+"Kentucky","KY",2090,0.05207699888373,"loss_Pop1417"
+"Kentucky","KY",2300,0.0482123757431634,"loss_Pop1417"
+"Louisiana","LA",2000,NA,"loss_Pop1417"
+"Louisiana","LA",2010,0.0567865594497785,"loss_Pop1417"
+"Louisiana","LA",2020,0.0542536347464608,"loss_Pop1417"
+"Louisiana","LA",2030,0.0546275848369372,"loss_Pop1417"
+"Louisiana","LA",2040,0.0521971407343507,"loss_Pop1417"
+"Louisiana","LA",2050,0.052026894678919,"loss_Pop1417"
+"Louisiana","LA",2060,0.0519795284733639,"loss_Pop1417"
+"Louisiana","LA",2070,0.051024171410556,"loss_Pop1417"
+"Louisiana","LA",2080,0.0507872417678886,"loss_Pop1417"
+"Louisiana","LA",2090,0.0504388742862849,"loss_Pop1417"
+"Louisiana","LA",2300,0.0431507460005438,"loss_Pop1417"
+"Maine","ME",2000,NA,"loss_Pop1417"
+"Maine","ME",2010,0.0517845674147333,"loss_Pop1417"
+"Maine","ME",2020,0.0467172786657653,"loss_Pop1417"
+"Maine","ME",2030,0.0514294722382208,"loss_Pop1417"
+"Maine","ME",2040,0.0500405542305097,"loss_Pop1417"
+"Maine","ME",2050,0.0501366095697883,"loss_Pop1417"
+"Maine","ME",2060,0.0526897312180425,"loss_Pop1417"
+"Maine","ME",2070,0.0517253053681865,"loss_Pop1417"
+"Maine","ME",2080,0.051545361731156,"loss_Pop1417"
+"Maine","ME",2090,0.0520068899906772,"loss_Pop1417"
+"Maine","ME",2300,0.0570940408856818,"loss_Pop1417"
+"Maryland","MD",2000,NA,"loss_Pop1417"
+"Maryland","MD",2010,0.0553472804792449,"loss_Pop1417"
+"Maryland","MD",2020,0.0520351526015547,"loss_Pop1417"
+"Maryland","MD",2030,0.0527583819415743,"loss_Pop1417"
+"Maryland","MD",2040,0.0515453427964122,"loss_Pop1417"
+"Maryland","MD",2050,0.051861686196642,"loss_Pop1417"
+"Maryland","MD",2060,0.0526386133549393,"loss_Pop1417"
+"Maryland","MD",2070,0.0521395822766552,"loss_Pop1417"
+"Maryland","MD",2080,0.0518029447579958,"loss_Pop1417"
+"Maryland","MD",2090,0.0516526427548278,"loss_Pop1417"
+"Maryland","MD",2300,0.0470327358602387,"loss_Pop1417"
+"Massachusetts","MA",2000,NA,"loss_Pop1417"
+"Massachusetts","MA",2010,0.0547948274187296,"loss_Pop1417"
+"Massachusetts","MA",2020,0.0537747648507163,"loss_Pop1417"
+"Massachusetts","MA",2030,0.057011748559945,"loss_Pop1417"
+"Massachusetts","MA",2040,0.0535371291236552,"loss_Pop1417"
+"Massachusetts","MA",2050,0.0552711071017511,"loss_Pop1417"
+"Massachusetts","MA",2060,0.0565006685040469,"loss_Pop1417"
+"Massachusetts","MA",2070,0.0552306364736876,"loss_Pop1417"
+"Massachusetts","MA",2080,0.0554533032375526,"loss_Pop1417"
+"Massachusetts","MA",2090,0.0553047843296241,"loss_Pop1417"
+"Massachusetts","MA",2300,0.0560539995216402,"loss_Pop1417"
+"Michigan","MI",2000,NA,"loss_Pop1417"
+"Michigan","MI",2010,0.0585616834943305,"loss_Pop1417"
+"Michigan","MI",2020,0.052835808409769,"loss_Pop1417"
+"Michigan","MI",2030,0.0564388468491751,"loss_Pop1417"
+"Michigan","MI",2040,0.0546390966823467,"loss_Pop1417"
+"Michigan","MI",2050,0.0542015552193051,"loss_Pop1417"
+"Michigan","MI",2060,0.0555162482612235,"loss_Pop1417"
+"Michigan","MI",2070,0.0546207399374309,"loss_Pop1417"
+"Michigan","MI",2080,0.0542405445889372,"loss_Pop1417"
+"Michigan","MI",2090,0.054356693704659,"loss_Pop1417"
+"Michigan","MI",2300,0.0474772903878193,"loss_Pop1417"
+"Minnesota","MN",2000,NA,"loss_Pop1417"
+"Minnesota","MN",2010,0.0548962893068115,"loss_Pop1417"
+"Minnesota","MN",2020,0.0527089493323069,"loss_Pop1417"
+"Minnesota","MN",2030,0.0542011632434908,"loss_Pop1417"
+"Minnesota","MN",2040,0.052511368506895,"loss_Pop1417"
+"Minnesota","MN",2050,0.052379425962183,"loss_Pop1417"
+"Minnesota","MN",2060,0.0537332075218155,"loss_Pop1417"
+"Minnesota","MN",2070,0.0528438250452019,"loss_Pop1417"
+"Minnesota","MN",2080,0.0527574523824442,"loss_Pop1417"
+"Minnesota","MN",2090,0.0529546545713088,"loss_Pop1417"
+"Minnesota","MN",2300,0.0499915954125891,"loss_Pop1417"
+"Mississippi","MS",2000,NA,"loss_Pop1417"
+"Mississippi","MS",2010,0.0594551604590976,"loss_Pop1417"
+"Mississippi","MS",2020,0.0564259033875437,"loss_Pop1417"
+"Mississippi","MS",2030,0.0567269006871637,"loss_Pop1417"
+"Mississippi","MS",2040,0.0542025842710804,"loss_Pop1417"
+"Mississippi","MS",2050,0.0538905623717661,"loss_Pop1417"
+"Mississippi","MS",2060,0.0536707559862756,"loss_Pop1417"
+"Mississippi","MS",2070,0.0527522882697406,"loss_Pop1417"
+"Mississippi","MS",2080,0.0524055476435222,"loss_Pop1417"
+"Mississippi","MS",2090,0.0519894338968158,"loss_Pop1417"
+"Mississippi","MS",2300,0.0428109855490511,"loss_Pop1417"
+"Missouri","MO",2000,NA,"loss_Pop1417"
+"Missouri","MO",2010,0.0557677653040763,"loss_Pop1417"
+"Missouri","MO",2020,0.0531922743743386,"loss_Pop1417"
+"Missouri","MO",2030,0.0543734274221115,"loss_Pop1417"
+"Missouri","MO",2040,0.0521234391092047,"loss_Pop1417"
+"Missouri","MO",2050,0.0522638443772886,"loss_Pop1417"
+"Missouri","MO",2060,0.0530317517641554,"loss_Pop1417"
+"Missouri","MO",2070,0.0521090673675592,"loss_Pop1417"
+"Missouri","MO",2080,0.0521120972507525,"loss_Pop1417"
+"Missouri","MO",2090,0.0520363815037451,"loss_Pop1417"
+"Missouri","MO",2300,0.045989696625655,"loss_Pop1417"
+"Montana","MT",2000,NA,"loss_Pop1417"
+"Montana","MT",2010,0.0528194558451807,"loss_Pop1417"
+"Montana","MT",2020,0.0497003102743574,"loss_Pop1417"
+"Montana","MT",2030,0.0528033617528648,"loss_Pop1417"
+"Montana","MT",2040,0.0507096712110649,"loss_Pop1417"
+"Montana","MT",2050,0.0505429889078805,"loss_Pop1417"
+"Montana","MT",2060,0.0520491288961175,"loss_Pop1417"
+"Montana","MT",2070,0.0508375452587843,"loss_Pop1417"
+"Montana","MT",2080,0.0505972888573151,"loss_Pop1417"
+"Montana","MT",2090,0.0508170156838895,"loss_Pop1417"
+"Montana","MT",2300,0.0486072315900313,"loss_Pop1417"
+"Nebraska","NE",2000,NA,"loss_Pop1417"
+"Nebraska","NE",2010,0.05588004859451,"loss_Pop1417"
+"Nebraska","NE",2020,0.0550318454952159,"loss_Pop1417"
+"Nebraska","NE",2030,0.0547171726718465,"loss_Pop1417"
+"Nebraska","NE",2040,0.0531395364136503,"loss_Pop1417"
+"Nebraska","NE",2050,0.0522877721765547,"loss_Pop1417"
+"Nebraska","NE",2060,0.0532294942054477,"loss_Pop1417"
+"Nebraska","NE",2070,0.052292924432536,"loss_Pop1417"
+"Nebraska","NE",2080,0.0518284459014492,"loss_Pop1417"
+"Nebraska","NE",2090,0.0520175240437643,"loss_Pop1417"
+"Nebraska","NE",2300,0.0478292689297379,"loss_Pop1417"
+"Nevada","NV",2000,NA,"loss_Pop1417"
+"Nevada","NV",2010,0.0541350994832249,"loss_Pop1417"
+"Nevada","NV",2020,0.0521138954996141,"loss_Pop1417"
+"Nevada","NV",2030,0.0492692870083473,"loss_Pop1417"
+"Nevada","NV",2040,0.0498807578929482,"loss_Pop1417"
+"Nevada","NV",2050,0.0500492226232357,"loss_Pop1417"
+"Nevada","NV",2060,0.0501939147532377,"loss_Pop1417"
+"Nevada","NV",2070,0.0501808097672851,"loss_Pop1417"
+"Nevada","NV",2080,0.0498589289803072,"loss_Pop1417"
+"Nevada","NV",2090,0.0492748148423762,"loss_Pop1417"
+"Nevada","NV",2300,0.0447957703840617,"loss_Pop1417"
+"New Hampshire","NH",2000,NA,"loss_Pop1417"
+"New Hampshire","NH",2010,0.0555242425465664,"loss_Pop1417"
+"New Hampshire","NH",2020,0.0483005549264851,"loss_Pop1417"
+"New Hampshire","NH",2030,0.0531427594132035,"loss_Pop1417"
+"New Hampshire","NH",2040,0.0514388832673851,"loss_Pop1417"
+"New Hampshire","NH",2050,0.0508237499727498,"loss_Pop1417"
+"New Hampshire","NH",2060,0.0534342613282162,"loss_Pop1417"
+"New Hampshire","NH",2070,0.0524296066541839,"loss_Pop1417"
+"New Hampshire","NH",2080,0.0519420311083493,"loss_Pop1417"
+"New Hampshire","NH",2090,0.0524962640140337,"loss_Pop1417"
+"New Hampshire","NH",2300,0.0438104755738322,"loss_Pop1417"
+"New Jersey","NJ",2000,NA,"loss_Pop1417"
+"New Jersey","NJ",2010,0.0541779050813613,"loss_Pop1417"
+"New Jersey","NJ",2020,0.0503194485072907,"loss_Pop1417"
+"New Jersey","NJ",2030,0.0503203472367159,"loss_Pop1417"
+"New Jersey","NJ",2040,0.0514887810693027,"loss_Pop1417"
+"New Jersey","NJ",2050,0.0514470913709204,"loss_Pop1417"
+"New Jersey","NJ",2060,0.0521254050574529,"loss_Pop1417"
+"New Jersey","NJ",2070,0.0524919401104105,"loss_Pop1417"
+"New Jersey","NJ",2080,0.0518011443408774,"loss_Pop1417"
+"New Jersey","NJ",2090,0.05159063549027,"loss_Pop1417"
+"New Jersey","NJ",2300,0.0495722208272779,"loss_Pop1417"
+"New Mexico","NM",2000,NA,"loss_Pop1417"
+"New Mexico","NM",2010,0.05742813088047,"loss_Pop1417"
+"New Mexico","NM",2020,0.0560936896453295,"loss_Pop1417"
+"New Mexico","NM",2030,0.0581874326568291,"loss_Pop1417"
+"New Mexico","NM",2040,0.054340175407327,"loss_Pop1417"
+"New Mexico","NM",2050,0.0560455780589368,"loss_Pop1417"
+"New Mexico","NM",2060,0.0555773297485848,"loss_Pop1417"
+"New Mexico","NM",2070,0.0544489656722773,"loss_Pop1417"
+"New Mexico","NM",2080,0.0541773911814454,"loss_Pop1417"
+"New Mexico","NM",2090,0.0531344213563739,"loss_Pop1417"
+"New Mexico","NM",2300,0.0496121184181544,"loss_Pop1417"
+"New York","NY",2000,NA,"loss_Pop1417"
+"New York","NY",2010,0.0548071223962083,"loss_Pop1417"
+"New York","NY",2020,0.053116678022193,"loss_Pop1417"
+"New York","NY",2030,0.0563033236028194,"loss_Pop1417"
+"New York","NY",2040,0.053569539113519,"loss_Pop1417"
+"New York","NY",2050,0.0547768107087482,"loss_Pop1417"
+"New York","NY",2060,0.0554250909392681,"loss_Pop1417"
+"New York","NY",2070,0.0544094213110254,"loss_Pop1417"
+"New York","NY",2080,0.0541564313629904,"loss_Pop1417"
+"New York","NY",2090,0.053779319768954,"loss_Pop1417"
+"New York","NY",2300,0.0528051894498686,"loss_Pop1417"
+"North Carolina","NC",2000,NA,"loss_Pop1417"
+"North Carolina","NC",2010,0.0547403214478988,"loss_Pop1417"
+"North Carolina","NC",2020,0.0539282110309525,"loss_Pop1417"
+"North Carolina","NC",2030,0.0518214485607615,"loss_Pop1417"
+"North Carolina","NC",2040,0.0514634178961463,"loss_Pop1417"
+"North Carolina","NC",2050,0.0517018421617242,"loss_Pop1417"
+"North Carolina","NC",2060,0.0518302476708446,"loss_Pop1417"
+"North Carolina","NC",2070,0.0518305258630661,"loss_Pop1417"
+"North Carolina","NC",2080,0.0515219963044439,"loss_Pop1417"
+"North Carolina","NC",2090,0.0511335989762228,"loss_Pop1417"
+"North Carolina","NC",2300,0.0462299013683086,"loss_Pop1417"
+"North Dakota","ND",2000,NA,"loss_Pop1417"
+"North Dakota","ND",2010,0.0541841252546801,"loss_Pop1417"
+"North Dakota","ND",2020,0.0536995882583556,"loss_Pop1417"
+"North Dakota","ND",2030,0.0597585724457346,"loss_Pop1417"
+"North Dakota","ND",2040,0.0540911297899996,"loss_Pop1417"
+"North Dakota","ND",2050,0.055148067551205,"loss_Pop1417"
+"North Dakota","ND",2060,0.0575084532398497,"loss_Pop1417"
+"North Dakota","ND",2070,0.0553258401594783,"loss_Pop1417"
+"North Dakota","ND",2080,0.0558636948266803,"loss_Pop1417"
+"North Dakota","ND",2090,0.056657232509924,"loss_Pop1417"
+"North Dakota","ND",2300,0.0588791270142031,"loss_Pop1417"
+"Ohio","OH",2000,NA,"loss_Pop1417"
+"Ohio","OH",2010,0.0562691256920982,"loss_Pop1417"
+"Ohio","OH",2020,0.0521739678976493,"loss_Pop1417"
+"Ohio","OH",2030,0.054399964369353,"loss_Pop1417"
+"Ohio","OH",2040,0.0534147665266437,"loss_Pop1417"
+"Ohio","OH",2050,0.0530207529980527,"loss_Pop1417"
+"Ohio","OH",2060,0.0540922710182856,"loss_Pop1417"
+"Ohio","OH",2070,0.0534448235609881,"loss_Pop1417"
+"Ohio","OH",2080,0.0531334324000793,"loss_Pop1417"
+"Ohio","OH",2090,0.0532065610554343,"loss_Pop1417"
+"Ohio","OH",2300,0.044743924348467,"loss_Pop1417"
+"Oklahoma","OK",2000,NA,"loss_Pop1417"
+"Oklahoma","OK",2010,0.055826073990624,"loss_Pop1417"
+"Oklahoma","OK",2020,0.0552114760457459,"loss_Pop1417"
+"Oklahoma","OK",2030,0.0547342091207046,"loss_Pop1417"
+"Oklahoma","OK",2040,0.0524112864999753,"loss_Pop1417"
+"Oklahoma","OK",2050,0.0526088600996054,"loss_Pop1417"
+"Oklahoma","OK",2060,0.0526662780917141,"loss_Pop1417"
+"Oklahoma","OK",2070,0.0516943441463859,"loss_Pop1417"
+"Oklahoma","OK",2080,0.0515385543964087,"loss_Pop1417"
+"Oklahoma","OK",2090,0.051129368436813,"loss_Pop1417"
+"Oklahoma","OK",2300,0.0452535514276984,"loss_Pop1417"
+"Oregon","OR",2000,NA,"loss_Pop1417"
+"Oregon","OR",2010,0.0525772503383183,"loss_Pop1417"
+"Oregon","OR",2020,0.0510377768562123,"loss_Pop1417"
+"Oregon","OR",2030,0.0534512830577733,"loss_Pop1417"
+"Oregon","OR",2040,0.0514951284884921,"loss_Pop1417"
+"Oregon","OR",2050,0.0524623750285255,"loss_Pop1417"
+"Oregon","OR",2060,0.0536869204891221,"loss_Pop1417"
+"Oregon","OR",2070,0.0525885692181277,"loss_Pop1417"
+"Oregon","OR",2080,0.052759271209917,"loss_Pop1417"
+"Oregon","OR",2090,0.0526285105274338,"loss_Pop1417"
+"Oregon","OR",2300,0.0527035298613516,"loss_Pop1417"
+"Pennsylvania","PA",2000,NA,"loss_Pop1417"
+"Pennsylvania","PA",2010,0.0552077521287537,"loss_Pop1417"
+"Pennsylvania","PA",2020,0.0512410389385614,"loss_Pop1417"
+"Pennsylvania","PA",2030,0.0563364989316249,"loss_Pop1417"
+"Pennsylvania","PA",2040,0.0541624583338565,"loss_Pop1417"
+"Pennsylvania","PA",2050,0.0543301971774533,"loss_Pop1417"
+"Pennsylvania","PA",2060,0.0564053350351422,"loss_Pop1417"
+"Pennsylvania","PA",2070,0.0552287571106156,"loss_Pop1417"
+"Pennsylvania","PA",2080,0.0551083766140383,"loss_Pop1417"
+"Pennsylvania","PA",2090,0.055461963188959,"loss_Pop1417"
+"Pennsylvania","PA",2300,0.0561913353103107,"loss_Pop1417"
+"Rhode Island","RI",2000,NA,"loss_Pop1417"
+"Rhode Island","RI",2010,0.0577563219588352,"loss_Pop1417"
+"Rhode Island","RI",2020,0.0543594588403566,"loss_Pop1417"
+"Rhode Island","RI",2030,0.0603425713723462,"loss_Pop1417"
+"Rhode Island","RI",2040,0.0549732396515488,"loss_Pop1417"
+"Rhode Island","RI",2050,0.0560944918036619,"loss_Pop1417"
+"Rhode Island","RI",2060,0.0584297267211526,"loss_Pop1417"
+"Rhode Island","RI",2070,0.0563258460498018,"loss_Pop1417"
+"Rhode Island","RI",2080,0.0564636024010593,"loss_Pop1417"
+"Rhode Island","RI",2090,0.0566659409987311,"loss_Pop1417"
+"Rhode Island","RI",2300,0.0540790063899015,"loss_Pop1417"
+"South Carolina","SC",2000,NA,"loss_Pop1417"
+"South Carolina","SC",2010,0.0555308943079307,"loss_Pop1417"
+"South Carolina","SC",2020,0.0531428251625747,"loss_Pop1417"
+"South Carolina","SC",2030,0.0531827035067758,"loss_Pop1417"
+"South Carolina","SC",2040,0.0516193797539243,"loss_Pop1417"
+"South Carolina","SC",2050,0.0518840495224551,"loss_Pop1417"
+"South Carolina","SC",2060,0.0518625351464042,"loss_Pop1417"
+"South Carolina","SC",2070,0.0514390906626511,"loss_Pop1417"
+"South Carolina","SC",2080,0.0511015840835821,"loss_Pop1417"
+"South Carolina","SC",2090,0.0506968958947536,"loss_Pop1417"
+"South Carolina","SC",2300,0.0446169200252608,"loss_Pop1417"
+"South Dakota","SD",2000,NA,"loss_Pop1417"
+"South Dakota","SD",2010,0.0558251971524349,"loss_Pop1417"
+"South Dakota","SD",2020,0.0547352479013347,"loss_Pop1417"
+"South Dakota","SD",2030,0.0570493025421181,"loss_Pop1417"
+"South Dakota","SD",2040,0.0533213496010089,"loss_Pop1417"
+"South Dakota","SD",2050,0.0528646554022628,"loss_Pop1417"
+"South Dakota","SD",2060,0.0539388425329425,"loss_Pop1417"
+"South Dakota","SD",2070,0.0524096765994997,"loss_Pop1417"
+"South Dakota","SD",2080,0.0522584918471174,"loss_Pop1417"
+"South Dakota","SD",2090,0.0524773767509815,"loss_Pop1417"
+"South Dakota","SD",2300,0.0500174439758152,"loss_Pop1417"
+"Tennessee","TN",2000,NA,"loss_Pop1417"
+"Tennessee","TN",2010,0.0545373577363618,"loss_Pop1417"
+"Tennessee","TN",2020,0.0528037432183962,"loss_Pop1417"
+"Tennessee","TN",2030,0.0519866924699081,"loss_Pop1417"
+"Tennessee","TN",2040,0.0514949269895052,"loss_Pop1417"
+"Tennessee","TN",2050,0.0518974289130627,"loss_Pop1417"
+"Tennessee","TN",2060,0.0521469537888097,"loss_Pop1417"
+"Tennessee","TN",2070,0.0519474064918607,"loss_Pop1417"
+"Tennessee","TN",2080,0.0518368443533697,"loss_Pop1417"
+"Tennessee","TN",2090,0.051472597939252,"loss_Pop1417"
+"Tennessee","TN",2300,0.0462313798121719,"loss_Pop1417"
+"Texas","TX",2000,NA,"loss_Pop1417"
+"Texas","TX",2010,0.0599013634328184,"loss_Pop1417"
+"Texas","TX",2020,0.0599458258257625,"loss_Pop1417"
+"Texas","TX",2030,0.0572002020640314,"loss_Pop1417"
+"Texas","TX",2040,0.0559679139720791,"loss_Pop1417"
+"Texas","TX",2050,0.056162384958108,"loss_Pop1417"
+"Texas","TX",2060,0.0558363538563802,"loss_Pop1417"
+"Texas","TX",2070,0.0554519079127251,"loss_Pop1417"
+"Texas","TX",2080,0.0549826453531661,"loss_Pop1417"
+"Texas","TX",2090,0.0542985365846644,"loss_Pop1417"
+"Texas","TX",2300,0.0505708138808171,"loss_Pop1417"
+"Utah","UT",2000,NA,"loss_Pop1417"
+"Utah","UT",2010,0.064490455729778,"loss_Pop1417"
+"Utah","UT",2020,0.0667143332722282,"loss_Pop1417"
+"Utah","UT",2030,0.0565871236293819,"loss_Pop1417"
+"Utah","UT",2040,0.0542712648104801,"loss_Pop1417"
+"Utah","UT",2050,0.0528393040301978,"loss_Pop1417"
+"Utah","UT",2060,0.0506991409619911,"loss_Pop1417"
+"Utah","UT",2070,0.0504026134668193,"loss_Pop1417"
+"Utah","UT",2080,0.0501111724759573,"loss_Pop1417"
+"Utah","UT",2090,0.0493927486634025,"loss_Pop1417"
+"Utah","UT",2300,0.0330779094478816,"loss_Pop1417"
+"Vermont","VT",2000,NA,"loss_Pop1417"
+"Vermont","VT",2010,0.0561487905036869,"loss_Pop1417"
+"Vermont","VT",2020,0.0501500019166228,"loss_Pop1417"
+"Vermont","VT",2030,0.0578490296343932,"loss_Pop1417"
+"Vermont","VT",2040,0.0545281500069771,"loss_Pop1417"
+"Vermont","VT",2050,0.0547328486032391,"loss_Pop1417"
+"Vermont","VT",2060,0.0582185685875314,"loss_Pop1417"
+"Vermont","VT",2070,0.0564165225181788,"loss_Pop1417"
+"Vermont","VT",2080,0.0563806890693538,"loss_Pop1417"
+"Vermont","VT",2090,0.0572325619604638,"loss_Pop1417"
+"Vermont","VT",2300,0.0636888380164105,"loss_Pop1417"
+"Virginia","VA",2000,NA,"loss_Pop1417"
+"Virginia","VA",2010,0.0540966007729889,"loss_Pop1417"
+"Virginia","VA",2020,0.0547654420561252,"loss_Pop1417"
+"Virginia","VA",2030,0.057651438743927,"loss_Pop1417"
+"Virginia","VA",2040,0.0527352859615191,"loss_Pop1417"
+"Virginia","VA",2050,0.0547198670416069,"loss_Pop1417"
+"Virginia","VA",2060,0.0560513220786035,"loss_Pop1417"
+"Virginia","VA",2070,0.0546042937872163,"loss_Pop1417"
+"Virginia","VA",2080,0.0552340454353176,"loss_Pop1417"
+"Virginia","VA",2090,0.0551662745080551,"loss_Pop1417"
+"Virginia","VA",2300,0.0563704417695491,"loss_Pop1417"
+"Washington","WA",2000,NA,"loss_Pop1417"
+"Washington","WA",2010,0.0542674468478122,"loss_Pop1417"
+"Washington","WA",2020,0.0514246186285196,"loss_Pop1417"
+"Washington","WA",2030,0.0534238785553644,"loss_Pop1417"
+"Washington","WA",2040,0.0516976734486042,"loss_Pop1417"
+"Washington","WA",2050,0.0522949713967999,"loss_Pop1417"
+"Washington","WA",2060,0.0534491103276926,"loss_Pop1417"
+"Washington","WA",2070,0.0525583150311997,"loss_Pop1417"
+"Washington","WA",2080,0.0525435898525868,"loss_Pop1417"
+"Washington","WA",2090,0.0524491277848064,"loss_Pop1417"
+"Washington","WA",2300,0.0499293814844802,"loss_Pop1417"
+"West Virginia","WV",2000,NA,"loss_Pop1417"
+"West Virginia","WV",2010,0.0506554254729569,"loss_Pop1417"
+"West Virginia","WV",2020,0.0518814308340572,"loss_Pop1417"
+"West Virginia","WV",2030,0.0570349934303657,"loss_Pop1417"
+"West Virginia","WV",2040,0.0547691785751783,"loss_Pop1417"
+"West Virginia","WV",2050,0.0568921071336059,"loss_Pop1417"
+"West Virginia","WV",2060,0.059041013768501,"loss_Pop1417"
+"West Virginia","WV",2070,0.0576998648023381,"loss_Pop1417"
+"West Virginia","WV",2080,0.0584206396687667,"loss_Pop1417"
+"West Virginia","WV",2090,0.0584616216737588,"loss_Pop1417"
+"West Virginia","WV",2300,0.0672881465071952,"loss_Pop1417"
+"Wisconsin","WI",2000,NA,"loss_Pop1417"
+"Wisconsin","WI",2010,0.0553387674921483,"loss_Pop1417"
+"Wisconsin","WI",2020,0.0517998421016924,"loss_Pop1417"
+"Wisconsin","WI",2030,0.0548550232393181,"loss_Pop1417"
+"Wisconsin","WI",2040,0.0531618422416427,"loss_Pop1417"
+"Wisconsin","WI",2050,0.0529316313863501,"loss_Pop1417"
+"Wisconsin","WI",2060,0.0544802920226175,"loss_Pop1417"
+"Wisconsin","WI",2070,0.0536179603883208,"loss_Pop1417"
+"Wisconsin","WI",2080,0.0533235381064284,"loss_Pop1417"
+"Wisconsin","WI",2090,0.0534864550343555,"loss_Pop1417"
+"Wisconsin","WI",2300,0.0505872211279859,"loss_Pop1417"
+"Wyoming","WY",2000,NA,"loss_Pop1417"
+"Wyoming","WY",2010,0.0533619813158164,"loss_Pop1417"
+"Wyoming","WY",2020,0.0521285203683864,"loss_Pop1417"
+"Wyoming","WY",2030,0.0537717359016558,"loss_Pop1417"
+"Wyoming","WY",2040,0.0499218050276309,"loss_Pop1417"
+"Wyoming","WY",2050,0.0503972252829074,"loss_Pop1417"
+"Wyoming","WY",2060,0.0507747014314728,"loss_Pop1417"
+"Wyoming","WY",2070,0.0493706806834016,"loss_Pop1417"
+"Wyoming","WY",2080,0.0490867000552224,"loss_Pop1417"
+"Wyoming","WY",2090,0.0483809112052964,"loss_Pop1417"
+"Wyoming","WY",2300,0.0455351601457887,"loss_Pop1417"

@@ -1,7 +1,4 @@
 ### Overwrite FrEDI data with past data
-# on:
-#   workflow_run:
-#     workflows: ["Compile FrEDI Data"]
 name: 3. Update Package Data (if tests passed)
 
 on:
@@ -14,9 +11,18 @@ on:
         options: 
         - no
         - yes
+      module:
+        type: choice
+        description: Which module?
+        required: true
+        options:
+        - fredi
+        - extremes
+        - ghg
+        # - sv
       workflow_id:
         type: string
-        description: Enter the run ID for the workflow from which to retrieve the main FrEDI Data
+        description: Enter the run ID for the workflow from which to retrieve the module data
     
 
 jobs:
@@ -49,7 +55,7 @@ jobs:
         
       - name: Send input status
         run: |
-          echo "$${{ github.ref_name }} ${{ inputs.passed_tests }} ${{ inputs.workflow_id }}"  
+          echo "$${{ github.ref_name }} ${{ inputs.passed_tests }}  ${{ inputs.module }} ${{ inputs.workflow_id }}"  
       
       ### Download tmp_sysdata.rda from 1. Compile Main FrEDI Data run
       - name: Download all artifacts
@@ -64,18 +70,18 @@ jobs:
           pwd
           ls -R ./data/Data
       
-      # github.event.inputs.passed_tests == 'true'
-      # github.inputs.passed_tests == 'true'
-      # cp data/tmp_sysdata.rda data/sysdata.rda
-      # ${{ ( github.inputs.passed_tests == 'true' ) || ( github.inputs.passed_tests == 'yes' ) }}
-      - name: Update Data
-        if: |
-          ${{ ( inputs.passed_tests == 'true' ) || 
-            ( inputs.passed_tests == 'yes' ) }}
-        run:  |
-          rm ./data/sysdata.rda
-          cp ./data/Data/tmp_sysdata.rda ./data/sysdata.rda
-          rm ./data/Data/tmp_sysdata.rda
+      # - name: Copy Data
+      #   if: |
+      #     ${{ (( inputs.passed_tests == 'true' ) ||
+      #         ( inputs.passed_tests == 'yes' ))
+      #       }}
+      #   run:  |
+      #     cp ./data/Data/*.rda ./data/
+      #     rm ./data/Data/*
+      #     # rm ./data/sysdata.rda
+      #     # cp ./data/Data/tmp_sysData.rda ./data/sysData.rda
+      #     # rm ./data/Data/tmp_sysData.rda
+      
           
       # github.event.inputs.passed_tests == 'true'
       - name: Add SV Data to sysdata
@@ -84,46 +90,87 @@ jobs:
             ( inputs.passed_tests == 'yes' ) }}
         run:  |
           Rscript -e '
-             ### Libraries
+            ### Arguments ----------------
+            doFredi     <- module |> str_detect("fredi")
+            doExtr      <- module |> str_detect("extremes")
+            doGhg       <- module |> str_detect("ghg")
+            doSv        <- module |> str_detect("sv")
+            
+            ### Set Up Environment ----------------
+            #### Load Libraries ----------------
             require(tidyverse)
             require(devtools)
             
-            ###### Set Paths ######
-            ### Project path
-            ### Data output path and file name
+            ### Set Paths ----------------
+            #### Directories ----------------
             projectDir  <- "."
             dataDir     <- projectDir |> file.path("data")
-            svDir       <- dataDir    |> file.path("sv")
-            ghgDir      <- dataDir    |> file.path("methane")
+            frediDir    <- dataDir
+            extrDir     <- dataDir |> file.path("extremes")
+            ghgDir      <- dataDir |> file.path("ghg")
+            svDir       <- dataDir |> file.path("sv")
             
-            
-            ### Filenames
+            #### Filenames ----------------
             dataFile    <- "sysdata.rda"
+            frediFile   <- "frediData.rda"
+            extrFile    <- "extremesData.rda"
             ghgFile     <- "listMethane.rda"
+            svFiles     <- svDir |> list.files(pattern="rda")
             
-            dataPath    <- dataDir |> file.path(dataFile) 
-            ghgPath     <- ghgDir  |> file.path(ghgFile )
+            #### Paths ----------------
+            dataPath    <- dataDir  |> file.path(dataFile)
+            frediPath   <- frediDir |> file.path(frediFile)
+            extrPath    <- extrDir  |> file.path(extrFile)
+            ghgPath     <- ghgDir   |> file.path(ghgFile)
+            svPaths     <- svDir    |> file.path(svFiles)
             
+            ### Copy Files ----------------
+            ### Which file to copy
+            fromPaths   <- projectDir |> file.path("data", "Data") |> list.files(pattern="rda", full.names=T)
+            if(doSv) {toPaths <- svPaths}
+            else     {toPaths <- case_when(doExtr ~ extrFile, doGhg ~ ghgPath, .default=frediPath) }
+            fromPaths |> file.copy(to=toPaths)
   
-            ###### 0. Local Function ###### 
-            projectDir |> devtools::load_all()
-  
-            ###### 1. Add SV Data to sysdata.rda ###### 
-            tmpData     <- projectDir |> update_sysdata(
-              dataPath  = dataDir,
-              mainFile  = dataFile, 
-              sv        = TRUE ,
-              svPath    = svDir,
-              svExt     = "rda", 
-              save      = TRUE ,
-              return    = FALSE
-            ) ### End update_sysdata
+            ### Add SV Data to sysdata.rda ----------------
+            # ### Load functions
+            # projectDir |> devtools::load_all()
+            # ### Update data
+            # tmpData     <- projectDir |> update_sysdata(
+            #   dataPath  = dataDir,
+            #   mainFile  = dataFile, 
+            #   sv        = TRUE ,
+            #   svPath    = svDir,
+            #   svExt     = "rda", 
+            #   save      = TRUE ,
+            #   return    = FALSE
+            # ) ### End update_sysdata
             
-            ###### 2. Save Data List ###### 
-            projectDir |> devtools::load_all()
-            ghgPath    <- ghgDir |> file.path(ghgFile)
-            ghgPath |> load()
-            save(rDataList, listMethane, svDataList, svPopList, format_styles, file=dataPath)
+            ### Load Data ----------------
+            #### Load main data
+            dataPath |> load()
+            
+            #### Paths
+            # allPaths    <- c(frediPath, extrPath, ghgPath, svPaths)
+            # allNames    <- allPaths |> basename() |> str_replace("\\.rda", "")
+            allPaths    <- toPaths
+            allNames    <- toPaths |> basename() |> str_replace("\\.rda", "")
+            
+            #### Iterate over paths, loading data and assigning data to names
+            listData    <- list(path0=allPaths, name0=allNames) |> map(function(path0, name0){
+              path0 |> load(temp_env <- new.env())
+              list0 <- temp_env |> as.list()
+              obj0  <- list0[[name0]]
+              rm(temp_env, list0)
+              return(obj0)
+            }) |> set_names(listData)
+            for(name_i in allNames){name_i |> assign(listData[[name_i]])}
+
+            ### Save Data ----------------
+            # projectDir |> devtools::load_all()
+            # ghgPath    <- ghgDir |> file.path(ghgFile)
+            # ghgPath |> load()
+            # save(rDataList, listMethane, svDataList, svPopList, format_styles, file=dataPath)
+            save(frediData, extremesData, ghgData, svDataList, svPopList, format_styles, file=dataPath)
           '
       
       - name: Commit results
@@ -136,17 +183,14 @@ jobs:
           git config --local user.email "${{ github.actor }}@users.noreply.github.com"
           git config --local user.name  "${{ github.actor }}"
           
-          # Navigate to the repository directory (optional, set the path below if needed)
-          # cd /path/to/your/repo
-          
           # Add data files
           git add ./data/*.rd*
+          git add ./data/extremes/*.rd*
+          git add ./data/ghg/*.rd*
+          git add ./data/sv/*.rd*
           
           # Rebase files
           git pull origin ${{ github.head_ref }} --autostash --rebase -X ours
-          
-          # git commit -a -m "Updated sysdata and added SV data to sysdata"
-          # git push
 
           # Check for staged changes
           if git diff --cached --quiet; then
